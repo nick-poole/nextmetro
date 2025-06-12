@@ -3,6 +3,7 @@ import { CssBaseline, Container, Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import NavBar from './components/NavBar';
 import HeroBanner from './components/HeroBanner';
+import StationSelect from './components/StationSelect';
 
 const darkTheme = createTheme({
 	palette: {
@@ -16,7 +17,9 @@ function App() {
 			<CssBaseline />
 			<NavBar />
 			<HeroBanner />
-			<Container maxWidth="md" />
+			<Container maxWidth="md">
+				<StationSelect onSelect={(code) => console.log('Selected:', code)} />
+			</Container>
 		</ThemeProvider>
 	);
 }

@@ -23,11 +23,26 @@ NextMetro is a backend-powered rebuild of a previous frontend-only project. This
 - Modular structure for future expansions (favorites, auth, DB support)
 - Designed for dark mode and mobile-first layouts
 
+### Station Selector
+
+Includes a fully loaded `<Select>` dropdown of all WMATA station codes and names, ordered by official station code (e.g. A01, A02, etc).
+
+This select will later be wired to trigger real-time train data queries for the selected station using the WMATA API.
+
+Future roadmap may include:
+
+- Grouping by Metro line
+- Dual dropdowns (Line → Station)
+- Favorite station support
+- Typeahead or search input
+
 ---
 
 ## Dev Notes
 
 ### 6/11/25
+
+- feat: add station select dropdown with full station code list
 
 - feat: add NavBar and HeroBanner components
   - Implement a sticky NavBar and rotating HeroBanner with local image support, overlay text, and Material UI theming.
