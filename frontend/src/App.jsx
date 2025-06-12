@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import NavBar from './components/NavBar';
 import HeroBanner from './components/HeroBanner';
 import StationSelect from './components/StationSelect';
+import Footer from './components/Footer';
 
 const darkTheme = createTheme({
 	palette: {
@@ -20,6 +21,7 @@ function App() {
 			<Container maxWidth="md">
 				<StationSelect onSelect={(code) => console.log('Selected:', code)} />
 			</Container>
+			<Footer />
 		</ThemeProvider>
 	);
 }

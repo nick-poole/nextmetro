@@ -42,6 +42,8 @@ Future roadmap may include:
 
 ### 6/11/25
 
+- feat: add footer with © 2025, system links, and v2 beta label
+
 - feat: add station select dropdown with full station code list
 
 - feat: add NavBar and HeroBanner components
