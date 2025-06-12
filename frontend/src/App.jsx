@@ -1,6 +1,8 @@
 import React from 'react';
 import { CssBaseline, Container, Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import NavBar from './components/NavBar';
+import HeroBanner from './components/HeroBanner';
 
 const darkTheme = createTheme({
 	palette: {
@@ -12,12 +14,9 @@ function App() {
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
-			<Container>
-				<Typography variant="h3" gutterBottom>
-					NextMetro
-				</Typography>
-				<Typography variant="body1">Real-time DC Metro Tracker (v2)</Typography>
-			</Container>
+			<NavBar />
+			<HeroBanner />
+			<Container maxWidth="md" />
 		</ThemeProvider>
 	);
 }

@@ -29,5 +29,8 @@ NextMetro is a backend-powered rebuild of a previous frontend-only project. This
 
 ### 6/11/25
 
+- feat: add NavBar and HeroBanner components
+  - Implement a sticky NavBar and rotating HeroBanner with local image support, overlay text, and Material UI theming.
+
 - INIT COMMIT init: scaffold frontend with Vite, React, and Material UI dark theme
   - [x] Remoted original nextmetro to nextmetro-v1
