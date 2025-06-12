@@ -1,0 +1,41 @@
+export const mockTrains = [
+	{
+		line: 'YL',
+		destination: 'Greenbelt',
+		arrival: 'ARR',
+		cars: 6,
+		trainId: '205C',
+	},
+	{
+		line: 'RD',
+		destination: 'Shady Grove',
+		arrival: '3 min',
+		cars: 8,
+		trainId: '314B',
+	},
+	{
+		line: 'BL',
+		destination: 'Franconia-Springfield',
+		arrival: 'BRD',
+		cars: 6,
+		trainId: '193A',
+	},
+	{
+		line: 'GR',
+		destination: 'Branch Ave',
+		arrival: 'ARR',
+		cars: 6,
+		trainId: '999X',
+		direction: 'Southbound',
+		serviceType: 'NoPassengers',
+	},
+	{
+		line: 'SV',
+		destination: 'Largo Town Center',
+		arrival: 'Train',
+		cars: 8,
+		trainId: '777C',
+		direction: 'Eastbound',
+		serviceType: 'Train',
+	},
+];

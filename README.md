@@ -40,9 +40,13 @@ Future roadmap may include:
 
 ## Dev Notes
 
-### 6/11/25
+### 6/12/25
+
+- feat: scaffold multiple train card layouts and seed mock data for design exploration
 
 - feat: add footer with © 2025, system links, and v2 beta label
+
+### 6/11/25
 
 - feat: add station select dropdown with full station code list
 
