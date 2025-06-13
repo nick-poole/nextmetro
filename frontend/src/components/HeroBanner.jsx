@@ -45,7 +45,6 @@ function HeroBanner() {
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
-				color: 'white',
 				textAlign: 'center',
 				'&::after': {
 					content: '""',
@@ -64,8 +63,10 @@ function HeroBanner() {
 				sx={{
 					position: 'relative',
 					zIndex: 2,
+					fontFamily: "'Oxanium', sans-serif",
 					fontWeight: 'bold',
 					px: 2,
+					mb: 2,
 				}}>
 				NextMetro
 			</Typography>
@@ -76,11 +77,13 @@ function HeroBanner() {
 				sx={{
 					position: 'relative',
 					zIndex: 2,
+					fontSize: 20,
+					fontFamily: "'Orbitron', sans-serif",
 					fontWeight: 'medium',
-					px: 2,
+					px: 4,
 					mt: 1,
 				}}>
-				Get real-time train information for the Washington Metro system.
+				Get real-time train information for the D.C. Metro system.
 			</Typography>
 		</Box>
 	);

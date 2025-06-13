@@ -27,10 +27,9 @@ function Footer() {
 					System Map
 				</Link>{' '}
 				·{' '}
-				<Link href="/988" underline="hover" color="inherit">
+				<Link href="https://988lifeline.org/" underline="hover" color="inherit">
 					988 Resources
 				</Link>{' '}
-				· v2 beta
 			</Typography>
 		</Box>
 	);

@@ -25,7 +25,9 @@ function NavBar() {
 				{/* Right-Aligned Nav Links */}
 				<Box sx={{ display: 'flex', gap: 2 }}>
 					<Button color="inherit">About</Button>
-					<Button color="inherit">988</Button>
+					<Button color="inherit" href="https://988lifeline.org/" target="_blank" rel="noopener">
+						988
+					</Button>
 					<Button
 						color="inherit"
 						href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm"

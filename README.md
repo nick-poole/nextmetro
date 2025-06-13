@@ -42,6 +42,8 @@ Future roadmap may include:
 
 ### 6/12/25
 
+- chore: imports fonts, updates TrainCard3 with flex layout for ETA
+
 - feat: scaffold multiple train card layouts and seed mock data for design exploration
 
 - feat: add footer with © 2025, system links, and v2 beta label

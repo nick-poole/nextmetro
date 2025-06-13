@@ -24,23 +24,7 @@ function App() {
 			<HeroBanner />
 			<Container maxWidth="md">
 				<StationSelect onSelect={(code) => console.log('Selected:', code)} />
-				<Typography variant="h6" sx={{ mt: 4 }}>
-					Card 1
-				</Typography>
-				{mockTrains.map((t, i) => (
-					<TrainCard1 key={`1-${i}`} {...t} />
-				))}
 
-				<Typography variant="h6" sx={{ mt: 4 }}>
-					Card 2
-				</Typography>
-				{mockTrains.map((t, i) => (
-					<TrainCard2 key={`2-${i}`} {...t} />
-				))}
-
-				<Typography variant="h6" sx={{ mt: 4 }}>
-					Card 3
-				</Typography>
 				{mockTrains.map((t, i) => (
 					<TrainCard3 key={`3-${i}`} {...t} />
 				))}

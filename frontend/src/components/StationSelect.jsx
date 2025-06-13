@@ -12,7 +12,7 @@ function StationSelect({ onSelect }) {
 	};
 
 	return (
-		<FormControl fullWidth sx={{ mt: -1 }}>
+		<FormControl fullWidth sx={{ mt: -1, mb: 3 }}>
 			<InputLabel id="station-label">Select Station</InputLabel>
 			<Select labelId="station-label" value={selected} label="Select Station" onChange={handleChange}>
 				{Object.entries(stations).map(([code, name]) => (
