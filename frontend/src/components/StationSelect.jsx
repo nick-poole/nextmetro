@@ -3,7 +3,7 @@ import { FormControl, InputLabel, Select, MenuItem, FormHelperText } from '@mui/
 import { stations } from '../data/stations';
 
 function StationSelect({ onSelect }) {
-	const [selected, setSelected] = useState('');
+	const [selected, setSelected] = useState('B05'); // Brookland-CUA
 
 	const handleChange = (event) => {
 		const code = event.target.value;
@@ -15,6 +15,9 @@ function StationSelect({ onSelect }) {
 		<FormControl fullWidth sx={{ mt: -1, mb: 3 }}>
 			<InputLabel id="station-label">Select Station</InputLabel>
 			<Select labelId="station-label" value={selected} label="Select Station" onChange={handleChange}>
+				<MenuItem value="">
+					<em>None</em>
+				</MenuItem>
 				{Object.entries(stations).map(([code, name]) => (
 					<MenuItem key={code} value={code}>
 						{name}

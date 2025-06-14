@@ -42,13 +42,25 @@ Future roadmap may include:
 
 ### 6/13/25
 
-refactor: clean up TrainCard3 layout and remove unused props
+- feat: integrate Express backend, real-time WMATA API, station feed, and live TrainCard UI
 
-- Removed trainId and direction props (not needed in current UI)
-- Simplified status chip with square corners and neon orange text
-- Reorganized card layout for better alignment and spacing
-- Removed serviceType block for now (separate API)
-- Finalized font choices and color styling to match WMATA aesthetic
+  - Installed and configured Express server with WMATA API key via .env
+  - Created /api/predictions/:stationCode route to fetch real-time train data
+  - Set up proxy in Vite for dev requests to backend
+  - Created StationFeed component to fetch + render train data from backend
+  - Hooked StationSelect dropdown to dynamically update selected station feed
+  - Default station set to Brookland-CUA (B05) as homage
+  - Built final TrainCard UI (renamed from TrainCard3) with MUI design system
+  - Status chips (ARR, BRD) now flash with animated text for live effect
+  - Card layout, colors, and fonts refined for metro-style realism
+
+- refactor: clean up TrainCard3 layout and remove unused props
+
+  - Removed trainId and direction props (not needed in current UI)
+  - Simplified status chip with square corners and neon orange text
+  - Reorganized card layout for better alignment and spacing
+  - Removed serviceType block for now (separate API)
+  - Finalized font choices and color styling to match WMATA aesthetic
 
 ### 6/12/25
 

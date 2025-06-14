@@ -1,14 +1,11 @@
-import React from 'react';
-import { CssBaseline, Container, Typography } from '@mui/material';
+import React, { useState } from 'react'; // 🆕
+import { CssBaseline, Container } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import NavBar from './components/NavBar';
 import HeroBanner from './components/HeroBanner';
 import StationSelect from './components/StationSelect';
+import StationFeed from './components/StationFeed';
 import Footer from './components/Footer';
-import { mockTrains } from './data/sample/mockTrains';
-import TrainCard1 from './components/sample/TrainCard1';
-import TrainCard2 from './components/sample/TrainCard2';
-import TrainCard3 from './components/sample/TrainCard3';
 
 const darkTheme = createTheme({
 	palette: {
@@ -17,23 +14,18 @@ const darkTheme = createTheme({
 });
 
 function App() {
+	const [selectedStation, setSelectedStation] = useState('B05'); // Brookland-CUA
+
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
 			<NavBar />
 			<HeroBanner />
 			<Container maxWidth="md">
-				<StationSelect onSelect={(code) => console.log('Selected:', code)} />
+				<StationSelect onSelect={(code) => setSelectedStation(code)} />
 
-				{mockTrains.map((t, i) => (
-					<TrainCard3 key={`3-${i}`} {...t} />
-				))}
-				{/*
-				{mockTrains.map((train, index) => (
-					<TrainCard1 key={index} {...train} />
-					<TrainCard2 key={index} {...train} />
-					<TrainCard3 key={index} {...train} />
-				))} */}
+				{/* Dynamically update StationFeed */}
+				<StationFeed stationCode={selectedStation} />
 			</Container>
 			<Footer />
 		</ThemeProvider>

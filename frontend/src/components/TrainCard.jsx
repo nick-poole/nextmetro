@@ -9,8 +9,16 @@ const lineColors = {
 	GR: '#388e3c',
 	SV: '#9ca7a4',
 };
+const flashStyle = {
+	'@keyframes flash': {
+		'0%': { opacity: 1 },
+		'50%': { opacity: 0.3 },
+		'100%': { opacity: 1 },
+	},
+	animation: 'flash 2s infinite ease-in-out',
+};
 
-function TrainCard3({ line, destination, arrival, cars, serviceType }) {
+function TrainCard({ line, destination, arrival, cars }) {
 	const isStatus = ['ARR', 'BRD', 'DLY'].includes(arrival?.toUpperCase());
 	const lineColor = lineColors[line] || '#555';
 
@@ -65,14 +73,22 @@ function TrainCard3({ line, destination, arrival, cars, serviceType }) {
 					{/* Arrival Time or Status */}
 					{isStatus ? (
 						<Chip
-							label={arrival.toUpperCase()}
+							label={
+								<Typography
+									component="span"
+									sx={{
+										fontFamily: "'Share Tech Mono', monospace",
+										fontWeight: 'bold',
+										fontSize: '1rem',
+										color: '#f9763d',
+										...(arrival === 'ARR' || arrival === 'BRD' ? flashStyle : {}),
+									}}>
+									{arrival.toUpperCase()}
+								</Typography>
+							}
 							size="small"
 							sx={{
 								bgcolor: '#000',
-								color: '#f9763d',
-								fontSize: '1rem',
-								fontWeight: 'bold',
-								fontFamily: "'Share Tech Mono', monospace",
 								borderRadius: 1,
 							}}
 						/>
@@ -101,4 +117,4 @@ function TrainCard3({ line, destination, arrival, cars, serviceType }) {
 	);
 }
 
-export default TrainCard3;
+export default TrainCard;
