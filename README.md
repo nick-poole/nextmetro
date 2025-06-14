@@ -42,6 +42,12 @@ Future roadmap may include:
 
 ### 6/13/25
 
+- chore: configure dynamic API_BASE_URL for dev/prod environments
+
+  - Added src/config.js to detect production mode via Vite’s import.meta.env.PROD
+  - Updated StationFeed to fetch from API_BASE_URL + /api/predictions/:stationCode
+  - Ensures seamless switching between local proxy and live Render backend
+
 - chore: prepare backend for Render deployment
 
 - feat: integrate Express backend, real-time WMATA API, station feed, and live TrainCard UI

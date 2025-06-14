@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TrainCard from './TrainCard';
 import { Typography } from '@mui/material';
+import { API_BASE_URL } from '../config';
 
 function StationFeed({ stationCode }) {
 	const [trains, setTrains] = useState([]);
@@ -13,7 +14,8 @@ function StationFeed({ stationCode }) {
 		const fetchData = async () => {
 			try {
 				setLoading(true);
-				const res = await fetch(`/api/predictions/${stationCode}`);
+				const res = await fetch(`${API_BASE_URL}/api/predictions/${stationCode}`);
+
 				if (!res.ok) throw new Error('API error');
 				const data = await res.json();
 				setTrains(data);
