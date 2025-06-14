@@ -42,6 +42,8 @@ Future roadmap may include:
 
 ### 6/13/25
 
+- chore: prepare backend for Render deployment
+
 - feat: integrate Express backend, real-time WMATA API, station feed, and live TrainCard UI
 
   - Installed and configured Express server with WMATA API key via .env
