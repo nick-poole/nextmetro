@@ -1,11 +1,16 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const fetch = require('node-fetch');
+const cors = require('cors');
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+// Enable CORS for all routes
+app.use(cors());
+app.set('trust proxy', true);
+
 const WMATA_API_KEY = process.env.WMATA_API_KEY;
 
 // Base WMATA API -Real-Time Rail Predictions

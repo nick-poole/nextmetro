@@ -40,6 +40,10 @@ Future roadmap may include:
 
 ## Dev Notes
 
+### 6/14/25
+
+- fix(cors): enable cross-origin requests for frontend on Netlify
+
 ### 6/13/25
 
 - chore: configure dynamic API_BASE_URL for dev/prod environments
