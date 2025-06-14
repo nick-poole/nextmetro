@@ -9,7 +9,7 @@ export const mockTrains = [
 	{
 		line: 'RD',
 		destination: 'Shady Grove',
-		arrival: '3 min',
+		arrival: '3',
 		cars: 8,
 		trainId: '314B',
 	},
@@ -32,7 +32,7 @@ export const mockTrains = [
 	{
 		line: 'SV',
 		destination: 'Largo Town Center',
-		arrival: 'Train',
+		arrival: '6',
 		cars: 8,
 		trainId: '777C',
 		direction: 'Eastbound',

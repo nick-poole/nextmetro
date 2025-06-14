@@ -40,6 +40,16 @@ Future roadmap may include:
 
 ## Dev Notes
 
+### 6/13/25
+
+refactor: clean up TrainCard3 layout and remove unused props
+
+- Removed trainId and direction props (not needed in current UI)
+- Simplified status chip with square corners and neon orange text
+- Reorganized card layout for better alignment and spacing
+- Removed serviceType block for now (separate API)
+- Finalized font choices and color styling to match WMATA aesthetic
+
 ### 6/12/25
 
 - chore: imports fonts, updates TrainCard3 with flex layout for ETA

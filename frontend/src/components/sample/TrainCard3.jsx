@@ -7,35 +7,33 @@ const lineColors = {
 	YL: '#fbc02d',
 	OR: '#ff9800',
 	GR: '#388e3c',
-	SV: '#9c27b0',
+	SV: '#9ca7a4',
 };
 
-function TrainCard3({
-	line,
-	destination,
-	arrival,
-	cars,
-	trainId,
-	direction,
-	serviceType, // e.g., "NoPassengers", "Train", "Normal"
-}) {
-	const isStatus = ['ARR', 'BRD', 'DLY'].includes(arrival);
+function TrainCard3({ line, destination, arrival, cars, serviceType }) {
+	const isStatus = ['ARR', 'BRD', 'DLY'].includes(arrival?.toUpperCase());
 	const lineColor = lineColors[line] || '#555';
 
 	return (
 		<Card
 			sx={{
-				mb: 2,
+				my: 2,
+				mx: 2,
 				display: 'flex',
 				flexDirection: 'row',
 				bgcolor: '#121212',
 				color: 'white',
 				position: 'relative',
 				overflow: 'hidden',
+				width: 'auto',
+				borderRadius: 2,
+				boxShadow: 4,
 			}}>
-			{/* Left Side Content */}
+			{/* Left Line Strip */}
+			<Box sx={{ width: '6px', backgroundColor: lineColor }} />
+
+			{/* Main Content */}
 			<CardContent sx={{ flex: 1 }}>
-				{/* Top Row: Line + Destination (left) and Arrival/Chip (right) */}
 				<Box
 					sx={{
 						display: 'flex',
@@ -43,7 +41,7 @@ function TrainCard3({
 						justifyContent: 'space-between',
 						mb: 1,
 					}}>
-					{/* Left: Line badge + Destination */}
+					{/* Line Badge + Destination */}
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
 						<Box
 							sx={{
@@ -53,24 +51,29 @@ function TrainCard3({
 								px: 1.5,
 								py: 0.25,
 								borderRadius: 1,
-								fontSize: '0.75rem',
+								fontSize: '1rem',
+								minWidth: '2.5rem',
+								textAlign: 'center',
 							}}>
 							{line}
 						</Box>
-						<Typography variant="h6" fontWeight="bold" sx={{ fontFamily: 'Oxanium' }}>
+						<Typography variant="h5" fontWeight="bold" sx={{ fontFamily: 'Oxanium', fontSize: 20 }}>
 							{destination}
 						</Typography>
 					</Box>
 
-					{/* Right: Arrival or Status */}
+					{/* Arrival Time or Status */}
 					{isStatus ? (
 						<Chip
-							label={arrival}
-							color="success"
+							label={arrival.toUpperCase()}
 							size="small"
 							sx={{
+								bgcolor: '#000',
+								color: '#f9763d',
+								fontSize: '1rem',
 								fontWeight: 'bold',
 								fontFamily: "'Share Tech Mono', monospace",
+								borderRadius: 1,
 							}}
 						/>
 					) : (
@@ -79,58 +82,21 @@ function TrainCard3({
 							sx={{
 								fontFamily: "'Share Tech Mono', monospace",
 								fontWeight: 'bold',
+								fontSize: 20,
 							}}>
-							{arrival}
+							{arrival} min{arrival === '1' ? '' : 's'}
 						</Typography>
 					)}
 				</Box>
 
-				{/* Direction and Cars */}
-				<Typography variant="body2" sx={{ mb: 0.5 }}>
-					Direction: {direction}
+				{/* Car Count */}
+				<Typography variant="body2" fontFamily="'Oxanium'">
+					Cars: {cars}
 				</Typography>
-				<Typography variant="body2">Cars: {cars}</Typography>
-
-				{/* Optional serviceType note */}
-				{serviceType && serviceType !== 'Normal' && (
-					<Typography
-						variant="caption"
-						sx={{
-							mt: 1,
-							fontStyle: 'italic',
-							color: 'orange',
-						}}>
-						{serviceType === 'NoPassengers'
-							? 'Not in service (No Passengers)'
-							: serviceType === 'Train'
-							? 'Train at Platform'
-							: serviceType}
-					</Typography>
-				)}
 			</CardContent>
 
-			{/* Line Color Strip – Right Side */}
-			<Box
-				sx={{
-					width: '6px',
-					backgroundColor: lineColor,
-				}}
-			/>
-
-			{/* Train ID – Bottom Right Overlay */}
-			{trainId && (
-				<Typography
-					variant="caption"
-					sx={{
-						position: 'absolute',
-						bottom: 8,
-						right: 20,
-						fontStyle: 'italic',
-						color: '#aaa',
-					}}>
-					Train ID: {trainId}
-				</Typography>
-			)}
+			{/* Right Line Strip */}
+			<Box sx={{ width: '6px', backgroundColor: lineColor }} />
 		</Card>
 	);
 }
