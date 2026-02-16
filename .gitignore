@@ -17,16 +17,6 @@ coverage
 
 # Dependency directories
 node_modules/
-frontend/node_modules/
-backend/node_modules/
-jspm_packages/
-bower_components/
-
-# Build output
-build/
-dist/
-frontend/dist/
-backend/dist/
 
 # Env files
 .env
@@ -34,16 +24,9 @@ backend/dist/
 
 # Cache
 .cache/
-.parcel-cache
-.vitepress/
-.vitepress/cache
-.vitepress/dist
 
 # Tool-specific
 .eslintcache
-.stylelintcache
-.rpt2_cache/
-.rts2_cache_*/
 
 # VSCode, OS, and REPL
 .vscode/
@@ -53,11 +36,3 @@ Thumbs.db
 
 # Output of 'npm pack'
 *.tgz
-
-# Yarn v1/v2
-.yarn-integrity
-.pnp.*
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
