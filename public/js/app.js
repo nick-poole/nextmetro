@@ -126,6 +126,21 @@ const lineColors = {
   SV: '#9ca7a4',
 };
 
+// Station code prefix → line colors
+const prefixLineColors = {
+  A: ['#d32f2f'],
+  B: ['#d32f2f'],
+  C: ['#1976d2', '#ff9800', '#9ca7a4'],
+  D: ['#1976d2', '#ff9800', '#9ca7a4'],
+  E: ['#388e3c', '#fbc02d'],
+  F: ['#388e3c', '#fbc02d'],
+  G: ['#1976d2', '#9ca7a4'],
+  J: ['#1976d2', '#fbc02d'],
+  K: ['#ff9800', '#9ca7a4'],
+  N: ['#9ca7a4'],
+  S: ['#1976d2', '#fbc02d'],
+};
+
 // ---- Hero Banner Images ----
 const heroImages = [
   'images/chris-grafton.jpg',
@@ -149,37 +164,189 @@ const heroImages = [
 let currentImageIndex = Math.floor(Math.random() * heroImages.length);
 let selectedStation = 'B05';
 let refreshInterval = null;
+let lastUpdatedTime = null;
+let highlightedIndex = -1;
 
 // ---- DOM Elements ----
 const heroBanner = document.getElementById('hero-banner');
-const stationSelect = document.getElementById('station-select');
+const stationInput = document.getElementById('station-input');
+const stationDropdown = document.getElementById('station-dropdown');
 const trainFeed = document.getElementById('train-feed');
+const lastUpdatedEl = document.getElementById('last-updated');
+const updatedTimeEl = document.getElementById('updated-time');
+const refreshBtn = document.getElementById('refresh-btn');
+
+// Build station options array
+const stationOptions = Object.entries(stations).map(([code, name]) => ({
+  code,
+  name,
+  colors: prefixLineColors[code.charAt(0)] || ['#555'],
+}));
 
 // ==============================
-// Hero Banner Rotation
+// Hero Banner with Crossfade
 // ==============================
 function updateHeroImage() {
   heroBanner.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
 }
 
 function rotateHeroImage() {
-  currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-  updateHeroImage();
+  heroBanner.classList.add('fade-out');
+  setTimeout(() => {
+    currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+    updateHeroImage();
+    heroBanner.classList.remove('fade-out');
+  }, 600);
 }
 
 // ==============================
-// Station Dropdown
+// Autocomplete Station Search
 // ==============================
-function populateStationSelect() {
-  Object.entries(stations).forEach(([code, name]) => {
-    const option = document.createElement('option');
-    option.value = code;
-    option.textContent = name;
-    if (code === selectedStation) {
-      option.selected = true;
+function renderDropdown(filteredOptions) {
+  stationDropdown.innerHTML = '';
+  highlightedIndex = -1;
+
+  if (filteredOptions.length === 0) {
+    stationDropdown.classList.remove('open');
+    return;
+  }
+
+  filteredOptions.forEach((option, i) => {
+    const li = document.createElement('li');
+    if (option.code === selectedStation) {
+      li.classList.add('selected');
     }
-    stationSelect.appendChild(option);
+
+    // Line color dots
+    const dotsWrapper = document.createElement('span');
+    dotsWrapper.className = 'line-dots';
+    option.colors.forEach((color) => {
+      const dot = document.createElement('span');
+      dot.className = 'line-dot';
+      dot.style.backgroundColor = color;
+      dotsWrapper.appendChild(dot);
+    });
+
+    li.appendChild(dotsWrapper);
+    li.appendChild(document.createTextNode(option.name));
+    li.dataset.code = option.code;
+    li.dataset.name = option.name;
+    li.dataset.index = i;
+
+    li.addEventListener('click', () => selectStation(option));
+    stationDropdown.appendChild(li);
   });
+
+  stationDropdown.classList.add('open');
+}
+
+function filterStations(query) {
+  const q = query.toLowerCase().trim();
+  if (!q) return stationOptions;
+  return stationOptions.filter((s) => s.name.toLowerCase().includes(q));
+}
+
+function selectStation(option) {
+  selectedStation = option.code;
+  stationInput.value = option.name;
+  stationDropdown.classList.remove('open');
+  highlightedIndex = -1;
+  fetchTrains(selectedStation);
+  startAutoRefresh();
+}
+
+function updateHighlight(items) {
+  items.forEach((item, i) => {
+    item.classList.toggle('highlighted', i === highlightedIndex);
+  });
+  if (highlightedIndex >= 0 && items[highlightedIndex]) {
+    items[highlightedIndex].scrollIntoView({ block: 'nearest' });
+  }
+}
+
+stationInput.addEventListener('input', () => {
+  const filtered = filterStations(stationInput.value);
+  renderDropdown(filtered);
+});
+
+stationInput.addEventListener('focus', () => {
+  stationInput.select();
+  const filtered = filterStations(stationInput.value);
+  renderDropdown(filtered);
+});
+
+stationInput.addEventListener('keydown', (e) => {
+  const items = stationDropdown.querySelectorAll('li');
+  if (!items.length) return;
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    highlightedIndex = Math.min(highlightedIndex + 1, items.length - 1);
+    updateHighlight(items);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    highlightedIndex = Math.max(highlightedIndex - 1, 0);
+    updateHighlight(items);
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    if (highlightedIndex >= 0 && items[highlightedIndex]) {
+      const code = items[highlightedIndex].dataset.code;
+      const name = items[highlightedIndex].dataset.name;
+      const option = stationOptions.find((s) => s.code === code);
+      if (option) selectStation(option);
+    }
+  } else if (e.key === 'Escape') {
+    stationDropdown.classList.remove('open');
+    stationInput.blur();
+  }
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#station-search-wrapper')) {
+    stationDropdown.classList.remove('open');
+  }
+});
+
+// ==============================
+// Skeleton Loading Cards
+// ==============================
+function renderSkeletons() {
+  trainFeed.innerHTML = '';
+  for (let i = 0; i < 3; i++) {
+    const card = document.createElement('div');
+    card.className = 'skeleton-card';
+    card.innerHTML = `
+      <div class="skeleton-strip"></div>
+      <div class="skeleton-content">
+        <div class="skeleton-top">
+          <div class="skeleton-left">
+            <div class="skeleton-block skeleton-badge"></div>
+            <div class="skeleton-block skeleton-text-lg"></div>
+          </div>
+          <div class="skeleton-block skeleton-text-sm"></div>
+        </div>
+        <div class="skeleton-block skeleton-text-xs"></div>
+      </div>
+      <div class="skeleton-strip"></div>
+    `;
+    trainFeed.appendChild(card);
+  }
+}
+
+// ==============================
+// Empty State
+// ==============================
+function renderEmptyState() {
+  trainFeed.innerHTML = `
+    <div class="empty-state">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2l2-2h4l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm2 0V6h5v5h-5zm3.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+      </svg>
+      <div class="empty-state-title">No trains scheduled</div>
+      <div class="empty-state-subtitle">There are no trains arriving at this station right now.</div>
+    </div>
+  `;
 }
 
 // ==============================
@@ -193,16 +360,13 @@ function createTrainCard(train) {
   const card = document.createElement('div');
   card.className = 'train-card';
 
-  // Left line strip
   const leftStrip = document.createElement('div');
   leftStrip.className = 'line-strip';
   leftStrip.style.backgroundColor = lineColor;
 
-  // Card content
   const content = document.createElement('div');
   content.className = 'card-content';
 
-  // Top row: badge + destination on left, arrival on right
   const topRow = document.createElement('div');
   topRow.className = 'card-top';
 
@@ -221,7 +385,6 @@ function createTrainCard(train) {
   leftSection.appendChild(badge);
   leftSection.appendChild(dest);
 
-  // Arrival display
   let arrivalEl;
   if (isStatus) {
     arrivalEl = document.createElement('span');
@@ -239,20 +402,17 @@ function createTrainCard(train) {
   topRow.appendChild(leftSection);
   topRow.appendChild(arrivalEl);
 
-  // Car count
   const carCount = document.createElement('div');
   carCount.className = 'car-count';
-  carCount.textContent = 'Cars: ' + (cars || '—');
+  carCount.textContent = 'Cars: ' + (cars || '\u2014');
 
   content.appendChild(topRow);
   content.appendChild(carCount);
 
-  // Right line strip
   const rightStrip = document.createElement('div');
   rightStrip.className = 'line-strip';
   rightStrip.style.backgroundColor = lineColor;
 
-  // Assemble card
   card.appendChild(leftStrip);
   card.appendChild(content);
   card.appendChild(rightStrip);
@@ -261,24 +421,44 @@ function createTrainCard(train) {
 }
 
 // ==============================
+// Last Updated Timestamp
+// ==============================
+function updateTimestamp() {
+  if (!lastUpdatedTime) return;
+  const timeStr = lastUpdatedTime.toLocaleTimeString([], {
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit',
+  });
+  updatedTimeEl.textContent = 'Updated ' + timeStr;
+  lastUpdatedEl.style.display = 'flex';
+}
+
+// ==============================
 // Fetch Train Predictions
 // ==============================
 async function fetchTrains(stationCode) {
   if (!stationCode) {
-    trainFeed.innerHTML = '<p class="empty-text">Select a station to view trains.</p>';
+    trainFeed.innerHTML = '';
+    lastUpdatedEl.style.display = 'none';
     return;
   }
 
-  try {
-    trainFeed.innerHTML = '<p class="loading-text">Loading trains...</p>';
+  // Show skeletons only on first load (no existing cards)
+  if (!trainFeed.querySelector('.train-card')) {
+    renderSkeletons();
+  }
 
+  try {
     const res = await fetch(`${API_BASE_URL}/api/predictions/${stationCode}`);
     if (!res.ok) throw new Error('API error');
 
     const data = await res.json();
+    lastUpdatedTime = new Date();
 
     if (data.length === 0) {
-      trainFeed.innerHTML = '<p class="empty-text">No trains at this time.</p>';
+      renderEmptyState();
+      updateTimestamp();
       return;
     }
 
@@ -286,6 +466,7 @@ async function fetchTrains(stationCode) {
     data.forEach((train) => {
       trainFeed.appendChild(createTrainCard(train));
     });
+    updateTimestamp();
   } catch (err) {
     trainFeed.innerHTML = `<p class="error-text">Error: ${err.message || 'Fetch failed'}</p>`;
   }
@@ -306,20 +487,20 @@ function startAutoRefresh() {
 // ==============================
 // Event Listeners & Init
 // ==============================
-stationSelect.addEventListener('change', (e) => {
-  selectedStation = e.target.value;
-  fetchTrains(selectedStation);
-  startAutoRefresh();
+refreshBtn.addEventListener('click', () => {
+  if (selectedStation) fetchTrains(selectedStation);
 });
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
   // Hero banner
   updateHeroImage();
   setInterval(rotateHeroImage, 10000);
 
-  // Station dropdown
-  populateStationSelect();
+  // Set default station in input
+  const defaultStation = stationOptions.find((s) => s.code === selectedStation);
+  if (defaultStation) {
+    stationInput.value = defaultStation.name;
+  }
 
   // Initial train fetch
   fetchTrains(selectedStation);

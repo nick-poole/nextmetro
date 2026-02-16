@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const dotenv = require('dotenv');
 const fetch = require('node-fetch');
 const cors = require('cors');
@@ -10,6 +11,9 @@ const PORT = process.env.PORT || 3001;
 // Enable CORS for all routes
 app.use(cors());
 app.set('trust proxy', true);
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'public')));
 
 const WMATA_API_KEY = process.env.WMATA_API_KEY;
 

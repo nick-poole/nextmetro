@@ -1,0 +1,9 @@
+[build]
+  publish = "public"
+  command = "# no build step"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://nextmetro.onrender.com/api/:splat"
+  status = 200
+  force = true
