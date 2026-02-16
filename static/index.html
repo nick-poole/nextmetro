@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextMetro</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-logo">NextMetro</a>
+      <div class="navbar-links">
+        <a href="#" class="nav-btn">About</a>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-btn">988</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-btn">System Map</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner" id="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">NextMetro</h1>
+      <p class="hero-subtitle">Get real-time train information for the D.C. Metro system.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Station Select -->
+    <div class="station-select-wrapper">
+      <label for="station-select" class="select-label">Select Station</label>
+      <select id="station-select" class="station-select">
+        <option value="">None</option>
+      </select>
+      <p class="select-helper">Choose a station to view upcoming trains.</p>
+    </div>
+
+    <!-- Train Feed -->
+    <div id="train-feed">
+      <p class="loading-text">Loading trains...</p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-text">
+      &copy; 2025 NextMetro &middot;
+      <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a> &middot;
+      <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener">System Map</a> &middot;
+      <a href="https://988lifeline.org/" target="_blank" rel="noopener">988 Resources</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
