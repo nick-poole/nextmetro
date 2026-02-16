@@ -13,7 +13,7 @@ app.use(cors());
 app.set('trust proxy', true);
 
 // Serve static frontend files
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const WMATA_API_KEY = process.env.WMATA_API_KEY;
 

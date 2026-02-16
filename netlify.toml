@@ -1,5 +1,5 @@
 [build]
-  publish = "static"
+  publish = "public"
   command = "# no build step"
 
 [[redirects]]
