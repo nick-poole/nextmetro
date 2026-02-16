@@ -28,25 +28,36 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="hero-title">NextMetro</h1>
-      <p class="hero-subtitle">Get real-time train information for the D.C. Metro system.</p>
+      <p class="hero-subtitle">Real-time train arrivals for the D.C. Metro system.</p>
     </div>
   </section>
 
   <!-- Main Content -->
   <main class="container">
 
-    <!-- Station Select -->
-    <div class="station-select-wrapper">
-      <label for="station-select" class="select-label">Select Station</label>
-      <select id="station-select" class="station-select">
-        <option value="">None</option>
-      </select>
-      <p class="select-helper">Choose a station to view upcoming trains.</p>
+    <!-- Station Search (Autocomplete) -->
+    <div class="station-search-wrapper" id="station-search-wrapper">
+      <label for="station-input" class="search-label">Search stations</label>
+      <input
+        type="text"
+        id="station-input"
+        class="station-input"
+        placeholder="Type to search..."
+        autocomplete="off"
+      />
+      <ul class="station-dropdown" id="station-dropdown"></ul>
+      <p class="search-helper">Choose a station to view upcoming trains.</p>
     </div>
 
     <!-- Train Feed -->
-    <div id="train-feed">
-      <p class="loading-text">Loading trains...</p>
+    <div id="train-feed"></div>
+
+    <!-- Last Updated -->
+    <div class="last-updated" id="last-updated" style="display:none;">
+      <span id="updated-time"></span>
+      <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+      </button>
     </div>
 
   </main>
