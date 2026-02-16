@@ -22,11 +22,16 @@ const images = [
 
 function HeroBanner() {
 	const [index, setIndex] = useState(() => Math.floor(Math.random() * images.length));
+	const [fade, setFade] = useState(true);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setIndex((prevIndex) => (prevIndex + 1) % images.length);
-		}, 10000); // every 10 seconds
+			setFade(false);
+			setTimeout(() => {
+				setIndex((prevIndex) => (prevIndex + 1) % images.length);
+				setFade(true);
+			}, 600);
+		}, 10000);
 
 		return () => clearInterval(interval);
 	}, []);
@@ -35,7 +40,7 @@ function HeroBanner() {
 		<Box
 			sx={{
 				position: 'relative',
-				height: 240,
+				height: { xs: 150, sm: 180 },
 				width: '100%',
 				backgroundImage: `url(${images[index]})`,
 				backgroundSize: 'cover',
@@ -46,6 +51,8 @@ function HeroBanner() {
 				alignItems: 'center',
 				justifyContent: 'center',
 				textAlign: 'center',
+				opacity: fade ? 1 : 0,
+				transition: 'opacity 0.6s ease-in-out',
 				'&::after': {
 					content: '""',
 					position: 'absolute',
@@ -66,7 +73,8 @@ function HeroBanner() {
 					fontFamily: "'Oxanium', sans-serif",
 					fontWeight: 'bold',
 					px: 2,
-					mb: 2,
+					mb: 1,
+					fontSize: { xs: '1.75rem', sm: '2rem' },
 				}}>
 				NextMetro
 			</Typography>
@@ -77,13 +85,13 @@ function HeroBanner() {
 				sx={{
 					position: 'relative',
 					zIndex: 2,
-					fontSize: 20,
 					fontFamily: "'Orbitron', sans-serif",
 					fontWeight: 'medium',
 					px: 4,
-					mt: 1,
+					mt: 0.5,
+					fontSize: { xs: '0.85rem', sm: '1.1rem' },
 				}}>
-				Get real-time train information for the D.C. Metro system.
+				Real-time train arrivals for the D.C. Metro system.
 			</Typography>
 		</Box>
 	);
