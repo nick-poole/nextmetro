@@ -7,69 +7,123 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <!-- NavBar -->
   <header class="navbar" id="navbar">
     <nav class="navbar-inner">
-      <a href="/" class="navbar-logo">NextMetro</a>
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NM</span>
+        <span class="logo-wordmark">NextMetro</span>
+      </a>
       <div class="navbar-links">
-        <a href="#" class="nav-btn">About</a>
-        <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-btn">988</a>
-        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-btn">System Map</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-link">System Map</a>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-link nav-link--988">988</a>
       </div>
     </nav>
   </header>
 
-  <!-- Hero Banner -->
-  <section class="hero-banner" id="hero-banner">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">NextMetro</h1>
-      <p class="hero-subtitle">Real-time train arrivals for the D.C. Metro system.</p>
+  <!-- System Ticker -->
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <!-- Hero / Station Selector -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <span class="hero-label">Station</span>
+      <h1 class="hero-station-name" id="hero-station-name">Brookland-CUA</h1>
+      <p class="hero-line-subtitle" id="hero-line-subtitle">Red Line</p>
+
+      <!-- Station Search -->
+      <div class="station-search-wrapper" id="station-search-wrapper">
+        <input
+          type="text"
+          id="station-input"
+          class="station-input"
+          placeholder="Search stations..."
+          autocomplete="off"
+          aria-label="Search for a Metro station"
+        />
+        <ul class="station-dropdown" id="station-dropdown"></ul>
+      </div>
+
+      <!-- Line Pills -->
+      <div class="line-pills" id="line-pills"></div>
     </div>
   </section>
 
   <!-- Main Content -->
-  <main class="container">
+  <main class="main-grid">
+    <div class="main-column">
 
-    <!-- Station Search (Autocomplete) -->
-    <div class="station-search-wrapper" id="station-search-wrapper">
-      <label for="station-input" class="search-label">Search stations</label>
-      <input
-        type="text"
-        id="station-input"
-        class="station-input"
-        placeholder="Type to search..."
-        autocomplete="off"
-      />
-      <ul class="station-dropdown" id="station-dropdown"></ul>
-      <p class="search-helper">Choose a station to view upcoming trains.</p>
+      <!-- PIDS Arrivals Display -->
+      <section class="pids-card animate-in d1">
+        <div class="pids-header" id="pids-header">
+          <span class="pids-header-dot" id="pids-header-dot"></span>
+          <span class="pids-header-station" id="pids-header-station">Brookland-CUA</span>
+        </div>
+        <div class="pids-screen" id="pids-screen">
+          <div class="pids-scanlines"></div>
+          <div class="pids-content" id="pids-content">
+            <!-- Train rows rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Last Updated -->
+      <div class="last-updated" id="last-updated" style="display:none;">
+        <span id="updated-time"></span>
+        <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        </button>
+      </div>
+
     </div>
 
-    <!-- Train Feed -->
-    <div id="train-feed"></div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
 
-    <!-- Last Updated -->
-    <div class="last-updated" id="last-updated" style="display:none;">
-      <span id="updated-time"></span>
-      <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
-      </button>
-    </div>
+      <!-- System Status Card -->
+      <div class="system-status-card animate-in d3" id="system-status-card">
+        <div class="system-status-header">
+          <span>System Status</span>
+          <span class="system-status-time" id="system-status-time"></span>
+        </div>
+        <div class="system-status-rows" id="system-status-rows">
+          <div class="status-row"><span class="status-line-bar" style="background:#bf0d3e"></span><span class="status-line-name">Red</span><span class="status-value status-ok">Normal</span></div>
+          <div class="status-row"><span class="status-line-bar" style="background:#ed8b00"></span><span class="status-line-name">Orange</span><span class="status-value status-ok">Normal</span></div>
+          <div class="status-row"><span class="status-line-bar" style="background:#009cde"></span><span class="status-line-name">Blue</span><span class="status-value status-ok">Normal</span></div>
+          <div class="status-row"><span class="status-line-bar" style="background:#00b140"></span><span class="status-line-name">Green</span><span class="status-value status-ok">Normal</span></div>
+          <div class="status-row"><span class="status-line-bar" style="background:#ffd100"></span><span class="status-line-name">Yellow</span><span class="status-value status-ok">Normal</span></div>
+          <div class="status-row"><span class="status-line-bar" style="background:#a2aaad"></span><span class="status-line-name">Silver</span><span class="status-value status-ok">Normal</span></div>
+        </div>
+      </div>
 
+    </aside>
   </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <p class="footer-text">
-      &copy; 2025 NextMetro &middot;
-      <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a> &middot;
-      <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener">System Map</a> &middot;
-      <a href="https://988lifeline.org/" target="_blank" rel="noopener">988 Resources</a>
-    </p>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener">System Map</a>
+        <a href="#" target="_blank" rel="noopener">About</a>
+      </div>
+
+      <div class="footer-988">
+        <span class="footer-988-label">Crisis Resources</span>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener">988 Suicide &amp; Crisis Lifeline</a>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+      </div>
+    </div>
   </footer>
 
   <script src="js/app.js"></script>

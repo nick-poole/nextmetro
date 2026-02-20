@@ -1,12 +1,12 @@
 // ==============================
-// NextMetro — Static JS
+// NextMetro — Brand v7 JS
 // ==============================
 
 const API_BASE_URL = 'https://nextmetro.onrender.com';
 
 // ---- Station Data ----
 const stations = {
-  A01: 'Metro Center (RD)',
+  A01: 'Metro Center',
   A02: 'Farragut North',
   A03: 'Dupont Circle',
   A04: 'Woodley Park-Zoo/Adams Morgan',
@@ -33,7 +33,7 @@ const stations = {
   B10: 'Wheaton',
   B11: 'Glenmont',
   B35: 'NoMa-Gallaudet U',
-  C01: 'Metro Center (BL,OR,SV)',
+  C01: 'Metro Center',
   C02: 'McPherson Square',
   C03: 'Farragut West',
   C04: 'Foggy Bottom-GWU',
@@ -50,7 +50,7 @@ const stations = {
   C15: 'Huntington',
   D01: 'Federal Triangle',
   D02: 'Smithsonian',
-  D03: "L'Enfant Plaza (OR,BL,SV)",
+  D03: "L'Enfant Plaza",
   D04: 'Federal Center SW',
   D05: 'Capitol South',
   D06: 'Eastern Market',
@@ -73,7 +73,7 @@ const stations = {
   E10: 'Greenbelt',
   F01: 'Gallery Pl-Chinatown',
   F02: 'Archives-Navy Memorial-Penn Quarter',
-  F03: "L'Enfant Plaza (GR,YL)",
+  F03: "L'Enfant Plaza",
   F04: 'Waterfront',
   F05: 'Navy Yard-Ballpark',
   F06: 'Anacostia',
@@ -96,7 +96,7 @@ const stations = {
   K05: 'East Falls Church',
   K06: 'West Falls Church',
   K07: 'Dunn Loring-Merrifield',
-  K08: 'Vienna/Farfax-GMU',
+  K08: 'Vienna/Fairfax-GMU',
   N01: 'McLean',
   N02: 'Tysons Corner',
   N03: 'Greensboro',
@@ -117,86 +117,174 @@ const stations = {
 };
 
 // ---- Metro Line Colors ----
+// Standard (on light/brown backgrounds)
 const lineColors = {
-  RD: '#d32f2f',
-  BL: '#1976d2',
-  YL: '#fbc02d',
-  OR: '#ff9800',
-  GR: '#388e3c',
-  SV: '#9ca7a4',
+  RD: '#bf0d3e',
+  BL: '#009cde',
+  YL: '#ffd100',
+  OR: '#ed8b00',
+  GR: '#00b140',
+  SV: '#a2aaad',
 };
 
-// Station code prefix → line colors
-const prefixLineColors = {
-  A: ['#d32f2f'],
-  B: ['#d32f2f'],
-  C: ['#1976d2', '#ff9800', '#9ca7a4'],
-  D: ['#1976d2', '#ff9800', '#9ca7a4'],
-  E: ['#388e3c', '#fbc02d'],
-  F: ['#388e3c', '#fbc02d'],
-  G: ['#1976d2', '#9ca7a4'],
-  J: ['#1976d2', '#fbc02d'],
-  K: ['#ff9800', '#9ca7a4'],
-  N: ['#9ca7a4'],
-  S: ['#1976d2', '#fbc02d'],
+// PIDS variants (brightened for black background)
+const pidsLineColors = {
+  RD: '#e33162',
+  BL: '#39b4ea',
+  YL: '#ffd100',
+  OR: '#ed8b00',
+  GR: '#40d870',
+  SV: '#bcc4c7',
 };
 
-// ---- Hero Banner Images ----
-const heroImages = [
-  'images/chris-grafton.jpg',
-  'images/yuvraj-singh.jpg',
-  'images/tatiana-rodriguez.jpg',
-  'images/sara-cottle.jpg',
-  'images/rosie-kerr-greenbelt.jpg',
-  'images/julian-lozano.jpg',
-  'images/matthew-bornhorst.jpg',
-  'images/andrew-wagner.jpg',
-  'images/sam-jotham-sutharson.jpg',
-  'images/maria-oswalt.jpg',
-  'images/maria-oswalt-2.jpg',
-  'images/island-cinematics.jpg',
-  'images/island-cinematics-2.jpg',
-  'images/eleven-photographs.jpg',
-  'images/eleven-photographs-2.jpg',
-];
+// Line full names
+const lineNames = {
+  RD: 'Red',
+  BL: 'Blue',
+  YL: 'Yellow',
+  OR: 'Orange',
+  GR: 'Green',
+  SV: 'Silver',
+};
+
+// Station code prefix → line info
+const prefixLines = {
+  A: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
+  B: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
+  C: [
+    { code: 'BL', name: 'Blue', color: '#009cde' },
+    { code: 'OR', name: 'Orange', color: '#ed8b00' },
+    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+  ],
+  D: [
+    { code: 'BL', name: 'Blue', color: '#009cde' },
+    { code: 'OR', name: 'Orange', color: '#ed8b00' },
+    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+  ],
+  E: [
+    { code: 'GR', name: 'Green', color: '#00b140' },
+    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+  ],
+  F: [
+    { code: 'GR', name: 'Green', color: '#00b140' },
+    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+  ],
+  G: [
+    { code: 'BL', name: 'Blue', color: '#009cde' },
+    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+  ],
+  J: [
+    { code: 'BL', name: 'Blue', color: '#009cde' },
+    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+  ],
+  K: [
+    { code: 'OR', name: 'Orange', color: '#ed8b00' },
+    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+  ],
+  N: [{ code: 'SV', name: 'Silver', color: '#a2aaad' }],
+  S: [
+    { code: 'BL', name: 'Blue', color: '#009cde' },
+    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+  ],
+};
 
 // ---- State ----
-let currentImageIndex = Math.floor(Math.random() * heroImages.length);
 let selectedStation = 'B05';
 let refreshInterval = null;
 let lastUpdatedTime = null;
 let highlightedIndex = -1;
 
 // ---- DOM Elements ----
-const heroBanner = document.getElementById('hero-banner');
+const heroStationName = document.getElementById('hero-station-name');
+const heroLineSubtitle = document.getElementById('hero-line-subtitle');
+const linePillsEl = document.getElementById('line-pills');
 const stationInput = document.getElementById('station-input');
 const stationDropdown = document.getElementById('station-dropdown');
-const trainFeed = document.getElementById('train-feed');
+const pidsContent = document.getElementById('pids-content');
+const pidsHeaderStation = document.getElementById('pids-header-station');
+const pidsHeaderDot = document.getElementById('pids-header-dot');
 const lastUpdatedEl = document.getElementById('last-updated');
 const updatedTimeEl = document.getElementById('updated-time');
 const refreshBtn = document.getElementById('refresh-btn');
+const tickerTrack = document.getElementById('ticker-track');
 
 // Build station options array
 const stationOptions = Object.entries(stations).map(([code, name]) => ({
   code,
   name,
-  colors: prefixLineColors[code.charAt(0)] || ['#555'],
+  lines: prefixLines[code.charAt(0)] || [],
 }));
 
 // ==============================
-// Hero Banner with Crossfade
+// Hero Station Display
 // ==============================
-function updateHeroImage() {
-  heroBanner.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
+function updateHeroDisplay(stationCode) {
+  const name = stations[stationCode] || 'Unknown Station';
+  const lines = prefixLines[stationCode.charAt(0)] || [];
+
+  heroStationName.textContent = name;
+  heroLineSubtitle.textContent = lines.map((l) => l.name + ' Line').join(', ');
+
+  // Update line pills
+  linePillsEl.innerHTML = '';
+  lines.forEach((line) => {
+    const pill = document.createElement('span');
+    pill.className = 'line-pill';
+    pill.innerHTML =
+      '<span class="line-pill-dot" style="background-color:' +
+      line.color +
+      '"></span>' +
+      line.name;
+    linePillsEl.appendChild(pill);
+  });
+
+  // Update PIDS header
+  pidsHeaderStation.textContent = name;
+  const primaryColor = lines.length > 0 ? lines[0].color : '#555';
+  pidsHeaderDot.style.backgroundColor = primaryColor;
 }
 
-function rotateHeroImage() {
-  heroBanner.classList.add('fade-out');
-  setTimeout(() => {
-    currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-    updateHeroImage();
-    heroBanner.classList.remove('fade-out');
-  }, 600);
+// ==============================
+// System Ticker
+// ==============================
+function initTicker() {
+  const lineData = [
+    { code: 'RD', name: 'Red', color: '#bf0d3e', status: 'Normal' },
+    { code: 'OR', name: 'Orange', color: '#ed8b00', status: 'Normal' },
+    { code: 'BL', name: 'Blue', color: '#009cde', status: 'Normal' },
+    { code: 'GR', name: 'Green', color: '#00b140', status: 'Normal' },
+    { code: 'YL', name: 'Yellow', color: '#ffd100', status: 'Normal' },
+    { code: 'SV', name: 'Silver', color: '#a2aaad', status: 'Normal' },
+  ];
+
+  // Build ticker content (duplicated for seamless loop)
+  let html = '';
+  for (let i = 0; i < 2; i++) {
+    lineData.forEach((line) => {
+      const statusClass =
+        line.status === 'Normal'
+          ? 'ticker-status-ok'
+          : line.status === 'Alert'
+            ? 'ticker-status-alert'
+            : 'ticker-status-caution';
+      html +=
+        '<span class="ticker-item">' +
+        '<span class="ticker-dot" style="background-color:' +
+        line.color +
+        '"></span>' +
+        '<span>' +
+        line.name +
+        '</span>' +
+        '<span class="' +
+        statusClass +
+        '">' +
+        line.status +
+        '</span>' +
+        '</span>';
+    });
+  }
+
+  tickerTrack.innerHTML = html;
 }
 
 // ==============================
@@ -220,10 +308,10 @@ function renderDropdown(filteredOptions) {
     // Line color dots
     const dotsWrapper = document.createElement('span');
     dotsWrapper.className = 'line-dots';
-    option.colors.forEach((color) => {
+    option.lines.forEach((line) => {
       const dot = document.createElement('span');
       dot.className = 'line-dot';
-      dot.style.backgroundColor = color;
+      dot.style.backgroundColor = line.color;
       dotsWrapper.appendChild(dot);
     });
 
@@ -251,6 +339,7 @@ function selectStation(option) {
   stationInput.value = option.name;
   stationDropdown.classList.remove('open');
   highlightedIndex = -1;
+  updateHeroDisplay(selectedStation);
   fetchTrains(selectedStation);
   startAutoRefresh();
 }
@@ -291,7 +380,6 @@ stationInput.addEventListener('keydown', (e) => {
     e.preventDefault();
     if (highlightedIndex >= 0 && items[highlightedIndex]) {
       const code = items[highlightedIndex].dataset.code;
-      const name = items[highlightedIndex].dataset.name;
       const option = stationOptions.find((s) => s.code === code);
       if (option) selectStation(option);
     }
@@ -309,115 +397,95 @@ document.addEventListener('click', (e) => {
 });
 
 // ==============================
-// Skeleton Loading Cards
+// PIDS Skeleton Loading
 // ==============================
-function renderSkeletons() {
-  trainFeed.innerHTML = '';
-  for (let i = 0; i < 3; i++) {
-    const card = document.createElement('div');
-    card.className = 'skeleton-card';
-    card.innerHTML = `
-      <div class="skeleton-strip"></div>
-      <div class="skeleton-content">
-        <div class="skeleton-top">
-          <div class="skeleton-left">
-            <div class="skeleton-block skeleton-badge"></div>
-            <div class="skeleton-block skeleton-text-lg"></div>
-          </div>
-          <div class="skeleton-block skeleton-text-sm"></div>
-        </div>
-        <div class="skeleton-block skeleton-text-xs"></div>
-      </div>
-      <div class="skeleton-strip"></div>
-    `;
-    trainFeed.appendChild(card);
+function renderPidsSkeletons() {
+  pidsContent.innerHTML = '';
+
+  // Direction header skeleton
+  const dirHeader = document.createElement('div');
+  dirHeader.className = 'pids-direction';
+  dirHeader.innerHTML =
+    '<span class="pids-direction-label" style="opacity:0.3">Loading...</span>';
+  pidsContent.appendChild(dirHeader);
+
+  // Column headers
+  const colHeaders = document.createElement('div');
+  colHeaders.className = 'pids-col-headers';
+  colHeaders.innerHTML =
+    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
+  pidsContent.appendChild(colHeaders);
+
+  for (let i = 0; i < 4; i++) {
+    const row = document.createElement('div');
+    row.className = 'pids-skeleton-row';
+    row.innerHTML =
+      '<div class="pids-skeleton-block sk-line"></div>' +
+      '<div class="pids-skeleton-block sk-cars"></div>' +
+      '<div class="pids-skeleton-block sk-dest"></div>' +
+      '<div class="pids-skeleton-block sk-min"></div>';
+    pidsContent.appendChild(row);
   }
 }
 
 // ==============================
-// Empty State
+// PIDS Empty State
 // ==============================
-function renderEmptyState() {
-  trainFeed.innerHTML = `
-    <div class="empty-state">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2l2-2h4l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm2 0V6h5v5h-5zm3.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-      </svg>
-      <div class="empty-state-title">No trains scheduled</div>
-      <div class="empty-state-subtitle">There are no trains arriving at this station right now.</div>
-    </div>
-  `;
+function renderPidsEmpty() {
+  pidsContent.innerHTML =
+    '<div class="pids-empty">' +
+    '<span>No trains scheduled</span>' +
+    '</div>';
 }
 
 // ==============================
-// Train Card Rendering
+// PIDS Train Row Rendering
 // ==============================
-function createTrainCard(train) {
+function createPidsRow(train) {
   const { line, destination, arrival, cars } = train;
-  const lineColor = lineColors[line] || '#555';
-  const isStatus = ['ARR', 'BRD', 'DLY'].includes((arrival || '').toUpperCase());
+  const pidsColor = pidsLineColors[line] || '#bcc4c7';
+  const isStatus = ['ARR', 'BRD', 'DLY'].includes(
+    (arrival || '').toUpperCase()
+  );
 
-  const card = document.createElement('div');
-  card.className = 'train-card';
+  const row = document.createElement('div');
+  row.className = 'pids-row';
 
-  const leftStrip = document.createElement('div');
-  leftStrip.className = 'line-strip';
-  leftStrip.style.backgroundColor = lineColor;
+  // Line code
+  const lineEl = document.createElement('span');
+  lineEl.className = 'pids-row-line';
+  lineEl.style.color = pidsColor;
+  lineEl.textContent = line;
 
-  const content = document.createElement('div');
-  content.className = 'card-content';
+  // Car count
+  const carsEl = document.createElement('span');
+  carsEl.className = 'pids-row-cars';
+  carsEl.textContent = cars || '\u2014';
 
-  const topRow = document.createElement('div');
-  topRow.className = 'card-top';
+  // Destination
+  const destEl = document.createElement('span');
+  destEl.className = 'pids-row-dest';
+  destEl.textContent = destination;
 
-  const leftSection = document.createElement('div');
-  leftSection.className = 'card-left';
+  // Minutes / Status
+  const minEl = document.createElement('span');
+  minEl.className = 'pids-row-min';
 
-  const badge = document.createElement('span');
-  badge.className = 'line-badge';
-  badge.style.backgroundColor = lineColor;
-  badge.textContent = line;
-
-  const dest = document.createElement('span');
-  dest.className = 'destination';
-  dest.textContent = destination;
-
-  leftSection.appendChild(badge);
-  leftSection.appendChild(dest);
-
-  let arrivalEl;
   if (isStatus) {
-    arrivalEl = document.createElement('span');
-    arrivalEl.className = 'arrival-status';
-    if (arrival.toUpperCase() === 'ARR' || arrival.toUpperCase() === 'BRD') {
-      arrivalEl.classList.add('flash');
-    }
-    arrivalEl.textContent = arrival.toUpperCase();
+    const status = arrival.toUpperCase();
+    minEl.textContent = status;
+    if (status === 'BRD') minEl.classList.add('brd');
+    if (status === 'ARR') minEl.classList.add('arr');
   } else {
-    arrivalEl = document.createElement('span');
-    arrivalEl.className = 'arrival-time';
-    arrivalEl.textContent = arrival + ' min' + (arrival === '1' ? '' : 's');
+    minEl.textContent = arrival;
   }
 
-  topRow.appendChild(leftSection);
-  topRow.appendChild(arrivalEl);
+  row.appendChild(lineEl);
+  row.appendChild(carsEl);
+  row.appendChild(destEl);
+  row.appendChild(minEl);
 
-  const carCount = document.createElement('div');
-  carCount.className = 'car-count';
-  carCount.textContent = 'Cars: ' + (cars || '\u2014');
-
-  content.appendChild(topRow);
-  content.appendChild(carCount);
-
-  const rightStrip = document.createElement('div');
-  rightStrip.className = 'line-strip';
-  rightStrip.style.backgroundColor = lineColor;
-
-  card.appendChild(leftStrip);
-  card.appendChild(content);
-  card.appendChild(rightStrip);
-
-  return card;
+  return row;
 }
 
 // ==============================
@@ -439,14 +507,14 @@ function updateTimestamp() {
 // ==============================
 async function fetchTrains(stationCode) {
   if (!stationCode) {
-    trainFeed.innerHTML = '';
+    pidsContent.innerHTML = '';
     lastUpdatedEl.style.display = 'none';
     return;
   }
 
-  // Show skeletons only on first load (no existing cards)
-  if (!trainFeed.querySelector('.train-card')) {
-    renderSkeletons();
+  // Show skeletons only on first load
+  if (!pidsContent.querySelector('.pids-row')) {
+    renderPidsSkeletons();
   }
 
   try {
@@ -457,18 +525,44 @@ async function fetchTrains(stationCode) {
     lastUpdatedTime = new Date();
 
     if (data.length === 0) {
-      renderEmptyState();
+      renderPidsEmpty();
       updateTimestamp();
       return;
     }
 
-    trainFeed.innerHTML = '';
+    // Group trains by direction (destination)
+    // For simplicity, render as single direction group
+    pidsContent.innerHTML = '';
+
+    // Direction header
+    const dirHeader = document.createElement('div');
+    dirHeader.className = 'pids-direction';
+    const dirLabel = document.createElement('span');
+    dirLabel.className = 'pids-direction-label';
+    dirLabel.textContent = 'Arrivals';
+    dirHeader.appendChild(dirLabel);
+    pidsContent.appendChild(dirHeader);
+
+    // Column headers
+    const colHeaders = document.createElement('div');
+    colHeaders.className = 'pids-col-headers';
+    colHeaders.innerHTML =
+      '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
+    pidsContent.appendChild(colHeaders);
+
+    // Train rows
     data.forEach((train) => {
-      trainFeed.appendChild(createTrainCard(train));
+      pidsContent.appendChild(createPidsRow(train));
     });
+
     updateTimestamp();
   } catch (err) {
-    trainFeed.innerHTML = `<p class="error-text">Error: ${err.message || 'Fetch failed'}</p>`;
+    pidsContent.innerHTML =
+      '<div class="pids-empty">' +
+      '<span>Error: ' +
+      (err.message || 'Fetch failed') +
+      '</span>' +
+      '</div>';
   }
 }
 
@@ -485,6 +579,20 @@ function startAutoRefresh() {
 }
 
 // ==============================
+// System Status Time
+// ==============================
+function updateSystemStatusTime() {
+  const el = document.getElementById('system-status-time');
+  if (el) {
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  }
+}
+
+// ==============================
 // Event Listeners & Init
 // ==============================
 refreshBtn.addEventListener('click', () => {
@@ -492,15 +600,21 @@ refreshBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Hero banner
-  updateHeroImage();
-  setInterval(rotateHeroImage, 10000);
+  // Init hero display
+  updateHeroDisplay(selectedStation);
 
   // Set default station in input
   const defaultStation = stationOptions.find((s) => s.code === selectedStation);
   if (defaultStation) {
     stationInput.value = defaultStation.name;
   }
+
+  // Init ticker
+  initTicker();
+
+  // Update system status time
+  updateSystemStatusTime();
+  setInterval(updateSystemStatusTime, 60000);
 
   // Initial train fetch
   fetchTrains(selectedStation);
