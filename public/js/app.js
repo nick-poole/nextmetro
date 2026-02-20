@@ -1,6 +1,6 @@
 // ==============================
-// NextMetro — Brand v7 JS
-// Full WMATA API Integration
+// NextMetro — Brand v1.0 JS
+// Typography: Rajdhani | Theme: Neutral Brutalist
 // ==============================
 
 const API_BASE_URL = 'https://nextmetro.onrender.com';
@@ -132,21 +132,21 @@ const multiPlatform = {
 
 // ---- Metro Line Colors ----
 const lineColors = {
-  RD: '#bf0d3e',
-  BL: '#009cde',
-  YL: '#ffd100',
-  OR: '#ed8b00',
-  GR: '#00b140',
-  SV: '#a2aaad',
+  RD: '#BF0D3E',
+  BL: '#009CDE',
+  YL: '#FFD100',
+  OR: '#ED8B00',
+  GR: '#00B140',
+  SV: '#A2AAAD',
 };
 
 const pidsLineColors = {
-  RD: '#e33162',
-  BL: '#39b4ea',
-  YL: '#ffd100',
-  OR: '#ed8b00',
-  GR: '#40d870',
-  SV: '#bcc4c7',
+  RD: '#BF0D3E',
+  BL: '#009CDE',
+  YL: '#FFD100',
+  OR: '#ED8B00',
+  GR: '#00B140',
+  SV: '#A2AAAD',
 };
 
 const lineNames = {
@@ -160,42 +160,42 @@ const lineNames = {
 
 // Station code prefix -> line info
 const prefixLines = {
-  A: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
-  B: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
+  A: [{ code: 'RD', name: 'Red', color: '#BF0D3E' }],
+  B: [{ code: 'RD', name: 'Red', color: '#BF0D3E' }],
   C: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
   D: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
   E: [
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
   F: [
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
   G: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
   J: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
   K: [
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
-  N: [{ code: 'SV', name: 'Silver', color: '#a2aaad' }],
+  N: [{ code: 'SV', name: 'Silver', color: '#A2AAAD' }],
   S: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
 };
 
@@ -320,12 +320,12 @@ function updateHeroDisplay(stationCode) {
 // ==============================
 function renderTicker(incidents) {
   const lineData = [
-    { code: 'RD', name: 'Red', color: '#bf0d3e' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'RD', name: 'Red', color: '#BF0D3E' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ];
 
   // Determine per-line status from incidents
@@ -410,12 +410,12 @@ async function fetchIncidents() {
 // ==============================
 function renderSystemStatus(incidents) {
   const lines = [
-    { code: 'RD', name: 'Red', color: '#bf0d3e' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'RD', name: 'Red', color: '#BF0D3E' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ];
 
   // Determine per-line status
