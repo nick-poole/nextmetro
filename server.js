@@ -8,7 +8,6 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-// Enable CORS for all routes
 app.use(cors());
 app.set('trust proxy', true);
 
@@ -16,39 +15,179 @@ app.set('trust proxy', true);
 app.use(express.static(path.join(__dirname, 'public')));
 
 const WMATA_API_KEY = process.env.WMATA_API_KEY;
+const WMATA_BASE = 'https://api.wmata.com';
 
-// Base WMATA API -Real-Time Rail Predictions
-const BASE_URL = 'https://api.wmata.com/StationPrediction.svc/json/GetPrediction';
+// ==============================
+// In-Memory Cache
+// ==============================
+const cache = {};
 
-app.get('/api/predictions/:stationCode', async (req, res) => {
-	const { stationCode } = req.params;
+function getCached(key, ttlMs) {
+  const entry = cache[key];
+  if (!entry) return null;
+  if (ttlMs === Infinity) return entry.data;
+  if (Date.now() - entry.timestamp < ttlMs) return entry.data;
+  return null;
+}
 
-	try {
-		const response = await fetch(`${BASE_URL}/${stationCode}`, {
-			headers: { api_key: WMATA_API_KEY },
-		});
+function setCache(key, data) {
+  cache[key] = { data, timestamp: Date.now() };
+}
 
-		if (!response.ok) {
-			return res.status(response.status).json({ error: 'Failed to fetch WMATA data' });
-		}
+// Helper to fetch from WMATA with error handling
+async function wmataFetch(urlPath) {
+  const res = await fetch(`${WMATA_BASE}${urlPath}`, {
+    headers: { api_key: WMATA_API_KEY },
+  });
+  if (!res.ok) {
+    const err = new Error(`WMATA API error: ${res.status}`);
+    err.status = res.status;
+    throw err;
+  }
+  return res.json();
+}
 
-		const data = await response.json();
+// ==============================
+// 1. GET /api/stations — All stations (static, cache forever)
+// ==============================
+app.get('/api/stations', async (req, res) => {
+  const cacheKey = 'stations';
+  const cached = getCached(cacheKey, Infinity);
+  if (cached) return res.json(cached);
 
-		// Transform API data into TrainCard-compatible format
-		const formattedTrains = data.Trains.map((train) => ({
-			line: train.Line,
-			destination: train.DestinationName,
-			arrival: train.Min,
-			cars: train.Car,
-		}));
-
-		res.json(formattedTrains);
-	} catch (error) {
-		console.error('API error:', error);
-		res.status(500).json({ error: 'Server error' });
-	}
+  try {
+    const data = await wmataFetch('/Rail.svc/json/jStations');
+    setCache(cacheKey, data);
+    res.json(data);
+  } catch (err) {
+    console.error('Stations API error:', err.message);
+    // Return stale cache if available
+    const stale = cache[cacheKey];
+    if (stale) return res.json(stale.data);
+    res.status(err.status || 500).json({ error: 'Failed to fetch stations' });
+  }
 });
 
+// ==============================
+// 2. GET /api/station/:code — Single station info (static, cache forever)
+// ==============================
+app.get('/api/station/:code', async (req, res) => {
+  const { code } = req.params;
+  const cacheKey = `station-${code}`;
+  const cached = getCached(cacheKey, Infinity);
+  if (cached) return res.json(cached);
+
+  try {
+    const data = await wmataFetch(`/Rail.svc/json/jStationInfo?StationCode=${code}`);
+    setCache(cacheKey, data);
+    res.json(data);
+  } catch (err) {
+    console.error('Station info API error:', err.message);
+    const stale = cache[cacheKey];
+    if (stale) return res.json(stale.data);
+    res.status(err.status || 500).json({ error: 'Failed to fetch station info' });
+  }
+});
+
+// ==============================
+// 3. GET /api/predictions/:code — Real-time predictions (pass-through, no cache)
+// ==============================
+app.get('/api/predictions/:stationCode', async (req, res) => {
+  const { stationCode } = req.params;
+
+  try {
+    const data = await wmataFetch(
+      `/StationPrediction.svc/json/GetPrediction/${stationCode}`
+    );
+
+    // Return the full WMATA response shape with Group field for directional splitting
+    const trains = (data.Trains || []).map((train) => ({
+      line: train.Line || '',
+      destination: train.DestinationName || train.Destination || '',
+      destinationCode: train.DestinationCode || '',
+      arrival: train.Min || '',
+      cars: train.Car || '',
+      group: train.Group || '',
+      locationCode: train.LocationCode || '',
+      locationName: train.LocationName || '',
+    }));
+
+    res.json(trains);
+  } catch (err) {
+    console.error('Predictions API error:', err.message);
+    res.status(err.status || 500).json({ error: 'Failed to fetch predictions' });
+  }
+});
+
+// ==============================
+// 4. GET /api/incidents — System-wide rail incidents (60s TTL cache)
+// ==============================
+app.get('/api/incidents', async (req, res) => {
+  const cacheKey = 'incidents';
+  const cached = getCached(cacheKey, 60 * 1000);
+  if (cached) return res.json(cached);
+
+  try {
+    const data = await wmataFetch('/Incidents.svc/json/Incidents');
+    setCache(cacheKey, data);
+    res.json(data);
+  } catch (err) {
+    console.error('Incidents API error:', err.message);
+    const stale = cache[cacheKey];
+    if (stale) return res.json(stale.data);
+    res.status(err.status || 500).json({ error: 'Failed to fetch incidents' });
+  }
+});
+
+// ==============================
+// 5. GET /api/elevators/:code — Elevator/Escalator outages (120s TTL cache)
+// ==============================
+app.get('/api/elevators/:code', async (req, res) => {
+  const { code } = req.params;
+  const cacheKey = `elevators-${code}`;
+  const cached = getCached(cacheKey, 120 * 1000);
+  if (cached) return res.json(cached);
+
+  try {
+    const data = await wmataFetch(
+      `/Incidents.svc/json/ElevatorIncidents?StationCode=${code}`
+    );
+    setCache(cacheKey, data);
+    res.json(data);
+  } catch (err) {
+    console.error('Elevators API error:', err.message);
+    const stale = cache[cacheKey];
+    if (stale) return res.json(stale.data);
+    res.status(err.status || 500).json({ error: 'Failed to fetch elevator status' });
+  }
+});
+
+// ==============================
+// 6. GET /api/fare/:from/:to — Fare info (on demand, 1hr cache)
+// ==============================
+app.get('/api/fare/:from/:to', async (req, res) => {
+  const { from, to } = req.params;
+  const cacheKey = `fare-${from}-${to}`;
+  const cached = getCached(cacheKey, 60 * 60 * 1000);
+  if (cached) return res.json(cached);
+
+  try {
+    const data = await wmataFetch(
+      `/Rail.svc/json/jSrcStationToDstStationInfo?FromStationCode=${from}&ToStationCode=${to}`
+    );
+    setCache(cacheKey, data);
+    res.json(data);
+  } catch (err) {
+    console.error('Fare API error:', err.message);
+    const stale = cache[cacheKey];
+    if (stale) return res.json(stale.data);
+    res.status(err.status || 500).json({ error: 'Failed to fetch fare info' });
+  }
+});
+
+// ==============================
+// Start Server
+// ==============================
 app.listen(PORT, () => {
-	console.log(`Express server listening on port ${PORT}`);
+  console.log(`Express server listening on port ${PORT}`);
 });

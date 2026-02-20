@@ -804,6 +804,241 @@ a:hover {
   color: var(--text-light);
 }
 
+.alert-card-body p {
+  margin-bottom: 0.5rem;
+}
+
+.alert-card-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Station Facilities Card
+   ============================== */
+.facilities-card {
+  background-color: var(--concrete-lightest);
+  border: 1px solid var(--concrete-mid);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 1.5rem;
+}
+
+.facilities-header {
+  background-color: var(--pylon);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.facilities-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--pylon-text);
+  text-transform: uppercase;
+}
+
+.facilities-body {
+  padding: 0.5rem 0;
+}
+
+.facilities-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem 1.25rem;
+  border-bottom: 1px solid var(--concrete-mid);
+}
+
+.facilities-row:last-child {
+  border-bottom: none;
+}
+
+.facilities-icon {
+  display: inline-flex;
+  color: var(--text-mid);
+  flex-shrink: 0;
+}
+
+.facilities-label {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--text-on-concrete);
+  flex: 1;
+}
+
+.facilities-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+.facilities-status--ok {
+  color: var(--status-ok);
+}
+
+.facilities-status--alert {
+  color: var(--status-alert);
+}
+
+.facilities-status--caution {
+  color: var(--status-caution);
+}
+
+.facilities-details {
+  border-top: 1px solid var(--concrete-mid);
+  padding: 0.5rem 1.25rem;
+}
+
+.facilities-outage {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.facilities-outage:last-child {
+  border-bottom: none;
+}
+
+.facilities-outage-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 0.6rem;
+  color: var(--status-alert);
+  text-transform: uppercase;
+}
+
+.facilities-outage-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-mid);
+  margin-top: 0.15rem;
+}
+
+/* ==============================
+   Fare Calculator
+   ============================== */
+.fare-card {
+  background-color: var(--fare-body);
+  border: 2px solid var(--fare-border);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-top: 1.5rem;
+}
+
+.fare-header {
+  background-color: var(--fare-header);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid var(--fare-orange);
+}
+
+.fare-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--fare-label);
+  text-transform: uppercase;
+}
+
+.fare-body {
+  padding: 1rem 1.25rem;
+}
+
+.fare-route {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fare-station {
+  flex: 1;
+  min-width: 0;
+}
+
+.fare-station-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 0.55rem;
+  color: var(--fare-result-label);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.fare-station-name {
+  display: block;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--fare-label);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fare-arrow {
+  color: var(--fare-orange);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.fare-select {
+  width: 100%;
+  padding: 8px 10px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-on-concrete);
+  background-color: #fff;
+  border: 1px solid var(--fare-border);
+  border-radius: 0;
+  cursor: pointer;
+  appearance: auto;
+}
+
+.fare-select:focus {
+  outline: 2px solid var(--fare-orange);
+  outline-offset: -1px;
+}
+
+.fare-results {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 0.75rem;
+}
+
+.fare-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+}
+
+.fare-result-row--time {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 0.35rem;
+  padding-top: 0.5rem;
+}
+
+.fare-result-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.65rem;
+  color: var(--fare-result-label);
+  text-transform: uppercase;
+}
+
+.fare-result-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--fare-label);
+}
+
 /* ==============================
    Footer
    ============================== */
@@ -918,6 +1153,16 @@ a:hover {
 
   .footer-inner {
     padding: 1rem;
+  }
+
+  .fare-route {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fare-arrow {
+    align-self: center;
+    transform: rotate(90deg);
   }
 }
 

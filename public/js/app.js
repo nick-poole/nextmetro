@@ -1,5 +1,6 @@
 // ==============================
 // NextMetro — Brand v7 JS
+// Full WMATA API Integration
 // ==============================
 
 const API_BASE_URL = 'https://nextmetro.onrender.com';
@@ -116,8 +117,20 @@ const stations = {
   S14: 'Pentagon',
 };
 
+// ---- Multi-platform stations ----
+// StationTogether mapping: if you select one code, also fetch predictions for the other
+const multiPlatform = {
+  A01: 'C01', // Metro Center
+  C01: 'A01',
+  B01: 'F01', // Gallery Place-Chinatown
+  F01: 'B01',
+  D03: 'F03', // L'Enfant Plaza
+  F03: 'D03',
+  B06: 'E06', // Fort Totten
+  E06: 'B06',
+};
+
 // ---- Metro Line Colors ----
-// Standard (on light/brown backgrounds)
 const lineColors = {
   RD: '#bf0d3e',
   BL: '#009cde',
@@ -127,7 +140,6 @@ const lineColors = {
   SV: '#a2aaad',
 };
 
-// PIDS variants (brightened for black background)
 const pidsLineColors = {
   RD: '#e33162',
   BL: '#39b4ea',
@@ -137,7 +149,6 @@ const pidsLineColors = {
   SV: '#bcc4c7',
 };
 
-// Line full names
 const lineNames = {
   RD: 'Red',
   BL: 'Blue',
@@ -147,7 +158,7 @@ const lineNames = {
   SV: 'Silver',
 };
 
-// Station code prefix → line info
+// Station code prefix -> line info
 const prefixLines = {
   A: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
   B: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
@@ -190,9 +201,12 @@ const prefixLines = {
 
 // ---- State ----
 let selectedStation = 'B05';
-let refreshInterval = null;
+let predictionsInterval = null;
+let incidentsInterval = null;
+let facilitiesInterval = null;
 let lastUpdatedTime = null;
 let highlightedIndex = -1;
+let currentIncidents = []; // cached incidents for ticker + sidebar + alerts
 
 // ---- DOM Elements ----
 const heroStationName = document.getElementById('hero-station-name');
@@ -207,13 +221,52 @@ const lastUpdatedEl = document.getElementById('last-updated');
 const updatedTimeEl = document.getElementById('updated-time');
 const refreshBtn = document.getElementById('refresh-btn');
 const tickerTrack = document.getElementById('ticker-track');
+const systemStatusRows = document.getElementById('system-status-rows');
+const alertCard = document.getElementById('alert-card');
+const alertBody = document.getElementById('alert-body');
+const alertTimestamp = document.getElementById('alert-timestamp');
+const facilitiesBody = document.getElementById('facilities-body');
+const facilitiesDetails = document.getElementById('facilities-details');
+const elevatorStatus = document.getElementById('elevator-status');
+const escalatorStatus = document.getElementById('escalator-status');
+const fareFromName = document.getElementById('fare-from-name');
+const fareDestination = document.getElementById('fare-destination');
+const fareResults = document.getElementById('fare-results');
+const farePeak = document.getElementById('fare-peak');
+const fareOffpeak = document.getElementById('fare-offpeak');
+const fareSenior = document.getElementById('fare-senior');
+const fareTime = document.getElementById('fare-time');
 
-// Build station options array
+// Build station options array (deduplicate multi-platform stations)
 const stationOptions = Object.entries(stations).map(([code, name]) => ({
   code,
   name,
   lines: prefixLines[code.charAt(0)] || [],
 }));
+
+// Get all line codes that serve a station (including multi-platform partner)
+function getStationLineCodes(stationCode) {
+  const lines = new Set();
+  const prefix = stationCode.charAt(0);
+  (prefixLines[prefix] || []).forEach((l) => lines.add(l.code));
+
+  const partner = multiPlatform[stationCode];
+  if (partner) {
+    const partnerPrefix = partner.charAt(0);
+    (prefixLines[partnerPrefix] || []).forEach((l) => lines.add(l.code));
+  }
+
+  return Array.from(lines);
+}
+
+// Get the prediction station codes string (handles multi-platform)
+function getPredictionCodes(stationCode) {
+  const partner = multiPlatform[stationCode];
+  if (partner) {
+    return stationCode + ',' + partner;
+  }
+  return stationCode;
+}
 
 // ==============================
 // Hero Station Display
@@ -222,12 +275,27 @@ function updateHeroDisplay(stationCode) {
   const name = stations[stationCode] || 'Unknown Station';
   const lines = prefixLines[stationCode.charAt(0)] || [];
 
+  // For multi-platform stations, merge lines from both codes
+  const allLines = [];
+  const seenCodes = new Set();
+  const addLines = (prefix) => {
+    (prefixLines[prefix] || []).forEach((l) => {
+      if (!seenCodes.has(l.code)) {
+        seenCodes.add(l.code);
+        allLines.push(l);
+      }
+    });
+  };
+  addLines(stationCode.charAt(0));
+  const partner = multiPlatform[stationCode];
+  if (partner) addLines(partner.charAt(0));
+
   heroStationName.textContent = name;
-  heroLineSubtitle.textContent = lines.map((l) => l.name + ' Line').join(', ');
+  heroLineSubtitle.textContent = allLines.map((l) => l.name + ' Line').join(', ');
 
   // Update line pills
   linePillsEl.innerHTML = '';
-  lines.forEach((line) => {
+  allLines.forEach((line) => {
     const pill = document.createElement('span');
     pill.className = 'line-pill';
     pill.innerHTML =
@@ -240,31 +308,52 @@ function updateHeroDisplay(stationCode) {
 
   // Update PIDS header
   pidsHeaderStation.textContent = name;
-  const primaryColor = lines.length > 0 ? lines[0].color : '#555';
+  const primaryColor = allLines.length > 0 ? allLines[0].color : '#555';
   pidsHeaderDot.style.backgroundColor = primaryColor;
+
+  // Update fare calculator "from" display
+  fareFromName.textContent = name;
 }
 
 // ==============================
-// System Ticker
+// System Ticker (driven by live incidents)
 // ==============================
-function initTicker() {
+function renderTicker(incidents) {
   const lineData = [
-    { code: 'RD', name: 'Red', color: '#bf0d3e', status: 'Normal' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00', status: 'Normal' },
-    { code: 'BL', name: 'Blue', color: '#009cde', status: 'Normal' },
-    { code: 'GR', name: 'Green', color: '#00b140', status: 'Normal' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100', status: 'Normal' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad', status: 'Normal' },
+    { code: 'RD', name: 'Red', color: '#bf0d3e' },
+    { code: 'OR', name: 'Orange', color: '#ed8b00' },
+    { code: 'BL', name: 'Blue', color: '#009cde' },
+    { code: 'GR', name: 'Green', color: '#00b140' },
+    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'SV', name: 'Silver', color: '#a2aaad' },
   ];
+
+  // Determine per-line status from incidents
+  const lineStatuses = {};
+  lineData.forEach((l) => { lineStatuses[l.code] = 'Normal'; });
+
+  (incidents || []).forEach((incident) => {
+    const affectedLines = parseAffectedLines(incident.LinesAffected);
+    const status = incident.IncidentType === 'Delay' ? 'Alert' : 'Caution';
+    affectedLines.forEach((lineCode) => {
+      if (lineStatuses[lineCode]) {
+        // Alert takes priority over Caution
+        if (status === 'Alert' || lineStatuses[lineCode] === 'Normal') {
+          lineStatuses[lineCode] = status;
+        }
+      }
+    });
+  });
 
   // Build ticker content (duplicated for seamless loop)
   let html = '';
   for (let i = 0; i < 2; i++) {
     lineData.forEach((line) => {
+      const thisStatus = lineStatuses[line.code];
       const statusClass =
-        line.status === 'Normal'
+        thisStatus === 'Normal'
           ? 'ticker-status-ok'
-          : line.status === 'Alert'
+          : thisStatus === 'Alert'
             ? 'ticker-status-alert'
             : 'ticker-status-caution';
       html +=
@@ -278,7 +367,7 @@ function initTicker() {
         '<span class="' +
         statusClass +
         '">' +
-        line.status +
+        thisStatus +
         '</span>' +
         '</span>';
     });
@@ -286,6 +375,277 @@ function initTicker() {
 
   tickerTrack.innerHTML = html;
 }
+
+// ==============================
+// Parse LinesAffected string
+// ==============================
+function parseAffectedLines(linesStr) {
+  if (!linesStr) return [];
+  return linesStr
+    .split(';')
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0 && lineNames[s]);
+}
+
+// ==============================
+// Incidents Fetching & Rendering
+// ==============================
+async function fetchIncidents() {
+  try {
+    const res = await fetch(API_BASE_URL + '/api/incidents');
+    if (!res.ok) throw new Error('Incidents API error');
+    const data = await res.json();
+    currentIncidents = data.Incidents || [];
+
+    renderSystemStatus(currentIncidents);
+    renderTicker(currentIncidents);
+    renderAlerts(currentIncidents, selectedStation);
+  } catch (err) {
+    console.error('Failed to fetch incidents:', err.message);
+  }
+}
+
+// ==============================
+// System Status Sidebar (live from incidents)
+// ==============================
+function renderSystemStatus(incidents) {
+  const lines = [
+    { code: 'RD', name: 'Red', color: '#bf0d3e' },
+    { code: 'OR', name: 'Orange', color: '#ed8b00' },
+    { code: 'BL', name: 'Blue', color: '#009cde' },
+    { code: 'GR', name: 'Green', color: '#00b140' },
+    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+  ];
+
+  // Determine per-line status
+  const lineStatuses = {};
+  lines.forEach((l) => { lineStatuses[l.code] = { status: 'Normal', description: '' }; });
+
+  (incidents || []).forEach((incident) => {
+    const affectedLines = parseAffectedLines(incident.LinesAffected);
+    affectedLines.forEach((lineCode) => {
+      if (lineStatuses[lineCode]) {
+        if (incident.IncidentType === 'Delay') {
+          lineStatuses[lineCode] = { status: 'Delays', description: incident.Description };
+        } else if (lineStatuses[lineCode].status === 'Normal') {
+          lineStatuses[lineCode] = { status: 'Advisory', description: incident.Description };
+        }
+      }
+    });
+  });
+
+  systemStatusRows.innerHTML = '';
+  lines.forEach((line) => {
+    const info = lineStatuses[line.code];
+    const statusClass =
+      info.status === 'Normal'
+        ? 'status-ok'
+        : info.status === 'Delays'
+          ? 'status-alert'
+          : 'status-caution';
+
+    const row = document.createElement('div');
+    row.className = 'status-row';
+    row.innerHTML =
+      '<span class="status-line-bar" style="background:' + line.color + '"></span>' +
+      '<span class="status-line-name">' + line.name + '</span>' +
+      '<span class="status-value ' + statusClass + '">' + info.status + '</span>';
+
+    systemStatusRows.appendChild(row);
+  });
+}
+
+// ==============================
+// Alert Card (station-relevant incidents)
+// ==============================
+function renderAlerts(incidents, stationCode) {
+  const stationLines = getStationLineCodes(stationCode);
+
+  // Filter incidents relevant to this station's lines
+  const relevant = (incidents || []).filter((incident) => {
+    const affected = parseAffectedLines(incident.LinesAffected);
+    return affected.some((lineCode) => stationLines.includes(lineCode));
+  });
+
+  if (relevant.length === 0) {
+    alertCard.style.display = 'none';
+    return;
+  }
+
+  alertCard.style.display = '';
+
+  // Show all relevant alerts
+  let bodyHtml = '';
+  relevant.forEach((incident) => {
+    bodyHtml += '<p>' + escapeHtml(incident.Description || '') + '</p>';
+  });
+  alertBody.innerHTML = bodyHtml;
+
+  // Use the most recent timestamp
+  const latest = relevant.reduce((a, b) => {
+    const dateA = new Date(a.DateUpdated || 0);
+    const dateB = new Date(b.DateUpdated || 0);
+    return dateA > dateB ? a : b;
+  });
+
+  if (latest.DateUpdated) {
+    const date = new Date(latest.DateUpdated);
+    alertTimestamp.textContent = date.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ==============================
+// Facilities / Elevator & Escalator Status
+// ==============================
+async function fetchFacilities(stationCode) {
+  // For multi-platform stations, fetch both codes
+  const codes = [stationCode];
+  const partner = multiPlatform[stationCode];
+  if (partner) codes.push(partner);
+
+  try {
+    const allIncidents = [];
+
+    for (const code of codes) {
+      const res = await fetch(API_BASE_URL + '/api/elevators/' + code);
+      if (!res.ok) throw new Error('Elevators API error');
+      const data = await res.json();
+      if (data.ElevatorIncidents) {
+        allIncidents.push(...data.ElevatorIncidents);
+      }
+    }
+
+    renderFacilities(allIncidents);
+  } catch (err) {
+    console.error('Failed to fetch facilities:', err.message);
+  }
+}
+
+function renderFacilities(incidents) {
+  const elevatorOutages = incidents.filter((i) => i.UnitType === 'ELEVATOR');
+  const escalatorOutages = incidents.filter((i) => i.UnitType === 'ESCALATOR');
+
+  // Update elevator status
+  if (elevatorOutages.length === 0) {
+    elevatorStatus.textContent = 'Operational';
+    elevatorStatus.className = 'facilities-status facilities-status--ok';
+  } else {
+    elevatorStatus.textContent = elevatorOutages.length + ' Out';
+    elevatorStatus.className = 'facilities-status facilities-status--alert';
+  }
+
+  // Update escalator status
+  if (escalatorOutages.length === 0) {
+    escalatorStatus.textContent = 'Operational';
+    escalatorStatus.className = 'facilities-status facilities-status--ok';
+  } else {
+    escalatorStatus.textContent = escalatorOutages.length + ' Out';
+    escalatorStatus.className = 'facilities-status facilities-status--alert';
+  }
+
+  // Render outage details
+  if (incidents.length === 0) {
+    facilitiesDetails.style.display = 'none';
+    return;
+  }
+
+  facilitiesDetails.style.display = '';
+  facilitiesDetails.innerHTML = '';
+
+  incidents.forEach((outage) => {
+    const div = document.createElement('div');
+    div.className = 'facilities-outage';
+
+    const unitEl = document.createElement('div');
+    unitEl.className = 'facilities-outage-unit';
+    unitEl.textContent = (outage.UnitType || '') + ' — ' + (outage.UnitName || '');
+
+    const descEl = document.createElement('div');
+    descEl.className = 'facilities-outage-desc';
+    descEl.textContent =
+      (outage.LocationDescription || '') +
+      (outage.SymptomDescription ? ' (' + outage.SymptomDescription + ')' : '');
+
+    div.appendChild(unitEl);
+    div.appendChild(descEl);
+    facilitiesDetails.appendChild(div);
+  });
+}
+
+// ==============================
+// Fare Calculator
+// ==============================
+function populateFareDestinations() {
+  // Get unique station names (exclude duplicates from multi-platform)
+  const seen = new Set();
+  const opts = [];
+
+  Object.entries(stations).forEach(([code, name]) => {
+    // Skip the partner codes (C01, F01, F03, E06) to avoid duplicates
+    if (['C01', 'F01', 'F03', 'E06'].includes(code)) return;
+    if (seen.has(name)) return;
+    seen.add(name);
+    opts.push({ code, name });
+  });
+
+  opts.sort((a, b) => a.name.localeCompare(b.name));
+
+  // Clear existing options (keep the default)
+  fareDestination.innerHTML = '<option value="">Select destination...</option>';
+
+  opts.forEach((opt) => {
+    const option = document.createElement('option');
+    option.value = opt.code;
+    option.textContent = opt.name;
+    fareDestination.appendChild(option);
+  });
+}
+
+fareDestination.addEventListener('change', async () => {
+  const toCode = fareDestination.value;
+  if (!toCode) {
+    fareResults.style.display = 'none';
+    return;
+  }
+
+  try {
+    const res = await fetch(
+      API_BASE_URL + '/api/fare/' + selectedStation + '/' + toCode
+    );
+    if (!res.ok) throw new Error('Fare API error');
+    const data = await res.json();
+
+    const info = data.StationToStationInfos && data.StationToStationInfos[0];
+    if (!info) {
+      fareResults.style.display = 'none';
+      return;
+    }
+
+    const fare = info.RailFare || {};
+    farePeak.textContent = fare.PeakTime != null ? '$' + fare.PeakTime.toFixed(2) : '--';
+    fareOffpeak.textContent =
+      fare.OffPeakTime != null ? '$' + fare.OffPeakTime.toFixed(2) : '--';
+    fareSenior.textContent =
+      fare.SeniorDisabled != null ? '$' + fare.SeniorDisabled.toFixed(2) : '--';
+    fareTime.textContent =
+      info.RailTime != null ? info.RailTime + ' min' : '--';
+
+    fareResults.style.display = '';
+  } catch (err) {
+    console.error('Fare fetch error:', err.message);
+    fareResults.style.display = 'none';
+  }
+});
 
 // ==============================
 // Autocomplete Station Search
@@ -341,7 +701,14 @@ function selectStation(option) {
   highlightedIndex = -1;
   updateHeroDisplay(selectedStation);
   fetchTrains(selectedStation);
-  startAutoRefresh();
+  fetchFacilities(selectedStation);
+  renderAlerts(currentIncidents, selectedStation);
+  startPolling();
+
+  // Reset fare calculator
+  fareDestination.value = '';
+  fareResults.style.display = 'none';
+  populateFareDestinations();
 }
 
 function updateHighlight(items) {
@@ -444,9 +811,8 @@ function renderPidsEmpty() {
 function createPidsRow(train) {
   const { line, destination, arrival, cars } = train;
   const pidsColor = pidsLineColors[line] || '#bcc4c7';
-  const isStatus = ['ARR', 'BRD', 'DLY'].includes(
-    (arrival || '').toUpperCase()
-  );
+  const arrivalStr = (arrival || '').toString().toUpperCase();
+  const isStatus = ['ARR', 'BRD', 'DLY'].includes(arrivalStr);
 
   const row = document.createElement('div');
   row.className = 'pids-row';
@@ -472,10 +838,9 @@ function createPidsRow(train) {
   minEl.className = 'pids-row-min';
 
   if (isStatus) {
-    const status = arrival.toUpperCase();
-    minEl.textContent = status;
-    if (status === 'BRD') minEl.classList.add('brd');
-    if (status === 'ARR') minEl.classList.add('arr');
+    minEl.textContent = arrivalStr;
+    if (arrivalStr === 'BRD') minEl.classList.add('brd');
+    if (arrivalStr === 'ARR') minEl.classList.add('arr');
   } else {
     minEl.textContent = arrival;
   }
@@ -486,6 +851,20 @@ function createPidsRow(train) {
   row.appendChild(minEl);
 
   return row;
+}
+
+// ==============================
+// Sort helper for Min field
+// ==============================
+function sortByMin(a, b) {
+  const order = { BRD: 0, ARR: 1 };
+  const aVal = order[a.arrival.toString().toUpperCase()] !== undefined
+    ? order[a.arrival.toString().toUpperCase()]
+    : (parseInt(a.arrival, 10) || 999) + 10;
+  const bVal = order[b.arrival.toString().toUpperCase()] !== undefined
+    ? order[b.arrival.toString().toUpperCase()]
+    : (parseInt(b.arrival, 10) || 999) + 10;
+  return aVal - bVal;
 }
 
 // ==============================
@@ -503,7 +882,7 @@ function updateTimestamp() {
 }
 
 // ==============================
-// Fetch Train Predictions
+// Fetch Train Predictions (with directional grouping)
 // ==============================
 async function fetchTrains(stationCode) {
   if (!stationCode) {
@@ -518,64 +897,114 @@ async function fetchTrains(stationCode) {
   }
 
   try {
-    const res = await fetch(`${API_BASE_URL}/api/predictions/${stationCode}`);
+    const codes = getPredictionCodes(stationCode);
+    const res = await fetch(API_BASE_URL + '/api/predictions/' + codes);
     if (!res.ok) throw new Error('API error');
 
     const data = await res.json();
     lastUpdatedTime = new Date();
 
-    if (data.length === 0) {
+    // Filter out entries with no real data (Line = "No" or "--" or empty)
+    const validTrains = data.filter(
+      (t) => t.line && t.line !== 'No' && t.line !== '--' && t.destination
+    );
+
+    if (validTrains.length === 0) {
       renderPidsEmpty();
       updateTimestamp();
       return;
     }
 
-    // Group trains by direction (destination)
-    // For simplicity, render as single direction group
+    // Group by direction (Group field: "1" or "2")
+    const group1 = validTrains.filter((t) => t.group === '1').sort(sortByMin);
+    const group2 = validTrains.filter((t) => t.group === '2').sort(sortByMin);
+    // Trains without a group (fallback)
+    const ungrouped = validTrains
+      .filter((t) => t.group !== '1' && t.group !== '2')
+      .sort(sortByMin);
+
     pidsContent.innerHTML = '';
 
-    // Direction header
-    const dirHeader = document.createElement('div');
-    dirHeader.className = 'pids-direction';
-    const dirLabel = document.createElement('span');
-    dirLabel.className = 'pids-direction-label';
-    dirLabel.textContent = 'Arrivals';
-    dirHeader.appendChild(dirLabel);
-    pidsContent.appendChild(dirHeader);
+    // Determine direction labels from the first destination in each group
+    const renderGroup = (trains, labelFallback) => {
+      if (trains.length === 0) return;
 
-    // Column headers
-    const colHeaders = document.createElement('div');
-    colHeaders.className = 'pids-col-headers';
-    colHeaders.innerHTML =
-      '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-    pidsContent.appendChild(colHeaders);
+      // Use the first train's destination as the direction label
+      const label = trains[0].destination
+        ? 'To ' + trains[0].destination
+        : labelFallback;
 
-    // Train rows
-    data.forEach((train) => {
-      pidsContent.appendChild(createPidsRow(train));
-    });
+      // Direction header
+      const dirHeader = document.createElement('div');
+      dirHeader.className = 'pids-direction';
+      const dirLabel = document.createElement('span');
+      dirLabel.className = 'pids-direction-label';
+      dirLabel.textContent = label;
+      dirHeader.appendChild(dirLabel);
+      pidsContent.appendChild(dirHeader);
+
+      // Column headers
+      const colHeaders = document.createElement('div');
+      colHeaders.className = 'pids-col-headers';
+      colHeaders.innerHTML =
+        '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
+      pidsContent.appendChild(colHeaders);
+
+      // Train rows
+      trains.forEach((train) => {
+        pidsContent.appendChild(createPidsRow(train));
+      });
+    };
+
+    if (group1.length > 0 || group2.length > 0) {
+      renderGroup(group1, 'Direction 1');
+      renderGroup(group2, 'Direction 2');
+    }
+
+    if (ungrouped.length > 0) {
+      renderGroup(ungrouped, 'Arrivals');
+    }
 
     updateTimestamp();
   } catch (err) {
     pidsContent.innerHTML =
       '<div class="pids-empty">' +
       '<span>Error: ' +
-      (err.message || 'Fetch failed') +
+      escapeHtml(err.message || 'Fetch failed') +
       '</span>' +
       '</div>';
   }
 }
 
 // ==============================
-// Auto-Refresh
+// Polling Management
 // ==============================
-function startAutoRefresh() {
-  if (refreshInterval) clearInterval(refreshInterval);
-  refreshInterval = setInterval(() => {
-    if (selectedStation) {
-      fetchTrains(selectedStation);
-    }
-  }, 30000);
+function startPolling() {
+  stopPolling();
+
+  // Predictions: every 25 seconds
+  predictionsInterval = setInterval(() => {
+    if (selectedStation) fetchTrains(selectedStation);
+  }, 25000);
+
+  // Incidents: every 60 seconds
+  incidentsInterval = setInterval(() => {
+    fetchIncidents();
+  }, 60000);
+
+  // Facilities: every 120 seconds
+  facilitiesInterval = setInterval(() => {
+    if (selectedStation) fetchFacilities(selectedStation);
+  }, 120000);
+}
+
+function stopPolling() {
+  if (predictionsInterval) clearInterval(predictionsInterval);
+  if (incidentsInterval) clearInterval(incidentsInterval);
+  if (facilitiesInterval) clearInterval(facilitiesInterval);
+  predictionsInterval = null;
+  incidentsInterval = null;
+  facilitiesInterval = null;
 }
 
 // ==============================
@@ -596,7 +1025,11 @@ function updateSystemStatusTime() {
 // Event Listeners & Init
 // ==============================
 refreshBtn.addEventListener('click', () => {
-  if (selectedStation) fetchTrains(selectedStation);
+  if (selectedStation) {
+    fetchTrains(selectedStation);
+    fetchIncidents();
+    fetchFacilities(selectedStation);
+  }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -609,14 +1042,18 @@ document.addEventListener('DOMContentLoaded', () => {
     stationInput.value = defaultStation.name;
   }
 
-  // Init ticker
-  initTicker();
+  // Populate fare calculator destinations
+  populateFareDestinations();
 
   // Update system status time
   updateSystemStatusTime();
   setInterval(updateSystemStatusTime, 60000);
 
-  // Initial train fetch
+  // Initial data fetches
   fetchTrains(selectedStation);
-  startAutoRefresh();
+  fetchIncidents();
+  fetchFacilities(selectedStation);
+
+  // Start polling
+  startPolling();
 });
