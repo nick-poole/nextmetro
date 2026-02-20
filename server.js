@@ -186,6 +186,13 @@ app.get('/api/fare/:from/:to', async (req, res) => {
 });
 
 // ==============================
+// 404 Catch-All (must be after all other routes)
+// ==============================
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
+// ==============================
 // Start Server
 // ==============================
 app.listen(PORT, () => {

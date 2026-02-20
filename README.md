@@ -1,93 +1,166 @@
 # NextMetro
 
-**A full-stack real-time tracker for the Washington D.C. Metrorail system.**
+**Real-time tracker for the Washington D.C. Metrorail system.**
 
-NextMetro is a backend-powered rebuild of a previous frontend-only project. This version uses an Express server to proxy and cache data from the WMATA API, with a React + Material UI frontend for a clean, mobile-first UI. Designed to simulate a production-grade architecture with API handling, environment separation, and deployment-ready structure.
+NextMetro displays live train arrivals, system status, service alerts, station facility conditions, and fare information — styled after the Metro's own visual language of concrete vault ceilings, pylon signage, and PIDS boards.
+
+**[Live Site](https://nextmetro.netlify.app)** · **[API Backend](https://nextmetro.onrender.com)**
+
+---
+
+## Features
+
+- **PIDS Arrival Board** — Real-time train arrivals grouped by direction with line colors, car counts, and BRD/ARR status indicators. Auto-refreshes every 25 seconds.
+- **Station Selector** — Searchable dropdown covering all 98 WMATA stations with line color indicators and keyboard navigation.
+- **Multi-Platform Support** — Stations with multiple platforms (Metro Center, Gallery Place, L'Enfant Plaza, Fort Totten) fetch and merge predictions from both platform codes.
+- **System Status Ticker** — Scrolling ticker bar showing real-time status for all six Metro lines (Red, Blue, Orange, Green, Yellow, Silver).
+- **System Status Sidebar** — Per-line status with Normal, Delays, and Advisory states derived from live incident data.
+- **Service Alerts** — Station-specific incident alerts that filter system-wide incidents to show only what's relevant to the selected station's lines.
+- **Elevator & Escalator Status** — Facility outage tracking with operational/outage counts and detailed descriptions.
+- **Fare Calculator** — Interactive fare lookup between any two stations showing peak, off-peak, and senior/disabled pricing with estimated travel time.
 
 ---
 
 ## Tech Stack
 
-- Frontend: React, Vite, Material UI
-- Backend: Express.js (Node)
-- API Source: WMATA Real-Time Rail API
-- Deployment: Netlify (frontend), Railway or Render (backend)
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | Vanilla HTML5, CSS, JavaScript |
+| **Backend** | Express.js v5 (Node.js) |
+| **API** | [WMATA Real-Time Rail API](https://developer.wmata.com/) |
+| **Typography** | Barlow, Barlow Condensed, JetBrains Mono (Google Fonts) |
+| **Frontend Hosting** | Netlify (static, no build step) |
+| **Backend Hosting** | Render |
+
+### Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `express` | HTTP server and static file serving |
+| `node-fetch` | Server-side HTTP requests to WMATA API |
+| `cors` | Cross-origin request handling |
+| `dotenv` | Environment variable management |
 
 ---
 
-## Key Features
+## Architecture
 
-- Real-time train arrival data by station
-- Express backend proxy to handle API key securely
-- Custom Material UI components styled by Metro line
-- Modular structure for future expansions (favorites, auth, DB support)
-- Designed for dark mode and mobile-first layouts
+```
+nextmetro/
+├── server.js              Express backend (API proxy + cache + static serving)
+├── package.json
+├── .gitignore
+├── LICENSE                MIT
+├── README.md
+└── public/                Static frontend (served by Express and Netlify)
+    ├── index.html         Main app page
+    ├── about.html         About page
+    ├── 404.html           Custom 404 page
+    ├── robots.txt
+    ├── sitemap.xml
+    ├── netlify.toml       Netlify deploy config + API proxy redirects
+    ├── css/
+    │   └── styles.css     Full design system (~1,170 lines)
+    ├── js/
+    │   └── app.js         Application logic (~1,060 lines)
+    └── images/            Photography assets
+```
 
-### Station Selector
+### API Routes (server.js)
 
-Includes a fully loaded `<Select>` dropdown of all WMATA station codes and names, ordered by official station code (e.g. A01, A02, etc).
+| Route | Description | Cache |
+|-------|-------------|-------|
+| `GET /api/stations` | All WMATA stations | Infinite |
+| `GET /api/station/:code` | Single station info | Infinite |
+| `GET /api/predictions/:code` | Real-time train arrivals | None (live) |
+| `GET /api/incidents` | System-wide rail incidents | 60s TTL |
+| `GET /api/elevators/:code` | Elevator/escalator outages | 120s TTL |
+| `GET /api/fare/:from/:to` | Fare info between stations | 1hr TTL |
 
-This select will later be wired to trigger real-time train data queries for the selected station using the WMATA API.
+### Deployment Model
 
-Future roadmap may include:
-
-- Grouping by Metro line
-- Dual dropdowns (Line → Station)
-- Favorite station support
-- Typeahead or search input
+- **Netlify** serves the `public/` directory as a static site with no build step. API requests (`/api/*`) are proxied to the Render backend via `netlify.toml` redirects.
+- **Render** hosts the Express server which proxies WMATA API requests with the API key stored as an environment variable.
 
 ---
 
-## Dev Notes
+## Getting Started
 
-### 6/14/25
+### Prerequisites
 
-- fix(cors): enable cross-origin requests for frontend on Netlify
+- Node.js (v18+)
+- A [WMATA Developer API key](https://developer.wmata.com/)
 
-### 6/13/25
+### Setup
 
-- chore: configure dynamic API_BASE_URL for dev/prod environments
+```bash
+git clone https://github.com/nick-poole/nextmetro.git
+cd nextmetro
+npm install
+```
 
-  - Added src/config.js to detect production mode via Vite’s import.meta.env.PROD
-  - Updated StationFeed to fetch from API_BASE_URL + /api/predictions/:stationCode
-  - Ensures seamless switching between local proxy and live Render backend
+Create a `.env` file in the project root:
 
-- chore: prepare backend for Render deployment
+```
+WMATA_API_KEY=your_api_key_here
+```
 
-- feat: integrate Express backend, real-time WMATA API, station feed, and live TrainCard UI
+### Run Locally
 
-  - Installed and configured Express server with WMATA API key via .env
-  - Created /api/predictions/:stationCode route to fetch real-time train data
-  - Set up proxy in Vite for dev requests to backend
-  - Created StationFeed component to fetch + render train data from backend
-  - Hooked StationSelect dropdown to dynamically update selected station feed
-  - Default station set to Brookland-CUA (B05) as homage
-  - Built final TrainCard UI (renamed from TrainCard3) with MUI design system
-  - Status chips (ARR, BRD) now flash with animated text for live effect
-  - Card layout, colors, and fonts refined for metro-style realism
+```bash
+npm start
+```
 
-- refactor: clean up TrainCard3 layout and remove unused props
+The server starts on `http://localhost:3001` and serves the frontend from `public/`.
 
-  - Removed trainId and direction props (not needed in current UI)
-  - Simplified status chip with square corners and neon orange text
-  - Reorganized card layout for better alignment and spacing
-  - Removed serviceType block for now (separate API)
-  - Finalized font choices and color styling to match WMATA aesthetic
+---
 
-### 6/12/25
+## Design System
 
-- chore: imports fonts, updates TrainCard3 with flex layout for ETA
+The visual design — **Concrete Vault** — is based on the architectural identity of the D.C. Metro:
 
-- feat: scaffold multiple train card layouts and seed mock data for design exploration
+- **Surface palette**: Warm concrete tones (`#cfc6b9` base) for backgrounds and cards
+- **Pylon signage**: Dark brown (`#3b2415`) for headers and navigation
+- **PIDS display**: Black screen (`#0a0a0a`) with brightened line colors and amber accents
+- **Fare machine**: WMATA blue (`#0077b6`) with orange stripe accents
+- **Metro line colors**: Accurate WMATA standard colors for all six lines
+- **Typography**: Barlow for UI text, JetBrains Mono for data and system displays
+- **AA accessibility**: All text-on-background color combinations meet WCAG AA contrast ratios
+- **Zero border-radius**: Sharp rectangular edges throughout (matching pylon sign language)
 
-- feat: add footer with © 2025, system links, and v2 beta label
+---
 
-### 6/11/25
+## Changelog
 
-- feat: add station select dropdown with full station code list
+### v2.0.0 — Full WMATA API Integration & Brand Overhaul
 
-- feat: add NavBar and HeroBanner components
-  - Implement a sticky NavBar and rotating HeroBanner with local image support, overlay text, and Material UI theming.
+- Implement full WMATA API integration with 6 backend routes and tiered caching strategy
+- Concrete Vault design system (v7) with PIDS-style arrival display
+- Searchable station selector with line color indicators and keyboard navigation
+- Multi-platform station support (Metro Center, Gallery Place, L'Enfant Plaza, Fort Totten)
+- Real-time system status ticker and sidebar driven by live incident data
+- Station-specific service alerts
+- Elevator and escalator outage tracking
+- Fare calculator with peak/off-peak/senior pricing
+- Restructured from React/Vite to vanilla HTML/CSS/JS for zero-build deployment
+- Express backend proxy to secure WMATA API key server-side
+- Netlify static hosting with Render backend deployment
+- Mobile-responsive layout with 768px and 900px breakpoints
 
-- INIT COMMIT init: scaffold frontend with Vite, React, and Material UI dark theme
-  - [x] Remoted original nextmetro to nextmetro-v1
+### v1.0.0 — Initial Build
+
+- Frontend-only scaffold with React, Vite, and Material UI
+- Station select dropdown, NavBar, HeroBanner, and Footer components
+- Mock train card layouts for design exploration
+
+---
+
+## License
+
+[MIT](LICENSE) — Nick Poole
+
+---
+
+## Disclaimer
+
+NextMetro is an independent project. It is not affiliated with, endorsed by, or connected to the Washington Metropolitan Area Transit Authority (WMATA). All transit data is sourced from the [WMATA Developer API](https://developer.wmata.com/).
