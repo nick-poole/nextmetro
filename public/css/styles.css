@@ -543,6 +543,13 @@ a:hover {
   z-index: 2;
 }
 
+/* PIDS Group Divider */
+.pids-group-divider {
+  height: 4px;
+  background-color: var(--nm-border-strong);
+  margin: var(--nm-space-2xs) 0;
+}
+
 /* PIDS Direction Group */
 .pids-direction {
   background-color: var(--nm-surface);

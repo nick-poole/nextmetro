@@ -916,23 +916,46 @@ async function fetchTrains(stationCode) {
     }
 
     // Group by direction (Group field: "1" or "2")
-    const group1 = validTrains.filter((t) => t.group === '1').sort(sortByMin);
-    const group2 = validTrains.filter((t) => t.group === '2').sort(sortByMin);
-    // Trains without a group (fallback)
+    let group1 = validTrains.filter((t) => t.group === '1').sort(sortByMin);
+    let group2 = validTrains.filter((t) => t.group === '2').sort(sortByMin);
     const ungrouped = validTrains
       .filter((t) => t.group !== '1' && t.group !== '2')
       .sort(sortByMin);
 
+    // If all trains are ungrouped, split by destination terminal
+    if (group1.length === 0 && group2.length === 0 && ungrouped.length > 0) {
+      const destinations = [...new Set(ungrouped.map((t) => t.destination))];
+      if (destinations.length >= 2) {
+        const firstDest = destinations[0];
+        group1 = ungrouped.filter((t) => t.destination === firstDest).sort(sortByMin);
+        group2 = ungrouped.filter((t) => t.destination !== firstDest).sort(sortByMin);
+      } else {
+        // All same destination, put in group1
+        group1 = ungrouped.slice().sort(sortByMin);
+      }
+    } else if (ungrouped.length > 0) {
+      // Merge any ungrouped trains into the closest matching group
+      ungrouped.forEach((t) => {
+        group1.push(t);
+      });
+      group1.sort(sortByMin);
+    }
+
     pidsContent.innerHTML = '';
 
-    // Determine direction labels from the first destination in each group
+    // Render a direction group
     const renderGroup = (trains, labelFallback) => {
       if (trains.length === 0) return;
 
-      // Use the first train's destination as the direction label
-      const label = trains[0].destination
-        ? 'To ' + trains[0].destination
-        : labelFallback;
+      // Find the terminal destination (the one farthest out / most common)
+      const destCounts = {};
+      trains.forEach((t) => {
+        destCounts[t.destination] = (destCounts[t.destination] || 0) + 1;
+      });
+      const primaryDest = Object.keys(destCounts).sort(
+        (a, b) => destCounts[b] - destCounts[a]
+      )[0];
+      const label = primaryDest ? primaryDest : labelFallback;
 
       // Direction header
       const dirHeader = document.createElement('div');
@@ -956,13 +979,19 @@ async function fetchTrains(stationCode) {
       });
     };
 
-    if (group1.length > 0 || group2.length > 0) {
+    // Render group 1, divider, group 2
+    if (group1.length > 0) {
       renderGroup(group1, 'Direction 1');
-      renderGroup(group2, 'Direction 2');
     }
 
-    if (ungrouped.length > 0) {
-      renderGroup(ungrouped, 'Arrivals');
+    if (group1.length > 0 && group2.length > 0) {
+      const divider = document.createElement('div');
+      divider.className = 'pids-group-divider';
+      pidsContent.appendChild(divider);
+    }
+
+    if (group2.length > 0) {
+      renderGroup(group2, 'Direction 2');
     }
 
     updateTimestamp();
