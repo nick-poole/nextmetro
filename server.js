@@ -23,12 +23,14 @@ app.use(helmet({
       styleSrc: ["'self'", 'https://fonts.googleapis.com'],
       fontSrc: ["'self'", 'https://fonts.gstatic.com'],
       imgSrc: ["'self'", 'data:'],
-      connectSrc: ["'self'", 'https://nextmetro.onrender.com'],
+      connectSrc: ["'self'", 'https://nextmetro.onrender.com', 'https://nextmetro.live'],
     },
   },
 }));
 
 const ALLOWED_ORIGINS = [
+  'https://nextmetro.live',
+  'https://www.nextmetro.live',
   'https://nextmetro.netlify.app',
   'http://localhost:3001',
 ];
