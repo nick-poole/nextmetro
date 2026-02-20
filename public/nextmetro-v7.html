@@ -1,0 +1,1073 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextMetro — DC Metro Train Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Concrete Vault — sampled from actual station photos
+       The raw béton brut is a warm, LIGHT cream-beige,
+       much lighter than typical "concrete gray."
+       Amber uplighting pushes it even warmer. */
+    --concrete-lightest: #e2dacf;  /* Vault highlights near amber lights */
+    --concrete-light: #d9d1c5;    /* Main vault surface — this is dominant */
+    --concrete: #cfc6b9;           /* Standard concrete panels */
+    --concrete-mid: #c2b9ab;       /* Slightly shadowed coffer edges */
+    --concrete-shadow: #b0a696;    /* Recessed coffer panels */
+    --concrete-deep: #9e9484;      /* Deepest shadow in vault */
+    /* Pylon Brown — ONLY for signage elements
+       The dark brown paint on the station pylons
+       and sign panels. DARK on LIGHT, like reality. */
+    --pylon: #3b2415;
+    --pylon-deep: #2d1b10;
+    --pylon-text: #f0ece4;   /* White text on brown signs */
+    /* Platform specifics */
+    --platform-edge: #4a4038;      /* The granite platform edge, darker */
+    --hex-tile: #9e7c5a;           /* Terra cotta hex floor tiles */
+    /* Text on concrete surfaces */
+    --text-on-concrete: #33291f;    /* Dark text on light concrete */
+    --text-mid: #52473d;            /* Secondary text on concrete — AA compliant */
+    --text-light: #695d51;          /* Tertiary / muted — AA compliant on concrete-lightest */
+    /* Amber uplighting */
+    --amber: #c8a55a;
+    --amber-dim: #765b16;           /* AA compliant on concrete-lightest */
+    --amber-glow: rgba(200, 165, 90, 0.12);
+    /* Line Colors */
+    --red: #bf0d3e;
+    --orange: #ed8b00;
+    --blue: #009cde;
+    --green: #00b140;
+    --yellow: #ffd100;
+    --silver: #a2aaad;
+    /* Status — AA compliant on concrete-lightest */
+    --ok: #116e21;
+    --alert: #a12a1e;
+    --caution: #7a5a10;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--concrete);
+    color: var(--text-on-concrete);
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  /* ========================================
+     COFFERED VAULT TEXTURE
+     Deep recessed panels with ridges, like
+     looking up at the station ceiling
+     ======================================== */
+  .coffered {
+    position: relative;
+  }
+  .coffered::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 50px,
+        rgba(0,0,0,0.04) 50px,
+        rgba(0,0,0,0.07) 52px,
+        rgba(0,0,0,0.04) 54px,
+        transparent 54px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 100px,
+        rgba(0,0,0,0.03) 100px,
+        rgba(0,0,0,0.06) 102px,
+        rgba(0,0,0,0.03) 104px,
+        transparent 104px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+  /* ========================================
+     NAVIGATION — Pylon brown sign
+     ======================================== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--pylon);
+    border-bottom: 2px solid var(--amber-dim);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+  .nav-logo {
+    width: 26px;
+    height: 26px;
+    background: var(--pylon-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 0.65rem;
+    color: var(--pylon);
+  }
+  .nav-wordmark {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--pylon-text);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+  .nav-link {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 0.78rem;
+    color: rgba(240,236,228,0.7);
+    text-decoration: none;
+    padding: 0.4rem 0.75rem;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--pylon-text); }
+  .nav-link--988 {
+    color: var(--pylon-text);
+    background: rgba(240,236,228,0.12);
+    margin-left: 0.5rem;
+  }
+  .nav-link--988:hover { background: rgba(240,236,228,0.2); }
+  /* ========================================
+     TICKER — Platform edge dark strip
+     ======================================== */
+  .ticker {
+    background: var(--platform-edge);
+    overflow: hidden;
+    height: 32px;
+  }
+  .ticker-track {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    animation: ticker-scroll 35s linear infinite;
+    white-space: nowrap;
+    padding-left: 100%;
+  }
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #b8af9f;
+    flex-shrink: 0;
+  }
+  .ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .ticker-value { font-weight: 600; }
+  .ticker-value--ok { color: #67c367; }
+  .ticker-value--alert { color: #ff9181; }
+  .ticker-value--caution { color: #ceab60; }
+  /* ========================================
+     HERO — Lit concrete vault
+     ======================================== */
+  .hero {
+    background: var(--concrete-lightest);
+    border-bottom: 1px solid var(--concrete-mid);
+    overflow: hidden;
+    position: relative;
+  }
+  /* Amber uplighting from below, like the real stations */
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(0deg, var(--amber-glow) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--amber-dim);
+    margin-bottom: 0.6rem;
+  }
+  .hero-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    color: var(--text-on-concrete);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.35rem;
+  }
+  .hero-sub {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 2rem;
+  }
+  .search-wrapper {
+    position: relative;
+    max-width: 480px;
+  }
+  .search-input {
+    width: 100%;
+    padding: 0.85rem 1.15rem 0.85rem 2.75rem;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid var(--concrete-mid);
+    color: var(--text-on-concrete);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s;
+  }
+  .search-input::placeholder { color: var(--text-light); font-weight: 400; }
+  .search-input:focus {
+    border-color: var(--pylon);
+    box-shadow: 0 0 0 3px rgba(59,36,21,0.12);
+    background: rgba(255,255,255,0.6);
+  }
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  .line-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+  }
+  .line-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    background: rgba(255,255,255,0.45);
+    border: 1px solid var(--concrete-mid);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .line-pill:hover {
+    background: rgba(255,255,255,0.7);
+    border-color: var(--concrete-shadow);
+  }
+  .line-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .line-pill-label {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: var(--text-on-concrete);
+  }
+  /* ========================================
+     MAIN
+     ======================================== */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .main { grid-template-columns: 1fr; }
+  }
+  /* ========================================
+     ARRIVALS BOARD
+     Pylon header (dark brown sign) mounted
+     on a concrete card body (light warm gray)
+     ======================================== */
+  .arrivals-card {
+    background: var(--concrete-lightest);
+    border: 1px solid var(--concrete-mid);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  /* THE PYLON SIGN — dark brown, white text */
+  .arrivals-station-header {
+    background: var(--pylon);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--amber-dim);
+  }
+  .arrivals-station-name {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: var(--pylon-text);
+  }
+  .arrivals-line-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.55rem;
+    color: white;
+  }
+  /* ===== PIDS DISPLAY =====
+     Black background, colored LED text,
+     looks like the real platform screens */
+  .pids {
+    background: #0a0a0a;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Faint scanline effect for CRT/LED feel */
+  .pids::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 3;
+  }
+  .pids-direction {
+    padding: 0.5rem 1.25rem;
+    background: #111;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .pids-direction-arrow {
+    font-size: 0.55rem;
+    color: #555;
+  }
+  .pids-direction-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.7rem;
+    color: #c8a040;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .pids-columns {
+    display: grid;
+    grid-template-columns: 42px 44px 1fr 58px;
+    padding: 0.45rem 1.25rem;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative;
+    z-index: 2;
+  }
+  .pids-col {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.58rem;
+    color: #c8a040;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .pids-col:last-child { text-align: right; }
+  .pids-row {
+    display: grid;
+    grid-template-columns: 42px 44px 1fr 58px;
+    padding: 0.55rem 1.25rem;
+    border-bottom: 1px solid #111;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .pids-row:last-child { border-bottom: none; }
+  .pids-ln {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+  }
+  /* Brighten line colors for PIDS black bg - AA compliant */
+  .pids-ln--rd { color: #e33162; }
+  .pids-ln--or { color: #ed8b00; }
+  .pids-ln--bl { color: #39b4ea; }
+  .pids-ln--gr { color: #40d870; }
+  .pids-ln--yl { color: #ffd100; }
+  .pids-ln--sv { color: #bcc4c7; }
+  .pids-car {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #e0d060;
+  }
+  .pids-dest {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #40d870;
+  }
+  .pids-min {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-align: right;
+  }
+  .pids-min--imm { color: #e04040; }
+  .pids-min--num { color: #e0d060; }
+  /* Direction headers */
+  .arrivals-direction {
+    padding: 0.55rem 1.5rem;
+    background: var(--concrete-light);
+    border-bottom: 1px solid var(--concrete-mid);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .direction-arrow { font-size: 0.6rem; color: var(--text-light); }
+  .direction-name {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--text-on-concrete);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  /* ========================================
+     STATION INFO — Concrete card
+     ======================================== */
+  .info-card {
+    background: var(--concrete-lightest);
+    border: 1px solid var(--concrete-mid);
+    margin-top: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .info-header {
+    padding: 0.75rem 1.5rem;
+    background: var(--concrete-light);
+    border-bottom: 1px solid var(--concrete-mid);
+  }
+  .info-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-on-concrete);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    color: var(--text-on-concrete);
+  }
+  .info-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .info-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  /* ========================================
+     SIDEBAR
+     ======================================== */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  /* System Status — Pylon sign */
+  .status-card {
+    background: var(--pylon);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .status-header {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid rgba(240,236,228,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .status-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--pylon-text);
+  }
+  .status-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.52rem;
+    color: rgba(240,236,228,0.4);
+  }
+  .status-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1.25rem;
+    border-bottom: 1px solid rgba(240,236,228,0.04);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+  .status-line:hover { background: rgba(240,236,228,0.04); }
+  .status-line:last-child { border-bottom: none; }
+  .status-line-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .status-line-bar { width: 24px; height: 3px; }
+  .status-line-name {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    color: var(--pylon-text);
+  }
+  .status-line-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .sv--ok { color: #67c367; }
+  .sv--alert { color: #f95e4e; }
+  .sv--caution { color: #ceab60; }
+  /* Alert — on concrete with red accent */
+  .alert-card {
+    background: var(--concrete-lightest);
+    border: 1px solid var(--concrete-mid);
+    border-left: 3px solid var(--alert);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .alert-header {
+    padding: 0.55rem 1.25rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    background: rgba(192,57,43,0.06);
+  }
+  .alert-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.56rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--alert);
+  }
+  .alert-body { padding: 0.85rem 1.25rem; }
+  .alert-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-on-concrete);
+    line-height: 1.7;
+  }
+  .alert-text strong { font-weight: 700; }
+  .alert-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.52rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+  }
+  /* Fare Calculator — WMATA fare machine style
+     That distinctive medium blue with orange circles */
+  .fare-card {
+    background: #0077b6;
+    border: 1px solid #005f8f;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .fare-header {
+    padding: 0.75rem 1.25rem;
+    background: #006299;
+    border-bottom: 2px solid #005580;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .fare-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .fare-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ed8b00;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .fare-body { padding: 1rem 1.25rem; }
+  .fare-route {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .fare-station {
+    flex: 1;
+    padding: 0.5rem 0.7rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .fare-station-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.48rem;
+    color: #e2feff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.1rem;
+  }
+  .fare-station-name {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #fff;
+  }
+  .fare-arrow { color: rgba(255,255,255,0.5); font-size: 0.8rem; flex-shrink: 0; }
+  .fare-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.65rem;
+  }
+  .fare-result {
+    text-align: center;
+    padding: 0.6rem;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .fare-result-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.48rem;
+    color: #b5d9ed;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .fare-result-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+  .fare-result-value--accent { color: #fff; }
+  /* ========================================
+     FOOTER — concrete with pylon accents
+     ======================================== */
+  .footer {
+    background: var(--concrete-mid);
+    border-top: 1px solid var(--concrete-shadow);
+    margin-top: 3rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+  .footer-logo {
+    width: 22px;
+    height: 22px;
+    background: var(--pylon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 0.55rem;
+    color: var(--pylon-text);
+  }
+  .footer-wordmark {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-on-concrete);
+  }
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-col-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-col a {
+    display: block;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--text-mid);
+    text-decoration: none;
+    padding: 0.18rem 0;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--text-on-concrete); }
+  .footer-988 {
+    padding: 1.15rem 1.35rem;
+    background: var(--pylon);
+    max-width: 260px;
+  }
+  .footer-988-title {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--pylon-text);
+    margin-bottom: 0.3rem;
+  }
+  .footer-988-text {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: rgba(240,236,228,0.7);
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+  }
+  .footer-988-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.72rem;
+    color: var(--pylon-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--pylon-text);
+    padding-bottom: 1px;
+  }
+  .footer-988-link:hover { color: var(--amber); border-color: var(--amber); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--concrete-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .footer-bottom-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.52rem;
+    color: var(--text-mid);
+  }
+  .footer-bottom-text a { color: var(--text-mid); text-decoration: none; }
+  .footer-bottom-text a:hover { color: var(--text-on-concrete); }
+  /* ========================================
+     ANIMATIONS
+     ======================================== */
+  @keyframes pulse-amber {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .pulse { animation: pulse-amber 2s ease-in-out infinite; }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeSlideUp 0.45s ease-out both; }
+  .d1 { animation-delay: 0.06s; }
+  .d2 { animation-delay: 0.12s; }
+  .d3 { animation-delay: 0.18s; }
+  .d4 { animation-delay: 0.24s; }
+  .d5 { animation-delay: 0.3s; }
+  /* ========================================
+     RESPONSIVE
+     ======================================== */
+  @media (max-width: 768px) {
+    .nav-link:not(.nav-link--988) { display: none; }
+    .hero-inner { padding: 2rem 1.25rem; }
+    .main { padding: 1.25rem; gap: 1.25rem; }
+    .pids-columns, .pids-row {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .pids-dest { font-size: 0.7rem; }
+    .footer-inner { flex-direction: column; }
+    .footer-links { flex-direction: column; gap: 1.25rem; }
+    .footer-988 { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<!-- NAV — The pylon sign -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-logo">NM</div>
+      <span class="nav-wordmark">NextMetro</span>
+    </a>
+    <div class="nav-links">
+      <a href="/alerts" class="nav-link">Alerts</a>
+      <a href="/tools/fare-calculator" class="nav-link">Fares</a>
+      <a href="/about" class="nav-link">About</a>
+      <a href="https://988lifeline.org/" class="nav-link nav-link--988">988</a>
+    </div>
+  </div>
+</nav>
+<!-- TICKER — Platform edge -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--red)"></div>RED <span class="ticker-value ticker-value--alert">DELAYS 10-15 MIN</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--orange)"></div>ORANGE <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--blue)"></div>BLUE <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--green)"></div>GREEN <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--yellow)"></div>YELLOW <span class="ticker-value ticker-value--caution">ADVISORY</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--silver)"></div>SILVER <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--red)"></div>RED <span class="ticker-value ticker-value--alert">DELAYS 10-15 MIN</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--orange)"></div>ORANGE <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--blue)"></div>BLUE <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--green)"></div>GREEN <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--yellow)"></div>YELLOW <span class="ticker-value ticker-value--caution">ADVISORY</span></div>
+    <div class="ticker-item"><div class="ticker-dot" style="background:var(--silver)"></div>SILVER <span class="ticker-value ticker-value--ok">NORMAL</span></div>
+  </div>
+</div>
+<!-- HERO — Concrete vault with amber uplighting -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label animate-in">Real-Time Arrivals</div>
+    <h1 class="hero-title animate-in d1">Brookland-CUA</h1>
+    <p class="hero-sub animate-in d2">Red Line</p>
+    <div class="search-wrapper animate-in d3">
+      <span class="search-icon">&#x26B2;</span>
+      <input type="text" class="search-input" placeholder="Search stations..." aria-label="Search stations">
+    </div>
+    <div class="line-pills animate-in d4">
+      <a href="/lines/red" class="line-pill"><div class="line-dot" style="background:var(--red)"></div><span class="line-pill-label">Red</span></a>
+      <a href="/lines/orange" class="line-pill"><div class="line-dot" style="background:var(--orange)"></div><span class="line-pill-label">Orange</span></a>
+      <a href="/lines/blue" class="line-pill"><div class="line-dot" style="background:var(--blue)"></div><span class="line-pill-label">Blue</span></a>
+      <a href="/lines/green" class="line-pill"><div class="line-dot" style="background:var(--green)"></div><span class="line-pill-label">Green</span></a>
+      <a href="/lines/yellow" class="line-pill"><div class="line-dot" style="background:var(--yellow)"></div><span class="line-pill-label">Yellow</span></a>
+      <a href="/lines/silver" class="line-pill"><div class="line-dot" style="background:var(--silver)"></div><span class="line-pill-label">Silver</span></a>
+    </div>
+  </div>
+</section>
+<!-- MAIN -->
+<main class="main">
+  <div>
+    <!-- ARRIVALS -->
+    <div class="arrivals-card animate-in d2">
+      <div class="arrivals-station-header">
+        <div class="arrivals-station-name">Brookland-CUA</div>
+        <div class="arrivals-line-badge" style="background:var(--red);">RD</div>
+      </div>
+      <!-- PIDS Screen: To Glenmont -->
+      <div class="pids">
+        <div class="pids-direction">
+          <span class="pids-direction-arrow">&#x25B6;</span>
+          <span class="pids-direction-name">To Glenmont</span>
+        </div>
+        <div class="pids-columns">
+          <span class="pids-col">LN</span>
+          <span class="pids-col">CAR</span>
+          <span class="pids-col">DEST</span>
+          <span class="pids-col">MIN</span>
+        </div>
+        <div class="pids-row">
+          <span class="pids-ln pids-ln--rd">RD</span>
+          <span class="pids-car">8</span>
+          <span class="pids-dest">Glenmont</span>
+          <span class="pids-min pids-min--imm pulse">BRD</span>
+        </div>
+        <div class="pids-row">
+          <span class="pids-ln pids-ln--rd">RD</span>
+          <span class="pids-car">6</span>
+          <span class="pids-dest">Glenmont</span>
+          <span class="pids-min pids-min--num">7</span>
+        </div>
+        <div class="pids-row">
+          <span class="pids-ln pids-ln--rd">RD</span>
+          <span class="pids-car">8</span>
+          <span class="pids-dest">Glenmont</span>
+          <span class="pids-min pids-min--num">14</span>
+        </div>
+      </div>
+      <!-- PIDS Screen: To Shady Grove -->
+      <div class="pids">
+        <div class="pids-direction">
+          <span class="pids-direction-arrow">&#x25B6;</span>
+          <span class="pids-direction-name">To Shady Grove</span>
+        </div>
+        <div class="pids-columns">
+          <span class="pids-col">LN</span>
+          <span class="pids-col">CAR</span>
+          <span class="pids-col">DEST</span>
+          <span class="pids-col">MIN</span>
+        </div>
+        <div class="pids-row">
+          <span class="pids-ln pids-ln--rd">RD</span>
+          <span class="pids-car">8</span>
+          <span class="pids-dest">Shady Grove</span>
+          <span class="pids-min pids-min--num">3</span>
+        </div>
+        <div class="pids-row">
+          <span class="pids-ln pids-ln--rd">RD</span>
+          <span class="pids-car">6</span>
+          <span class="pids-dest">Shady Grove</span>
+          <span class="pids-min pids-min--num">11</span>
+        </div>
+        <div class="pids-row">
+          <span class="pids-ln pids-ln--rd">RD</span>
+          <span class="pids-car">8</span>
+          <span class="pids-dest">Shady Grove</span>
+          <span class="pids-min pids-min--num">19</span>
+        </div>
+      </div>
+    </div>
+    <!-- STATION INFO -->
+    <div class="info-card animate-in d3">
+      <div class="info-header"><div class="info-title">Station Facilities</div></div>
+      <div class="info-row"><div class="info-label"><div class="info-dot" style="background:var(--ok)"></div>Elevator</div><div class="info-value" style="color:var(--ok)">Operational</div></div>
+      <div class="info-row"><div class="info-label"><div class="info-dot" style="background:var(--alert)"></div>Escalator - East</div><div class="info-value" style="color:var(--alert)">Out of Service</div></div>
+      <div class="info-row"><div class="info-label"><div class="info-dot" style="background:var(--alert)"></div>Escalator - West</div><div class="info-value" style="color:var(--alert)">Out of Service</div></div>
+      <div class="info-row"><div class="info-label"><div class="info-dot" style="background:var(--ok)"></div>Parking Garage</div><div class="info-value" style="color:var(--text-light)">573 / 750 spaces</div></div>
+      <div class="info-row"><div class="info-label"><div class="info-dot" style="background:var(--ok)"></div>Bike Racks</div><div class="info-value" style="color:var(--text-light)">Available</div></div>
+    </div>
+  </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="status-card animate-in d3">
+      <div class="status-header"><span class="status-title">System Status</span><span class="status-time">14:32 EST</span></div>
+      <div class="status-line"><div class="status-line-left"><div class="status-line-bar" style="background:var(--red)"></div><span class="status-line-name">Red</span></div><span class="status-line-value sv--alert">DELAYS</span></div>
+      <div class="status-line"><div class="status-line-left"><div class="status-line-bar" style="background:var(--orange)"></div><span class="status-line-name">Orange</span></div><span class="status-line-value sv--ok">NORMAL</span></div>
+      <div class="status-line"><div class="status-line-left"><div class="status-line-bar" style="background:var(--blue)"></div><span class="status-line-name">Blue</span></div><span class="status-line-value sv--ok">NORMAL</span></div>
+      <div class="status-line"><div class="status-line-left"><div class="status-line-bar" style="background:var(--green)"></div><span class="status-line-name">Green</span></div><span class="status-line-value sv--ok">NORMAL</span></div>
+      <div class="status-line"><div class="status-line-left"><div class="status-line-bar" style="background:var(--yellow)"></div><span class="status-line-name">Yellow</span></div><span class="status-line-value sv--caution">ADVISORY</span></div>
+      <div class="status-line"><div class="status-line-left"><div class="status-line-bar" style="background:var(--silver)"></div><span class="status-line-name">Silver</span></div><span class="status-line-value sv--ok">NORMAL</span></div>
+    </div>
+    <div class="alert-card animate-in d4">
+      <div class="alert-header"><span class="alert-badge">&#x25B2; Active Alert</span></div>
+      <div class="alert-body">
+        <div class="alert-text"><strong>RED LINE:</strong> Single tracking between Metro Center and Dupont Circle due to scheduled maintenance. Expect 10-15 minute delays through end of service.</div>
+        <div class="alert-time">Updated 14:32 EST</div>
+      </div>
+    </div>
+    <div class="fare-card animate-in d5">
+      <div class="fare-header">
+        <span class="fare-step">$</span>
+        <div class="fare-title">Quick Fare</div>
+      </div>
+      <div class="fare-body">
+        <div class="fare-route">
+          <div class="fare-station"><div class="fare-station-label">From</div><div class="fare-station-name">Brookland-CUA</div></div>
+          <div class="fare-arrow">&rarr;</div>
+          <div class="fare-station"><div class="fare-station-label">To</div><div class="fare-station-name">Pentagon</div></div>
+        </div>
+        <div class="fare-results">
+          <div class="fare-result"><div class="fare-result-label">Peak</div><div class="fare-result-value fare-result-value--accent">$3.85</div></div>
+          <div class="fare-result"><div class="fare-result-label">Off-Peak</div><div class="fare-result-value">$2.50</div></div>
+          <div class="fare-result"><div class="fare-result-label">Time</div><div class="fare-result-value">22m</div></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand"><div class="footer-logo">NM</div><span class="footer-wordmark">NextMetro</span></div>
+      <div class="footer-copy">Real-time train tracking for the<br>Washington DC Metro system.<br><br>Not affiliated with WMATA.<br>Data via WMATA API.</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <div class="footer-col-title">Lines</div>
+        <a href="/lines/red">Red Line</a><a href="/lines/orange">Orange Line</a><a href="/lines/blue">Blue Line</a><a href="/lines/green">Green Line</a><a href="/lines/yellow">Yellow Line</a><a href="/lines/silver">Silver Line</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Tools</div>
+        <a href="/tools/fare-calculator">Fare Calculator</a><a href="/alerts">System Alerts</a><a href="https://www.wmata.com/schedules/maps/">System Map</a><a href="/about">About</a>
+      </div>
+    </div>
+    <div class="footer-988">
+      <div class="footer-988-title">You are not alone.</div>
+      <div class="footer-988-text">If you or someone you know is in crisis, free and confidential support is available 24/7.</div>
+      <a href="https://988lifeline.org/" class="footer-988-link">Call or text 988 &rarr;</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-bottom-text">&copy; 2025 NextMetro &middot; Built by <a href="https://nickpoole.dev">Nick Poole</a></span>
+    <span class="footer-bottom-text">Not affiliated with WMATA</span>
+  </div>
+</footer>
+</body></html>
