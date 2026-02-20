@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — NextMetro</title>
+  <meta name="description" content="About NextMetro — a real-time tracker for the Washington D.C. Metrorail system." />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .about-page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+    .about-label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+    }
+    .about-title {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--text-on-concrete);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .about-section {
+      margin-bottom: 2rem;
+    }
+    .about-section-heading {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-on-concrete);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--amber-dim);
+      display: inline-block;
+    }
+    .about-text {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .about-text a {
+      color: var(--pylon);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .about-text a:hover {
+      color: var(--pylon-deep);
+    }
+    .about-features {
+      list-style: none;
+      padding: 0;
+    }
+    .about-features li {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      padding: 0.4rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .about-features li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--amber);
+    }
+    .about-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .about-tech-item {
+      background-color: var(--concrete-lightest);
+      border: 1px solid var(--concrete-mid);
+      padding: 0.75rem 1rem;
+    }
+    .about-tech-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      color: var(--amber-dim);
+      letter-spacing: 0.1em;
+    }
+    .about-tech-value {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text-on-concrete);
+      margin-top: 0.15rem;
+    }
+    .about-disclaimer {
+      background-color: var(--pylon);
+      padding: 1rem 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .about-disclaimer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(240, 236, 228, 0.7);
+      line-height: 1.7;
+    }
+    .about-disclaimer a {
+      color: var(--pylon-text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NM</span>
+        <span class="logo-wordmark">NextMetro</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-link">System Map</a>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-link nav-link--988">988</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Ticker placeholder -->
+  <div class="ticker-bar">
+    <div class="ticker-track"></div>
+  </div>
+
+  <!-- About Content -->
+  <div class="about-page">
+    <span class="about-label">About</span>
+    <h1 class="about-title">NextMetro</h1>
+
+    <div class="about-section">
+      <p class="about-text">
+        NextMetro is a real-time tracker for the Washington D.C. Metrorail system. It pulls live data from the
+        <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a>
+        to display train arrivals, system status, service alerts, station facility conditions, and fare information — all in one place.
+      </p>
+      <p class="about-text">
+        The interface draws from the Metro's own visual language: the concrete vault ceilings, pylon signage, and PIDS (Passenger Information Display System) boards found in every station. Built as a personal project by
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Nick Poole</a>.
+      </p>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-section-heading">Features</h2>
+      <ul class="about-features">
+        <li>Real-time train arrival board with PIDS-style display</li>
+        <li>Searchable station selector covering all 98 WMATA stations</li>
+        <li>Multi-platform station support (Metro Center, Gallery Place, L'Enfant Plaza, Fort Totten)</li>
+        <li>Live system status ticker and sidebar for all six Metro lines</li>
+        <li>Station-specific service alerts</li>
+        <li>Elevator and escalator outage tracking</li>
+        <li>Fare calculator with peak, off-peak, and senior pricing</li>
+        <li>Mobile-responsive, accessibility-minded design</li>
+      </ul>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-section-heading">Tech Stack</h2>
+      <div class="about-tech-grid">
+        <div class="about-tech-item">
+          <div class="about-tech-label">Frontend</div>
+          <div class="about-tech-value">Vanilla HTML / CSS / JS</div>
+        </div>
+        <div class="about-tech-item">
+          <div class="about-tech-label">Backend</div>
+          <div class="about-tech-value">Express.js (Node)</div>
+        </div>
+        <div class="about-tech-item">
+          <div class="about-tech-label">API Source</div>
+          <div class="about-tech-value">WMATA Real-Time Rail</div>
+        </div>
+        <div class="about-tech-item">
+          <div class="about-tech-label">Typography</div>
+          <div class="about-tech-value">Barlow + JetBrains Mono</div>
+        </div>
+        <div class="about-tech-item">
+          <div class="about-tech-label">Frontend Host</div>
+          <div class="about-tech-value">Netlify</div>
+        </div>
+        <div class="about-tech-item">
+          <div class="about-tech-label">Backend Host</div>
+          <div class="about-tech-value">Render</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-section-heading">Data &amp; Accuracy</h2>
+      <p class="about-text">
+        Train arrivals refresh every 25 seconds. System incidents update every 60 seconds. Elevator and escalator status updates every 2 minutes. All data comes directly from the WMATA API — accuracy depends on WMATA's real-time feed.
+      </p>
+    </div>
+
+    <div class="about-disclaimer">
+      <p>
+        NextMetro is an independent project and is not affiliated with, endorsed by, or connected to the Washington Metropolitan Area Transit Authority (WMATA). All transit data is sourced from the
+        <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA Developer API</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener">System Map</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div class="footer-988">
+        <span class="footer-988-label">Crisis Resources</span>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener">988 Suicide &amp; Crisis Lifeline</a>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

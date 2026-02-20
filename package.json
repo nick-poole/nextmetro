@@ -1,10 +1,30 @@
 {
-	"name": "nextmetro-backend",
+	"name": "nextmetro",
 	"version": "2.0.0",
+	"description": "Real-time tracker for the Washington D.C. Metrorail system",
 	"main": "server.js",
 	"type": "commonjs",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"dev": "node server.js"
+	},
+	"keywords": [
+		"wmata",
+		"metro",
+		"dc-metro",
+		"real-time",
+		"transit",
+		"express",
+		"washington-dc"
+	],
+	"author": "Nick Poole",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nick-poole/nextmetro.git"
+	},
+	"engines": {
+		"node": ">=18.0.0"
 	},
 	"dependencies": {
 		"cors": "^2.8.5",

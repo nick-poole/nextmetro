@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — NextMetro</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 54px - 32px);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .error-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(4rem, 12vw, 8rem);
+      color: var(--pylon);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .error-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--amber-dim);
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .error-message {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      max-width: 420px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .error-home-link {
+      display: inline-block;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--pylon-text);
+      background-color: var(--pylon);
+      padding: 10px 28px;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    .error-home-link:hover {
+      background-color: var(--pylon-deep);
+      color: var(--pylon-text);
+    }
+    .error-pids {
+      margin-top: 2.5rem;
+      background-color: var(--pids-bg);
+      padding: 1rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(200, 165, 90, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+    .error-pids::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px, transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 4px
+      );
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NM</span>
+        <span class="logo-wordmark">NextMetro</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-link">System Map</a>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-link nav-link--988">988</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Ticker placeholder -->
+  <div class="ticker-bar">
+    <div class="ticker-track"></div>
+  </div>
+
+  <!-- Error Content -->
+  <div class="error-page">
+    <div class="error-code">404</div>
+    <div class="error-label">End of Line</div>
+    <p class="error-message">
+      This station doesn't exist on the map. The page you're looking for may have been moved, removed, or never built.
+    </p>
+    <a href="/" class="error-home-link">Back to Home Station</a>
+    <div class="error-pids">No service at this destination</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener">System Map</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div class="footer-988">
+        <span class="footer-988-label">Crisis Resources</span>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener">988 Suicide &amp; Crisis Lifeline</a>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
