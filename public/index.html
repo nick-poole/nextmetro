@@ -82,6 +82,75 @@
         </button>
       </div>
 
+      <!-- Station Facilities Card -->
+      <section class="facilities-card animate-in d2" id="facilities-card">
+        <div class="facilities-header">
+          <span class="facilities-title">Station Facilities</span>
+        </div>
+        <div class="facilities-body" id="facilities-body">
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            </span>
+            <span class="facilities-label">Elevators</span>
+            <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
+          </div>
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+            </span>
+            <span class="facilities-label">Escalators</span>
+            <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
+          </div>
+        </div>
+        <div class="facilities-details" id="facilities-details" style="display:none;">
+          <!-- Outage details rendered by JS -->
+        </div>
+      </section>
+
+      <!-- Fare Calculator -->
+      <section class="fare-card animate-in d3" id="fare-card">
+        <div class="fare-header">
+          <span class="fare-title">Fare Calculator</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-route">
+            <div class="fare-station fare-from">
+              <span class="fare-station-label">From</span>
+              <span class="fare-station-name" id="fare-from-name">Brookland-CUA</span>
+            </div>
+            <div class="fare-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            </div>
+            <div class="fare-station fare-to">
+              <span class="fare-station-label">To</span>
+              <select id="fare-destination" class="fare-select" aria-label="Select destination station">
+                <option value="">Select destination...</option>
+                <!-- Options populated by JS -->
+              </select>
+            </div>
+          </div>
+          <div class="fare-results" id="fare-results" style="display:none;">
+            <div class="fare-result-row">
+              <span class="fare-result-label">Peak</span>
+              <span class="fare-result-value" id="fare-peak">--</span>
+            </div>
+            <div class="fare-result-row">
+              <span class="fare-result-label">Off-Peak</span>
+              <span class="fare-result-value" id="fare-offpeak">--</span>
+            </div>
+            <div class="fare-result-row">
+              <span class="fare-result-label">Senior/Disabled</span>
+              <span class="fare-result-value" id="fare-senior">--</span>
+            </div>
+            <div class="fare-result-row fare-result-row--time">
+              <span class="fare-result-label">Travel Time</span>
+              <span class="fare-result-value" id="fare-time">--</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <!-- Sidebar -->
@@ -94,12 +163,18 @@
           <span class="system-status-time" id="system-status-time"></span>
         </div>
         <div class="system-status-rows" id="system-status-rows">
-          <div class="status-row"><span class="status-line-bar" style="background:#bf0d3e"></span><span class="status-line-name">Red</span><span class="status-value status-ok">Normal</span></div>
-          <div class="status-row"><span class="status-line-bar" style="background:#ed8b00"></span><span class="status-line-name">Orange</span><span class="status-value status-ok">Normal</span></div>
-          <div class="status-row"><span class="status-line-bar" style="background:#009cde"></span><span class="status-line-name">Blue</span><span class="status-value status-ok">Normal</span></div>
-          <div class="status-row"><span class="status-line-bar" style="background:#00b140"></span><span class="status-line-name">Green</span><span class="status-value status-ok">Normal</span></div>
-          <div class="status-row"><span class="status-line-bar" style="background:#ffd100"></span><span class="status-line-name">Yellow</span><span class="status-value status-ok">Normal</span></div>
-          <div class="status-row"><span class="status-line-bar" style="background:#a2aaad"></span><span class="status-line-name">Silver</span><span class="status-value status-ok">Normal</span></div>
+          <!-- Rendered by JS from incidents API -->
+        </div>
+      </div>
+
+      <!-- Alert Card -->
+      <div class="alert-card animate-in d4" id="alert-card" style="display:none;">
+        <div class="alert-card-header">
+          <span class="alert-badge">Service Alert</span>
+          <span class="alert-timestamp" id="alert-timestamp"></span>
+        </div>
+        <div class="alert-card-body" id="alert-body">
+          <!-- Alert content rendered by JS -->
         </div>
       </div>
 
