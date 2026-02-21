@@ -3,7 +3,7 @@
 // Typography: Rajdhani | Theme: Neutral Brutalist
 // ==============================
 
-const API_BASE_URL = 'https://nextmetro.onrender.com';
+const API_BASE_URL = '';
 
 // ---- Station Data ----
 const stations = {
