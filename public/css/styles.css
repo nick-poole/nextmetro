@@ -543,31 +543,7 @@ a:hover {
   z-index: 2;
 }
 
-/* PIDS Group Divider */
-.pids-group-divider {
-  height: 4px;
-  background-color: var(--nm-border-strong);
-  margin: var(--nm-space-2xs) 0;
-}
-
-/* PIDS Direction Group */
-.pids-direction {
-  background-color: var(--nm-surface);
-  padding: 0.4rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.pids-direction-label {
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.7rem;
-  color: var(--nm-amber);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  text-shadow: 0 0 12px var(--nm-amber-glow);
-}
+/* PIDS Column Headers */
 
 .pids-col-headers {
   display: grid;

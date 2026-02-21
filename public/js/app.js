@@ -769,13 +769,6 @@ document.addEventListener('click', (e) => {
 function renderPidsSkeletons() {
   pidsContent.innerHTML = '';
 
-  // Direction header skeleton
-  const dirHeader = document.createElement('div');
-  dirHeader.className = 'pids-direction';
-  dirHeader.innerHTML =
-    '<span class="pids-direction-label" style="opacity:0.3">Loading...</span>';
-  pidsContent.appendChild(dirHeader);
-
   // Column headers
   const colHeaders = document.createElement('div');
   colHeaders.className = 'pids-col-headers';
@@ -915,84 +908,22 @@ async function fetchTrains(stationCode) {
       return;
     }
 
-    // Group by direction (Group field: "1" or "2")
-    let group1 = validTrains.filter((t) => t.group === '1').sort(sortByMin);
-    let group2 = validTrains.filter((t) => t.group === '2').sort(sortByMin);
-    const ungrouped = validTrains
-      .filter((t) => t.group !== '1' && t.group !== '2')
-      .sort(sortByMin);
-
-    // If all trains are ungrouped, split by destination terminal
-    if (group1.length === 0 && group2.length === 0 && ungrouped.length > 0) {
-      const destinations = [...new Set(ungrouped.map((t) => t.destination))];
-      if (destinations.length >= 2) {
-        const firstDest = destinations[0];
-        group1 = ungrouped.filter((t) => t.destination === firstDest).sort(sortByMin);
-        group2 = ungrouped.filter((t) => t.destination !== firstDest).sort(sortByMin);
-      } else {
-        // All same destination, put in group1
-        group1 = ungrouped.slice().sort(sortByMin);
-      }
-    } else if (ungrouped.length > 0) {
-      // Merge any ungrouped trains into the closest matching group
-      ungrouped.forEach((t) => {
-        group1.push(t);
-      });
-      group1.sort(sortByMin);
-    }
+    // Flat list sorted by arrival time (like real WMATA PIDS boards)
+    const allTrains = validTrains.sort(sortByMin);
 
     pidsContent.innerHTML = '';
 
-    // Render a direction group
-    const renderGroup = (trains, labelFallback) => {
-      if (trains.length === 0) return;
+    // Column headers
+    const colHeaders = document.createElement('div');
+    colHeaders.className = 'pids-col-headers';
+    colHeaders.innerHTML =
+      '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
+    pidsContent.appendChild(colHeaders);
 
-      // Find the terminal destination (the one farthest out / most common)
-      const destCounts = {};
-      trains.forEach((t) => {
-        destCounts[t.destination] = (destCounts[t.destination] || 0) + 1;
-      });
-      const primaryDest = Object.keys(destCounts).sort(
-        (a, b) => destCounts[b] - destCounts[a]
-      )[0];
-      const label = primaryDest ? primaryDest : labelFallback;
-
-      // Direction header
-      const dirHeader = document.createElement('div');
-      dirHeader.className = 'pids-direction';
-      const dirLabel = document.createElement('span');
-      dirLabel.className = 'pids-direction-label';
-      dirLabel.textContent = label;
-      dirHeader.appendChild(dirLabel);
-      pidsContent.appendChild(dirHeader);
-
-      // Column headers
-      const colHeaders = document.createElement('div');
-      colHeaders.className = 'pids-col-headers';
-      colHeaders.innerHTML =
-        '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-      pidsContent.appendChild(colHeaders);
-
-      // Train rows
-      trains.forEach((train) => {
-        pidsContent.appendChild(createPidsRow(train));
-      });
-    };
-
-    // Render group 1, divider, group 2
-    if (group1.length > 0) {
-      renderGroup(group1, 'Direction 1');
-    }
-
-    if (group1.length > 0 && group2.length > 0) {
-      const divider = document.createElement('div');
-      divider.className = 'pids-group-divider';
-      pidsContent.appendChild(divider);
-    }
-
-    if (group2.length > 0) {
-      renderGroup(group2, 'Direction 2');
-    }
+    // Train rows
+    allTrains.forEach((train) => {
+      pidsContent.appendChild(createPidsRow(train));
+    });
 
     updateTimestamp();
   } catch (err) {
