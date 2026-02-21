@@ -426,6 +426,8 @@ async function fetchIncidents() {
     renderAlerts(currentIncidents, selectedStation);
   } catch (err) {
     console.error('Failed to fetch incidents:', err.message);
+    // Still render system status with empty incidents so lines show "Normal"
+    renderSystemStatus([]);
   }
 }
 
@@ -1032,6 +1034,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Update system status time
   updateSystemStatusTime();
   setInterval(updateSystemStatusTime, 60000);
+
+  // Render system status immediately (all lines Normal) before API returns
+  renderSystemStatus([]);
 
   // Initial data fetches
   fetchTrains(selectedStation);
