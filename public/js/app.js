@@ -210,7 +210,8 @@ let currentIncidents = []; // cached incidents for ticker + sidebar + alerts
 
 // ---- DOM Elements ----
 const heroStationName = document.getElementById('hero-station-name');
-const heroLineSubtitle = document.getElementById('hero-line-subtitle');
+const heroStationAddress = document.getElementById('hero-station-address');
+const stationAddressCache = {};
 const linePillsEl = document.getElementById('line-pills');
 const stationInput = document.getElementById('station-input');
 const stationDropdown = document.getElementById('station-dropdown');
@@ -269,6 +270,32 @@ function getPredictionCodes(stationCode) {
 }
 
 // ==============================
+// Station Address
+// ==============================
+async function fetchStationAddress(stationCode) {
+  if (stationAddressCache[stationCode]) {
+    heroStationAddress.textContent = stationAddressCache[stationCode];
+    return;
+  }
+  heroStationAddress.textContent = '';
+  try {
+    const res = await fetch(API_BASE_URL + '/api/station/' + stationCode);
+    const data = await res.json();
+    if (data && data.Address) {
+      const addr = data.Address;
+      const formatted = addr.Street + ', ' + addr.City + ', ' + addr.State + ' ' + addr.Zip;
+      stationAddressCache[stationCode] = formatted;
+      // Only update if this station is still selected
+      if (selectedStation === stationCode) {
+        heroStationAddress.textContent = formatted;
+      }
+    }
+  } catch (e) {
+    // Address is supplementary — fail silently
+  }
+}
+
+// ==============================
 // Hero Station Display
 // ==============================
 function updateHeroDisplay(stationCode) {
@@ -291,7 +318,7 @@ function updateHeroDisplay(stationCode) {
   if (partner) addLines(partner.charAt(0));
 
   heroStationName.textContent = name;
-  heroLineSubtitle.textContent = allLines.map((l) => l.name + ' Line').join(', ');
+  fetchStationAddress(stationCode);
 
   // Update line pills
   linePillsEl.innerHTML = '';

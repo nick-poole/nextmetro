@@ -327,12 +327,13 @@ a:hover {
   margin-bottom: var(--nm-space-xs);
 }
 
-.hero-line-subtitle {
+.hero-station-address {
   font-family: var(--nm-font);
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--nm-text-secondary);
   margin-bottom: var(--nm-space-lg);
+  min-height: 1.2em;
 }
 
 /* ==============================
