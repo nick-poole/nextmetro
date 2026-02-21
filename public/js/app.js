@@ -217,7 +217,6 @@ const stationInput = document.getElementById('station-input');
 const stationDropdown = document.getElementById('station-dropdown');
 const pidsContent = document.getElementById('pids-content');
 const pidsHeaderStation = document.getElementById('pids-header-station');
-const pidsHeaderDot = document.getElementById('pids-header-dot');
 const lastUpdatedEl = document.getElementById('last-updated');
 const updatedTimeEl = document.getElementById('updated-time');
 const refreshBtn = document.getElementById('refresh-btn');
@@ -335,8 +334,6 @@ function updateHeroDisplay(stationCode) {
 
   // Update PIDS header
   pidsHeaderStation.textContent = name;
-  const primaryColor = allLines.length > 0 ? allLines[0].color : '#555';
-  pidsHeaderDot.style.backgroundColor = primaryColor;
 
   // Update fare calculator "from" display
   fareFromName.textContent = name;

@@ -500,13 +500,6 @@ a:hover {
   border-bottom: 1px solid var(--nm-border);
 }
 
-.pids-header-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50% !important;
-  flex-shrink: 0;
-}
-
 .pids-header-station {
   font-family: var(--nm-font);
   font-weight: 700;
