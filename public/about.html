@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     .about-page {
       max-width: 720px;
@@ -17,19 +17,21 @@
     }
     .about-label {
       display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 500;
-      font-size: 0.6rem;
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      color: var(--amber-dim);
-      letter-spacing: 0.15em;
+      color: var(--nm-amber-dim);
+      letter-spacing: 0.12em;
       margin-bottom: 0.25rem;
     }
     .about-title {
-      font-family: 'Barlow', sans-serif;
+      font-family: var(--nm-font);
       font-weight: 700;
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: var(--text-on-concrete);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      color: var(--nm-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
       line-height: 1.1;
       margin-bottom: 1.5rem;
     }
@@ -37,40 +39,42 @@
       margin-bottom: 2rem;
     }
     .about-section-heading {
-      font-family: 'Barlow', sans-serif;
+      font-family: var(--nm-font);
       font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text-on-concrete);
+      font-size: 1.15rem;
+      color: var(--nm-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
       margin-bottom: 0.5rem;
       padding-bottom: 0.35rem;
-      border-bottom: 2px solid var(--amber-dim);
+      border-bottom: 2px solid var(--nm-amber-dim);
       display: inline-block;
     }
     .about-text {
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.95rem;
+      font-family: var(--nm-font);
+      font-size: 1rem;
       font-weight: 400;
-      color: var(--text-mid);
+      color: var(--nm-text-secondary);
       line-height: 1.7;
       margin-bottom: 1rem;
     }
     .about-text a {
-      color: var(--pylon);
+      color: var(--nm-amber);
       font-weight: 500;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
     .about-text a:hover {
-      color: var(--pylon-deep);
+      color: var(--nm-amber-bright);
     }
     .about-features {
       list-style: none;
       padding: 0;
     }
     .about-features li {
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.9rem;
-      color: var(--text-mid);
+      font-family: var(--nm-font);
+      font-size: 1rem;
+      color: var(--nm-text-secondary);
       padding: 0.4rem 0;
       padding-left: 1.25rem;
       position: relative;
@@ -83,22 +87,23 @@
       top: 0.75rem;
       width: 8px;
       height: 8px;
-      border-radius: 50%;
-      background-color: var(--amber);
+      border-radius: 50% !important;
+      background-color: var(--nm-amber);
     }
     .about-disclaimer {
-      background-color: var(--pylon);
+      background-color: var(--nm-surface-elevated);
+      border: 1px solid var(--nm-border);
       padding: 1rem 1.25rem;
       margin-top: 2.5rem;
     }
     .about-disclaimer p {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      color: rgba(240, 236, 228, 0.7);
+      font-family: var(--nm-font);
+      font-size: 0.875rem;
+      color: var(--nm-text-secondary);
       line-height: 1.7;
     }
     .about-disclaimer a {
-      color: var(--pylon-text);
+      color: var(--nm-amber);
       text-decoration: underline;
       text-underline-offset: 2px;
     }
@@ -110,12 +115,12 @@
   <header class="navbar">
     <nav class="navbar-inner">
       <a href="/" class="navbar-brand">
-        <span class="logo-mark">NM</span>
-        <span class="logo-wordmark">NextMetro</span>
+        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
       </a>
       <div class="navbar-links">
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-link">System Map</a>
+        <a href="/" class="nav-link">Arrivals</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-link">Map</a>
+        <a href="/about.html" class="nav-link nav-link--active">About</a>
         <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-link nav-link--988">988</a>
       </div>
     </nav>
@@ -138,7 +143,7 @@
         to display train arrivals, system status, service alerts, station facility conditions, and fare information — all in one place.
       </p>
       <p class="about-text">
-        The interface draws from the Metro's own visual language: the concrete vault ceilings, pylon signage, and PIDS (Passenger Information Display System) boards found in every station.
+        The interface draws from the Metro's own visual language: the brutalist architecture, amber station lighting, and PIDS (Passenger Information Display System) boards found in every station.
       </p>
     </div>
 

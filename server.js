@@ -57,7 +57,7 @@ const WMATA_BASE = 'https://api.wmata.com';
 // ==============================
 // Input Validation
 // ==============================
-const STATION_CODE_RE = /^[A-K][0-9]{2}$/;
+const STATION_CODE_RE = /^[A-KNS][0-9]{2}$/;
 
 function isValidStationCode(code) {
   return STATION_CODE_RE.test(code);
@@ -166,7 +166,9 @@ app.get('/api/station/:code', async (req, res) => {
 // ==============================
 app.get('/api/predictions/:stationCode', async (req, res) => {
   const { stationCode } = req.params;
-  if (!isValidStationCode(stationCode)) {
+  // Support comma-separated codes for multi-platform stations (e.g. "B06,E06")
+  const codes = stationCode.split(',');
+  if (!codes.every(isValidStationCode)) {
     return res.status(400).json({ error: 'Invalid station code' });
   }
 

@@ -1,6 +1,6 @@
 // ==============================
-// NextMetro — Brand v7 JS
-// Full WMATA API Integration
+// NextMetro — Brand v1.0 JS
+// Typography: Rajdhani | Theme: Neutral Brutalist
 // ==============================
 
 const API_BASE_URL = 'https://nextmetro.onrender.com';
@@ -132,21 +132,21 @@ const multiPlatform = {
 
 // ---- Metro Line Colors ----
 const lineColors = {
-  RD: '#bf0d3e',
-  BL: '#009cde',
-  YL: '#ffd100',
-  OR: '#ed8b00',
-  GR: '#00b140',
-  SV: '#a2aaad',
+  RD: '#BF0D3E',
+  BL: '#009CDE',
+  YL: '#FFD100',
+  OR: '#ED8B00',
+  GR: '#00B140',
+  SV: '#A2AAAD',
 };
 
 const pidsLineColors = {
-  RD: '#e33162',
-  BL: '#39b4ea',
-  YL: '#ffd100',
-  OR: '#ed8b00',
-  GR: '#40d870',
-  SV: '#bcc4c7',
+  RD: '#BF0D3E',
+  BL: '#009CDE',
+  YL: '#FFD100',
+  OR: '#ED8B00',
+  GR: '#00B140',
+  SV: '#A2AAAD',
 };
 
 const lineNames = {
@@ -160,42 +160,42 @@ const lineNames = {
 
 // Station code prefix -> line info
 const prefixLines = {
-  A: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
-  B: [{ code: 'RD', name: 'Red', color: '#bf0d3e' }],
+  A: [{ code: 'RD', name: 'Red', color: '#BF0D3E' }],
+  B: [{ code: 'RD', name: 'Red', color: '#BF0D3E' }],
   C: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
   D: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
   E: [
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
   F: [
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
   G: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
   J: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
   K: [
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ],
-  N: [{ code: 'SV', name: 'Silver', color: '#a2aaad' }],
+  N: [{ code: 'SV', name: 'Silver', color: '#A2AAAD' }],
   S: [
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
   ],
 };
 
@@ -210,13 +210,13 @@ let currentIncidents = []; // cached incidents for ticker + sidebar + alerts
 
 // ---- DOM Elements ----
 const heroStationName = document.getElementById('hero-station-name');
-const heroLineSubtitle = document.getElementById('hero-line-subtitle');
+const heroStationAddress = document.getElementById('hero-station-address');
+const stationAddressCache = {};
 const linePillsEl = document.getElementById('line-pills');
 const stationInput = document.getElementById('station-input');
 const stationDropdown = document.getElementById('station-dropdown');
 const pidsContent = document.getElementById('pids-content');
 const pidsHeaderStation = document.getElementById('pids-header-station');
-const pidsHeaderDot = document.getElementById('pids-header-dot');
 const lastUpdatedEl = document.getElementById('last-updated');
 const updatedTimeEl = document.getElementById('updated-time');
 const refreshBtn = document.getElementById('refresh-btn');
@@ -269,6 +269,32 @@ function getPredictionCodes(stationCode) {
 }
 
 // ==============================
+// Station Address
+// ==============================
+async function fetchStationAddress(stationCode) {
+  if (stationAddressCache[stationCode]) {
+    heroStationAddress.textContent = stationAddressCache[stationCode];
+    return;
+  }
+  heroStationAddress.textContent = '';
+  try {
+    const res = await fetch(API_BASE_URL + '/api/station/' + stationCode);
+    const data = await res.json();
+    if (data && data.Address) {
+      const addr = data.Address;
+      const formatted = addr.Street + ', ' + addr.City + ', ' + addr.State + ' ' + addr.Zip;
+      stationAddressCache[stationCode] = formatted;
+      // Only update if this station is still selected
+      if (selectedStation === stationCode) {
+        heroStationAddress.textContent = formatted;
+      }
+    }
+  } catch (e) {
+    // Address is supplementary — fail silently
+  }
+}
+
+// ==============================
 // Hero Station Display
 // ==============================
 function updateHeroDisplay(stationCode) {
@@ -291,7 +317,7 @@ function updateHeroDisplay(stationCode) {
   if (partner) addLines(partner.charAt(0));
 
   heroStationName.textContent = name;
-  heroLineSubtitle.textContent = allLines.map((l) => l.name + ' Line').join(', ');
+  fetchStationAddress(stationCode);
 
   // Update line pills
   linePillsEl.innerHTML = '';
@@ -308,8 +334,6 @@ function updateHeroDisplay(stationCode) {
 
   // Update PIDS header
   pidsHeaderStation.textContent = name;
-  const primaryColor = allLines.length > 0 ? allLines[0].color : '#555';
-  pidsHeaderDot.style.backgroundColor = primaryColor;
 
   // Update fare calculator "from" display
   fareFromName.textContent = name;
@@ -320,12 +344,12 @@ function updateHeroDisplay(stationCode) {
 // ==============================
 function renderTicker(incidents) {
   const lineData = [
-    { code: 'RD', name: 'Red', color: '#bf0d3e' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'RD', name: 'Red', color: '#BF0D3E' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ];
 
   // Determine per-line status from incidents
@@ -402,6 +426,8 @@ async function fetchIncidents() {
     renderAlerts(currentIncidents, selectedStation);
   } catch (err) {
     console.error('Failed to fetch incidents:', err.message);
+    // Still render system status with empty incidents so lines show "Normal"
+    renderSystemStatus([]);
   }
 }
 
@@ -410,12 +436,12 @@ async function fetchIncidents() {
 // ==============================
 function renderSystemStatus(incidents) {
   const lines = [
-    { code: 'RD', name: 'Red', color: '#bf0d3e' },
-    { code: 'OR', name: 'Orange', color: '#ed8b00' },
-    { code: 'BL', name: 'Blue', color: '#009cde' },
-    { code: 'GR', name: 'Green', color: '#00b140' },
-    { code: 'YL', name: 'Yellow', color: '#ffd100' },
-    { code: 'SV', name: 'Silver', color: '#a2aaad' },
+    { code: 'RD', name: 'Red', color: '#BF0D3E' },
+    { code: 'OR', name: 'Orange', color: '#ED8B00' },
+    { code: 'BL', name: 'Blue', color: '#009CDE' },
+    { code: 'GR', name: 'Green', color: '#00B140' },
+    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
   ];
 
   // Determine per-line status
@@ -643,7 +669,11 @@ fareDestination.addEventListener('change', async () => {
     fareResults.style.display = '';
   } catch (err) {
     console.error('Fare fetch error:', err.message);
-    fareResults.style.display = 'none';
+    farePeak.textContent = '--';
+    fareOffpeak.textContent = '--';
+    fareSenior.textContent = '--';
+    fareTime.textContent = 'Unavailable';
+    fareResults.style.display = '';
   }
 });
 
@@ -768,13 +798,6 @@ document.addEventListener('click', (e) => {
 // ==============================
 function renderPidsSkeletons() {
   pidsContent.innerHTML = '';
-
-  // Direction header skeleton
-  const dirHeader = document.createElement('div');
-  dirHeader.className = 'pids-direction';
-  dirHeader.innerHTML =
-    '<span class="pids-direction-label" style="opacity:0.3">Loading...</span>';
-  pidsContent.appendChild(dirHeader);
 
   // Column headers
   const colHeaders = document.createElement('div');
@@ -915,55 +938,22 @@ async function fetchTrains(stationCode) {
       return;
     }
 
-    // Group by direction (Group field: "1" or "2")
-    const group1 = validTrains.filter((t) => t.group === '1').sort(sortByMin);
-    const group2 = validTrains.filter((t) => t.group === '2').sort(sortByMin);
-    // Trains without a group (fallback)
-    const ungrouped = validTrains
-      .filter((t) => t.group !== '1' && t.group !== '2')
-      .sort(sortByMin);
+    // Flat list sorted by arrival time (like real WMATA PIDS boards)
+    const allTrains = validTrains.sort(sortByMin);
 
     pidsContent.innerHTML = '';
 
-    // Determine direction labels from the first destination in each group
-    const renderGroup = (trains, labelFallback) => {
-      if (trains.length === 0) return;
+    // Column headers
+    const colHeaders = document.createElement('div');
+    colHeaders.className = 'pids-col-headers';
+    colHeaders.innerHTML =
+      '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
+    pidsContent.appendChild(colHeaders);
 
-      // Use the first train's destination as the direction label
-      const label = trains[0].destination
-        ? 'To ' + trains[0].destination
-        : labelFallback;
-
-      // Direction header
-      const dirHeader = document.createElement('div');
-      dirHeader.className = 'pids-direction';
-      const dirLabel = document.createElement('span');
-      dirLabel.className = 'pids-direction-label';
-      dirLabel.textContent = label;
-      dirHeader.appendChild(dirLabel);
-      pidsContent.appendChild(dirHeader);
-
-      // Column headers
-      const colHeaders = document.createElement('div');
-      colHeaders.className = 'pids-col-headers';
-      colHeaders.innerHTML =
-        '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-      pidsContent.appendChild(colHeaders);
-
-      // Train rows
-      trains.forEach((train) => {
-        pidsContent.appendChild(createPidsRow(train));
-      });
-    };
-
-    if (group1.length > 0 || group2.length > 0) {
-      renderGroup(group1, 'Direction 1');
-      renderGroup(group2, 'Direction 2');
-    }
-
-    if (ungrouped.length > 0) {
-      renderGroup(ungrouped, 'Arrivals');
-    }
+    // Train rows
+    allTrains.forEach((train) => {
+      pidsContent.appendChild(createPidsRow(train));
+    });
 
     updateTimestamp();
   } catch (err) {
@@ -1048,6 +1038,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Update system status time
   updateSystemStatusTime();
   setInterval(updateSystemStatusTime, 60000);
+
+  // Render system status immediately (all lines Normal) before API returns
+  renderSystemStatus([]);
 
   // Initial data fetches
   fetchTrains(selectedStation);
