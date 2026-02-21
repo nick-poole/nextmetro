@@ -669,7 +669,11 @@ fareDestination.addEventListener('change', async () => {
     fareResults.style.display = '';
   } catch (err) {
     console.error('Fare fetch error:', err.message);
-    fareResults.style.display = 'none';
+    farePeak.textContent = '--';
+    fareOffpeak.textContent = '--';
+    fareSenior.textContent = '--';
+    fareTime.textContent = 'Unavailable';
+    fareResults.style.display = '';
   }
 });
 
