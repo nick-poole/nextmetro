@@ -73,7 +73,6 @@ const lineStatusText = document.getElementById('line-status-text');
 const lineAlertsSection = document.getElementById('line-alerts');
 const lineAlertsBody = document.getElementById('line-alerts-body');
 const lineStationsList = document.getElementById('line-stations-list');
-const lineMap = document.getElementById('line-map');
 
 // ---- State ----
 let incidentsInterval = null;
@@ -291,37 +290,6 @@ function renderStations() {
 }
 
 // ==============================
-// Mini Line Map
-// ==============================
-function renderLineMap() {
-  const track = lineMap.querySelector('.line-map-track');
-  let html = '';
-
-  redLineStations.forEach((station, index) => {
-    const isTransfer = station.transfer && station.transfer.length > 0;
-    const isFirst = index === 0;
-    const isLast = index === redLineStations.length - 1;
-    const pct = (index / (redLineStations.length - 1)) * 100;
-
-    // Only label termini and transfer stations
-    const showLabel = isFirst || isLast || isTransfer;
-
-    html +=
-      '<div class="map-station" style="left:' + pct + '%;" title="' + escapeHtml(station.name) + '">' +
-      '<span class="map-dot' + (isTransfer ? ' map-dot--transfer' : '') + '"></span>' +
-      (showLabel
-        ? '<span class="map-label' +
-          (isFirst ? ' map-label--first' : '') +
-          (isLast ? ' map-label--last' : '') +
-          '">' + escapeHtml(station.name) + '</span>'
-        : '') +
-      '</div>';
-  });
-
-  track.innerHTML = html;
-}
-
-// ==============================
 // Incidents Fetching
 // ==============================
 async function fetchIncidents() {
@@ -355,7 +323,6 @@ function startPolling() {
 document.addEventListener('DOMContentLoaded', async () => {
   // Render static content immediately
   renderStations();
-  renderLineMap();
 
   // Show ticker with all-normal state before API response
   renderTicker([]);

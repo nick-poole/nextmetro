@@ -2555,99 +2555,6 @@ a:hover {
   white-space: nowrap;
 }
 
-/* ---- Mini Line Map ---- */
-.line-map-card {
-  background-color: var(--nm-surface);
-  border: 1px solid var(--nm-border);
-  margin-top: var(--nm-space-lg);
-  overflow: hidden;
-}
-
-.line-map-header {
-  background-color: var(--nm-surface-elevated);
-  padding: 0.6rem 1.25rem;
-  border-bottom: 1px solid var(--nm-border);
-}
-
-.line-map-title {
-  font-family: var(--nm-font);
-  font-weight: 700;
-  font-size: 0.875rem;
-  color: var(--nm-text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.line-map-body {
-  padding: var(--nm-space-xl) var(--nm-space-xl) var(--nm-space-2xl);
-  overflow-x: auto;
-}
-
-.line-map-track {
-  position: relative;
-  height: 4px;
-  background-color: var(--line-color);
-  min-width: 600px;
-  margin: 0 20px;
-}
-
-.map-station {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: default;
-}
-
-.map-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50% !important;
-  background-color: var(--nm-line-red);
-  border: 2px solid var(--nm-surface);
-  position: relative;
-  z-index: 2;
-}
-
-.map-dot--transfer {
-  width: 14px;
-  height: 14px;
-  border: 3px solid var(--nm-surface);
-  background-color: var(--nm-text-primary);
-}
-
-.map-label {
-  position: absolute;
-  top: 16px;
-  font-family: var(--nm-font);
-  font-size: 0.6rem;
-  font-weight: 600;
-  color: var(--nm-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  transform: translateX(-50%);
-  left: 50%;
-}
-
-.map-label--first {
-  transform: none;
-  left: 0;
-}
-
-.map-label--last {
-  transform: none;
-  left: auto;
-  right: 0;
-}
-
-.map-dot--transfer + .map-label {
-  color: var(--nm-text-secondary);
-  font-weight: 700;
-}
-
 /* ---- Section Headings ---- */
 .line-section-heading {
   font-family: var(--nm-font);
@@ -2996,6 +2903,24 @@ a:hover {
   font-weight: 600;
 }
 
+.line-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--nm-space-md);
+  font-family: var(--nm-font);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--nm-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.line-map-link:hover {
+  color: var(--nm-amber-bright);
+}
+
 /* ---- Line Disclaimer ---- */
 .line-disclaimer {
   background-color: var(--nm-surface-elevated);
@@ -3059,7 +2984,4 @@ a:hover {
     font-size: 0.8rem;
   }
 
-  .line-map-body {
-    padding: var(--nm-space-md) var(--nm-space-sm) var(--nm-space-xl);
-  }
 }
