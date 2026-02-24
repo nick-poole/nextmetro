@@ -4,7 +4,7 @@
 
 NextMetro displays live train arrivals, system status, service alerts, station facility conditions, and fare information — styled after the Metro's own visual language of concrete vault ceilings, pylon signage, and PIDS boards.
 
-**[Live Site](https://nextmetro.netlify.app)** · **[API Backend](https://nextmetro.onrender.com)**
+**[Live Site](https://nextmetro.live)** · **[API Backend](https://nextmetro.onrender.com)**
 
 ---
 
@@ -28,7 +28,7 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 | **Frontend** | Vanilla HTML5, CSS, JavaScript |
 | **Backend** | Express.js v5 (Node.js) |
 | **API** | [WMATA Real-Time Rail API](https://developer.wmata.com/) |
-| **Typography** | Barlow, Barlow Condensed, JetBrains Mono (Google Fonts) |
+| **Typography** | Rajdhani (Google Fonts) |
 | **Frontend Hosting** | Netlify (static, no build step) |
 | **Backend Hosting** | Render |
 
@@ -40,6 +40,8 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 | `node-fetch` | Server-side HTTP requests to WMATA API |
 | `cors` | Cross-origin request handling |
 | `dotenv` | Environment variable management |
+| `helmet` | HTTP security headers |
+| `express-rate-limit` | API rate limiting (60 req/min per IP) |
 
 ---
 
@@ -49,27 +51,34 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 nextmetro/
 ├── server.js              Express backend (API proxy + cache + static serving)
 ├── package.json
+├── .env.example           Environment variable template
 ├── .gitignore
 ├── LICENSE                MIT
 ├── README.md
+├── SECURITY.md            Security policy and measures
+├── render.yaml            Render deployment config
 └── public/                Static frontend (served by Express and Netlify)
-    ├── index.html         Main app page
+    ├── index.html         Main arrivals app
     ├── about.html         About page
     ├── 404.html           Custom 404 page
     ├── robots.txt
     ├── sitemap.xml
     ├── netlify.toml       Netlify deploy config + API proxy redirects
+    ├── fares/
+    │   └── index.html     Fare calculator page
     ├── css/
-    │   └── styles.css     Full design system (~1,170 lines)
+    │   └── styles.css     Full design system (~1,225 lines)
     ├── js/
-    │   └── app.js         Application logic (~1,060 lines)
-    └── images/            Photography assets
+    │   ├── app.js         Application logic (~1,070 lines)
+    │   └── fares.js       Fare calculator logic (~410 lines)
+    └── images/            Photography assets (16 images)
 ```
 
 ### API Routes (server.js)
 
 | Route | Description | Cache |
 |-------|-------------|-------|
+| `GET /healthz` | Health check (uptime, API key status) | None |
 | `GET /api/stations` | All WMATA stations | Infinite |
 | `GET /api/station/:code` | Single station info | Infinite |
 | `GET /api/predictions/:code` | Real-time train arrivals | None (live) |
@@ -124,7 +133,7 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 - **PIDS display**: Black screen (`#0a0a0a`) with brightened line colors and amber accents
 - **Fare machine**: WMATA blue (`#0077b6`) with orange stripe accents
 - **Metro line colors**: Accurate WMATA standard colors for all six lines
-- **Typography**: Barlow for UI text, JetBrains Mono for data and system displays
+- **Typography**: Rajdhani for all UI text and data displays
 - **AA accessibility**: All text-on-background color combinations meet WCAG AA contrast ratios
 - **Zero border-radius**: Sharp rectangular edges throughout (matching pylon sign language)
 
