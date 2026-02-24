@@ -38,7 +38,7 @@ const LINE_CODE = 'RD';
 
 const redLineStations = [
   { code: 'A15', name: 'Shady Grove', parking: true },
-  { code: 'A14', name: 'Rockville', parking: true },
+  { code: 'A14', name: 'Rockville', parking: true, external: ['MARC'] },
   { code: 'A13', name: 'Twinbrook', parking: true },
   { code: 'A12', name: 'North Bethesda', parking: true },
   { code: 'A11', name: 'Grosvenor-Strathmore', parking: true },
@@ -54,13 +54,13 @@ const redLineStations = [
   { code: 'A01', name: 'Metro Center', parking: false, transfer: ['OR', 'BL', 'SV'] },
   { code: 'B01', name: 'Gallery Pl-Chinatown', parking: false, transfer: ['GR', 'YL'] },
   { code: 'B02', name: 'Judiciary Square', parking: false },
-  { code: 'B03', name: 'Union Station', parking: false },
+  { code: 'B03', name: 'Union Station', parking: false, external: ['Amtrak', 'MARC', 'VRE', 'DC Streetcar'] },
   { code: 'B35', name: 'NoMa-Gallaudet U', parking: false },
   { code: 'B04', name: 'Rhode Island Ave-Brentwood', parking: true },
   { code: 'B05', name: 'Brookland-CUA', parking: false },
   { code: 'B06', name: 'Fort Totten', parking: true, transfer: ['GR', 'YL'] },
   { code: 'B07', name: 'Takoma', parking: false },
-  { code: 'B08', name: 'Silver Spring', parking: false },
+  { code: 'B08', name: 'Silver Spring', parking: false, external: ['MARC'] },
   { code: 'B09', name: 'Forest Glen', parking: true },
   { code: 'B10', name: 'Wheaton', parking: true },
   { code: 'B11', name: 'Glenmont', parking: true },
@@ -261,11 +261,20 @@ function renderStations() {
         '</span>';
     }
 
+    // External connections
+    if (station.external && station.external.length > 0) {
+      station.external.forEach((name) => {
+        badges +=
+          '<span class="station-badge station-badge--external" title="' + escapeHtml(name) + '">' +
+          '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
+          escapeHtml(name) +
+          '</span>';
+      });
+    }
+
     // Terminus label
     let terminus = '';
-    if (isFirst) {
-      terminus = '<span class="station-terminus">Terminus</span>';
-    } else if (isLast) {
+    if (isFirst || isLast) {
       terminus = '<span class="station-terminus">Terminus</span>';
     }
 
