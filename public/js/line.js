@@ -227,8 +227,13 @@ function renderAlerts(incidents) {
 
 // ==============================
 // Station List
+// (Station HTML is pre-rendered in the page for SEO crawlability.
+//  This function is kept as a fallback if the static HTML is absent.)
 // ==============================
 function renderStations() {
+  // If station rows already exist in the DOM (server-rendered), skip re-render
+  if (lineStationsList && lineStationsList.children.length > 0) return;
+
   let html = '';
 
   redLineStations.forEach((station, index) => {

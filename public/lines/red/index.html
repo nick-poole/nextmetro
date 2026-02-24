@@ -16,23 +16,175 @@
   <meta property="og:description" content="Red Line status, service alerts, and all 27 stations from Shady Grove to Glenmont. Live updates for the DC Metro Red Line." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nextmetro.live/lines/red/" />
+  <meta property="og:site_name" content="NextMetro" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://nextmetro.live/images/og-red-line.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="DC Metro Red Line — 27 stations from Shady Grove to Glenmont" />
 
-  <!-- Schema Markup -->
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Red Line — Stations, Status & Alerts | NextMetro" />
+  <meta name="twitter:description" content="Red Line status, service alerts, and all 27 stations from Shady Grove to Glenmont. Live updates for the DC Metro Red Line." />
+  <meta name="twitter:image" content="https://nextmetro.live/images/og-red-line.png" />
+
+  <!-- Schema: TransitLine + BreadcrumbList + FAQPage + OpeningHoursSpecification -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TransitLine",
-    "name": "Red Line",
-    "alternateName": "Metrorail Red Line",
-    "operator": {
-      "@type": "Organization",
-      "name": "Washington Metropolitan Area Transit Authority",
-      "alternateName": "WMATA"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "TransitLine",
+      "name": "Red Line",
+      "alternateName": "Metrorail Red Line",
+      "description": "The Red Line is the oldest and longest line in the Washington Metro system, running 31.2 miles with 27 stations from Shady Grove in Maryland through downtown Washington, D.C. to Glenmont in Maryland.",
+      "operator": {
+        "@type": "Organization",
+        "name": "Washington Metropolitan Area Transit Authority",
+        "alternateName": "WMATA",
+        "url": "https://www.wmata.com"
+      },
+      "serviceType": "Metrorail",
+      "color": "#BF0D3E",
+      "numberOfStations": 27,
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "05:00",
+          "closes": "00:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "05:00",
+          "closes": "02:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "06:00",
+          "closes": "02:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "06:00",
+          "closes": "00:00"
+        }
+      ]
     },
-    "serviceType": "Metrorail",
-    "color": "#BF0D3E",
-    "numberOfStations": 27
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nextmetro.live/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Metro Lines",
+          "item": "https://nextmetro.live/lines/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Red Line",
+          "item": "https://nextmetro.live/lines/red/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many stations does the DC Metro Red Line have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The DC Metro Red Line has 27 stations, running from Shady Grove in Rockville, Maryland through downtown Washington, D.C. to Glenmont in Wheaton, Maryland. It is the longest line in the Metrorail system at 31.2 miles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the Red Line go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Red Line runs from Shady Grove in Rockville, Maryland through Bethesda, downtown D.C. (including Dupont Circle, Metro Center, Union Station, and Chinatown), and continues northeast through Silver Spring to Glenmont in Wheaton, Maryland. It passes through Montgomery County, the District of Columbia, and Prince George's County."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the Red Line service hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As of June 2025, Red Line service hours are: Monday through Thursday 5:00 AM to midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM to midnight. Hours may vary on holidays and special events."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often does the Red Line run?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "During rush hours (weekdays 5:00–9:30 AM and 3:00–7:00 PM), Red Line trains run approximately every 6 minutes. During off-peak times, trains run every 12 to 15 minutes. Weekend frequency is typically every 12 to 15 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does the Red Line cost to ride?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Red Line fares range from $2.00 to $6.00 per trip depending on distance and time of day. Peak fares (weekdays opening–9:30 AM and 3:00–7:00 PM) range from $2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or contactless payment is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Red Line go to the airport?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Red Line does not go directly to any airport. To reach Reagan National Airport (DCA), transfer to the Blue or Yellow Line at Metro Center. To reach Dulles International Airport (IAD), transfer to the Silver Line at Metro Center. Baltimore-Washington Airport (BWI) is accessible via MARC train from Union Station on the Red Line."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What transfers can I make on the Red Line?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Red Line connects to all other Metro lines at three transfer stations: Metro Center (transfer to Orange, Blue, and Silver lines), Gallery Place-Chinatown (transfer to Green and Yellow lines), and Fort Totten (transfer to Green and Yellow lines). At Union Station, you can also connect to Amtrak, MARC, VRE, and the DC Streetcar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to ride the entire Red Line?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A complete end-to-end trip on the Red Line from Shady Grove to Glenmont takes approximately 60 to 65 minutes. The 31.2-mile journey passes through 27 stations across Maryland and Washington, D.C."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Red Line stations have parking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The following Red Line stations have parking facilities: Shady Grove, Rockville, Twinbrook, North Bethesda, Grosvenor-Strathmore, Medical Center, Rhode Island Ave-Brentwood, Fort Totten, Forest Glen, Wheaton, and Glenmont. Parking is free on weekends and holidays. On weekdays, most lots charge $5.20 per day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Red Line the busiest Metro line?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the Red Line is the busiest line in the Washington Metro system. It carries the highest ridership of all six lines, connecting major employment centers, cultural destinations, universities, and residential areas across Maryland and D.C. It was also the first Metrorail line to open, with service beginning in 1976."
+          }
+        }
+      ]
+    }
+  ]
   </script>
 </head>
 <body>
@@ -67,6 +219,17 @@
   <div class="ticker-bar">
     <div class="ticker-track" id="ticker-track"></div>
   </div>
+
+  <!-- Breadcrumb -->
+  <nav class="line-breadcrumb" aria-label="Breadcrumb">
+    <ol class="line-breadcrumb-list">
+      <li class="line-breadcrumb-item"><a href="/">Home</a></li>
+      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
+      <li class="line-breadcrumb-item"><span>Metro Lines</span></li>
+      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
+      <li class="line-breadcrumb-item line-breadcrumb-current" aria-current="page">Red Line</li>
+    </ol>
+  </nav>
 
   <!-- Line Hero -->
   <section class="line-hero" style="--line-color: var(--nm-line-red);">
@@ -118,11 +281,37 @@
       </div>
     </div>
 
-    <!-- All Stations -->
+    <!-- All Stations (static HTML for SEO crawlability, enhanced by JS) -->
     <section class="line-stations animate-in d3">
       <h2 class="line-section-heading">All Stations</h2>
       <div class="line-stations-list" id="line-stations-list">
-        <!-- Stations rendered by JS -->
+        <a href="/" class="line-station-row" data-code="A15"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Shady Grove</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span><span class="station-terminus">Terminus</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A14"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Rockville</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span><span class="station-badge station-badge--external" title="MARC"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>MARC</span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A13"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Twinbrook</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A12"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">North Bethesda</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A11"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Grosvenor-Strathmore</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A10"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Medical Center</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A09"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Bethesda</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A08"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Friendship Heights</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A07"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Tenleytown-AU</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A06"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Van Ness-UDC</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A05"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Cleveland Park</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A04"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Woodley Park-Zoo/Adams Morgan</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A03"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Dupont Circle</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A02"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Farragut North</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="A01"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Metro Center</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#ED8B00" title="Orange Line"></span><span class="station-transfer-dot" style="background-color:#009CDE" title="Blue Line"></span><span class="station-transfer-dot" style="background-color:#A2AAAD" title="Silver Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B01"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Gallery Pl-Chinatown</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#00B140" title="Green Line"></span><span class="station-transfer-dot" style="background-color:#FFD100" title="Yellow Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B02"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Judiciary Square</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B03"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Union Station</span><span class="line-station-badges"><span class="station-badge station-badge--external" title="Amtrak"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Amtrak</span><span class="station-badge station-badge--external" title="MARC"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>MARC</span><span class="station-badge station-badge--external" title="VRE"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>VRE</span><span class="station-badge station-badge--external" title="DC Streetcar"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>DC Streetcar</span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B35"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">NoMa-Gallaudet U</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B04"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Rhode Island Ave-Brentwood</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B05"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Brookland-CUA</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B06"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Fort Totten</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#00B140" title="Green Line"></span><span class="station-transfer-dot" style="background-color:#FFD100" title="Yellow Line"></span><span class="station-transfer-label">Transfer</span></span><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B07"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Takoma</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B08"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Silver Spring</span><span class="line-station-badges"><span class="station-badge station-badge--external" title="MARC"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>MARC</span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B09"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Forest Glen</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B10"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span><span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Wheaton</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="B11"><span class="line-station-dot-col"><span class="line-station-dot" style="--line-color: var(--nm-line-red);"></span></span><span class="line-station-info"><span class="line-station-name">Glenmont</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span><span class="station-terminus">Terminus</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
       </div>
     </section>
 
@@ -155,28 +344,32 @@
               <span class="line-info-label">Length</span>
               <span class="line-info-value">31.2 miles</span>
             </div>
+            <div class="line-info-row">
+              <span class="line-info-label">End-to-End</span>
+              <span class="line-info-value">~60&ndash;65 minutes</span>
+            </div>
           </div>
         </div>
 
-        <!-- Service Hours -->
+        <!-- Service Hours (Updated June 2025) -->
         <div class="line-info-card">
           <h3 class="line-info-card-title">Service Hours</h3>
           <div class="line-info-rows">
             <div class="line-info-row">
               <span class="line-info-label">Mon &ndash; Thu</span>
-              <span class="line-info-value">5:00 AM &ndash; 11:30 PM</span>
+              <span class="line-info-value">5:00 AM &ndash; Midnight</span>
             </div>
             <div class="line-info-row">
               <span class="line-info-label">Friday</span>
-              <span class="line-info-value">5:00 AM &ndash; 1:00 AM</span>
+              <span class="line-info-value">5:00 AM &ndash; 2:00 AM</span>
             </div>
             <div class="line-info-row">
               <span class="line-info-label">Saturday</span>
-              <span class="line-info-value">7:00 AM &ndash; 1:00 AM</span>
+              <span class="line-info-value">6:00 AM &ndash; 2:00 AM</span>
             </div>
             <div class="line-info-row">
               <span class="line-info-label">Sunday</span>
-              <span class="line-info-value">7:00 AM &ndash; 11:30 PM</span>
+              <span class="line-info-value">6:00 AM &ndash; Midnight</span>
             </div>
           </div>
           <a href="/hours/" class="line-info-link">Full schedule &rarr;</a>
@@ -227,10 +420,77 @@
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="line-faq">
+      <h2 class="line-section-heading">Frequently Asked Questions</h2>
+      <div class="line-faq-list">
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How many stations does the DC Metro Red Line have?</summary>
+          <div class="line-faq-answer">
+            <p>The DC Metro Red Line has 27 stations, running from Shady Grove in Rockville, Maryland through downtown Washington, D.C. to Glenmont in Wheaton, Maryland. It is the longest line in the Metrorail system at 31.2 miles.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Where does the Red Line go?</summary>
+          <div class="line-faq-answer">
+            <p>The Red Line runs from Shady Grove in Rockville, Maryland through Bethesda, downtown D.C. (including Dupont Circle, Metro Center, Union Station, and Chinatown), and continues northeast through Silver Spring to Glenmont in Wheaton, Maryland. It passes through Montgomery County, the District of Columbia, and Prince George's County.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What are the Red Line service hours?</summary>
+          <div class="line-faq-answer">
+            <p>As of June 2025, Red Line service hours are: Monday through Thursday 5:00 AM to midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM to midnight. Hours may vary on holidays and special events.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How often does the Red Line run?</summary>
+          <div class="line-faq-answer">
+            <p>During rush hours (weekdays 5:00&ndash;9:30 AM and 3:00&ndash;7:00 PM), Red Line trains run approximately every 6 minutes. During off-peak times, trains run every 12 to 15 minutes. Weekend frequency is typically every 12 to 15 minutes.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How much does the Red Line cost to ride?</summary>
+          <div class="line-faq-answer">
+            <p>Red Line fares range from $2.00 to $6.00 per trip depending on distance and time of day. Peak fares (weekdays opening&ndash;9:30 AM and 3:00&ndash;7:00 PM) range from $2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or contactless payment is required. <a href="/fares/">Calculate your fare &rarr;</a></p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Does the Red Line go to the airport?</summary>
+          <div class="line-faq-answer">
+            <p>The Red Line does not go directly to any airport. To reach Reagan National Airport (DCA), transfer to the Blue or Yellow Line at Metro Center. To reach Dulles International Airport (IAD), transfer to the Silver Line at Metro Center. Baltimore-Washington Airport (BWI) is accessible via MARC train from Union Station on the Red Line.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What transfers can I make on the Red Line?</summary>
+          <div class="line-faq-answer">
+            <p>The Red Line connects to all other Metro lines at three transfer stations: Metro Center (transfer to Orange, Blue, and Silver lines), Gallery Place-Chinatown (transfer to Green and Yellow lines), and Fort Totten (transfer to Green and Yellow lines). At Union Station, you can also connect to Amtrak, MARC, VRE, and the DC Streetcar.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How long does it take to ride the entire Red Line?</summary>
+          <div class="line-faq-answer">
+            <p>A complete end-to-end trip on the Red Line from Shady Grove to Glenmont takes approximately 60 to 65 minutes. The 31.2-mile journey passes through 27 stations across Maryland and Washington, D.C.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Which Red Line stations have parking?</summary>
+          <div class="line-faq-answer">
+            <p>The following Red Line stations have parking facilities: Shady Grove, Rockville, Twinbrook, North Bethesda, Grosvenor-Strathmore, Medical Center, Rhode Island Ave-Brentwood, Fort Totten, Forest Glen, Wheaton, and Glenmont. Parking is free on weekends and holidays. On weekdays, most lots charge $5.20 per day.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Is the Red Line the busiest Metro line?</summary>
+          <div class="line-faq-answer">
+            <p>Yes, the Red Line is the busiest line in the Washington Metro system. It carries the highest ridership of all six lines, connecting major employment centers, cultural destinations, universities, and residential areas across Maryland and D.C. It was also the first Metrorail line to open, with service beginning in 1976.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
     <!-- Disclaimer -->
     <div class="line-disclaimer">
       <p>
-        Status and alerts are sourced from the <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a> and update every 60 seconds. Service hours are subject to change for holidays and special events. For the most current information, visit <a href="https://www.wmata.com/" target="_blank" rel="noopener">wmata.com</a>. NextMetro is not affiliated with WMATA.
+        Status and alerts are sourced from the <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a> and update every 60 seconds. Service hours are effective June 22, 2025 and subject to change for holidays and special events. For the most current information, visit <a href="https://www.wmata.com/" target="_blank" rel="noopener">wmata.com</a>. NextMetro is not affiliated with WMATA.
       </p>
     </div>
   </div>
