@@ -617,8 +617,8 @@ function populateFareDestinations() {
   const opts = [];
 
   Object.entries(stations).forEach(([code, name]) => {
-    // Skip the partner codes (C01, F01, F03, E06) to avoid duplicates
-    if (['C01', 'F01', 'F03', 'E06'].includes(code)) return;
+    // Skip multi-platform partner codes and duplicate S-prefix station codes
+    if (['C01', 'F01', 'F03', 'E06', 'S04', 'S09', 'S10', 'S12', 'S13', 'S14'].includes(code)) return;
     if (seen.has(name)) return;
     seen.add(name);
     opts.push({ code, name });

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    runtime: node
+    name: nextmetro
+    repo: https://github.com/nick-poole/nextmetro.git
+    branch: main
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/stations
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: WMATA_API_KEY
+        sync: false
