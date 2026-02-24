@@ -55,6 +55,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 const WMATA_API_KEY = process.env.WMATA_API_KEY;
 const WMATA_BASE = 'https://api.wmata.com';
 
+if (!WMATA_API_KEY) {
+  console.warn('WARNING: WMATA_API_KEY is not set. All WMATA API calls will fail.');
+}
+
+// ==============================
+// Health Check
+// ==============================
+app.get('/healthz', (req, res) => {
+  res.json({
+    status: 'ok',
+    wmataKeySet: !!WMATA_API_KEY,
+    uptime: process.uptime(),
+  });
+});
+
 // ==============================
 // Input Validation
 // ==============================
@@ -281,4 +296,6 @@ app.use((req, res) => {
 // ==============================
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
+  console.log(`WMATA API key: ${WMATA_API_KEY ? 'configured' : 'MISSING'}`);
+  console.log(`Node.js ${process.version}`);
 });

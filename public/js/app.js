@@ -5,6 +5,17 @@
 
 const API_BASE_URL = '';
 
+// ---- Fetch with retry (handles Render free-tier cold starts) ----
+async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const res = await fetch(url);
+    if (res.ok) return res;
+    // Retry on 503 (Render waking up) but not other errors
+    if (res.status !== 503 || attempt === retries) return res;
+    await new Promise((r) => setTimeout(r, delayMs * (attempt + 1)));
+  }
+}
+
 // ---- Station Data ----
 const stations = {
   A01: 'Metro Center',
@@ -278,7 +289,7 @@ async function fetchStationAddress(stationCode) {
   }
   heroStationAddress.textContent = '';
   try {
-    const res = await fetch(API_BASE_URL + '/api/station/' + stationCode);
+    const res = await fetchWithRetry(API_BASE_URL + '/api/station/' + stationCode);
     const data = await res.json();
     if (data && data.Address) {
       const addr = data.Address;
@@ -416,7 +427,7 @@ function parseAffectedLines(linesStr) {
 // ==============================
 async function fetchIncidents() {
   try {
-    const res = await fetch(API_BASE_URL + '/api/incidents');
+    const res = await fetchWithRetry(API_BASE_URL + '/api/incidents');
     if (!res.ok) throw new Error('Incidents API error');
     const data = await res.json();
     currentIncidents = data.Incidents || [];
@@ -543,7 +554,7 @@ async function fetchFacilities(stationCode) {
     const allIncidents = [];
 
     for (const code of codes) {
-      const res = await fetch(API_BASE_URL + '/api/elevators/' + code);
+      const res = await fetchWithRetry(API_BASE_URL + '/api/elevators/' + code);
       if (!res.ok) throw new Error('Elevators API error');
       const data = await res.json();
       if (data.ElevatorIncidents) {
@@ -617,8 +628,8 @@ function populateFareDestinations() {
   const opts = [];
 
   Object.entries(stations).forEach(([code, name]) => {
-    // Skip the partner codes (C01, F01, F03, E06) to avoid duplicates
-    if (['C01', 'F01', 'F03', 'E06'].includes(code)) return;
+    // Skip multi-platform partner codes and duplicate S-prefix station codes
+    if (['C01', 'F01', 'F03', 'E06', 'S04', 'S09', 'S10', 'S12', 'S13', 'S14'].includes(code)) return;
     if (seen.has(name)) return;
     seen.add(name);
     opts.push({ code, name });
@@ -645,7 +656,7 @@ fareDestination.addEventListener('change', async () => {
   }
 
   try {
-    const res = await fetch(
+    const res = await fetchWithRetry(
       API_BASE_URL + '/api/fare/' + selectedStation + '/' + toCode
     );
     if (!res.ok) throw new Error('Fare API error');
@@ -921,7 +932,7 @@ async function fetchTrains(stationCode) {
 
   try {
     const codes = getPredictionCodes(stationCode);
-    const res = await fetch(API_BASE_URL + '/api/predictions/' + codes);
+    const res = await fetchWithRetry(API_BASE_URL + '/api/predictions/' + codes);
     if (!res.ok) throw new Error('API error');
 
     const data = await res.json();
@@ -1022,7 +1033,7 @@ refreshBtn.addEventListener('click', () => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Init hero display
   updateHeroDisplay(selectedStation);
 
@@ -1041,6 +1052,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render system status immediately (all lines Normal) before API returns
   renderSystemStatus([]);
+
+  // Wake up Render backend (free tier sleeps after 15 min of inactivity)
+  try {
+    await fetchWithRetry(API_BASE_URL + '/healthz', 3, 2000);
+  } catch (e) {
+    // Backend may be down — fetches below will handle gracefully
+  }
 
   // Initial data fetches
   fetchTrains(selectedStation);
