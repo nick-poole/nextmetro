@@ -14,20 +14,30 @@
 <body>
 
   <!-- NavBar -->
-  <header class="navbar">
+  <header class="navbar" id="navbar">
     <nav class="navbar-inner">
       <a href="/" class="navbar-brand">
         <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
       </a>
       <div class="navbar-links">
-        <a href="/" class="nav-link">Arrivals</a>
+        <a href="/alerts/" class="nav-link">Alerts</a>
+        <a href="/map/" class="nav-link">Map</a>
         <a href="/fares/" class="nav-link">Fares</a>
-        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-link">Map</a>
-        <a href="/about.html" class="nav-link nav-link--active">About</a>
-        <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-link nav-link--988">988</a>
       </div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+      </button>
     </nav>
   </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/alerts/" class="mobile-menu-link">Alerts</a>
+    <a href="/map/" class="mobile-menu-link">Map</a>
+    <a href="/fares/" class="mobile-menu-link">Fares</a>
+  </div>
 
   <!-- Ticker placeholder -->
   <div class="ticker-bar">
@@ -82,21 +92,40 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-links">
-        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
-        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener">System Map</a>
-        <a href="/fares/">Fares</a>
-        <a href="/about.html">About</a>
-      </div>
-      <div class="footer-988">
-        <span class="footer-988-label">Crisis Resources</span>
-        <a href="https://988lifeline.org/" target="_blank" rel="noopener">988 Suicide &amp; Crisis Lifeline</a>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-col-heading">Lines</span>
+          <a href="/lines/red/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-red)"></span>Red</a>
+          <a href="/lines/orange/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-orange)"></span>Orange</a>
+          <a href="/lines/blue/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-blue)"></span>Blue</a>
+          <a href="/lines/yellow/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-yellow)"></span>Yellow</a>
+          <a href="/lines/green/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-green)"></span>Green</a>
+          <a href="/lines/silver/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-silver)"></span>Silver</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Tools</span>
+          <a href="/elevators/">Elevators</a>
+          <a href="/hours/">Hours</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Support</span>
+          <a href="/about.html">About</a>
+          <a href="/help/">Help</a>
+          <a href="/crisis/">Crisis</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Legal</span>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
       </div>
     </div>
   </footer>
 
+  <script src="/js/nav.js"></script>
 </body>
 </html>
