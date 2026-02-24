@@ -299,12 +299,22 @@ function renderLineMap() {
 
   redLineStations.forEach((station, index) => {
     const isTransfer = station.transfer && station.transfer.length > 0;
+    const isFirst = index === 0;
+    const isLast = index === redLineStations.length - 1;
     const pct = (index / (redLineStations.length - 1)) * 100;
+
+    // Only label termini and transfer stations
+    const showLabel = isFirst || isLast || isTransfer;
 
     html +=
       '<div class="map-station" style="left:' + pct + '%;" title="' + escapeHtml(station.name) + '">' +
       '<span class="map-dot' + (isTransfer ? ' map-dot--transfer' : '') + '"></span>' +
-      '<span class="map-label">' + escapeHtml(station.name) + '</span>' +
+      (showLabel
+        ? '<span class="map-label' +
+          (isFirst ? ' map-label--first' : '') +
+          (isLast ? ' map-label--last' : '') +
+          '">' + escapeHtml(station.name) + '</span>'
+        : '') +
       '</div>';
   });
 
