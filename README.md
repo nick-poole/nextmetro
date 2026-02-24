@@ -18,6 +18,7 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 - **Service Alerts** — Station-specific incident alerts that filter system-wide incidents to show only what's relevant to the selected station's lines.
 - **Elevator & Escalator Status** — Facility outage tracking with operational/outage counts and detailed descriptions.
 - **Fare Calculator** — Interactive fare lookup between any two stations showing peak, off-peak, and senior/disabled pricing with estimated travel time.
+- **Line Pages** — Dedicated pages for each Metro line with real-time arrivals, station lists with transfer/parking badges, service hours, frequency info, and an FAQ section with structured data for SEO. Currently live: [Red Line](https://nextmetro.live/lines/red/).
 
 ---
 
@@ -66,10 +67,15 @@ nextmetro/
     ├── netlify.toml       Netlify deploy config + API proxy redirects
     ├── fares/
     │   └── index.html     Fare calculator page
+    ├── lines/
+    │   └── red/
+    │       └── index.html Red Line page (stations, service info, FAQ)
     ├── css/
-    │   └── styles.css     Full design system (~1,225 lines)
+    │   └── styles.css     Full design system (~3,135 lines)
     ├── js/
     │   ├── app.js         Application logic (~1,070 lines)
+    │   ├── nav.js         Shared navigation bar component (~30 lines)
+    │   ├── line.js        Line page logic — arrivals, alerts, FAQ toggle (~355 lines)
     │   └── fares.js       Fare calculator logic (~410 lines)
     └── images/            Photography assets (16 images)
 ```
@@ -140,6 +146,15 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 ---
 
 ## Changelog
+
+### v2.1.0 — Line Pages
+
+- Add dedicated Red Line page with all 27 stations, transfer badges, parking indicators, and external rail connections (Amtrak, MARC, VRE, DC Streetcar)
+- Real-time arrival boards and service alerts on the line page via WMATA API
+- Service hours table, train frequency info, and end-to-end travel time
+- 10-question FAQ section with schema.org FAQPage structured data for SEO
+- Shared nav component (`nav.js`) and line page logic (`line.js`)
+- Concrete Vault design extended with line page styles (~3,135 total CSS lines)
 
 ### v2.0.0 — Full WMATA API Integration & Brand Overhaul
 
