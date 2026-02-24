@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC Metro Fare Calculator — Peak & Off-Peak Prices | NextMetro</title>
+  <meta name="description" content="Calculate DC Metro fares between any two stations. Compare peak, off-peak, and senior/disabled prices. Metro fares range from $2.00 to $6.00 depending on distance and time of day." />
+  <meta name="keywords" content="dc metro fare calculator, wmata fare, metro cost, how much is metro, dc metro price, metro peak fare, smartrip, washington dc metro" />
+  <link rel="canonical" href="https://nextmetro.live/fares/" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DC Metro Fare Calculator — Peak & Off-Peak Prices | NextMetro" />
+  <meta property="og:description" content="Calculate DC Metro fares between any two stations. Compare peak, off-peak, and senior/disabled prices." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/fares/" />
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does the DC Metro cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DC Metro fares range from $2.00 to $6.00 per trip depending on distance traveled and time of day. Off-peak fares range from $2.00 to $3.85, while peak fares range from $2.25 to $6.00. Senior citizens and persons with disabilities pay approximately half the peak fare."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are DC Metro peak hours?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Peak fares apply on weekdays (Monday through Friday) from opening through 9:30 AM, and from 3:00 PM through 7:00 PM. Off-peak fares apply at all other times, including weekends and federal holidays."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a SmarTrip card to ride Metro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, a SmarTrip card or contactless payment method is required to ride Metrorail. SmarTrip cards can be purchased at fare machines in any Metro station for $2.00. You can also use contactless credit/debit cards and mobile wallets (Apple Pay, Google Pay) at fare gates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do Metro transfers work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rail-to-rail transfers within the Metrorail system are included in your fare — you can transfer between lines at no additional cost during a continuous trip. Rail-to-bus transfers provide a $0.50 discount on the connecting Metrobus fare when using SmarTrip."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ---- Fares Page Layout ---- */
+    .fares-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 var(--nm-space-lg) var(--nm-space-3xl);
+    }
+
+    .fares-hero {
+      background-color: var(--nm-surface);
+      padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+      border-bottom: 1px solid var(--nm-border-subtle);
+    }
+
+    .fares-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .fares-hero-label {
+      display: block;
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--nm-amber-dim);
+      letter-spacing: 0.12em;
+      margin-bottom: var(--nm-space-xs);
+    }
+
+    .fares-hero-title {
+      font-family: var(--nm-font);
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      color: var(--nm-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: var(--nm-space-sm);
+    }
+
+    .fares-hero-subtitle {
+      font-family: var(--nm-font);
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--nm-text-secondary);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* ---- Peak Indicator ---- */
+    .peak-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--nm-surface-elevated);
+      border: 1px solid var(--nm-border);
+      padding: 8px 14px;
+      margin-top: var(--nm-space-md);
+    }
+
+    .peak-indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50% !important;
+      flex-shrink: 0;
+    }
+
+    .peak-indicator-dot--peak {
+      background-color: var(--nm-status-warn);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .peak-indicator-dot--offpeak {
+      background-color: var(--nm-status-ok);
+    }
+
+    .peak-indicator-text {
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--nm-text-primary);
+    }
+
+    .peak-indicator-time {
+      font-family: var(--nm-font);
+      font-weight: 500;
+      font-size: 0.7rem;
+      color: var(--nm-text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ---- Interactive Calculator ---- */
+    .calc-card {
+      background-color: var(--nm-fare-blue);
+      border: 2px solid var(--nm-fare-blue);
+      overflow: hidden;
+      margin-top: var(--nm-space-xl);
+    }
+
+    .calc-header {
+      background-color: var(--nm-fare-blue);
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--nm-fare-orange);
+    }
+
+    .calc-title {
+      font-family: var(--nm-font);
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: #e2feff;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .calc-body {
+      padding: var(--nm-space-lg) 1.25rem;
+    }
+
+    .calc-route {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--nm-space-md);
+      align-items: end;
+    }
+
+    .calc-station {
+      min-width: 0;
+    }
+
+    .calc-station-label {
+      display: block;
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: rgba(181, 217, 237, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--nm-space-xs);
+    }
+
+    .calc-select {
+      width: 100%;
+      padding: 10px 12px;
+      font-family: var(--nm-font);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--nm-text-primary);
+      background-color: var(--nm-bg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      appearance: auto;
+    }
+
+    .calc-select:focus {
+      outline: 2px solid var(--nm-fare-orange);
+      outline-offset: -1px;
+    }
+
+    .calc-arrow {
+      color: var(--nm-fare-orange);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      padding-bottom: 6px;
+    }
+
+    .calc-swap-btn {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--nm-fare-orange);
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color var(--nm-transition-normal), border-color var(--nm-transition-normal);
+      margin-bottom: 2px;
+    }
+
+    .calc-swap-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--nm-fare-orange);
+    }
+
+    /* ---- Fare Type Toggle ---- */
+    .calc-options {
+      display: flex;
+      gap: var(--nm-space-sm);
+      margin-top: var(--nm-space-lg);
+      flex-wrap: wrap;
+    }
+
+    .calc-toggle {
+      display: flex;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+    }
+
+    .calc-toggle-btn {
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 8px 14px;
+      background: none;
+      border: none;
+      color: rgba(181, 217, 237, 0.6);
+      cursor: pointer;
+      transition: background-color var(--nm-transition-normal), color var(--nm-transition-normal);
+    }
+
+    .calc-toggle-btn:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .calc-toggle-btn--active {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #e2feff;
+    }
+
+    /* ---- Results ---- */
+    .calc-results {
+      margin-top: var(--nm-space-lg);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: var(--nm-space-md);
+    }
+
+    .calc-results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--nm-space-md);
+    }
+
+    .calc-result-item {
+      padding: var(--nm-space-sm) 0;
+    }
+
+    .calc-result-label {
+      display: block;
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.65rem;
+      color: rgba(181, 217, 237, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+
+    .calc-result-value {
+      font-family: var(--nm-font);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--nm-fare-yellow);
+    }
+
+    .calc-result-value--highlight {
+      font-size: 1.75rem;
+    }
+
+    .calc-result-value--secondary {
+      font-size: 1.25rem;
+      color: #e2feff;
+    }
+
+    .calc-result-note {
+      display: block;
+      font-family: var(--nm-font);
+      font-weight: 500;
+      font-size: 0.7rem;
+      color: rgba(181, 217, 237, 0.6);
+      margin-top: 2px;
+    }
+
+    /* ---- Trip Estimator ---- */
+    .calc-estimator {
+      margin-top: var(--nm-space-md);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: var(--nm-space-md);
+    }
+
+    .calc-estimator-label {
+      display: block;
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.65rem;
+      color: rgba(181, 217, 237, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--nm-space-sm);
+    }
+
+    .calc-estimator-row {
+      display: flex;
+      align-items: center;
+      gap: var(--nm-space-sm);
+      flex-wrap: wrap;
+    }
+
+    .calc-estimator-input {
+      width: 80px;
+      padding: 8px 10px;
+      font-family: var(--nm-font);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--nm-text-primary);
+      background-color: var(--nm-bg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .calc-estimator-input:focus {
+      outline: 2px solid var(--nm-fare-orange);
+      outline-offset: -1px;
+    }
+
+    .calc-estimator-text {
+      font-family: var(--nm-font);
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: rgba(181, 217, 237, 0.8);
+    }
+
+    .calc-estimator-results {
+      display: flex;
+      gap: var(--nm-space-lg);
+      margin-top: var(--nm-space-sm);
+      flex-wrap: wrap;
+    }
+
+    .calc-estimator-cost {
+      font-family: var(--nm-font);
+    }
+
+    .calc-estimator-cost-label {
+      font-weight: 600;
+      font-size: 0.65rem;
+      color: rgba(181, 217, 237, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .calc-estimator-cost-value {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--nm-fare-yellow);
+    }
+
+    /* ---- Static Content Sections ---- */
+    .fares-section {
+      margin-top: var(--nm-space-2xl);
+    }
+
+    .fares-section-heading {
+      font-family: var(--nm-font);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--nm-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--nm-space-sm);
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--nm-amber-dim);
+      display: inline-block;
+    }
+
+    .fares-text {
+      font-family: var(--nm-font);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--nm-text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--nm-space-md);
+    }
+
+    .fares-text strong {
+      color: var(--nm-text-primary);
+      font-weight: 600;
+    }
+
+    .fares-text a {
+      color: var(--nm-amber);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .fares-text a:hover {
+      color: var(--nm-amber-bright);
+    }
+
+    /* ---- Fare Table ---- */
+    .fare-table-wrapper {
+      overflow-x: auto;
+      margin-top: var(--nm-space-md);
+      border: 1px solid var(--nm-border);
+    }
+
+    .fare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--nm-font);
+      font-size: 0.9rem;
+    }
+
+    .fare-table thead th {
+      background-color: var(--nm-surface-elevated);
+      color: var(--nm-text-primary);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 2px solid var(--nm-amber-dim);
+      white-space: nowrap;
+    }
+
+    .fare-table tbody td {
+      padding: 0.6rem 1rem;
+      color: var(--nm-text-secondary);
+      border-bottom: 1px solid var(--nm-border-subtle);
+      font-weight: 500;
+    }
+
+    .fare-table tbody tr:hover {
+      background-color: var(--nm-surface);
+    }
+
+    .fare-table .fare-price {
+      color: var(--nm-amber);
+      font-weight: 700;
+    }
+
+    /* ---- Peak Hours Card ---- */
+    .peak-hours-card {
+      background-color: var(--nm-surface);
+      border: 1px solid var(--nm-border);
+      overflow: hidden;
+      margin-top: var(--nm-space-md);
+    }
+
+    .peak-hours-header {
+      background-color: var(--nm-surface-elevated);
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--nm-border);
+    }
+
+    .peak-hours-header-icon {
+      color: var(--nm-status-warn);
+    }
+
+    .peak-hours-header-text {
+      font-family: var(--nm-font);
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--nm-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .peak-hours-body {
+      padding: var(--nm-space-md) 1.25rem;
+    }
+
+    .peak-hours-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--nm-space-md);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--nm-border-subtle);
+    }
+
+    .peak-hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .peak-hours-day {
+      font-family: var(--nm-font);
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--nm-text-primary);
+      min-width: 120px;
+    }
+
+    .peak-hours-time {
+      font-family: var(--nm-font);
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--nm-text-secondary);
+    }
+
+    .peak-hours-time--offpeak {
+      color: var(--nm-status-ok);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ---- Info Cards ---- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--nm-space-lg);
+      margin-top: var(--nm-space-md);
+    }
+
+    .info-card {
+      background-color: var(--nm-surface);
+      border: 1px solid var(--nm-border);
+      padding: var(--nm-space-lg) 1.25rem;
+    }
+
+    .info-card-title {
+      font-family: var(--nm-font);
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--nm-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--nm-space-sm);
+    }
+
+    .info-card-text {
+      font-family: var(--nm-font);
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--nm-text-secondary);
+      line-height: 1.6;
+    }
+
+    .info-card-text a {
+      color: var(--nm-amber);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .info-card-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-card-list li {
+      font-family: var(--nm-font);
+      font-size: 0.9rem;
+      color: var(--nm-text-secondary);
+      padding: 0.3rem 0;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .info-card-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50% !important;
+      background-color: var(--nm-amber-dim);
+    }
+
+    /* ---- Disclaimer ---- */
+    .fares-disclaimer {
+      background-color: var(--nm-surface-elevated);
+      border: 1px solid var(--nm-border);
+      padding: 1rem 1.25rem;
+      margin-top: var(--nm-space-2xl);
+    }
+
+    .fares-disclaimer p {
+      font-family: var(--nm-font);
+      font-size: 0.875rem;
+      color: var(--nm-text-secondary);
+      line-height: 1.7;
+    }
+
+    .fares-disclaimer a {
+      color: var(--nm-amber);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      .fares-hero {
+        padding: var(--nm-space-xl) var(--nm-space-md) var(--nm-space-xl);
+      }
+
+      .fares-page {
+        padding: 0 var(--nm-space-md) var(--nm-space-2xl);
+      }
+
+      .calc-route {
+        grid-template-columns: 1fr;
+        gap: var(--nm-space-sm);
+      }
+
+      .calc-arrow {
+        justify-self: center;
+        transform: rotate(90deg);
+      }
+
+      .calc-results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .peak-hours-row {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .peak-hours-day {
+        min-width: auto;
+      }
+
+      .fare-table {
+        font-size: 0.8rem;
+      }
+
+      .fare-table thead th,
+      .fare-table tbody td {
+        padding: 0.5rem 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/" class="nav-link">Arrivals</a>
+        <a href="/fares/" class="nav-link nav-link--active">Fares</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener" class="nav-link">Map</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener" class="nav-link nav-link--988">988</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Ticker placeholder -->
+  <div class="ticker-bar">
+    <div class="ticker-track"></div>
+  </div>
+
+  <!-- Hero -->
+  <section class="fares-hero">
+    <div class="fares-hero-inner">
+      <span class="fares-hero-label">Fares</span>
+      <h1 class="fares-hero-title">Fare Calculator</h1>
+      <p class="fares-hero-subtitle">
+        Calculate the cost of your Metrorail trip. Metro fares range from $2.00 to $6.00 depending on distance traveled and time of day.
+      </p>
+      <div class="peak-indicator" id="peak-indicator">
+        <span class="peak-indicator-dot" id="peak-dot"></span>
+        <span class="peak-indicator-text" id="peak-text">--</span>
+        <span class="peak-indicator-time" id="peak-time"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="fares-page">
+
+    <!-- Interactive Calculator -->
+    <div class="calc-card animate-in d1" id="calc-card">
+      <div class="calc-header">
+        <span class="calc-title">Trip Fare Calculator</span>
+      </div>
+      <div class="calc-body">
+        <div class="calc-route">
+          <div class="calc-station">
+            <label class="calc-station-label" for="calc-from">From</label>
+            <select id="calc-from" class="calc-select" aria-label="Select origin station">
+              <option value="">Select origin...</option>
+            </select>
+          </div>
+          <div class="calc-arrow">
+            <button class="calc-swap-btn" id="calc-swap" aria-label="Swap origin and destination" title="Swap stations">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
+            </button>
+          </div>
+          <div class="calc-station">
+            <label class="calc-station-label" for="calc-to">To</label>
+            <select id="calc-to" class="calc-select" aria-label="Select destination station">
+              <option value="">Select destination...</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Fare Type Toggle -->
+        <div class="calc-options">
+          <div class="calc-toggle" role="radiogroup" aria-label="Fare type">
+            <button class="calc-toggle-btn calc-toggle-btn--active" data-fare-type="regular" role="radio" aria-checked="true">Regular</button>
+            <button class="calc-toggle-btn" data-fare-type="senior" role="radio" aria-checked="false">Senior/Disabled</button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="calc-results" id="calc-results" style="display:none;">
+          <div class="calc-results-grid">
+            <div class="calc-result-item">
+              <span class="calc-result-label">Peak Fare</span>
+              <span class="calc-result-value calc-result-value--highlight" id="result-peak">--</span>
+              <span class="calc-result-note">Weekdays, rush hours</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">Off-Peak Fare</span>
+              <span class="calc-result-value calc-result-value--highlight" id="result-offpeak">--</span>
+              <span class="calc-result-note">Evenings, weekends, holidays</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">Travel Time</span>
+              <span class="calc-result-value calc-result-value--secondary" id="result-time">--</span>
+            </div>
+            <div class="calc-result-item">
+              <span class="calc-result-label">Round Trip</span>
+              <span class="calc-result-value calc-result-value--secondary" id="result-roundtrip">--</span>
+              <span class="calc-result-note" id="result-roundtrip-note"></span>
+            </div>
+          </div>
+
+          <!-- Weekly/Monthly Estimator -->
+          <div class="calc-estimator">
+            <span class="calc-estimator-label">Commute Cost Estimator</span>
+            <div class="calc-estimator-row">
+              <input type="number" id="trips-per-week" class="calc-estimator-input" value="10" min="1" max="50" aria-label="Round trips per week" />
+              <span class="calc-estimator-text">round trips / week</span>
+            </div>
+            <div class="calc-estimator-results">
+              <div class="calc-estimator-cost">
+                <span class="calc-estimator-cost-label">Weekly</span>
+                <span class="calc-estimator-cost-value" id="est-weekly">--</span>
+              </div>
+              <div class="calc-estimator-cost">
+                <span class="calc-estimator-cost-label">Monthly</span>
+                <span class="calc-estimator-cost-value" id="est-monthly">--</span>
+              </div>
+              <div class="calc-estimator-cost">
+                <span class="calc-estimator-cost-label">Yearly</span>
+                <span class="calc-estimator-cost-value" id="est-yearly">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fare Table -->
+    <div class="fares-section animate-in d2">
+      <h2 class="fares-section-heading">Fare Structure</h2>
+      <p class="fares-text">
+        Metrorail uses a distance-based fare system. The further you travel, the more you pay. Fares also vary by time of day — <strong>peak fares</strong> apply during rush hours on weekdays, while <strong>off-peak fares</strong> apply at all other times.
+      </p>
+      <div class="fare-table-wrapper">
+        <table class="fare-table">
+          <thead>
+            <tr>
+              <th>Fare Category</th>
+              <th>Peak</th>
+              <th>Off-Peak</th>
+              <th>Senior/Disabled</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Boarding (minimum fare)</td>
+              <td class="fare-price">$2.25</td>
+              <td class="fare-price">$2.00</td>
+              <td class="fare-price">$1.10</td>
+            </tr>
+            <tr>
+              <td>Short trip (1-3 miles)</td>
+              <td class="fare-price">$2.25 - $2.75</td>
+              <td class="fare-price">$2.00</td>
+              <td class="fare-price">$1.10</td>
+            </tr>
+            <tr>
+              <td>Medium trip (3-6 miles)</td>
+              <td class="fare-price">$2.75 - $3.75</td>
+              <td class="fare-price">$2.00 - $2.50</td>
+              <td class="fare-price">$1.35 - $1.85</td>
+            </tr>
+            <tr>
+              <td>Long trip (6+ miles)</td>
+              <td class="fare-price">$3.75 - $6.00</td>
+              <td class="fare-price">$2.50 - $3.85</td>
+              <td class="fare-price">$1.85 - $2.95</td>
+            </tr>
+            <tr>
+              <td>Maximum fare</td>
+              <td class="fare-price">$6.00</td>
+              <td class="fare-price">$3.85</td>
+              <td class="fare-price">$2.95</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Peak Hours -->
+    <div class="fares-section animate-in d3">
+      <h2 class="fares-section-heading">Peak Hours</h2>
+      <p class="fares-text">
+        Peak fares are charged during weekday rush hours. Off-peak fares apply at all other times, including federal holidays regardless of the day of the week.
+      </p>
+      <div class="peak-hours-card">
+        <div class="peak-hours-header">
+          <span class="peak-hours-header-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          </span>
+          <span class="peak-hours-header-text">When Peak Fares Apply</span>
+        </div>
+        <div class="peak-hours-body">
+          <div class="peak-hours-row">
+            <span class="peak-hours-day">Weekdays</span>
+            <span class="peak-hours-time">Opening - 9:30 AM &amp; 3:00 PM - 7:00 PM</span>
+          </div>
+          <div class="peak-hours-row">
+            <span class="peak-hours-day">Weekends</span>
+            <span class="peak-hours-time peak-hours-time--offpeak">Off-Peak All Day</span>
+          </div>
+          <div class="peak-hours-row">
+            <span class="peak-hours-day">Federal Holidays</span>
+            <span class="peak-hours-time peak-hours-time--offpeak">Off-Peak All Day</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transfer Rules & SmarTrip -->
+    <div class="fares-section animate-in d4">
+      <h2 class="fares-section-heading">Transfers & SmarTrip</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3 class="info-card-title">Transfer Rules</h3>
+          <ul class="info-card-list">
+            <li>Rail-to-rail transfers are included in your fare during a continuous trip</li>
+            <li>Rail-to-bus transfers give a $0.50 discount on the connecting Metrobus fare with SmarTrip</li>
+            <li>Bus-to-rail transfers do not receive a discount</li>
+            <li>Transfers are valid for up to 2 hours from the start of your trip</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3 class="info-card-title">SmarTrip Card</h3>
+          <div class="info-card-text">
+            <p>A SmarTrip card or contactless payment is required to ride Metrorail. Cards cost <strong>$2.00</strong> and can be purchased at:</p>
+            <ul class="info-card-list">
+              <li>Fare machines in every Metro station</li>
+              <li>Select retail locations</li>
+              <li><a href="https://www.wmata.com/fares/smartrip/" target="_blank" rel="noopener">Online at wmata.com</a></li>
+            </ul>
+            <p style="margin-top: 0.5rem;">You can also tap a contactless credit/debit card or mobile wallet (Apple Pay, Google Pay) at fare gates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="fares-disclaimer">
+      <p>
+        Fares shown are sourced from the <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a> and may not reflect temporary promotions or fare changes. For the most current fare information, visit <a href="https://www.wmata.com/fares/" target="_blank" rel="noopener">wmata.com/fares</a>. NextMetro is not affiliated with WMATA.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+        <a href="https://www.wmata.com/schedules/maps/wmata-system-map.cfm" target="_blank" rel="noopener">System Map</a>
+        <a href="/fares/">Fares</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div class="footer-988">
+        <span class="footer-988-label">Crisis Resources</span>
+        <a href="https://988lifeline.org/" target="_blank" rel="noopener">988 Suicide &amp; Crisis Lifeline</a>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/fares.js"></script>
+</body>
+</html>
