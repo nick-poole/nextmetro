@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Line — Stations, Status & Alerts | NextMetro</title>
+  <meta name="description" content="Red Line status, service alerts, and all 27 stations from Shady Grove to Glenmont. Live updates, transfer info, and service hours for the DC Metro Red Line." />
+  <link rel="canonical" href="https://nextmetro.live/lines/red/" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Red Line — Stations, Status & Alerts | NextMetro" />
+  <meta property="og:description" content="Red Line status, service alerts, and all 27 stations from Shady Grove to Glenmont. Live updates for the DC Metro Red Line." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/lines/red/" />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TransitLine",
+    "name": "Red Line",
+    "alternateName": "Metrorail Red Line",
+    "operator": {
+      "@type": "Organization",
+      "name": "Washington Metropolitan Area Transit Authority",
+      "alternateName": "WMATA"
+    },
+    "serviceType": "Metrorail",
+    "color": "#BF0D3E",
+    "numberOfStations": 27
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/alerts/" class="nav-link">Alerts</a>
+        <a href="/map/" class="nav-link">Map</a>
+        <a href="/fares/" class="nav-link">Fares</a>
+      </div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/alerts/" class="mobile-menu-link">Alerts</a>
+    <a href="/map/" class="mobile-menu-link">Map</a>
+    <a href="/fares/" class="mobile-menu-link">Fares</a>
+  </div>
+
+  <!-- Ticker placeholder -->
+  <div class="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <!-- Line Hero -->
+  <section class="line-hero" style="--line-color: var(--nm-line-red);">
+    <div class="line-hero-inner">
+      <span class="line-hero-label">Metrorail Line</span>
+      <h1 class="line-hero-title">
+        <span class="line-hero-color-bar"></span>
+        Red Line
+      </h1>
+
+      <!-- Status Hero -->
+      <div class="line-status" id="line-status">
+        <span class="line-status-dot line-status-dot--loading" id="line-status-dot"></span>
+        <span class="line-status-text" id="line-status-text">Checking status...</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="line-page">
+
+    <!-- Alerts Section -->
+    <section class="line-alerts" id="line-alerts" style="display:none;">
+      <div class="line-alerts-header">
+        <span class="line-alerts-indicator"></span>
+        <span class="line-alerts-badge">Service Alerts</span>
+      </div>
+      <div class="line-alerts-body" id="line-alerts-body">
+        <!-- Alerts rendered by JS -->
+      </div>
+      <a href="/alerts/" class="line-alerts-link">View all alerts</a>
+    </section>
+
+    <!-- Terminus Labels -->
+    <div class="line-termini animate-in d1">
+      <div class="line-termini-inner">
+        <span class="line-termini-station">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          Shady Grove
+        </span>
+        <span class="line-termini-count">27 stations</span>
+        <span class="line-termini-station">
+          Glenmont
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Mini Line Map -->
+    <div class="line-map-card animate-in d2">
+      <div class="line-map-header">
+        <span class="line-map-title">Line Map</span>
+      </div>
+      <div class="line-map-body" id="line-map">
+        <div class="line-map-track" style="--line-color: var(--nm-line-red);">
+          <!-- Station dots rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- All Stations -->
+    <section class="line-stations animate-in d3">
+      <h2 class="line-section-heading">All Stations</h2>
+      <div class="line-stations-list" id="line-stations-list">
+        <!-- Stations rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Service Info -->
+    <section class="line-info animate-in d4">
+      <h2 class="line-section-heading">Service Information</h2>
+      <div class="line-info-grid">
+
+        <!-- Service Details -->
+        <div class="line-info-card">
+          <h3 class="line-info-card-title">Line Details</h3>
+          <div class="line-info-rows">
+            <div class="line-info-row">
+              <span class="line-info-label">Termini</span>
+              <span class="line-info-value">Shady Grove &harr; Glenmont</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Stations</span>
+              <span class="line-info-value">27</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Transfer Stations</span>
+              <span class="line-info-value">Metro Center, Gallery Place, Fort Totten</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Opened</span>
+              <span class="line-info-value">1976 (first segment)</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Length</span>
+              <span class="line-info-value">31.2 miles</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Hours -->
+        <div class="line-info-card">
+          <h3 class="line-info-card-title">Service Hours</h3>
+          <div class="line-info-rows">
+            <div class="line-info-row">
+              <span class="line-info-label">Mon &ndash; Thu</span>
+              <span class="line-info-value">5:00 AM &ndash; 11:30 PM</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Friday</span>
+              <span class="line-info-value">5:00 AM &ndash; 1:00 AM</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Saturday</span>
+              <span class="line-info-value">7:00 AM &ndash; 1:00 AM</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Sunday</span>
+              <span class="line-info-value">7:00 AM &ndash; 11:30 PM</span>
+            </div>
+          </div>
+          <a href="/hours/" class="line-info-link">Full schedule &rarr;</a>
+        </div>
+
+      </div>
+
+      <!-- Frequency -->
+      <div class="line-frequency">
+        <span class="line-frequency-label">Peak Frequency</span>
+        <span class="line-frequency-value">Trains every 6 minutes during rush hour, 12&ndash;15 minutes off-peak</span>
+      </div>
+    </section>
+
+    <!-- Connects To -->
+    <section class="line-connections animate-in d5">
+      <h2 class="line-section-heading">Connects To</h2>
+      <div class="line-connections-body">
+        <div class="line-connections-pills">
+          <a href="/lines/orange/" class="line-connection-pill" style="--pill-color: var(--nm-line-orange);">
+            <span class="line-connection-dot"></span>
+            Orange
+          </a>
+          <a href="/lines/blue/" class="line-connection-pill" style="--pill-color: var(--nm-line-blue);">
+            <span class="line-connection-dot"></span>
+            Blue
+          </a>
+          <a href="/lines/silver/" class="line-connection-pill" style="--pill-color: var(--nm-line-silver);">
+            <span class="line-connection-dot"></span>
+            Silver
+          </a>
+          <a href="/lines/green/" class="line-connection-pill" style="--pill-color: var(--nm-line-green);">
+            <span class="line-connection-dot"></span>
+            Green
+          </a>
+          <a href="/lines/yellow/" class="line-connection-pill" style="--pill-color: var(--nm-line-yellow);">
+            <span class="line-connection-dot"></span>
+            Yellow
+          </a>
+        </div>
+        <p class="line-connections-detail">
+          Transfer at <strong>Metro Center</strong> (Orange, Blue, Silver), <strong>Gallery Place-Chinatown</strong> (Green, Yellow), and <strong>Fort Totten</strong> (Green, Yellow).
+        </p>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <div class="line-disclaimer">
+      <p>
+        Status and alerts are sourced from the <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a> and update every 60 seconds. Service hours are subject to change for holidays and special events. For the most current information, visit <a href="https://www.wmata.com/" target="_blank" rel="noopener">wmata.com</a>. NextMetro is not affiliated with WMATA.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-col-heading">Lines</span>
+          <a href="/lines/red/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-red)"></span>Red</a>
+          <a href="/lines/orange/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-orange)"></span>Orange</a>
+          <a href="/lines/blue/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-blue)"></span>Blue</a>
+          <a href="/lines/yellow/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-yellow)"></span>Yellow</a>
+          <a href="/lines/green/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-green)"></span>Green</a>
+          <a href="/lines/silver/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-silver)"></span>Silver</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Tools</span>
+          <a href="/fares/">Fares</a>
+          <a href="/elevators/">Elevators</a>
+          <a href="/hours/">Hours</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Support</span>
+          <a href="/about.html">About</a>
+          <a href="/help/">Help</a>
+          <a href="/crisis/">Crisis</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Legal</span>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/line.js"></script>
+</body>
+</html>
