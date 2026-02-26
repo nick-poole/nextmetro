@@ -16,7 +16,7 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 - **System Status Ticker** — Scrolling ticker bar showing real-time status for all six Metro lines (Red, Blue, Orange, Green, Yellow, Silver).
 - **System Status Sidebar** — Per-line status with Normal, Delays, and Advisory states derived from live incident data.
 - **Service Alerts Page** — Dedicated [alerts page](https://nextmetro.live/alerts/) showing all WMATA rail incidents (delays, closures, single tracking, advisories) and elevator/escalator outages system-wide. Severity-sorted, auto-refreshing every 30 seconds, with an 8-question FAQ section covering single tracking, delay causes, station closures, and Metro station depths. Schema.org FAQPage structured data for SEO.
-- **Elevator & Escalator Status** — Facility outage tracking with operational/outage counts and detailed descriptions.
+- **Elevator & Escalator Status Page** — Dedicated [elevator & escalator page](https://nextmetro.live/elevators/) with station-grouped outage view, type filters (elevators/escalators), line filters, color-coded accessibility status (green = all working, yellow = escalator out, red = elevator out), summary bar, and 6-question FAQ with FAQPage structured data. Crawlable station names for long-tail SEO. Also shown per-station on the main arrivals page.
 - **Fare Calculator** — Interactive fare lookup between any two stations showing peak, off-peak, and senior/disabled pricing with estimated travel time.
 - **Line Pages** — Dedicated pages for each Metro line with real-time arrivals, station lists with transfer/parking badges, service hours, frequency info, and an FAQ section with structured data for SEO. Currently live: [Red Line](https://nextmetro.live/lines/red/).
 
@@ -67,16 +67,19 @@ nextmetro/
     ├── netlify.toml       Netlify deploy config + API proxy redirects
     ├── alerts/
     │   └── index.html     Service alerts page (rail + elevator/escalator, FAQ)
+    ├── elevators/
+    │   └── index.html     Elevator & escalator status page (station-grouped, filtered)
     ├── fares/
     │   └── index.html     Fare calculator page
     ├── lines/
     │   └── red/
     │       └── index.html Red Line page (stations, service info, FAQ)
     ├── css/
-    │   └── styles.css     Full design system (~3,135 lines)
+    │   └── styles.css     Full design system (~4,060 lines)
     ├── js/
     │   ├── app.js         Application logic (~1,070 lines)
     │   ├── alerts.js      Alerts page — fetches rail + elevator incidents (~360 lines)
+    │   ├── elevators.js   Elevator/escalator page — station-grouped, filtered (~420 lines)
     │   ├── nav.js         Shared navigation bar component (~30 lines)
     │   ├── line.js        Line page logic — arrivals, alerts, FAQ toggle (~355 lines)
     │   └── fares.js       Fare calculator logic (~410 lines)
@@ -150,6 +153,19 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 ---
 
 ## Changelog
+
+### v2.3.0 — Elevator & Escalator Status Page
+
+- Add dedicated elevator/escalator status page at `/elevators/` with real-time outage tracking
+- Station-grouped view: outages organized by station instead of a flat list
+- Dual filter system: filter by unit type (All / Elevators / Escalators) and by Metro line
+- Color-coded accessibility status: red = elevator out (accessibility critical), yellow = escalator out
+- Summary bar showing total outages, elevator/escalator split, and stations affected
+- Accessibility-first sorting: stations with elevator outages always surface to the top
+- SEO: FAQPage schema (6 questions), dynamic meta description, crawlable station names for long-tail "[station] elevator" queries
+- WCAG compliance: `aria-pressed` on filter chips, `role="list"` on station container
+- Site-wide nav updated: Elevators link replaces Map across all pages (desktop + mobile)
+- Sitemap updated with priority 0.9 and `changefreq=always`
 
 ### v2.2.0 — Service Alerts Page
 
