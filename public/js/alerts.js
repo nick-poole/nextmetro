@@ -256,10 +256,22 @@ function escapeHtml(str) {
 // ==============================
 function cleanDescription(desc) {
   if (!desc) return '';
-  // Remove redundant "Trains are …" preamble that WMATA often uses
   return desc
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+// ==============================
+// Auto-link URLs in text
+// ==============================
+function linkifyUrls(escapedHtml) {
+  // Match http/https URLs in already-escaped HTML
+  return escapedHtml.replace(
+    /https?:\/\/[^\s<>&"]+/g,
+    function (url) {
+      return '<a href="' + url + '" target="_blank" rel="noopener" class="alerts-inline-link">' + url + '</a>';
+    }
+  );
 }
 
 // ==============================
@@ -340,7 +352,11 @@ function renderAlerts() {
       '</div>' +
       '<div class="alerts-card-body">' +
       '<div class="alerts-card-lines">' + linePillsHtml + '</div>' +
-      '<p class="alerts-card-desc">' + escapeHtml(description) + '</p>' +
+      '<p class="alerts-card-desc">' + linkifyUrls(escapeHtml(description)) + '</p>' +
+      '<a href="https://www.wmata.com/service/status/" target="_blank" rel="noopener" class="alerts-card-cta">' +
+      'Details at WMATA' +
+      '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>' +
+      '</a>' +
       '</div>' +
       '</article>';
   });

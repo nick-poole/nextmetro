@@ -3443,6 +3443,38 @@ a:hover {
   line-height: 1.65;
 }
 
+.alerts-inline-link {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+.alerts-inline-link:hover {
+  color: var(--nm-amber-bright);
+}
+
+.alerts-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: var(--nm-space-sm);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: color var(--nm-transition-normal);
+  min-height: 44px;
+  padding: 10px 0;
+}
+
+.alerts-card-cta:hover {
+  color: var(--nm-amber);
+}
+
 /* ---- Empty State ---- */
 .alerts-empty {
   display: flex;
