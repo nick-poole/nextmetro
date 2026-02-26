@@ -209,7 +209,10 @@ a:hover {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--nm-text-secondary);
-  padding: 6px 10px;
+  padding: 12px 10px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: color var(--nm-transition-normal), background-color var(--nm-transition-normal);
@@ -274,7 +277,8 @@ a:hover {
 }
 
 .mobile-menu-link {
-  display: block;
+  display: flex;
+  align-items: center;
   font-family: var(--nm-font);
   font-size: 1rem;
   font-weight: 600;
@@ -283,6 +287,7 @@ a:hover {
   letter-spacing: 0.1em;
   text-decoration: none;
   padding: 0.75rem var(--nm-space-lg);
+  min-height: 44px;
   border-bottom: 1px solid var(--nm-border-subtle);
   transition: color var(--nm-transition-normal), background-color var(--nm-transition-normal);
 }
@@ -412,6 +417,7 @@ a:hover {
 .station-input {
   width: 100%;
   padding: var(--nm-space-md);
+  min-height: 44px;
   font-family: var(--nm-font);
   font-size: 1rem;
   font-weight: 500;
@@ -458,7 +464,8 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px;
+  padding: 12px 16px;
+  min-height: 44px;
   font-family: var(--nm-font);
   font-size: 1rem;
   font-weight: 500;
@@ -501,7 +508,8 @@ a:hover {
   gap: 6px;
   background-color: var(--nm-surface-elevated);
   border: 1px solid var(--nm-border-subtle);
-  padding: 4px 10px;
+  padding: 10px 12px;
+  min-height: 44px;
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.875rem;
@@ -739,7 +747,9 @@ a:hover {
   border: none;
   color: var(--nm-text-muted);
   cursor: pointer;
-  padding: 4px;
+  padding: 14px;
+  min-width: 44px;
+  min-height: 44px;
   transition: color var(--nm-transition-normal);
 }
 
@@ -1089,7 +1099,8 @@ a:hover {
 
 .fare-select {
   width: 100%;
-  padding: 8px 10px;
+  padding: 10px 12px;
+  min-height: 44px;
   font-family: var(--nm-font);
   font-size: 1rem;
   font-weight: 500;
@@ -1199,6 +1210,9 @@ a:hover {
   color: var(--nm-text-secondary);
   text-decoration: none;
   transition: color var(--nm-transition-normal);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer-col a:hover {
@@ -1209,6 +1223,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: var(--nm-space-sm);
+  min-height: 44px;
 }
 
 .footer-line-dot {
@@ -1246,6 +1261,9 @@ a:hover {
   text-transform: uppercase;
   text-decoration: none;
   transition: color var(--nm-transition-normal);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer-bottom a:hover {
@@ -1800,6 +1818,7 @@ a:hover {
 .calc-select {
   width: 100%;
   padding: 10px 12px;
+  min-height: 44px;
   font-family: var(--nm-font);
   font-size: 1rem;
   font-weight: 500;
@@ -1828,7 +1847,9 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--nm-fare-orange);
   cursor: pointer;
-  padding: 6px;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1861,7 +1882,10 @@ a:hover {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 8px 14px;
+  padding: 12px 14px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   background: none;
   border: none;
   color: #e2feff;
@@ -1958,7 +1982,8 @@ a:hover {
 
 .calc-estimator-input {
   width: 80px;
-  padding: 8px 10px;
+  padding: 10px 10px;
+  min-height: 44px;
   font-family: var(--nm-font);
   font-size: 1rem;
   font-weight: 500;
@@ -2468,8 +2493,10 @@ a:hover {
 }
 
 .line-alerts-link {
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 0.6rem 1.25rem;
+  min-height: 44px;
   font-family: var(--nm-font);
   font-size: 0.875rem;
   font-weight: 600;
@@ -2687,7 +2714,7 @@ a:hover {
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.75rem;
-  color: var(--nm-text-muted);
+  color: var(--nm-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -2708,7 +2735,7 @@ a:hover {
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.75rem;
-  color: var(--nm-text-muted);
+  color: var(--nm-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   background-color: var(--nm-surface-elevated);
@@ -2717,7 +2744,7 @@ a:hover {
 }
 
 .station-badge--external svg {
-  color: var(--nm-text-muted);
+  color: var(--nm-text-secondary);
   flex-shrink: 0;
 }
 
@@ -2877,7 +2904,8 @@ a:hover {
   gap: 6px;
   background-color: var(--nm-surface);
   border: 1px solid var(--nm-border);
-  padding: 8px 14px;
+  padding: 10px 14px;
+  min-height: 44px;
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.9375rem;
@@ -2920,6 +2948,7 @@ a:hover {
   align-items: center;
   gap: 6px;
   margin-top: var(--nm-space-md);
+  min-height: 44px;
   font-family: var(--nm-font);
   font-size: 0.875rem;
   font-weight: 600;
@@ -2974,9 +3003,13 @@ a:hover {
 }
 
 .line-breadcrumb-item a {
-  color: var(--nm-text-muted);
+  color: var(--nm-text-secondary);
   text-decoration: none;
   transition: color var(--nm-transition-normal);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 4px;
 }
 
 .line-breadcrumb-item a:hover {
@@ -2984,7 +3017,7 @@ a:hover {
 }
 
 .line-breadcrumb-separator {
-  color: var(--nm-text-disabled);
+  color: var(--nm-text-secondary);
 }
 
 .line-breadcrumb-current {
