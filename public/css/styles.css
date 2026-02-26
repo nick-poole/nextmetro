@@ -33,12 +33,12 @@
   /* Text */
   --nm-text-primary: #FAFAFA;
   --nm-text-secondary: #A0A0A0;
-  --nm-text-muted: #5C5C5C;
-  --nm-text-disabled: #3D3D3D;
+  --nm-text-muted: #808080;
+  --nm-text-disabled: #555555;
 
   /* Accent */
   --nm-amber: #D4A03C;
-  --nm-amber-dim: #8B6B28;
+  --nm-amber-dim: #B08D3A;
   --nm-amber-bright: #E8B854;
   --nm-amber-glow: rgba(212, 160, 60, 0.4);
 
@@ -206,7 +206,7 @@ a:hover {
 
 .nav-link {
   font-family: var(--nm-font);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--nm-text-secondary);
   padding: 6px 10px;
@@ -233,13 +233,13 @@ a:hover {
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  gap: 5px;
   background: none;
   border: 1px solid var(--nm-border);
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
 }
 
 .navbar-toggle-bar {
@@ -276,7 +276,7 @@ a:hover {
 .mobile-menu-link {
   display: block;
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--nm-text-secondary);
   text-transform: uppercase;
@@ -319,7 +319,7 @@ a:hover {
   animation: ticker-scroll 35s linear infinite;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--nm-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -373,7 +373,7 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--nm-amber-dim);
   letter-spacing: 0.12em;
@@ -394,7 +394,7 @@ a:hover {
 .hero-station-address {
   font-family: var(--nm-font);
   font-weight: 400;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   margin-bottom: var(--nm-space-lg);
   min-height: 1.2em;
@@ -413,7 +413,7 @@ a:hover {
   width: 100%;
   padding: var(--nm-space-md);
   font-family: var(--nm-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--nm-text-primary);
   background-color: var(--nm-bg);
@@ -460,7 +460,7 @@ a:hover {
   gap: 10px;
   padding: 10px 16px;
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--nm-text-primary);
   cursor: pointer;
@@ -504,7 +504,7 @@ a:hover {
   padding: 4px 10px;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -609,7 +609,7 @@ a:hover {
   gap: 0;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--nm-amber-dim);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -645,7 +645,7 @@ a:hover {
 
 .pids-row-dest {
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--nm-amber);
   text-shadow: 0 0 12px var(--nm-amber-glow);
   overflow: hidden;
@@ -683,7 +683,7 @@ a:hover {
   padding: 2.5rem 1rem;
   color: var(--nm-amber-dim);
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -724,7 +724,7 @@ a:hover {
 
 .last-updated span {
   font-family: var(--nm-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   text-transform: uppercase;
@@ -768,7 +768,7 @@ a:hover {
 .system-status-header span:first-child {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -776,7 +776,7 @@ a:hover {
 
 .system-status-time {
   font-family: var(--nm-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   letter-spacing: 0.12em;
@@ -807,7 +807,7 @@ a:hover {
 .status-line-name {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   flex: 1;
   text-transform: uppercase;
@@ -817,7 +817,7 @@ a:hover {
 .status-value {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -865,7 +865,7 @@ a:hover {
 .alert-badge {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--nm-status-error);
@@ -875,14 +875,14 @@ a:hover {
   padding: 0.75rem 1.25rem;
   font-family: var(--nm-font);
   font-weight: 400;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   line-height: 1.65;
 }
 
 .alert-timestamp {
   font-family: var(--nm-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   letter-spacing: 0.12em;
@@ -918,7 +918,7 @@ a:hover {
 .facilities-title {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -949,7 +949,7 @@ a:hover {
 .facilities-label {
   font-family: var(--nm-font);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   flex: 1;
 }
@@ -957,7 +957,7 @@ a:hover {
 .facilities-status {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -991,7 +991,7 @@ a:hover {
 .facilities-outage-unit {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--nm-status-error);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -999,7 +999,7 @@ a:hover {
 
 .facilities-outage-desc {
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--nm-text-secondary);
   margin-top: 0.15rem;
@@ -1037,7 +1037,7 @@ a:hover {
 .fare-title {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -1062,8 +1062,8 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
-  color: rgba(181, 217, 237, 0.8);
+  font-size: 0.8rem;
+  color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: var(--nm-space-xs);
@@ -1073,7 +1073,7 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #e2feff;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1091,7 +1091,7 @@ a:hover {
   width: 100%;
   padding: 8px 10px;
   font-family: var(--nm-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--nm-text-primary);
   background-color: var(--nm-bg);
@@ -1127,8 +1127,8 @@ a:hover {
 .fare-result-label {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
-  color: rgba(181, 217, 237, 0.8);
+  font-size: 0.8rem;
+  color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -1185,7 +1185,7 @@ a:hover {
 .footer-col-heading {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--nm-text-primary);
@@ -1230,7 +1230,7 @@ a:hover {
 
 .footer-bottom span {
   font-family: var(--nm-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   letter-spacing: 0.12em;
@@ -1239,7 +1239,7 @@ a:hover {
 
 .footer-bottom a {
   font-family: var(--nm-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   letter-spacing: 0.12em;
@@ -1277,12 +1277,10 @@ a:hover {
   }
 
   .pids-row {
-    font-size: 0.875rem;
     padding: 0.45rem 0.75rem;
   }
 
   .pids-col-headers {
-    font-size: 0.6rem;
     padding: 0.25rem 0.75rem;
   }
 
@@ -1291,7 +1289,7 @@ a:hover {
   }
 
   .pids-header-station {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
 
   .footer-inner {
@@ -1327,7 +1325,7 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--nm-amber-dim);
   letter-spacing: 0.12em;
@@ -1417,7 +1415,7 @@ a:hover {
 
 .about-disclaimer p {
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   line-height: 1.7;
 }
@@ -1454,7 +1452,7 @@ a:hover {
 .error-label {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--nm-amber-dim);
@@ -1476,7 +1474,7 @@ a:hover {
   display: inline-block;
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: var(--nm-bg);
   background-color: var(--nm-amber);
   padding: 1rem 2rem;
@@ -1497,7 +1495,7 @@ a:hover {
   border: 1px solid var(--nm-border);
   padding: 1rem 1.5rem;
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--nm-amber-dim);
   text-transform: uppercase;
@@ -1533,7 +1531,7 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--nm-amber-dim);
   letter-spacing: 0.12em;
@@ -1580,7 +1578,7 @@ a:hover {
 
 .crisis-banner-text p {
   font-family: var(--nm-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   line-height: 1.5;
 }
@@ -1630,19 +1628,19 @@ a:hover {
 
 .crisis-resources li strong {
   font-family: var(--nm-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
 }
 
 .crisis-resources li span {
   font-family: var(--nm-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
 }
 
 .crisis-resources li a {
   font-family: var(--nm-font);
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--nm-amber);
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -1676,7 +1674,7 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--nm-amber-dim);
   letter-spacing: 0.12em;
@@ -1733,7 +1731,7 @@ a:hover {
 .peak-indicator-text {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--nm-text-primary);
@@ -1742,7 +1740,7 @@ a:hover {
 .peak-indicator-time {
   font-family: var(--nm-font);
   font-weight: 500;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--nm-text-muted);
   letter-spacing: 0.08em;
 }
@@ -1767,7 +1765,7 @@ a:hover {
 .calc-title {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -1792,8 +1790,8 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
-  color: rgba(181, 217, 237, 0.8);
+  font-size: 0.8rem;
+  color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: var(--nm-space-xs);
@@ -1803,7 +1801,7 @@ a:hover {
   width: 100%;
   padding: 10px 12px;
   font-family: var(--nm-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--nm-text-primary);
   background-color: var(--nm-bg);
@@ -1860,13 +1858,13 @@ a:hover {
 .calc-toggle-btn {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 8px 14px;
   background: none;
   border: none;
-  color: rgba(181, 217, 237, 0.6);
+  color: #e2feff;
   cursor: pointer;
   transition: background-color var(--nm-transition-normal), color var(--nm-transition-normal);
 }
@@ -1901,8 +1899,8 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.65rem;
-  color: rgba(181, 217, 237, 0.8);
+  font-size: 0.8rem;
+  color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 4px;
@@ -1928,8 +1926,8 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 500;
-  font-size: 0.7rem;
-  color: rgba(181, 217, 237, 0.6);
+  font-size: 0.8rem;
+  color: #e2feff;
   margin-top: 2px;
 }
 
@@ -1944,8 +1942,8 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.65rem;
-  color: rgba(181, 217, 237, 0.8);
+  font-size: 0.8rem;
+  color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: var(--nm-space-sm);
@@ -1962,7 +1960,7 @@ a:hover {
   width: 80px;
   padding: 8px 10px;
   font-family: var(--nm-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--nm-text-primary);
   background-color: var(--nm-bg);
@@ -1978,8 +1976,8 @@ a:hover {
 .calc-estimator-text {
   font-family: var(--nm-font);
   font-weight: 500;
-  font-size: 0.85rem;
-  color: rgba(181, 217, 237, 0.8);
+  font-size: 1rem;
+  color: #e2feff;
 }
 
 .calc-estimator-results {
@@ -1995,8 +1993,8 @@ a:hover {
 
 .calc-estimator-cost-label {
   font-weight: 600;
-  font-size: 0.65rem;
-  color: rgba(181, 217, 237, 0.6);
+  font-size: 0.8rem;
+  color: #e2feff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -2061,14 +2059,14 @@ a:hover {
   width: 100%;
   border-collapse: collapse;
   font-family: var(--nm-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .fare-table thead th {
   background-color: var(--nm-surface-elevated);
   color: var(--nm-text-primary);
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 0.75rem 1rem;
@@ -2117,7 +2115,7 @@ a:hover {
 .peak-hours-header-text {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -2142,7 +2140,7 @@ a:hover {
 .peak-hours-day {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   min-width: 120px;
 }
@@ -2150,14 +2148,14 @@ a:hover {
 .peak-hours-time {
   font-family: var(--nm-font);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
 }
 
 .peak-hours-time--offpeak {
   color: var(--nm-status-ok);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -2179,7 +2177,7 @@ a:hover {
 .info-card-title {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2188,7 +2186,7 @@ a:hover {
 
 .info-card-text {
   font-family: var(--nm-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--nm-text-secondary);
   line-height: 1.6;
@@ -2211,7 +2209,7 @@ a:hover {
 
 .info-card-list li {
   font-family: var(--nm-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   padding: 0.3rem 0;
   padding-left: 1rem;
@@ -2240,7 +2238,7 @@ a:hover {
 
 .fares-disclaimer p {
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   line-height: 1.7;
 }
@@ -2288,10 +2286,6 @@ a:hover {
     min-width: auto;
   }
 
-  .fare-table {
-    font-size: 0.8rem;
-  }
-
   .fare-table thead th,
   .fare-table tbody td {
     padding: 0.5rem 0.6rem;
@@ -2318,7 +2312,7 @@ a:hover {
   display: block;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--nm-amber-dim);
   letter-spacing: 0.12em;
@@ -2386,7 +2380,7 @@ a:hover {
 .line-status-text {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
 }
 
@@ -2427,7 +2421,7 @@ a:hover {
 .line-alerts-badge {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--nm-status-error);
@@ -2449,14 +2443,14 @@ a:hover {
 .line-alert-text {
   font-family: var(--nm-font);
   font-weight: 400;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   line-height: 1.65;
 }
 
 .line-alert-time {
   font-family: var(--nm-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   letter-spacing: 0.12em;
@@ -2467,7 +2461,7 @@ a:hover {
 
 .line-alerts-more {
   font-family: var(--nm-font);
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   padding-top: 0.5rem;
@@ -2477,7 +2471,7 @@ a:hover {
   display: block;
   padding: 0.6rem 1.25rem;
   font-family: var(--nm-font);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--nm-amber);
   text-transform: uppercase;
@@ -2512,7 +2506,7 @@ a:hover {
   gap: 8px;
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -2548,7 +2542,7 @@ a:hover {
 .line-termini-count {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--nm-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -2663,7 +2657,7 @@ a:hover {
 .line-station-name {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -2692,7 +2686,7 @@ a:hover {
 .station-transfer-label {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--nm-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2713,7 +2707,7 @@ a:hover {
   gap: 4px;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   color: var(--nm-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -2730,7 +2724,7 @@ a:hover {
 .station-terminus {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   color: var(--nm-amber-dim);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -2773,7 +2767,7 @@ a:hover {
 .line-info-card-title {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2801,7 +2795,7 @@ a:hover {
 .line-info-label {
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: var(--nm-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -2811,7 +2805,7 @@ a:hover {
 .line-info-value {
   font-family: var(--nm-font);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   text-align: right;
 }
@@ -2820,7 +2814,7 @@ a:hover {
   display: inline-block;
   margin-top: var(--nm-space-md);
   font-family: var(--nm-font);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--nm-amber);
   text-transform: uppercase;
@@ -2847,7 +2841,7 @@ a:hover {
 .line-frequency-label {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2857,7 +2851,7 @@ a:hover {
 .line-frequency-value {
   font-family: var(--nm-font);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
 }
 
@@ -2886,7 +2880,7 @@ a:hover {
   padding: 8px 14px;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2910,7 +2904,7 @@ a:hover {
 
 .line-connections-detail {
   font-family: var(--nm-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--nm-text-secondary);
   line-height: 1.6;
@@ -2927,7 +2921,7 @@ a:hover {
   gap: 6px;
   margin-top: var(--nm-space-md);
   font-family: var(--nm-font);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--nm-amber);
   text-transform: uppercase;
@@ -2949,7 +2943,7 @@ a:hover {
 
 .line-disclaimer p {
   font-family: var(--nm-font);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--nm-text-secondary);
   line-height: 1.7;
 }
@@ -2973,7 +2967,7 @@ a:hover {
   gap: var(--nm-space-xs);
   list-style: none;
   font-family: var(--nm-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -3022,7 +3016,7 @@ a:hover {
   padding: var(--nm-space-md) 1.25rem;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--nm-text-primary);
   cursor: pointer;
   transition: background-color var(--nm-transition-fast), color var(--nm-transition-normal);
@@ -3060,7 +3054,7 @@ a:hover {
 
 .line-faq-answer p {
   font-family: var(--nm-font);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--nm-text-secondary);
   line-height: 1.7;
@@ -3106,7 +3100,7 @@ a:hover {
   }
 
   .line-termini-station {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
 
   .line-termini-dot {
@@ -3119,12 +3113,7 @@ a:hover {
     gap: var(--nm-space-xs);
   }
 
-  .line-status-text {
-    font-size: 0.8rem;
-  }
-
   .line-faq-question {
-    font-size: 0.875rem;
     padding: var(--nm-space-sm) var(--nm-space-md);
   }
 
