@@ -320,8 +320,7 @@ a:hover {
   align-items: center;
   gap: var(--nm-space-xl);
   white-space: nowrap;
-  padding-left: 100%;
-  animation: ticker-scroll 35s linear infinite;
+  animation: ticker-scroll 30s linear infinite;
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.8rem;
@@ -3601,6 +3600,31 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: var(--nm-space-sm);
+}
+
+/* ---- Alerts FAQ Section ---- */
+.alerts-faq {
+  padding: var(--nm-space-2xl) var(--nm-space-lg);
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+.alerts-faq .section-heading {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--nm-space-xs);
+}
+
+.alerts-faq .section-subheading {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-muted);
+  margin-bottom: var(--nm-space-xl);
+  line-height: 1.5;
 }
 
 /* ---- Alerts Page Responsive ---- */
