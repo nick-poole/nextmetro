@@ -308,6 +308,21 @@ function renderAlerts() {
   if (filtered.length === 0) {
     alertsList.innerHTML = '';
     alertsEmpty.style.display = '';
+
+    var emptyTitle = alertsEmpty.querySelector('.alerts-empty-title');
+    var emptyText = alertsEmpty.querySelector('.alerts-empty-text');
+
+    if (activeFilters.size > 0 && currentIncidents.length > 0) {
+      // Filtered view has no matches, but alerts exist on other lines
+      var names = Array.from(activeFilters).map(function (c) { return lineNames[c]; }).join(', ');
+      emptyTitle.textContent = 'No Alerts';
+      emptyText.textContent = 'No active alerts for the ' + names + ' line' +
+        (activeFilters.size > 1 ? 's' : '') + ' right now.';
+    } else {
+      // Genuinely no alerts system-wide
+      emptyTitle.textContent = 'All Clear';
+      emptyText.textContent = 'No active service alerts. All lines operating normally.';
+    }
     return;
   }
 
