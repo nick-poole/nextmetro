@@ -77,6 +77,40 @@ function parseAffectedLines(linesStr) {
     .filter((s) => s.length > 0 && lineNames[s]);
 }
 
+// ---- Deduplicate incidents ----
+// WMATA often returns the same alert as multiple entries (one per line or
+// a general entry + a line-specific entry). Merge by description text so
+// each unique alert appears only once with all affected lines combined.
+function deduplicateIncidents(incidents) {
+  const map = new Map(); // description -> merged incident
+
+  (incidents || []).forEach((incident) => {
+    const key = (incident.Description || '').trim();
+    if (!key) return;
+
+    if (map.has(key)) {
+      const existing = map.get(key);
+      // Merge LinesAffected
+      const existingLines = new Set(parseAffectedLines(existing.LinesAffected));
+      parseAffectedLines(incident.LinesAffected).forEach((l) => existingLines.add(l));
+      existing.LinesAffected = Array.from(existingLines).join('; ') + (existingLines.size ? ';' : '');
+      // Keep the more severe IncidentType
+      if (getSeverity(incident.IncidentType) < getSeverity(existing.IncidentType)) {
+        existing.IncidentType = incident.IncidentType;
+      }
+      // Keep the more recent DateUpdated
+      if (new Date(incident.DateUpdated || 0) > new Date(existing.DateUpdated || 0)) {
+        existing.DateUpdated = incident.DateUpdated;
+      }
+    } else {
+      // Clone so we don't mutate the original
+      map.set(key, Object.assign({}, incident));
+    }
+  });
+
+  return Array.from(map.values());
+}
+
 // ---- State ----
 let currentIncidents = [];
 let activeFilters = new Set(); // empty = show all
@@ -439,7 +473,7 @@ async function fetchIncidents() {
     const res = await fetchWithRetry(API_BASE_URL + '/api/incidents');
     if (!res.ok) throw new Error('Incidents API error');
     const data = await res.json();
-    currentIncidents = data.Incidents || [];
+    currentIncidents = deduplicateIncidents(data.Incidents || []);
 
     renderAlerts();
     renderTicker(currentIncidents);
