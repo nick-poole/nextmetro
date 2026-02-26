@@ -3659,3 +3659,402 @@ a:hover {
     padding: 0.5rem 1rem;
   }
 }
+
+/* ==============================
+   Elevator & Escalator Status Page
+   ============================== */
+.elev-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--nm-space-xl) var(--nm-space-lg);
+}
+
+.elev-page-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nm-space-lg);
+}
+
+/* ---- Type Filter Chips ---- */
+.elev-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-xs);
+}
+
+.elev-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  min-height: 44px;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  cursor: pointer;
+  transition: background-color var(--nm-transition-fast), border-color var(--nm-transition-fast);
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: var(--nm-font);
+  color: var(--nm-text-secondary);
+}
+
+.elev-filter-chip:hover {
+  background-color: var(--nm-surface-elevated);
+  border-color: var(--nm-border-strong);
+}
+
+.elev-filter-chip--active {
+  background-color: var(--nm-surface-elevated);
+  border-color: var(--nm-amber);
+  color: var(--nm-text-primary);
+}
+
+.elev-filter-chip svg {
+  flex-shrink: 0;
+}
+
+.elev-filter-label {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ---- Line Filter Chips ---- */
+.elev-line-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-xs);
+}
+
+.elev-line-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  min-height: 44px;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  cursor: pointer;
+  transition: background-color var(--nm-transition-fast), border-color var(--nm-transition-fast);
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: var(--nm-font);
+  color: var(--nm-text-secondary);
+}
+
+.elev-line-chip:hover {
+  background-color: var(--nm-surface-elevated);
+  border-color: var(--nm-border-strong);
+}
+
+.elev-line-chip--active {
+  background-color: var(--nm-surface-elevated);
+  border-color: var(--nm-amber);
+  color: var(--nm-text-primary);
+}
+
+.elev-line-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50% !important;
+  flex-shrink: 0;
+}
+
+/* ---- Summary Bar ---- */
+.elev-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+}
+
+.elev-summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nm-space-md) var(--nm-space-lg);
+  flex: 1 1 auto;
+  min-width: 120px;
+  border-right: 1px solid var(--nm-border-subtle);
+  text-align: center;
+}
+
+.elev-summary-item:last-child {
+  border-right: none;
+}
+
+.elev-summary-item--ok {
+  border-left: 4px solid var(--nm-status-ok);
+}
+
+.elev-summary-value {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--nm-text-primary);
+  line-height: 1;
+}
+
+.elev-summary-value--ok {
+  color: var(--nm-status-ok);
+  font-size: 1.1rem;
+}
+
+.elev-summary-label {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* ---- Station Cards ---- */
+.elev-stations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nm-space-md);
+}
+
+.elev-station-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+}
+
+.elev-station-card.elev-station--elevator-out {
+  border-left: 4px solid var(--nm-status-error);
+}
+
+.elev-station-card.elev-station--escalator-out {
+  border-left: 4px solid var(--nm-status-warn);
+}
+
+/* Station Header */
+.elev-station-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nm-space-md);
+  padding: 0.75rem 1.25rem;
+  background-color: var(--nm-surface-elevated);
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.elev-station-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.elev-station-lines {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.elev-station-line-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50% !important;
+}
+
+.elev-station-name {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* Station Status Badge */
+.elev-station-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.elev-station-status--red {
+  background-color: rgba(255, 82, 82, 0.1);
+  color: var(--nm-status-error);
+  border: 1px solid rgba(255, 82, 82, 0.3);
+}
+
+.elev-station-status--red svg {
+  color: var(--nm-status-error);
+}
+
+.elev-station-status--yellow {
+  background-color: rgba(255, 179, 0, 0.1);
+  color: var(--nm-status-warn);
+  border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.elev-station-status--yellow svg {
+  color: var(--nm-status-warn);
+}
+
+/* Station Counts */
+.elev-station-counts {
+  display: flex;
+  gap: var(--nm-space-md);
+  padding: 0.5rem 1.25rem;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.elev-station-count {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.elev-station-count--elev {
+  color: var(--nm-status-error);
+}
+
+.elev-station-count--esc {
+  color: var(--nm-status-warn);
+}
+
+/* Individual Outages */
+.elev-station-outages {
+  padding: 0;
+}
+
+.elev-outage {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.elev-outage:last-child {
+  border-bottom: none;
+}
+
+.elev-outage-header {
+  display: flex;
+  align-items: center;
+  gap: var(--nm-space-sm);
+  flex-wrap: wrap;
+}
+
+.elev-outage-type {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.elev-outage--elevator .elev-outage-type {
+  color: var(--nm-status-error);
+}
+
+.elev-outage--escalator .elev-outage-type {
+  color: var(--nm-status-warn);
+}
+
+.elev-outage-unit {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.elev-outage-time {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: auto;
+}
+
+.elev-outage-location {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.elev-outage-symptom {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--nm-text-muted);
+  margin-top: 2px;
+}
+
+/* ---- Elevator Page Responsive ---- */
+@media (max-width: 768px) {
+  .elev-page {
+    padding: var(--nm-space-lg) var(--nm-space-md);
+  }
+
+  .elev-summary {
+    flex-direction: column;
+  }
+
+  .elev-summary-item {
+    min-width: unset;
+    border-right: none;
+    border-bottom: 1px solid var(--nm-border-subtle);
+    padding: var(--nm-space-sm) var(--nm-space-md);
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .elev-summary-item:last-child {
+    border-bottom: none;
+  }
+
+  .elev-summary-label {
+    margin-top: 0;
+  }
+
+  .elev-station-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--nm-space-sm);
+    padding: 0.6rem 1rem;
+  }
+
+  .elev-station-counts {
+    padding: 0.4rem 1rem;
+  }
+
+  .elev-outage {
+    padding: 0.6rem 1rem;
+  }
+
+  .elev-outage-header {
+    gap: var(--nm-space-xs);
+  }
+}
