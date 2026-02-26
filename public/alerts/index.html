@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC Metro Service Alerts, Delays &amp; Elevator Outages — Live | NextMetro</title>
+  <meta name="description" id="meta-description" content="Live Washington DC Metro service alerts including train delays, station closures, single tracking, and elevator &amp; escalator outages. Updated every 30 seconds from WMATA." />
+  <link rel="canonical" href="https://nextmetro.live/alerts/" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DC Metro Service Alerts, Delays & Elevator Outages — Live | NextMetro" />
+  <meta property="og:description" content="Live Washington DC Metrorail alerts: train delays, closures, single tracking, elevator and escalator outages. Updated every 30 seconds from WMATA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/alerts/" />
+  <meta property="og:site_name" content="NextMetro" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="DC Metro Service Alerts, Delays & Elevator Outages | NextMetro" />
+  <meta name="twitter:description" content="Live Washington DC Metrorail alerts: train delays, closures, single tracking, elevator and escalator outages. Updated every 30 seconds." />
+
+  <!-- Schema: BreadcrumbList (static) + SpecialAnnouncement (injected by JS) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nextmetro.live/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Alerts",
+        "item": "https://nextmetro.live/alerts/"
+      }
+    ]
+  }
+  </script>
+  <!-- Dynamic SpecialAnnouncement schema injected by alerts.js -->
+  <script type="application/ld+json" id="schema-alerts">[]</script>
+
+  <!-- FAQPage structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does single tracking mean on Metro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Single tracking means trains in both directions share one track instead of the usual two. This happens when one track is taken out of service for maintenance, emergency repairs, or safety inspections. During single tracking, trains on the affected segment alternate directions, which roughly doubles travel time through that section."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are there so many elevator and escalator outages on DC Metro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The DC Metro system has over 600 escalators and 300 elevators. Many were installed when the system opened between 1976 and 2001 and have experienced decades of heavy use and weather exposure. WMATA is in the process of a multi-year capital program to replace and modernize escalators and elevators across the system."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What causes Metro train delays?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Metro delays can result from signal and switch malfunctions, track circuit failures, door problems on trains, medical emergencies, unauthorized people on the tracks, and weather-related issues like heat restrictions or flooding. Mechanical issues with the train fleet can also cause system-wide delays."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a station closure on DC Metro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A station closure means trains pass through without stopping and entrances are closed. Full closures are usually planned for major maintenance like platform reconstruction or ceiling panel replacement. WMATA typically provides free shuttle bus service between closed and nearest open stations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often are DC Metro alerts updated on NextMetro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NextMetro polls both the WMATA Rail Incidents API and the Elevator/Escalator Incidents API every 30 seconds. Both are fetched in parallel so the page always shows the latest system-wide picture."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between an advisory and a delay on DC Metro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An advisory is an informational notice about a condition that may affect your trip, such as a planned service change. A delay means trains are actively running slower than normal due to an incident like a disabled train or track problem. Delays are more urgent and shown with red severity indicators."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How deep are DC Metro stations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Several DC Metro stations are among the deepest in North America. Wheaton (230 feet) and Forest Glen (196 feet) on the Red Line have some of the longest escalators in the Western Hemisphere. Station depth impacts elevator and escalator reliability since deeper stations have longer units under greater mechanical stress."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does NextMetro show bus alerts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NextMetro currently shows Metrorail alerts only, including all six rail lines plus system-wide elevator and escalator outages. Metrobus alerts are available through WMATA's separate Bus Incidents API but are not yet integrated into NextMetro."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/alerts/" class="nav-link nav-link--active">Alerts</a>
+        <a href="/map/" class="nav-link">Map</a>
+        <a href="/fares/" class="nav-link">Fares</a>
+      </div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/alerts/" class="mobile-menu-link mobile-menu-link--active">Alerts</a>
+    <a href="/map/" class="mobile-menu-link">Map</a>
+    <a href="/fares/" class="mobile-menu-link">Fares</a>
+  </div>
+
+  <!-- System Ticker -->
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-label">Live Status</span>
+      <h1 class="hero-station-name">DC Metro Alerts &amp; Outages</h1>
+      <p class="hero-station-address" id="alerts-subtitle">Train delays, station closures, single tracking, and elevator &amp; escalator outages — updated every 30 seconds.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="alerts-page">
+    <div class="alerts-page-inner">
+
+      <!-- Controls Bar -->
+      <div class="alerts-controls animate-in d1">
+        <div class="alerts-controls-right">
+          <span class="alerts-updated" id="alerts-updated"></span>
+          <button class="refresh-btn" id="alerts-refresh" aria-label="Refresh alerts">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- System Status Summary -->
+      <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Alerts List -->
+      <div class="alerts-list" id="alerts-list">
+        <!-- Skeleton loading state -->
+        <div class="alerts-skeleton">
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State (hidden by default) -->
+      <div class="alerts-empty" id="alerts-empty" style="display:none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" class="alerts-empty-icon">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <span class="alerts-empty-title">All Clear</span>
+        <span class="alerts-empty-text">No active service alerts. All lines operating normally.</span>
+      </div>
+
+      <!-- Historical Alerts -->
+      <div class="alerts-history-section" id="alerts-history-section" style="display:none;">
+        <div class="alerts-history-header">
+          <span class="alerts-history-title">Recent Alerts (Last 24 Hours)</span>
+        </div>
+        <div class="alerts-history-list" id="alerts-history-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Crawlable last-updated timestamp for SEO freshness -->
+  <time id="alerts-last-updated-time" datetime="" style="display:none;"></time>
+
+  <!-- FAQ Section -->
+  <section class="line-faq alerts-faq">
+    <div class="alerts-page-inner">
+      <h2 class="section-heading animate-in d3">Frequently Asked Questions</h2>
+      <p class="section-subheading animate-in d3">Understanding DC Metro service disruptions, alert types, and what they mean for your commute.</p>
+      <div class="line-faq-list animate-in d4">
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What does "single tracking" mean on Metro?</summary>
+          <div class="line-faq-answer">
+            <p>Single tracking means trains in both directions share one track instead of the usual two. This happens when one track is taken out of service for maintenance, emergency repairs, or safety inspections. During single tracking, trains on the affected segment alternate directions, which roughly doubles travel time through that section. Trains may also hold at stations longer and skip certain stations in some cases. WMATA typically announces single tracking in advance for planned maintenance, but it can also occur unexpectedly due to track defects, signal failures, or incidents.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Why are there so many elevator and escalator outages?</summary>
+          <div class="line-faq-answer">
+            <p>The DC Metro system has over 600 escalators and 300 elevators — one of the largest collections of any transit system in the world. Many of these units were installed when the system opened between 1976 and 2001 and have experienced decades of heavy use, weather exposure (many are outdoor units), and the unique engineering challenge of moving riders through the deepest stations in North America. WMATA is in the process of a multi-year capital program to replace and modernize escalators and elevators across the system. Outages are reported in real time through the WMATA Incidents API, which is what powers the alerts on this page.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What causes Metro train delays?</summary>
+          <div class="line-faq-answer">
+            <p>Metro delays can result from a range of issues. The most common causes include signal and switch malfunctions, track circuit failures, door problems on trains, medical emergencies involving passengers, unauthorized people on the tracks, and weather-related issues like heat restrictions (when tracks expand in extreme heat, trains must slow down) or flooding. Mechanical issues with the train fleet — especially brake and propulsion faults — can also cause system-wide delays if trains need to be taken out of service during rush hour, reducing available capacity on the line.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What is a "station closure" and when does it happen?</summary>
+          <div class="line-faq-answer">
+            <p>A station closure means trains pass through the station without stopping and the station entrances are closed to the public. Full station closures are relatively rare and are usually planned for major maintenance work — such as platform reconstruction, ceiling panel replacement, or lighting upgrades. WMATA also closes stations for emergency situations, security incidents, or during scheduled shutdowns on weekends. When a station is closed, WMATA typically provides free shuttle bus service between the closed station and the nearest open stations on the line.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How often are alerts updated on this page?</summary>
+          <div class="line-faq-answer">
+            <p>This page polls both the WMATA Rail Incidents API and the Elevator/Escalator Incidents API every 30 seconds. Rail incident data (delays, advisories, closures, single tracking) comes from one endpoint, and elevator/escalator outage data comes from another. Both are fetched in parallel so the page always shows the latest system-wide picture. The status bar at the top shows per-line status (Normal, Advisory, or Delays) based on active rail incidents, and the ticker scrolls real-time line status across the top of the page.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What is the difference between an "advisory" and a "delay"?</summary>
+          <div class="line-faq-answer">
+            <p>An <strong>advisory</strong> is an informational notice from WMATA about a condition that may affect your trip — such as a planned service change, a station with a closed entrance, or an upcoming maintenance window. Advisories do not necessarily mean trains are running behind schedule. A <strong>delay</strong> means trains are actively running slower than normal or have stopped due to an incident. Delays are more urgent and usually involve a specific cause like a disabled train, track problem, or medical emergency. On this page, delays are sorted to the top and shown with a red severity indicator, while advisories appear lower with a blue indicator.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How deep are DC Metro stations and why does it matter?</summary>
+          <div class="line-faq-answer">
+            <p>Several DC Metro stations are among the deepest in North America. Wheaton (station depth: 230 feet) and Forest Glen (196 feet) on the Red Line have some of the longest single-span escalators in the Western Hemisphere. Rosslyn, Dupont Circle, Woodley Park, Bethesda, and Tenleytown are also notably deep. Station depth directly impacts elevator and escalator reliability — deeper stations have longer units under greater mechanical stress, and when they go out of service, passengers must rely on the remaining units or take alternative routes. This is why elevator and escalator outages at deep stations can significantly affect accessibility.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Does NextMetro show bus alerts or only Metrorail?</summary>
+          <div class="line-faq-answer">
+            <p>NextMetro currently shows Metrorail alerts only — this includes all six rail lines (Red, Orange, Blue, Green, Yellow, and Silver) plus system-wide elevator and escalator outages at rail stations. Bus service alerts (Metrobus) are available through WMATA's separate Bus Incidents API but are not yet integrated into NextMetro. For Metrobus alerts, check <a href="https://www.wmata.com/service/bus/" target="_blank" rel="noopener">WMATA's bus status page</a>.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-col-heading">Lines</span>
+          <div class="footer-lines-grid">
+            <a href="/lines/red/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-red)"></span>Red</a>
+            <a href="/lines/yellow/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-yellow)"></span>Yellow</a>
+            <a href="/lines/orange/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-orange)"></span>Orange</a>
+            <a href="/lines/green/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-green)"></span>Green</a>
+            <a href="/lines/blue/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-blue)"></span>Blue</a>
+            <a href="/lines/silver/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-silver)"></span>Silver</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Tools</span>
+          <a href="/alerts/">Alerts</a>
+          <a href="/elevators/">Elevators</a>
+          <a href="/hours/">Hours</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Support</span>
+          <a href="/about.html">About</a>
+          <a href="/help/">Help</a>
+          <a href="/crisis/">Crisis</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Legal</span>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/alerts.js"></script>
+</body>
+</html>

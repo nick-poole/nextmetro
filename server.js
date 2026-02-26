@@ -233,7 +233,27 @@ app.get('/api/incidents', async (req, res) => {
 });
 
 // ==============================
-// 5. GET /api/elevators/:code — Elevator/Escalator outages (120s TTL cache)
+// 5a. GET /api/elevators — All elevator/escalator outages system-wide (120s TTL)
+// ==============================
+app.get('/api/elevators', async (req, res) => {
+  const cacheKey = 'elevators-all';
+  const cached = getCached(cacheKey, 120 * 1000);
+  if (cached) return res.json(cached);
+
+  try {
+    const data = await wmataFetch('/Incidents.svc/json/ElevatorIncidents');
+    setCache(cacheKey, data);
+    res.json(data);
+  } catch (err) {
+    console.error('Elevators (all) API error:', err.message);
+    const stale = cache[cacheKey];
+    if (stale) return res.json(stale.data);
+    res.status(err.status || 500).json({ error: 'Failed to fetch elevator status' });
+  }
+});
+
+// ==============================
+// 5b. GET /api/elevators/:code — Elevator/Escalator outages per station (120s TTL)
 // ==============================
 app.get('/api/elevators/:code', async (req, res) => {
   const { code } = req.params;
