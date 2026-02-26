@@ -1219,6 +1219,12 @@ a:hover {
   color: var(--nm-amber);
 }
 
+.footer-lines-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--nm-space-lg);
+}
+
 .footer-line-link {
   display: flex;
   align-items: center;
