@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC Metro Alerts &amp; Delays — Live Status | NextMetro</title>
+  <meta name="description" id="meta-description" content="Live DC Metro service alerts, delays, and advisories for all Metrorail lines. Severity-sorted, line-filtered, and updated every 30 seconds." />
+  <link rel="canonical" href="https://nextmetro.live/alerts/" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DC Metro Alerts & Delays — Live Status | NextMetro" />
+  <meta property="og:description" content="Live DC Metro service alerts, delays, and advisories for all Metrorail lines. Updated every 30 seconds." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/alerts/" />
+  <meta property="og:site_name" content="NextMetro" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="DC Metro Alerts & Delays — Live Status | NextMetro" />
+  <meta name="twitter:description" content="Live DC Metro service alerts, delays, and advisories for all Metrorail lines. Updated every 30 seconds." />
+
+  <!-- Schema: BreadcrumbList (static) + SpecialAnnouncement (injected by JS) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nextmetro.live/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Alerts",
+        "item": "https://nextmetro.live/alerts/"
+      }
+    ]
+  }
+  </script>
+  <!-- Dynamic SpecialAnnouncement schema injected by alerts.js -->
+  <script type="application/ld+json" id="schema-alerts">[]</script>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/alerts/" class="nav-link nav-link--active">Alerts</a>
+        <a href="/map/" class="nav-link">Map</a>
+        <a href="/fares/" class="nav-link">Fares</a>
+      </div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/alerts/" class="mobile-menu-link mobile-menu-link--active">Alerts</a>
+    <a href="/map/" class="mobile-menu-link">Map</a>
+    <a href="/fares/" class="mobile-menu-link">Fares</a>
+  </div>
+
+  <!-- System Ticker -->
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-label">System Alerts</span>
+      <h1 class="hero-station-name">Service Alerts</h1>
+      <p class="hero-station-address" id="alerts-subtitle">Live delays, advisories, and service changes for all Metrorail lines.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="alerts-page">
+    <div class="alerts-page-inner">
+
+      <!-- Controls Bar -->
+      <div class="alerts-controls animate-in d1">
+        <div class="alerts-controls-left">
+          <!-- Line Filters -->
+          <div class="alerts-filters" id="alerts-filters">
+            <label class="alerts-filter-chip alerts-filter-chip--active" data-line="ALL">
+              <input type="checkbox" checked hidden />
+              <span class="alerts-filter-label">All Lines</span>
+            </label>
+            <label class="alerts-filter-chip" data-line="RD">
+              <input type="checkbox" hidden />
+              <span class="alerts-filter-dot" style="background-color: #BF0D3E"></span>
+              <span class="alerts-filter-label">Red</span>
+            </label>
+            <label class="alerts-filter-chip" data-line="OR">
+              <input type="checkbox" hidden />
+              <span class="alerts-filter-dot" style="background-color: #ED8B00"></span>
+              <span class="alerts-filter-label">Orange</span>
+            </label>
+            <label class="alerts-filter-chip" data-line="BL">
+              <input type="checkbox" hidden />
+              <span class="alerts-filter-dot" style="background-color: #009CDE"></span>
+              <span class="alerts-filter-label">Blue</span>
+            </label>
+            <label class="alerts-filter-chip" data-line="GR">
+              <input type="checkbox" hidden />
+              <span class="alerts-filter-dot" style="background-color: #00B140"></span>
+              <span class="alerts-filter-label">Green</span>
+            </label>
+            <label class="alerts-filter-chip" data-line="YL">
+              <input type="checkbox" hidden />
+              <span class="alerts-filter-dot" style="background-color: #FFD100"></span>
+              <span class="alerts-filter-label">Yellow</span>
+            </label>
+            <label class="alerts-filter-chip" data-line="SV">
+              <input type="checkbox" hidden />
+              <span class="alerts-filter-dot" style="background-color: #A2AAAD"></span>
+              <span class="alerts-filter-label">Silver</span>
+            </label>
+          </div>
+        </div>
+        <div class="alerts-controls-right">
+          <span class="alerts-updated" id="alerts-updated"></span>
+          <button class="refresh-btn" id="alerts-refresh" aria-label="Refresh alerts">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- System Status Summary -->
+      <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Alerts List -->
+      <div class="alerts-list" id="alerts-list">
+        <!-- Skeleton loading state -->
+        <div class="alerts-skeleton">
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State (hidden by default) -->
+      <div class="alerts-empty" id="alerts-empty" style="display:none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" class="alerts-empty-icon">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <span class="alerts-empty-title">All Clear</span>
+        <span class="alerts-empty-text">No active service alerts. All lines operating normally.</span>
+      </div>
+
+      <!-- Historical Alerts -->
+      <div class="alerts-history-section" id="alerts-history-section" style="display:none;">
+        <div class="alerts-history-header">
+          <span class="alerts-history-title">Recent Alerts (Last 24 Hours)</span>
+        </div>
+        <div class="alerts-history-list" id="alerts-history-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Crawlable last-updated timestamp for SEO freshness -->
+  <time id="alerts-last-updated-time" datetime="" style="display:none;"></time>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-col-heading">Lines</span>
+          <div class="footer-lines-grid">
+            <a href="/lines/red/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-red)"></span>Red</a>
+            <a href="/lines/yellow/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-yellow)"></span>Yellow</a>
+            <a href="/lines/orange/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-orange)"></span>Orange</a>
+            <a href="/lines/green/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-green)"></span>Green</a>
+            <a href="/lines/blue/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-blue)"></span>Blue</a>
+            <a href="/lines/silver/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-silver)"></span>Silver</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Tools</span>
+          <a href="/elevators/">Elevators</a>
+          <a href="/hours/">Hours</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Support</span>
+          <a href="/about.html">About</a>
+          <a href="/help/">Help</a>
+          <a href="/crisis/">Crisis</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Legal</span>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/alerts.js"></script>
+</body>
+</html>
