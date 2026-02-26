@@ -3351,6 +3351,11 @@ a:hover {
   border-left: 4px solid var(--nm-status-info);
 }
 
+.alerts-card-severity.severity-facility {
+  background-color: rgba(160, 160, 160, 0.06);
+  border-left: 4px solid var(--nm-text-muted);
+}
+
 .alerts-card-icon {
   display: inline-flex;
   flex-shrink: 0;
@@ -3368,6 +3373,10 @@ a:hover {
 
 .severity-advisory .alerts-card-icon {
   color: var(--nm-status-info);
+}
+
+.severity-facility .alerts-card-icon {
+  color: var(--nm-text-muted);
 }
 
 .alerts-card-severity-label {
@@ -3393,6 +3402,10 @@ a:hover {
   color: var(--nm-status-info);
 }
 
+.severity-facility .alerts-card-severity-label {
+  color: var(--nm-text-muted);
+}
+
 .alerts-card-time {
   font-family: var(--nm-font);
   font-size: 0.8rem;
@@ -3407,7 +3420,7 @@ a:hover {
   padding: 1rem 1.25rem;
 }
 
-.alerts-card-lines {
+.alerts-card-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--nm-space-xs);
@@ -3433,6 +3446,25 @@ a:hover {
   height: 8px;
   border-radius: 50% !important;
   flex-shrink: 0;
+}
+
+.alert-station-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px solid var(--nm-border);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--nm-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.alert-station-pill svg {
+  flex-shrink: 0;
+  color: var(--nm-text-muted);
 }
 
 .alerts-card-desc {
