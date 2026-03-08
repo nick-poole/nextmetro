@@ -3,7 +3,7 @@
 // Station-grouped, filterable, real-time outage tracker
 // ==============================
 
-var API_BASE_URL = '';
+var API_BASE_URL = 'https://nextmetro.onrender.com';
 
 // ---- Fetch with retry (handles Render free-tier cold starts) ----
 async function fetchWithRetry(url, retries, delayMs) {

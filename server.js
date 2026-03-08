@@ -24,7 +24,7 @@ app.use(
 				styleSrc: ["'self'", 'https://fonts.googleapis.com'],
 				fontSrc: ["'self'", 'https://fonts.gstatic.com'],
 				imgSrc: ["'self'", 'data:'],
-				connectSrc: ["'self'", 'https://nextmetro.onrender.com', 'https://nextmetro.live'],
+				connectSrc: ["'self'", 'https://nextmetro.onrender.com', 'https://nextmetro.live', 'https://www.nextmetro.live'],
 			},
 		},
 	})

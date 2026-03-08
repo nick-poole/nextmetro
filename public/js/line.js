@@ -2,7 +2,7 @@
 // NextMetro — Line Page JS
 // ==============================
 
-const API_BASE_URL = '';
+const API_BASE_URL = 'https://nextmetro.onrender.com';
 
 // ---- Fetch with retry (handles Render cold starts) ----
 async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
