@@ -147,6 +147,10 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 
 ## Changelog
 
+### Migration to Cloudflare
+
+- Migrated to cloudflare 3/8/26
+
 ### v2.1.0 — Line Pages
 
 - Add dedicated Red Line page with all 27 stations, transfer badges, parking indicators, and external rail connections (Amtrak, MARC, VRE, DC Streetcar)
