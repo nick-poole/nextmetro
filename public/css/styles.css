@@ -4096,8 +4096,8 @@ a:hover {
 .home-hero {
   padding: 48px 24px;
   text-align: center;
-  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)),
-    url('/images/homepage-hero.webp') center / contain no-repeat;
+  background: linear-gradient(rgba(10, 10, 10, 0.55), rgba(10, 10, 10, 0.55)),
+    url('/images/homepage-hero.webp') center / cover no-repeat;
 }
 
 .home-hero-content {
