@@ -4249,7 +4249,8 @@ a:hover {
   justify-content: center;
   padding: 12px 20px;
   background: var(--nm-surface);
-  border-left: 4px solid transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
   text-decoration: none;
   color: var(--nm-text-primary);
   font-size: 0.875rem;
@@ -4263,12 +4264,12 @@ a:hover {
   color: var(--nm-text-primary);
 }
 
-.home-line-chip--red { border-left-color: var(--nm-line-red); }
-.home-line-chip--orange { border-left-color: var(--nm-line-orange); }
-.home-line-chip--blue { border-left-color: var(--nm-line-blue); }
-.home-line-chip--yellow { border-left-color: var(--nm-line-yellow); }
-.home-line-chip--green { border-left-color: var(--nm-line-green); }
-.home-line-chip--silver { border-left-color: var(--nm-line-silver); }
+.home-line-chip--red { border-left-color: var(--nm-line-red); border-right-color: var(--nm-line-red); }
+.home-line-chip--orange { border-left-color: var(--nm-line-orange); border-right-color: var(--nm-line-orange); }
+.home-line-chip--blue { border-left-color: var(--nm-line-blue); border-right-color: var(--nm-line-blue); }
+.home-line-chip--yellow { border-left-color: var(--nm-line-yellow); border-right-color: var(--nm-line-yellow); }
+.home-line-chip--green { border-left-color: var(--nm-line-green); border-right-color: var(--nm-line-green); }
+.home-line-chip--silver { border-left-color: var(--nm-line-silver); border-right-color: var(--nm-line-silver); }
 
 /* ---- Section Title ---- */
 .home-section-title {
