@@ -3,15 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NextMetro — Real-Time D.C. Metro Tracker</title>
-  <meta name="description" content="Real-time train arrivals, system status, service alerts, and fare information for the Washington D.C. Metrorail system." />
+
+  <title>NextMetro — Real-Time DC Metro Arrivals</title>
+  <meta name="description" content="Live arrival times for all 98 Washington DC Metro stations. Track trains on the Red, Orange, Blue, Yellow, Green, and Silver lines. Fast, accurate, free." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NextMetro — Real-Time DC Metro Arrivals" />
+  <meta property="og:description" content="Live arrival times for all 98 Washington DC Metro stations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NextMetro — Real-Time DC Metro Arrivals" />
+  <meta name="twitter:description" content="Live arrival times for all 98 Washington DC Metro stations." />
+
+  <!-- Canonical -->
   <link rel="canonical" href="https://nextmetro.live/" />
+
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NextMetro",
+    "url": "https://nextmetro.live/",
+    "description": "Real-time arrival information for the Washington DC Metro system",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://nextmetro.live/station/{search_term_string}/",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NextMetro",
+    "url": "https://nextmetro.live/"
+  }
+  </script>
 </head>
 <body>
+
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- NavBar -->
   <header class="navbar" id="navbar">
@@ -39,158 +81,227 @@
     <a href="/fares/" class="mobile-menu-link">Fares</a>
   </div>
 
-  <!-- System Ticker -->
-  <div class="ticker-bar" id="ticker-bar">
-    <div class="ticker-track" id="ticker-track"></div>
-  </div>
+  <main id="main-content">
 
-  <!-- Hero / Station Selector -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <span class="hero-label">Station</span>
-      <h1 class="hero-station-name" id="hero-station-name">Brookland-CUA</h1>
-      <p class="hero-station-address" id="hero-station-address"></p>
+    <!-- Hero: Station Search -->
+    <section class="home-hero">
+      <div class="home-hero-content">
+        <h1 class="home-hero-title">NEXT<span class="home-hero-title-accent">METRO</span></h1>
+        <p class="home-hero-subtitle">Real-time DC Metro arrivals</p>
 
-      <!-- Station Search -->
-      <div class="station-search-wrapper" id="station-search-wrapper">
-        <input
-          type="text"
-          id="station-input"
-          class="station-input"
-          placeholder="Search stations..."
-          autocomplete="off"
-          aria-label="Search for a Metro station"
-        />
-        <ul class="station-dropdown" id="station-dropdown"></ul>
-      </div>
-
-      <!-- Line Pills -->
-      <div class="line-pills" id="line-pills"></div>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <main class="main-grid">
-    <div class="main-column">
-
-      <!-- PIDS Arrivals Display -->
-      <section class="pids-card animate-in d1">
-        <div class="pids-header" id="pids-header">
-          <span class="pids-header-station" id="pids-header-station">Brookland-CUA</span>
-        </div>
-        <div class="pids-screen" id="pids-screen">
-          <div class="pids-scanlines"></div>
-          <div class="pids-content" id="pids-content">
-            <!-- Train rows rendered by JS -->
+        <div class="home-search">
+          <label for="home-station-input" class="visually-hidden">Search for a station</label>
+          <div class="home-search-input-wrapper">
+            <svg class="home-search-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+            <input
+              type="text"
+              id="home-station-input"
+              class="home-search-input"
+              placeholder="Search for a station..."
+              autocomplete="off"
+              role="combobox"
+              aria-expanded="false"
+              aria-controls="home-station-listbox"
+              aria-autocomplete="list"
+            />
           </div>
-        </div>
-      </section>
-
-      <!-- Last Updated -->
-      <div class="last-updated" id="last-updated" style="display:none;">
-        <span id="updated-time"></span>
-        <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
-        </button>
-      </div>
-
-      <!-- Station Facilities Card -->
-      <section class="facilities-card animate-in d2" id="facilities-card">
-        <div class="facilities-header">
-          <span class="facilities-title">Station Facilities</span>
-        </div>
-        <div class="facilities-body" id="facilities-body">
-          <div class="facilities-row">
-            <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
-            </span>
-            <span class="facilities-label">Elevators</span>
-            <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
-          </div>
-          <div class="facilities-row">
-            <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
-            </span>
-            <span class="facilities-label">Escalators</span>
-            <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
-          </div>
-        </div>
-        <div class="facilities-details" id="facilities-details" style="display:none;">
-          <!-- Outage details rendered by JS -->
-        </div>
-      </section>
-
-      <!-- Fare Calculator -->
-      <section class="fare-card animate-in d3" id="fare-card">
-        <div class="fare-header">
-          <span class="fare-title">Fare Calculator</span>
-        </div>
-        <div class="fare-body">
-          <div class="fare-route">
-            <div class="fare-station fare-from">
-              <span class="fare-station-label">From</span>
-              <span class="fare-station-name" id="fare-from-name">Brookland-CUA</span>
-            </div>
-            <div class="fare-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-            </div>
-            <div class="fare-station fare-to">
-              <span class="fare-station-label">To</span>
-              <select id="fare-destination" class="fare-select" aria-label="Select destination station">
-                <option value="">Select destination...</option>
-                <!-- Options populated by JS -->
-              </select>
-            </div>
-          </div>
-          <div class="fare-results" id="fare-results" style="display:none;">
-            <div class="fare-result-row">
-              <span class="fare-result-label">Peak</span>
-              <span class="fare-result-value" id="fare-peak">--</span>
-            </div>
-            <div class="fare-result-row">
-              <span class="fare-result-label">Off-Peak</span>
-              <span class="fare-result-value" id="fare-offpeak">--</span>
-            </div>
-            <div class="fare-result-row">
-              <span class="fare-result-label">Senior/Disabled</span>
-              <span class="fare-result-value" id="fare-senior">--</span>
-            </div>
-            <div class="fare-result-row fare-result-row--time">
-              <span class="fare-result-label">Travel Time</span>
-              <span class="fare-result-value" id="fare-time">--</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-
-      <!-- System Status Card -->
-      <div class="system-status-card animate-in d3" id="system-status-card">
-        <div class="system-status-header">
-          <span>System Status</span>
-          <span class="system-status-time" id="system-status-time"></span>
-        </div>
-        <div class="system-status-rows" id="system-status-rows">
-          <!-- Rendered by JS from incidents API -->
+          <ul id="home-station-listbox" class="home-search-results" role="listbox" hidden></ul>
         </div>
       </div>
+    </section>
 
-      <!-- Alert Card -->
-      <div class="alert-card animate-in d4" id="alert-card" style="display:none;">
-        <div class="alert-card-header">
-          <span class="alert-badge">Service Alert</span>
-          <span class="alert-timestamp" id="alert-timestamp"></span>
-        </div>
-        <div class="alert-card-body" id="alert-body">
-          <!-- Alert content rendered by JS -->
-        </div>
+    <!-- Line Quick-Links -->
+    <section class="home-line-links">
+      <h2 class="visually-hidden">Browse by line</h2>
+      <nav class="home-line-links-grid" aria-label="Metro lines">
+        <a href="/lines/red/" class="home-line-chip home-line-chip--red">
+          <span class="home-line-chip-dot"></span>
+          <span class="home-line-chip-label">Red</span>
+        </a>
+        <a href="/lines/orange/" class="home-line-chip home-line-chip--orange">
+          <span class="home-line-chip-dot"></span>
+          <span class="home-line-chip-label">Orange</span>
+        </a>
+        <a href="/lines/blue/" class="home-line-chip home-line-chip--blue">
+          <span class="home-line-chip-dot"></span>
+          <span class="home-line-chip-label">Blue</span>
+        </a>
+        <a href="/lines/yellow/" class="home-line-chip home-line-chip--yellow">
+          <span class="home-line-chip-dot"></span>
+          <span class="home-line-chip-label">Yellow</span>
+        </a>
+        <a href="/lines/green/" class="home-line-chip home-line-chip--green">
+          <span class="home-line-chip-dot"></span>
+          <span class="home-line-chip-label">Green</span>
+        </a>
+        <a href="/lines/silver/" class="home-line-chip home-line-chip--silver">
+          <span class="home-line-chip-dot"></span>
+          <span class="home-line-chip-label">Silver</span>
+        </a>
+      </nav>
+    </section>
+
+    <!-- Alert Preview (Conditional — rendered by JS) -->
+    <section class="home-alert-preview" id="home-alert-preview" aria-labelledby="home-alert-preview-title" hidden>
+      <header class="home-alert-preview-header">
+        <h2 id="home-alert-preview-title" class="home-section-title">
+          <svg class="home-alert-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+          </svg>
+          Service Alerts
+        </h2>
+      </header>
+      <div class="home-alert-preview-list" id="home-alert-list">
+        <!-- Alert cards rendered by JS -->
       </div>
+      <footer class="home-alert-preview-footer">
+        <a href="/alerts/" class="home-view-all-link">View all alerts &rarr;</a>
+      </footer>
+    </section>
 
-    </aside>
+    <!-- Utility Strip -->
+    <section class="home-utility-strip" aria-label="Quick tools">
+      <div class="home-utility-grid">
+
+        <a href="/elevators/" class="home-utility-card">
+          <div class="home-utility-card-icon">
+            <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+            </svg>
+          </div>
+          <div class="home-utility-card-content">
+            <h3 class="home-utility-card-title">Elevators</h3>
+            <p class="home-utility-card-description">
+              <span class="home-utility-card-live-data" id="home-elevator-count">Check station status</span>
+            </p>
+          </div>
+          <span class="home-utility-card-cta">Check status &rarr;</span>
+        </a>
+
+        <a href="/fares/" class="home-utility-card">
+          <div class="home-utility-card-icon">
+            <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+            </svg>
+          </div>
+          <div class="home-utility-card-content">
+            <h3 class="home-utility-card-title">Fares</h3>
+            <p class="home-utility-card-description">Plan your trip</p>
+          </div>
+          <span class="home-utility-card-cta">Calculate &rarr;</span>
+        </a>
+
+        <a href="/hours/" class="home-utility-card">
+          <div class="home-utility-card-icon">
+            <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+          </div>
+          <div class="home-utility-card-content">
+            <h3 class="home-utility-card-title">Hours</h3>
+            <p class="home-utility-card-description">
+              <span class="home-utility-card-live-data" id="home-hours-status">View schedule</span>
+            </p>
+          </div>
+          <span class="home-utility-card-cta">Full schedule &rarr;</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Popular Stations -->
+    <section class="home-popular-stations" aria-labelledby="home-popular-stations-title">
+      <h2 id="home-popular-stations-title" class="home-section-title">Popular Stations</h2>
+
+      <nav class="home-popular-stations-grid" aria-label="Popular stations">
+        <a href="/station/metro-center/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--red"></span>
+            <span class="home-line-dot home-line-dot--orange"></span>
+            <span class="home-line-dot home-line-dot--blue"></span>
+            <span class="home-line-dot home-line-dot--silver"></span>
+          </span>
+          <span class="home-station-link-name">Metro Center</span>
+        </a>
+
+        <a href="/station/union-station/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--red"></span>
+          </span>
+          <span class="home-station-link-name">Union Station</span>
+        </a>
+
+        <a href="/station/gallery-place/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--red"></span>
+            <span class="home-line-dot home-line-dot--yellow"></span>
+            <span class="home-line-dot home-line-dot--green"></span>
+          </span>
+          <span class="home-station-link-name">Gallery Pl-Chinatown</span>
+        </a>
+
+        <a href="/station/dupont-circle/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--red"></span>
+          </span>
+          <span class="home-station-link-name">Dupont Circle</span>
+        </a>
+
+        <a href="/station/lenfant-plaza/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--orange"></span>
+            <span class="home-line-dot home-line-dot--blue"></span>
+            <span class="home-line-dot home-line-dot--yellow"></span>
+            <span class="home-line-dot home-line-dot--green"></span>
+            <span class="home-line-dot home-line-dot--silver"></span>
+          </span>
+          <span class="home-station-link-name">L'Enfant Plaza</span>
+        </a>
+
+        <a href="/station/foggy-bottom/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--orange"></span>
+            <span class="home-line-dot home-line-dot--blue"></span>
+            <span class="home-line-dot home-line-dot--silver"></span>
+          </span>
+          <span class="home-station-link-name">Foggy Bottom-GWU</span>
+        </a>
+
+        <a href="/station/reagan-airport/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--blue"></span>
+            <span class="home-line-dot home-line-dot--yellow"></span>
+          </span>
+          <span class="home-station-link-name">Reagan Airport</span>
+        </a>
+
+        <a href="/station/bethesda/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--red"></span>
+          </span>
+          <span class="home-station-link-name">Bethesda</span>
+        </a>
+
+        <a href="/station/silver-spring/" class="home-station-link">
+          <span class="home-station-link-lines">
+            <span class="home-line-dot home-line-dot--red"></span>
+          </span>
+          <span class="home-station-link-name">Silver Spring</span>
+        </a>
+      </nav>
+    </section>
+
+    <!-- SEO Content -->
+    <section class="home-seo-content">
+      <p>
+        NextMetro provides real-time arrival information for the Washington DC Metro system.
+        Track trains across all 98 stations on the Red, Orange, Blue, Yellow, Green, and Silver lines.
+        Fast, accurate, and built for daily commuters.
+      </p>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -234,6 +345,6 @@
   </footer>
 
   <script src="/js/nav.js"></script>
-  <script src="js/app.js"></script>
+  <script src="/js/home.js"></script>
 </body>
 </html>

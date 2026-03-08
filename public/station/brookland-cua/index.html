@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brookland-CUA — Real-Time Metro Arrivals | NextMetro</title>
+  <meta name="description" content="Live train arrivals and real-time predictions for Brookland-CUA Metro station on the Red Line. Track next trains, check elevator status, and calculate fares." />
+  <link rel="canonical" href="https://nextmetro.live/station/brookland-cua/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Brookland-CUA — Real-Time Metro Arrivals | NextMetro" />
+  <meta property="og:description" content="Live train arrivals and real-time predictions for Brookland-CUA Metro station on the Red Line." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/station/brookland-cua/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Brookland-CUA — Real-Time Metro Arrivals | NextMetro" />
+  <meta name="twitter:description" content="Live train arrivals and real-time predictions for Brookland-CUA Metro station on the Red Line." />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "NextMetro",
+        "item": "https://nextmetro.live/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Brookland-CUA",
+        "item": "https://nextmetro.live/station/brookland-cua/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/alerts/" class="nav-link">Alerts</a>
+        <a href="/elevators/" class="nav-link">Elevators</a>
+        <a href="/fares/" class="nav-link">Fares</a>
+      </div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/alerts/" class="mobile-menu-link">Alerts</a>
+    <a href="/elevators/" class="mobile-menu-link">Elevators</a>
+    <a href="/fares/" class="mobile-menu-link">Fares</a>
+  </div>
+
+  <!-- System Ticker -->
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <!-- Hero / Station Selector -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <span class="hero-label">Station</span>
+      <h1 class="hero-station-name" id="hero-station-name">Brookland-CUA</h1>
+      <p class="hero-station-address" id="hero-station-address"></p>
+
+      <!-- Station Search -->
+      <div class="station-search-wrapper" id="station-search-wrapper">
+        <input
+          type="text"
+          id="station-input"
+          class="station-input"
+          placeholder="Search stations..."
+          autocomplete="off"
+          aria-label="Search for a Metro station"
+        />
+        <ul class="station-dropdown" id="station-dropdown"></ul>
+      </div>
+
+      <!-- Line Pills -->
+      <div class="line-pills" id="line-pills"></div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-grid">
+    <div class="main-column">
+
+      <!-- PIDS Arrivals Display -->
+      <section class="pids-card animate-in d1">
+        <div class="pids-header" id="pids-header">
+          <span class="pids-header-station" id="pids-header-station">Brookland-CUA</span>
+        </div>
+        <div class="pids-screen" id="pids-screen">
+          <div class="pids-scanlines"></div>
+          <div class="pids-content" id="pids-content">
+            <!-- Train rows rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Last Updated -->
+      <div class="last-updated" id="last-updated" style="display:none;">
+        <span id="updated-time"></span>
+        <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        </button>
+      </div>
+
+      <!-- Station Facilities Card -->
+      <section class="facilities-card animate-in d2" id="facilities-card">
+        <div class="facilities-header">
+          <span class="facilities-title">Station Facilities</span>
+        </div>
+        <div class="facilities-body" id="facilities-body">
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            </span>
+            <span class="facilities-label">Elevators</span>
+            <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
+          </div>
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+            </span>
+            <span class="facilities-label">Escalators</span>
+            <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
+          </div>
+        </div>
+        <div class="facilities-details" id="facilities-details" style="display:none;">
+          <!-- Outage details rendered by JS -->
+        </div>
+      </section>
+
+      <!-- Fare Calculator -->
+      <section class="fare-card animate-in d3" id="fare-card">
+        <div class="fare-header">
+          <span class="fare-title">Fare Calculator</span>
+        </div>
+        <div class="fare-body">
+          <div class="fare-route">
+            <div class="fare-station fare-from">
+              <span class="fare-station-label">From</span>
+              <span class="fare-station-name" id="fare-from-name">Brookland-CUA</span>
+            </div>
+            <div class="fare-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            </div>
+            <div class="fare-station fare-to">
+              <span class="fare-station-label">To</span>
+              <select id="fare-destination" class="fare-select" aria-label="Select destination station">
+                <option value="">Select destination...</option>
+                <!-- Options populated by JS -->
+              </select>
+            </div>
+          </div>
+          <div class="fare-results" id="fare-results" style="display:none;">
+            <div class="fare-result-row">
+              <span class="fare-result-label">Peak</span>
+              <span class="fare-result-value" id="fare-peak">--</span>
+            </div>
+            <div class="fare-result-row">
+              <span class="fare-result-label">Off-Peak</span>
+              <span class="fare-result-value" id="fare-offpeak">--</span>
+            </div>
+            <div class="fare-result-row">
+              <span class="fare-result-label">Senior/Disabled</span>
+              <span class="fare-result-value" id="fare-senior">--</span>
+            </div>
+            <div class="fare-result-row fare-result-row--time">
+              <span class="fare-result-label">Travel Time</span>
+              <span class="fare-result-value" id="fare-time">--</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <!-- System Status Card -->
+      <div class="system-status-card animate-in d3" id="system-status-card">
+        <div class="system-status-header">
+          <span>System Status</span>
+          <span class="system-status-time" id="system-status-time"></span>
+        </div>
+        <div class="system-status-rows" id="system-status-rows">
+          <!-- Rendered by JS from incidents API -->
+        </div>
+      </div>
+
+      <!-- Alert Card -->
+      <div class="alert-card animate-in d4" id="alert-card" style="display:none;">
+        <div class="alert-card-header">
+          <span class="alert-badge">Service Alert</span>
+          <span class="alert-timestamp" id="alert-timestamp"></span>
+        </div>
+        <div class="alert-card-body" id="alert-body">
+          <!-- Alert content rendered by JS -->
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-col-heading">Lines</span>
+          <div class="footer-lines-grid">
+            <a href="/lines/red/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-red)"></span>Red</a>
+            <a href="/lines/yellow/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-yellow)"></span>Yellow</a>
+            <a href="/lines/orange/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-orange)"></span>Orange</a>
+            <a href="/lines/green/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-green)"></span>Green</a>
+            <a href="/lines/blue/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-blue)"></span>Blue</a>
+            <a href="/lines/silver/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-silver)"></span>Silver</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Tools</span>
+          <a href="/alerts/">Alerts</a>
+          <a href="/elevators/">Elevators</a>
+          <a href="/hours/">Hours</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Support</span>
+          <a href="/about.html">About</a>
+          <a href="/help/">Help</a>
+          <a href="/crisis/">Crisis</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Legal</span>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
