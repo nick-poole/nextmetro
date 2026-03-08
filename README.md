@@ -154,6 +154,36 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 
 ## Changelog
 
+### Migrate to Cloudflare
+
+- Complete migration to Cloudflare
+
+### v2.3.0 — Elevator & Escalator Status Page
+
+- Add dedicated elevator/escalator status page at `/elevators/` with real-time outage tracking
+- Station-grouped view: outages organized by station instead of a flat list
+- Dual filter system: filter by unit type (All / Elevators / Escalators) and by Metro line
+- Color-coded accessibility status: red = elevator out (accessibility critical), yellow = escalator out
+- Summary bar showing total outages, elevator/escalator split, and stations affected
+- Accessibility-first sorting: stations with elevator outages always surface to the top
+- SEO: FAQPage schema (6 questions), dynamic meta description, crawlable station names for long-tail "[station] elevator" queries
+- WCAG compliance: `aria-pressed` on filter chips, `role="list"` on station container
+- Site-wide nav updated: Elevators link replaces Map across all pages (desktop + mobile)
+- Sitemap updated with priority 0.9 and `changefreq=always`
+
+### v2.2.0 — Service Alerts Page
+
+- Add dedicated alerts page with all WMATA rail incidents and elevator/escalator outages
+- System-wide elevator/escalator API endpoint (`GET /api/elevators`)
+- Severity-sorted unified alert list: delays, closures, single tracking, advisories, elevator/escalator outages
+- Station location pills with map-pin icons for facility outages
+- Per-line status summary bar and scrolling system ticker
+- 8-question FAQ section covering single tracking, delay causes, station closures, Metro depths, and more
+- Schema.org FAQPage + SpecialAnnouncement structured data for SEO
+- SEO-optimized title, meta descriptions, and Open Graph tags
+- Alerts link added to site-wide footer under Tools
+- Fix ticker animation for seamless continuous scroll (removed padding-left reset)
+
 ### v2.1.0 — Line Pages
 
 - Add dedicated Red Line page with all 27 stations, transfer badges, parking indicators, and external rail connections (Amtrak, MARC, VRE, DC Streetcar)
