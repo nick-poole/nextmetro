@@ -25,6 +25,7 @@ node_modules/
 
 # Cache
 .cache/
+.wrangler/
 
 # Tool-specific
 .eslintcache
