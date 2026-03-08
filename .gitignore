@@ -20,6 +20,7 @@ node_modules/
 
 # Env files
 .env
+.env.local
 .env.*.local
 
 # Cache
