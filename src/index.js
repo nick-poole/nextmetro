@@ -3,8 +3,7 @@ const WMATA_BASE = 'https://api.wmata.com';
 const ALLOWED_ORIGINS = [
 	'https://nextmetro.live',
 	'https://www.nextmetro.live',
-	'https://nextmetro.netlify.app',
-	'https://nextmetro.pages.dev',
+	'https://nextmetro.napoole.workers.dev',
 	'http://localhost:3001',
 ];
 
