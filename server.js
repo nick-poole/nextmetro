@@ -34,7 +34,7 @@ const ALLOWED_ORIGINS = [
 	'https://nextmetro.live',
 	'https://www.nextmetro.live',
 	'https://nextmetro.netlify.app',
-	'https://nextmetro.pages.dev/',
+	'https://nextmetro.pages.dev',
 	'http://localhost:3001',
 ];
 app.use(
