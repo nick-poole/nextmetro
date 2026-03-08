@@ -3,7 +3,7 @@
 // Typography: Rajdhani | Theme: Neutral Brutalist
 // ==============================
 
-const API_BASE_URL = 'https://nextmetro.onrender.com';
+const API_BASE_URL = '';
 
 // ---- Fetch with retry (handles Render free-tier cold starts) ----
 async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
