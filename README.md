@@ -15,8 +15,8 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 - **Multi-Platform Support** — Stations with multiple platforms (Metro Center, Gallery Place, L'Enfant Plaza, Fort Totten) fetch and merge predictions from both platform codes.
 - **System Status Ticker** — Scrolling ticker bar showing real-time status for all six Metro lines (Red, Blue, Orange, Green, Yellow, Silver).
 - **System Status Sidebar** — Per-line status with Normal, Delays, and Advisory states derived from live incident data.
-- **Service Alerts** — Station-specific incident alerts that filter system-wide incidents to show only what's relevant to the selected station's lines.
-- **Elevator & Escalator Status** — Facility outage tracking with operational/outage counts and detailed descriptions.
+- **Service Alerts Page** — Dedicated [alerts page](https://nextmetro.live/alerts/) showing all WMATA rail incidents (delays, closures, single tracking, advisories) and elevator/escalator outages system-wide. Severity-sorted, auto-refreshing every 30 seconds, with an 8-question FAQ section covering single tracking, delay causes, station closures, and Metro station depths. Schema.org FAQPage structured data for SEO.
+- **Elevator & Escalator Status Page** — Dedicated [elevator & escalator page](https://nextmetro.live/elevators/) with station-grouped outage view, type filters (elevators/escalators), line filters, color-coded accessibility status (green = all working, yellow = escalator out, red = elevator out), summary bar, and 6-question FAQ with FAQPage structured data. Crawlable station names for long-tail SEO. Also shown per-station on the main arrivals page.
 - **Fare Calculator** — Interactive fare lookup between any two stations showing peak, off-peak, and senior/disabled pricing with estimated travel time.
 - **Line Pages** — Dedicated pages for each Metro line with real-time arrivals, station lists with transfer/parking badges, service hours, frequency info, and an FAQ section with structured data for SEO. Currently live: [Red Line](https://nextmetro.live/lines/red/).
 
@@ -65,15 +65,21 @@ nextmetro/
     ├── robots.txt
     ├── sitemap.xml
     ├── netlify.toml       Netlify deploy config + API proxy redirects
+    ├── alerts/
+    │   └── index.html     Service alerts page (rail + elevator/escalator, FAQ)
+    ├── elevators/
+    │   └── index.html     Elevator & escalator status page (station-grouped, filtered)
     ├── fares/
     │   └── index.html     Fare calculator page
     ├── lines/
     │   └── red/
     │       └── index.html Red Line page (stations, service info, FAQ)
     ├── css/
-    │   └── styles.css     Full design system (~3,135 lines)
+    │   └── styles.css     Full design system (~4,060 lines)
     ├── js/
     │   ├── app.js         Application logic (~1,070 lines)
+    │   ├── alerts.js      Alerts page — fetches rail + elevator incidents (~360 lines)
+    │   ├── elevators.js   Elevator/escalator page — station-grouped, filtered (~420 lines)
     │   ├── nav.js         Shared navigation bar component (~30 lines)
     │   ├── line.js        Line page logic — arrivals, alerts, FAQ toggle (~355 lines)
     │   └── fares.js       Fare calculator logic (~410 lines)
@@ -89,7 +95,8 @@ nextmetro/
 | `GET /api/station/:code` | Single station info | Infinite |
 | `GET /api/predictions/:code` | Real-time train arrivals | None (live) |
 | `GET /api/incidents` | System-wide rail incidents | 60s TTL |
-| `GET /api/elevators/:code` | Elevator/escalator outages | 120s TTL |
+| `GET /api/elevators` | All elevator/escalator outages | 120s TTL |
+| `GET /api/elevators/:code` | Elevator/escalator outages per station | 120s TTL |
 | `GET /api/fare/:from/:to` | Fare info between stations | 1hr TTL |
 
 ### Deployment Model
@@ -146,10 +153,6 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 ---
 
 ## Changelog
-
-### Migration to Cloudflare
-
-- Migrated to cloudflare 3/8/26
 
 ### v2.1.0 — Line Pages
 

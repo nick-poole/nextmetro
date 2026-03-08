@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metro Elevator &amp; Escalator Status — Live | NextMetro</title>
+  <meta name="description" id="meta-description" content="Live DC Metro elevator and escalator outage status. Filter by station, line, or unit type. See which stations are fully accessible right now. Updated every 30 seconds from WMATA." />
+  <link rel="canonical" href="https://nextmetro.live/elevators/" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Metro Elevator & Escalator Status — Live | NextMetro" />
+  <meta property="og:description" content="Live DC Metro elevator and escalator outages. Filter by station or line. See which stations are fully accessible right now." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/elevators/" />
+  <meta property="og:site_name" content="NextMetro" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Metro Elevator & Escalator Status | NextMetro" />
+  <meta name="twitter:description" content="Live DC Metro elevator and escalator outages. Filter by station or line. See which stations are fully accessible." />
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nextmetro.live/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Elevators & Escalators",
+        "item": "https://nextmetro.live/elevators/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many elevators and escalators does DC Metro have?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The DC Metro system has over 600 escalators and 300 elevators, one of the largest collections of any transit system in the world. Many were installed between 1976 and 2001 and are being replaced through a multi-year WMATA capital program."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are DC Metro escalators always broken?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many Metro escalators are decades old and exposed to outdoor weather, heavy ridership, and the mechanical stress of serving some of the deepest stations in North America. Wheaton (230 feet deep) and Forest Glen (196 feet) have some of the longest single-span escalators in the Western Hemisphere. WMATA is in the middle of a system-wide escalator replacement program."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which Metro stations are wheelchair accessible when elevators are out?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All Metro stations are designed to be ADA accessible, but when an elevator is out of service, some stations may lose their only accessible route between street level and the platform. Stations with a single elevator — such as many underground stations — become inaccessible to wheelchair users during outages. This page shows real-time elevator status so you can plan accessible routes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often is elevator and escalator status updated on NextMetro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NextMetro polls the WMATA Elevator and Escalator Incidents API every 30 seconds. Outage data includes the station, unit location, symptom, and the time the unit went out of service. Status updates appear on this page in real time without needing to refresh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do if a Metro elevator or escalator is broken?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can report broken elevators or escalators to WMATA by calling (202) 637-7000 or using the WMATA app. If you need an accessible route, check this page for real-time status at your station, or ask a station manager for assistance finding an alternative path to the platform."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the accessibility status mean on this page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Green (All Working) means every elevator and escalator at the station is operational. Yellow (Partial Outage) means at least one unit is out of service but others are still working. Red (Elevator Out) specifically flags stations where an elevator is down, which may affect wheelchair accessibility."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar-inner">
+      <a href="/" class="navbar-brand">
+        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/alerts/" class="nav-link">Alerts</a>
+        <a href="/elevators/" class="nav-link nav-link--active">Elevators</a>
+        <a href="/fares/" class="nav-link">Fares</a>
+      </div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/alerts/" class="mobile-menu-link">Alerts</a>
+    <a href="/elevators/" class="mobile-menu-link mobile-menu-link--active">Elevators</a>
+    <a href="/fares/" class="mobile-menu-link">Fares</a>
+  </div>
+
+  <!-- System Ticker -->
+  <div class="ticker-bar" id="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-label">Live Status</span>
+      <h1 class="hero-station-name">Elevator &amp; Escalator Outages</h1>
+      <p class="hero-station-address" id="elev-subtitle">Real-time elevator and escalator status for every DC Metro station — updated every 30 seconds.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="elev-page">
+    <div class="elev-page-inner">
+
+      <!-- Controls Bar -->
+      <div class="alerts-controls animate-in d1">
+        <div class="alerts-controls-left">
+          <div class="elev-filters" id="elev-filters">
+            <!-- Type filter chips -->
+            <button class="elev-filter-chip elev-filter-chip--active" data-filter="all" aria-pressed="true">
+              <span class="elev-filter-label">All</span>
+            </button>
+            <button class="elev-filter-chip" data-filter="ELEVATOR" aria-pressed="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10v20H7V2zm3 3v6h4V5h-4zm1 1h2v4h-2V6zM7 13h10v1H7v-1zm3 2v4h1v-3h2v3h1v-4h-4z"/></svg>
+              <span class="elev-filter-label">Elevators</span>
+            </button>
+            <button class="elev-filter-chip" data-filter="ESCALATOR" aria-pressed="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-1 14l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+              <span class="elev-filter-label">Escalators</span>
+            </button>
+          </div>
+        </div>
+        <div class="alerts-controls-right">
+          <span class="alerts-updated" id="elev-updated"></span>
+          <button class="refresh-btn" id="elev-refresh" aria-label="Refresh status">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary Bar -->
+      <div class="elev-summary animate-in d2" id="elev-summary">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Line Filter Bar -->
+      <div class="elev-line-filters animate-in d2" id="elev-line-filters">
+        <button class="elev-line-chip elev-line-chip--active" data-line="all" aria-pressed="true">
+          <span class="elev-filter-label">All Lines</span>
+        </button>
+        <button class="elev-line-chip" data-line="RD" aria-pressed="false">
+          <span class="elev-line-dot" style="background-color:#BF0D3E"></span>
+          <span class="elev-filter-label">Red</span>
+        </button>
+        <button class="elev-line-chip" data-line="OR" aria-pressed="false">
+          <span class="elev-line-dot" style="background-color:#ED8B00"></span>
+          <span class="elev-filter-label">Orange</span>
+        </button>
+        <button class="elev-line-chip" data-line="BL" aria-pressed="false">
+          <span class="elev-line-dot" style="background-color:#009CDE"></span>
+          <span class="elev-filter-label">Blue</span>
+        </button>
+        <button class="elev-line-chip" data-line="GR" aria-pressed="false">
+          <span class="elev-line-dot" style="background-color:#00B140"></span>
+          <span class="elev-filter-label">Green</span>
+        </button>
+        <button class="elev-line-chip" data-line="YL" aria-pressed="false">
+          <span class="elev-line-dot" style="background-color:#FFD100"></span>
+          <span class="elev-filter-label">Yellow</span>
+        </button>
+        <button class="elev-line-chip" data-line="SV" aria-pressed="false">
+          <span class="elev-line-dot" style="background-color:#A2AAAD"></span>
+          <span class="elev-filter-label">Silver</span>
+        </button>
+      </div>
+
+      <!-- Station Groups -->
+      <div class="elev-stations" id="elev-stations" role="list" aria-label="Station elevator and escalator status">
+        <!-- Skeleton loading state -->
+        <div class="alerts-skeleton">
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+          <div class="alerts-skeleton-card">
+            <div class="alerts-skeleton-block sk-title"></div>
+            <div class="alerts-skeleton-block sk-body"></div>
+            <div class="alerts-skeleton-block sk-body-short"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State (hidden by default) -->
+      <div class="alerts-empty" id="elev-empty" style="display:none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" class="alerts-empty-icon">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <span class="alerts-empty-title">All Clear</span>
+        <span class="alerts-empty-text">No elevator or escalator outages system-wide. All stations fully accessible.</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Crawlable last-updated timestamp for SEO freshness -->
+  <time id="elev-last-updated-time" datetime="" style="display:none;"></time>
+
+  <!-- Crawlable station list for SEO (hidden, populated by JS with all station names) -->
+  <div id="elev-seo-stations" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;"></div>
+
+  <!-- FAQ Section -->
+  <section class="line-faq alerts-faq">
+    <div class="alerts-page-inner">
+      <h2 class="section-heading animate-in d3">Frequently Asked Questions</h2>
+      <p class="section-subheading animate-in d3">Accessibility, elevator reliability, and how to navigate the Metro when units are out of service.</p>
+      <div class="line-faq-list animate-in d4">
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How many elevators and escalators does DC Metro have?</summary>
+          <div class="line-faq-answer">
+            <p>The DC Metro system has over 600 escalators and 300 elevators — one of the largest collections of any transit system in the world. Many were installed when the system opened between 1976 and 2001. WMATA is in the middle of a multi-year capital program to replace and modernize units across the system, prioritizing the oldest and highest-traffic stations.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Why are Metro escalators always broken?</summary>
+          <div class="line-faq-answer">
+            <p>Many Metro escalators are decades old and face a combination of heavy daily ridership, outdoor weather exposure (rain, snow, debris), and the unique engineering demands of serving some of the deepest stations in North America. Wheaton (230 feet deep) and Forest Glen (196 feet) on the Red Line have some of the longest single-span escalators in the Western Hemisphere — these extra-long units are under far greater mechanical stress than standard escalators. WMATA's ongoing capital program is replacing the oldest units first, but the scale of the system means outages will continue during the modernization process.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What should I do if I need an accessible station and the elevator is out?</summary>
+          <div class="line-faq-answer">
+            <p>If you rely on an elevator and it's out of service at your station, you have several options: check this page to find the nearest station with working elevators, ask a station manager for assistance (they can arrange accessible shuttle service in some cases), or contact WMATA at <a href="tel:+12026377000">(202) 637-7000</a> for real-time accessibility help. WMATA is required to provide alternative accessible routes when elevators are out of service at stations with no other accessible path.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How often is this page updated?</summary>
+          <div class="line-faq-answer">
+            <p>This page polls the WMATA Elevator and Escalator Incidents API every 30 seconds. Outage data includes the station name, unit location within the station (e.g., "platform to mezzanine"), the reported symptom, and the time the unit went out of service. Updates appear in real time without needing to refresh the page.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What do the status colors mean?</summary>
+          <div class="line-faq-answer">
+            <p><strong>Green (All Working)</strong> means every elevator and escalator at the station is operational — full accessibility. <strong>Yellow (Escalator Out)</strong> means one or more escalators are down but all elevators are working — the station remains wheelchair accessible. <strong>Red (Elevator Out)</strong> means at least one elevator is out of service, which may affect wheelchair and mobility-device access to the platform. Stations showing red should be approached with caution by riders who depend on elevators.</p>
+          </div>
+        </details>
+
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How do I report a broken elevator or escalator?</summary>
+          <div class="line-faq-answer">
+            <p>You can report broken units to WMATA by calling <a href="tel:+12026377000">(202) 637-7000</a>, using the <a href="https://www.wmata.com/rider-guide/mobile-app.cfm" target="_blank" rel="noopener">WMATA mobile app</a>, or telling a station manager. Reports help WMATA prioritize repairs and dispatch maintenance crews. The outage data shown on this page comes from WMATA's official incident reporting system and may take a few minutes to reflect newly reported issues.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-col-heading">Lines</span>
+          <div class="footer-lines-grid">
+            <a href="/lines/red/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-red)"></span>Red</a>
+            <a href="/lines/yellow/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-yellow)"></span>Yellow</a>
+            <a href="/lines/orange/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-orange)"></span>Orange</a>
+            <a href="/lines/green/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-green)"></span>Green</a>
+            <a href="/lines/blue/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-blue)"></span>Blue</a>
+            <a href="/lines/silver/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-silver)"></span>Silver</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Tools</span>
+          <a href="/alerts/">Alerts</a>
+          <a href="/elevators/">Elevators</a>
+          <a href="/hours/">Hours</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Support</span>
+          <a href="/about.html">About</a>
+          <a href="/help/">Help</a>
+          <a href="/crisis/">Crisis</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Legal</span>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/elevators.js"></script>
+</body>
+</html>
