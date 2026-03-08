@@ -4224,43 +4224,51 @@ a:hover {
 }
 
 .home-line-links-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   gap: 12px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .home-line-links-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  .home-line-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .home-line-chip {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   padding: 12px 20px;
-  background: var(--nm-surface);
   text-decoration: none;
-  color: var(--nm-text-primary);
+  color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: background var(--nm-transition-normal), transform var(--nm-transition-normal);
+  transition: opacity var(--nm-transition-normal), transform var(--nm-transition-normal);
 }
 
 .home-line-chip:hover {
-  background: var(--nm-surface-elevated);
+  opacity: 0.85;
   transform: translateY(-2px);
-  color: var(--nm-text-primary);
+  color: #fff;
 }
 
-.home-line-chip-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50% !important;
-}
-
-.home-line-chip--red .home-line-chip-dot { background: var(--nm-line-red); }
-.home-line-chip--orange .home-line-chip-dot { background: var(--nm-line-orange); }
-.home-line-chip--blue .home-line-chip-dot { background: var(--nm-line-blue); }
-.home-line-chip--yellow .home-line-chip-dot { background: var(--nm-line-yellow); }
-.home-line-chip--green .home-line-chip-dot { background: var(--nm-line-green); }
-.home-line-chip--silver .home-line-chip-dot { background: var(--nm-line-silver); }
+.home-line-chip--red { background: var(--nm-line-red); }
+.home-line-chip--orange { background: #A36100; }
+.home-line-chip--blue { background: #007BAF; }
+.home-line-chip--yellow { background: var(--nm-line-yellow); color: #1a1a1a; }
+.home-line-chip--yellow:hover { color: #1a1a1a; }
+.home-line-chip--green { background: #007A2A; }
+.home-line-chip--silver { background: var(--nm-line-silver); color: #1a1a1a; }
+.home-line-chip--silver:hover { color: #1a1a1a; }
 
 /* ---- Section Title ---- */
 .home-section-title {
