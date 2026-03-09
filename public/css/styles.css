@@ -4248,28 +4248,27 @@ a:hover {
   align-items: center;
   justify-content: center;
   padding: 12px 20px;
-  background: var(--nm-surface);
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
+  border: none;
+  border-radius: 8px;
   text-decoration: none;
-  color: var(--nm-text-primary);
   font-size: 0.875rem;
-  font-weight: 600;
-  transition: background var(--nm-transition-normal), transform var(--nm-transition-normal);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: transform var(--nm-transition-normal), filter var(--nm-transition-normal);
 }
 
 .home-line-chip:hover {
-  background: var(--nm-surface-elevated);
   transform: translateY(-2px);
-  color: var(--nm-text-primary);
+  filter: brightness(1.15);
 }
 
-.home-line-chip--red { border-left-color: var(--nm-line-red); border-right-color: var(--nm-line-red); }
-.home-line-chip--orange { border-left-color: var(--nm-line-orange); border-right-color: var(--nm-line-orange); }
-.home-line-chip--blue { border-left-color: var(--nm-line-blue); border-right-color: var(--nm-line-blue); }
-.home-line-chip--yellow { border-left-color: var(--nm-line-yellow); border-right-color: var(--nm-line-yellow); }
-.home-line-chip--green { border-left-color: var(--nm-line-green); border-right-color: var(--nm-line-green); }
-.home-line-chip--silver { border-left-color: var(--nm-line-silver); border-right-color: var(--nm-line-silver); }
+.home-line-chip--red { background: linear-gradient(135deg, rgba(191,13,62,0.15), transparent); color: var(--nm-line-red); }
+.home-line-chip--orange { background: linear-gradient(135deg, rgba(237,139,0,0.15), transparent); color: var(--nm-line-orange); }
+.home-line-chip--blue { background: linear-gradient(135deg, rgba(0,156,222,0.15), transparent); color: var(--nm-line-blue); }
+.home-line-chip--yellow { background: linear-gradient(135deg, rgba(255,209,0,0.15), transparent); color: var(--nm-line-yellow); }
+.home-line-chip--green { background: linear-gradient(135deg, rgba(0,177,64,0.15), transparent); color: var(--nm-line-green); }
+.home-line-chip--silver { background: linear-gradient(135deg, rgba(162,170,173,0.15), transparent); color: var(--nm-line-silver); }
 
 /* ---- Section Title ---- */
 .home-section-title {
