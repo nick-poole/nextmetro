@@ -1,0 +1,9 @@
+# NextMetro Security Policy
+# https://nextmetro.live
+# Compliant with RFC 9116
+
+Contact: https://github.com/nick-poole/nextmetro/security/advisories
+Expires: 2027-03-09T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://nextmetro.live/.well-known/security.txt
+Policy: https://github.com/nick-poole/nextmetro/blob/main/SECURITY.md
