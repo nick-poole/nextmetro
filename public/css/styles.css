@@ -505,21 +505,21 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background-color: var(--nm-surface-elevated);
-  border: 1px solid var(--nm-border-subtle);
-  padding: 10px 12px;
+  padding: 10px 16px;
   min-height: 44px;
+  border-radius: 8px;
   font-family: var(--nm-font);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.875rem;
-  color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border: none;
+  /* color and background set via inline style */
 }
 
 .line-pill-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50% !important;
   flex-shrink: 0;
 }

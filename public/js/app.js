@@ -335,6 +335,8 @@ function updateHeroDisplay(stationCode) {
   allLines.forEach((line) => {
     const pill = document.createElement('span');
     pill.className = 'line-pill';
+    pill.style.background = 'linear-gradient(135deg, ' + line.color + '1a, transparent)';
+    pill.style.color = line.color;
     pill.innerHTML =
       '<span class="line-pill-dot" style="background-color:' +
       line.color +
