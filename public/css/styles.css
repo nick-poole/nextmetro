@@ -149,10 +149,7 @@ a:hover {
 .d4 { animation-delay: 0.24s; }
 .d5 { animation-delay: 0.30s; }
 
-@keyframes ticker-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+/* ticker-scroll animation removed — static status bar */
 
 @keyframes shimmer {
   0%   { opacity: 0.3; }
@@ -170,45 +167,64 @@ a:hover {
 /* Old navbar styles removed — see /css/nav.css */
 
 /* ==============================
-   System Ticker
+   System Status Bar
    ============================== */
 .ticker-bar {
   background-color: var(--nm-surface);
   border-bottom: 1px solid var(--nm-border-subtle);
-  height: 32px;
-  overflow: hidden;
-  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
 }
 
 .ticker-track {
   display: flex;
   align-items: center;
-  gap: var(--nm-space-xl);
-  white-space: nowrap;
-  animation: ticker-scroll 30s linear infinite;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 720px;
   font-family: var(--nm-font);
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--nm-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 
 .ticker-item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
+  justify-content: center;
+  gap: 5px;
+  flex: 1 1 0;
+  padding: 4px 0;
+  position: relative;
+}
+
+/* Subtle dividers between items */
+.ticker-item + .ticker-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: var(--nm-border-subtle);
 }
 
 .ticker-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50% !important;
   display: inline-block;
   flex-shrink: 0;
+}
+
+.ticker-line-name {
+  color: var(--nm-text-secondary);
 }
 
 .ticker-status-ok {
@@ -221,6 +237,26 @@ a:hover {
 
 .ticker-status-caution {
   color: var(--nm-status-warn);
+}
+
+/* Pulse the dot when there's an alert */
+.ticker-item--alert .ticker-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@media (max-width: 480px) {
+  .ticker-track {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    gap: 0;
+  }
+  .ticker-item {
+    gap: 3px;
+  }
+  /* Hide status text on very small screens, keep dot as indicator */
+  .ticker-status-text {
+    display: none;
+  }
 }
 
 /* ==============================
