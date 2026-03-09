@@ -161,14 +161,18 @@
       <a href="/alerts" class="nm-nav__link nm-nav__link--active" aria-current="page">Alerts</a>
       <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer">Map</a>
       <a href="/fares" class="nm-nav__link">Fares</a>
-      <button class="nm-nav__search" aria-label="Search stations">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M10 10L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
-        </svg>
-      </button>
     </div>
+    <button class="nm-nav__hamburger" id="navbar-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+  <div class="nm-mobile-menu" id="mobile-menu">
+    <a href="/alerts" class="mobile-menu-link mobile-menu-link--active" aria-current="page">Alerts</a>
+    <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer">Map</a>
+    <a href="/fares" class="mobile-menu-link">Fares</a>
+  </div>
 
   <!-- System Ticker -->
   <div class="ticker-bar" id="ticker-bar">
@@ -396,9 +400,11 @@
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
         <a href="/crisis">Crisis Resources</a>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener noreferrer">Webmaster</a>
       </nav>
     </div>
   </footer>
+  <script src="/js/nav.js"></script>
   <script src="/js/alerts.js"></script>
 </body>
 </html>
