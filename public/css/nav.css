@@ -111,27 +111,80 @@
   outline-offset: -2px;
 }
 
-/* Search icon button */
-.nm-nav__search {
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
+/* Hamburger button — hidden on desktop, shown on mobile */
+.nm-nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 18px;
+  margin-left: auto;
   background: transparent;
   border: none;
-  border-right: 1px solid var(--nm-border);
-  color: var(--nm-gray);
+  border-left: 1px solid var(--nm-border);
   cursor: pointer;
-  transition: color 0.15s ease;
 }
-.nm-nav__search:hover {
+.nm-nav__hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--nm-gray);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nm-nav__hamburger:hover span {
+  background: var(--nm-white);
+}
+.nm-nav__hamburger:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+/* Animate to X when open */
+.nm-nav__hamburger.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nm-nav__hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.nm-nav__hamburger.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu dropdown — hidden by default */
+.nm-mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--nm-black);
+  border-bottom: 1px solid var(--nm-border);
+}
+.nm-mobile-menu.is-open {
+  display: flex;
+}
+.mobile-menu-link {
+  display: block;
+  padding: 14px 24px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--nm-gray);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nm-border);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.mobile-menu-link:hover {
   color: var(--nm-white);
+  background: var(--nm-surface);
 }
-.nm-nav__search:focus-visible {
+.mobile-menu-link--active {
+  color: var(--nm-amber);
+}
+.mobile-menu-link:focus-visible {
   outline: 2px solid var(--nm-amber);
   outline-offset: -2px;
 }
 
-/* Mobile — hide text links at 768px */
+/* Mobile — hide text links, show hamburger at 768px */
 @media (max-width: 768px) {
   .nm-nav__logo-next,
   .nm-nav__logo-metro {
@@ -141,7 +194,7 @@
   .nm-nav__link {
     display: none;
   }
-  .nm-nav__search {
-    margin-left: auto;
+  .nm-nav__hamburger {
+    display: flex;
   }
 }
