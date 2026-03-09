@@ -1,0 +1,244 @@
+/* ═══════════════════════════════════════════
+   NextMetro — Footer Component
+   Bottom of every page
+═══════════════════════════════════════════ */
+
+.nm-footer {
+  background: var(--nm-black);
+  border-top: 1px solid var(--nm-border);
+  position: relative;
+}
+
+/* 3px amber bar at the very bottom — mirrors nav top bar */
+.nm-footer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--nm-amber);
+}
+
+/* 5px horizontal strip of 6 line colors — top edge of footer */
+.nm-footer__strip {
+  display: flex;
+  height: 5px;
+  width: 100%;
+}
+.nm-footer__strip span {
+  flex: 1;
+  display: block;
+}
+
+/* 4-column body grid */
+.nm-footer__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 40px 0 52px;
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.nm-footer__col {
+  padding: 0 36px;
+  border-right: 1px solid var(--nm-border);
+}
+.nm-footer__col:first-child {
+  padding-left: 32px;
+}
+.nm-footer__col:last-child {
+  border-right: none;
+}
+.nm-footer__col--logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+/* Column headings */
+.nm-footer__heading {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--nm-amber);
+  margin-bottom: 16px;
+}
+
+/* Link lists */
+.nm-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.nm-footer__link {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--nm-gray);
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+.nm-footer__link:hover {
+  color: var(--nm-white);
+}
+.nm-footer__link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+/* Line links — dot + label */
+.nm-footer__link--line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nm-footer__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Data disclaimer block */
+.nm-footer__data-block {
+  margin-top: 28px;
+}
+.nm-footer__body-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  color: var(--nm-muted);
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Footer logo — NM amber square + line strip + NEXT/METRO wordmark */
+.nm-footer__logo {
+  display: flex;
+  align-items: center;
+}
+
+.nm-footer__logo-mark {
+  width: 80px;
+  height: 80px;
+  background: var(--nm-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.nm-footer__logo-mark b {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--nm-black);
+  letter-spacing: 0.04em;
+}
+
+.nm-footer__logo-strip {
+  display: flex;
+  flex-direction: column;
+  width: 4px;
+  height: 80px;
+  flex-shrink: 0;
+}
+.nm-footer__logo-strip span {
+  flex: 1;
+  display: block;
+}
+
+.nm-footer__logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 14px;
+}
+.nm-footer__logo-next {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--nm-amber);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.nm-footer__logo-metro {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nm-white);
+  line-height: 0.9;
+}
+
+/* Bottom bar — copyright left, legal links right */
+.nm-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px 22px;
+}
+.nm-footer__copy {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  color: var(--nm-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.nm-footer__legal {
+  display: flex;
+  gap: 24px;
+}
+.nm-footer__legal a {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  color: var(--nm-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+.nm-footer__legal a:hover {
+  color: var(--nm-gray);
+}
+
+/* Responsive — 900px: 2 columns */
+@media (max-width: 900px) {
+  .nm-footer__body {
+    grid-template-columns: 1fr 1fr;
+  }
+  .nm-footer__col {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--nm-border);
+    border-right: none;
+  }
+  .nm-footer__col:nth-child(odd) {
+    border-right: 1px solid var(--nm-border);
+  }
+  .nm-footer__col--logo {
+    align-items: flex-start;
+  }
+}
+
+/* Responsive — 600px: 1 column, stacked bottom bar */
+@media (max-width: 600px) {
+  .nm-footer__body {
+    grid-template-columns: 1fr;
+  }
+  .nm-footer__col:nth-child(odd) {
+    border-right: none;
+  }
+  .nm-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 26px;
+  }
+}

@@ -1,0 +1,141 @@
+/* ═══════════════════════════════════════════
+   NextMetro — Nav Component
+   Sticky top bar, present on every page
+═══════════════════════════════════════════ */
+
+.nm-nav {
+  display: flex;
+  align-items: stretch;
+  height: 56px;
+  background: var(--nm-black);
+  border-top: 3px solid var(--nm-amber);
+  border-bottom: 1px solid var(--nm-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+
+/* 5px vertical strip of 6 line colors — left edge */
+.nm-nav__strip {
+  display: flex;
+  flex-direction: column;
+  width: 5px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+.nm-nav__strip span {
+  flex: 1;
+  display: block;
+}
+
+/* Logo — NEXT block + divider + METRO text */
+.nm-nav__logo {
+  display: flex;
+  align-items: stretch;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nm-nav__logo-next {
+  background: var(--nm-amber);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nm-black);
+  line-height: 1;
+}
+
+.nm-nav__logo-divider {
+  width: 1px;
+  background: rgba(232, 160, 32, 0.20);
+  align-self: stretch;
+}
+
+.nm-nav__logo-metro {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nm-white);
+  line-height: 1;
+}
+
+/* Nav links — right side, pushed by margin-left: auto */
+.nm-nav__links {
+  display: flex;
+  align-items: stretch;
+  margin-left: auto;
+  border-left: 1px solid var(--nm-border);
+}
+
+.nm-nav__link {
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--nm-gray);
+  text-decoration: none;
+  border-right: 1px solid var(--nm-border);
+  transition: color 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.nm-nav__link:hover {
+  color: var(--nm-white);
+  background: var(--nm-surface);
+}
+.nm-nav__link--active {
+  color: var(--nm-amber);
+}
+.nm-nav__link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+/* Search icon button */
+.nm-nav__search {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--nm-border);
+  color: var(--nm-gray);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.nm-nav__search:hover {
+  color: var(--nm-white);
+}
+.nm-nav__search:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+/* Mobile — hide text links at 768px */
+@media (max-width: 768px) {
+  .nm-nav__logo-next,
+  .nm-nav__logo-metro {
+    font-size: 20px;
+    padding: 0 14px;
+  }
+  .nm-nav__link {
+    display: none;
+  }
+  .nm-nav__search {
+    margin-left: auto;
+  }
+}
