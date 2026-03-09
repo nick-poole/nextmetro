@@ -13,7 +13,7 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 - **PIDS Arrival Board** — Real-time train arrivals grouped by direction with line colors, car counts, and BRD/ARR status indicators. Auto-refreshes every 25 seconds.
 - **Station Selector** — Searchable dropdown covering all 98 WMATA stations with line color indicators and keyboard navigation.
 - **Multi-Platform Support** — Stations with multiple platforms (Metro Center, Gallery Place, L'Enfant Plaza, Fort Totten) fetch and merge predictions from both platform codes.
-- **System Status Ticker** — Scrolling ticker bar showing real-time status for all six Metro lines (Red, Blue, Orange, Green, Yellow, Silver).
+- **System Status Bar** — Static status bar showing real-time status for all six Metro lines (Red, Blue, Orange, Green, Yellow, Silver) with colored dots and pulse indicators on alerts.
 - **System Status Sidebar** — Per-line status with Normal, Delays, and Advisory states derived from live incident data.
 - **Service Alerts Page** — Dedicated [alerts page](https://nextmetro.live/alerts/) showing all WMATA rail incidents (delays, closures, single tracking, advisories) and elevator/escalator outages system-wide. Severity-sorted, auto-refreshing every 30 seconds, with an 8-question FAQ section covering single tracking, delay causes, station closures, and Metro station depths. Schema.org FAQPage structured data for SEO.
 - **Elevator & Escalator Status Page** — Dedicated [elevator & escalator page](https://nextmetro.live/elevators/) with station-grouped outage view, type filters (elevators/escalators), line filters, color-coded accessibility status (green = all working, yellow = escalator out, red = elevator out), summary bar, and 6-question FAQ with FAQPage structured data. Crawlable station names for long-tail SEO. Also shown per-station on the main arrivals page.
@@ -75,7 +75,9 @@ nextmetro/
     │   └── red/
     │       └── index.html Red Line page (stations, service info, FAQ)
     ├── css/
-    │   └── styles.css     Full design system (~4,060 lines)
+    │   ├── styles.css     Full design system
+    │   ├── nav.css        Navigation component styles
+    │   └── footer.css     Footer component styles
     ├── js/
     │   ├── app.js         Application logic (~1,070 lines)
     │   ├── alerts.js      Alerts page — fetches rail + elevator incidents (~360 lines)
@@ -153,6 +155,18 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 ---
 
 ## Changelog
+
+### v2.5.0 — Site-Wide Compliance, Accessibility & SEO Hardening
+
+- **Footer readability**: Bump footer copy, legal links, and disclaimer text from `#555` to `#888` with `font-weight: 500` — now passes WCAG AA contrast (5.4:1 vs. previous 3.2:1)
+- **Static status bar**: Replace scrolling ticker animation with a static, centered 6-line status bar; subtle dividers between items, pulse animation on alert/caution dots, responsive (hides status text on mobile, keeps dot indicators)
+- **Map links**: Update all nav/footer Map links across 9 pages from dead `/map` route to WMATA system map PDF (external, `target="_blank"`)
+- **Skip navigation**: Add skip-to-content link (`<a class="skip-link">`) to all 9 HTML pages (previously only on homepage)
+- **Landmark structure**: Add `<main id="main-content">` to about, 404, crisis, fares, and Red Line pages; add `id="main-content"` to existing `<main>` on alerts, elevators, and station pages
+- **404 page**: Add meta description, `noindex/nofollow` robots directive, OG/Twitter meta tags (using homepage OG image as fallback)
+- **Schema.org**: Add `AboutPage` schema to about.html, `WebPage` schema to crisis page, enhance homepage Organization schema with logo and description
+- **Sitemap**: Remove 4 dead URLs (`/hours/`, `/help/`, `/privacy/`, `/terms/`), add `/station/brookland-cua/` and `/crisis/`, update all `lastmod` dates to 2026-03-09
+- **SEO**: All pages now have meta description, canonical URL, OG tags, Twitter cards, and structured data
 
 ### Migrate to Cloudflare
 

@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 — NextMetro</title>
+  <title>404 — Page Not Found | NextMetro</title>
+  <meta name="description" content="This page doesn't exist. Head back to NextMetro for real-time DC Metro arrivals, alerts, and station info." />
+  <meta name="robots" content="noindex, nofollow" />
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -14,38 +16,62 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#0A0A0A" />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="404 — Page Not Found | NextMetro" />
+  <meta property="og:description" content="This station doesn't exist on the map. Head back to NextMetro for real-time DC Metro arrivals." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/404.html" />
+  <meta property="og:site_name" content="NextMetro" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://nextmetro.live/images/og/homepage-utility/og-homepage.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="NextMetro — Real-Time DC Metro Arrivals" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="404 — Page Not Found | NextMetro" />
+  <meta name="twitter:description" content="This station doesn't exist on the map. Head back to NextMetro for real-time DC Metro arrivals." />
+  <meta name="twitter:image" content="https://nextmetro.live/images/og/homepage-utility/og-homepage.png" />
+
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/nav.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- NavBar -->
-  <header class="navbar" id="navbar">
-    <nav class="navbar-inner">
-      <a href="/" class="navbar-brand">
-        <span class="logo-mark">NEXT</span><span class="logo-wordmark">METRO</span>
-      </a>
-      <div class="navbar-links">
-        <a href="/alerts/" class="nav-link">Alerts</a>
-        <a href="/elevators/" class="nav-link">Elevators</a>
-        <a href="/fares/" class="nav-link">Fares</a>
-      </div>
-      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span class="navbar-toggle-bar"></span>
-        <span class="navbar-toggle-bar"></span>
-        <span class="navbar-toggle-bar"></span>
-      </button>
-    </nav>
-  </header>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/alerts/" class="mobile-menu-link">Alerts</a>
-    <a href="/elevators/" class="mobile-menu-link">Elevators</a>
-    <a href="/fares/" class="mobile-menu-link">Fares</a>
-  </div>
+  <!-- NextMetro Site Nav -->
+  <nav class="nm-nav" aria-label="Site navigation">
+    <div class="nm-nav__strip" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a href="/" class="nm-nav__logo" aria-label="NextMetro home">
+      <span class="nm-nav__logo-next">NEXT</span>
+      <span class="nm-nav__logo-divider" aria-hidden="true"></span>
+      <span class="nm-nav__logo-metro">METRO</span>
+    </a>
+    <div class="nm-nav__links">
+      <a href="/alerts" class="nm-nav__link">Alerts</a>
+      <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer">Map</a>
+      <a href="/fares" class="nm-nav__link">Fares</a>
+      <button class="nm-nav__search" aria-label="Search stations">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="6.5" cy="6.5" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 10L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
 
   <!-- Ticker placeholder -->
   <div class="ticker-bar">
@@ -53,56 +79,99 @@
   </div>
 
   <!-- Error Content -->
+  <main id="main-content">
   <div class="error-page">
-    <div class="error-code">404</div>
-    <div class="error-label">End of Line</div>
+    <h1 class="error-code">404</h1>
+    <p class="error-label">End of Line</p>
     <p class="error-message">
       This station doesn't exist on the map. The page you're looking for may have been moved, removed, or never built.
     </p>
     <a href="/" class="error-home-link">Back to Home Station</a>
     <div class="error-pids">No service at this destination</div>
   </div>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <span class="footer-col-heading">Lines</span>
-          <div class="footer-lines-grid">
-            <a href="/lines/red/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-red)"></span>Red</a>
-            <a href="/lines/yellow/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-yellow)"></span>Yellow</a>
-            <a href="/lines/orange/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-orange)"></span>Orange</a>
-            <a href="/lines/green/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-green)"></span>Green</a>
-            <a href="/lines/blue/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-blue)"></span>Blue</a>
-            <a href="/lines/silver/" class="footer-line-link"><span class="footer-line-dot" style="background-color: var(--nm-line-silver)"></span>Silver</a>
+  <!-- NextMetro Site Footer -->
+  <footer class="nm-footer">
+    <div class="nm-footer__strip" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nm-footer__body">
+      <div class="nm-footer__col">
+        <h3 class="nm-footer__heading">Navigate</h3>
+        <nav class="nm-footer__links" aria-label="Footer navigation">
+          <a href="/"          class="nm-footer__link">Home</a>
+          <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer">System Map</a>
+          <a href="/alerts"    class="nm-footer__link">Alerts</a>
+          <a href="/elevators" class="nm-footer__link">Elevator Status</a>
+          <a href="/fares"     class="nm-footer__link">Fares</a>
+          <a href="/hours"     class="nm-footer__link">Hours</a>
+        </nav>
+      </div>
+      <div class="nm-footer__col">
+        <h3 class="nm-footer__heading">Lines</h3>
+        <nav class="nm-footer__links" aria-label="Metro lines">
+          <a href="/lines/red"    class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--red"></span>Red Line</a>
+          <a href="/lines/orange" class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--orange"></span>Orange Line</a>
+          <a href="/lines/silver" class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--silver"></span>Silver Line</a>
+          <a href="/lines/blue"   class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--blue"></span>Blue Line</a>
+          <a href="/lines/yellow" class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--yellow"></span>Yellow Line</a>
+          <a href="/lines/green"  class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--green"></span>Green Line</a>
+        </nav>
+      </div>
+      <div class="nm-footer__col">
+        <h3 class="nm-footer__heading">About</h3>
+        <nav class="nm-footer__links" aria-label="About">
+          <a href="/about"   class="nm-footer__link">About NextMetro</a>
+          <a href="/privacy" class="nm-footer__link">Privacy Policy</a>
+          <a href="/terms"   class="nm-footer__link">Terms of Service</a>
+          <a href="/crisis"  class="nm-footer__link">Crisis Resources</a>
+        </nav>
+        <div class="nm-footer__data-block">
+          <h3 class="nm-footer__heading">Data</h3>
+          <p class="nm-footer__body-text">
+            Real-time data via WMATA API.<br>
+            Not affiliated with WMATA.
+          </p>
+        </div>
+      </div>
+      <div class="nm-footer__col nm-footer__col--logo">
+        <div class="nm-footer__logo" role="img" aria-label="NextMetro">
+          <div class="nm-footer__logo-mark"><b>NM</b></div>
+          <div class="nm-footer__logo-strip" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="nm-footer__logo-text">
+            <span class="nm-footer__logo-next">NEXT</span>
+            <span class="nm-footer__logo-metro">METRO</span>
           </div>
         </div>
-        <div class="footer-col">
-          <span class="footer-col-heading">Tools</span>
-          <a href="/alerts/">Alerts</a>
-          <a href="/elevators/">Elevators</a>
-          <a href="/hours/">Hours</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-col-heading">Support</span>
-          <a href="/about.html">About</a>
-          <a href="/help/">Help</a>
-          <a href="/crisis/">Crisis</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-col-heading">Legal</span>
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 NextMetro &middot; Not affiliated with WMATA</span>
-        <a href="https://nickpoole.dev" target="_blank" rel="noopener">Webmaster</a>
       </div>
     </div>
+    <div class="nm-footer__bottom">
+      <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
+      <nav class="nm-footer__legal" aria-label="Legal">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/crisis">Crisis Resources</a>
+      </nav>
+    </div>
   </footer>
-
-  <script src="/js/nav.js"></script>
 </body>
 </html>

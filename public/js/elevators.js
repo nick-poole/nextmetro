@@ -114,23 +114,22 @@ function renderTicker(incidents) {
   });
 
   var html = '';
-  for (var i = 0; i < 2; i++) {
-    lineData.forEach(function (line) {
-      var thisStatus = lineStatuses[line.code];
-      var statusClass =
-        thisStatus === 'Normal'
-          ? 'ticker-status-ok'
-          : thisStatus === 'Alert'
-            ? 'ticker-status-alert'
-            : 'ticker-status-caution';
-      html +=
-        '<span class="ticker-item">' +
-        '<span class="ticker-dot" style="background-color:' + line.color + '"></span>' +
-        '<span>' + line.name + '</span>' +
-        '<span class="' + statusClass + '">' + thisStatus + '</span>' +
-        '</span>';
-    });
-  }
+  lineData.forEach(function (line) {
+    var thisStatus = lineStatuses[line.code];
+    var statusClass =
+      thisStatus === 'Normal'
+        ? 'ticker-status-ok'
+        : thisStatus === 'Alert'
+          ? 'ticker-status-alert'
+          : 'ticker-status-caution';
+    var alertClass = thisStatus !== 'Normal' ? ' ticker-item--alert' : '';
+    html +=
+      '<span class="ticker-item' + alertClass + '">' +
+      '<span class="ticker-dot" style="background-color:' + line.color + '"></span>' +
+      '<span class="ticker-line-name">' + line.name + '</span>' +
+      '<span class="ticker-status-text ' + statusClass + '">' + thisStatus + '</span>' +
+      '</span>';
+  });
 
   tickerTrack.innerHTML = html;
 }
