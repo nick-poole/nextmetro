@@ -28,6 +28,12 @@
   flex: 1;
   display: block;
 }
+.nm-nav__strip span:nth-child(1) { background: var(--line-red); }
+.nm-nav__strip span:nth-child(2) { background: var(--line-orange); }
+.nm-nav__strip span:nth-child(3) { background: var(--line-silver); }
+.nm-nav__strip span:nth-child(4) { background: var(--line-blue); }
+.nm-nav__strip span:nth-child(5) { background: var(--line-yellow); }
+.nm-nav__strip span:nth-child(6) { background: var(--line-green); }
 
 /* Logo — NEXT block + divider + METRO text */
 .nm-nav__logo {
