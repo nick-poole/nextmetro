@@ -123,9 +123,9 @@
 .nm-footer__body-text {
   font-family: 'Rajdhani', sans-serif;
   font-size: 12px;
-  color: var(--nm-muted);
+  color: var(--nm-gray);
   line-height: 1.7;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.02em;
 }
 
@@ -205,10 +205,11 @@
 }
 .nm-footer__copy {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 10px;
-  color: var(--nm-muted);
+  font-size: 11px;
+  color: var(--nm-gray);
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-weight: 500;
 }
 .nm-footer__legal {
   display: flex;
@@ -216,15 +217,16 @@
 }
 .nm-footer__legal a {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 10px;
-  color: var(--nm-muted);
+  font-size: 11px;
+  color: var(--nm-gray);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
   transition: color 0.12s ease;
+  font-weight: 500;
 }
 .nm-footer__legal a:hover {
-  color: var(--nm-gray);
+  color: var(--nm-white);
 }
 
 /* Responsive — 900px: 2 columns */

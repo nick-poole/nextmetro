@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 — NextMetro</title>
+  <title>404 — Page Not Found | NextMetro</title>
+  <meta name="description" content="This page doesn't exist. Head back to NextMetro for real-time DC Metro arrivals, alerts, and station info." />
+  <meta name="robots" content="noindex, nofollow" />
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -41,6 +43,8 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- NextMetro Site Nav -->
   <nav class="nm-nav" aria-label="Site navigation">
     <div class="nm-nav__strip" aria-hidden="true">
@@ -75,6 +79,7 @@
   </div>
 
   <!-- Error Content -->
+  <main id="main-content">
   <div class="error-page">
     <div class="error-code">404</div>
     <div class="error-label">End of Line</div>
@@ -84,6 +89,7 @@
     <a href="/" class="error-home-link">Back to Home Station</a>
     <div class="error-pids">No service at this destination</div>
   </div>
+  </main>
 
   <!-- NextMetro Site Footer -->
   <footer class="nm-footer">

@@ -40,8 +40,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About NextMetro",
+    "url": "https://nextmetro.live/about.html",
+    "description": "About NextMetro — a real-time tracker for the Washington D.C. Metrorail system.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "NextMetro",
+      "url": "https://nextmetro.live/"
+    }
+  }
+  </script>
 </head>
 <body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- NextMetro Site Nav -->
   <nav class="nm-nav" aria-label="Site navigation">
@@ -77,6 +95,7 @@
   </div>
 
   <!-- About Content -->
+  <main id="main-content">
   <div class="about-page">
     <span class="about-label">About</span>
     <h1 class="about-title">NextMetro</h1>
@@ -122,6 +141,8 @@
   </div>
 
   <!-- NextMetro Site Footer -->
+  </main>
+
   <footer class="nm-footer">
     <div class="nm-footer__strip" aria-hidden="true">
       <span></span>
