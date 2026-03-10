@@ -1,0 +1,16 @@
+/* TEAM */
+Developer: Nick Poole
+Site: https://nextmetro.live
+GitHub: https://github.com/nick-poole
+Location: Washington, D.C.
+
+/* SITE */
+Last update: 2026-03-09
+Standards: HTML5, CSS3, ES6+
+Platform: Cloudflare Workers
+Data Source: WMATA Real-Time Rail API
+License: MIT
+
+/* THANKS */
+WMATA for providing the public transit API
+Cloudflare for edge computing infrastructure
