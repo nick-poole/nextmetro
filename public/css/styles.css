@@ -2096,6 +2096,573 @@ a:hover {
 }
 
 /* ==============================
+   Hours Page
+   ============================== */
+
+.hours-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--nm-space-lg) var(--nm-space-3xl);
+}
+
+.hours-page-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--nm-space-lg);
+}
+
+/* ---- Hours Hero ---- */
+.hours-hero {
+  padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+  border-bottom: 1px solid var(--nm-border-subtle);
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.65)),
+    url('/images/hours-hero.webp') center / cover no-repeat;
+  background-color: var(--nm-surface);
+}
+
+.hours-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hours-hero-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--nm-amber-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: var(--nm-space-xs);
+}
+
+.hours-hero-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.hours-hero-subtitle {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* ---- Live Status Indicator ---- */
+.hours-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  padding: 8px 14px;
+  margin-top: var(--nm-space-md);
+}
+
+.hours-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50% !important;
+  flex-shrink: 0;
+}
+
+.hours-status-dot--open {
+  background-color: var(--nm-status-ok);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hours-status-dot--closed {
+  background-color: var(--nm-status-error);
+}
+
+.hours-status-text {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nm-text-primary);
+}
+
+.hours-status-detail {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ---- Hours Sections ---- */
+.hours-section {
+  margin-top: var(--nm-space-2xl);
+}
+
+.hours-section-heading {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--nm-space-sm);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--nm-amber-dim);
+  display: inline-block;
+}
+
+.hours-subsection-heading {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: var(--nm-space-xl);
+  margin-bottom: var(--nm-space-sm);
+}
+
+.hours-text {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--nm-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--nm-space-md);
+}
+
+.hours-text strong {
+  color: var(--nm-text-primary);
+  font-weight: 600;
+}
+
+.hours-text a {
+  color: var(--nm-amber);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hours-text a:hover {
+  color: var(--nm-amber-bright);
+}
+
+.hours-text--note {
+  font-size: 0.9375rem;
+  color: var(--nm-text-muted);
+}
+
+/* ---- Hours Tables ---- */
+.hours-table-wrapper {
+  overflow-x: auto;
+  margin-top: var(--nm-space-md);
+  border: 1px solid var(--nm-border);
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--nm-font);
+  font-size: 1rem;
+}
+
+.hours-table thead th {
+  background-color: var(--nm-surface-elevated);
+  color: var(--nm-text-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--nm-amber-dim);
+  white-space: nowrap;
+}
+
+.hours-table tbody td {
+  padding: 0.6rem 1rem;
+  color: var(--nm-text-secondary);
+  border-bottom: 1px solid var(--nm-border-subtle);
+  font-weight: 500;
+}
+
+.hours-table tbody tr:hover {
+  background-color: var(--nm-surface);
+}
+
+.hours-table .hours-time {
+  color: var(--nm-amber);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hours-table--compact {
+  font-size: 0.9375rem;
+}
+
+.hours-table--compact tbody td {
+  padding: 0.45rem 1rem;
+}
+
+.hours-table-highlight {
+  background-color: var(--nm-surface);
+}
+
+.hours-footnote {
+  font-family: var(--nm-font);
+  font-size: 0.875rem;
+  color: var(--nm-text-muted);
+  margin-top: var(--nm-space-sm);
+}
+
+.hours-footnote-mark {
+  color: var(--nm-amber-dim);
+}
+
+/* ---- Line Color Dots ---- */
+.hours-line-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50% !important;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.hours-line-dot--red    { background-color: var(--nm-line-red); }
+.hours-line-dot--orange { background-color: var(--nm-line-orange); }
+.hours-line-dot--blue   { background-color: var(--nm-line-blue); }
+.hours-line-dot--silver { background-color: var(--nm-line-silver); }
+.hours-line-dot--yellow { background-color: var(--nm-line-yellow); }
+.hours-line-dot--green  { background-color: var(--nm-line-green); }
+
+/* ---- Frequency Legend ---- */
+.hours-frequency-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-md) var(--nm-space-xl);
+  margin-top: var(--nm-space-sm);
+  font-family: var(--nm-font);
+  font-size: 0.875rem;
+  color: var(--nm-text-muted);
+}
+
+.hours-frequency-legend strong {
+  color: var(--nm-text-secondary);
+  font-weight: 600;
+}
+
+/* ---- Tip Cards ---- */
+.hours-tip-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: var(--nm-space-lg) 1.25rem;
+  margin-top: var(--nm-space-md);
+}
+
+.hours-tip-card-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.hours-tip-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hours-tip-list li {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.hours-tip-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50% !important;
+  background-color: var(--nm-amber-dim);
+}
+
+.hours-tip-list li strong {
+  color: var(--nm-text-primary);
+  font-weight: 600;
+}
+
+.hours-tip-list li a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hours-tip-list li a:hover {
+  color: var(--nm-amber-bright);
+}
+
+/* ---- Info Grid & Cards ---- */
+.hours-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nm-space-lg);
+  margin-top: var(--nm-space-md);
+}
+
+.hours-info-grid--tips {
+  grid-template-columns: 1fr 1fr;
+}
+
+.hours-info-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: var(--nm-space-lg) 1.25rem;
+}
+
+.hours-info-card-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.hours-info-card-text {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--nm-text-secondary);
+  line-height: 1.6;
+}
+
+.hours-info-card-text strong {
+  color: var(--nm-text-primary);
+  font-weight: 600;
+}
+
+/* ---- Line Accordion (First/Last Trains) ---- */
+.hours-line-accordion {
+  border: 1px solid var(--nm-border);
+  margin-top: var(--nm-space-md);
+}
+
+.hours-line-accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--nm-space-md) 1.25rem;
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color var(--nm-transition-fast), color var(--nm-transition-normal);
+  background-color: var(--nm-surface);
+}
+
+.hours-line-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.hours-line-accordion-header::after {
+  content: '+';
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--nm-text-muted);
+  flex-shrink: 0;
+  margin-left: auto;
+  transition: color var(--nm-transition-normal);
+}
+
+.hours-line-accordion[open] .hours-line-accordion-header::after {
+  content: '\2212';
+  color: var(--nm-amber);
+}
+
+.hours-line-accordion-header:hover {
+  background-color: var(--nm-surface-elevated);
+  color: var(--nm-amber);
+}
+
+.hours-line-accordion-body {
+  padding: var(--nm-space-md) 1.25rem var(--nm-space-lg);
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+.hours-direction-label {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  margin-top: var(--nm-space-md);
+  margin-bottom: var(--nm-space-xs);
+}
+
+.hours-direction-label:first-child {
+  margin-top: 0;
+}
+
+.hours-direction-note {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--nm-text-muted);
+}
+
+.hours-line-cta {
+  margin-top: var(--nm-space-md);
+  font-family: var(--nm-font);
+  font-size: 0.9375rem;
+}
+
+.hours-line-cta a {
+  color: var(--nm-amber);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hours-line-cta a:hover {
+  color: var(--nm-amber-bright);
+}
+
+/* ---- Resource List ---- */
+.hours-resource-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hours-resource-list li {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  padding: 0.4rem 0;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.hours-resource-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50% !important;
+  background-color: var(--nm-amber-dim);
+}
+
+.hours-resource-list li a {
+  color: var(--nm-amber);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hours-resource-list li a:hover {
+  color: var(--nm-amber-bright);
+}
+
+/* ---- Disclaimer ---- */
+.hours-disclaimer {
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  padding: 1rem 1.25rem;
+  margin-top: var(--nm-space-2xl);
+}
+
+.hours-disclaimer p {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.7;
+}
+
+.hours-disclaimer a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Hours FAQ ---- */
+.hours-faq .section-heading {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.hours-faq .section-subheading {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  margin-bottom: var(--nm-space-lg);
+}
+
+/* ---- Hours Responsive ---- */
+@media (max-width: 768px) {
+  .hours-hero {
+    padding: var(--nm-space-xl) var(--nm-space-md) var(--nm-space-xl);
+  }
+
+  .hours-page {
+    padding: 0 var(--nm-space-md) var(--nm-space-2xl);
+  }
+
+  .hours-page-inner {
+    padding: 0 var(--nm-space-md);
+  }
+
+  .hours-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hours-info-grid--tips {
+    grid-template-columns: 1fr;
+  }
+
+  .hours-table thead th,
+  .hours-table tbody td {
+    padding: 0.5rem 0.6rem;
+  }
+
+  .hours-frequency-legend {
+    flex-direction: column;
+    gap: var(--nm-space-xs);
+  }
+
+  .hours-line-accordion-body {
+    padding: var(--nm-space-sm) var(--nm-space-md) var(--nm-space-md);
+  }
+}
+
+/* ==============================
    Line Page
    ============================== */
 
