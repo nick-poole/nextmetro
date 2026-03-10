@@ -10,6 +10,8 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /healthz
+Disallow: /terms/
+Disallow: /privacy/
 
 # ---------------------------------------------------------
 # Search engines — explicit full access
