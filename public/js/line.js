@@ -1,8 +1,13 @@
 // ==============================
-// NextMetro — Line Page JS
+// NextMetro — Line Page JS (Generic)
 // ==============================
+// Each page sets window.LINE_CODE and window.LINE_NAME before loading this script.
 
 const API_BASE_URL = '';
+
+// ---- Line config (set by each page's inline script) ----
+const LINE_CODE = window.LINE_CODE || 'RD';
+const LINE_NAME = window.LINE_NAME || 'Red';
 
 // ---- Fetch with retry (handles Render cold starts) ----
 async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
@@ -33,46 +38,12 @@ const lineNames = {
   SV: 'Silver',
 };
 
-// ---- Red Line Station Data (ordered Shady Grove → Glenmont) ----
-const LINE_CODE = 'RD';
-
-const redLineStations = [
-  { code: 'A15', name: 'Shady Grove', parking: true },
-  { code: 'A14', name: 'Rockville', parking: true, external: ['MARC'] },
-  { code: 'A13', name: 'Twinbrook', parking: true },
-  { code: 'A12', name: 'North Bethesda', parking: true },
-  { code: 'A11', name: 'Grosvenor-Strathmore', parking: true },
-  { code: 'A10', name: 'Medical Center', parking: true },
-  { code: 'A09', name: 'Bethesda', parking: false },
-  { code: 'A08', name: 'Friendship Heights', parking: false },
-  { code: 'A07', name: 'Tenleytown-AU', parking: false },
-  { code: 'A06', name: 'Van Ness-UDC', parking: false },
-  { code: 'A05', name: 'Cleveland Park', parking: false },
-  { code: 'A04', name: 'Woodley Park-Zoo/Adams Morgan', parking: false },
-  { code: 'A03', name: 'Dupont Circle', parking: false },
-  { code: 'A02', name: 'Farragut North', parking: false },
-  { code: 'A01', name: 'Metro Center', parking: false, transfer: ['OR', 'BL', 'SV'] },
-  { code: 'B01', name: 'Gallery Pl-Chinatown', parking: false, transfer: ['GR', 'YL'] },
-  { code: 'B02', name: 'Judiciary Square', parking: false },
-  { code: 'B03', name: 'Union Station', parking: false, external: ['Amtrak', 'MARC', 'VRE', 'DC Streetcar'] },
-  { code: 'B35', name: 'NoMa-Gallaudet U', parking: false },
-  { code: 'B04', name: 'Rhode Island Ave-Brentwood', parking: true },
-  { code: 'B05', name: 'Brookland-CUA', parking: false },
-  { code: 'B06', name: 'Fort Totten', parking: true, transfer: ['GR', 'YL'] },
-  { code: 'B07', name: 'Takoma', parking: false },
-  { code: 'B08', name: 'Silver Spring', parking: false, external: ['MARC'] },
-  { code: 'B09', name: 'Forest Glen', parking: true },
-  { code: 'B10', name: 'Wheaton', parking: true },
-  { code: 'B11', name: 'Glenmont', parking: true },
-];
-
 // ---- DOM Elements ----
 const tickerTrack = document.getElementById('ticker-track');
 const lineStatusDot = document.getElementById('line-status-dot');
 const lineStatusText = document.getElementById('line-status-text');
 const lineAlertsSection = document.getElementById('line-alerts');
 const lineAlertsBody = document.getElementById('line-alerts-body');
-const lineStationsList = document.getElementById('line-stations-list');
 
 // ---- State ----
 let incidentsInterval = null;
@@ -90,15 +61,6 @@ function parseAffectedLines(linesStr) {
     .split(';')
     .map((s) => s.trim())
     .filter((s) => s.length > 0 && lineNames[s]);
-}
-
-function stationSlug(name) {
-  return name
-    .toLowerCase()
-    .replace(/['']/g, '')
-    .replace(/\//g, '-')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
 }
 
 // ==============================
@@ -159,22 +121,20 @@ function renderLineStatus(incidents) {
     return affected.includes(LINE_CODE);
   });
 
-  // Determine most severe status
   let status = 'normal';
-  let statusMessage = 'Red Line is running normally';
+  let statusMessage = LINE_NAME + ' Line is running normally';
 
   const delays = relevant.filter((i) => i.IncidentType === 'Delay');
   const advisories = relevant.filter((i) => i.IncidentType !== 'Delay');
 
   if (delays.length > 0) {
     status = 'alert';
-    statusMessage = delays[0].Description || 'Red Line experiencing delays';
+    statusMessage = delays[0].Description || LINE_NAME + ' Line experiencing delays';
   } else if (advisories.length > 0) {
     status = 'caution';
-    statusMessage = advisories[0].Description || 'Red Line service advisory in effect';
+    statusMessage = advisories[0].Description || LINE_NAME + ' Line service advisory in effect';
   }
 
-  // Update status dot
   lineStatusDot.className = 'line-status-dot';
   if (status === 'normal') {
     lineStatusDot.classList.add('line-status-dot--ok');
@@ -203,7 +163,6 @@ function renderAlerts(incidents) {
 
   lineAlertsSection.style.display = '';
 
-  // Show up to 3 inline, link to full if more
   const show = relevant.slice(0, 3);
   let html = '';
   show.forEach((incident) => {
@@ -225,84 +184,6 @@ function renderAlerts(incidents) {
 }
 
 // ==============================
-// Station List
-// (Station HTML is pre-rendered in the page for SEO crawlability.
-//  This function is kept as a fallback if the static HTML is absent.)
-// ==============================
-function renderStations() {
-  // If station rows already exist in the DOM (server-rendered), skip re-render
-  if (lineStationsList && lineStationsList.children.length > 0) return;
-
-  let html = '';
-
-  redLineStations.forEach((station, index) => {
-    const isFirst = index === 0;
-    const isLast = index === redLineStations.length - 1;
-    const isTransfer = station.transfer && station.transfer.length > 0;
-
-    let badges = '';
-
-    // Transfer indicator
-    if (isTransfer) {
-      let transferDots = '';
-      station.transfer.forEach((lineCode) => {
-        transferDots +=
-          '<span class="station-transfer-dot" style="background-color:' +
-          lineColors[lineCode] + '" title="' + lineNames[lineCode] + ' Line"></span>';
-      });
-      badges +=
-        '<span class="station-transfer">' +
-        transferDots +
-        '<span class="station-transfer-label">Transfer</span>' +
-        '</span>';
-    }
-
-    // Parking indicator
-    if (station.parking) {
-      badges +=
-        '<span class="station-badge station-badge--parking" title="Parking available">' +
-        '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>' +
-        '</span>';
-    }
-
-    // External connections
-    if (station.external && station.external.length > 0) {
-      station.external.forEach((name) => {
-        badges +=
-          '<span class="station-badge station-badge--external" title="' + escapeHtml(name) + '">' +
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
-          escapeHtml(name) +
-          '</span>';
-      });
-    }
-
-    // Terminus label
-    let terminus = '';
-    if (isFirst || isLast) {
-      terminus = '<span class="station-terminus">Terminus</span>';
-    }
-
-    html +=
-      '<a href="/" class="line-station-row" data-code="' + station.code + '">' +
-      '<span class="line-station-dot-col">' +
-      '<span class="line-station-dot' + (isTransfer ? ' line-station-dot--transfer' : '') + '" style="--line-color: var(--nm-line-red);"></span>' +
-      ((!isLast) ? '<span class="line-station-connector" style="--line-color: var(--nm-line-red);"></span>' : '') +
-      '</span>' +
-      '<span class="line-station-info">' +
-      '<span class="line-station-name">' + escapeHtml(station.name) + '</span>' +
-      (badges ? '<span class="line-station-badges">' + badges + '</span>' : '') +
-      terminus +
-      '</span>' +
-      '<span class="line-station-arrow">' +
-      '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>' +
-      '</span>' +
-      '</a>';
-  });
-
-  lineStationsList.innerHTML = html;
-}
-
-// ==============================
 // Incidents Fetching
 // ==============================
 async function fetchIncidents() {
@@ -319,7 +200,7 @@ async function fetchIncidents() {
     console.error('Failed to fetch incidents:', err.message);
     renderTicker([]);
     lineStatusDot.className = 'line-status-dot line-status-dot--ok';
-    lineStatusText.textContent = 'Red Line is running normally';
+    lineStatusText.textContent = LINE_NAME + ' Line is running normally';
   }
 }
 
@@ -334,9 +215,6 @@ function startPolling() {
 // Init
 // ==============================
 document.addEventListener('DOMContentLoaded', async () => {
-  // Render static content immediately
-  renderStations();
-
   // Show ticker with all-normal state before API response
   renderTicker([]);
 

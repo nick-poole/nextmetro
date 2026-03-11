@@ -58,6 +58,22 @@
   --nm-line-yellow: #FFD100;
   --nm-line-silver: #A2AAAD;
 
+  /* Line Page Background Tints (line color at ~7% over #0A0A0A) */
+  --nm-line-bg-red: #170A0E;
+  --nm-line-bg-orange: #1A1309;
+  --nm-line-bg-blue: #091419;
+  --nm-line-bg-green: #09160E;
+  --nm-line-bg-yellow: #1B1809;
+  --nm-line-bg-silver: #111213;
+
+  /* Line Page Elevated Surfaces (line color at ~5% over #141414) */
+  --nm-line-surface-red: #1E1217;
+  --nm-line-surface-orange: #1F1A11;
+  --nm-line-surface-blue: #121B20;
+  --nm-line-surface-green: #121D16;
+  --nm-line-surface-yellow: #211F11;
+  --nm-line-surface-silver: #191A1B;
+
   /* Nav/Footer Design Tokens */
   --nm-black:    #0A0A0A;
   --nm-dark:     #111111;
@@ -2943,9 +2959,14 @@ a:hover {
    Line Page
    ============================== */
 
+/* ---- Line Page Main Tint ---- */
+main[data-line] {
+  background-color: var(--line-bg, var(--nm-bg));
+}
+
 /* ---- Line Hero ---- */
 .line-hero {
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
   padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
   border-bottom: 1px solid var(--nm-border-subtle);
 }
@@ -2956,30 +2977,61 @@ a:hover {
 }
 
 .line-hero-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--nm-amber-dim);
   letter-spacing: 0.12em;
-  margin-bottom: var(--nm-space-xs);
+  margin-bottom: var(--nm-space-sm);
+}
+
+.line-hero-label-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--line-color);
+  flex-shrink: 0;
+}
+
+.line-hero-bar {
+  width: 50%;
+  max-width: 400px;
+  height: 4px;
+  background-color: var(--line-color);
+  margin-bottom: var(--nm-space-md);
 }
 
 .line-hero-title {
-  display: flex;
-  align-items: center;
-  gap: var(--nm-space-md);
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: clamp(2.5rem, 8vw, 4rem);
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   line-height: 1.1;
-  margin-bottom: var(--nm-space-md);
+  margin-bottom: var(--nm-space-sm);
 }
 
+.line-hero-subtitle {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--line-color);
+  margin-bottom: var(--nm-space-lg);
+}
+
+.line-hero-subtitle .line-hero-separator {
+  margin: 0 0.35em;
+  opacity: 0.6;
+}
+
+/* Legacy: keep for any old markup */
 .line-hero-color-bar {
   display: inline-block;
   width: 6px;
@@ -3040,7 +3092,7 @@ a:hover {
 
 /* ---- Line Alerts ---- */
 .line-alerts {
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
   border: 1px solid var(--nm-border);
   border-left: 4px solid var(--nm-status-error);
   margin-top: var(--nm-space-xl);
@@ -3143,7 +3195,7 @@ a:hover {
 .line-termini-inner {
   display: flex;
   align-items: center;
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
   border: 1px solid var(--nm-border);
   padding: var(--nm-space-lg) var(--nm-space-lg);
   gap: var(--nm-space-md);
@@ -3238,7 +3290,7 @@ a:hover {
 }
 
 .line-station-row:hover {
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
 }
 
 /* Station dot column with connector line */
@@ -3289,7 +3341,7 @@ a:hover {
   bottom: 50%;
   left: 50%;
   width: 3px;
-  background-color: var(--nm-line-red);
+  background-color: var(--line-color);
   transform: translateX(-50%);
   z-index: 1;
 }
@@ -3379,6 +3431,31 @@ a:hover {
   letter-spacing: 0.1em;
 }
 
+/* ---- Surface / Above-Ground Stations ---- */
+.line-station-row--surface {
+  background-color: rgba(255, 255, 255, 0.018);
+}
+
+.line-station-row--surface:hover {
+  background-color: rgba(255, 255, 255, 0.035);
+}
+
+.station-surface {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #5B9DB8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.station-surface svg {
+  flex-shrink: 0;
+}
+
 .line-station-arrow {
   color: var(--nm-text-muted);
   flex-shrink: 0;
@@ -3408,7 +3485,7 @@ a:hover {
 }
 
 .line-info-card {
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
   border: 1px solid var(--nm-border);
   padding: var(--nm-space-lg) 1.25rem;
 }
@@ -3477,7 +3554,7 @@ a:hover {
 
 /* ---- Frequency ---- */
 .line-frequency {
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
   border: 1px solid var(--nm-border);
   padding: var(--nm-space-md) 1.25rem;
   margin-top: var(--nm-space-lg);
@@ -3524,7 +3601,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
   border: 1px solid var(--nm-border);
   padding: 10px 14px;
   min-height: 44px;
@@ -3699,7 +3776,7 @@ a:hover {
 }
 
 .line-faq-question:hover {
-  background-color: var(--nm-surface);
+  background-color: var(--line-surface, var(--nm-surface));
   color: var(--nm-amber);
 }
 
@@ -3729,7 +3806,15 @@ a:hover {
 /* ---- Line Page Responsive ---- */
 @media (max-width: 768px) {
   .line-hero {
-    padding: var(--nm-space-xl) var(--nm-space-md) var(--nm-space-xl);
+    padding: var(--nm-space-2xl) var(--nm-space-md) var(--nm-space-xl);
+  }
+
+  .line-hero-bar {
+    width: 65%;
+  }
+
+  .line-hero-title {
+    font-size: clamp(2rem, 10vw, 3rem);
   }
 
   .line-page {
