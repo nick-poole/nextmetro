@@ -51,26 +51,26 @@
   --nm-status-info: #40C4FF;
 
   /* WMATA Lines */
-  --nm-line-red: #BF0D3E;
-  --nm-line-orange: #ED8B00;
-  --nm-line-blue: #009CDE;
-  --nm-line-green: #00B140;
-  --nm-line-yellow: #FFD100;
+  --nm-line-red: #E31837;
+  --nm-line-orange: #F29012;
+  --nm-line-blue: #0CB0F2;
+  --nm-line-green: #00C94F;
+  --nm-line-yellow: #FFD814;
   --nm-line-silver: #A2AAAD;
 
   /* Line Page Background Tints (line color at ~7% over #0A0A0A) */
-  --nm-line-bg-red: #170A0E;
-  --nm-line-bg-orange: #1A1309;
-  --nm-line-bg-blue: #091419;
-  --nm-line-bg-green: #09160E;
+  --nm-line-bg-red: #1A0B0F;
+  --nm-line-bg-orange: #1B130A;
+  --nm-line-bg-blue: #0A151B;
+  --nm-line-bg-green: #09170F;
   --nm-line-bg-yellow: #1B1809;
   --nm-line-bg-silver: #111213;
 
   /* Line Page Elevated Surfaces (line color at ~5% over #141414) */
-  --nm-line-surface-red: #1E1217;
-  --nm-line-surface-orange: #1F1A11;
-  --nm-line-surface-blue: #121B20;
-  --nm-line-surface-green: #121D16;
+  --nm-line-surface-red: #201318;
+  --nm-line-surface-orange: #211B12;
+  --nm-line-surface-blue: #131C22;
+  --nm-line-surface-green: #131E17;
   --nm-line-surface-yellow: #211F11;
   --nm-line-surface-silver: #191A1B;
 
@@ -3431,28 +3431,37 @@ main[data-line] {
   letter-spacing: 0.1em;
 }
 
-/* ---- Surface / Above-Ground Stations ---- */
-.line-station-row--surface {
+/* ---- Outdoor Stations (Ground Level & Elevated) ---- */
+.line-station-row--outdoor {
   background-color: rgba(255, 255, 255, 0.018);
 }
 
-.line-station-row--surface:hover {
+.line-station-row--outdoor:hover {
   background-color: rgba(255, 255, 255, 0.035);
 }
 
-.station-surface {
+.station-ground-level,
+.station-elevated {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.7rem;
-  color: #5B9DB8;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-.station-surface svg {
+.station-ground-level {
+  color: #5B9DB8;
+}
+
+.station-elevated {
+  color: #8B7EC8;
+}
+
+.station-ground-level svg,
+.station-elevated svg {
   flex-shrink: 0;
 }
 
@@ -4965,11 +4974,11 @@ main[data-line] {
   filter: brightness(1.15);
 }
 
-.home-line-chip--red { background: linear-gradient(135deg, rgba(191,13,62,0.15), transparent); color: var(--nm-line-red); }
-.home-line-chip--orange { background: linear-gradient(135deg, rgba(237,139,0,0.15), transparent); color: var(--nm-line-orange); }
-.home-line-chip--blue { background: linear-gradient(135deg, rgba(0,156,222,0.15), transparent); color: var(--nm-line-blue); }
-.home-line-chip--yellow { background: linear-gradient(135deg, rgba(255,209,0,0.15), transparent); color: var(--nm-line-yellow); }
-.home-line-chip--green { background: linear-gradient(135deg, rgba(0,177,64,0.15), transparent); color: var(--nm-line-green); }
+.home-line-chip--red { background: linear-gradient(135deg, rgba(227,24,55,0.15), transparent); color: var(--nm-line-red); }
+.home-line-chip--orange { background: linear-gradient(135deg, rgba(242,144,18,0.15), transparent); color: var(--nm-line-orange); }
+.home-line-chip--blue { background: linear-gradient(135deg, rgba(12,176,242,0.15), transparent); color: var(--nm-line-blue); }
+.home-line-chip--yellow { background: linear-gradient(135deg, rgba(255,216,20,0.15), transparent); color: var(--nm-line-yellow); }
+.home-line-chip--green { background: linear-gradient(135deg, rgba(0,201,79,0.15), transparent); color: var(--nm-line-green); }
 .home-line-chip--silver { background: linear-gradient(135deg, rgba(162,170,173,0.15), transparent); color: var(--nm-line-silver); }
 
 /* ---- Section Title ---- */
