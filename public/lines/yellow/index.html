@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yellow Line — Stations, Status & Alerts | NextMetro</title>
+  <meta name="description" content="Yellow Line status, service alerts, and all 21 stations from Huntington to Greenbelt. Live updates, transfer info, and service hours for the DC Metro Yellow Line." />
+  <link rel="canonical" href="https://nextmetro.live/lines/yellow/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/images/icons/nm-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/images/icons/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/images/icons/favicon-16x16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/nav.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yellow Line — Stations, Status & Alerts | NextMetro" />
+  <meta property="og:description" content="Yellow Line status, service alerts, and all 21 stations from Huntington to Greenbelt. Live updates for the DC Metro Yellow Line." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextmetro.live/lines/yellow/" />
+  <meta property="og:site_name" content="NextMetro" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://nextmetro.live/images/og/lines/og-yellow-line.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="DC Metro Yellow Line — 21 stations from Huntington to Greenbelt" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yellow Line — Stations, Status & Alerts | NextMetro" />
+  <meta name="twitter:description" content="Yellow Line status, service alerts, and all 21 stations from Huntington to Greenbelt. Live updates for the DC Metro Yellow Line." />
+  <meta name="twitter:image" content="https://nextmetro.live/images/og/lines/og-yellow-line.png" />
+
+  <!-- Schema: TransitLine + BreadcrumbList + FAQPage + OpeningHoursSpecification -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentService",
+      "name": "Yellow Line",
+      "alternateName": "Metrorail Yellow Line",
+      "description": "The Yellow Line connects Huntington in Fairfax County, Virginia to Greenbelt in Prince George's County, Maryland, running 24.0 miles with 21 stations through Alexandria, the Pentagon, and downtown Washington, D.C. It shares tracks with the Green Line between L'Enfant Plaza and Greenbelt.",
+      "serviceType": "Public Transit — Metrorail",
+      "provider": {
+        "@type": "GovernmentOrganization",
+        "name": "Washington Metropolitan Area Transit Authority",
+        "alternateName": "WMATA",
+        "url": "https://www.wmata.com"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "05:00",
+          "closes": "00:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "05:00",
+          "closes": "02:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "06:00",
+          "closes": "02:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "06:00",
+          "closes": "00:00"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nextmetro.live/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Metro Lines",
+          "item": "https://nextmetro.live/lines/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Yellow Line",
+          "item": "https://nextmetro.live/lines/yellow/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many stations does the DC Metro Yellow Line have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The DC Metro Yellow Line has 21 stations, running from Huntington in Fairfax County, Virginia through downtown Washington, D.C. to Greenbelt in Prince George's County, Maryland. The line is 24.0 miles long."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the Yellow Line go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Yellow Line runs from Huntington in Fairfax County, Virginia through Alexandria, the Pentagon, Reagan National Airport, and downtown D.C. (including L'Enfant Plaza, Archives, Gallery Place-Chinatown, and the U Street corridor), continuing north through Columbia Heights and Fort Totten to Greenbelt in Prince George's County, Maryland."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the Yellow Line service hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As of June 2025, Yellow Line service hours are: Monday through Thursday 5:00 AM to midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM to midnight. Hours may vary on holidays and special events."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often does the Yellow Line run?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "During weekday rush hours, Yellow Line trains run every 8 minutes at peak frequency. Off-peak weekday service runs every 12 minutes. After 9:30 PM, trains run every 15 minutes. Weekend service frequency varies throughout the day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does the Yellow Line cost to ride?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yellow Line fares range from $2.00 to $6.00 per trip depending on distance and time of day. Peak fares (weekdays opening–9:30 AM and 3:00–7:00 PM) range from $2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or contactless payment is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Yellow Line go to the airport?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the Yellow Line directly serves Ronald Reagan Washington National Airport (DCA). The station is located adjacent to Terminal 2 with a covered walkway to the terminals. This makes the Yellow Line one of the most convenient ways to reach DCA from downtown D.C., Virginia, or Maryland."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What transfers can I make on the Yellow Line?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Yellow Line connects to multiple Metro lines at several transfer stations: King Street-Old Town (Blue Line), Pentagon (Blue Line), L'Enfant Plaza (Blue, Orange, Silver, and Green lines), Gallery Place-Chinatown (Red and Green lines), and Fort Totten (Red and Green lines). The Yellow Line shares tracks with the Green Line from L'Enfant Plaza north to Greenbelt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to ride the entire Yellow Line?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A complete end-to-end ride from Huntington to Greenbelt takes approximately 44 minutes. The Yellow Line covers 24.0 miles and passes through 21 stations across Fairfax County, Virginia, Alexandria, Washington, D.C., and Prince George's County, Maryland."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Yellow Line stations have parking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The following Yellow Line stations have parking facilities: Huntington, Eisenhower Ave, King Street-Old Town, Fort Totten, West Hyattsville, Prince George's Plaza, College Park-U of Md, and Greenbelt. Parking is free on weekends and holidays. On weekdays, most lots charge $5.20 per day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Yellow Line rush hour plus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Yellow Line shares tracks with the Green Line from L'Enfant Plaza north to Greenbelt. This means that between L'Enfant Plaza and Greenbelt, riders can take either a Yellow or Green Line train, effectively increasing service frequency on that shared segment during rush hours."
+          }
+        }
+      ]
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NextMetro Site Nav -->
+  <nav class="nm-nav" aria-label="Site navigation">
+    <div class="nm-nav__strip" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a href="/" class="nm-nav__logo" aria-label="NextMetro home">
+      <span class="nm-nav__logo-next">NEXT</span>
+      <span class="nm-nav__logo-divider" aria-hidden="true"></span>
+      <span class="nm-nav__logo-metro">METRO</span>
+    </a>
+    <div class="nm-nav__links">
+      <a href="/alerts" class="nm-nav__link">Alerts</a>
+      <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer">Map</a>
+      <a href="/fares" class="nm-nav__link">Fares</a>
+      <a href="/hours" class="nm-nav__link">Hours</a>
+    </div>
+    <button class="nm-nav__hamburger" id="navbar-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+  <div class="nm-mobile-menu" id="mobile-menu">
+    <a href="/alerts" class="mobile-menu-link">Alerts</a>
+    <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer">Map</a>
+    <a href="/fares" class="mobile-menu-link">Fares</a>
+    <a href="/hours" class="mobile-menu-link">Hours</a>
+  </div>
+
+  <!-- Ticker placeholder -->
+  <div class="ticker-bar">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <main id="main-content" data-line="yellow" style="--line-color: var(--nm-line-yellow); --line-bg: var(--nm-line-bg-yellow); --line-surface: var(--nm-line-surface-yellow);">
+  <!-- Breadcrumb -->
+  <nav class="line-breadcrumb" aria-label="Breadcrumb">
+    <ol class="line-breadcrumb-list">
+      <li class="line-breadcrumb-item"><a href="/">Home</a></li>
+      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
+      <li class="line-breadcrumb-item"><span>Metro Lines</span></li>
+      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
+      <li class="line-breadcrumb-item line-breadcrumb-current" aria-current="page">Yellow Line</li>
+    </ol>
+  </nav>
+
+  <!-- Line Hero -->
+  <section class="line-hero" style="--line-color: var(--nm-line-yellow);">
+    <div class="line-hero-inner">
+      <span class="line-hero-label"><span class="line-hero-label-dot"></span>Line</span>
+      <div class="line-hero-bar"></div>
+      <h1 class="line-hero-title">Yellow Line</h1>
+      <p class="line-hero-subtitle">21 stations<span class="line-hero-separator">&middot;</span>Huntington to Greenbelt</p>
+
+      <!-- Status Hero -->
+      <div class="line-status" id="line-status">
+        <span class="line-status-dot line-status-dot--loading" id="line-status-dot"></span>
+        <span class="line-status-text" id="line-status-text">Checking status...</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="line-page">
+
+    <!-- Alerts Section -->
+    <section class="line-alerts" id="line-alerts" style="display:none;">
+      <div class="line-alerts-header">
+        <span class="line-alerts-indicator"></span>
+        <span class="line-alerts-badge">Service Alerts</span>
+      </div>
+      <div class="line-alerts-body" id="line-alerts-body">
+        <!-- Alerts rendered by JS -->
+      </div>
+      <a href="/alerts/" class="line-alerts-link">View all alerts</a>
+    </section>
+
+    <!-- Terminus Labels -->
+    <div class="line-termini animate-in d1">
+      <div class="line-termini-inner">
+        <span class="line-termini-station">
+          <span class="line-termini-dot"></span>
+          Huntington
+        </span>
+        <span class="line-termini-track">
+          <span class="line-termini-line"></span>
+          <span class="line-termini-count">21 stations &middot; 24.0 mi</span>
+        </span>
+        <span class="line-termini-station">
+          Greenbelt
+          <span class="line-termini-dot"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- All Stations (static HTML for SEO crawlability) -->
+    <section class="line-stations animate-in d3">
+      <h2 class="line-section-heading">All Stations</h2>
+      <div class="line-stations-list" id="line-stations-list">
+        <a href="/" class="line-station-row line-station-row--surface" data-code="C15"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Huntington</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span><span class="station-terminus">Terminus</span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="C14"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Eisenhower Ave</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="C13"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">King Street-Old Town</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#009CDE" title="Blue Line"></span><span class="station-transfer-label">Transfer</span></span><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span><span class="station-badge station-badge--external" title="Amtrak"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Amtrak</span><span class="station-badge station-badge--external" title="VRE"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>VRE</span></span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="C12"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Braddock Road</span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="C10"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Ronald Reagan Washington National Airport</span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="C09"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Crystal City</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="C08"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Pentagon City</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="C07"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Pentagon</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#009CDE" title="Blue Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="D03"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">L&#8217;Enfant Plaza</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#009CDE" title="Blue Line"></span><span class="station-transfer-dot" style="background-color:#ED8B00" title="Orange Line"></span><span class="station-transfer-dot" style="background-color:#A2AAAD" title="Silver Line"></span><span class="station-transfer-dot" style="background-color:#00B140" title="Green Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="F02"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Archives-Navy Memorial-Penn Quarter</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="F01"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Gallery Pl-Chinatown</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#E51937" title="Red Line"></span><span class="station-transfer-dot" style="background-color:#00B140" title="Green Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="E01"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Mt Vernon Sq/7th St-Convention Center</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="E02"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Shaw-Howard U</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="E03"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">U Street/African-Amer Civil War Memorial/Cardozo</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="E04"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Columbia Heights</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row" data-code="E05"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Georgia Ave-Petworth</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="E06"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Fort Totten</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot" style="background-color:#E51937" title="Red Line"></span><span class="station-transfer-dot" style="background-color:#00B140" title="Green Line"></span><span class="station-transfer-label">Transfer</span></span><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="E07"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">West Hyattsville</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="E08"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Prince George&#8217;s Plaza</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span></span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="E09"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">College Park-U of Md</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span><span class="station-badge station-badge--external" title="MARC"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>MARC</span></span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+        <a href="/" class="line-station-row line-station-row--surface" data-code="E10"><span class="line-station-dot-col"><span class="line-station-dot"></span></span><span class="line-station-info"><span class="line-station-name">Greenbelt</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg></span><span class="station-badge station-badge--external" title="MARC"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>MARC</span></span><span class="station-terminus">Terminus</span><span class="station-surface">Surface</span></span><span class="line-station-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span></a>
+      </div>
+    </section>
+
+    <!-- Service Info -->
+    <section class="line-info animate-in d4">
+      <h2 class="line-section-heading">Service Information</h2>
+      <div class="line-info-grid">
+
+        <!-- Service Details -->
+        <div class="line-info-card">
+          <h3 class="line-info-card-title">Line Details</h3>
+          <div class="line-info-rows">
+            <div class="line-info-row">
+              <span class="line-info-label">Termini</span>
+              <span class="line-info-value">Huntington &harr; Greenbelt</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Stations</span>
+              <span class="line-info-value">21</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Transfer Stations</span>
+              <span class="line-info-value">King Street, Pentagon, L&#8217;Enfant Plaza, Gallery Place, Fort Totten</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Opened</span>
+              <span class="line-info-value">1983 (first segment)</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Length</span>
+              <span class="line-info-value">24.0 miles</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">End-to-End</span>
+              <span class="line-info-value">~44 minutes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Hours (Updated June 2025) -->
+        <div class="line-info-card">
+          <h3 class="line-info-card-title">Service Hours</h3>
+          <div class="line-info-rows">
+            <div class="line-info-row">
+              <span class="line-info-label">Mon &ndash; Thu</span>
+              <span class="line-info-value">5:00 AM &ndash; Midnight</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Friday</span>
+              <span class="line-info-value">5:00 AM &ndash; 2:00 AM</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Saturday</span>
+              <span class="line-info-value">6:00 AM &ndash; 2:00 AM</span>
+            </div>
+            <div class="line-info-row">
+              <span class="line-info-label">Sunday</span>
+              <span class="line-info-value">6:00 AM &ndash; Midnight</span>
+            </div>
+          </div>
+          <a href="/hours/" class="line-info-link">Full schedule &rarr;</a>
+        </div>
+
+      </div>
+
+      <!-- Frequency -->
+      <div class="line-frequency">
+        <span class="line-frequency-label">Peak Frequency</span>
+        <span class="line-frequency-value">Trains every 8 minutes at peak, every 12 minutes off-peak, every 15 minutes after 9:30 PM</span>
+      </div>
+    </section>
+
+    <!-- Connects To -->
+    <section class="line-connections animate-in d5">
+      <h2 class="line-section-heading">Connects To</h2>
+      <div class="line-connections-body">
+        <div class="line-connections-pills">
+          <a href="/lines/red/" class="line-connection-pill" style="--pill-color: var(--nm-line-red);">
+            <span class="line-connection-dot"></span>
+            Red
+          </a>
+          <a href="/lines/blue/" class="line-connection-pill" style="--pill-color: var(--nm-line-blue);">
+            <span class="line-connection-dot"></span>
+            Blue
+          </a>
+          <a href="/lines/orange/" class="line-connection-pill" style="--pill-color: var(--nm-line-orange);">
+            <span class="line-connection-dot"></span>
+            Orange
+          </a>
+          <a href="/lines/silver/" class="line-connection-pill" style="--pill-color: var(--nm-line-silver);">
+            <span class="line-connection-dot"></span>
+            Silver
+          </a>
+          <a href="/lines/green/" class="line-connection-pill" style="--pill-color: var(--nm-line-green);">
+            <span class="line-connection-dot"></span>
+            Green
+          </a>
+        </div>
+        <p class="line-connections-detail">
+          Transfer at <strong>King Street-Old Town</strong> (Blue), <strong>Pentagon</strong> (Blue), <strong>L&#8217;Enfant Plaza</strong> (Blue, Orange, Silver, Green), <strong>Gallery Place-Chinatown</strong> (Red, Green), and <strong>Fort Totten</strong> (Red, Green). Shares track with the Green Line from L&#8217;Enfant Plaza north to Greenbelt.
+        </p>
+        <a href="https://www.wmata.com/schedules/maps/upload/system-map-rail.pdf" target="_blank" rel="noopener" class="line-map-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM14 9.5h1v-1h-1v1z"/><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/></svg>
+          View system map (PDF)
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="line-faq">
+      <h2 class="line-section-heading">Frequently Asked Questions</h2>
+      <div class="line-faq-list">
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How many stations does the DC Metro Yellow Line have?</summary>
+          <div class="line-faq-answer">
+            <p>The DC Metro Yellow Line has 21 stations, running from Huntington in Fairfax County, Virginia through downtown Washington, D.C. to Greenbelt in Prince George's County, Maryland. The line is 24.0 miles long.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Where does the Yellow Line go?</summary>
+          <div class="line-faq-answer">
+            <p>The Yellow Line runs from Huntington in Fairfax County, Virginia through Alexandria, the Pentagon, Reagan National Airport, and downtown D.C. (including L&rsquo;Enfant Plaza, Archives, Gallery Place-Chinatown, and the U Street corridor), continuing north through Columbia Heights and Fort Totten to Greenbelt in Prince George&rsquo;s County, Maryland.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What are the Yellow Line service hours?</summary>
+          <div class="line-faq-answer">
+            <p>As of June 2025, Yellow Line service hours are: Monday through Thursday 5:00 AM to midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM to midnight. Hours may vary on holidays and special events.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How often does the Yellow Line run?</summary>
+          <div class="line-faq-answer">
+            <p>During weekday rush hours (5:00&ndash;9:30 AM and 3:00&ndash;7:00 PM), Yellow Line trains run every 8 minutes at peak frequency. Off-peak weekday service runs every 12 minutes. After 9:30 PM, trains run every 15 minutes. Between L&rsquo;Enfant Plaza and Greenbelt, riders can also take Green Line trains on the shared track segment.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How much does the Yellow Line cost to ride?</summary>
+          <div class="line-faq-answer">
+            <p>Yellow Line fares range from $2.00 to $6.00 per trip depending on distance and time of day. Peak fares (weekdays opening&ndash;9:30 AM and 3:00&ndash;7:00 PM) range from $2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or contactless payment is required. <a href="/fares/">Calculate your fare &rarr;</a></p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Does the Yellow Line go to the airport?</summary>
+          <div class="line-faq-answer">
+            <p>Yes &mdash; the Yellow Line directly serves Ronald Reagan Washington National Airport (DCA). The station is located adjacent to Terminal 2 with a covered walkway to the terminals. This makes the Yellow Line one of the most convenient ways to reach DCA from downtown D.C., Virginia, or Maryland.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What transfers can I make on the Yellow Line?</summary>
+          <div class="line-faq-answer">
+            <p>The Yellow Line connects to multiple Metro lines at several transfer stations: King Street-Old Town (Blue Line), Pentagon (Blue Line), L&rsquo;Enfant Plaza (Blue, Orange, Silver, and Green lines), Gallery Place-Chinatown (Red and Green lines), and Fort Totten (Red and Green lines). The Yellow Line shares tracks with the Green Line from L&rsquo;Enfant Plaza north to Greenbelt.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">How long does it take to ride the entire Yellow Line?</summary>
+          <div class="line-faq-answer">
+            <p>A complete end-to-end ride from Huntington to Greenbelt takes approximately 44 minutes. The Yellow Line covers 24.0 miles and passes through 21 stations across Fairfax County, Virginia, Alexandria, Washington, D.C., and Prince George&rsquo;s County, Maryland.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">Which Yellow Line stations have parking?</summary>
+          <div class="line-faq-answer">
+            <p>The following Yellow Line stations have parking facilities: Huntington, Eisenhower Ave, King Street-Old Town, Fort Totten, West Hyattsville, Prince George&rsquo;s Plaza, College Park-U of Md, and Greenbelt. Parking is free on weekends and holidays. On weekdays, most lots charge $5.20 per day.</p>
+          </div>
+        </details>
+        <details class="line-faq-item">
+          <summary class="line-faq-question">What is the Yellow Line rush hour plus?</summary>
+          <div class="line-faq-answer">
+            <p>The Yellow Line shares tracks with the Green Line from L&rsquo;Enfant Plaza north to Greenbelt. This means that between L&rsquo;Enfant Plaza and Greenbelt, riders can take either a Yellow or Green Line train, effectively increasing service frequency on that shared segment during rush hours.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <div class="line-disclaimer">
+      <p>
+        Status and alerts are sourced from the <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a> and update every 60 seconds. Service hours are effective June 22, 2025 and subject to change for holidays and special events. For the most current information, visit <a href="https://www.wmata.com/" target="_blank" rel="noopener">wmata.com</a>. NextMetro is not affiliated with WMATA.
+      </p>
+    </div>
+  </div>
+
+  </main>
+
+  <!-- NextMetro Site Footer -->
+  <footer class="nm-footer">
+    <div class="nm-footer__strip" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nm-footer__body">
+      <div class="nm-footer__col">
+        <h3 class="nm-footer__heading">Navigate</h3>
+        <nav class="nm-footer__links" aria-label="Footer navigation">
+          <a href="/"          class="nm-footer__link">Home</a>
+          <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer">System Map</a>
+          <a href="/alerts"    class="nm-footer__link">Alerts</a>
+          <a href="/elevators" class="nm-footer__link">Elevator Status</a>
+          <a href="/fares"     class="nm-footer__link">Fares</a>
+          <a href="/hours"     class="nm-footer__link">Hours</a>
+        </nav>
+      </div>
+      <div class="nm-footer__col">
+        <h3 class="nm-footer__heading">Lines</h3>
+        <nav class="nm-footer__links" aria-label="Metro lines">
+          <a href="/lines/red"    class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--red"></span>Red Line</a>
+          <a href="/lines/orange" class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--orange"></span>Orange Line</a>
+          <a href="/lines/silver" class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--silver"></span>Silver Line</a>
+          <a href="/lines/blue"   class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--blue"></span>Blue Line</a>
+          <a href="/lines/yellow" class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--yellow"></span>Yellow Line</a>
+          <a href="/lines/green"  class="nm-footer__link nm-footer__link--line">
+            <span class="nm-footer__dot nm-footer__dot--green"></span>Green Line</a>
+        </nav>
+      </div>
+      <div class="nm-footer__col">
+        <h3 class="nm-footer__heading">About</h3>
+        <nav class="nm-footer__links" aria-label="About">
+          <a href="/about"   class="nm-footer__link">About NextMetro</a>
+          <a href="/privacy" class="nm-footer__link">Privacy Policy</a>
+          <a href="/terms"   class="nm-footer__link">Terms of Service</a>
+          <a href="/crisis"  class="nm-footer__link">Crisis Resources</a>
+        </nav>
+        <div class="nm-footer__data-block">
+          <h3 class="nm-footer__heading">Data</h3>
+          <p class="nm-footer__body-text">
+            Real-time data via WMATA API.<br>
+            Not affiliated with WMATA.
+          </p>
+        </div>
+      </div>
+      <div class="nm-footer__col nm-footer__col--logo">
+        <div class="nm-footer__logo" role="img" aria-label="NextMetro">
+          <div class="nm-footer__logo-mark"><b>NM</b></div>
+          <div class="nm-footer__logo-strip" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="nm-footer__logo-text">
+            <span class="nm-footer__logo-next">NEXT</span>
+            <span class="nm-footer__logo-metro">METRO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nm-footer__bottom">
+      <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
+      <nav class="nm-footer__legal" aria-label="Legal">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/crisis">Crisis Resources</a>
+        <a href="https://nickpoole.dev" target="_blank" rel="noopener noreferrer">Webmaster</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/js/nav.js"></script>
+  <script>window.LINE_CODE='YL';window.LINE_NAME='Yellow';</script>
+  <script src="/js/line.js"></script>
+</body>
+</html>
