@@ -17,12 +17,12 @@ async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
 
 // ---- Metro Line Data ----
 const lineColors = {
-  RD: '#BF0D3E',
-  BL: '#009CDE',
-  YL: '#FFD100',
-  OR: '#ED8B00',
-  GR: '#00B140',
-  SV: '#A2AAAD',
+  RD: '#D41140',
+  BL: '#00A8E8',
+  YL: '#FFD400',
+  OR: '#F09500',
+  GR: '#00BD45',
+  SV: '#9BA5A5',
 };
 
 const lineNames = {
@@ -162,12 +162,12 @@ var lastUpdatedTime = document.getElementById('alerts-last-updated-time');
 // ==============================
 function renderTicker(incidents) {
   var lineData = [
-    { code: 'RD', name: 'Red', color: '#BF0D3E' },
-    { code: 'OR', name: 'Orange', color: '#ED8B00' },
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'GR', name: 'Green', color: '#00B140' },
-    { code: 'YL', name: 'Yellow', color: '#FFD100' },
-    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
+    { code: 'RD', name: 'Red', color: '#D41140' },
+    { code: 'OR', name: 'Orange', color: '#F09500' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'GR', name: 'Green', color: '#00BD45' },
+    { code: 'YL', name: 'Yellow', color: '#FFD400' },
+    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
   ];
 
   var lineStatuses = {};
