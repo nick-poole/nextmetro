@@ -3092,6 +3092,7 @@ main[data-line] {
 
 /* ---- Line Alerts ---- */
 .line-alerts {
+  display: none;
   background-color: var(--line-surface, var(--nm-surface));
   border: 1px solid var(--nm-border);
   border-left: 4px solid var(--nm-status-error);
@@ -3639,6 +3640,30 @@ main[data-line] {
   background-color: var(--pill-color);
   flex-shrink: 0;
 }
+
+/* ---- Line-specific custom properties ---- */
+[data-line="red"]    { --line-color: var(--nm-line-red);    --line-bg: var(--nm-line-bg-red);    --line-surface: var(--nm-line-surface-red); }
+[data-line="orange"] { --line-color: var(--nm-line-orange); --line-bg: var(--nm-line-bg-orange); --line-surface: var(--nm-line-surface-orange); }
+[data-line="blue"]   { --line-color: var(--nm-line-blue);   --line-bg: var(--nm-line-bg-blue);   --line-surface: var(--nm-line-surface-blue); }
+[data-line="green"]  { --line-color: var(--nm-line-green);  --line-bg: var(--nm-line-bg-green);  --line-surface: var(--nm-line-surface-green); }
+[data-line="yellow"] { --line-color: var(--nm-line-yellow); --line-bg: var(--nm-line-bg-yellow); --line-surface: var(--nm-line-surface-yellow); }
+[data-line="silver"] { --line-color: var(--nm-line-silver); --line-bg: var(--nm-line-bg-silver); --line-surface: var(--nm-line-surface-silver); }
+
+/* ---- Transfer dot line colors ---- */
+.station-transfer-dot--red    { background-color: var(--nm-line-red); }
+.station-transfer-dot--orange { background-color: var(--nm-line-orange); }
+.station-transfer-dot--blue   { background-color: var(--nm-line-blue); }
+.station-transfer-dot--green  { background-color: var(--nm-line-green); }
+.station-transfer-dot--yellow { background-color: var(--nm-line-yellow); }
+.station-transfer-dot--silver { background-color: var(--nm-line-silver); }
+
+/* ---- Connection pill line colors ---- */
+.line-connection-pill--red    { --pill-color: var(--nm-line-red); }
+.line-connection-pill--orange { --pill-color: var(--nm-line-orange); }
+.line-connection-pill--blue   { --pill-color: var(--nm-line-blue); }
+.line-connection-pill--green  { --pill-color: var(--nm-line-green); }
+.line-connection-pill--yellow { --pill-color: var(--nm-line-yellow); }
+.line-connection-pill--silver { --pill-color: var(--nm-line-silver); }
 
 .line-connections-detail {
   font-family: var(--nm-font);
