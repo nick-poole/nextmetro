@@ -109,12 +109,12 @@ const stations = [
 
 // ---- Line Colors ----
 const lineColorMap = {
-  red: '#BF0D3E',
-  orange: '#ED8B00',
-  blue: '#009CDE',
-  yellow: '#FFD100',
-  green: '#00B140',
-  silver: '#A2AAAD',
+  red: '#D41140',
+  orange: '#F09500',
+  blue: '#00A8E8',
+  yellow: '#FFD400',
+  green: '#00BD45',
+  silver: '#9BA5A5',
 };
 
 const lineNames = {
@@ -162,7 +162,7 @@ function renderResults(filtered) {
     station.lines.forEach(line => {
       const dot = document.createElement('span');
       dot.className = 'home-search-result-dot';
-      dot.style.backgroundColor = lineColorMap[line] || '#A2AAAD';
+      dot.style.backgroundColor = lineColorMap[line] || '#9BA5A5';
       dotsSpan.appendChild(dot);
     });
 

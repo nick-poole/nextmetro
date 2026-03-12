@@ -143,21 +143,21 @@ const multiPlatform = {
 
 // ---- Metro Line Colors ----
 const lineColors = {
-  RD: '#BF0D3E',
-  BL: '#009CDE',
-  YL: '#FFD100',
-  OR: '#ED8B00',
-  GR: '#00B140',
-  SV: '#A2AAAD',
+  RD: '#D41140',
+  BL: '#00A8E8',
+  YL: '#FFD400',
+  OR: '#F09500',
+  GR: '#00BD45',
+  SV: '#9BA5A5',
 };
 
 const pidsLineColors = {
-  RD: '#BF0D3E',
-  BL: '#009CDE',
-  YL: '#FFD100',
-  OR: '#ED8B00',
-  GR: '#00B140',
-  SV: '#A2AAAD',
+  RD: '#D41140',
+  BL: '#00A8E8',
+  YL: '#FFD400',
+  OR: '#F09500',
+  GR: '#00BD45',
+  SV: '#9BA5A5',
 };
 
 const lineNames = {
@@ -171,42 +171,42 @@ const lineNames = {
 
 // Station code prefix -> line info
 const prefixLines = {
-  A: [{ code: 'RD', name: 'Red', color: '#BF0D3E' }],
-  B: [{ code: 'RD', name: 'Red', color: '#BF0D3E' }],
+  A: [{ code: 'RD', name: 'Red', color: '#D41140' }],
+  B: [{ code: 'RD', name: 'Red', color: '#D41140' }],
   C: [
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'OR', name: 'Orange', color: '#ED8B00' },
-    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'OR', name: 'Orange', color: '#F09500' },
+    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
   ],
   D: [
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'OR', name: 'Orange', color: '#ED8B00' },
-    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'OR', name: 'Orange', color: '#F09500' },
+    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
   ],
   E: [
-    { code: 'GR', name: 'Green', color: '#00B140' },
-    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'GR', name: 'Green', color: '#00BD45' },
+    { code: 'YL', name: 'Yellow', color: '#FFD400' },
   ],
   F: [
-    { code: 'GR', name: 'Green', color: '#00B140' },
-    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'GR', name: 'Green', color: '#00BD45' },
+    { code: 'YL', name: 'Yellow', color: '#FFD400' },
   ],
   G: [
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
   ],
   J: [
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'YL', name: 'Yellow', color: '#FFD400' },
   ],
   K: [
-    { code: 'OR', name: 'Orange', color: '#ED8B00' },
-    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
+    { code: 'OR', name: 'Orange', color: '#F09500' },
+    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
   ],
-  N: [{ code: 'SV', name: 'Silver', color: '#A2AAAD' }],
+  N: [{ code: 'SV', name: 'Silver', color: '#9BA5A5' }],
   S: [
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'YL', name: 'Yellow', color: '#FFD100' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'YL', name: 'Yellow', color: '#FFD400' },
   ],
 };
 
@@ -357,12 +357,12 @@ function updateHeroDisplay(stationCode) {
 // ==============================
 function renderTicker(incidents) {
   const lineData = [
-    { code: 'RD', name: 'Red', color: '#BF0D3E' },
-    { code: 'OR', name: 'Orange', color: '#ED8B00' },
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'GR', name: 'Green', color: '#00B140' },
-    { code: 'YL', name: 'Yellow', color: '#FFD100' },
-    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
+    { code: 'RD', name: 'Red', color: '#D41140' },
+    { code: 'OR', name: 'Orange', color: '#F09500' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'GR', name: 'Green', color: '#00BD45' },
+    { code: 'YL', name: 'Yellow', color: '#FFD400' },
+    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
   ];
 
   // Determine per-line status from incidents
@@ -440,12 +440,12 @@ async function fetchIncidents() {
 // ==============================
 function renderSystemStatus(incidents) {
   const lines = [
-    { code: 'RD', name: 'Red', color: '#BF0D3E' },
-    { code: 'OR', name: 'Orange', color: '#ED8B00' },
-    { code: 'BL', name: 'Blue', color: '#009CDE' },
-    { code: 'GR', name: 'Green', color: '#00B140' },
-    { code: 'YL', name: 'Yellow', color: '#FFD100' },
-    { code: 'SV', name: 'Silver', color: '#A2AAAD' },
+    { code: 'RD', name: 'Red', color: '#D41140' },
+    { code: 'OR', name: 'Orange', color: '#F09500' },
+    { code: 'BL', name: 'Blue', color: '#00A8E8' },
+    { code: 'GR', name: 'Green', color: '#00BD45' },
+    { code: 'YL', name: 'Yellow', color: '#FFD400' },
+    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
   ];
 
   // Determine per-line status
