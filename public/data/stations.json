@@ -3,7 +3,12 @@
     "name": "Metro Center",
     "code": "A01",
     "slug": "metro-center",
-    "lines": ["red", "orange", "blue", "silver"],
+    "lines": [
+      "red",
+      "orange",
+      "blue",
+      "silver"
+    ],
     "partnerCode": "C01",
     "address": {
       "street": "607 13th St NW",
@@ -14,13 +19,16 @@
     "lat": 38.8983,
     "lon": -77.0281,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Downtown &amp; Penn Quarter. Transfer to Orange, Blue, and Silver lines."
   },
   {
     "name": "Farragut North",
     "code": "A02",
     "slug": "farragut-north",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "1001 Connecticut Ave NW",
       "city": "Washington",
@@ -30,13 +38,16 @@
     "lat": 38.9032,
     "lon": -77.0397,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Farragut Square &amp; K Street corridor."
   },
   {
     "name": "Dupont Circle",
     "code": "A03",
     "slug": "dupont-circle",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "1525 20th St NW",
       "city": "Washington",
@@ -46,13 +57,16 @@
     "lat": 38.9096,
     "lon": -77.0434,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Dupont Circle, Embassy Row &amp; Kalorama."
   },
   {
     "name": "Woodley Park-Zoo/Adams Morgan",
     "code": "A04",
     "slug": "woodley-park",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "2700 Connecticut Ave NW",
       "city": "Washington",
@@ -62,13 +76,16 @@
     "lat": 38.9251,
     "lon": -77.0527,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Woodley Park, National Zoo &amp; Adams Morgan."
   },
   {
     "name": "Cleveland Park",
     "code": "A05",
     "slug": "cleveland-park",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "3599 Connecticut Ave NW",
       "city": "Washington",
@@ -76,15 +93,18 @@
       "zip": "20008"
     },
     "lat": 38.9346,
-    "lon": -77.0580,
+    "lon": -77.058,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Cleveland Park &amp; Connecticut Avenue."
   },
   {
     "name": "Van Ness-UDC",
     "code": "A06",
     "slug": "van-ness-udc",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "4200 Connecticut Ave NW",
       "city": "Washington",
@@ -94,13 +114,16 @@
     "lat": 38.9434,
     "lon": -77.0631,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Van Ness &amp; University of the District of Columbia."
   },
   {
     "name": "Tenleytown-AU",
     "code": "A07",
     "slug": "tenleytown-au",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "4501 Wisconsin Ave NW",
       "city": "Washington",
@@ -110,13 +133,16 @@
     "lat": 38.9489,
     "lon": -77.0794,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Tenleytown &amp; American University."
   },
   {
     "name": "Friendship Heights",
     "code": "A08",
     "slug": "friendship-heights",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "5337 Wisconsin Ave NW",
       "city": "Washington",
@@ -126,13 +152,16 @@
     "lat": 38.9605,
     "lon": -77.0859,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Friendship Heights &amp; Chevy Chase."
   },
   {
     "name": "Bethesda",
     "code": "A09",
     "slug": "bethesda",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "7450 Wisconsin Ave",
       "city": "Bethesda",
@@ -142,13 +171,16 @@
     "lat": 38.9845,
     "lon": -77.0941,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Downtown Bethesda &amp; NIH campus access."
   },
   {
     "name": "Medical Center",
     "code": "A10",
     "slug": "medical-center",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "8810 Rockville Pike",
       "city": "Bethesda",
@@ -158,13 +190,16 @@
     "lat": 38.9996,
     "lon": -77.0971,
     "parking": true,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing National Institutes of Health &amp; Walter Reed National Military Medical Center."
   },
   {
     "name": "Grosvenor-Strathmore",
     "code": "A11",
     "slug": "grosvenor-strathmore",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "10300 Rockville Pike",
       "city": "North Bethesda",
@@ -172,15 +207,18 @@
       "zip": "20852"
     },
     "lat": 39.0294,
-    "lon": -77.1040,
+    "lon": -77.104,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Grosvenor &amp; the Strathmore music center."
   },
   {
     "name": "North Bethesda-White Flint",
     "code": "A12",
     "slug": "north-bethesda",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "11510 Old Georgetown Rd",
       "city": "North Bethesda",
@@ -190,13 +228,16 @@
     "lat": 39.0484,
     "lon": -77.1131,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing North Bethesda, Pike &amp; Rose &amp; White Flint."
   },
   {
     "name": "Twinbrook",
     "code": "A13",
     "slug": "twinbrook",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "1600 Chapman Ave",
       "city": "Rockville",
@@ -206,13 +247,16 @@
     "lat": 39.0621,
     "lon": -77.1209,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Twinbrook &amp; Rockville Pike corridor."
   },
   {
     "name": "Rockville",
     "code": "A14",
     "slug": "rockville",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "150 Hungerford Dr",
       "city": "Rockville",
@@ -222,13 +266,16 @@
     "lat": 39.0843,
     "lon": -77.1462,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Downtown Rockville &amp; Rockville Town Square."
   },
   {
     "name": "Shady Grove",
     "code": "A15",
     "slug": "shady-grove",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "15903 Somerville Dr",
       "city": "Rockville",
@@ -238,13 +285,18 @@
     "lat": 39.1201,
     "lon": -77.1646,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Shady Grove &amp; the I-270 corridor."
   },
   {
     "name": "Gallery Pl-Chinatown",
     "code": "B01",
     "slug": "gallery-place",
-    "lines": ["red", "yellow", "green"],
+    "lines": [
+      "red",
+      "yellow",
+      "green"
+    ],
     "partnerCode": "F01",
     "address": {
       "street": "630 H St NW",
@@ -255,13 +307,16 @@
     "lat": 38.8983,
     "lon": -77.0219,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Chinatown &amp; Penn Quarter. Transfer to Yellow and Green lines. Capital One Arena."
   },
   {
     "name": "Judiciary Square",
     "code": "B02",
     "slug": "judiciary-square",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "450 F St NW",
       "city": "Washington",
@@ -271,13 +326,16 @@
     "lat": 38.8966,
     "lon": -77.0168,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Judiciary Square &amp; the National Building Museum."
   },
   {
     "name": "Union Station",
     "code": "B03",
     "slug": "union-station",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "701 First St NE",
       "city": "Washington",
@@ -288,29 +346,40 @@
     "lon": -77.0069,
     "parking": false,
     "stationType": "underground",
-    "connections": ["Amtrak", "MARC", "VRE", "DC Streetcar"]
+    "connections": [
+      "Amtrak",
+      "MARC",
+      "VRE",
+      "DC Streetcar"
+    ],
+    "description": "Servicing Capitol Hill &amp; NoMa. Amtrak, MARC &amp; VRE connections."
   },
   {
     "name": "Rhode Island Ave-Brentwood",
     "code": "B04",
     "slug": "rhode-island-ave",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "919 Rhode Island Ave NE",
       "city": "Washington",
       "state": "DC",
       "zip": "20018"
     },
-    "lat": 38.9210,
+    "lat": 38.921,
     "lon": -76.9961,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Rhode Island Avenue, Brentwood &amp; Woodridge."
   },
   {
     "name": "Brookland-CUA",
     "code": "B05",
     "slug": "brookland-cua",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "801 Michigan Ave NE",
       "city": "Washington",
@@ -320,13 +389,18 @@
     "lat": 38.9331,
     "lon": -76.9946,
     "parking": false,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Brookland, Edgewood &amp; Catholic University of America."
   },
   {
     "name": "Fort Totten",
     "code": "B06",
     "slug": "fort-totten",
-    "lines": ["red", "yellow", "green"],
+    "lines": [
+      "red",
+      "yellow",
+      "green"
+    ],
     "partnerCode": "E06",
     "address": {
       "street": "550 Galloway St NE",
@@ -337,13 +411,16 @@
     "lat": 38.9519,
     "lon": -77.0023,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Fort Totten &amp; Lamond-Riggs. Transfer to Yellow and Green lines."
   },
   {
     "name": "Takoma",
     "code": "B07",
     "slug": "takoma",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "327 Cedar St NW",
       "city": "Washington",
@@ -351,15 +428,18 @@
       "zip": "20012"
     },
     "lat": 38.9566,
-    "lon": -77.0180,
+    "lon": -77.018,
     "parking": false,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Takoma &amp; Takoma Park."
   },
   {
     "name": "Silver Spring",
     "code": "B08",
     "slug": "silver-spring",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "8400 Colesville Rd",
       "city": "Silver Spring",
@@ -370,13 +450,18 @@
     "lon": -77.0311,
     "parking": false,
     "stationType": "ground-level",
-    "connections": ["MARC"]
+    "connections": [
+      "MARC"
+    ],
+    "description": "Servicing Downtown Silver Spring &amp; the Fillmore."
   },
   {
     "name": "Forest Glen",
     "code": "B09",
     "slug": "forest-glen",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "9650 Georgia Ave",
       "city": "Silver Spring",
@@ -384,15 +469,18 @@
       "zip": "20910"
     },
     "lat": 39.0151,
-    "lon": -77.0430,
+    "lon": -77.043,
     "parking": true,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Forest Glen &amp; Holy Cross Hospital."
   },
   {
     "name": "Wheaton",
     "code": "B10",
     "slug": "wheaton",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "11171 Georgia Ave",
       "city": "Wheaton",
@@ -402,13 +490,16 @@
     "lat": 39.0384,
     "lon": -77.0513,
     "parking": true,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Wheaton &amp; Westfield Wheaton Mall."
   },
   {
     "name": "Glenmont",
     "code": "B11",
     "slug": "glenmont",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "12501 Georgia Ave",
       "city": "Wheaton",
@@ -418,13 +509,16 @@
     "lat": 39.0619,
     "lon": -77.0536,
     "parking": true,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Glenmont &amp; the Layhill Road corridor."
   },
   {
     "name": "NoMa-Gallaudet U",
     "code": "B35",
     "slug": "noma",
-    "lines": ["red"],
+    "lines": [
+      "red"
+    ],
     "address": {
       "street": "200 Florida Ave NE",
       "city": "Washington",
@@ -432,15 +526,20 @@
       "zip": "20002"
     },
     "lat": 38.9071,
-    "lon": -77.0030,
+    "lon": -77.003,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing NoMa &amp; Gallaudet University."
   },
   {
     "name": "McPherson Square",
     "code": "C02",
     "slug": "mcpherson-square",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "1400 I St NW",
       "city": "Washington",
@@ -450,13 +549,18 @@
     "lat": 38.9013,
     "lon": -77.0334,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing McPherson Square &amp; Downtown DC. Transfer to Orange, Blue, and Silver lines."
   },
   {
     "name": "Farragut West",
     "code": "C03",
     "slug": "farragut-west",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "900 18th St NW",
       "city": "Washington",
@@ -466,13 +570,18 @@
     "lat": 38.9013,
     "lon": -77.0407,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Farragut Square &amp; the World Bank. Transfer to Orange, Blue, and Silver lines."
   },
   {
     "name": "Foggy Bottom-GWU",
     "code": "C04",
     "slug": "foggy-bottom",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "2301 I St NW",
       "city": "Washington",
@@ -482,29 +591,37 @@
     "lat": 38.9007,
     "lon": -77.0504,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Foggy Bottom, George Washington University &amp; the Kennedy Center."
   },
   {
     "name": "Rosslyn",
     "code": "C05",
     "slug": "rosslyn",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "1850 N Moore St",
       "city": "Arlington",
       "state": "VA",
       "zip": "22209"
     },
-    "lat": 38.8960,
+    "lat": 38.896,
     "lon": -77.0709,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Rosslyn &amp; Georgetown access. Transfer to Orange, Blue, and Silver lines."
   },
   {
     "name": "Arlington Cemetery",
     "code": "C06",
     "slug": "arlington-cemetery",
-    "lines": ["blue"],
+    "lines": [
+      "blue"
+    ],
     "address": {
       "street": "Memorial Dr",
       "city": "Arlington",
@@ -514,13 +631,17 @@
     "lat": 38.8847,
     "lon": -77.0637,
     "parking": false,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Arlington National Cemetery."
   },
   {
     "name": "Pentagon",
     "code": "C07",
     "slug": "pentagon",
-    "lines": ["blue", "yellow"],
+    "lines": [
+      "blue",
+      "yellow"
+    ],
     "address": {
       "street": "Pentagon",
       "city": "Arlington",
@@ -530,13 +651,17 @@
     "lat": 38.8693,
     "lon": -77.0539,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing the Pentagon. Transfer to Yellow line."
   },
   {
     "name": "Pentagon City",
     "code": "C08",
     "slug": "pentagon-city",
-    "lines": ["blue", "yellow"],
+    "lines": [
+      "blue",
+      "yellow"
+    ],
     "address": {
       "street": "1250 S Hayes St",
       "city": "Arlington",
@@ -546,13 +671,17 @@
     "lat": 38.8625,
     "lon": -77.0597,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Pentagon City &amp; the Fashion Centre."
   },
   {
     "name": "Crystal City",
     "code": "C09",
     "slug": "crystal-city",
-    "lines": ["blue", "yellow"],
+    "lines": [
+      "blue",
+      "yellow"
+    ],
     "address": {
       "street": "1750 S Clark St",
       "city": "Arlington",
@@ -562,13 +691,17 @@
     "lat": 38.8579,
     "lon": -77.0505,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Crystal City &amp; National Landing."
   },
   {
     "name": "Ronald Reagan Washington National Airport",
     "code": "C10",
     "slug": "reagan-airport",
-    "lines": ["blue", "yellow"],
+    "lines": [
+      "blue",
+      "yellow"
+    ],
     "address": {
       "street": "2400 S Smith Blvd",
       "city": "Arlington",
@@ -576,15 +709,19 @@
       "zip": "22202"
     },
     "lat": 38.8532,
-    "lon": -77.0440,
+    "lon": -77.044,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Reagan National Airport."
   },
   {
     "name": "Potomac Yard",
     "code": "C11",
     "slug": "potomac-yard",
-    "lines": ["blue", "yellow"],
+    "lines": [
+      "blue",
+      "yellow"
+    ],
     "address": {
       "street": "3400 Potomac Ave",
       "city": "Alexandria",
@@ -594,13 +731,17 @@
     "lat": 38.8429,
     "lon": -77.0513,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Potomac Yard &amp; Del Ray."
   },
   {
     "name": "Braddock Road",
     "code": "C12",
     "slug": "braddock-road",
-    "lines": ["blue", "yellow"],
+    "lines": [
+      "blue",
+      "yellow"
+    ],
     "address": {
       "street": "700 N West St",
       "city": "Alexandria",
@@ -610,13 +751,17 @@
     "lat": 38.8141,
     "lon": -77.0536,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Braddock Road &amp; North Old Town."
   },
   {
     "name": "King St-Old Town",
     "code": "C13",
     "slug": "king-street",
-    "lines": ["blue", "yellow"],
+    "lines": [
+      "blue",
+      "yellow"
+    ],
     "address": {
       "street": "1700 King St",
       "city": "Alexandria",
@@ -627,13 +772,19 @@
     "lon": -77.0611,
     "parking": true,
     "stationType": "ground-level",
-    "connections": ["Amtrak", "VRE"]
+    "connections": [
+      "Amtrak",
+      "VRE"
+    ],
+    "description": "Servicing Old Town Alexandria &amp; King Street. Transfer to Yellow line."
   },
   {
     "name": "Eisenhower Avenue",
     "code": "C14",
     "slug": "eisenhower-ave",
-    "lines": ["blue"],
+    "lines": [
+      "blue"
+    ],
     "address": {
       "street": "2431 Eisenhower Ave",
       "city": "Alexandria",
@@ -643,13 +794,16 @@
     "lat": 38.8003,
     "lon": -77.0711,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Eisenhower Valley &amp; the Eisenhower Avenue corridor."
   },
   {
     "name": "Huntington",
     "code": "C15",
     "slug": "huntington",
-    "lines": ["blue"],
+    "lines": [
+      "blue"
+    ],
     "address": {
       "street": "5990 Richmond Hwy",
       "city": "Alexandria",
@@ -657,15 +811,20 @@
       "zip": "22303"
     },
     "lat": 38.7941,
-    "lon": -77.0750,
+    "lon": -77.075,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Huntington &amp; the South Kings Highway corridor."
   },
   {
     "name": "Federal Triangle",
     "code": "D01",
     "slug": "federal-triangle",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "302 12th St NW",
       "city": "Washington",
@@ -675,29 +834,41 @@
     "lat": 38.8932,
     "lon": -77.0284,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing the Federal Triangle &amp; the National Archives."
   },
   {
     "name": "Smithsonian",
     "code": "D02",
     "slug": "smithsonian",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "1200 Independence Ave SW",
       "city": "Washington",
       "state": "DC",
       "zip": "20024"
     },
-    "lat": 38.8880,
-    "lon": -77.0280,
+    "lat": 38.888,
+    "lon": -77.028,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing the National Mall &amp; Smithsonian museums."
   },
   {
     "name": "L'Enfant Plaza",
     "code": "D03",
     "slug": "lenfant-plaza",
-    "lines": ["orange", "blue", "yellow", "green", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "yellow",
+      "green",
+      "silver"
+    ],
     "partnerCode": "F03",
     "address": {
       "street": "600 Maryland Ave SW",
@@ -708,13 +879,18 @@
     "lat": 38.8849,
     "lon": -77.0219,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing L'Enfant Plaza &amp; the Southwest Waterfront. Transfer to Orange, Blue, Yellow, Green, and Silver lines."
   },
   {
     "name": "Federal Center SW",
     "code": "D04",
     "slug": "federal-center-sw",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "401 3rd St SW",
       "city": "Washington",
@@ -724,29 +900,39 @@
     "lat": 38.8851,
     "lon": -77.0158,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Federal Center SW &amp; USDA headquarters."
   },
   {
     "name": "Capitol South",
     "code": "D05",
     "slug": "capitol-south",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "355 First St SE",
       "city": "Washington",
       "state": "DC",
       "zip": "20003"
     },
-    "lat": 38.8850,
+    "lat": 38.885,
     "lon": -77.0051,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Capitol South &amp; the U.S. Capitol."
   },
   {
     "name": "Eastern Market",
     "code": "D06",
     "slug": "eastern-market",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "701 Pennsylvania Ave SE",
       "city": "Washington",
@@ -754,15 +940,20 @@
       "zip": "20003"
     },
     "lat": 38.8845,
-    "lon": -76.9960,
+    "lon": -76.996,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Eastern Market &amp; Capitol Hill."
   },
   {
     "name": "Potomac Ave",
     "code": "D07",
     "slug": "potomac-ave",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "1301 14th St SE",
       "city": "Washington",
@@ -772,13 +963,18 @@
     "lat": 38.8809,
     "lon": -76.9856,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Potomac Avenue &amp; Hill East."
   },
   {
     "name": "Stadium-Armory",
     "code": "D08",
     "slug": "stadium-armory",
-    "lines": ["orange", "blue", "silver"],
+    "lines": [
+      "orange",
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "192 19th St SE",
       "city": "Washington",
@@ -788,13 +984,16 @@
     "lat": 38.8867,
     "lon": -76.9771,
     "parking": true,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing RFK Stadium &amp; the DC Armory. Transfer to Orange, Blue, and Silver lines."
   },
   {
     "name": "Minnesota Ave",
     "code": "D09",
     "slug": "minnesota-ave",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "4000 Minnesota Ave NE",
       "city": "Washington",
@@ -804,13 +1003,16 @@
     "lat": 38.8989,
     "lon": -76.9478,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Minnesota Avenue &amp; Deanwood."
   },
   {
     "name": "Deanwood",
     "code": "D10",
     "slug": "deanwood",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "4720 Minnesota Ave NE",
       "city": "Washington",
@@ -820,13 +1022,16 @@
     "lat": 38.9082,
     "lon": -76.9353,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Deanwood &amp; Kenilworth."
   },
   {
     "name": "Cheverly",
     "code": "D11",
     "slug": "cheverly",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "5701 Columbia Park Rd",
       "city": "Cheverly",
@@ -836,29 +1041,35 @@
     "lat": 38.9166,
     "lon": -76.9158,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Cheverly &amp; Tuxedo."
   },
   {
     "name": "Landover",
     "code": "D12",
     "slug": "landover",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "3000 Pennsy Dr",
       "city": "Landover",
       "state": "MD",
       "zip": "20785"
     },
-    "lat": 38.9340,
+    "lat": 38.934,
     "lon": -76.8911,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Landover &amp; FedExField access."
   },
   {
     "name": "New Carrollton",
     "code": "D13",
     "slug": "new-carrollton",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "4700 Garden City Dr",
       "city": "New Carrollton",
@@ -869,29 +1080,40 @@
     "lon": -76.8717,
     "parking": true,
     "stationType": "ground-level",
-    "connections": ["Amtrak", "MARC"]
+    "connections": [
+      "Amtrak",
+      "MARC"
+    ],
+    "description": "Servicing New Carrollton. Amtrak &amp; MARC connections."
   },
   {
     "name": "Mt Vernon Sq 7th St-Convention Center",
     "code": "E01",
     "slug": "mt-vernon-square",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "700 M St NW",
       "city": "Washington",
       "state": "DC",
       "zip": "20001"
     },
-    "lat": 38.9050,
+    "lat": 38.905,
     "lon": -77.0222,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Mount Vernon Square &amp; the Walter E. Washington Convention Center."
   },
   {
     "name": "Shaw-Howard U",
     "code": "E02",
     "slug": "shaw-howard",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "1701 8th St NW",
       "city": "Washington",
@@ -899,15 +1121,19 @@
       "zip": "20001"
     },
     "lat": 38.9129,
-    "lon": -77.0220,
+    "lon": -77.022,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Shaw &amp; Howard University."
   },
   {
     "name": "U Street/African-Amer Civil War Memorial/Cardozo",
     "code": "E03",
     "slug": "u-street",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "1240 U St NW",
       "city": "Washington",
@@ -917,13 +1143,17 @@
     "lat": 38.9169,
     "lon": -77.0289,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing U Street, the 14th Street corridor &amp; the African American Civil War Memorial."
   },
   {
     "name": "Columbia Heights",
     "code": "E04",
     "slug": "columbia-heights",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "3030 14th St NW",
       "city": "Washington",
@@ -933,13 +1163,17 @@
     "lat": 38.9283,
     "lon": -77.0326,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Columbia Heights &amp; the DC USA shopping center."
   },
   {
     "name": "Georgia Ave-Petworth",
     "code": "E05",
     "slug": "georgia-ave-petworth",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "3700 Georgia Ave NW",
       "city": "Washington",
@@ -949,13 +1183,17 @@
     "lat": 38.9369,
     "lon": -77.0247,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Petworth &amp; Georgia Avenue corridor."
   },
   {
     "name": "West Hyattsville",
     "code": "E07",
     "slug": "west-hyattsville",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "2700 Hamilton St",
       "city": "Hyattsville",
@@ -965,13 +1203,17 @@
     "lat": 38.9549,
     "lon": -76.9693,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing West Hyattsville &amp; Ager Road."
   },
   {
     "name": "Prince George's Plaza",
     "code": "E08",
     "slug": "prince-georges-plaza",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "3575 East-West Hwy",
       "city": "Hyattsville",
@@ -981,13 +1223,17 @@
     "lat": 38.9654,
     "lon": -76.9561,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Hyattsville &amp; The Mall at Prince George's."
   },
   {
     "name": "College Park-U of Md",
     "code": "E09",
     "slug": "college-park",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "4931 Calvert Rd",
       "city": "College Park",
@@ -998,13 +1244,19 @@
     "lon": -76.9285,
     "parking": true,
     "stationType": "elevated",
-    "connections": ["MARC"]
+    "connections": [
+      "MARC"
+    ],
+    "description": "Servicing the University of Maryland, College Park."
   },
   {
     "name": "Greenbelt",
     "code": "E10",
     "slug": "greenbelt",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "5717 Greenbelt Metro Dr",
       "city": "Greenbelt",
@@ -1015,13 +1267,19 @@
     "lon": -76.9115,
     "parking": true,
     "stationType": "ground-level",
-    "connections": ["MARC"]
+    "connections": [
+      "MARC"
+    ],
+    "description": "Servicing Greenbelt &amp; NASA Goddard Space Flight Center."
   },
   {
     "name": "Archives-Navy Memorial-Penn Quarter",
     "code": "F02",
     "slug": "archives",
-    "lines": ["yellow", "green"],
+    "lines": [
+      "yellow",
+      "green"
+    ],
     "address": {
       "street": "701 Pennsylvania Ave NW",
       "city": "Washington",
@@ -1031,13 +1289,16 @@
     "lat": 38.8937,
     "lon": -77.0219,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing the Archives, Navy Memorial &amp; Penn Quarter."
   },
   {
     "name": "Waterfront",
     "code": "F04",
     "slug": "waterfront",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "399 M St SW",
       "city": "Washington",
@@ -1047,13 +1308,16 @@
     "lat": 38.8764,
     "lon": -77.0175,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing the Southwest Waterfront &amp; The Wharf."
   },
   {
     "name": "Navy Yard-Ballpark",
     "code": "F05",
     "slug": "navy-yard",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "200 M St SE",
       "city": "Washington",
@@ -1061,15 +1325,18 @@
       "zip": "20003"
     },
     "lat": 38.8764,
-    "lon": -77.0050,
+    "lon": -77.005,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Navy Yard &amp; Nationals Park."
   },
   {
     "name": "Anacostia",
     "code": "F06",
     "slug": "anacostia",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "1101 Howard Rd SE",
       "city": "Washington",
@@ -1079,13 +1346,16 @@
     "lat": 38.8629,
     "lon": -76.9954,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Anacostia &amp; the Frederick Douglass National Historic Site."
   },
   {
     "name": "Congress Heights",
     "code": "F07",
     "slug": "congress-heights",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "1290 Alabama Ave SE",
       "city": "Washington",
@@ -1095,29 +1365,35 @@
     "lat": 38.8457,
     "lon": -76.9883,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Congress Heights &amp; St. Elizabeths campus."
   },
   {
     "name": "Southern Ave",
     "code": "F08",
     "slug": "southern-ave",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "1411 Southern Ave",
       "city": "Temple Hills",
       "state": "MD",
       "zip": "20748"
     },
-    "lat": 38.8410,
-    "lon": -76.9750,
+    "lat": 38.841,
+    "lon": -76.975,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Southern Avenue &amp; Oxon Run."
   },
   {
     "name": "Naylor Road",
     "code": "F09",
     "slug": "naylor-road",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "3101 Branch Ave",
       "city": "Temple Hills",
@@ -1127,13 +1403,16 @@
     "lat": 38.8513,
     "lon": -76.9564,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Naylor Road &amp; Hillcrest."
   },
   {
     "name": "Suitland",
     "code": "F10",
     "slug": "suitland",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "4500 Silver Hill Rd",
       "city": "Suitland",
@@ -1141,15 +1420,18 @@
       "zip": "20746"
     },
     "lat": 38.8438,
-    "lon": -76.9320,
+    "lon": -76.932,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Suitland &amp; the Suitland Federal Center."
   },
   {
     "name": "Branch Ave",
     "code": "F11",
     "slug": "branch-ave",
-    "lines": ["green"],
+    "lines": [
+      "green"
+    ],
     "address": {
       "street": "4704 Old Soper Rd",
       "city": "Suitland",
@@ -1159,13 +1441,17 @@
     "lat": 38.8266,
     "lon": -76.9124,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Branch Avenue &amp; the southern Green Line terminus."
   },
   {
     "name": "Benning Road",
     "code": "G01",
     "slug": "benning-road",
-    "lines": ["blue", "silver"],
+    "lines": [
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "4500 Benning Rd SE",
       "city": "Washington",
@@ -1175,13 +1461,17 @@
     "lat": 38.8905,
     "lon": -76.9382,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Benning Road &amp; H Street NE corridor."
   },
   {
     "name": "Capitol Heights",
     "code": "G02",
     "slug": "capitol-heights",
-    "lines": ["blue", "silver"],
+    "lines": [
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "601 Capitol Heights Blvd",
       "city": "Capitol Heights",
@@ -1191,13 +1481,17 @@
     "lat": 38.8896,
     "lon": -76.9131,
     "parking": true,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Capitol Heights."
   },
   {
     "name": "Addison Road-Seat Pleasant",
     "code": "G03",
     "slug": "addison-road",
-    "lines": ["blue", "silver"],
+    "lines": [
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "900 Addison Rd",
       "city": "Capitol Heights",
@@ -1207,13 +1501,17 @@
     "lat": 38.8868,
     "lon": -76.8935,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Addison Road &amp; Seat Pleasant."
   },
   {
     "name": "Morgan Boulevard",
     "code": "G04",
     "slug": "morgan-boulevard",
-    "lines": ["blue", "silver"],
+    "lines": [
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "1100 Arena Dr",
       "city": "Largo",
@@ -1221,15 +1519,19 @@
       "zip": "20774"
     },
     "lat": 38.8942,
-    "lon": -76.8680,
+    "lon": -76.868,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Morgan Boulevard &amp; FedExField."
   },
   {
     "name": "Largo Town Center",
     "code": "G05",
     "slug": "largo-town-center",
-    "lines": ["blue", "silver"],
+    "lines": [
+      "blue",
+      "silver"
+    ],
     "address": {
       "street": "900 Largo Center Dr",
       "city": "Largo",
@@ -1239,13 +1541,16 @@
     "lat": 38.9009,
     "lon": -76.8427,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Largo Town Center &amp; the Boulevard at the Capital Centre."
   },
   {
     "name": "Van Dorn Street",
     "code": "J02",
     "slug": "van-dorn-street",
-    "lines": ["blue"],
+    "lines": [
+      "blue"
+    ],
     "address": {
       "street": "5725 Van Dorn St",
       "city": "Alexandria",
@@ -1253,15 +1558,18 @@
       "zip": "22310"
     },
     "lat": 38.7993,
-    "lon": -77.1290,
+    "lon": -77.129,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Van Dorn Street &amp; Lincolnia."
   },
   {
     "name": "Franconia-Springfield",
     "code": "J03",
     "slug": "franconia-springfield",
-    "lines": ["blue"],
+    "lines": [
+      "blue"
+    ],
     "address": {
       "street": "6880 Frontier Dr",
       "city": "Springfield",
@@ -1269,32 +1577,43 @@
       "zip": "22150"
     },
     "lat": 38.7659,
-    "lon": -77.1680,
+    "lon": -77.168,
     "parking": true,
     "stationType": "ground-level",
-    "connections": ["Amtrak", "VRE"]
+    "connections": [
+      "Amtrak",
+      "VRE"
+    ],
+    "description": "Servicing Franconia &amp; Springfield. VRE connection."
   },
   {
     "name": "Court House",
     "code": "K01",
     "slug": "court-house",
-    "lines": ["orange", "silver"],
+    "lines": [
+      "orange",
+      "silver"
+    ],
     "address": {
       "street": "2100 Wilson Blvd",
       "city": "Arlington",
       "state": "VA",
       "zip": "22201"
     },
-    "lat": 38.8910,
+    "lat": 38.891,
     "lon": -77.0865,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Courthouse &amp; Arlington County government."
   },
   {
     "name": "Clarendon",
     "code": "K02",
     "slug": "clarendon",
-    "lines": ["orange", "silver"],
+    "lines": [
+      "orange",
+      "silver"
+    ],
     "address": {
       "street": "3100 Wilson Blvd",
       "city": "Arlington",
@@ -1304,29 +1623,37 @@
     "lat": 38.8865,
     "lon": -77.0963,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Clarendon &amp; the Wilson Boulevard corridor."
   },
   {
     "name": "Virginia Square-GMU",
     "code": "K03",
     "slug": "virginia-square",
-    "lines": ["orange", "silver"],
+    "lines": [
+      "orange",
+      "silver"
+    ],
     "address": {
       "street": "3600 Fairfax Dr",
       "city": "Arlington",
       "state": "VA",
       "zip": "22201"
     },
-    "lat": 38.8830,
+    "lat": 38.883,
     "lon": -77.1035,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Virginia Square &amp; George Mason University Arlington campus."
   },
   {
     "name": "Ballston-MU",
     "code": "K04",
     "slug": "ballston",
-    "lines": ["orange", "silver"],
+    "lines": [
+      "orange",
+      "silver"
+    ],
     "address": {
       "street": "4230 Fairfax Dr",
       "city": "Arlington",
@@ -1336,13 +1663,17 @@
     "lat": 38.8822,
     "lon": -77.1118,
     "parking": false,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Ballston &amp; Marymount University."
   },
   {
     "name": "East Falls Church",
     "code": "K05",
     "slug": "east-falls-church",
-    "lines": ["orange", "silver"],
+    "lines": [
+      "orange",
+      "silver"
+    ],
     "address": {
       "street": "2001 N Sycamore St",
       "city": "Falls Church",
@@ -1352,13 +1683,16 @@
     "lat": 38.8859,
     "lon": -77.1569,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing East Falls Church. Transfer to Orange and Silver lines."
   },
   {
     "name": "West Falls Church",
     "code": "K06",
     "slug": "west-falls-church",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "7040 Haycock Rd",
       "city": "Falls Church",
@@ -1368,13 +1702,16 @@
     "lat": 38.9009,
     "lon": -77.1891,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing West Falls Church &amp; the Merrifield area."
   },
   {
     "name": "Dunn Loring-Merrifield",
     "code": "K07",
     "slug": "dunn-loring",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "2700 Gallows Rd",
       "city": "Dunn Loring",
@@ -1384,13 +1721,16 @@
     "lat": 38.8832,
     "lon": -77.2283,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Dunn Loring &amp; Merrifield Town Center."
   },
   {
     "name": "Vienna/Fairfax-GMU",
     "code": "K08",
     "slug": "vienna",
-    "lines": ["orange"],
+    "lines": [
+      "orange"
+    ],
     "address": {
       "street": "9550 Saintsbury Dr",
       "city": "Fairfax",
@@ -1400,13 +1740,16 @@
     "lat": 38.8776,
     "lon": -77.2714,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Vienna &amp; Fairfax. George Mason University access."
   },
   {
     "name": "McLean",
     "code": "N01",
     "slug": "mclean",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "1838 Dolley Madison Blvd",
       "city": "McLean",
@@ -1416,13 +1759,16 @@
     "lat": 38.9246,
     "lon": -77.2103,
     "parking": true,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing McLean &amp; Tysons East."
   },
   {
     "name": "Tysons Corner",
     "code": "N02",
     "slug": "tysons-corner",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "8300 Leesburg Pike",
       "city": "Tysons",
@@ -1432,13 +1778,16 @@
     "lat": 38.9208,
     "lon": -77.2239,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Tysons Corner Center &amp; Tysons Galleria."
   },
   {
     "name": "Greensboro",
     "code": "N03",
     "slug": "greensboro",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "8101 Greensboro Dr",
       "city": "Tysons",
@@ -1448,13 +1797,16 @@
     "lat": 38.9214,
     "lon": -77.2351,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Greensboro &amp; the Tysons area."
   },
   {
     "name": "Spring Hill",
     "code": "N04",
     "slug": "spring-hill",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "1574 Spring Hill Rd",
       "city": "Tysons",
@@ -1464,13 +1816,16 @@
     "lat": 38.9284,
     "lon": -77.2416,
     "parking": false,
-    "stationType": "elevated"
+    "stationType": "elevated",
+    "description": "Servicing Spring Hill &amp; Tysons West."
   },
   {
     "name": "Wiehle-Reston East",
     "code": "N06",
     "slug": "wiehle-reston-east",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "11389 Reston Station Blvd",
       "city": "Reston",
@@ -1480,29 +1835,35 @@
     "lat": 38.9475,
     "lon": -77.3395,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Wiehle-Reston East &amp; the Reston corridor."
   },
   {
     "name": "Reston Town Center",
     "code": "N07",
     "slug": "reston-town-center",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "12001 Sunrise Valley Dr",
       "city": "Reston",
       "state": "VA",
       "zip": "20191"
     },
-    "lat": 38.9530,
+    "lat": 38.953,
     "lon": -77.3591,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Reston Town Center."
   },
   {
     "name": "Herndon",
     "code": "N08",
     "slug": "herndon",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "480 Herndon Pkwy",
       "city": "Herndon",
@@ -1512,13 +1873,16 @@
     "lat": 38.9536,
     "lon": -77.3863,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Downtown Herndon."
   },
   {
     "name": "Innovation Center",
     "code": "N09",
     "slug": "innovation-center",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "4600 Fair Lakes Ct",
       "city": "Herndon",
@@ -1528,13 +1892,16 @@
     "lat": 38.9565,
     "lon": -77.4165,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing the Innovation Center &amp; Centreville Road corridor."
   },
   {
     "name": "Dulles",
     "code": "N10",
     "slug": "dulles",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "1 Saarinen Cir",
       "city": "Dulles",
@@ -1544,13 +1911,16 @@
     "lat": 38.9563,
     "lon": -77.4485,
     "parking": true,
-    "stationType": "underground"
+    "stationType": "underground",
+    "description": "Servicing Dulles International Airport."
   },
   {
     "name": "Loudon Gateway",
     "code": "N11",
     "slug": "loudon-gateway",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "22550 Reliance Dr",
       "city": "Ashburn",
@@ -1560,13 +1930,16 @@
     "lat": 38.9863,
     "lon": -77.4631,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Loudoun Gateway &amp; the Route 606 corridor."
   },
   {
     "name": "Ashburn",
     "code": "N12",
     "slug": "ashburn",
-    "lines": ["silver"],
+    "lines": [
+      "silver"
+    ],
     "address": {
       "street": "43300 Hay Rd",
       "city": "Ashburn",
@@ -1576,6 +1949,7 @@
     "lat": 39.0046,
     "lon": -77.4915,
     "parking": true,
-    "stationType": "ground-level"
+    "stationType": "ground-level",
+    "description": "Servicing Ashburn &amp; the Silver Line terminus."
   }
 ]
