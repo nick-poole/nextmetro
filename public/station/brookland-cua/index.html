@@ -141,9 +141,21 @@
     </a>
     <div class="nm-nav__links">
       <a href="/alerts" class="nm-nav__link">Alerts</a>
-      <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer">Map</a>
+      <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
       <a href="/fares" class="nm-nav__link">Fares</a>
       <a href="/hours" class="nm-nav__link">Hours</a>
+    </div>
+    <div class="nm-nav__search" id="station-search-wrapper">
+      <svg class="nm-nav__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input
+        type="text"
+        id="station-input"
+        class="nm-nav__search-input"
+        placeholder="Search stations..."
+        autocomplete="off"
+        aria-label="Search for a Metro station"
+      />
+      <ul class="station-dropdown" id="station-dropdown"></ul>
     </div>
     <button class="nm-nav__hamburger" id="navbar-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span>
@@ -153,7 +165,7 @@
   </nav>
   <div class="nm-mobile-menu" id="mobile-menu">
     <a href="/alerts" class="mobile-menu-link">Alerts</a>
-    <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer">Map</a>
+    <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
     <a href="/fares" class="mobile-menu-link">Fares</a>
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </div>
@@ -179,19 +191,6 @@
       <span class="hero-label">Station</span>
       <h1 class="hero-station-name" id="hero-station-name">Brookland-CUA</h1>
       <p class="hero-station-address" id="hero-station-address"></p>
-
-      <!-- Station Search -->
-      <div class="station-search-wrapper" id="station-search-wrapper">
-        <input
-          type="text"
-          id="station-input"
-          class="station-input"
-          placeholder="Search stations..."
-          autocomplete="off"
-          aria-label="Search for a Metro station"
-        />
-        <ul class="station-dropdown" id="station-dropdown"></ul>
-      </div>
 
       <!-- Line Pills -->
       <div class="line-pills" id="line-pills"></div>
@@ -223,36 +222,85 @@
         </button>
       </div>
 
-      <!-- Station Facilities Card -->
-      <section class="facilities-card animate-in d2" id="facilities-card">
-        <div class="facilities-header">
-          <span class="facilities-title">Station Facilities</span>
+      <!-- Adjacent Stations -->
+      <section class="adjacent-card animate-in d4">
+        <div class="adjacent-header">
+          <h2 class="adjacent-title">Adjacent Stations</h2>
+          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
         </div>
-        <div class="facilities-body" id="facilities-body">
-          <div class="facilities-row">
-            <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+        <div class="adjacent-body">
+          <a href="/station/rhode-island-ave/" class="adjacent-station adjacent-station--prev">
+            <span class="adjacent-direction">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              Toward Shady Grove
             </span>
-            <span class="facilities-label">Elevators</span>
-            <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
+            <span class="adjacent-name">Rhode Island Ave-Brentwood</span>
+          </a>
+          <div class="adjacent-divider">
+            <span class="adjacent-current-dot"></span>
           </div>
-          <div class="facilities-row">
-            <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+          <a href="/station/fort-totten/" class="adjacent-station adjacent-station--next">
+            <span class="adjacent-direction">
+              Toward Glenmont
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </span>
-            <span class="facilities-label">Escalators</span>
-            <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
-          </div>
-        </div>
-        <div class="facilities-details" id="facilities-details" style="display:none;">
-          <!-- Outage details rendered by JS -->
+            <span class="adjacent-name">Fort Totten</span>
+          </a>
         </div>
       </section>
 
+      <!-- Fare Calculator -->
+      <section class="fare-card animate-in d4" id="fare-card">
+        <div class="fare-header">
+          <h2 class="fare-title">Fare Calculator</h2>
+        </div>
+        <div class="fare-body">
+          <div class="fare-route">
+            <div class="fare-station fare-from">
+              <span class="fare-station-label">From</span>
+              <span class="fare-station-name" id="fare-from-name">Brookland-CUA</span>
+            </div>
+            <div class="fare-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            </div>
+            <div class="fare-station fare-to">
+              <span class="fare-station-label">To</span>
+              <select id="fare-destination" class="fare-select" aria-label="Select destination station">
+                <option value="">Select destination...</option>
+                <!-- Options populated by JS -->
+              </select>
+            </div>
+          </div>
+          <div class="fare-results" id="fare-results" style="display:none;">
+            <div class="fare-result-row">
+              <span class="fare-result-label">Peak</span>
+              <span class="fare-result-value" id="fare-peak">--</span>
+            </div>
+            <div class="fare-result-row">
+              <span class="fare-result-label">Off-Peak</span>
+              <span class="fare-result-value" id="fare-offpeak">--</span>
+            </div>
+            <div class="fare-result-row">
+              <span class="fare-result-label">Senior/Disabled</span>
+              <span class="fare-result-value" id="fare-senior">--</span>
+            </div>
+            <div class="fare-result-row fare-result-row--time">
+              <span class="fare-result-label">Travel Time</span>
+              <span class="fare-result-value" id="fare-time">--</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
       <!-- Station Info -->
-      <section class="station-info-card animate-in d3">
+      <section class="station-info-card animate-in d2">
         <div class="station-info-header">
-          <span class="station-info-title">Station Information</span>
+          <h2 class="station-info-title">Station Information</h2>
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
@@ -303,80 +351,31 @@
         </div>
       </section>
 
-      <!-- Adjacent Stations -->
-      <section class="adjacent-card animate-in d4">
-        <div class="adjacent-header">
-          <span class="adjacent-title">Adjacent Stations</span>
-          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
+      <!-- Station Facilities Card -->
+      <section class="facilities-card animate-in d3" id="facilities-card">
+        <div class="facilities-header">
+          <h2 class="facilities-title">Station Facilities</h2>
         </div>
-        <div class="adjacent-body">
-          <a href="/station/rhode-island-ave/" class="adjacent-station adjacent-station--prev">
-            <span class="adjacent-direction">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-              Toward Shady Grove
+        <div class="facilities-body" id="facilities-body">
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
             </span>
-            <span class="adjacent-name">Rhode Island Ave-Brentwood</span>
-          </a>
-          <div class="adjacent-divider">
-            <span class="adjacent-current-dot"></span>
+            <span class="facilities-label">Elevators</span>
+            <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
           </div>
-          <a href="/station/fort-totten/" class="adjacent-station adjacent-station--next">
-            <span class="adjacent-direction">
-              Toward Glenmont
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
             </span>
-            <span class="adjacent-name">Fort Totten</span>
-          </a>
+            <span class="facilities-label">Escalators</span>
+            <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
+          </div>
+        </div>
+        <div class="facilities-details" id="facilities-details" style="display:none;">
+          <!-- Outage details rendered by JS -->
         </div>
       </section>
-
-      <!-- Fare Calculator -->
-      <section class="fare-card animate-in d4" id="fare-card">
-        <div class="fare-header">
-          <span class="fare-title">Fare Calculator</span>
-        </div>
-        <div class="fare-body">
-          <div class="fare-route">
-            <div class="fare-station fare-from">
-              <span class="fare-station-label">From</span>
-              <span class="fare-station-name" id="fare-from-name">Brookland-CUA</span>
-            </div>
-            <div class="fare-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-            </div>
-            <div class="fare-station fare-to">
-              <span class="fare-station-label">To</span>
-              <select id="fare-destination" class="fare-select" aria-label="Select destination station">
-                <option value="">Select destination...</option>
-                <!-- Options populated by JS -->
-              </select>
-            </div>
-          </div>
-          <div class="fare-results" id="fare-results" style="display:none;">
-            <div class="fare-result-row">
-              <span class="fare-result-label">Peak</span>
-              <span class="fare-result-value" id="fare-peak">--</span>
-            </div>
-            <div class="fare-result-row">
-              <span class="fare-result-label">Off-Peak</span>
-              <span class="fare-result-value" id="fare-offpeak">--</span>
-            </div>
-            <div class="fare-result-row">
-              <span class="fare-result-label">Senior/Disabled</span>
-              <span class="fare-result-value" id="fare-senior">--</span>
-            </div>
-            <div class="fare-result-row fare-result-row--time">
-              <span class="fare-result-label">Travel Time</span>
-              <span class="fare-result-value" id="fare-time">--</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
 
       <!-- System Status Card -->
       <div class="system-status-card animate-in d2" id="system-status-card">
@@ -415,10 +414,10 @@
     </div>
     <div class="nm-footer__body">
       <div class="nm-footer__col">
-        <h3 class="nm-footer__heading">Navigate</h3>
+        <h2 class="nm-footer__heading">Navigate</h2>
         <nav class="nm-footer__links" aria-label="Footer navigation">
           <a href="/"          class="nm-footer__link">Home</a>
-          <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer">System Map</a>
+          <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">System Map</a>
           <a href="/alerts"    class="nm-footer__link">Alerts</a>
           <a href="/elevators" class="nm-footer__link">Elevator Status</a>
           <a href="/fares"     class="nm-footer__link">Fares</a>
@@ -426,7 +425,7 @@
         </nav>
       </div>
       <div class="nm-footer__col">
-        <h3 class="nm-footer__heading">Lines</h3>
+        <h2 class="nm-footer__heading">Lines</h2>
         <nav class="nm-footer__links" aria-label="Metro lines">
           <a href="/lines/red"    class="nm-footer__link nm-footer__link--line">
             <span class="nm-footer__dot nm-footer__dot--red"></span>Red Line</a>
@@ -443,7 +442,7 @@
         </nav>
       </div>
       <div class="nm-footer__col">
-        <h3 class="nm-footer__heading">About</h3>
+        <h2 class="nm-footer__heading">About</h2>
         <nav class="nm-footer__links" aria-label="About">
           <a href="/about"   class="nm-footer__link">About NextMetro</a>
           <a href="/privacy" class="nm-footer__link">Privacy Policy</a>
@@ -451,7 +450,7 @@
           <a href="/crisis"  class="nm-footer__link">Crisis Resources</a>
         </nav>
         <div class="nm-footer__data-block">
-          <h3 class="nm-footer__heading">Data</h3>
+          <h2 class="nm-footer__heading">Data</h2>
           <p class="nm-footer__body-text">
             Real-time data via WMATA API.<br>
             Not affiliated with WMATA.

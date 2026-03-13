@@ -33,12 +33,12 @@
   /* Text */
   --nm-text-primary: #FAFAFA;
   --nm-text-secondary: #A0A0A0;
-  --nm-text-muted: #808080;
-  --nm-text-disabled: #555555;
+  --nm-text-muted: #949494;
+  --nm-text-disabled: #767676;
 
   /* Accent */
   --nm-amber: #D4A03C;
-  --nm-amber-dim: #B08D3A;
+  --nm-amber-dim: #C8A244;
   --nm-amber-bright: #E8B854;
   --nm-amber-glow: rgba(212, 160, 60, 0.4);
 
@@ -80,8 +80,8 @@
   --nm-surface2: #222222;
   --nm-border2:  #3A3A3A;
   --nm-white:    #F0EDEA;
-  --nm-gray:     #888888;
-  --nm-muted:    #555555;
+  --nm-gray:     #9A9A9A;
+  --nm-muted:    #767676;
   --line-red:    #D41140;
   --line-orange: #F09500;
   --line-silver: #9BA5A5;
@@ -538,6 +538,11 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: var(--nm-space-lg);
+}
+
+.sidebar .station-info-card,
+.sidebar .facilities-card {
+  margin-top: 0;
 }
 
 /* ==============================

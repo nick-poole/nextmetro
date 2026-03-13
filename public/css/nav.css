@@ -13,7 +13,6 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  overflow: hidden;
 }
 
 /* 5px vertical strip of 6 line colors — left edge */
@@ -111,6 +110,95 @@
   outline-offset: -2px;
 }
 
+/* Nav Search — station search in the nav bar */
+.nm-nav__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-left: 1px solid var(--nm-border);
+}
+
+.nm-nav__search-icon {
+  position: absolute;
+  left: 22px;
+  color: var(--nm-gray);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nm-nav__search-input {
+  width: 200px;
+  height: 34px;
+  padding: 0 12px 0 32px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--nm-white);
+  background: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.nm-nav__search-input::placeholder {
+  color: var(--nm-gray);
+}
+
+.nm-nav__search-input:hover {
+  border-color: var(--nm-border-strong);
+}
+
+.nm-nav__search-input:focus {
+  border-color: var(--nm-amber);
+  background: var(--nm-surface-elevated);
+}
+
+.nm-nav__search .station-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 12px;
+  right: 12px;
+  width: auto;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-top: none;
+  list-style: none;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.nm-nav__search .station-dropdown.open {
+  display: block;
+}
+
+.nm-nav__search .station-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  min-height: 40px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--nm-white);
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.nm-nav__search .station-dropdown li:hover,
+.nm-nav__search .station-dropdown li.highlighted {
+  background: var(--nm-surface-elevated);
+}
+
+.nm-nav__search .station-dropdown li.selected {
+  background: rgba(212, 160, 60, 0.1);
+}
+
 /* Hamburger button — hidden on desktop, shown on mobile */
 .nm-nav__hamburger {
   display: none;
@@ -193,6 +281,14 @@
   }
   .nm-nav__link {
     display: none;
+  }
+  .nm-nav__search {
+    flex: 1;
+    border-left: none;
+    padding: 0 8px;
+  }
+  .nm-nav__search-input {
+    width: 100%;
   }
   .nm-nav__hamburger {
     display: flex;
