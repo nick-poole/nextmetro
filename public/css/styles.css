@@ -1002,6 +1002,250 @@ a:hover {
 }
 
 /* ==============================
+   Station Info Card
+   ============================== */
+.station-info-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+  margin-top: var(--nm-space-lg);
+}
+
+.station-info-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.station-info-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.station-info-body {
+  padding: var(--nm-space-sm) 0;
+}
+
+.station-info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 0.5rem 1.25rem;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.station-info-row:last-child {
+  border-bottom: none;
+}
+
+.station-info-icon {
+  display: inline-flex;
+  align-self: center;
+  color: var(--nm-text-muted);
+  flex-shrink: 0;
+}
+
+.station-info-label {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--nm-text-secondary);
+  flex-shrink: 0;
+  min-width: 90px;
+}
+
+.station-info-value {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-align: right;
+  flex: 1;
+}
+
+.station-info-actions {
+  display: flex;
+  gap: var(--nm-space-sm);
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--nm-border);
+  background-color: var(--nm-surface-elevated);
+}
+
+.station-info-link {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--nm-amber);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--nm-border);
+  background: transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.station-info-link:hover {
+  color: var(--nm-amber-bright);
+  border-color: var(--nm-amber-dim);
+}
+
+/* ==============================
+   Adjacent Stations Card
+   ============================== */
+.adjacent-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+  margin-top: var(--nm-space-lg);
+}
+
+.adjacent-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.adjacent-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.adjacent-line-badge {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid;
+}
+
+.adjacent-line-badge--red    { color: var(--nm-line-red);    border-color: var(--nm-line-red); }
+.adjacent-line-badge--orange { color: var(--nm-line-orange); border-color: var(--nm-line-orange); }
+.adjacent-line-badge--blue   { color: var(--nm-line-blue);   border-color: var(--nm-line-blue); }
+.adjacent-line-badge--green  { color: var(--nm-line-green);  border-color: var(--nm-line-green); }
+.adjacent-line-badge--yellow { color: var(--nm-line-yellow); border-color: var(--nm-line-yellow); }
+.adjacent-line-badge--silver { color: var(--nm-line-silver); border-color: var(--nm-line-silver); }
+
+.adjacent-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.adjacent-station {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+.adjacent-station:hover {
+  background-color: var(--nm-surface-elevated);
+}
+
+.adjacent-direction {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.adjacent-station--next .adjacent-direction {
+  justify-content: flex-end;
+}
+
+.adjacent-name {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--nm-text-primary);
+  transition: color 0.15s;
+}
+
+.adjacent-station:hover .adjacent-name {
+  color: var(--nm-amber);
+}
+
+.adjacent-station--next {
+  text-align: right;
+}
+
+.adjacent-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 1.25rem;
+  position: relative;
+}
+
+.adjacent-divider::before {
+  content: '';
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 2px;
+  background: var(--nm-border);
+}
+
+.adjacent-current-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--nm-amber);
+  border: 2px solid var(--nm-surface);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .station-info-row {
+    flex-wrap: wrap;
+  }
+
+  .station-info-label {
+    min-width: auto;
+  }
+
+  .station-info-value {
+    text-align: left;
+    width: 100%;
+    padding-left: 26px;
+  }
+
+  .station-info-actions {
+    flex-direction: column;
+  }
+
+  .station-info-link {
+    justify-content: center;
+  }
+}
+
+/* ==============================
    Fare Calculator
    ============================== */
 .fare-card {
