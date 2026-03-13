@@ -1048,11 +1048,13 @@ a:hover {
   padding: var(--nm-space-sm) 0;
 }
 
+/* Mobile-first: stacked layout by default */
 .station-info-row {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
-  padding: 0.5rem 1.25rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4px 10px;
+  padding: 0.6rem 1.25rem;
   border-bottom: 1px solid var(--nm-border-subtle);
 }
 
@@ -1062,9 +1064,10 @@ a:hover {
 
 .station-info-icon {
   display: inline-flex;
-  align-self: center;
+  align-items: center;
   color: var(--nm-text-muted);
   flex-shrink: 0;
+  height: 1.25em;
 }
 
 .station-info-label {
@@ -1073,7 +1076,6 @@ a:hover {
   font-size: 0.9375rem;
   color: var(--nm-text-secondary);
   flex-shrink: 0;
-  min-width: 90px;
 }
 
 .station-info-value {
@@ -1081,8 +1083,8 @@ a:hover {
   font-weight: 500;
   font-size: 1rem;
   color: var(--nm-text-primary);
-  text-align: right;
-  flex: 1;
+  width: 100%;
+  padding-left: 26px;
 }
 
 .station-info-value--hours {
@@ -1090,6 +1092,24 @@ a:hover {
   flex-direction: column;
   gap: 2px;
   line-height: 1.4;
+}
+
+/* Desktop: single-row layout with right-aligned values */
+@media (min-width: 769px) {
+  .station-info-row {
+    flex-wrap: nowrap;
+  }
+
+  .station-info-label {
+    min-width: 90px;
+  }
+
+  .station-info-value {
+    text-align: right;
+    width: auto;
+    flex: 1;
+    padding-left: 0;
+  }
 }
 
 .station-info-actions {
@@ -1244,27 +1264,22 @@ a:hover {
   flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-  .station-info-row {
-    flex-wrap: wrap;
-  }
+/* Station Info — mobile action buttons */
+.station-info-actions {
+  flex-direction: column;
+}
 
-  .station-info-label {
-    min-width: auto;
-  }
+.station-info-link {
+  justify-content: center;
+}
 
-  .station-info-value {
-    text-align: left;
-    width: 100%;
-    padding-left: 26px;
-  }
-
+@media (min-width: 769px) {
   .station-info-actions {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .station-info-link {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
