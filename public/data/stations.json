@@ -1,0 +1,1581 @@
+[
+  {
+    "name": "Metro Center",
+    "code": "A01",
+    "slug": "metro-center",
+    "lines": ["red", "orange", "blue", "silver"],
+    "partnerCode": "C01",
+    "address": {
+      "street": "607 13th St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20005"
+    },
+    "lat": 38.8983,
+    "lon": -77.0281,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Farragut North",
+    "code": "A02",
+    "slug": "farragut-north",
+    "lines": ["red"],
+    "address": {
+      "street": "1001 Connecticut Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20036"
+    },
+    "lat": 38.9032,
+    "lon": -77.0397,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Dupont Circle",
+    "code": "A03",
+    "slug": "dupont-circle",
+    "lines": ["red"],
+    "address": {
+      "street": "1525 20th St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20036"
+    },
+    "lat": 38.9096,
+    "lon": -77.0434,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Woodley Park-Zoo/Adams Morgan",
+    "code": "A04",
+    "slug": "woodley-park",
+    "lines": ["red"],
+    "address": {
+      "street": "2700 Connecticut Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20008"
+    },
+    "lat": 38.9251,
+    "lon": -77.0527,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Cleveland Park",
+    "code": "A05",
+    "slug": "cleveland-park",
+    "lines": ["red"],
+    "address": {
+      "street": "3599 Connecticut Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20008"
+    },
+    "lat": 38.9346,
+    "lon": -77.0580,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Van Ness-UDC",
+    "code": "A06",
+    "slug": "van-ness-udc",
+    "lines": ["red"],
+    "address": {
+      "street": "4200 Connecticut Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20008"
+    },
+    "lat": 38.9434,
+    "lon": -77.0631,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Tenleytown-AU",
+    "code": "A07",
+    "slug": "tenleytown-au",
+    "lines": ["red"],
+    "address": {
+      "street": "4501 Wisconsin Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20016"
+    },
+    "lat": 38.9489,
+    "lon": -77.0794,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Friendship Heights",
+    "code": "A08",
+    "slug": "friendship-heights",
+    "lines": ["red"],
+    "address": {
+      "street": "5337 Wisconsin Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20015"
+    },
+    "lat": 38.9605,
+    "lon": -77.0859,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Bethesda",
+    "code": "A09",
+    "slug": "bethesda",
+    "lines": ["red"],
+    "address": {
+      "street": "7450 Wisconsin Ave",
+      "city": "Bethesda",
+      "state": "MD",
+      "zip": "20814"
+    },
+    "lat": 38.9845,
+    "lon": -77.0941,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Medical Center",
+    "code": "A10",
+    "slug": "medical-center",
+    "lines": ["red"],
+    "address": {
+      "street": "8810 Rockville Pike",
+      "city": "Bethesda",
+      "state": "MD",
+      "zip": "20814"
+    },
+    "lat": 38.9996,
+    "lon": -77.0971,
+    "parking": true,
+    "stationType": "underground"
+  },
+  {
+    "name": "Grosvenor-Strathmore",
+    "code": "A11",
+    "slug": "grosvenor-strathmore",
+    "lines": ["red"],
+    "address": {
+      "street": "10300 Rockville Pike",
+      "city": "North Bethesda",
+      "state": "MD",
+      "zip": "20852"
+    },
+    "lat": 39.0294,
+    "lon": -77.1040,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "North Bethesda-White Flint",
+    "code": "A12",
+    "slug": "north-bethesda",
+    "lines": ["red"],
+    "address": {
+      "street": "11510 Old Georgetown Rd",
+      "city": "North Bethesda",
+      "state": "MD",
+      "zip": "20852"
+    },
+    "lat": 39.0484,
+    "lon": -77.1131,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Twinbrook",
+    "code": "A13",
+    "slug": "twinbrook",
+    "lines": ["red"],
+    "address": {
+      "street": "1600 Chapman Ave",
+      "city": "Rockville",
+      "state": "MD",
+      "zip": "20852"
+    },
+    "lat": 39.0621,
+    "lon": -77.1209,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Rockville",
+    "code": "A14",
+    "slug": "rockville",
+    "lines": ["red"],
+    "address": {
+      "street": "150 Hungerford Dr",
+      "city": "Rockville",
+      "state": "MD",
+      "zip": "20850"
+    },
+    "lat": 39.0843,
+    "lon": -77.1462,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Shady Grove",
+    "code": "A15",
+    "slug": "shady-grove",
+    "lines": ["red"],
+    "address": {
+      "street": "15903 Somerville Dr",
+      "city": "Rockville",
+      "state": "MD",
+      "zip": "20855"
+    },
+    "lat": 39.1201,
+    "lon": -77.1646,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Gallery Pl-Chinatown",
+    "code": "B01",
+    "slug": "gallery-place",
+    "lines": ["red", "yellow", "green"],
+    "partnerCode": "F01",
+    "address": {
+      "street": "630 H St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20001"
+    },
+    "lat": 38.8983,
+    "lon": -77.0219,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Judiciary Square",
+    "code": "B02",
+    "slug": "judiciary-square",
+    "lines": ["red"],
+    "address": {
+      "street": "450 F St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20001"
+    },
+    "lat": 38.8966,
+    "lon": -77.0168,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Union Station",
+    "code": "B03",
+    "slug": "union-station",
+    "lines": ["red"],
+    "address": {
+      "street": "701 First St NE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20002"
+    },
+    "lat": 38.8978,
+    "lon": -77.0069,
+    "parking": false,
+    "stationType": "underground",
+    "connections": ["Amtrak", "MARC", "VRE", "DC Streetcar"]
+  },
+  {
+    "name": "Rhode Island Ave-Brentwood",
+    "code": "B04",
+    "slug": "rhode-island-ave",
+    "lines": ["red"],
+    "address": {
+      "street": "919 Rhode Island Ave NE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20018"
+    },
+    "lat": 38.9210,
+    "lon": -76.9961,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Brookland-CUA",
+    "code": "B05",
+    "slug": "brookland-cua",
+    "lines": ["red"],
+    "address": {
+      "street": "801 Michigan Ave NE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20017"
+    },
+    "lat": 38.9331,
+    "lon": -76.9946,
+    "parking": false,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Fort Totten",
+    "code": "B06",
+    "slug": "fort-totten",
+    "lines": ["red", "yellow", "green"],
+    "partnerCode": "E06",
+    "address": {
+      "street": "550 Galloway St NE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20011"
+    },
+    "lat": 38.9519,
+    "lon": -77.0023,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Takoma",
+    "code": "B07",
+    "slug": "takoma",
+    "lines": ["red"],
+    "address": {
+      "street": "327 Cedar St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20012"
+    },
+    "lat": 38.9566,
+    "lon": -77.0180,
+    "parking": false,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Silver Spring",
+    "code": "B08",
+    "slug": "silver-spring",
+    "lines": ["red"],
+    "address": {
+      "street": "8400 Colesville Rd",
+      "city": "Silver Spring",
+      "state": "MD",
+      "zip": "20910"
+    },
+    "lat": 38.9937,
+    "lon": -77.0311,
+    "parking": false,
+    "stationType": "ground-level",
+    "connections": ["MARC"]
+  },
+  {
+    "name": "Forest Glen",
+    "code": "B09",
+    "slug": "forest-glen",
+    "lines": ["red"],
+    "address": {
+      "street": "9650 Georgia Ave",
+      "city": "Silver Spring",
+      "state": "MD",
+      "zip": "20910"
+    },
+    "lat": 39.0151,
+    "lon": -77.0430,
+    "parking": true,
+    "stationType": "underground"
+  },
+  {
+    "name": "Wheaton",
+    "code": "B10",
+    "slug": "wheaton",
+    "lines": ["red"],
+    "address": {
+      "street": "11171 Georgia Ave",
+      "city": "Wheaton",
+      "state": "MD",
+      "zip": "20902"
+    },
+    "lat": 39.0384,
+    "lon": -77.0513,
+    "parking": true,
+    "stationType": "underground"
+  },
+  {
+    "name": "Glenmont",
+    "code": "B11",
+    "slug": "glenmont",
+    "lines": ["red"],
+    "address": {
+      "street": "12501 Georgia Ave",
+      "city": "Wheaton",
+      "state": "MD",
+      "zip": "20906"
+    },
+    "lat": 39.0619,
+    "lon": -77.0536,
+    "parking": true,
+    "stationType": "underground"
+  },
+  {
+    "name": "NoMa-Gallaudet U",
+    "code": "B35",
+    "slug": "noma",
+    "lines": ["red"],
+    "address": {
+      "street": "200 Florida Ave NE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20002"
+    },
+    "lat": 38.9071,
+    "lon": -77.0030,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "McPherson Square",
+    "code": "C02",
+    "slug": "mcpherson-square",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "1400 I St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20005"
+    },
+    "lat": 38.9013,
+    "lon": -77.0334,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Farragut West",
+    "code": "C03",
+    "slug": "farragut-west",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "900 18th St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20006"
+    },
+    "lat": 38.9013,
+    "lon": -77.0407,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Foggy Bottom-GWU",
+    "code": "C04",
+    "slug": "foggy-bottom",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "2301 I St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20037"
+    },
+    "lat": 38.9007,
+    "lon": -77.0504,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Rosslyn",
+    "code": "C05",
+    "slug": "rosslyn",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "1850 N Moore St",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22209"
+    },
+    "lat": 38.8960,
+    "lon": -77.0709,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Arlington Cemetery",
+    "code": "C06",
+    "slug": "arlington-cemetery",
+    "lines": ["blue"],
+    "address": {
+      "street": "Memorial Dr",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22211"
+    },
+    "lat": 38.8847,
+    "lon": -77.0637,
+    "parking": false,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Pentagon",
+    "code": "C07",
+    "slug": "pentagon",
+    "lines": ["blue", "yellow"],
+    "address": {
+      "street": "Pentagon",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22202"
+    },
+    "lat": 38.8693,
+    "lon": -77.0539,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Pentagon City",
+    "code": "C08",
+    "slug": "pentagon-city",
+    "lines": ["blue", "yellow"],
+    "address": {
+      "street": "1250 S Hayes St",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22202"
+    },
+    "lat": 38.8625,
+    "lon": -77.0597,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Crystal City",
+    "code": "C09",
+    "slug": "crystal-city",
+    "lines": ["blue", "yellow"],
+    "address": {
+      "street": "1750 S Clark St",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22202"
+    },
+    "lat": 38.8579,
+    "lon": -77.0505,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Ronald Reagan Washington National Airport",
+    "code": "C10",
+    "slug": "reagan-airport",
+    "lines": ["blue", "yellow"],
+    "address": {
+      "street": "2400 S Smith Blvd",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22202"
+    },
+    "lat": 38.8532,
+    "lon": -77.0440,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Potomac Yard",
+    "code": "C11",
+    "slug": "potomac-yard",
+    "lines": ["blue", "yellow"],
+    "address": {
+      "street": "3400 Potomac Ave",
+      "city": "Alexandria",
+      "state": "VA",
+      "zip": "22305"
+    },
+    "lat": 38.8429,
+    "lon": -77.0513,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Braddock Road",
+    "code": "C12",
+    "slug": "braddock-road",
+    "lines": ["blue", "yellow"],
+    "address": {
+      "street": "700 N West St",
+      "city": "Alexandria",
+      "state": "VA",
+      "zip": "22314"
+    },
+    "lat": 38.8141,
+    "lon": -77.0536,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "King St-Old Town",
+    "code": "C13",
+    "slug": "king-street",
+    "lines": ["blue", "yellow"],
+    "address": {
+      "street": "1700 King St",
+      "city": "Alexandria",
+      "state": "VA",
+      "zip": "22314"
+    },
+    "lat": 38.8065,
+    "lon": -77.0611,
+    "parking": true,
+    "stationType": "ground-level",
+    "connections": ["Amtrak", "VRE"]
+  },
+  {
+    "name": "Eisenhower Avenue",
+    "code": "C14",
+    "slug": "eisenhower-ave",
+    "lines": ["blue"],
+    "address": {
+      "street": "2431 Eisenhower Ave",
+      "city": "Alexandria",
+      "state": "VA",
+      "zip": "22314"
+    },
+    "lat": 38.8003,
+    "lon": -77.0711,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Huntington",
+    "code": "C15",
+    "slug": "huntington",
+    "lines": ["blue"],
+    "address": {
+      "street": "5990 Richmond Hwy",
+      "city": "Alexandria",
+      "state": "VA",
+      "zip": "22303"
+    },
+    "lat": 38.7941,
+    "lon": -77.0750,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Federal Triangle",
+    "code": "D01",
+    "slug": "federal-triangle",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "302 12th St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20004"
+    },
+    "lat": 38.8932,
+    "lon": -77.0284,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Smithsonian",
+    "code": "D02",
+    "slug": "smithsonian",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "1200 Independence Ave SW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20024"
+    },
+    "lat": 38.8880,
+    "lon": -77.0280,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "L'Enfant Plaza",
+    "code": "D03",
+    "slug": "lenfant-plaza",
+    "lines": ["orange", "blue", "yellow", "green", "silver"],
+    "partnerCode": "F03",
+    "address": {
+      "street": "600 Maryland Ave SW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20024"
+    },
+    "lat": 38.8849,
+    "lon": -77.0219,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Federal Center SW",
+    "code": "D04",
+    "slug": "federal-center-sw",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "401 3rd St SW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20024"
+    },
+    "lat": 38.8851,
+    "lon": -77.0158,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Capitol South",
+    "code": "D05",
+    "slug": "capitol-south",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "355 First St SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20003"
+    },
+    "lat": 38.8850,
+    "lon": -77.0051,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Eastern Market",
+    "code": "D06",
+    "slug": "eastern-market",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "701 Pennsylvania Ave SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20003"
+    },
+    "lat": 38.8845,
+    "lon": -76.9960,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Potomac Ave",
+    "code": "D07",
+    "slug": "potomac-ave",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "1301 14th St SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20003"
+    },
+    "lat": 38.8809,
+    "lon": -76.9856,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Stadium-Armory",
+    "code": "D08",
+    "slug": "stadium-armory",
+    "lines": ["orange", "blue", "silver"],
+    "address": {
+      "street": "192 19th St SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20003"
+    },
+    "lat": 38.8867,
+    "lon": -76.9771,
+    "parking": true,
+    "stationType": "underground"
+  },
+  {
+    "name": "Minnesota Ave",
+    "code": "D09",
+    "slug": "minnesota-ave",
+    "lines": ["orange"],
+    "address": {
+      "street": "4000 Minnesota Ave NE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20019"
+    },
+    "lat": 38.8989,
+    "lon": -76.9478,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Deanwood",
+    "code": "D10",
+    "slug": "deanwood",
+    "lines": ["orange"],
+    "address": {
+      "street": "4720 Minnesota Ave NE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20019"
+    },
+    "lat": 38.9082,
+    "lon": -76.9353,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Cheverly",
+    "code": "D11",
+    "slug": "cheverly",
+    "lines": ["orange"],
+    "address": {
+      "street": "5701 Columbia Park Rd",
+      "city": "Cheverly",
+      "state": "MD",
+      "zip": "20785"
+    },
+    "lat": 38.9166,
+    "lon": -76.9158,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Landover",
+    "code": "D12",
+    "slug": "landover",
+    "lines": ["orange"],
+    "address": {
+      "street": "3000 Pennsy Dr",
+      "city": "Landover",
+      "state": "MD",
+      "zip": "20785"
+    },
+    "lat": 38.9340,
+    "lon": -76.8911,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "New Carrollton",
+    "code": "D13",
+    "slug": "new-carrollton",
+    "lines": ["orange"],
+    "address": {
+      "street": "4700 Garden City Dr",
+      "city": "New Carrollton",
+      "state": "MD",
+      "zip": "20784"
+    },
+    "lat": 38.9481,
+    "lon": -76.8717,
+    "parking": true,
+    "stationType": "ground-level",
+    "connections": ["Amtrak", "MARC"]
+  },
+  {
+    "name": "Mt Vernon Sq 7th St-Convention Center",
+    "code": "E01",
+    "slug": "mt-vernon-square",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "700 M St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20001"
+    },
+    "lat": 38.9050,
+    "lon": -77.0222,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Shaw-Howard U",
+    "code": "E02",
+    "slug": "shaw-howard",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "1701 8th St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20001"
+    },
+    "lat": 38.9129,
+    "lon": -77.0220,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "U Street/African-Amer Civil War Memorial/Cardozo",
+    "code": "E03",
+    "slug": "u-street",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "1240 U St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20009"
+    },
+    "lat": 38.9169,
+    "lon": -77.0289,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Columbia Heights",
+    "code": "E04",
+    "slug": "columbia-heights",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "3030 14th St NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20009"
+    },
+    "lat": 38.9283,
+    "lon": -77.0326,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Georgia Ave-Petworth",
+    "code": "E05",
+    "slug": "georgia-ave-petworth",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "3700 Georgia Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20010"
+    },
+    "lat": 38.9369,
+    "lon": -77.0247,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "West Hyattsville",
+    "code": "E07",
+    "slug": "west-hyattsville",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "2700 Hamilton St",
+      "city": "Hyattsville",
+      "state": "MD",
+      "zip": "20782"
+    },
+    "lat": 38.9549,
+    "lon": -76.9693,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Prince George's Plaza",
+    "code": "E08",
+    "slug": "prince-georges-plaza",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "3575 East-West Hwy",
+      "city": "Hyattsville",
+      "state": "MD",
+      "zip": "20782"
+    },
+    "lat": 38.9654,
+    "lon": -76.9561,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "College Park-U of Md",
+    "code": "E09",
+    "slug": "college-park",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "4931 Calvert Rd",
+      "city": "College Park",
+      "state": "MD",
+      "zip": "20740"
+    },
+    "lat": 38.9786,
+    "lon": -76.9285,
+    "parking": true,
+    "stationType": "elevated",
+    "connections": ["MARC"]
+  },
+  {
+    "name": "Greenbelt",
+    "code": "E10",
+    "slug": "greenbelt",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "5717 Greenbelt Metro Dr",
+      "city": "Greenbelt",
+      "state": "MD",
+      "zip": "20770"
+    },
+    "lat": 39.0111,
+    "lon": -76.9115,
+    "parking": true,
+    "stationType": "ground-level",
+    "connections": ["MARC"]
+  },
+  {
+    "name": "Archives-Navy Memorial-Penn Quarter",
+    "code": "F02",
+    "slug": "archives",
+    "lines": ["yellow", "green"],
+    "address": {
+      "street": "701 Pennsylvania Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20004"
+    },
+    "lat": 38.8937,
+    "lon": -77.0219,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Waterfront",
+    "code": "F04",
+    "slug": "waterfront",
+    "lines": ["green"],
+    "address": {
+      "street": "399 M St SW",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20024"
+    },
+    "lat": 38.8764,
+    "lon": -77.0175,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Navy Yard-Ballpark",
+    "code": "F05",
+    "slug": "navy-yard",
+    "lines": ["green"],
+    "address": {
+      "street": "200 M St SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20003"
+    },
+    "lat": 38.8764,
+    "lon": -77.0050,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Anacostia",
+    "code": "F06",
+    "slug": "anacostia",
+    "lines": ["green"],
+    "address": {
+      "street": "1101 Howard Rd SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20020"
+    },
+    "lat": 38.8629,
+    "lon": -76.9954,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Congress Heights",
+    "code": "F07",
+    "slug": "congress-heights",
+    "lines": ["green"],
+    "address": {
+      "street": "1290 Alabama Ave SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20020"
+    },
+    "lat": 38.8457,
+    "lon": -76.9883,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Southern Ave",
+    "code": "F08",
+    "slug": "southern-ave",
+    "lines": ["green"],
+    "address": {
+      "street": "1411 Southern Ave",
+      "city": "Temple Hills",
+      "state": "MD",
+      "zip": "20748"
+    },
+    "lat": 38.8410,
+    "lon": -76.9750,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Naylor Road",
+    "code": "F09",
+    "slug": "naylor-road",
+    "lines": ["green"],
+    "address": {
+      "street": "3101 Branch Ave",
+      "city": "Temple Hills",
+      "state": "MD",
+      "zip": "20748"
+    },
+    "lat": 38.8513,
+    "lon": -76.9564,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Suitland",
+    "code": "F10",
+    "slug": "suitland",
+    "lines": ["green"],
+    "address": {
+      "street": "4500 Silver Hill Rd",
+      "city": "Suitland",
+      "state": "MD",
+      "zip": "20746"
+    },
+    "lat": 38.8438,
+    "lon": -76.9320,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Branch Ave",
+    "code": "F11",
+    "slug": "branch-ave",
+    "lines": ["green"],
+    "address": {
+      "street": "4704 Old Soper Rd",
+      "city": "Suitland",
+      "state": "MD",
+      "zip": "20746"
+    },
+    "lat": 38.8266,
+    "lon": -76.9124,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Benning Road",
+    "code": "G01",
+    "slug": "benning-road",
+    "lines": ["blue", "silver"],
+    "address": {
+      "street": "4500 Benning Rd SE",
+      "city": "Washington",
+      "state": "DC",
+      "zip": "20019"
+    },
+    "lat": 38.8905,
+    "lon": -76.9382,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Capitol Heights",
+    "code": "G02",
+    "slug": "capitol-heights",
+    "lines": ["blue", "silver"],
+    "address": {
+      "street": "601 Capitol Heights Blvd",
+      "city": "Capitol Heights",
+      "state": "MD",
+      "zip": "20743"
+    },
+    "lat": 38.8896,
+    "lon": -76.9131,
+    "parking": true,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Addison Road-Seat Pleasant",
+    "code": "G03",
+    "slug": "addison-road",
+    "lines": ["blue", "silver"],
+    "address": {
+      "street": "900 Addison Rd",
+      "city": "Capitol Heights",
+      "state": "MD",
+      "zip": "20743"
+    },
+    "lat": 38.8868,
+    "lon": -76.8935,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Morgan Boulevard",
+    "code": "G04",
+    "slug": "morgan-boulevard",
+    "lines": ["blue", "silver"],
+    "address": {
+      "street": "1100 Arena Dr",
+      "city": "Largo",
+      "state": "MD",
+      "zip": "20774"
+    },
+    "lat": 38.8942,
+    "lon": -76.8680,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Largo Town Center",
+    "code": "G05",
+    "slug": "largo-town-center",
+    "lines": ["blue", "silver"],
+    "address": {
+      "street": "900 Largo Center Dr",
+      "city": "Largo",
+      "state": "MD",
+      "zip": "20774"
+    },
+    "lat": 38.9009,
+    "lon": -76.8427,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Van Dorn Street",
+    "code": "J02",
+    "slug": "van-dorn-street",
+    "lines": ["blue"],
+    "address": {
+      "street": "5725 Van Dorn St",
+      "city": "Alexandria",
+      "state": "VA",
+      "zip": "22310"
+    },
+    "lat": 38.7993,
+    "lon": -77.1290,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Franconia-Springfield",
+    "code": "J03",
+    "slug": "franconia-springfield",
+    "lines": ["blue"],
+    "address": {
+      "street": "6880 Frontier Dr",
+      "city": "Springfield",
+      "state": "VA",
+      "zip": "22150"
+    },
+    "lat": 38.7659,
+    "lon": -77.1680,
+    "parking": true,
+    "stationType": "ground-level",
+    "connections": ["Amtrak", "VRE"]
+  },
+  {
+    "name": "Court House",
+    "code": "K01",
+    "slug": "court-house",
+    "lines": ["orange", "silver"],
+    "address": {
+      "street": "2100 Wilson Blvd",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22201"
+    },
+    "lat": 38.8910,
+    "lon": -77.0865,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Clarendon",
+    "code": "K02",
+    "slug": "clarendon",
+    "lines": ["orange", "silver"],
+    "address": {
+      "street": "3100 Wilson Blvd",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22201"
+    },
+    "lat": 38.8865,
+    "lon": -77.0963,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Virginia Square-GMU",
+    "code": "K03",
+    "slug": "virginia-square",
+    "lines": ["orange", "silver"],
+    "address": {
+      "street": "3600 Fairfax Dr",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22201"
+    },
+    "lat": 38.8830,
+    "lon": -77.1035,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "Ballston-MU",
+    "code": "K04",
+    "slug": "ballston",
+    "lines": ["orange", "silver"],
+    "address": {
+      "street": "4230 Fairfax Dr",
+      "city": "Arlington",
+      "state": "VA",
+      "zip": "22203"
+    },
+    "lat": 38.8822,
+    "lon": -77.1118,
+    "parking": false,
+    "stationType": "underground"
+  },
+  {
+    "name": "East Falls Church",
+    "code": "K05",
+    "slug": "east-falls-church",
+    "lines": ["orange", "silver"],
+    "address": {
+      "street": "2001 N Sycamore St",
+      "city": "Falls Church",
+      "state": "VA",
+      "zip": "22046"
+    },
+    "lat": 38.8859,
+    "lon": -77.1569,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "West Falls Church",
+    "code": "K06",
+    "slug": "west-falls-church",
+    "lines": ["orange"],
+    "address": {
+      "street": "7040 Haycock Rd",
+      "city": "Falls Church",
+      "state": "VA",
+      "zip": "22043"
+    },
+    "lat": 38.9009,
+    "lon": -77.1891,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Dunn Loring-Merrifield",
+    "code": "K07",
+    "slug": "dunn-loring",
+    "lines": ["orange"],
+    "address": {
+      "street": "2700 Gallows Rd",
+      "city": "Dunn Loring",
+      "state": "VA",
+      "zip": "22027"
+    },
+    "lat": 38.8832,
+    "lon": -77.2283,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Vienna/Fairfax-GMU",
+    "code": "K08",
+    "slug": "vienna",
+    "lines": ["orange"],
+    "address": {
+      "street": "9550 Saintsbury Dr",
+      "city": "Fairfax",
+      "state": "VA",
+      "zip": "22031"
+    },
+    "lat": 38.8776,
+    "lon": -77.2714,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "McLean",
+    "code": "N01",
+    "slug": "mclean",
+    "lines": ["silver"],
+    "address": {
+      "street": "1838 Dolley Madison Blvd",
+      "city": "McLean",
+      "state": "VA",
+      "zip": "22102"
+    },
+    "lat": 38.9246,
+    "lon": -77.2103,
+    "parking": true,
+    "stationType": "underground"
+  },
+  {
+    "name": "Tysons Corner",
+    "code": "N02",
+    "slug": "tysons-corner",
+    "lines": ["silver"],
+    "address": {
+      "street": "8300 Leesburg Pike",
+      "city": "Tysons",
+      "state": "VA",
+      "zip": "22182"
+    },
+    "lat": 38.9208,
+    "lon": -77.2239,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Greensboro",
+    "code": "N03",
+    "slug": "greensboro",
+    "lines": ["silver"],
+    "address": {
+      "street": "8101 Greensboro Dr",
+      "city": "Tysons",
+      "state": "VA",
+      "zip": "22182"
+    },
+    "lat": 38.9214,
+    "lon": -77.2351,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Spring Hill",
+    "code": "N04",
+    "slug": "spring-hill",
+    "lines": ["silver"],
+    "address": {
+      "street": "1574 Spring Hill Rd",
+      "city": "Tysons",
+      "state": "VA",
+      "zip": "22182"
+    },
+    "lat": 38.9284,
+    "lon": -77.2416,
+    "parking": false,
+    "stationType": "elevated"
+  },
+  {
+    "name": "Wiehle-Reston East",
+    "code": "N06",
+    "slug": "wiehle-reston-east",
+    "lines": ["silver"],
+    "address": {
+      "street": "11389 Reston Station Blvd",
+      "city": "Reston",
+      "state": "VA",
+      "zip": "20190"
+    },
+    "lat": 38.9475,
+    "lon": -77.3395,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Reston Town Center",
+    "code": "N07",
+    "slug": "reston-town-center",
+    "lines": ["silver"],
+    "address": {
+      "street": "12001 Sunrise Valley Dr",
+      "city": "Reston",
+      "state": "VA",
+      "zip": "20191"
+    },
+    "lat": 38.9530,
+    "lon": -77.3591,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Herndon",
+    "code": "N08",
+    "slug": "herndon",
+    "lines": ["silver"],
+    "address": {
+      "street": "480 Herndon Pkwy",
+      "city": "Herndon",
+      "state": "VA",
+      "zip": "20170"
+    },
+    "lat": 38.9536,
+    "lon": -77.3863,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Innovation Center",
+    "code": "N09",
+    "slug": "innovation-center",
+    "lines": ["silver"],
+    "address": {
+      "street": "4600 Fair Lakes Ct",
+      "city": "Herndon",
+      "state": "VA",
+      "zip": "20171"
+    },
+    "lat": 38.9565,
+    "lon": -77.4165,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Dulles",
+    "code": "N10",
+    "slug": "dulles",
+    "lines": ["silver"],
+    "address": {
+      "street": "1 Saarinen Cir",
+      "city": "Dulles",
+      "state": "VA",
+      "zip": "20166"
+    },
+    "lat": 38.9563,
+    "lon": -77.4485,
+    "parking": true,
+    "stationType": "underground"
+  },
+  {
+    "name": "Loudon Gateway",
+    "code": "N11",
+    "slug": "loudon-gateway",
+    "lines": ["silver"],
+    "address": {
+      "street": "22550 Reliance Dr",
+      "city": "Ashburn",
+      "state": "VA",
+      "zip": "20148"
+    },
+    "lat": 38.9863,
+    "lon": -77.4631,
+    "parking": true,
+    "stationType": "ground-level"
+  },
+  {
+    "name": "Ashburn",
+    "code": "N12",
+    "slug": "ashburn",
+    "lines": ["silver"],
+    "address": {
+      "street": "43300 Hay Rd",
+      "city": "Ashburn",
+      "state": "VA",
+      "zip": "20147"
+    },
+    "lat": 39.0046,
+    "lon": -77.4915,
+    "parking": true,
+    "stationType": "ground-level"
+  }
+]
