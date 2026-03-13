@@ -141,6 +141,18 @@ const multiPlatform = {
   E06: 'B06',
 };
 
+// ---- Station Pages ----
+// Stations that have dedicated pages — maps station code to URL slug
+const stationPages = {
+  B05: 'brookland-cua',
+  C11: 'potomac-yard',
+  A01: 'metro-center',
+  C01: 'metro-center',
+  B01: 'gallery-place',
+  F01: 'gallery-place',
+  B03: 'union-station',
+};
+
 // ---- Metro Line Colors ----
 const lineColors = {
   RD: '#D41140',
@@ -211,7 +223,8 @@ const prefixLines = {
 };
 
 // ---- State ----
-let selectedStation = 'B05';
+// Station pages can set STATION_CODE before loading app.js to override the default
+let selectedStation = (typeof STATION_CODE !== 'undefined') ? STATION_CODE : 'B05';
 let predictionsInterval = null;
 let incidentsInterval = null;
 let facilitiesInterval = null;
@@ -249,11 +262,27 @@ const fareSenior = document.getElementById('fare-senior');
 const fareTime = document.getElementById('fare-time');
 
 // Build station options array (deduplicate multi-platform stations)
-const stationOptions = Object.entries(stations).map(([code, name]) => ({
-  code,
-  name,
-  lines: prefixLines[code.charAt(0)] || [],
-}));
+const stationOptions = (() => {
+  const seen = {};
+  const result = [];
+  Object.entries(stations).forEach(([code, name]) => {
+    const lines = prefixLines[code.charAt(0)] || [];
+    if (seen[name]) {
+      // Merge lines from the partner platform code
+      const existing = seen[name];
+      lines.forEach((line) => {
+        if (!existing.lines.some((l) => l.code === line.code)) {
+          existing.lines.push(line);
+        }
+      });
+    } else {
+      const entry = { code, name, lines: lines.slice() };
+      seen[name] = entry;
+      result.push(entry);
+    }
+  });
+  return result;
+})();
 
 // Get all line codes that serve a station (including multi-platform partner)
 function getStationLineCodes(stationCode) {
@@ -729,6 +758,13 @@ function filterStations(query) {
 }
 
 function selectStation(option) {
+  // Navigate to dedicated station page if one exists
+  var slug = stationPages[option.code];
+  if (slug) {
+    window.location.href = '/station/' + slug + '/';
+    return;
+  }
+
   selectedStation = option.code;
   stationInput.value = '';
   stationDropdown.classList.remove('open');
@@ -912,8 +948,8 @@ function updateTimestamp() {
 // Fetch Train Predictions (with directional grouping)
 // ==============================
 async function fetchTrains(stationCode) {
-  if (!stationCode) {
-    pidsContent.innerHTML = '';
+  if (!stationCode || !pidsContent) {
+    if (pidsContent) pidsContent.innerHTML = '';
     lastUpdatedEl.style.display = 'none';
     return;
   }
@@ -971,14 +1007,118 @@ async function fetchTrains(stationCode) {
 }
 
 // ==============================
+// Transfer Station: Dual PIDS Board Rendering
+// ==============================
+function renderPlatformSkeletons(contentEl) {
+  contentEl.innerHTML = '';
+  var colHeaders = document.createElement('div');
+  colHeaders.className = 'pids-col-headers';
+  colHeaders.innerHTML =
+    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
+  contentEl.appendChild(colHeaders);
+  for (var i = 0; i < 3; i++) {
+    var row = document.createElement('div');
+    row.className = 'pids-skeleton-row';
+    row.innerHTML =
+      '<div class="pids-skeleton-block sk-line"></div>' +
+      '<div class="pids-skeleton-block sk-cars"></div>' +
+      '<div class="pids-skeleton-block sk-dest"></div>' +
+      '<div class="pids-skeleton-block sk-min"></div>';
+    contentEl.appendChild(row);
+  }
+}
+
+function renderPlatformPids(contentEl, trains) {
+  contentEl.innerHTML = '';
+
+  // Column headers
+  var colHeaders = document.createElement('div');
+  colHeaders.className = 'pids-col-headers';
+  colHeaders.innerHTML =
+    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
+  contentEl.appendChild(colHeaders);
+
+  if (trains.length === 0) {
+    var empty = document.createElement('div');
+    empty.className = 'pids-empty';
+    empty.innerHTML = '<span>No trains scheduled</span>';
+    contentEl.appendChild(empty);
+    return;
+  }
+
+  // Show max 3 rows per platform board
+  trains.slice(0, 3).forEach(function (train) {
+    contentEl.appendChild(createPidsRow(train));
+  });
+}
+
+async function fetchTransferTrains() {
+  if (typeof TRANSFER_PLATFORMS === 'undefined') return;
+
+  var platforms = TRANSFER_PLATFORMS;
+
+  // Show skeletons on first load for each platform
+  platforms.forEach(function (platform) {
+    var el = document.getElementById(platform.contentEl);
+    if (el && !el.querySelector('.pids-row')) {
+      renderPlatformSkeletons(el);
+    }
+  });
+
+  try {
+    // Make separate API calls for each platform (never merge)
+    var fetches = platforms.map(function (platform) {
+      var code = platform.wmataCodes[0];
+      return fetchWithRetry(API_BASE_URL + '/api/predictions/' + code)
+        .then(function (res) {
+          if (!res.ok) throw new Error('API error');
+          return res.json();
+        });
+    });
+
+    var results = await Promise.all(fetches);
+    lastUpdatedTime = new Date();
+
+    results.forEach(function (data, i) {
+      var platform = platforms[i];
+      var el = document.getElementById(platform.contentEl);
+      if (!el) return;
+
+      var validTrains = data.filter(function (t) {
+        return t.line && t.line !== 'No' && t.line !== '--' && t.destination;
+      }).sort(sortByMin);
+
+      renderPlatformPids(el, validTrains);
+    });
+
+    updateTimestamp();
+  } catch (err) {
+    platforms.forEach(function (platform) {
+      var el = document.getElementById(platform.contentEl);
+      if (el) {
+        el.innerHTML =
+          '<div class="pids-empty">' +
+          '<span>Error: ' + escapeHtml(err.message || 'Fetch failed') + '</span>' +
+          '</div>';
+      }
+    });
+  }
+}
+
+// ==============================
 // Polling Management
 // ==============================
 function startPolling() {
   stopPolling();
 
   // Predictions: every 25 seconds
+  var isTransfer = (typeof IS_TRANSFER_STATION !== 'undefined') && IS_TRANSFER_STATION;
   predictionsInterval = setInterval(() => {
-    if (selectedStation) fetchTrains(selectedStation);
+    if (isTransfer) {
+      fetchTransferTrains();
+    } else if (selectedStation) {
+      fetchTrains(selectedStation);
+    }
   }, 25000);
 
   // Incidents: every 60 seconds
@@ -1020,7 +1160,12 @@ function updateSystemStatusTime() {
 // ==============================
 refreshBtn.addEventListener('click', () => {
   if (selectedStation) {
-    fetchTrains(selectedStation);
+    var isTransfer = (typeof IS_TRANSFER_STATION !== 'undefined') && IS_TRANSFER_STATION;
+    if (isTransfer) {
+      fetchTransferTrains();
+    } else {
+      fetchTrains(selectedStation);
+    }
     fetchIncidents();
     fetchFacilities(selectedStation);
   }
@@ -1050,7 +1195,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Initial data fetches
-  fetchTrains(selectedStation);
+  var isTransfer = (typeof IS_TRANSFER_STATION !== 'undefined') && IS_TRANSFER_STATION;
+  if (isTransfer) {
+    fetchTransferTrains();
+  } else {
+    fetchTrains(selectedStation);
+  }
   fetchIncidents();
   fetchFacilities(selectedStation);
 

@@ -4,7 +4,7 @@
 
 NextMetro displays live train arrivals, system status, service alerts, station facility conditions, and fare information — styled after the Metro's own visual language of concrete vault ceilings, pylon signage, and PIDS boards.
 
-**[Live Site](https://nextmetro.live)** · **[API Backend](https://nextmetro.onrender.com)**
+**[Live Site](https://nextmetro.live)**
 
 ---
 
@@ -19,6 +19,8 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 - **Elevator & Escalator Status Page** — Dedicated [elevator & escalator page](https://nextmetro.live/elevators/) with station-grouped outage view, type filters (elevators/escalators), line filters, color-coded accessibility status (green = all working, yellow = escalator out, red = elevator out), summary bar, and 6-question FAQ with FAQPage structured data. Crawlable station names for long-tail SEO. Also shown per-station on the main arrivals page.
 - **Fare Calculator** — Interactive fare lookup between any two stations showing peak, off-peak, and senior/disabled pricing with estimated travel time.
 - **Line Pages** — Dedicated pages for each Metro line with real-time arrivals, station lists with transfer/parking badges, service hours, frequency info, and an FAQ section with structured data for SEO. Currently live: [Red Line](https://nextmetro.live/lines/red/).
+- **Station Pages** — Dedicated station pages with real-time PIDS arrivals, station info, adjacent stations, and FAQ sections with Schema.org structured data (TrainStation, FAQPage, BreadcrumbList). Transfer stations (Metro Center, Gallery Place) feature dual side-by-side PIDS boards — one per physical platform — with separate WMATA API calls. Currently live: [Brookland-CUA](https://nextmetro.live/station/brookland-cua/), [Potomac Yard](https://nextmetro.live/station/potomac-yard/), [Metro Center](https://nextmetro.live/station/metro-center/), [Gallery Place-Chinatown](https://nextmetro.live/station/gallery-place/), [Union Station](https://nextmetro.live/station/union-station/).
+- **Station Search Navigation** — Selecting a station from the search dropdown navigates directly to that station's dedicated page when available.
 
 ---
 
@@ -27,22 +29,10 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 | Layer | Technology |
 |-------|-----------|
 | **Frontend** | Vanilla HTML5, CSS, JavaScript |
-| **Backend** | Express.js v5 (Node.js) |
+| **Backend** | Cloudflare Workers |
 | **API** | [WMATA Real-Time Rail API](https://developer.wmata.com/) |
 | **Typography** | Rajdhani (Google Fonts) |
-| **Frontend Hosting** | Netlify (static, no build step) |
-| **Backend Hosting** | Render |
-
-### Dependencies
-
-| Package | Purpose |
-|---------|---------|
-| `express` | HTTP server and static file serving |
-| `node-fetch` | Server-side HTTP requests to WMATA API |
-| `cors` | Cross-origin request handling |
-| `dotenv` | Environment variable management |
-| `helmet` | HTTP security headers |
-| `express-rate-limit` | API rate limiting (60 req/min per IP) |
+| **Hosting** | Cloudflare (Workers + static assets) |
 
 ---
 
@@ -50,49 +40,60 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 
 ```
 nextmetro/
-├── server.js              Express backend (API proxy + cache + static serving)
+├── src/
+│   └── index.js           Cloudflare Workers backend (API proxy + cache)
+├── wrangler.toml          Cloudflare Workers config
 ├── package.json
-├── .env.example           Environment variable template
 ├── .gitignore
 ├── LICENSE                MIT
 ├── README.md
 ├── SECURITY.md            Security policy and measures
-├── render.yaml            Render deployment config
-└── public/                Static frontend (served by Express and Netlify)
+└── public/                Static frontend (served by Cloudflare)
     ├── index.html         Main arrivals app
     ├── about.html         About page
     ├── 404.html           Custom 404 page
     ├── robots.txt
     ├── sitemap.xml
-    ├── netlify.toml       Netlify deploy config + API proxy redirects
     ├── alerts/
     │   └── index.html     Service alerts page (rail + elevator/escalator, FAQ)
     ├── elevators/
     │   └── index.html     Elevator & escalator status page (station-grouped, filtered)
     ├── fares/
     │   └── index.html     Fare calculator page
+    ├── hours/
+    │   └── index.html     Service hours page
     ├── lines/
-    │   └── red/
-    │       └── index.html Red Line page (stations, service info, FAQ)
+    │   ├── red/
+    │   ├── blue/
+    │   ├── orange/
+    │   ├── green/
+    │   ├── yellow/
+    │   └── silver/        Line pages (stations, service info, FAQ)
+    ├── station/
+    │   ├── brookland-cua/  Standard station page (Red Line)
+    │   ├── potomac-yard/   Standard station page (Blue/Yellow)
+    │   ├── metro-center/   Transfer station — dual PIDS (Red + Or/Bl/Sv)
+    │   ├── gallery-place/  Transfer station — dual PIDS (Red + Gr/Yl)
+    │   └── union-station/  Standard station page (Red Line)
     ├── css/
     │   ├── styles.css     Full design system
     │   ├── nav.css        Navigation component styles
     │   └── footer.css     Footer component styles
     ├── js/
-    │   ├── app.js         Application logic (~1,070 lines)
-    │   ├── alerts.js      Alerts page — fetches rail + elevator incidents (~360 lines)
-    │   ├── elevators.js   Elevator/escalator page — station-grouped, filtered (~420 lines)
-    │   ├── nav.js         Shared navigation bar component (~30 lines)
-    │   ├── line.js        Line page logic — arrivals, alerts, FAQ toggle (~355 lines)
-    │   └── fares.js       Fare calculator logic (~410 lines)
-    └── images/            Photography assets (16 images)
+    │   ├── app.js         Application logic (arrivals, transfer PIDS, station nav)
+    │   ├── alerts.js      Alerts page logic
+    │   ├── elevators.js   Elevator/escalator page logic
+    │   ├── nav.js         Shared navigation bar component
+    │   ├── line.js        Line page logic
+    │   └── fares.js       Fare calculator logic
+    └── images/            Photography assets
 ```
 
-### API Routes (server.js)
+### API Routes (Cloudflare Workers)
 
 | Route | Description | Cache |
 |-------|-------------|-------|
-| `GET /healthz` | Health check (uptime, API key status) | None |
+| `GET /healthz` | Health check | None |
 | `GET /api/stations` | All WMATA stations | Infinite |
 | `GET /api/station/:code` | Single station info | Infinite |
 | `GET /api/predictions/:code` | Real-time train arrivals | None (live) |
@@ -101,10 +102,9 @@ nextmetro/
 | `GET /api/elevators/:code` | Elevator/escalator outages per station | 120s TTL |
 | `GET /api/fare/:from/:to` | Fare info between stations | 1hr TTL |
 
-### Deployment Model
+### Deployment
 
-- **Netlify** serves the `public/` directory as a static site with no build step. API requests (`/api/*`) are proxied to the Render backend via `netlify.toml` redirects.
-- **Render** hosts the Express server which proxies WMATA API requests with the API key stored as an environment variable.
+Cloudflare Workers serves both the static frontend and the API proxy. The WMATA API key is stored as a Workers secret.
 
 ---
 
@@ -155,6 +155,19 @@ The visual design — **Concrete Vault** — is based on the architectural ident
 ---
 
 ## Changelog
+
+### v2.6.0 — Station Pages & Search Navigation
+
+- Add 5 dedicated station pages: Brookland-CUA, Potomac Yard, Metro Center, Gallery Place-Chinatown, Union Station
+- Transfer station dual PIDS: Metro Center and Gallery Place render two side-by-side arrival boards (one per physical platform) with separate WMATA API calls
+- Station pages include real-time arrivals, station info, adjacent stations, and FAQ accordions
+- Schema.org structured data on all station pages: TrainStation, FAQPage, BreadcrumbList
+- SEO optimization: OG/Twitter meta tags, canonical URLs, and meta descriptions on all station pages
+- Search navigation: selecting a station from the search dropdown now navigates to its dedicated page
+- Transfer station CSS: `.pids-grid` two-column layout, line strip headers, transfer badge
+- Station FAQ accordion styles with expand/collapse toggle
+- Sitemap updated with all 5 station pages
+- README updated to reflect Cloudflare Workers architecture (migrated from Express/Netlify/Render)
 
 ### v2.5.0 — Site-Wide Compliance, Accessibility & SEO Hardening
 
