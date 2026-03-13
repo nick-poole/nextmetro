@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="DC Metro Service Alerts, Delays & Elevator Outages — Live | NextMetro" />
@@ -199,7 +200,7 @@
         <div class="alerts-controls-right">
           <span class="alerts-updated" id="alerts-updated"></span>
           <button class="refresh-btn" id="alerts-refresh" aria-label="Refresh alerts">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+            <i class="ri-refresh-line" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -233,9 +234,7 @@
 
       <!-- Empty State (hidden by default) -->
       <div class="alerts-empty" id="alerts-empty" style="display:none;">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" class="alerts-empty-icon">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
+        <i class="ri-checkbox-circle-fill alerts-empty-icon" aria-hidden="true"></i>
         <span class="alerts-empty-title">All Clear</span>
         <span class="alerts-empty-text">No active service alerts. All lines operating normally.</span>
       </div>
@@ -369,6 +368,7 @@
           <a href="/privacy" class="nm-footer__link">Privacy Policy</a>
           <a href="/terms"   class="nm-footer__link">Terms of Service</a>
           <a href="/crisis"  class="nm-footer__link">Crisis Resources</a>
+          <a href="https://nickpoole.dev" class="nm-footer__link" target="_blank" rel="noopener noreferrer">Webmaster</a>
         </nav>
         <div class="nm-footer__data-block">
           <h2 class="nm-footer__heading">Data</h2>
@@ -398,12 +398,6 @@
     </div>
     <div class="nm-footer__bottom">
       <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
-      <nav class="nm-footer__legal" aria-label="Legal">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/crisis">Crisis Resources</a>
-        <a href="https://nickpoole.dev" target="_blank" rel="noopener noreferrer">Webmaster</a>
-      </nav>
     </div>
   </footer>
   <script src="/js/nav.js"></script>

@@ -40,6 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -182,7 +183,7 @@
 
   <!-- Station Search -->
   <div class="station-search" id="station-search-wrapper">
-    <svg class="station-search__icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input
       type="text"
       id="station-input"
@@ -215,7 +216,7 @@
       <div class="last-updated" id="last-updated" style="display:none;">
         <span id="updated-time"></span>
         <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+          <i class="ri-refresh-line" aria-hidden="true"></i>
         </button>
       </div>
 
@@ -227,40 +228,40 @@
         <div class="station-info-body">
           <div class="station-info-row">
             <span class="station-info-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <i class="ri-map-pin-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Address</span>
             <span class="station-info-value">801 Michigan Ave NE, Washington, DC 20017</span>
           </div>
           <div class="station-info-row">
             <span class="station-info-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <i class="ri-indeterminate-circle-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Ground Level</span>
           </div>
           <div class="station-info-row">
             <span class="station-info-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
+              <i class="ri-parking-box-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Parking</span>
             <span class="station-info-value">Not available</span>
           </div>
           <div class="station-info-row">
             <span class="station-info-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              <i class="ri-time-fill" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Hours</span>
             <span class="station-info-value station-info-value--hours">
-              <span>Mon–Thu: 5a–12a</span>
-              <span>Fri: 5a–1a</span>
-              <span>Sat: 7a–1a</span>
-              <span>Sun: 7a–12a</span>
+              <span>Mon–Thu: 5:00 AM – 12:00 AM</span>
+              <span>Fri: 5:00 AM – 1:00 AM</span>
+              <span>Sat: 7:00 AM – 1:00 AM</span>
+              <span>Sun: 7:00 AM – 12:00 AM</span>
             </span>
           </div>
           <div class="station-info-row">
             <span class="station-info-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/></svg>
+              <i class="ri-bus-fill" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Bus Lines</span>
             <span class="station-info-value">H2, H3, H4, H8, H9</span>
@@ -268,11 +269,11 @@
         </div>
         <div class="station-info-actions">
           <a href="https://www.google.com/maps/dir/?api=1&destination=38.9331,-76.9946" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21.71 11.29l-9-9a.996.996 0 00-1.41 0l-9 9a.996.996 0 000 1.41l9 9c.39.39 1.02.39 1.41 0l9-9a.996.996 0 000-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+            <i class="ri-direction-line" aria-hidden="true"></i>
             Directions
           </a>
           <a href="https://www.wmata.com/rider-guide/stations/brookland.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            <i class="ri-external-link-line" aria-hidden="true"></i>
             WMATA Station Page
           </a>
         </div>
@@ -290,7 +291,7 @@
               <span class="fare-station-name" id="fare-from-name">Brookland-CUA</span>
             </div>
             <div class="fare-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              <i class="ri-arrow-right-box-fill" aria-hidden="true"></i>
             </div>
             <div class="fare-station fare-to">
               <span class="fare-station-label">To</span>
@@ -335,7 +336,7 @@
         <div class="adjacent-body">
           <a href="/station/rhode-island-ave/" class="adjacent-station adjacent-station--prev">
             <span class="adjacent-direction">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
               Toward Shady Grove
             </span>
             <span class="adjacent-name">Rhode Island Ave-Brentwood</span>
@@ -346,7 +347,7 @@
           <a href="/station/fort-totten/" class="adjacent-station adjacent-station--next">
             <span class="adjacent-direction">
               Toward Glenmont
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+              <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
             </span>
             <span class="adjacent-name">Fort Totten</span>
           </a>
@@ -361,14 +362,14 @@
         <div class="facilities-body" id="facilities-body">
           <div class="facilities-row">
             <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+              <i class="ri-arrow-up-down-line" aria-hidden="true"></i>
             </span>
             <span class="facilities-label">Elevators</span>
             <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
           </div>
           <div class="facilities-row">
             <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+              <i class="ri-escalator-line" aria-hidden="true"></i>
             </span>
             <span class="facilities-label">Escalators</span>
             <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
@@ -450,6 +451,7 @@
           <a href="/privacy" class="nm-footer__link">Privacy Policy</a>
           <a href="/terms"   class="nm-footer__link">Terms of Service</a>
           <a href="/crisis"  class="nm-footer__link">Crisis Resources</a>
+          <a href="https://nickpoole.dev" class="nm-footer__link" target="_blank" rel="noopener noreferrer">Webmaster</a>
         </nav>
         <div class="nm-footer__data-block">
           <h2 class="nm-footer__heading">Data</h2>
@@ -479,12 +481,6 @@
     </div>
     <div class="nm-footer__bottom">
       <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
-      <nav class="nm-footer__legal" aria-label="Legal">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/crisis">Crisis Resources</a>
-        <a href="https://nickpoole.dev" target="_blank" rel="noopener noreferrer">Webmaster</a>
-      </nav>
     </div>
   </footer>
   <script src="/js/nav.js"></script>
