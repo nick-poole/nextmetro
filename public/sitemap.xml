@@ -89,4 +89,28 @@
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://nextmetro.live/station/potomac-yard/</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/metro-center/</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/gallery-place/</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/union-station/</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

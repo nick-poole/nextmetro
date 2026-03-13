@@ -141,6 +141,18 @@ const multiPlatform = {
   E06: 'B06',
 };
 
+// ---- Station Pages ----
+// Stations that have dedicated pages — maps station code to URL slug
+const stationPages = {
+  B05: 'brookland-cua',
+  C11: 'potomac-yard',
+  A01: 'metro-center',
+  C01: 'metro-center',
+  B01: 'gallery-place',
+  F01: 'gallery-place',
+  B03: 'union-station',
+};
+
 // ---- Metro Line Colors ----
 const lineColors = {
   RD: '#D41140',
@@ -730,6 +742,13 @@ function filterStations(query) {
 }
 
 function selectStation(option) {
+  // Navigate to dedicated station page if one exists
+  var slug = stationPages[option.code];
+  if (slug) {
+    window.location.href = '/station/' + slug + '/';
+    return;
+  }
+
   selectedStation = option.code;
   stationInput.value = '';
   stationDropdown.classList.remove('open');
