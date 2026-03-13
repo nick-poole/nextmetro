@@ -43,24 +43,81 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "NextMetro",
-        "item": "https://nextmetro.live/"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "NextMetro",
+          "item": "https://nextmetro.live/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Red Line",
+          "item": "https://nextmetro.live/lines/red/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Brookland-CUA",
+          "item": "https://nextmetro.live/station/brookland-cua/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TrainStation",
+      "name": "Brookland-CUA",
+      "alternateName": "Brookland–Catholic University of America",
+      "url": "https://nextmetro.live/station/brookland-cua/",
+      "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
+      "isAccessibleForFree": false,
+      "publicAccess": true,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "801 Michigan Ave NE",
+        "addressLocality": "Washington",
+        "addressRegion": "DC",
+        "postalCode": "20017",
+        "addressCountry": "US"
       },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Brookland-CUA",
-        "item": "https://nextmetro.live/station/brookland-cua/"
-      }
-    ]
-  }
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.9331,
+        "longitude": -76.9946
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "05:00",
+          "closes": "00:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "05:00",
+          "closes": "01:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "07:00",
+          "closes": "01:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "07:00",
+          "closes": "00:00"
+        }
+      ]
+    }
+  ]
   </script>
 </head>
 <body>
@@ -84,7 +141,7 @@
     </a>
     <div class="nm-nav__links">
       <a href="/alerts" class="nm-nav__link">Alerts</a>
-      <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer">Map</a>
+      <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
       <a href="/fares" class="nm-nav__link">Fares</a>
       <a href="/hours" class="nm-nav__link">Hours</a>
     </div>
@@ -96,40 +153,46 @@
   </nav>
   <div class="nm-mobile-menu" id="mobile-menu">
     <a href="/alerts" class="mobile-menu-link">Alerts</a>
-    <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer">Map</a>
+    <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
     <a href="/fares" class="mobile-menu-link">Fares</a>
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </div>
 
-  <!-- System Ticker -->
-  <div class="ticker-bar" id="ticker-bar">
-    <div class="ticker-track" id="ticker-track"></div>
-  </div>
-
   <!-- Hero / Station Selector -->
-  <section class="hero" id="hero">
+  <section class="hero hero--has-image" id="hero">
+    <div class="hero__image" aria-hidden="true">
+      <img src="/images/heroes/brookland-cua.webp" alt="" width="1200" height="400" loading="eager" onerror="this.dataset.error='1'" />
+    </div>
     <div class="hero-inner">
+      <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="hero-breadcrumb__sep" aria-hidden="true">/</span>
+        <a href="/lines/red/">Red Line</a>
+        <span class="hero-breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="hero-breadcrumb__current">Brookland-CUA</span>
+      </nav>
       <span class="hero-label">Station</span>
       <h1 class="hero-station-name" id="hero-station-name">Brookland-CUA</h1>
-      <p class="hero-station-address" id="hero-station-address"></p>
-
-      <!-- Station Search -->
-      <div class="station-search-wrapper" id="station-search-wrapper">
-        <input
-          type="text"
-          id="station-input"
-          class="station-input"
-          placeholder="Search stations..."
-          autocomplete="off"
-          aria-label="Search for a Metro station"
-        />
-        <ul class="station-dropdown" id="station-dropdown"></ul>
-      </div>
+      <p class="hero-station-desc" id="hero-station-desc">Servicing Brookland, Edgewood &amp; Catholic University of America.</p>
 
       <!-- Line Pills -->
       <div class="line-pills" id="line-pills"></div>
     </div>
   </section>
+
+  <!-- Station Search -->
+  <div class="station-search" id="station-search-wrapper">
+    <svg class="station-search__icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <input
+      type="text"
+      id="station-input"
+      class="station-search__input"
+      placeholder="Search stations..."
+      autocomplete="off"
+      aria-label="Search for a Metro station"
+    />
+    <ul class="station-dropdown" id="station-dropdown"></ul>
+  </div>
 
   <!-- Main Content -->
   <main id="main-content" class="main-grid">
@@ -138,7 +201,7 @@
       <!-- PIDS Arrivals Display -->
       <section class="pids-card animate-in d1">
         <div class="pids-header" id="pids-header">
-          <span class="pids-header-station" id="pids-header-station">Brookland-CUA</span>
+          <span class="pids-header-station" id="pids-header-station">Next Arrivals</span>
         </div>
         <div class="pids-screen" id="pids-screen">
           <div class="pids-scanlines"></div>
@@ -156,36 +219,69 @@
         </button>
       </div>
 
-      <!-- Station Facilities Card -->
-      <section class="facilities-card animate-in d2" id="facilities-card">
-        <div class="facilities-header">
-          <span class="facilities-title">Station Facilities</span>
+      <!-- Station Info -->
+      <section class="station-info-card animate-in d3">
+        <div class="station-info-header">
+          <h2 class="station-info-title">Station Information</h2>
         </div>
-        <div class="facilities-body" id="facilities-body">
-          <div class="facilities-row">
-            <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+        <div class="station-info-body">
+          <div class="station-info-row">
+            <span class="station-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             </span>
-            <span class="facilities-label">Elevators</span>
-            <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
+            <span class="station-info-label">Address</span>
+            <span class="station-info-value">801 Michigan Ave NE, Washington, DC 20017</span>
           </div>
-          <div class="facilities-row">
-            <span class="facilities-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+          <div class="station-info-row">
+            <span class="station-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             </span>
-            <span class="facilities-label">Escalators</span>
-            <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
+            <span class="station-info-label">Station Type</span>
+            <span class="station-info-value">Ground Level</span>
+          </div>
+          <div class="station-info-row">
+            <span class="station-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/></svg>
+            </span>
+            <span class="station-info-label">Parking</span>
+            <span class="station-info-value">Not available</span>
+          </div>
+          <div class="station-info-row">
+            <span class="station-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            </span>
+            <span class="station-info-label">Hours</span>
+            <span class="station-info-value station-info-value--hours">
+              <span>Mon–Thu: 5a–12a</span>
+              <span>Fri: 5a–1a</span>
+              <span>Sat: 7a–1a</span>
+              <span>Sun: 7a–12a</span>
+            </span>
+          </div>
+          <div class="station-info-row">
+            <span class="station-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/></svg>
+            </span>
+            <span class="station-info-label">Bus Lines</span>
+            <span class="station-info-value">H2, H3, H4, H8, H9</span>
           </div>
         </div>
-        <div class="facilities-details" id="facilities-details" style="display:none;">
-          <!-- Outage details rendered by JS -->
+        <div class="station-info-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9331,-76.9946" class="station-info-link" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21.71 11.29l-9-9a.996.996 0 00-1.41 0l-9 9a.996.996 0 000 1.41l9 9c.39.39 1.02.39 1.41 0l9-9a.996.996 0 000-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+            Directions
+          </a>
+          <a href="https://www.wmata.com/rider-guide/stations/brookland.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            WMATA Station Page
+          </a>
         </div>
       </section>
 
       <!-- Fare Calculator -->
-      <section class="fare-card animate-in d3" id="fare-card">
+      <section class="fare-card animate-in d4" id="fare-card">
         <div class="fare-header">
-          <span class="fare-title">Fare Calculator</span>
+          <h2 class="fare-title">Fare Calculator</h2>
         </div>
         <div class="fare-body">
           <div class="fare-route">
@@ -230,8 +326,61 @@
     <!-- Sidebar -->
     <aside class="sidebar">
 
+      <!-- Adjacent Stations -->
+      <section class="adjacent-card animate-in d2">
+        <div class="adjacent-header">
+          <h2 class="adjacent-title">Adjacent Stations</h2>
+          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
+        </div>
+        <div class="adjacent-body">
+          <a href="/station/rhode-island-ave/" class="adjacent-station adjacent-station--prev">
+            <span class="adjacent-direction">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              Toward Shady Grove
+            </span>
+            <span class="adjacent-name">Rhode Island Ave-Brentwood</span>
+          </a>
+          <div class="adjacent-divider">
+            <span class="adjacent-current-dot"></span>
+          </div>
+          <a href="/station/fort-totten/" class="adjacent-station adjacent-station--next">
+            <span class="adjacent-direction">
+              Toward Glenmont
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </span>
+            <span class="adjacent-name">Fort Totten</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Station Facilities Card -->
+      <section class="facilities-card animate-in d3" id="facilities-card">
+        <div class="facilities-header">
+          <h2 class="facilities-title">Station Facilities</h2>
+        </div>
+        <div class="facilities-body" id="facilities-body">
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+            </span>
+            <span class="facilities-label">Elevators</span>
+            <span class="facilities-status facilities-status--ok" id="elevator-status">Operational</span>
+          </div>
+          <div class="facilities-row">
+            <span class="facilities-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
+            </span>
+            <span class="facilities-label">Escalators</span>
+            <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
+          </div>
+        </div>
+        <div class="facilities-details" id="facilities-details" style="display:none;">
+          <!-- Outage details rendered by JS -->
+        </div>
+      </section>
+
       <!-- System Status Card -->
-      <div class="system-status-card animate-in d3" id="system-status-card">
+      <div class="system-status-card animate-in d2" id="system-status-card">
         <div class="system-status-header">
           <span>System Status</span>
           <span class="system-status-time" id="system-status-time"></span>
@@ -242,7 +391,7 @@
       </div>
 
       <!-- Alert Card -->
-      <div class="alert-card animate-in d4" id="alert-card" style="display:none;">
+      <div class="alert-card animate-in d3" id="alert-card" style="display:none;">
         <div class="alert-card-header">
           <span class="alert-badge">Service Alert</span>
           <span class="alert-timestamp" id="alert-timestamp"></span>
@@ -267,10 +416,10 @@
     </div>
     <div class="nm-footer__body">
       <div class="nm-footer__col">
-        <h3 class="nm-footer__heading">Navigate</h3>
+        <h2 class="nm-footer__heading">Navigate</h2>
         <nav class="nm-footer__links" aria-label="Footer navigation">
           <a href="/"          class="nm-footer__link">Home</a>
-          <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer">System Map</a>
+          <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">System Map</a>
           <a href="/alerts"    class="nm-footer__link">Alerts</a>
           <a href="/elevators" class="nm-footer__link">Elevator Status</a>
           <a href="/fares"     class="nm-footer__link">Fares</a>
@@ -278,7 +427,7 @@
         </nav>
       </div>
       <div class="nm-footer__col">
-        <h3 class="nm-footer__heading">Lines</h3>
+        <h2 class="nm-footer__heading">Lines</h2>
         <nav class="nm-footer__links" aria-label="Metro lines">
           <a href="/lines/red"    class="nm-footer__link nm-footer__link--line">
             <span class="nm-footer__dot nm-footer__dot--red"></span>Red Line</a>
@@ -295,7 +444,7 @@
         </nav>
       </div>
       <div class="nm-footer__col">
-        <h3 class="nm-footer__heading">About</h3>
+        <h2 class="nm-footer__heading">About</h2>
         <nav class="nm-footer__links" aria-label="About">
           <a href="/about"   class="nm-footer__link">About NextMetro</a>
           <a href="/privacy" class="nm-footer__link">Privacy Policy</a>
@@ -303,7 +452,7 @@
           <a href="/crisis"  class="nm-footer__link">Crisis Resources</a>
         </nav>
         <div class="nm-footer__data-block">
-          <h3 class="nm-footer__heading">Data</h3>
+          <h2 class="nm-footer__heading">Data</h2>
           <p class="nm-footer__body-text">
             Real-time data via WMATA API.<br>
             Not affiliated with WMATA.
