@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Metro Center — Real-Time Metro Arrivals | NextMetro</title>
-  <meta name="description" content="Live train arrivals and real-time predictions for Metro Center transfer station. Red, Orange, Blue, and Silver Line arrivals on dual platform PIDS boards. Track next trains, check elevator status, and calculate fares." />
+  <title>Metro Center Station — Real-Time Arrivals, Transfers & Info | NextMetro</title>
+  <meta name="description" content="Live dual-platform arrivals for Metro Center transfer station in downtown Washington, DC. Red, Orange, Blue, and Silver Line PIDS boards side by side. Fare calculator, elevator status, transfer info, and service alerts." />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="Metro Center station, DC Metro transfer, Red Line arrivals, Orange Line arrivals, Blue Line arrivals, Silver Line arrivals, downtown DC Metro, WMATA real-time, Metro Center platform, Metro Center train times" />
   <link rel="canonical" href="https://nextmetro.live/station/metro-center/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Metro Center — Real-Time Metro Arrivals | NextMetro" />
-  <meta property="og:description" content="Live dual-platform arrivals for Metro Center transfer station — Red, Orange, Blue, and Silver Lines." />
+  <meta property="og:title" content="Metro Center Station — Live Red, Orange, Blue & Silver Arrivals | NextMetro" />
+  <meta property="og:description" content="Real-time dual-platform arrivals for Metro Center transfer station in downtown DC. Red, Orange, Blue, and Silver Line PIDS boards, fares, and service alerts." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nextmetro.live/station/metro-center/" />
   <meta property="og:site_name" content="NextMetro" />
@@ -21,8 +23,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Metro Center — Real-Time Metro Arrivals | NextMetro" />
-  <meta name="twitter:description" content="Live dual-platform arrivals for Metro Center transfer station — Red, Orange, Blue, and Silver Lines." />
+  <meta name="twitter:title" content="Metro Center Station — Live Red, Orange, Blue & Silver Arrivals | NextMetro" />
+  <meta name="twitter:description" content="Real-time dual-platform arrivals for Metro Center transfer station in downtown DC. Red, Orange, Blue, and Silver Line PIDS boards, fares, and service alerts." />
   <meta name="twitter:image" content="https://nextmetro.live/images/og/stations/og-station-metro-center.png" />
 
   <!-- Favicon -->
@@ -73,10 +75,25 @@
       "@context": "https://schema.org",
       "@type": "TrainStation",
       "name": "Metro Center",
+      "alternateName": ["Metro Center Station", "Metro Center Transfer Station"],
+      "description": "Metro Center is a major underground transfer station in downtown Washington, DC, serving the Red, Orange, Blue, and Silver Lines. It features two platforms: Platform A for the Red Line and Platform B for the Orange, Blue, and Silver Lines.",
       "url": "https://nextmetro.live/station/metro-center/",
+      "sameAs": "https://www.wmata.com/rider-guide/stations/metro-center.cfm",
+      "image": "https://nextmetro.live/images/og/stations/og-station-metro-center.png",
       "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
       "isAccessibleForFree": false,
       "publicAccess": true,
+      "smokingAllowed": false,
+      "wheelchair": true,
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Elevator", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Escalator", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Transfer Between Lines", "value": true }
+      ],
+      "containedInPlace": {
+        "@type": "City",
+        "name": "Washington, DC"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "607 13th St NW",
