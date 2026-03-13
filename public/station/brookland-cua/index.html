@@ -43,24 +43,42 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "NextMetro",
-        "item": "https://nextmetro.live/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Brookland-CUA",
-        "item": "https://nextmetro.live/station/brookland-cua/"
-      }
-    ]
-  }
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "NextMetro",
+          "item": "https://nextmetro.live/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Red Line",
+          "item": "https://nextmetro.live/lines/red/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Brookland-CUA",
+          "item": "https://nextmetro.live/station/brookland-cua/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TrainStation",
+      "name": "Brookland-CUA",
+      "alternateName": "Brookland–Catholic University of America",
+      "url": "https://nextmetro.live/station/brookland-cua/",
+      "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
+      "isAccessibleForFree": false,
+      "publicAccess": true
+    }
+  ]
   </script>
 </head>
 <body>
@@ -107,8 +125,18 @@
   </div>
 
   <!-- Hero / Station Selector -->
-  <section class="hero" id="hero">
+  <section class="hero hero--has-image" id="hero">
+    <div class="hero__image" aria-hidden="true">
+      <img src="/images/heroes/brookland-cua.webp" alt="" width="1200" height="400" loading="eager" onerror="this.dataset.error='1'" />
+    </div>
     <div class="hero-inner">
+      <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="hero-breadcrumb__sep" aria-hidden="true">/</span>
+        <a href="/lines/red/">Red Line</a>
+        <span class="hero-breadcrumb__sep" aria-hidden="true">/</span>
+        <span class="hero-breadcrumb__current">Brookland-CUA</span>
+      </nav>
       <span class="hero-label">Station</span>
       <h1 class="hero-station-name" id="hero-station-name">Brookland-CUA</h1>
       <p class="hero-station-address" id="hero-station-address"></p>

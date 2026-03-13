@@ -83,5 +83,10 @@
   </url>
 
   <!-- ===== Station Pages ===== -->
-  <!-- Add station pages here as they are created -->
+  <url>
+    <loc>https://nextmetro.live/station/brookland-cua/</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
