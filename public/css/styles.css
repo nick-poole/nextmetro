@@ -391,6 +391,16 @@ a:hover {
   min-height: 1.2em;
 }
 
+.hero-station-desc {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--nm-text-secondary);
+  margin-bottom: var(--nm-space-lg);
+  max-width: 520px;
+  line-height: 1.5;
+}
+
 /* ==============================
    Station Search
    ============================== */
@@ -541,7 +551,8 @@ a:hover {
 }
 
 .sidebar .station-info-card,
-.sidebar .facilities-card {
+.sidebar .facilities-card,
+.sidebar .adjacent-card {
   margin-top: 0;
 }
 
@@ -1072,6 +1083,13 @@ a:hover {
   color: var(--nm-text-primary);
   text-align: right;
   flex: 1;
+}
+
+.station-info-value--hours {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.4;
 }
 
 .station-info-actions {

@@ -284,10 +284,10 @@ function getPredictionCodes(stationCode) {
 // ==============================
 async function fetchStationAddress(stationCode) {
   if (stationAddressCache[stationCode]) {
-    heroStationAddress.textContent = stationAddressCache[stationCode];
+    if (heroStationAddress) heroStationAddress.textContent = stationAddressCache[stationCode];
     return;
   }
-  heroStationAddress.textContent = '';
+  if (heroStationAddress) heroStationAddress.textContent = '';
   try {
     const res = await fetchWithRetry(API_BASE_URL + '/api/station/' + stationCode);
     const data = await res.json();
@@ -297,7 +297,7 @@ async function fetchStationAddress(stationCode) {
       stationAddressCache[stationCode] = formatted;
       // Only update if this station is still selected
       if (selectedStation === stationCode) {
-        heroStationAddress.textContent = formatted;
+        if (heroStationAddress) heroStationAddress.textContent = formatted;
       }
     }
   } catch (e) {
@@ -345,8 +345,8 @@ function updateHeroDisplay(stationCode) {
     linePillsEl.appendChild(pill);
   });
 
-  // Update PIDS header
-  pidsHeaderStation.textContent = name;
+  // Update PIDS header — keep static "Next Arrivals" text
+  // pidsHeaderStation.textContent = name;
 
   // Update fare calculator "from" display
   fareFromName.textContent = name;
@@ -401,7 +401,7 @@ function renderTicker(incidents) {
       '</span>';
   });
 
-  tickerTrack.innerHTML = html;
+  if (tickerTrack) tickerTrack.innerHTML = html;
 }
 
 // ==============================
@@ -730,7 +730,7 @@ function filterStations(query) {
 
 function selectStation(option) {
   selectedStation = option.code;
-  stationInput.value = option.name;
+  stationInput.value = '';
   stationDropdown.classList.remove('open');
   highlightedIndex = -1;
   updateHeroDisplay(selectedStation);
@@ -1030,11 +1030,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Init hero display
   updateHeroDisplay(selectedStation);
 
-  // Set default station in input
-  const defaultStation = stationOptions.find((s) => s.code === selectedStation);
-  if (defaultStation) {
-    stationInput.value = defaultStation.name;
-  }
+  // Search input starts empty — placeholder shows "Search stations..."
 
   // Populate fare calculator destinations
   populateFareDestinations();
