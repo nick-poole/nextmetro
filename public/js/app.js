@@ -262,11 +262,27 @@ const fareSenior = document.getElementById('fare-senior');
 const fareTime = document.getElementById('fare-time');
 
 // Build station options array (deduplicate multi-platform stations)
-const stationOptions = Object.entries(stations).map(([code, name]) => ({
-  code,
-  name,
-  lines: prefixLines[code.charAt(0)] || [],
-}));
+const stationOptions = (() => {
+  const seen = {};
+  const result = [];
+  Object.entries(stations).forEach(([code, name]) => {
+    const lines = prefixLines[code.charAt(0)] || [];
+    if (seen[name]) {
+      // Merge lines from the partner platform code
+      const existing = seen[name];
+      lines.forEach((line) => {
+        if (!existing.lines.some((l) => l.code === line.code)) {
+          existing.lines.push(line);
+        }
+      });
+    } else {
+      const entry = { code, name, lines: lines.slice() };
+      seen[name] = entry;
+      result.push(entry);
+    }
+  });
+  return result;
+})();
 
 // Get all line codes that serve a station (including multi-platform partner)
 function getStationLineCodes(stationCode) {
