@@ -1,605 +1,1148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blue Line — Stations, Status & Alerts | NextMetro</title>
-  <meta name="description" content="Blue Line status, service alerts, and all 27 stations from Franconia-Springfield to Downtown Largo. Live updates, transfer info, and service hours for the DC Metro Blue Line serving Reagan National Airport, Alexandria, Pentagon, and downtown D.C." />
-  <link rel="canonical" href="https://nextmetro.live/lines/blue/" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Blue Line — Stations, Status & Alerts | NextMetro</title>
+		<meta
+			name="description"
+			content="Blue Line status, service alerts, and all 27 stations from Franconia-Springfield to Downtown Largo. Live updates, transfer info, and service hours for the DC Metro Blue Line serving Reagan National Airport, Alexandria, Pentagon, and downtown D.C." />
+		<link rel="canonical" href="https://nextmetro.live/lines/blue/" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" sizes="48x48" />
-  <link rel="icon" href="/images/icons/nm-mark.svg" type="image/svg+xml" />
-  <link rel="icon" href="/images/icons/favicon-32x32.png" sizes="32x32" type="image/png" />
-  <link rel="icon" href="/images/icons/favicon-16x16.png" sizes="16x16" type="image/png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#0A0A0A" />
+		<!-- Favicon -->
+		<link rel="icon" href="/favicon.ico" sizes="48x48" />
+		<link rel="icon" href="/images/icons/nm-mark.svg" type="image/svg+xml" />
+		<link rel="icon" href="/images/icons/favicon-32x32.png" sizes="32x32" type="image/png" />
+		<link rel="icon" href="/images/icons/favicon-16x16.png" sizes="16x16" type="image/png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="theme-color" content="#0A0A0A" />
 
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/line.css" />
-  <link rel="stylesheet" href="/css/nav.css" />
-  <link rel="stylesheet" href="/css/footer.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/css/styles.css" />
+		<link rel="stylesheet" href="/css/line.css" />
+		<link rel="stylesheet" href="/css/nav.css" />
+		<link rel="stylesheet" href="/css/footer.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Blue Line — Stations, Status & Alerts | NextMetro" />
-  <meta property="og:description" content="Blue Line status, service alerts, and all 27 stations from Franconia-Springfield to Downtown Largo. Live updates for the DC Metro Blue Line." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nextmetro.live/lines/blue/" />
-  <meta property="og:site_name" content="NextMetro" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:image" content="https://nextmetro.live/images/og/lines/og-blue-line.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="DC Metro Blue Line — 27 stations from Franconia-Springfield to Downtown Largo" />
+		<!-- Open Graph -->
+		<meta property="og:title" content="Blue Line — Stations, Status & Alerts | NextMetro" />
+		<meta
+			property="og:description"
+			content="Blue Line status, service alerts, and all 27 stations from Franconia-Springfield to Downtown Largo. Live updates for the DC Metro Blue Line." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://nextmetro.live/lines/blue/" />
+		<meta property="og:site_name" content="NextMetro" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:image" content="https://nextmetro.live/images/og/lines/og-blue-line.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta
+			property="og:image:alt"
+			content="DC Metro Blue Line — 27 stations from Franconia-Springfield to Downtown Largo" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Blue Line — Stations, Status & Alerts | NextMetro" />
-  <meta name="twitter:description" content="Blue Line status, service alerts, and all 27 stations from Franconia-Springfield to Downtown Largo. Live updates for the DC Metro Blue Line." />
-  <meta name="twitter:image" content="https://nextmetro.live/images/og/lines/og-blue-line.png" />
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Blue Line — Stations, Status & Alerts | NextMetro" />
+		<meta
+			name="twitter:description"
+			content="Blue Line status, service alerts, and all 27 stations from Franconia-Springfield to Downtown Largo. Live updates for the DC Metro Blue Line." />
+		<meta name="twitter:image" content="https://nextmetro.live/images/og/lines/og-blue-line.png" />
 
-  <!-- Schema: TransitLine + BreadcrumbList + FAQPage + OpeningHoursSpecification -->
-  <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "GovernmentService",
-      "name": "Blue Line",
-      "alternateName": "Metrorail Blue Line",
-      "description": "The Blue Line runs 30.8 miles with 27 stations from Franconia-Springfield in Virginia through Alexandria, the Pentagon, downtown Washington, D.C., and into Prince George's County, Maryland to Downtown Largo. It is the only Metro line that directly serves Reagan National Airport.",
-      "serviceType": "Public Transit — Metrorail",
-      "provider": {
-        "@type": "GovernmentOrganization",
-        "name": "Washington Metropolitan Area Transit Authority",
-        "alternateName": "WMATA",
-        "url": "https://www.wmata.com"
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
-          "opens": "05:00",
-          "closes": "00:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Friday",
-          "opens": "05:00",
-          "closes": "02:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "06:00",
-          "closes": "02:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sunday",
-          "opens": "06:00",
-          "closes": "00:00"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://nextmetro.live/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Metro Lines",
-          "item": "https://nextmetro.live/lines/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Blue Line",
-          "item": "https://nextmetro.live/lines/blue/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How many stations does the DC Metro Blue Line have?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The DC Metro Blue Line has 27 stations, running from Franconia-Springfield in Fairfax County, Virginia through Alexandria, the Pentagon, downtown Washington, D.C., and into Prince George's County, Maryland to Downtown Largo. The line spans 30.8 miles."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where does the Blue Line go?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Blue Line runs from Franconia-Springfield in southern Fairfax County, Virginia through Alexandria (King Street-Old Town), past Reagan National Airport, through the Pentagon, across the Potomac into downtown D.C. (including Rosslyn, Foggy Bottom, Metro Center, and the Smithsonian), then continues east through Capitol Hill, Stadium-Armory, and into Prince George's County, Maryland ending at Downtown Largo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the Blue Line service hours?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "As of June 2025, Blue Line service hours are: Monday through Thursday 5:00 AM to midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM to midnight. Hours may vary on holidays and special events."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How often does the Blue Line run?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Blue Line trains run every 8 minutes during weekday peak hours (5:00–9:30 AM and 3:00–7:00 PM), every 12 minutes during off-peak periods, and every 15 minutes after 9:30 PM daily."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does the Blue Line cost to ride?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Blue Line fares range from $2.00 to $6.00 per trip depending on distance and time of day. Peak fares (weekdays opening–9:30 AM and 3:00–7:00 PM) range from $2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or contactless payment is required."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does the Blue Line go to the airport?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! The Blue Line directly serves Ronald Reagan Washington National Airport (DCA). The station is located adjacent to the airport terminals. This makes the Blue Line one of the most convenient ways to travel to and from Reagan National. The trip from Metro Center to the airport takes approximately 15 minutes."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What transfers can I make on the Blue Line?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Blue Line connects to all other Metro lines at six transfer stations: Rosslyn (Orange and Silver lines), Metro Center (Red, Orange, and Silver lines), L'Enfant Plaza (Green, Yellow, Orange, and Silver lines), Pentagon (Yellow Line), Stadium-Armory (Orange and Silver lines), and King Street-Old Town (Yellow Line)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does it take to ride the entire Blue Line?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A complete end-to-end ride from Franconia-Springfield to Downtown Largo takes approximately 52 minutes. The Blue Line covers 30.8 miles and passes through 27 stations across Virginia, the District of Columbia, and Maryland. The first segment of the Blue Line opened in 1977."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which Blue Line stations have parking?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The following Blue Line stations have parking facilities: Franconia-Springfield, Van Dorn Street, King Street-Old Town, Stadium-Armory, Addison Road-Seat Pleasant, Morgan Boulevard, and Downtown Largo. Parking is free on weekends and holidays. On weekdays, most lots charge $5.20 per day."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does the Blue Line go to Old Town Alexandria?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, the Blue Line serves Old Town Alexandria via the King Street-Old Town station. From there, riders can take the free King Street Trolley to reach shops, restaurants, and the waterfront along King Street. The station also connects to the Yellow Line, Amtrak, and VRE commuter rail."
-          }
-        }
-      ]
-    }
-  ]
-  </script>
-</head>
-<body>
+		<!-- Schema: TransitLine + BreadcrumbList + FAQPage + OpeningHoursSpecification -->
+		<script type="application/ld+json">
+			[
+				{
+					"@context": "https://schema.org",
+					"@type": "GovernmentService",
+					"name": "Blue Line",
+					"alternateName": "Metrorail Blue Line",
+					"description": "The Blue Line runs 30.8 miles with 27 stations from Franconia-Springfield in Virginia through Alexandria, the Pentagon, downtown Washington, D.C., and into Prince George's County, Maryland to Downtown Largo. It is the only Metro line that directly serves Reagan National Airport.",
+					"serviceType": "Public Transit — Metrorail",
+					"provider": {
+						"@type": "GovernmentOrganization",
+						"name": "Washington Metropolitan Area Transit Authority",
+						"alternateName": "WMATA",
+						"url": "https://www.wmata.com"
+					},
+					"openingHoursSpecification": [
+						{
+							"@type": "OpeningHoursSpecification",
+							"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+							"opens": "05:00",
+							"closes": "00:00"
+						},
+						{
+							"@type": "OpeningHoursSpecification",
+							"dayOfWeek": "Friday",
+							"opens": "05:00",
+							"closes": "02:00"
+						},
+						{
+							"@type": "OpeningHoursSpecification",
+							"dayOfWeek": "Saturday",
+							"opens": "06:00",
+							"closes": "02:00"
+						},
+						{
+							"@type": "OpeningHoursSpecification",
+							"dayOfWeek": "Sunday",
+							"opens": "06:00",
+							"closes": "00:00"
+						}
+					]
+				},
+				{
+					"@context": "https://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement": [
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"name": "Home",
+							"item": "https://nextmetro.live/"
+						},
+						{
+							"@type": "ListItem",
+							"position": 2,
+							"name": "Metro Lines",
+							"item": "https://nextmetro.live/lines/"
+						},
+						{
+							"@type": "ListItem",
+							"position": 3,
+							"name": "Blue Line",
+							"item": "https://nextmetro.live/lines/blue/"
+						}
+					]
+				},
+				{
+					"@context": "https://schema.org",
+					"@type": "FAQPage",
+					"mainEntity": [
+						{
+							"@type": "Question",
+							"name": "How many stations does the DC Metro Blue Line have?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "The DC Metro Blue Line has 27 stations, running from Franconia-Springfield in Fairfax County, Virginia through Alexandria, the Pentagon, downtown Washington, D.C., and into Prince George's County, Maryland to Downtown Largo. The line spans 30.8 miles."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "Where does the Blue Line go?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "The Blue Line runs from Franconia-Springfield in southern Fairfax County, Virginia through Alexandria (King Street-Old Town), past Reagan National Airport, through the Pentagon, across the Potomac into downtown D.C. (including Rosslyn, Foggy Bottom, Metro Center, and the Smithsonian), then continues east through Capitol Hill, Stadium-Armory, and into Prince George's County, Maryland ending at Downtown Largo."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "What are the Blue Line service hours?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "As of June 2025, Blue Line service hours are: Monday through Thursday 5:00 AM to midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM to midnight. Hours may vary on holidays and special events."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "How often does the Blue Line run?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Blue Line trains run every 8 minutes during weekday peak hours (5:00–9:30 AM and 3:00–7:00 PM), every 12 minutes during off-peak periods, and every 15 minutes after 9:30 PM daily."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "How much does the Blue Line cost to ride?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Blue Line fares range from $2.00 to $6.00 per trip depending on distance and time of day. Peak fares (weekdays opening–9:30 AM and 3:00–7:00 PM) range from $2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or contactless payment is required."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "Does the Blue Line go to the airport?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Yes! The Blue Line directly serves Ronald Reagan Washington National Airport (DCA). The station is located adjacent to the airport terminals. This makes the Blue Line one of the most convenient ways to travel to and from Reagan National. The trip from Metro Center to the airport takes approximately 15 minutes."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "What transfers can I make on the Blue Line?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "The Blue Line connects to all other Metro lines at six transfer stations: Rosslyn (Orange and Silver lines), Metro Center (Red, Orange, and Silver lines), L'Enfant Plaza (Green, Yellow, Orange, and Silver lines), Pentagon (Yellow Line), Stadium-Armory (Orange and Silver lines), and King Street-Old Town (Yellow Line)."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "How long does it take to ride the entire Blue Line?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "A complete end-to-end ride from Franconia-Springfield to Downtown Largo takes approximately 52 minutes. The Blue Line covers 30.8 miles and passes through 27 stations across Virginia, the District of Columbia, and Maryland. The first segment of the Blue Line opened in 1977."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "Which Blue Line stations have parking?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "The following Blue Line stations have parking facilities: Franconia-Springfield, Van Dorn Street, King Street-Old Town, Stadium-Armory, Addison Road-Seat Pleasant, Morgan Boulevard, and Downtown Largo. Parking is free on weekends and holidays. On weekdays, most lots charge $5.20 per day."
+							}
+						},
+						{
+							"@type": "Question",
+							"name": "Does the Blue Line go to Old Town Alexandria?",
+							"acceptedAnswer": {
+								"@type": "Answer",
+								"text": "Yes, the Blue Line serves Old Town Alexandria via the King Street-Old Town station. From there, riders can take the free King Street Trolley to reach shops, restaurants, and the waterfront along King Street. The station also connects to the Yellow Line, Amtrak, and VRE commuter rail."
+							}
+						}
+					]
+				}
+			]
+		</script>
+	</head>
+	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+		<!-- NextMetro Site Nav -->
+		<nav class="nm-nav" aria-label="Site navigation">
+			<div class="nm-nav__strip" aria-hidden="true">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<a href="/" class="nm-nav__logo" aria-label="NextMetro home">
+				<span class="nm-nav__logo-next">NEXT</span>
+				<span class="nm-nav__logo-divider" aria-hidden="true"></span>
+				<span class="nm-nav__logo-metro">METRO</span>
+			</a>
+			<div class="nm-nav__links">
+				<a href="/alerts" class="nm-nav__link">Alerts</a>
+				<a
+					href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf"
+					class="nm-nav__link"
+					target="_blank"
+					rel="noopener noreferrer"
+					title="System Map (PDF, opens in new tab)"
+					aria-label="System Map (PDF, opens in new tab)">
+					Map
+				</a>
+				<a href="/fares" class="nm-nav__link">Fares</a>
+				<a href="/hours" class="nm-nav__link">Hours</a>
+			</div>
+			<button
+				class="nm-nav__hamburger"
+				id="navbar-toggle"
+				aria-label="Open menu"
+				aria-expanded="false"
+				aria-controls="mobile-menu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</nav>
+		<div class="nm-mobile-menu" id="mobile-menu">
+			<a href="/alerts" class="mobile-menu-link">Alerts</a>
+			<a
+				href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf"
+				class="mobile-menu-link"
+				target="_blank"
+				rel="noopener noreferrer"
+				title="System Map (PDF, opens in new tab)"
+				aria-label="System Map (PDF, opens in new tab)">
+				Map
+			</a>
+			<a href="/fares" class="mobile-menu-link">Fares</a>
+			<a href="/hours" class="mobile-menu-link">Hours</a>
+		</div>
 
-  <!-- NextMetro Site Nav -->
-  <nav class="nm-nav" aria-label="Site navigation">
-    <div class="nm-nav__strip" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <a href="/" class="nm-nav__logo" aria-label="NextMetro home">
-      <span class="nm-nav__logo-next">NEXT</span>
-      <span class="nm-nav__logo-divider" aria-hidden="true"></span>
-      <span class="nm-nav__logo-metro">METRO</span>
-    </a>
-    <div class="nm-nav__links">
-      <a href="/alerts" class="nm-nav__link">Alerts</a>
-      <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-nav__link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
-      <a href="/fares" class="nm-nav__link">Fares</a>
-      <a href="/hours" class="nm-nav__link">Hours</a>
-    </div>
-    <button class="nm-nav__hamburger" id="navbar-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
-  <div class="nm-mobile-menu" id="mobile-menu">
-    <a href="/alerts" class="mobile-menu-link">Alerts</a>
-    <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
-    <a href="/fares" class="mobile-menu-link">Fares</a>
-    <a href="/hours" class="mobile-menu-link">Hours</a>
-  </div>
+		<!-- Ticker placeholder -->
+		<div class="ticker-bar">
+			<div class="ticker-track" id="ticker-track"></div>
+		</div>
 
-  <!-- Ticker placeholder -->
-  <div class="ticker-bar">
-    <div class="ticker-track" id="ticker-track"></div>
-  </div>
+		<main id="main-content" data-line="blue">
+			<!-- Breadcrumb -->
+			<nav class="line-breadcrumb" aria-label="Breadcrumb">
+				<ol class="line-breadcrumb-list">
+					<li class="line-breadcrumb-item"><a href="/">Home</a></li>
+					<li class="line-breadcrumb-separator" aria-hidden="true">/</li>
+					<li class="line-breadcrumb-item"><span>Metro Lines</span></li>
+					<li class="line-breadcrumb-separator" aria-hidden="true">/</li>
+					<li class="line-breadcrumb-item line-breadcrumb-current" aria-current="page">Blue Line</li>
+				</ol>
+			</nav>
 
-  <main id="main-content" data-line="blue">
-  <!-- Breadcrumb -->
-  <nav class="line-breadcrumb" aria-label="Breadcrumb">
-    <ol class="line-breadcrumb-list">
-      <li class="line-breadcrumb-item"><a href="/">Home</a></li>
-      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
-      <li class="line-breadcrumb-item"><span>Metro Lines</span></li>
-      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
-      <li class="line-breadcrumb-item line-breadcrumb-current" aria-current="page">Blue Line</li>
-    </ol>
-  </nav>
+			<!-- Line Hero -->
+			<section class="line-hero">
+				<div class="line-hero-inner">
+					<span class="line-hero-label">
+						<span class="line-hero-label-dot"></span>
+						Line
+					</span>
+					<div class="line-hero-bar"></div>
+					<h1 class="line-hero-title">Blue Line</h1>
+					<p class="line-hero-subtitle">
+						27 stations
+						<span class="line-hero-separator">&middot;</span>
+						Franconia-Springfield to Downtown Largo
+					</p>
 
-  <!-- Line Hero -->
-  <section class="line-hero">
-    <div class="line-hero-inner">
-      <span class="line-hero-label"><span class="line-hero-label-dot"></span>Line</span>
-      <div class="line-hero-bar"></div>
-      <h1 class="line-hero-title">Blue Line</h1>
-      <p class="line-hero-subtitle">27 stations<span class="line-hero-separator">&middot;</span>Franconia-Springfield to Downtown Largo</p>
+					<!-- Status Hero -->
+					<div class="line-status" id="line-status">
+						<span class="line-status-dot line-status-dot--loading" id="line-status-dot"></span>
+						<span class="line-status-text" id="line-status-text">Checking status...</span>
+					</div>
+				</div>
+			</section>
 
-      <!-- Status Hero -->
-      <div class="line-status" id="line-status">
-        <span class="line-status-dot line-status-dot--loading" id="line-status-dot"></span>
-        <span class="line-status-text" id="line-status-text">Checking status...</span>
-      </div>
-    </div>
-  </section>
+			<!-- Main Content -->
+			<div class="line-page">
+				<!-- Alerts Section -->
+				<section class="line-alerts" id="line-alerts">
+					<div class="line-alerts-header">
+						<span class="line-alerts-indicator"></span>
+						<span class="line-alerts-badge">Service Alerts</span>
+					</div>
+					<div class="line-alerts-body" id="line-alerts-body">
+						<!-- Alerts rendered by JS -->
+					</div>
+					<a href="/alerts/" class="line-alerts-link">View all alerts</a>
+				</section>
 
-  <!-- Main Content -->
-  <div class="line-page">
+				<!-- Terminus Labels -->
+				<div class="line-termini animate-in d1">
+					<div class="line-termini-inner">
+						<span class="line-termini-station">
+							<span class="line-termini-dot"></span>
+							Franconia-Springfield
+						</span>
+						<span class="line-termini-track">
+							<span class="line-termini-line"></span>
+							<span class="line-termini-count">27 stations &middot; 30.8 mi</span>
+						</span>
+						<span class="line-termini-station">
+							Downtown Largo
+							<span class="line-termini-dot"></span>
+						</span>
+					</div>
+				</div>
 
-    <!-- Alerts Section -->
-    <section class="line-alerts" id="line-alerts">
-      <div class="line-alerts-header">
-        <span class="line-alerts-indicator"></span>
-        <span class="line-alerts-badge">Service Alerts</span>
-      </div>
-      <div class="line-alerts-body" id="line-alerts-body">
-        <!-- Alerts rendered by JS -->
-      </div>
-      <a href="/alerts/" class="line-alerts-link">View all alerts</a>
-    </section>
+				<!-- All Stations (static HTML for SEO crawlability) -->
+				<section class="line-stations animate-in d3">
+					<h2 class="line-section-heading">All Stations</h2>
+					<div class="line-stations-list" id="line-stations-list">
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="J03">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Franconia-Springfield</span>
+								<span class="line-station-badges">
+									<span class="station-badge station-badge--parking" title="Parking available">
+										<i class="ri-parking-box-line" aria-hidden="true"></i>
+									</span>
+								</span>
+								<span class="station-terminus">Terminus</span>
+								<span class="station-ground-level">Ground Level</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="J02">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Van Dorn Street</span>
+								<span class="line-station-badges">
+									<span class="station-badge station-badge--parking" title="Parking available">
+										<i class="ri-parking-box-line" aria-hidden="true"></i>
+									</span>
+								</span>
+								<span class="station-ground-level">Ground Level</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="C13">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot line-station-dot--transfer"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">King Street-Old Town</span>
+								<span class="line-station-badges">
+									<span class="station-transfer">
+										<span
+											class="station-transfer-dot station-transfer-dot--yellow"
+											title="Yellow Line"></span>
+										<span class="station-transfer-label">Transfer</span>
+									</span>
+									<span class="station-badge station-badge--parking" title="Parking available">
+										<i class="ri-parking-box-line" aria-hidden="true"></i>
+									</span>
+									<span class="station-badge station-badge--external" title="Amtrak">
+										<i class="ri-train-line" aria-hidden="true"></i>
+										Amtrak
+									</span>
+									<span class="station-badge station-badge--external" title="VRE">
+										<i class="ri-train-line" aria-hidden="true"></i>
+										VRE
+									</span>
+								</span>
+								<span class="station-elevated">Elevated</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="C12">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Braddock Road</span>
+								<span class="station-ground-level">Ground Level</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="C10">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Ronald Reagan Washington National Airport</span>
+								<span class="station-elevated">Elevated</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C09">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Crystal City</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C08">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Pentagon City</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C07">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot line-station-dot--transfer"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Pentagon</span>
+								<span class="line-station-badges">
+									<span class="station-transfer">
+										<span
+											class="station-transfer-dot station-transfer-dot--yellow"
+											title="Yellow Line"></span>
+										<span class="station-transfer-label">Transfer</span>
+									</span>
+								</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="C06">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Arlington Cemetery</span>
+								<span class="station-ground-level">Ground Level</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C05">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot line-station-dot--transfer"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Rosslyn</span>
+								<span class="line-station-badges">
+									<span class="station-transfer">
+										<span
+											class="station-transfer-dot station-transfer-dot--orange"
+											title="Orange Line"></span>
+										<span
+											class="station-transfer-dot station-transfer-dot--silver"
+											title="Silver Line"></span>
+										<span class="station-transfer-label">Transfer</span>
+									</span>
+								</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C04">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Foggy Bottom-GWU</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C03">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Farragut West</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C02">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">McPherson Square</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="C01">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot line-station-dot--transfer"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Metro Center</span>
+								<span class="line-station-badges">
+									<span class="station-transfer">
+										<span
+											class="station-transfer-dot station-transfer-dot--red"
+											title="Red Line"></span>
+										<span
+											class="station-transfer-dot station-transfer-dot--orange"
+											title="Orange Line"></span>
+										<span
+											class="station-transfer-dot station-transfer-dot--silver"
+											title="Silver Line"></span>
+										<span class="station-transfer-label">Transfer</span>
+									</span>
+								</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D01">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Federal Triangle</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D02">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Smithsonian</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D03">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot line-station-dot--transfer"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">L&#8217;Enfant Plaza</span>
+								<span class="line-station-badges">
+									<span class="station-transfer">
+										<span
+											class="station-transfer-dot station-transfer-dot--green"
+											title="Green Line"></span>
+										<span
+											class="station-transfer-dot station-transfer-dot--yellow"
+											title="Yellow Line"></span>
+										<span
+											class="station-transfer-dot station-transfer-dot--orange"
+											title="Orange Line"></span>
+										<span
+											class="station-transfer-dot station-transfer-dot--silver"
+											title="Silver Line"></span>
+										<span class="station-transfer-label">Transfer</span>
+									</span>
+								</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D04">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Federal Center SW</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D05">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Capitol South</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D06">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Eastern Market</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D07">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Potomac Ave</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="D08">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot line-station-dot--transfer"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Stadium-Armory</span>
+								<span class="line-station-badges">
+									<span class="station-transfer">
+										<span
+											class="station-transfer-dot station-transfer-dot--orange"
+											title="Orange Line"></span>
+										<span
+											class="station-transfer-dot station-transfer-dot--silver"
+											title="Silver Line"></span>
+										<span class="station-transfer-label">Transfer</span>
+									</span>
+									<span class="station-badge station-badge--parking" title="Parking available">
+										<i class="ri-parking-box-line" aria-hidden="true"></i>
+									</span>
+								</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="G01">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info"><span class="line-station-name">Benning Road</span></span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row" data-code="G02">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Capitol Heights</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="G03">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Addison Road-Seat Pleasant</span>
+								<span class="line-station-badges">
+									<span class="station-badge station-badge--parking" title="Parking available">
+										<i class="ri-parking-box-line" aria-hidden="true"></i>
+									</span>
+								</span>
+								<span class="station-ground-level">Ground Level</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="G04">
+							<span class="line-station-dot-col">
+								<span class="line-station-dot"></span>
+								<span class="line-station-connector"></span>
+							</span>
+							<span class="line-station-info">
+								<span class="line-station-name">Morgan Boulevard</span>
+								<span class="line-station-badges">
+									<span class="station-badge station-badge--parking" title="Parking available">
+										<i class="ri-parking-box-line" aria-hidden="true"></i>
+									</span>
+								</span>
+								<span class="station-ground-level">Ground Level</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+						<a href="/" class="line-station-row line-station-row--outdoor" data-code="G05">
+							<span class="line-station-dot-col"><span class="line-station-dot"></span></span>
+							<span class="line-station-info">
+								<span class="line-station-name">Downtown Largo</span>
+								<span class="line-station-badges">
+									<span class="station-badge station-badge--parking" title="Parking available">
+										<i class="ri-parking-box-line" aria-hidden="true"></i>
+									</span>
+								</span>
+								<span class="station-terminus">Terminus</span>
+								<span class="station-elevated">Elevated</span>
+							</span>
+							<span class="line-station-arrow">
+								<i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+							</span>
+						</a>
+					</div>
+				</section>
 
-    <!-- Terminus Labels -->
-    <div class="line-termini animate-in d1">
-      <div class="line-termini-inner">
-        <span class="line-termini-station">
-          <span class="line-termini-dot"></span>
-          Franconia-Springfield
-        </span>
-        <span class="line-termini-track">
-          <span class="line-termini-line"></span>
-          <span class="line-termini-count">27 stations &middot; 30.8 mi</span>
-        </span>
-        <span class="line-termini-station">
-          Downtown Largo
-          <span class="line-termini-dot"></span>
-        </span>
-      </div>
-    </div>
+				<!-- Service Info -->
+				<section class="line-info animate-in d4">
+					<h2 class="line-section-heading">Service Information</h2>
+					<div class="line-info-grid">
+						<!-- Service Details -->
+						<div class="line-info-card">
+							<h3 class="line-info-card-title">Line Details</h3>
+							<div class="line-info-rows">
+								<div class="line-info-row">
+									<span class="line-info-label">Termini</span>
+									<span class="line-info-value">Franconia-Springfield &harr; Downtown Largo</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">Stations</span>
+									<span class="line-info-value">27</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">Transfer Stations</span>
+									<span class="line-info-value">
+										Rosslyn, Metro Center, L&#8217;Enfant Plaza, Pentagon, Stadium-Armory, King
+										Street-Old Town
+									</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">Opened</span>
+									<span class="line-info-value">1977 (first segment)</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">Length</span>
+									<span class="line-info-value">30.8 miles</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">End-to-End</span>
+									<span class="line-info-value">~52 minutes</span>
+								</div>
+							</div>
+						</div>
 
-    <!-- All Stations (static HTML for SEO crawlability) -->
-    <section class="line-stations animate-in d3">
-      <h2 class="line-section-heading">All Stations</h2>
-      <div class="line-stations-list" id="line-stations-list">
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="J03"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Franconia-Springfield</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><i class="ri-parking-box-line" aria-hidden="true"></i></span></span><span class="station-terminus">Terminus</span><span class="station-ground-level">Ground Level</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="J02"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Van Dorn Street</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><i class="ri-parking-box-line" aria-hidden="true"></i></span></span><span class="station-ground-level">Ground Level</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="C13"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">King Street-Old Town</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot station-transfer-dot--yellow" title="Yellow Line"></span><span class="station-transfer-label">Transfer</span></span><span class="station-badge station-badge--parking" title="Parking available"><i class="ri-parking-box-line" aria-hidden="true"></i></span><span class="station-badge station-badge--external" title="Amtrak"><i class="ri-train-line" aria-hidden="true"></i>Amtrak</span><span class="station-badge station-badge--external" title="VRE"><i class="ri-train-line" aria-hidden="true"></i>VRE</span></span><span class="station-elevated">Elevated</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="C12"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Braddock Road</span><span class="station-ground-level">Ground Level</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="C10"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Ronald Reagan Washington National Airport</span><span class="station-elevated">Elevated</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C09"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Crystal City</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C08"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Pentagon City</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C07"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Pentagon</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot station-transfer-dot--yellow" title="Yellow Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="C06"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Arlington Cemetery</span><span class="station-ground-level">Ground Level</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C05"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Rosslyn</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot station-transfer-dot--orange" title="Orange Line"></span><span class="station-transfer-dot station-transfer-dot--silver" title="Silver Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C04"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Foggy Bottom-GWU</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C03"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Farragut West</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C02"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">McPherson Square</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="C01"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Metro Center</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot station-transfer-dot--red" title="Red Line"></span><span class="station-transfer-dot station-transfer-dot--orange" title="Orange Line"></span><span class="station-transfer-dot station-transfer-dot--silver" title="Silver Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D01"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Federal Triangle</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D02"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Smithsonian</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D03"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">L&#8217;Enfant Plaza</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot station-transfer-dot--green" title="Green Line"></span><span class="station-transfer-dot station-transfer-dot--yellow" title="Yellow Line"></span><span class="station-transfer-dot station-transfer-dot--orange" title="Orange Line"></span><span class="station-transfer-dot station-transfer-dot--silver" title="Silver Line"></span><span class="station-transfer-label">Transfer</span></span></span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D04"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Federal Center SW</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D05"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Capitol South</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D06"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Eastern Market</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D07"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Potomac Ave</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="D08"><span class="line-station-dot-col"><span class="line-station-dot line-station-dot--transfer"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Stadium-Armory</span><span class="line-station-badges"><span class="station-transfer"><span class="station-transfer-dot station-transfer-dot--orange" title="Orange Line"></span><span class="station-transfer-dot station-transfer-dot--silver" title="Silver Line"></span><span class="station-transfer-label">Transfer</span></span><span class="station-badge station-badge--parking" title="Parking available"><i class="ri-parking-box-line" aria-hidden="true"></i></span></span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="G01"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Benning Road</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row" data-code="G02"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Capitol Heights</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="G03"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Addison Road-Seat Pleasant</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><i class="ri-parking-box-line" aria-hidden="true"></i></span></span><span class="station-ground-level">Ground Level</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="G04"><span class="line-station-dot-col"><span class="line-station-dot"></span><span class="line-station-connector"></span></span><span class="line-station-info"><span class="line-station-name">Morgan Boulevard</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><i class="ri-parking-box-line" aria-hidden="true"></i></span></span><span class="station-ground-level">Ground Level</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-        <a href="/" class="line-station-row line-station-row--outdoor" data-code="G05"><span class="line-station-dot-col"><span class="line-station-dot"></span></span><span class="line-station-info"><span class="line-station-name">Downtown Largo</span><span class="line-station-badges"><span class="station-badge station-badge--parking" title="Parking available"><i class="ri-parking-box-line" aria-hidden="true"></i></span></span><span class="station-terminus">Terminus</span><span class="station-elevated">Elevated</span></span><span class="line-station-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span></a>
-      </div>
-    </section>
+						<!-- Service Hours (Updated June 2025) -->
+						<div class="line-info-card">
+							<h3 class="line-info-card-title">Service Hours</h3>
+							<div class="line-info-rows">
+								<div class="line-info-row">
+									<span class="line-info-label">Mon &ndash; Thu</span>
+									<span class="line-info-value">5:00 AM &ndash; Midnight</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">Friday</span>
+									<span class="line-info-value">5:00 AM &ndash; 2:00 AM</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">Saturday</span>
+									<span class="line-info-value">6:00 AM &ndash; 2:00 AM</span>
+								</div>
+								<div class="line-info-row">
+									<span class="line-info-label">Sunday</span>
+									<span class="line-info-value">6:00 AM &ndash; Midnight</span>
+								</div>
+							</div>
+							<a href="/hours/" class="line-info-link">Full schedule &rarr;</a>
+						</div>
+					</div>
 
-    <!-- Service Info -->
-    <section class="line-info animate-in d4">
-      <h2 class="line-section-heading">Service Information</h2>
-      <div class="line-info-grid">
+					<!-- Frequency -->
+					<div class="line-frequency">
+						<span class="line-frequency-label">Peak Frequency</span>
+						<span class="line-frequency-value">
+							Trains every 8 minutes at peak, every 12 minutes off-peak, every 15 minutes after 9:30 PM
+						</span>
+					</div>
+				</section>
 
-        <!-- Service Details -->
-        <div class="line-info-card">
-          <h3 class="line-info-card-title">Line Details</h3>
-          <div class="line-info-rows">
-            <div class="line-info-row">
-              <span class="line-info-label">Termini</span>
-              <span class="line-info-value">Franconia-Springfield &harr; Downtown Largo</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">Stations</span>
-              <span class="line-info-value">27</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">Transfer Stations</span>
-              <span class="line-info-value">Rosslyn, Metro Center, L&#8217;Enfant Plaza, Pentagon, Stadium-Armory, King Street-Old Town</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">Opened</span>
-              <span class="line-info-value">1977 (first segment)</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">Length</span>
-              <span class="line-info-value">30.8 miles</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">End-to-End</span>
-              <span class="line-info-value">~52 minutes</span>
-            </div>
-          </div>
-        </div>
+				<!-- Connects To -->
+				<section class="line-connections animate-in d5">
+					<h2 class="line-section-heading">Connects To</h2>
+					<div class="line-connections-body">
+						<div class="line-connections-pills">
+							<a href="/lines/red/" class="line-connection-pill line-connection-pill--red">
+								<span class="line-connection-dot"></span>
+								Red
+							</a>
+							<a href="/lines/orange/" class="line-connection-pill line-connection-pill--orange">
+								<span class="line-connection-dot"></span>
+								Orange
+							</a>
+							<a href="/lines/silver/" class="line-connection-pill line-connection-pill--silver">
+								<span class="line-connection-dot"></span>
+								Silver
+							</a>
+							<a href="/lines/green/" class="line-connection-pill line-connection-pill--green">
+								<span class="line-connection-dot"></span>
+								Green
+							</a>
+							<a href="/lines/yellow/" class="line-connection-pill line-connection-pill--yellow">
+								<span class="line-connection-dot"></span>
+								Yellow
+							</a>
+						</div>
+						<p class="line-connections-detail">
+							Transfer at
+							<strong>Metro Center</strong>
+							(Red, Orange, Silver),
+							<strong>Rosslyn</strong>
+							(Orange, Silver),
+							<strong>L&#8217;Enfant Plaza</strong>
+							(Green, Yellow, Orange, Silver),
+							<strong>Pentagon</strong>
+							(Yellow),
+							<strong>Stadium-Armory</strong>
+							(Orange, Silver), and
+							<strong>King Street-Old Town</strong>
+							(Yellow).
+						</p>
+						<a
+							href="https://www.wmata.com/schedules/maps/upload/system-map-rail.pdf"
+							target="_blank"
+							rel="noopener"
+							class="line-map-link">
+							<i class="ri-file-pdf-2-line" aria-hidden="true"></i>
+							View system map (PDF)
+						</a>
+					</div>
+				</section>
 
-        <!-- Service Hours (Updated June 2025) -->
-        <div class="line-info-card">
-          <h3 class="line-info-card-title">Service Hours</h3>
-          <div class="line-info-rows">
-            <div class="line-info-row">
-              <span class="line-info-label">Mon &ndash; Thu</span>
-              <span class="line-info-value">5:00 AM &ndash; Midnight</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">Friday</span>
-              <span class="line-info-value">5:00 AM &ndash; 2:00 AM</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">Saturday</span>
-              <span class="line-info-value">6:00 AM &ndash; 2:00 AM</span>
-            </div>
-            <div class="line-info-row">
-              <span class="line-info-label">Sunday</span>
-              <span class="line-info-value">6:00 AM &ndash; Midnight</span>
-            </div>
-          </div>
-          <a href="/hours/" class="line-info-link">Full schedule &rarr;</a>
-        </div>
+				<!-- FAQ Section -->
+				<section class="line-faq">
+					<h2 class="line-section-heading">Frequently Asked Questions</h2>
+					<div class="line-faq-list">
+						<details class="line-faq-item">
+							<summary class="line-faq-question">
+								How many stations does the DC Metro Blue Line have?
+							</summary>
+							<div class="line-faq-answer">
+								<p>
+									The DC Metro Blue Line has 27 stations, running from Franconia-Springfield in
+									Fairfax County, Virginia through Alexandria, the Pentagon, downtown Washington,
+									D.C., and into Prince George's County, Maryland to Downtown Largo. The line spans
+									30.8 miles.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">Where does the Blue Line go?</summary>
+							<div class="line-faq-answer">
+								<p>
+									The Blue Line runs from Franconia-Springfield in southern Fairfax County, Virginia
+									through Alexandria (King Street-Old Town), past Reagan National Airport, through the
+									Pentagon, across the Potomac into downtown D.C. (including Rosslyn, Foggy Bottom,
+									Metro Center, and the Smithsonian), then continues east through Capitol Hill,
+									Stadium-Armory, and into Prince George's County, Maryland ending at Downtown Largo.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">What are the Blue Line service hours?</summary>
+							<div class="line-faq-answer">
+								<p>
+									As of June 2025, Blue Line service hours are: Monday through Thursday 5:00 AM to
+									midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM
+									to midnight. Hours may vary on holidays and special events.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">How often does the Blue Line run?</summary>
+							<div class="line-faq-answer">
+								<p>
+									Blue Line trains run every 8 minutes during weekday peak hours (5:00&ndash;9:30 AM
+									and 3:00&ndash;7:00 PM), every 12 minutes during off-peak periods, and every 15
+									minutes after 9:30 PM daily.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">How much does the Blue Line cost to ride?</summary>
+							<div class="line-faq-answer">
+								<p>
+									Blue Line fares range from $2.00 to $6.00 per trip depending on distance and time of
+									day. Peak fares (weekdays opening&ndash;9:30 AM and 3:00&ndash;7:00 PM) range from
+									$2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or
+									contactless payment is required.
+									<a href="/fares/">Calculate your fare &rarr;</a>
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">Does the Blue Line go to the airport?</summary>
+							<div class="line-faq-answer">
+								<p>
+									Yes! The Blue Line directly serves Ronald Reagan Washington National Airport (DCA).
+									The station is located adjacent to the airport terminals, making it one of the most
+									convenient ways to travel to and from Reagan National. The trip from Metro Center to
+									the airport takes approximately 15 minutes. For Dulles International Airport (IAD),
+									transfer to the Silver Line at Rosslyn or Metro Center.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">What transfers can I make on the Blue Line?</summary>
+							<div class="line-faq-answer">
+								<p>
+									The Blue Line connects to all other Metro lines at six transfer stations: Rosslyn
+									(Orange and Silver lines), Metro Center (Red, Orange, and Silver lines),
+									L&#8217;Enfant Plaza (Green, Yellow, Orange, and Silver lines), Pentagon (Yellow
+									Line), Stadium-Armory (Orange and Silver lines), and King Street-Old Town (Yellow
+									Line). At King Street-Old Town, you can also connect to Amtrak and VRE commuter
+									rail.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">
+								How long does it take to ride the entire Blue Line?
+							</summary>
+							<div class="line-faq-answer">
+								<p>
+									A complete end-to-end ride from Franconia-Springfield to Downtown Largo takes
+									approximately 52 minutes. The Blue Line covers 30.8 miles and passes through 27
+									stations across Virginia, the District of Columbia, and Maryland. The first segment
+									of the Blue Line opened in 1977.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">Which Blue Line stations have parking?</summary>
+							<div class="line-faq-answer">
+								<p>
+									The following Blue Line stations have parking facilities: Franconia-Springfield, Van
+									Dorn Street, King Street-Old Town, Stadium-Armory, Addison Road-Seat Pleasant,
+									Morgan Boulevard, and Downtown Largo. Parking is free on weekends and holidays. On
+									weekdays, most lots charge $5.20 per day.
+								</p>
+							</div>
+						</details>
+						<details class="line-faq-item">
+							<summary class="line-faq-question">Does the Blue Line go to Old Town Alexandria?</summary>
+							<div class="line-faq-answer">
+								<p>
+									Yes, the Blue Line serves Old Town Alexandria via the King Street-Old Town station.
+									From there, riders can take the free King Street Trolley to reach shops,
+									restaurants, and the waterfront along King Street. The station also connects to the
+									Yellow Line, Amtrak, and VRE commuter rail.
+								</p>
+							</div>
+						</details>
+					</div>
+				</section>
 
-      </div>
+				<!-- Disclaimer -->
+				<div class="line-disclaimer">
+					<p>
+						Status and alerts are sourced from the
+						<a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a>
+						and update every 60 seconds. Service hours are effective June 22, 2025 and subject to change for
+						holidays and special events. For the most current information, visit
+						<a href="https://www.wmata.com/" target="_blank" rel="noopener">wmata.com</a>
+						. NextMetro is not affiliated with WMATA.
+					</p>
+				</div>
+			</div>
+		</main>
 
-      <!-- Frequency -->
-      <div class="line-frequency">
-        <span class="line-frequency-label">Peak Frequency</span>
-        <span class="line-frequency-value">Trains every 8 minutes at peak, every 12 minutes off-peak, every 15 minutes after 9:30 PM</span>
-      </div>
-    </section>
-
-    <!-- Connects To -->
-    <section class="line-connections animate-in d5">
-      <h2 class="line-section-heading">Connects To</h2>
-      <div class="line-connections-body">
-        <div class="line-connections-pills">
-          <a href="/lines/red/" class="line-connection-pill line-connection-pill--red">
-            <span class="line-connection-dot"></span>
-            Red
-          </a>
-          <a href="/lines/orange/" class="line-connection-pill line-connection-pill--orange">
-            <span class="line-connection-dot"></span>
-            Orange
-          </a>
-          <a href="/lines/silver/" class="line-connection-pill line-connection-pill--silver">
-            <span class="line-connection-dot"></span>
-            Silver
-          </a>
-          <a href="/lines/green/" class="line-connection-pill line-connection-pill--green">
-            <span class="line-connection-dot"></span>
-            Green
-          </a>
-          <a href="/lines/yellow/" class="line-connection-pill line-connection-pill--yellow">
-            <span class="line-connection-dot"></span>
-            Yellow
-          </a>
-        </div>
-        <p class="line-connections-detail">
-          Transfer at <strong>Metro Center</strong> (Red, Orange, Silver), <strong>Rosslyn</strong> (Orange, Silver), <strong>L&#8217;Enfant Plaza</strong> (Green, Yellow, Orange, Silver), <strong>Pentagon</strong> (Yellow), <strong>Stadium-Armory</strong> (Orange, Silver), and <strong>King Street-Old Town</strong> (Yellow).
-        </p>
-        <a href="https://www.wmata.com/schedules/maps/upload/system-map-rail.pdf" target="_blank" rel="noopener" class="line-map-link">
-          <i class="ri-file-pdf-2-line" aria-hidden="true"></i>
-          View system map (PDF)
-        </a>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="line-faq">
-      <h2 class="line-section-heading">Frequently Asked Questions</h2>
-      <div class="line-faq-list">
-        <details class="line-faq-item">
-          <summary class="line-faq-question">How many stations does the DC Metro Blue Line have?</summary>
-          <div class="line-faq-answer">
-            <p>The DC Metro Blue Line has 27 stations, running from Franconia-Springfield in Fairfax County, Virginia through Alexandria, the Pentagon, downtown Washington, D.C., and into Prince George's County, Maryland to Downtown Largo. The line spans 30.8 miles.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">Where does the Blue Line go?</summary>
-          <div class="line-faq-answer">
-            <p>The Blue Line runs from Franconia-Springfield in southern Fairfax County, Virginia through Alexandria (King Street-Old Town), past Reagan National Airport, through the Pentagon, across the Potomac into downtown D.C. (including Rosslyn, Foggy Bottom, Metro Center, and the Smithsonian), then continues east through Capitol Hill, Stadium-Armory, and into Prince George's County, Maryland ending at Downtown Largo.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">What are the Blue Line service hours?</summary>
-          <div class="line-faq-answer">
-            <p>As of June 2025, Blue Line service hours are: Monday through Thursday 5:00 AM to midnight, Friday 5:00 AM to 2:00 AM, Saturday 6:00 AM to 2:00 AM, and Sunday 6:00 AM to midnight. Hours may vary on holidays and special events.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">How often does the Blue Line run?</summary>
-          <div class="line-faq-answer">
-            <p>Blue Line trains run every 8 minutes during weekday peak hours (5:00&ndash;9:30 AM and 3:00&ndash;7:00 PM), every 12 minutes during off-peak periods, and every 15 minutes after 9:30 PM daily.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">How much does the Blue Line cost to ride?</summary>
-          <div class="line-faq-answer">
-            <p>Blue Line fares range from $2.00 to $6.00 per trip depending on distance and time of day. Peak fares (weekdays opening&ndash;9:30 AM and 3:00&ndash;7:00 PM) range from $2.25 to $6.00. Off-peak fares range from $2.00 to $3.85. A SmarTrip card or contactless payment is required. <a href="/fares/">Calculate your fare &rarr;</a></p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">Does the Blue Line go to the airport?</summary>
-          <div class="line-faq-answer">
-            <p>Yes! The Blue Line directly serves Ronald Reagan Washington National Airport (DCA). The station is located adjacent to the airport terminals, making it one of the most convenient ways to travel to and from Reagan National. The trip from Metro Center to the airport takes approximately 15 minutes. For Dulles International Airport (IAD), transfer to the Silver Line at Rosslyn or Metro Center.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">What transfers can I make on the Blue Line?</summary>
-          <div class="line-faq-answer">
-            <p>The Blue Line connects to all other Metro lines at six transfer stations: Rosslyn (Orange and Silver lines), Metro Center (Red, Orange, and Silver lines), L&#8217;Enfant Plaza (Green, Yellow, Orange, and Silver lines), Pentagon (Yellow Line), Stadium-Armory (Orange and Silver lines), and King Street-Old Town (Yellow Line). At King Street-Old Town, you can also connect to Amtrak and VRE commuter rail.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">How long does it take to ride the entire Blue Line?</summary>
-          <div class="line-faq-answer">
-            <p>A complete end-to-end ride from Franconia-Springfield to Downtown Largo takes approximately 52 minutes. The Blue Line covers 30.8 miles and passes through 27 stations across Virginia, the District of Columbia, and Maryland. The first segment of the Blue Line opened in 1977.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">Which Blue Line stations have parking?</summary>
-          <div class="line-faq-answer">
-            <p>The following Blue Line stations have parking facilities: Franconia-Springfield, Van Dorn Street, King Street-Old Town, Stadium-Armory, Addison Road-Seat Pleasant, Morgan Boulevard, and Downtown Largo. Parking is free on weekends and holidays. On weekdays, most lots charge $5.20 per day.</p>
-          </div>
-        </details>
-        <details class="line-faq-item">
-          <summary class="line-faq-question">Does the Blue Line go to Old Town Alexandria?</summary>
-          <div class="line-faq-answer">
-            <p>Yes, the Blue Line serves Old Town Alexandria via the King Street-Old Town station. From there, riders can take the free King Street Trolley to reach shops, restaurants, and the waterfront along King Street. The station also connects to the Yellow Line, Amtrak, and VRE commuter rail.</p>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- Disclaimer -->
-    <div class="line-disclaimer">
-      <p>
-        Status and alerts are sourced from the <a href="https://developer.wmata.com/" target="_blank" rel="noopener">WMATA API</a> and update every 60 seconds. Service hours are effective June 22, 2025 and subject to change for holidays and special events. For the most current information, visit <a href="https://www.wmata.com/" target="_blank" rel="noopener">wmata.com</a>. NextMetro is not affiliated with WMATA.
-      </p>
-    </div>
-  </div>
-
-  </main>
-
-  <!-- NextMetro Site Footer -->
-  <footer class="nm-footer">
-    <div class="nm-footer__strip" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nm-footer__body">
-      <div class="nm-footer__col">
-        <h2 class="nm-footer__heading">Navigate</h2>
-        <nav class="nm-footer__links" aria-label="Footer navigation">
-          <a href="/"          class="nm-footer__link">Home</a>
-          <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">System Map</a>
-          <a href="/alerts"    class="nm-footer__link">Alerts</a>
-          <a href="/elevators" class="nm-footer__link">Elevator Status</a>
-          <a href="/fares"     class="nm-footer__link">Fares</a>
-          <a href="/hours"     class="nm-footer__link">Hours</a>
-        </nav>
-      </div>
-      <div class="nm-footer__col">
-        <h2 class="nm-footer__heading">Lines</h2>
-        <nav class="nm-footer__links" aria-label="Metro lines">
-          <a href="/lines/red"    class="nm-footer__link nm-footer__link--line">
-            <span class="nm-footer__dot nm-footer__dot--red"></span>Red Line</a>
-          <a href="/lines/orange" class="nm-footer__link nm-footer__link--line">
-            <span class="nm-footer__dot nm-footer__dot--orange"></span>Orange Line</a>
-          <a href="/lines/silver" class="nm-footer__link nm-footer__link--line">
-            <span class="nm-footer__dot nm-footer__dot--silver"></span>Silver Line</a>
-          <a href="/lines/blue"   class="nm-footer__link nm-footer__link--line">
-            <span class="nm-footer__dot nm-footer__dot--blue"></span>Blue Line</a>
-          <a href="/lines/yellow" class="nm-footer__link nm-footer__link--line">
-            <span class="nm-footer__dot nm-footer__dot--yellow"></span>Yellow Line</a>
-          <a href="/lines/green"  class="nm-footer__link nm-footer__link--line">
-            <span class="nm-footer__dot nm-footer__dot--green"></span>Green Line</a>
-        </nav>
-      </div>
-      <div class="nm-footer__col">
-        <h2 class="nm-footer__heading">About</h2>
-        <nav class="nm-footer__links" aria-label="About">
-          <a href="/about"   class="nm-footer__link">About NextMetro</a>
-          <a href="/privacy" class="nm-footer__link">Privacy Policy</a>
-          <a href="/terms"   class="nm-footer__link">Terms of Service</a>
-          <a href="/crisis"  class="nm-footer__link">Crisis Resources</a>
-          <a href="https://nickpoole.dev" class="nm-footer__link" target="_blank" rel="noopener noreferrer">Webmaster</a>
-        </nav>
-        <div class="nm-footer__data-block">
-          <h2 class="nm-footer__heading">Data</h2>
-          <p class="nm-footer__body-text">
-            Real-time data via WMATA API.<br>
-            Not affiliated with WMATA.
-          </p>
-        </div>
-      </div>
-      <div class="nm-footer__col nm-footer__col--logo">
-        <div class="nm-footer__logo" role="img" aria-label="NextMetro">
-          <div class="nm-footer__logo-mark"><b>NM</b></div>
-          <div class="nm-footer__logo-strip" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="nm-footer__logo-text">
-            <span class="nm-footer__logo-next">NEXT</span>
-            <span class="nm-footer__logo-metro">METRO</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="nm-footer__bottom">
-      <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
-    </div>
-  </footer>
-  <script src="/js/nav.js"></script>
-  <script>window.LINE_CODE='BL';window.LINE_NAME='Blue';</script>
-  <script src="/js/shared.js"></script>
-  <script src="/js/line.js"></script>
-</body>
+		<!-- NextMetro Site Footer -->
+		<footer class="nm-footer">
+			<div class="nm-footer__strip" aria-hidden="true">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<div class="nm-footer__body">
+				<div class="nm-footer__col">
+					<h2 class="nm-footer__heading">Navigate</h2>
+					<nav class="nm-footer__links" aria-label="Footer navigation">
+						<a href="/" class="nm-footer__link">Home</a>
+						<a
+							href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf"
+							class="nm-footer__link"
+							target="_blank"
+							rel="noopener noreferrer"
+							title="System Map (PDF, opens in new tab)"
+							aria-label="System Map (PDF, opens in new tab)">
+							System Map
+						</a>
+						<a href="/alerts" class="nm-footer__link">Alerts</a>
+						<a href="/elevators" class="nm-footer__link">Elevator Status</a>
+						<a href="/fares" class="nm-footer__link">Fares</a>
+						<a href="/hours" class="nm-footer__link">Hours</a>
+					</nav>
+				</div>
+				<div class="nm-footer__col">
+					<h2 class="nm-footer__heading">Lines</h2>
+					<nav class="nm-footer__links" aria-label="Metro lines">
+						<a href="/lines/red" class="nm-footer__link nm-footer__link--line">
+							<span class="nm-footer__dot nm-footer__dot--red"></span>
+							Red Line
+						</a>
+						<a href="/lines/orange" class="nm-footer__link nm-footer__link--line">
+							<span class="nm-footer__dot nm-footer__dot--orange"></span>
+							Orange Line
+						</a>
+						<a href="/lines/silver" class="nm-footer__link nm-footer__link--line">
+							<span class="nm-footer__dot nm-footer__dot--silver"></span>
+							Silver Line
+						</a>
+						<a href="/lines/blue" class="nm-footer__link nm-footer__link--line">
+							<span class="nm-footer__dot nm-footer__dot--blue"></span>
+							Blue Line
+						</a>
+						<a href="/lines/yellow" class="nm-footer__link nm-footer__link--line">
+							<span class="nm-footer__dot nm-footer__dot--yellow"></span>
+							Yellow Line
+						</a>
+						<a href="/lines/green" class="nm-footer__link nm-footer__link--line">
+							<span class="nm-footer__dot nm-footer__dot--green"></span>
+							Green Line
+						</a>
+					</nav>
+				</div>
+				<div class="nm-footer__col">
+					<h2 class="nm-footer__heading">About</h2>
+					<nav class="nm-footer__links" aria-label="About">
+						<a href="/about" class="nm-footer__link">About NextMetro</a>
+						<a href="/privacy" class="nm-footer__link">Privacy Policy</a>
+						<a href="/terms" class="nm-footer__link">Terms of Service</a>
+						<a href="/crisis" class="nm-footer__link">Crisis Resources</a>
+						<a
+							href="https://nickpoole.dev"
+							class="nm-footer__link"
+							target="_blank"
+							rel="noopener noreferrer">
+							Webmaster
+						</a>
+					</nav>
+					<div class="nm-footer__data-block">
+						<h2 class="nm-footer__heading">Data</h2>
+						<p class="nm-footer__body-text">
+							Real-time data via WMATA API.
+							<br />
+							Not affiliated with WMATA.
+						</p>
+					</div>
+				</div>
+				<div class="nm-footer__col nm-footer__col--logo">
+					<div class="nm-footer__logo" role="img" aria-label="NextMetro">
+						<div class="nm-footer__logo-mark"><b>NM</b></div>
+						<div class="nm-footer__logo-strip" aria-hidden="true">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+						<div class="nm-footer__logo-text">
+							<span class="nm-footer__logo-next">NEXT</span>
+							<span class="nm-footer__logo-metro">METRO</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="nm-footer__bottom">
+				<span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
+			</div>
+		</footer>
+		<script src="/js/nav.js"></script>
+		<script>
+			window.LINE_CODE = 'BL';
+			window.LINE_NAME = 'Blue';
+		</script>
+		<script src="/js/shared.js"></script>
+		<script src="/js/line.js"></script>
+	</body>
 </html>
