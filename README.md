@@ -1,26 +1,44 @@
+<div align="center">
+
+<img src="public/images/og/homepage-utility/og-homepage.png" alt="NextMetro — Real-time DC Metro arrival times and system info" width="720" />
+
 # NextMetro
 
-**Real-time tracker for the Washington D.C. Metrorail system.**
+**Real-time arrival tracker for the Washington D.C. Metrorail system.**
 
-NextMetro displays live train arrivals, system status, service alerts, station facility conditions, and fare information — styled after the Metro's own visual language of concrete vault ceilings, pylon signage, and PIDS boards.
+Live train predictions, service alerts, elevator/escalator status, fare calculator, and station info for all 98 WMATA stations — built as a fast, zero-framework static site on Cloudflare Workers.
 
-**[Live Site](https://nextmetro.live)**
+[![Live Site](https://img.shields.io/badge/Live_Site-nextmetro.live-D4A03C?style=for-the-badge)](https://nextmetro.live)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
+[![License](https://img.shields.io/badge/License-Source_Available-333333?style=for-the-badge)](#license)
+
+</div>
 
 ---
 
-## Features
+## What It Does
 
-- **PIDS Arrival Board** — Real-time train arrivals grouped by direction with line colors, car counts, and BRD/ARR status indicators. Auto-refreshes every 25 seconds.
-- **Station Selector** — Searchable dropdown covering all 98 WMATA stations with line color indicators and keyboard navigation.
-- **Multi-Platform Support** — Stations with multiple platforms (Metro Center, Gallery Place, L'Enfant Plaza, Fort Totten) fetch and merge predictions from both platform codes.
-- **System Status Bar** — Static status bar showing real-time status for all six Metro lines (Red, Blue, Orange, Green, Yellow, Silver) with colored dots and pulse indicators on alerts.
-- **System Status Sidebar** — Per-line status with Normal, Delays, and Advisory states derived from live incident data.
-- **Service Alerts Page** — Dedicated [alerts page](https://nextmetro.live/alerts/) showing all WMATA rail incidents (delays, closures, single tracking, advisories) and elevator/escalator outages system-wide. Severity-sorted, auto-refreshing every 30 seconds, with an 8-question FAQ section covering single tracking, delay causes, station closures, and Metro station depths. Schema.org FAQPage structured data for SEO.
-- **Elevator & Escalator Status Page** — Dedicated [elevator & escalator page](https://nextmetro.live/elevators/) with station-grouped outage view, type filters (elevators/escalators), line filters, color-coded accessibility status (green = all working, yellow = escalator out, red = elevator out), summary bar, and 6-question FAQ with FAQPage structured data. Crawlable station names for long-tail SEO. Also shown per-station on the main arrivals page.
-- **Fare Calculator** — Interactive fare lookup between any two stations showing peak, off-peak, and senior/disabled pricing with estimated travel time.
-- **Line Pages** — Dedicated pages for each Metro line with real-time arrivals, station lists with transfer/parking badges, service hours, frequency info, and an FAQ section with structured data for SEO. Currently live: [Red Line](https://nextmetro.live/lines/red/).
-- **Station Pages** — Dedicated station pages with real-time PIDS arrivals, station info, adjacent stations, and FAQ sections with Schema.org structured data (TrainStation, FAQPage, BreadcrumbList). Transfer stations (Metro Center, Gallery Place) feature dual side-by-side PIDS boards — one per physical platform — with separate WMATA API calls. Currently live: [Brookland-CUA](https://nextmetro.live/station/brookland-cua/), [Potomac Yard](https://nextmetro.live/station/potomac-yard/), [Metro Center](https://nextmetro.live/station/metro-center/), [Gallery Place-Chinatown](https://nextmetro.live/station/gallery-place/), [Union Station](https://nextmetro.live/station/union-station/).
-- **Station Search Navigation** — Selecting a station from the search dropdown navigates directly to that station's dedicated page when available.
+NextMetro is an independent, real-time dashboard for the D.C. Metro system. It pulls live data from the [WMATA API](https://developer.wmata.com/) and presents it through a design language inspired by the Metro's own architecture — concrete vaults, PIDS boards, pylon signage.
+
+### Pages & Features
+
+| Page | What It Shows |
+|------|--------------|
+| **[Station Pages](https://nextmetro.live/station/metro-center/)** | PIDS arrival board, system status, service alerts, elevator/escalator status, fare calculator. Transfer stations (Metro Center, Gallery Place) show dual side-by-side boards — one per physical platform. |
+| **[Line Pages](https://nextmetro.live/lines/red/)** | All stations on the line with transfer/parking badges, real-time status, service hours, frequency info, and FAQ. All 6 lines covered. |
+| **[Service Alerts](https://nextmetro.live/alerts/)** | Every active WMATA rail incident + elevator/escalator outage, severity-sorted, auto-refreshing. |
+| **[Elevator & Escalator Status](https://nextmetro.live/elevators/)** | System-wide outage tracker grouped by station, filterable by type and line. |
+| **[Fare Calculator](https://nextmetro.live/fares/)** | Peak/off-peak/senior pricing between any two stations with travel time estimates and commute cost projections. |
+| **[Hours & Schedules](https://nextmetro.live/hours/)** | Operating hours, frequency tables, holiday schedules. |
+| **[Homepage](https://nextmetro.live/)** | Station search, live alert preview, quick links. |
+
+### Technical Highlights
+
+- **Zero build step** — Vanilla HTML, CSS, and JavaScript. No framework, no bundler, no node_modules on the frontend.
+- **Cloudflare Workers** — API proxy with tiered caching. Static assets served at the edge.
+- **WCAG AA accessible** — Skip links, ARIA labels, keyboard navigation, contrast-compliant color system.
+- **SEO-optimized** — Schema.org structured data (TrainStation, FAQPage, BreadcrumbList, SpecialAnnouncement), OG images for every page and all 98 stations, canonical URLs, sitemap.
+- **25-second polling** — Arrival predictions auto-refresh. Incidents refresh every 30–60 seconds.
 
 ---
 
@@ -29,93 +47,73 @@ NextMetro displays live train arrivals, system status, service alerts, station f
 | Layer | Technology |
 |-------|-----------|
 | **Frontend** | Vanilla HTML5, CSS, JavaScript |
-| **Backend** | Cloudflare Workers |
-| **API** | [WMATA Real-Time Rail API](https://developer.wmata.com/) |
-| **Typography** | Rajdhani (Google Fonts) |
-| **Hosting** | Cloudflare (Workers + static assets) |
+| **Backend** | Cloudflare Workers (API proxy + caching) |
+| **Data Source** | [WMATA Real-Time Rail API](https://developer.wmata.com/) |
+| **Typography** | [Rajdhani](https://fonts.google.com/specimen/Rajdhani) (Google Fonts) |
+| **Hosting** | Cloudflare (Workers + static assets at the edge) |
 
 ---
 
-## Architecture
+## Design System
+
+The visual identity — **Neutral Brutalist** — draws from the architectural language of the D.C. Metro:
+
+- **Dark surface palette** — `#0A0A0A` background, `#141414` cards, `#1E1E1E` elevated surfaces
+- **Amber accent** — `#D4A03C` for interactive elements, inspired by WMATA signage
+- **PIDS display** — Black screen with brightened WMATA line colors and monospace-style data
+- **Zero border-radius** — Sharp rectangular edges throughout, matching pylon sign geometry
+- **WCAG AA contrast** — Every text/background combination meets accessibility standards
+- **Typography** — Rajdhani across all UI, uppercase station names, tabular arrival data
+
+### WMATA Line Colors
 
 ```
-nextmetro/
-├── src/
-│   └── index.js           Cloudflare Workers backend (API proxy + cache)
-├── wrangler.toml          Cloudflare Workers config
-├── package.json
-├── .gitignore
-├── LICENSE                MIT
-├── README.md
-├── SECURITY.md            Security policy and measures
-└── public/                Static frontend (served by Cloudflare)
-    ├── index.html         Main arrivals app
-    ├── about.html         About page
-    ├── 404.html           Custom 404 page
-    ├── robots.txt
-    ├── sitemap.xml
-    ├── alerts/
-    │   └── index.html     Service alerts page (rail + elevator/escalator, FAQ)
-    ├── elevators/
-    │   └── index.html     Elevator & escalator status page (station-grouped, filtered)
-    ├── fares/
-    │   └── index.html     Fare calculator page
-    ├── hours/
-    │   └── index.html     Service hours page
-    ├── lines/
-    │   ├── red/
-    │   ├── blue/
-    │   ├── orange/
-    │   ├── green/
-    │   ├── yellow/
-    │   └── silver/        Line pages (stations, service info, FAQ)
-    ├── station/
-    │   ├── brookland-cua/  Standard station page (Red Line)
-    │   ├── potomac-yard/   Standard station page (Blue/Yellow)
-    │   ├── metro-center/   Transfer station — dual PIDS (Red + Or/Bl/Sv)
-    │   ├── gallery-place/  Transfer station — dual PIDS (Red + Gr/Yl)
-    │   └── union-station/  Standard station page (Red Line)
-    ├── css/
-    │   ├── styles.css     Full design system
-    │   ├── nav.css        Navigation component styles
-    │   └── footer.css     Footer component styles
-    ├── js/
-    │   ├── app.js         Application logic (arrivals, transfer PIDS, station nav)
-    │   ├── alerts.js      Alerts page logic
-    │   ├── elevators.js   Elevator/escalator page logic
-    │   ├── nav.js         Shared navigation bar component
-    │   ├── line.js        Line page logic
-    │   └── fares.js       Fare calculator logic
-    └── images/            Photography assets
+Red    #D41140  ████  |  Orange  #F09500  ████
+Blue   #00A8E8  ████  |  Green   #00BD45  ████
+Yellow #FFD400  ████  |  Silver  #9BA5A5  ████
 ```
-
-### API Routes (Cloudflare Workers)
-
-| Route | Description | Cache |
-|-------|-------------|-------|
-| `GET /healthz` | Health check | None |
-| `GET /api/stations` | All WMATA stations | Infinite |
-| `GET /api/station/:code` | Single station info | Infinite |
-| `GET /api/predictions/:code` | Real-time train arrivals | None (live) |
-| `GET /api/incidents` | System-wide rail incidents | 60s TTL |
-| `GET /api/elevators` | All elevator/escalator outages | 120s TTL |
-| `GET /api/elevators/:code` | Elevator/escalator outages per station | 120s TTL |
-| `GET /api/fare/:from/:to` | Fare info between stations | 1hr TTL |
-
-### Deployment
-
-Cloudflare Workers serves both the static frontend and the API proxy. The WMATA API key is stored as a Workers secret.
 
 ---
 
-## Getting Started
+## Project Timeline
 
-### Prerequisites
+This project has been built iteratively from a React prototype to a production-grade Cloudflare Workers site over ~9 months.
 
-- Node.js (v18+)
-- A [WMATA Developer API key](https://developer.wmata.com/)
+| Date | Milestone | Details |
+|------|-----------|---------|
+| **Jun 2025** | **v1.0 — Initial prototype** | React + Vite + Material UI scaffold. Station dropdown, mock train cards, design exploration. |
+| **Jun 2025** | **v2.0 — Full WMATA integration** | Rewrote from React to vanilla HTML/CSS/JS. Express backend proxy, real-time arrivals, fare calculator, system status. Deployed on Netlify + Render. |
+| **Feb 2026** | **Cloudflare migration** | Moved entire stack to Cloudflare Workers. Single deployment for API proxy + static assets. Eliminated cold starts. |
+| **Feb 2026** | **v2.1 — Line pages** | 6 dedicated line pages with station lists, transfer badges, parking indicators, service info, and FAQ sections. |
+| **Feb 2026** | **v2.2 — Alerts page** | Unified rail incidents + elevator/escalator outages. Severity sorting, SpecialAnnouncement schema. |
+| **Feb 2026** | **v2.3 — Elevator status** | Station-grouped outage view with dual filter system. Accessibility-first sorting (elevator outages surface first). |
+| **Mar 2026** | **v2.5 — Site-wide audit** | WCAG compliance pass, skip navigation on all pages, Schema.org structured data everywhere, meta/OG tags audit, static status bar. |
+| **Mar 2026** | **v2.6 — Station pages** | 5 dedicated station pages including dual-PIDS transfer stations (Metro Center, Gallery Place). Search navigation. |
+| **Mar 2026** | **v2.7 — Performance** | CSS code splitting (5,700-line monolith → 433 core + 11 page-specific files). JS DRY refactor (shared.js eliminates ~680 lines of duplication across 6 files). Comprehensive site audit + IndexNow integration. |
 
-### Setup
+---
+
+## Contributing
+
+Contributions are welcome. If you're interested in helping improve NextMetro:
+
+1. **Open an issue first** — Describe what you want to change and why. This prevents duplicate work and ensures alignment.
+2. **Fork and branch** — Create a feature branch from `main`.
+3. **Keep it focused** — One feature or fix per PR. Small PRs are easier to review.
+4. **Test locally** — Make sure the site works before submitting. See [Local Development](#local-development) below.
+5. **Submit a PR** — Reference the issue number in your PR description.
+
+### What Would Be Helpful
+
+- Additional station pages (only 5 of 98 stations have dedicated pages so far)
+- Mobile UX improvements
+- Performance optimizations
+- Accessibility improvements
+- Bug reports from real Metro riders
+
+### Local Development
+
+**Prerequisites:** Node.js v18+, a [WMATA Developer API key](https://developer.wmata.com/)
 
 ```bash
 git clone https://github.com/nick-poole/nextmetro.git
@@ -123,129 +121,50 @@ cd nextmetro
 npm install
 ```
 
-Create a `.env` file in the project root:
+Set your WMATA API key as a Cloudflare Workers secret:
 
-```
-WMATA_API_KEY=your_api_key_here
+```bash
+npx wrangler secret put WMATA_API_KEY
 ```
 
-### Run Locally
+Start the local dev server:
 
 ```bash
 npm start
 ```
 
-The server starts on `http://localhost:3001` and serves the frontend from `public/`.
-
 ---
 
-## Design System
+## Security
 
-The visual design — **Concrete Vault** — is based on the architectural identity of the D.C. Metro:
+Security details are documented in [SECURITY.md](SECURITY.md).
 
-- **Surface palette**: Warm concrete tones (`#cfc6b9` base) for backgrounds and cards
-- **Pylon signage**: Dark brown (`#3b2415`) for headers and navigation
-- **PIDS display**: Black screen (`#0a0a0a`) with brightened line colors and amber accents
-- **Fare machine**: WMATA blue (`#0077b6`) with orange stripe accents
-- **Metro line colors**: Accurate WMATA standard colors for all six lines
-- **Typography**: Rajdhani for all UI text and data displays
-- **AA accessibility**: All text-on-background color combinations meet WCAG AA contrast ratios
-- **Zero border-radius**: Sharp rectangular edges throughout (matching pylon sign language)
-
----
-
-## Changelog
-
-### v2.6.0 — Station Pages & Search Navigation
-
-- Add 5 dedicated station pages: Brookland-CUA, Potomac Yard, Metro Center, Gallery Place-Chinatown, Union Station
-- Transfer station dual PIDS: Metro Center and Gallery Place render two side-by-side arrival boards (one per physical platform) with separate WMATA API calls
-- Station pages include real-time arrivals, station info, adjacent stations, and FAQ accordions
-- Schema.org structured data on all station pages: TrainStation, FAQPage, BreadcrumbList
-- SEO optimization: OG/Twitter meta tags, canonical URLs, and meta descriptions on all station pages
-- Search navigation: selecting a station from the search dropdown now navigates to its dedicated page
-- Transfer station CSS: `.pids-grid` two-column layout, line strip headers, transfer badge
-- Station FAQ accordion styles with expand/collapse toggle
-- Sitemap updated with all 5 station pages
-- README updated to reflect Cloudflare Workers architecture (migrated from Express/Netlify/Render)
-
-### v2.5.0 — Site-Wide Compliance, Accessibility & SEO Hardening
-
-- **Footer readability**: Bump footer copy, legal links, and disclaimer text from `#555` to `#888` with `font-weight: 500` — now passes WCAG AA contrast (5.4:1 vs. previous 3.2:1)
-- **Static status bar**: Replace scrolling ticker animation with a static, centered 6-line status bar; subtle dividers between items, pulse animation on alert/caution dots, responsive (hides status text on mobile, keeps dot indicators)
-- **Map links**: Update all nav/footer Map links across 9 pages from dead `/map` route to WMATA system map PDF (external, `target="_blank"`)
-- **Skip navigation**: Add skip-to-content link (`<a class="skip-link">`) to all 9 HTML pages (previously only on homepage)
-- **Landmark structure**: Add `<main id="main-content">` to about, 404, crisis, fares, and Red Line pages; add `id="main-content"` to existing `<main>` on alerts, elevators, and station pages
-- **404 page**: Add meta description, `noindex/nofollow` robots directive, OG/Twitter meta tags (using homepage OG image as fallback)
-- **Schema.org**: Add `AboutPage` schema to about.html, `WebPage` schema to crisis page, enhance homepage Organization schema with logo and description
-- **Sitemap**: Remove 4 dead URLs (`/hours/`, `/help/`, `/privacy/`, `/terms/`), add `/station/brookland-cua/` and `/crisis/`, update all `lastmod` dates to 2026-03-09
-- **SEO**: All pages now have meta description, canonical URL, OG tags, Twitter cards, and structured data
-
-### Migrate to Cloudflare
-
-- Complete migration to Cloudflare
-
-### v2.3.0 — Elevator & Escalator Status Page
-
-- Add dedicated elevator/escalator status page at `/elevators/` with real-time outage tracking
-- Station-grouped view: outages organized by station instead of a flat list
-- Dual filter system: filter by unit type (All / Elevators / Escalators) and by Metro line
-- Color-coded accessibility status: red = elevator out (accessibility critical), yellow = escalator out
-- Summary bar showing total outages, elevator/escalator split, and stations affected
-- Accessibility-first sorting: stations with elevator outages always surface to the top
-- SEO: FAQPage schema (6 questions), dynamic meta description, crawlable station names for long-tail "[station] elevator" queries
-- WCAG compliance: `aria-pressed` on filter chips, `role="list"` on station container
-- Site-wide nav updated: Elevators link replaces Map across all pages (desktop + mobile)
-- Sitemap updated with priority 0.9 and `changefreq=always`
-
-### v2.2.0 — Service Alerts Page
-
-- Add dedicated alerts page with all WMATA rail incidents and elevator/escalator outages
-- System-wide elevator/escalator API endpoint (`GET /api/elevators`)
-- Severity-sorted unified alert list: delays, closures, single tracking, advisories, elevator/escalator outages
-- Station location pills with map-pin icons for facility outages
-- Per-line status summary bar and scrolling system ticker
-- 8-question FAQ section covering single tracking, delay causes, station closures, Metro depths, and more
-- Schema.org FAQPage + SpecialAnnouncement structured data for SEO
-- SEO-optimized title, meta descriptions, and Open Graph tags
-- Alerts link added to site-wide footer under Tools
-- Fix ticker animation for seamless continuous scroll (removed padding-left reset)
-
-### v2.1.0 — Line Pages
-
-- Add dedicated Red Line page with all 27 stations, transfer badges, parking indicators, and external rail connections (Amtrak, MARC, VRE, DC Streetcar)
-- Real-time arrival boards and service alerts on the line page via WMATA API
-- Service hours table, train frequency info, and end-to-end travel time
-- 10-question FAQ section with schema.org FAQPage structured data for SEO
-- Shared nav component (`nav.js`) and line page logic (`line.js`)
-- Concrete Vault design extended with line page styles (~3,135 total CSS lines)
-
-### v2.0.0 — Full WMATA API Integration & Brand Overhaul
-
-- Implement full WMATA API integration with 6 backend routes and tiered caching strategy
-- Concrete Vault design system (v7) with PIDS-style arrival display
-- Searchable station selector with line color indicators and keyboard navigation
-- Multi-platform station support (Metro Center, Gallery Place, L'Enfant Plaza, Fort Totten)
-- Real-time system status ticker and sidebar driven by live incident data
-- Station-specific service alerts
-- Elevator and escalator outage tracking
-- Fare calculator with peak/off-peak/senior pricing
-- Restructured from React/Vite to vanilla HTML/CSS/JS for zero-build deployment
-- Express backend proxy to secure WMATA API key server-side
-- Netlify static hosting with Render backend deployment
-- Mobile-responsive layout with 768px and 900px breakpoints
-
-### v1.0.0 — Initial Build
-
-- Frontend-only scaffold with React, Vite, and Material UI
-- Station select dropdown, NavBar, HeroBanner, and Footer components
-- Mock train card layouts for design exploration
+If you discover a vulnerability, **do not** open a public issue. Please email [nick@nickpoole.dev](mailto:nick@nickpoole.dev) directly.
 
 ---
 
 ## License
 
-[MIT](LICENSE) — Nick Poole
+**Source Available — Not Open Source**
+
+Copyright (c) 2025–2026 Nick Poole. All rights reserved.
+
+The source code of this project is made available for **viewing and educational purposes only**. You may:
+
+- Read, study, and learn from the code
+- Submit contributions (pull requests) to this repository
+- Reference the code in blog posts or educational materials with attribution
+
+You may **not**:
+
+- Deploy, host, or run any copy of this project (in whole or in part)
+- Use the code, design, or assets in your own projects
+- Redistribute, sublicense, or sell the code or any derivative work
+- Remove or alter copyright notices
+
+Contributions submitted via pull request are licensed to the project under the same terms.
+
+For questions about usage or licensing, contact [nick@nickpoole.dev](mailto:nick@nickpoole.dev).
 
 ---
 
