@@ -1,12 +1,12 @@
 // ==============================
 // NextMetro — Homepage JS
 // Station search autocomplete, alerts preview, live data
+// Depends on shared.js (loaded first)
 // ==============================
 
-const API_BASE_URL = '';
-
-// ---- Station Data (all 98 stations, deduplicated) ----
-const stations = [
+// ---- Homepage station data (array format with slugs for navigation) ----
+// Different structure from shared.js stations object — kept local.
+var homeStations = [
   { name: 'Metro Center', slug: 'metro-center', lines: ['red', 'orange', 'blue', 'silver'] },
   { name: 'Farragut North', slug: 'farragut-north', lines: ['red'] },
   { name: 'Dupont Circle', slug: 'dupont-circle', lines: ['red'] },
@@ -117,14 +117,7 @@ const lineColorMap = {
   silver: '#9BA5A5',
 };
 
-const lineNames = {
-  RD: 'Red',
-  BL: 'Blue',
-  YL: 'Yellow',
-  OR: 'Orange',
-  GR: 'Green',
-  SV: 'Silver',
-};
+// lineNames — from shared.js
 
 // ==============================
 // Station Search Autocomplete
@@ -135,8 +128,8 @@ let highlightedIndex = -1;
 
 function filterStations(query) {
   const q = query.toLowerCase().trim();
-  if (!q) return stations.slice(0, 6);
-  return stations.filter(s => s.name.toLowerCase().includes(q)).slice(0, 6);
+  if (!q) return homeStations.slice(0, 6);
+  return homeStations.filter(s => s.name.toLowerCase().includes(q)).slice(0, 6);
 }
 
 function renderResults(filtered) {
@@ -225,7 +218,7 @@ searchInput.addEventListener('keydown', (e) => {
     e.preventDefault();
     if (highlightedIndex >= 0 && items[highlightedIndex]) {
       const slug = items[highlightedIndex].dataset.slug;
-      const station = stations.find(s => s.slug === slug);
+      const station = homeStations.find(s => s.slug === slug);
       if (station) navigateToStation(station);
     }
   } else if (e.key === 'Escape') {
@@ -245,16 +238,7 @@ document.addEventListener('click', (e) => {
 // ==============================
 // Alert Preview
 // ==============================
-function parseAffectedLines(linesStr) {
-  if (!linesStr) return [];
-  return linesStr.split(';').map(s => s.trim()).filter(s => s.length > 0 && lineNames[s]);
-}
-
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
+// parseAffectedLines, escapeHtml — from shared.js
 
 async function fetchAlertPreview() {
   try {

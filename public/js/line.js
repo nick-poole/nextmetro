@@ -1,45 +1,14 @@
 // ==============================
 // NextMetro — Line Page JS (Generic)
+// Depends on shared.js (loaded first)
 // ==============================
 // Each page sets window.LINE_CODE and window.LINE_NAME before loading this script.
-
-const API_BASE_URL = '';
 
 // ---- Line config (set by each page's inline script) ----
 const LINE_CODE = window.LINE_CODE || 'RD';
 const LINE_NAME = window.LINE_NAME || 'Red';
 
-// ---- Fetch with retry (handles Render cold starts) ----
-async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    const res = await fetch(url);
-    if (res.ok) return res;
-    if (res.status !== 503 || attempt === retries) return res;
-    await new Promise((r) => setTimeout(r, delayMs * (attempt + 1)));
-  }
-}
-
-// ---- Line Colors ----
-const lineColors = {
-  RD: '#D41140',
-  BL: '#00A8E8',
-  YL: '#FFD400',
-  OR: '#F09500',
-  GR: '#00BD45',
-  SV: '#9BA5A5',
-};
-
-const lineNames = {
-  RD: 'Red',
-  BL: 'Blue',
-  YL: 'Yellow',
-  OR: 'Orange',
-  GR: 'Green',
-  SV: 'Silver',
-};
-
 // ---- DOM Elements ----
-const tickerTrack = document.getElementById('ticker-track');
 const lineStatusDot = document.getElementById('line-status-dot');
 const lineStatusText = document.getElementById('line-status-text');
 const lineAlertsSection = document.getElementById('line-alerts');
@@ -48,69 +17,7 @@ const lineAlertsBody = document.getElementById('line-alerts-body');
 // ---- State ----
 let incidentsInterval = null;
 
-// ---- Helpers ----
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-function parseAffectedLines(linesStr) {
-  if (!linesStr) return [];
-  return linesStr
-    .split(';')
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0 && lineNames[s]);
-}
-
-// ==============================
-// System Ticker (same as main app)
-// ==============================
-function renderTicker(incidents) {
-  const lineData = [
-    { code: 'RD', name: 'Red', color: '#D41140' },
-    { code: 'OR', name: 'Orange', color: '#F09500' },
-    { code: 'BL', name: 'Blue', color: '#00A8E8' },
-    { code: 'GR', name: 'Green', color: '#00BD45' },
-    { code: 'YL', name: 'Yellow', color: '#FFD400' },
-    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
-  ];
-
-  const lineStatuses = {};
-  lineData.forEach((l) => { lineStatuses[l.code] = 'Normal'; });
-
-  (incidents || []).forEach((incident) => {
-    const affectedLines = parseAffectedLines(incident.LinesAffected);
-    const status = incident.IncidentType === 'Delay' ? 'Alert' : 'Caution';
-    affectedLines.forEach((lineCode) => {
-      if (lineStatuses[lineCode]) {
-        if (status === 'Alert' || lineStatuses[lineCode] === 'Normal') {
-          lineStatuses[lineCode] = status;
-        }
-      }
-    });
-  });
-
-  let html = '';
-  lineData.forEach((line) => {
-    const thisStatus = lineStatuses[line.code];
-    const statusClass =
-      thisStatus === 'Normal'
-        ? 'ticker-status-ok'
-        : thisStatus === 'Alert'
-          ? 'ticker-status-alert'
-          : 'ticker-status-caution';
-    const alertClass = thisStatus !== 'Normal' ? ' ticker-item--alert' : '';
-    html +=
-      '<span class="ticker-item' + alertClass + '">' +
-      '<span class="ticker-dot" style="background-color:' + line.color + '"></span>' +
-      '<span class="ticker-line-name">' + line.name + '</span>' +
-      '<span class="ticker-status-text ' + statusClass + '">' + thisStatus + '</span>' +
-      '</span>';
-  });
-
-  tickerTrack.innerHTML = html;
-}
+// escapeHtml, parseAffectedLines, renderTicker — from shared.js
 
 // ==============================
 // Line Status Hero

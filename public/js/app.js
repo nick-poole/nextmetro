@@ -1,132 +1,7 @@
 // ==============================
-// NextMetro — Brand v1.0 JS
-// Typography: Rajdhani | Theme: Neutral Brutalist
+// NextMetro — Station Page JS
+// Depends on shared.js (loaded first)
 // ==============================
-
-const API_BASE_URL = '';
-
-// ---- Fetch with retry (handles Render free-tier cold starts) ----
-async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    const res = await fetch(url);
-    if (res.ok) return res;
-    // Retry on 503 (Render waking up) but not other errors
-    if (res.status !== 503 || attempt === retries) return res;
-    await new Promise((r) => setTimeout(r, delayMs * (attempt + 1)));
-  }
-}
-
-// ---- Station Data ----
-const stations = {
-  A01: 'Metro Center',
-  A02: 'Farragut North',
-  A03: 'Dupont Circle',
-  A04: 'Woodley Park-Zoo/Adams Morgan',
-  A05: 'Cleveland Park',
-  A06: 'Van Ness-UDC',
-  A07: 'Tenleytown-AU',
-  A08: 'Friendship Heights',
-  A09: 'Bethesda',
-  A10: 'Medical Center',
-  A11: 'Grosvenor-Strathmore',
-  A12: 'North Bethesda-White Flint',
-  A13: 'Twinbrook',
-  A14: 'Rockville',
-  A15: 'Shady Grove',
-  B01: 'Gallery Pl-Chinatown',
-  B02: 'Judiciary Square',
-  B03: 'Union Station',
-  B04: 'Rhode Island Ave-Brentwood',
-  B05: 'Brookland-CUA',
-  B06: 'Fort Totten',
-  B07: 'Takoma',
-  B08: 'Silver Spring',
-  B09: 'Forest Glen',
-  B10: 'Wheaton',
-  B11: 'Glenmont',
-  B35: 'NoMa-Gallaudet U',
-  C01: 'Metro Center',
-  C02: 'McPherson Square',
-  C03: 'Farragut West',
-  C04: 'Foggy Bottom-GWU',
-  C05: 'Rosslyn',
-  C06: 'Arlington Cemetery',
-  C07: 'Pentagon',
-  C08: 'Pentagon City',
-  C09: 'Crystal City',
-  C10: 'Ronald Reagan Washington National Airport',
-  C11: 'Potomac Yard',
-  C12: 'Braddock Road',
-  C13: 'King St-Old Town',
-  C14: 'Eisenhower Avenue',
-  C15: 'Huntington',
-  D01: 'Federal Triangle',
-  D02: 'Smithsonian',
-  D03: "L'Enfant Plaza",
-  D04: 'Federal Center SW',
-  D05: 'Capitol South',
-  D06: 'Eastern Market',
-  D07: 'Potomac Ave',
-  D08: 'Stadium-Armory',
-  D09: 'Minnesota Ave',
-  D10: 'Deanwood',
-  D11: 'Cheverly',
-  D12: 'Landover',
-  D13: 'New Carrollton',
-  E01: 'Mt Vernon Sq 7th St-Convention Center',
-  E02: 'Shaw-Howard U',
-  E03: 'U Street/African-Amer Civil War Memorial/Cardozo',
-  E04: 'Columbia Heights',
-  E05: 'Georgia Ave-Petworth',
-  E06: 'Fort Totten',
-  E07: 'West Hyattsville',
-  E08: "Prince George's Plaza",
-  E09: 'College Park-U of Md',
-  E10: 'Greenbelt',
-  F01: 'Gallery Pl-Chinatown',
-  F02: 'Archives-Navy Memorial-Penn Quarter',
-  F03: "L'Enfant Plaza",
-  F04: 'Waterfront',
-  F05: 'Navy Yard-Ballpark',
-  F06: 'Anacostia',
-  F07: 'Congress Heights',
-  F08: 'Southern Ave',
-  F09: 'Naylor Road',
-  F10: 'Suitland',
-  F11: 'Branch Ave',
-  G01: 'Benning Road',
-  G02: 'Capitol Heights',
-  G03: 'Addison Road-Seat Pleasant',
-  G04: 'Morgan Boulevard',
-  G05: 'Largo Town Center',
-  J02: 'Van Dorn Street',
-  J03: 'Franconia-Springfield',
-  K01: 'Court House',
-  K02: 'Clarendon',
-  K03: 'Virginia Square-GMU',
-  K04: 'Ballston-MU',
-  K05: 'East Falls Church',
-  K06: 'West Falls Church',
-  K07: 'Dunn Loring-Merrifield',
-  K08: 'Vienna/Fairfax-GMU',
-  N01: 'McLean',
-  N02: 'Tysons Corner',
-  N03: 'Greensboro',
-  N04: 'Spring Hill',
-  N06: 'Wiehle-Reston East',
-  N07: 'Reston Town Center',
-  N08: 'Herndon',
-  N09: 'Innovation Center',
-  N10: 'Dulles',
-  N11: 'Loudon Gateway',
-  N12: 'Ashburn',
-  S04: 'King St-Old Town',
-  S09: 'Braddock Road',
-  S10: 'DCA-National Airport',
-  S12: 'Crystal City',
-  S13: 'Pentagon City',
-  S14: 'Pentagon',
-};
 
 // ---- Multi-platform stations ----
 // StationTogether mapping: if you select one code, also fetch predictions for the other
@@ -153,33 +28,8 @@ const stationPages = {
   B03: 'union-station',
 };
 
-// ---- Metro Line Colors ----
-const lineColors = {
-  RD: '#D41140',
-  BL: '#00A8E8',
-  YL: '#FFD400',
-  OR: '#F09500',
-  GR: '#00BD45',
-  SV: '#9BA5A5',
-};
-
-const pidsLineColors = {
-  RD: '#D41140',
-  BL: '#00A8E8',
-  YL: '#FFD400',
-  OR: '#F09500',
-  GR: '#00BD45',
-  SV: '#9BA5A5',
-};
-
-const lineNames = {
-  RD: 'Red',
-  BL: 'Blue',
-  YL: 'Yellow',
-  OR: 'Orange',
-  GR: 'Green',
-  SV: 'Silver',
-};
+// pidsLineColors — alias for lineColors (from shared.js)
+var pidsLineColors = lineColors;
 
 // Station code prefix -> line info
 const prefixLines = {
@@ -244,7 +94,6 @@ const pidsHeaderStation = document.getElementById('pids-header-station');
 const lastUpdatedEl = document.getElementById('last-updated');
 const updatedTimeEl = document.getElementById('updated-time');
 const refreshBtn = document.getElementById('refresh-btn');
-const tickerTrack = document.getElementById('ticker-track');
 const systemStatusRows = document.getElementById('system-status-rows');
 const alertCard = document.getElementById('alert-card');
 const alertBody = document.getElementById('alert-body');
@@ -381,68 +230,7 @@ function updateHeroDisplay(stationCode) {
   fareFromName.textContent = name;
 }
 
-// ==============================
-// System Ticker (driven by live incidents)
-// ==============================
-function renderTicker(incidents) {
-  const lineData = [
-    { code: 'RD', name: 'Red', color: '#D41140' },
-    { code: 'OR', name: 'Orange', color: '#F09500' },
-    { code: 'BL', name: 'Blue', color: '#00A8E8' },
-    { code: 'GR', name: 'Green', color: '#00BD45' },
-    { code: 'YL', name: 'Yellow', color: '#FFD400' },
-    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
-  ];
-
-  // Determine per-line status from incidents
-  const lineStatuses = {};
-  lineData.forEach((l) => { lineStatuses[l.code] = 'Normal'; });
-
-  (incidents || []).forEach((incident) => {
-    const affectedLines = parseAffectedLines(incident.LinesAffected);
-    const status = incident.IncidentType === 'Delay' ? 'Alert' : 'Caution';
-    affectedLines.forEach((lineCode) => {
-      if (lineStatuses[lineCode]) {
-        // Alert takes priority over Caution
-        if (status === 'Alert' || lineStatuses[lineCode] === 'Normal') {
-          lineStatuses[lineCode] = status;
-        }
-      }
-    });
-  });
-
-  // Build static status bar content
-  let html = '';
-  lineData.forEach((line) => {
-    const thisStatus = lineStatuses[line.code];
-    const statusClass =
-      thisStatus === 'Normal'
-        ? 'ticker-status-ok'
-        : thisStatus === 'Alert'
-          ? 'ticker-status-alert'
-          : 'ticker-status-caution';
-    const alertClass = thisStatus !== 'Normal' ? ' ticker-item--alert' : '';
-    html +=
-      '<span class="ticker-item' + alertClass + '">' +
-      '<span class="ticker-dot" style="background-color:' + line.color + '"></span>' +
-      '<span class="ticker-line-name">' + line.name + '</span>' +
-      '<span class="ticker-status-text ' + statusClass + '">' + thisStatus + '</span>' +
-      '</span>';
-  });
-
-  if (tickerTrack) tickerTrack.innerHTML = html;
-}
-
-// ==============================
-// Parse LinesAffected string
-// ==============================
-function parseAffectedLines(linesStr) {
-  if (!linesStr) return [];
-  return linesStr
-    .split(';')
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0 && lineNames[s]);
-}
+// renderTicker, parseAffectedLines, escapeHtml — from shared.js
 
 // ==============================
 // Incidents Fetching & Rendering
@@ -555,12 +343,6 @@ function renderAlerts(incidents, stationCode) {
       minute: '2-digit',
     });
   }
-}
-
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
 }
 
 // ==============================
