@@ -2,8 +2,8 @@
    NextMetro — Crisis Page Styles
    ============================== */
 .crisis-hero {
-  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.7)),
-    url('/images/sara-cottle.jpg') center / cover no-repeat;
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.65)),
+    url('/images/crisis-hero.webp') center / cover no-repeat;
   background-color: var(--nm-surface);
   padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
   border-bottom: 1px solid var(--nm-border-subtle);

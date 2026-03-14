@@ -448,7 +448,7 @@ a:hover {
   align-items: center;
   gap: var(--nm-space-xs);
   list-style: none;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   font-family: var(--nm-font);
   font-size: 0.9rem;
