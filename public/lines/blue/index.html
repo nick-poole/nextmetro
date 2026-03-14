@@ -267,6 +267,20 @@
 			<a href="/hours" class="mobile-menu-link">Hours</a>
 		</div>
 
+		<!-- Station Search -->
+		<div class="station-search" id="station-search-wrapper">
+			<i class="ri-search-line station-search__icon" aria-hidden="true"></i>
+			<input
+				type="text"
+				id="station-input"
+				class="station-search__input"
+				placeholder="Search stations..."
+				autocomplete="off"
+				aria-label="Search for a Metro station"
+			/>
+			<ul class="station-dropdown" id="station-dropdown"></ul>
+		</div>
+
 		<!-- Line Hero -->
 		<section class="line-hero" data-line="blue">
 			<div class="line-hero__image">
@@ -1134,6 +1148,7 @@
 			</div>
 		</footer>
 		<script src="/js/nav.js"></script>
+		<script src="/js/search.js"></script>
 		<script>
 			window.LINE_CODE = 'BL';
 			window.LINE_NAME = 'Blue';

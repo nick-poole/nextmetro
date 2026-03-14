@@ -145,6 +145,20 @@
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </nav>
 
+  <!-- Station Search -->
+  <div class="station-search" id="station-search-wrapper">
+    <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
+    <input
+      type="text"
+      id="station-input"
+      class="station-search__input"
+      placeholder="Search stations..."
+      autocomplete="off"
+      aria-label="Search for a Metro station"
+    />
+    <ul class="station-dropdown" id="station-dropdown"></ul>
+  </div>
+
   <!-- Hero -->
   <section class="fares-hero">
     <div class="fares-hero-inner">
@@ -460,6 +474,7 @@
     </div>
   </footer>
   <script src="/js/nav.js"></script>
+  <script src="/js/search.js"></script>
   <script src="/js/shared.js"></script>
   <script src="/js/fares.js"></script>
 </body>

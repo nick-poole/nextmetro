@@ -178,6 +178,20 @@
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </nav>
 
+  <!-- Station Search -->
+  <div class="station-search" id="station-search-wrapper">
+    <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
+    <input
+      type="text"
+      id="station-input"
+      class="station-search__input"
+      placeholder="Search stations..."
+      autocomplete="off"
+      aria-label="Search for a Metro station"
+    />
+    <ul class="station-dropdown" id="station-dropdown"></ul>
+  </div>
+
   <!-- Transfers Hero -->
   <section class="transfers-hero">
     <div class="transfers-hero-inner">
@@ -302,8 +316,137 @@
       </div>
     </section>
 
+    <!-- Regional Rail Connections -->
+    <section class="line-connections animate-in d3">
+      <h2 class="line-section-heading">Regional Rail Connections</h2>
+      <p style="font-family:var(--nm-font);color:var(--nm-text-secondary);font-size:0.95rem;margin:0 0 var(--nm-space-lg);line-height:1.6;">
+        Several Metro stations connect to Amtrak, MARC, VRE commuter rail, and the DC Streetcar. These connections extend the reach of the Metro system to Baltimore, Virginia&rsquo;s outer suburbs, and beyond.
+      </p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--nm-space-sm);">
+
+        <!-- Union Station -->
+        <a href="/station/union-station/" class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);text-decoration:none;color:var(--nm-text);transition:border-color 0.2s,background 0.2s;">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#D41140;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">Union Station</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Red Line &middot; Amtrak, MARC (all lines), VRE (both lines)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Major regional hub &middot; Intercity &amp; commuter rail &middot; Station code B03</span>
+          </div>
+          <span class="transfer-station-arrow" style="color:var(--nm-text-muted);flex-shrink:0;"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
+        </a>
+
+        <!-- L'Enfant Plaza (VRE) -->
+        <a href="/station/lenfant-plaza/" class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);text-decoration:none;color:var(--nm-text);transition:border-color 0.2s,background 0.2s;">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#F09500;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#00A8E8;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#9BA5A5;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#00BD45;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#FFD400;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">L&#8217;Enfant Plaza</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Orange, Blue, Silver, Green &amp; Yellow Lines &middot; VRE (both lines)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Adjacent VRE station &middot; Short walk via 2nd St SW &middot; Station codes D03/F03</span>
+          </div>
+          <span class="transfer-station-arrow" style="color:var(--nm-text-muted);flex-shrink:0;"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
+        </a>
+
+        <!-- King Street-Old Town -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#00A8E8;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#FFD400;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">King Street-Old Town</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Blue &amp; Yellow Lines &middot; VRE (both lines), Amtrak</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Shared platform with VRE/Amtrak &middot; Alexandria, VA &middot; Station code C13</span>
+          </div>
+        </div>
+
+        <!-- Franconia-Springfield -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#00A8E8;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">Franconia-Springfield</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Blue Line &middot; VRE (Fredericksburg line)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Adjacent VRE station &middot; Springfield, VA &middot; Station code J03</span>
+          </div>
+        </div>
+
+        <!-- New Carrollton -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#F09500;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">New Carrollton</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Orange Line &middot; Amtrak, MARC (Penn line)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Adjacent Amtrak/MARC station &middot; Lanham, MD &middot; Station code D13</span>
+          </div>
+        </div>
+
+        <!-- Silver Spring -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#D41140;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">Silver Spring</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Red Line &middot; MARC (Brunswick line)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Adjacent MARC station &middot; Silver Spring, MD &middot; Station code B08</span>
+          </div>
+        </div>
+
+        <!-- College Park -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#00BD45;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#FFD400;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">College Park-U of Md</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Green &amp; Yellow Lines &middot; MARC (Camden line)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Adjacent MARC station &middot; College Park, MD &middot; Station code E09</span>
+          </div>
+        </div>
+
+        <!-- Greenbelt -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#00BD45;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">Greenbelt</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Green Line &middot; MARC (Camden line)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Adjacent MARC station &middot; Greenbelt, MD &middot; Station code E10</span>
+          </div>
+        </div>
+
+        <!-- H Street/Benning Road (DC Streetcar) -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#00A8E8;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#9BA5A5;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">Benning Road</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Blue &amp; Silver Lines &middot; DC Streetcar (H Street line)</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">Streetcar stops at station entrance &middot; NE DC &middot; Station code G01</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Transfer Tips -->
-    <section class="line-info animate-in d3">
+    <section class="line-info animate-in d4">
       <h2 class="line-section-heading">Transfer Tips</h2>
       <div class="line-info-grid">
         <div class="line-info-card">
@@ -352,7 +495,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="line-faq">
+    <section class="line-faq animate-in d5">
       <h2 class="line-section-heading">Frequently Asked Questions</h2>
       <div class="line-faq-list">
         <details class="line-faq-item">
@@ -496,5 +639,6 @@
     </div>
   </footer>
   <script src="/js/nav.js"></script>
+  <script src="/js/search.js"></script>
 </body>
 </html>
