@@ -179,17 +179,17 @@
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </nav>
 
-  <!-- System Ticker -->
-  <div class="ticker-bar" id="ticker-bar" role="marquee" aria-label="Metro line status">
-    <div class="ticker-track" id="ticker-track"></div>
-  </div>
-
   <!-- Hero -->
   <section class="alerts-hero">
     <div class="alerts-hero-inner">
       <span class="alerts-hero-label">Live Status</span>
       <h1 class="alerts-hero-title">DC Metro Alerts &amp; Outages</h1>
       <p class="alerts-hero-subtitle" id="alerts-subtitle">Train delays, station closures, single tracking, and elevator &amp; escalator outages — updated every 30 seconds.</p>
+
+      <!-- System Status Summary -->
+      <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
+        <!-- Rendered by JS -->
+      </div>
     </div>
   </section>
 
@@ -246,11 +246,6 @@
             <i class="ri-refresh-line" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
-
-      <!-- System Status Summary -->
-      <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
-        <!-- Rendered by JS -->
       </div>
 
       <!-- Alerts List -->

@@ -38,22 +38,6 @@ var lastUpdatedTime = document.getElementById('elev-last-updated-time');
 var seoStations = document.getElementById('elev-seo-stations');
 
 // ==============================
-// Ticker (fetch rail incidents for line status)
-// ==============================
-async function fetchAndRenderTicker() {
-  try {
-    var res = await fetchWithRetry(API_BASE_URL + '/api/incidents');
-    if (!res || !res.ok) return;
-    var data = await res.json();
-    renderTicker(data.Incidents || []);
-  } catch (e) {
-    // Ticker is supplementary — fail silently
-  }
-}
-
-// parseAffectedLines, renderTicker, escapeHtml — from shared.js
-
-// ==============================
 // Get lines for a station code
 // ==============================
 function getLinesForStation(stationCode) {
@@ -403,7 +387,6 @@ elevLineFilters.addEventListener('click', function (e) {
 
 elevRefresh.addEventListener('click', function () {
   fetchOutages();
-  fetchAndRenderTicker();
 });
 
 // ==============================
@@ -427,6 +410,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Backend may be sleeping
   }
 
-  await Promise.all([fetchOutages(), fetchAndRenderTicker()]);
+  await fetchOutages();
   startPolling();
 });

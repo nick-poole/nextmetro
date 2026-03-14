@@ -236,7 +236,7 @@ function updateHeroDisplay(stationCode) {
   fareFromName.textContent = name;
 }
 
-// renderTicker, parseAffectedLines, escapeHtml — from shared.js
+// parseAffectedLines, escapeHtml — from shared.js
 
 // ==============================
 // Incidents Fetching & Rendering
@@ -249,7 +249,6 @@ async function fetchIncidents() {
     currentIncidents = data.Incidents || [];
 
     renderSystemStatus(currentIncidents);
-    renderTicker(currentIncidents);
     renderAlerts(currentIncidents, selectedStation);
   } catch (err) {
     console.error('Failed to fetch incidents:', err.message);

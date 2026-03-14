@@ -39,6 +39,10 @@
   margin-bottom: var(--nm-space-sm);
 }
 
+.alerts-hero .alerts-status-bar {
+  margin-top: var(--nm-space-lg);
+}
+
 .alerts-hero-subtitle {
   font-family: var(--nm-font);
   font-weight: 400;

@@ -121,8 +121,6 @@ var schemaAlerts = document.getElementById('schema-alerts');
 var lastUpdatedTime = document.getElementById('alerts-last-updated-time');
 var alertsFilters = document.getElementById('alerts-filters');
 
-// renderTicker — from shared.js
-
 // ==============================
 // Status Summary Bar (rail incidents only)
 // ==============================
@@ -456,7 +454,6 @@ async function fetchAllAlerts() {
   currentAlerts = railIncidents.concat(elevatorIncidents);
 
   renderAlerts();
-  renderTicker(currentRailIncidents);
   renderStatusBar(currentRailIncidents);
   updateTimestamp();
   updateSEO(currentAlerts);

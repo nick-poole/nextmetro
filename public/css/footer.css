@@ -77,7 +77,7 @@
 .nm-footer__links {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 0;
 }
 
 .nm-footer__link {
@@ -88,6 +88,10 @@
   color: var(--nm-gray);
   text-decoration: none;
   transition: color 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 0;
 }
 .nm-footer__link:hover {
   color: var(--nm-white);
@@ -102,6 +106,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-height: 24px;
+  padding: 4px 0;
 }
 .nm-footer__dot {
   width: 8px;
@@ -224,6 +230,10 @@
   text-decoration: none;
   transition: color 0.12s ease;
   font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 0;
 }
 .nm-footer__legal a:hover {
   color: var(--nm-white);
