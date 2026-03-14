@@ -18,24 +18,36 @@ Disallow: /privacy/
 # ---------------------------------------------------------
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
+Disallow: /healthz
 
 User-agent: Googlebot-Image
 Allow: /images/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /api/
+Disallow: /healthz
 
 User-agent: Slurp
 Allow: /
+Disallow: /api/
+Disallow: /healthz
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /api/
+Disallow: /healthz
 
 User-agent: Baiduspider
 Allow: /
+Disallow: /api/
+Disallow: /healthz
 
 User-agent: YandexBot
 Allow: /
+Disallow: /api/
+Disallow: /healthz
 
 # ---------------------------------------------------------
 # SEO tools — AhrefsBot (explicitly permitted)

@@ -194,10 +194,60 @@ function handleHealthz(request, env) {
 	return jsonResponse(
 		{
 			status: 'ok',
-			wmataKeySet: !!env.WMATA_API_KEY,
 		},
 		request
 	);
+}
+
+async function handleIndexNow(request, env) {
+	const INDEXNOW_KEY = '3b4c9e7a2f1d8e5b';
+	const HOST = 'nextmetro.live';
+	const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
+
+	// List of all public URLs to submit
+	const urls = [
+		`https://${HOST}/`,
+		`https://${HOST}/alerts/`,
+		`https://${HOST}/elevators/`,
+		`https://${HOST}/fares/`,
+		`https://${HOST}/hours/`,
+		`https://${HOST}/about/`,
+		`https://${HOST}/crisis/`,
+		`https://${HOST}/lines/red/`,
+		`https://${HOST}/lines/blue/`,
+		`https://${HOST}/lines/orange/`,
+		`https://${HOST}/lines/green/`,
+		`https://${HOST}/lines/yellow/`,
+		`https://${HOST}/lines/silver/`,
+		`https://${HOST}/station/metro-center/`,
+		`https://${HOST}/station/gallery-place/`,
+		`https://${HOST}/station/union-station/`,
+		`https://${HOST}/station/brookland-cua/`,
+		`https://${HOST}/station/potomac-yard/`,
+	];
+
+	try {
+		const payload = {
+			host: HOST,
+			key: INDEXNOW_KEY,
+			keyLocation: KEY_LOCATION,
+			urlList: urls,
+		};
+
+		const response = await fetch('https://api.indexnow.org/indexnow', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json; charset=utf-8' },
+			body: JSON.stringify(payload),
+		});
+
+		return jsonResponse({
+			status: 'submitted',
+			urlCount: urls.length,
+			indexNowStatus: response.status,
+		}, request);
+	} catch (err) {
+		return jsonResponse({ error: 'IndexNow submission failed' }, request, 500);
+	}
 }
 
 // ==============================
@@ -220,6 +270,12 @@ export default {
 		const url = new URL(request.url);
 		const path = url.pathname;
 
+		// Redirect www to non-www
+		if (url.hostname === 'www.nextmetro.live') {
+			url.hostname = 'nextmetro.live';
+			return Response.redirect(url.toString(), 301);
+		}
+
 		// Handle CORS preflight
 		if (request.method === 'OPTIONS') {
 			return new Response(null, {
@@ -237,11 +293,17 @@ export default {
 			return jsonResponse({ error: 'Method not allowed' }, request, 405);
 		}
 
+		// Redirect old about.html to clean URL
+		if (path === '/about.html') {
+			return Response.redirect('https://nextmetro.live/about/', 301);
+		}
+
 		// API routing
 		if (path === '/api/stations') return handleStations(request, env);
 		if (path === '/api/incidents') return handleIncidents(request, env);
 		if (path === '/api/elevators') return handleElevators(request, env);
 		if (path === '/healthz') return handleHealthz(request, env);
+		if (path === '/api/indexnow') return handleIndexNow(request, env);
 
 		// Parameterized routes
 		const stationMatch = path.match(/^\/api\/station\/([A-Za-z0-9]+)$/);
@@ -257,7 +319,21 @@ export default {
 		if (fareMatch) return handleFare(request, env, fareMatch[1], fareMatch[2]);
 
 		// Let Cloudflare Assets handle static files (configured in wrangler.toml)
-		// If nothing matched, return 404
-		return env.ASSETS.fetch(request);
+		const assetResponse = await env.ASSETS.fetch(request);
+
+		// Add security headers to HTML responses
+		const contentType = assetResponse.headers.get('Content-Type') || '';
+		if (contentType.includes('text/html')) {
+			const response = new Response(assetResponse.body, assetResponse);
+			response.headers.set('X-Content-Type-Options', 'nosniff');
+			response.headers.set('X-Frame-Options', 'DENY');
+			response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+			response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+			response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+			response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'");
+			return response;
+		}
+
+		return assetResponse;
 	},
 };

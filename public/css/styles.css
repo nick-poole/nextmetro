@@ -3,8 +3,7 @@
    Typography: Rajdhani | Theme: Neutral Brutalist
    ============================== */
 
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+/* Google Fonts — loaded via <link> in HTML for non-blocking render */
 
 /* Reset & Base */
 *, *::before, *::after {
@@ -13,9 +12,9 @@
   box-sizing: border-box;
 }
 
-/* Global reset for sharp edges */
-* {
-  border-radius: 0 !important;
+/* Global reset for sharp edges — applied to all elements except dots */
+*:not([class*="dot"]):not([class*="peak-indicator-dot"]) {
+  border-radius: 0;
 }
 
 :root {
@@ -82,12 +81,13 @@
   --nm-white:    #F0EDEA;
   --nm-gray:     #9A9A9A;
   --nm-muted:    #767676;
-  --line-red:    #D41140;
-  --line-orange: #F09500;
-  --line-silver: #9BA5A5;
-  --line-blue:   #00A8E8;
-  --line-yellow: #FFD400;
-  --line-green:  #00BD45;
+  /* Line colors — aliases for nav/footer (canonical values above as --nm-line-*) */
+  --line-red:    var(--nm-line-red);
+  --line-orange: var(--nm-line-orange);
+  --line-silver: var(--nm-line-silver);
+  --line-blue:   var(--nm-line-blue);
+  --line-yellow: var(--nm-line-yellow);
+  --line-green:  var(--nm-line-green);
 
   /* Fare Machine */
   --nm-fare-blue: #0076A8;
