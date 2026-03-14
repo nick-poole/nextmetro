@@ -1,0 +1,276 @@
+/* ==============================
+   NextMetro — Legal Page Styles
+   ============================== */
+.legal-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.legal-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--nm-amber-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25rem;
+}
+
+.legal-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.legal-meta {
+  font-family: var(--nm-font);
+  font-size: 0.85rem;
+  color: var(--nm-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.legal-callout {
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  border-left: 3px solid var(--nm-amber);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.legal-callout-heading {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--nm-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.legal-callout p {
+  font-family: var(--nm-font);
+  font-size: 0.95rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.legal-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-body {
+  font-family: var(--nm-font);
+}
+
+.legal-body p {
+  font-size: 0.95rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.legal-body p strong {
+  color: var(--nm-text-primary);
+}
+
+.legal-body a {
+  color: var(--nm-amber);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-body a:hover {
+  color: var(--nm-amber-bright);
+}
+
+.legal-body h2 {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--nm-amber-dim);
+  display: inline-block;
+  width: 100%;
+}
+
+.legal-body h3 {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-emphasis {
+  font-weight: 600;
+  color: var(--nm-text-primary) !important;
+  text-transform: uppercase;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.01em;
+}
+
+.legal-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.legal-list li {
+  font-size: 0.95rem;
+  color: var(--nm-text-secondary);
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.legal-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 6px;
+  height: 6px;
+  background-color: var(--nm-amber-dim);
+}
+
+.legal-list li strong {
+  color: var(--nm-text-primary);
+}
+
+.legal-list--alpha {
+  counter-reset: alpha-counter;
+}
+
+.legal-list--alpha li {
+  counter-increment: alpha-counter;
+}
+
+.legal-list--alpha li::before {
+  content: counter(alpha-counter, lower-alpha) ")";
+  background: none;
+  width: auto;
+  height: auto;
+  color: var(--nm-amber);
+  font-weight: 600;
+  font-size: 0.9rem;
+  top: 0.35rem;
+}
+
+.legal-important {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.legal-important h3 {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--nm-amber);
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.legal-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--nm-font);
+  font-size: 0.85rem;
+}
+
+.legal-table th {
+  background-color: var(--nm-surface-elevated);
+  color: var(--nm-amber);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border: 1px solid var(--nm-border);
+  white-space: nowrap;
+}
+
+.legal-table td {
+  padding: 0.5rem 0.75rem;
+  color: var(--nm-text-secondary);
+  border: 1px solid var(--nm-border-subtle);
+  vertical-align: top;
+}
+
+.legal-table tbody tr:nth-child(even) {
+  background-color: var(--nm-surface);
+}
+
+.legal-table td strong {
+  color: var(--nm-text-primary);
+}
+
+.legal-footer-note {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--nm-border);
+}
+
+.legal-footer-note p {
+  font-family: var(--nm-font);
+  font-size: 0.85rem;
+  color: var(--nm-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.legal-appendix {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+.legal-appendix h2 {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.legal-appendix p {
+  font-family: var(--nm-font);
+  font-size: 0.9rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.legal-appendix .legal-list li a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-appendix .legal-list li a:hover {
+  color: var(--nm-amber-bright);
+}

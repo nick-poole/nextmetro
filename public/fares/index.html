@@ -7,12 +7,14 @@
   <meta name="description" content="Calculate DC Metro fares between any two stations. Compare peak, off-peak, and senior/disabled prices. Metro fares range from $2.00 to $6.00 depending on distance and time of day." />
   <link rel="canonical" href="https://nextmetro.live/fares/" />
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/fares.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" integrity="sha256-MblAFgCXnFAJlRJnqJqOjRfz0ODAP+6LxfGQEK7g1o=" crossorigin="anonymous" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="DC Metro Fare Calculator — Peak & Off-Peak Prices | NextMetro" />
@@ -136,15 +138,15 @@
       <span></span>
     </button>
   </nav>
-  <div class="nm-mobile-menu" id="mobile-menu">
+  <nav class="nm-mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
     <a href="/alerts" class="mobile-menu-link">Alerts</a>
     <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
     <a href="/fares" class="mobile-menu-link mobile-menu-link--active" aria-current="page">Fares</a>
     <a href="/hours" class="mobile-menu-link">Hours</a>
-  </div>
+  </nav>
 
   <!-- Ticker placeholder -->
-  <div class="ticker-bar">
+  <div class="ticker-bar" role="marquee" aria-label="Metro line status">
     <div class="ticker-track"></div>
   </div>
 
@@ -453,6 +455,7 @@
     </div>
   </footer>
   <script src="/js/nav.js"></script>
+  <script src="/js/shared.js"></script>
   <script src="/js/fares.js"></script>
 </body>
 </html>

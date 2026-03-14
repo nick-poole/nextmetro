@@ -1,23 +1,10 @@
 // ==============================
 // NextMetro — Elevator & Escalator Status Page
 // Station-grouped, filterable, real-time outage tracker
+// Depends on shared.js (loaded first)
 // ==============================
 
-var API_BASE_URL = '';
-
-// ---- Fetch with retry (handles Render free-tier cold starts) ----
-async function fetchWithRetry(url, retries, delayMs) {
-  retries = retries || 2;
-  delayMs = delayMs || 3000;
-  for (var attempt = 0; attempt <= retries; attempt++) {
-    var res = await fetch(url);
-    if (res.ok) return res;
-    if (res.status !== 503 || attempt === retries) return res;
-    await new Promise(function (r) { setTimeout(r, delayMs * (attempt + 1)); });
-  }
-}
-
-// ---- Station code to line mapping ----
+// ---- Station code prefix to line mapping ----
 var stationLines = {
   A: ['RD'],
   B: ['RD'],
@@ -32,24 +19,6 @@ var stationLines = {
   S: ['BL', 'YL'],
 };
 
-var lineColors = {
-  RD: '#D41140',
-  BL: '#00A8E8',
-  YL: '#FFD400',
-  OR: '#F09500',
-  GR: '#00BD45',
-  SV: '#9BA5A5',
-};
-
-var lineNames = {
-  RD: 'Red',
-  BL: 'Blue',
-  YL: 'Yellow',
-  OR: 'Orange',
-  GR: 'Green',
-  SV: 'Silver',
-};
-
 // ---- State ----
 var currentOutages = [];
 var activeTypeFilter = 'all'; // 'all' | 'ELEVATOR' | 'ESCALATOR'
@@ -57,7 +26,6 @@ var activeLineFilter = 'all'; // 'all' | line code
 var pollingInterval = null;
 
 // ---- DOM ----
-var tickerTrack = document.getElementById('ticker-track');
 var elevStations = document.getElementById('elev-stations');
 var elevEmpty = document.getElementById('elev-empty');
 var elevUpdated = document.getElementById('elev-updated');
@@ -83,65 +51,7 @@ async function fetchAndRenderTicker() {
   }
 }
 
-function parseAffectedLines(linesStr) {
-  if (!linesStr) return [];
-  return linesStr.split(';').map(function (s) { return s.trim(); }).filter(function (s) { return s.length > 0 && lineNames[s]; });
-}
-
-function renderTicker(incidents) {
-  var lineData = [
-    { code: 'RD', name: 'Red', color: '#D41140' },
-    { code: 'OR', name: 'Orange', color: '#F09500' },
-    { code: 'BL', name: 'Blue', color: '#00A8E8' },
-    { code: 'GR', name: 'Green', color: '#00BD45' },
-    { code: 'YL', name: 'Yellow', color: '#FFD400' },
-    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
-  ];
-
-  var lineStatuses = {};
-  lineData.forEach(function (l) { lineStatuses[l.code] = 'Normal'; });
-
-  (incidents || []).forEach(function (incident) {
-    var affectedLines = parseAffectedLines(incident.LinesAffected);
-    var status = incident.IncidentType === 'Delay' ? 'Alert' : 'Caution';
-    affectedLines.forEach(function (lineCode) {
-      if (lineStatuses[lineCode]) {
-        if (status === 'Alert' || lineStatuses[lineCode] === 'Normal') {
-          lineStatuses[lineCode] = status;
-        }
-      }
-    });
-  });
-
-  var html = '';
-  lineData.forEach(function (line) {
-    var thisStatus = lineStatuses[line.code];
-    var statusClass =
-      thisStatus === 'Normal'
-        ? 'ticker-status-ok'
-        : thisStatus === 'Alert'
-          ? 'ticker-status-alert'
-          : 'ticker-status-caution';
-    var alertClass = thisStatus !== 'Normal' ? ' ticker-item--alert' : '';
-    html +=
-      '<span class="ticker-item' + alertClass + '">' +
-      '<span class="ticker-dot" style="background-color:' + line.color + '"></span>' +
-      '<span class="ticker-line-name">' + line.name + '</span>' +
-      '<span class="ticker-status-text ' + statusClass + '">' + thisStatus + '</span>' +
-      '</span>';
-  });
-
-  tickerTrack.innerHTML = html;
-}
-
-// ==============================
-// HTML Escaping
-// ==============================
-function escapeHtml(str) {
-  var div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
+// parseAffectedLines, renderTicker, escapeHtml — from shared.js
 
 // ==============================
 // Get lines for a station code
@@ -152,24 +62,8 @@ function getLinesForStation(stationCode) {
   return stationLines[prefix] || [];
 }
 
-// ==============================
-// Time Formatting
-// ==============================
-function formatOutageTime(dateStr) {
-  if (!dateStr) return '';
-  var date = new Date(dateStr);
-  if (isNaN(date.getTime())) return '';
-  var now = new Date();
-  var diffMs = now - date;
-  var diffMin = Math.floor(diffMs / 60000);
-
-  if (diffMin < 1) return 'Just now';
-  if (diffMin < 60) return diffMin + 'm ago';
-  var diffHr = Math.floor(diffMin / 60);
-  if (diffHr < 24) return diffHr + 'h ago';
-  var diffDay = Math.floor(diffHr / 24);
-  return diffDay + 'd ago';
-}
+// formatOutageTime — alias for formatRelativeTime (from shared.js)
+var formatOutageTime = formatRelativeTime;
 
 // ==============================
 // Group outages by station

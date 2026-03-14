@@ -1,38 +1,8 @@
 // ==============================
 // NextMetro — Alerts Page
 // All WMATA service alerts: rail incidents + elevator/escalator outages
+// Depends on shared.js (loaded first)
 // ==============================
-
-const API_BASE_URL = '';
-
-// ---- Fetch with retry (handles Render free-tier cold starts) ----
-async function fetchWithRetry(url, retries = 2, delayMs = 3000) {
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    const res = await fetch(url);
-    if (res.ok) return res;
-    if (res.status !== 503 || attempt === retries) return res;
-    await new Promise((r) => setTimeout(r, delayMs * (attempt + 1)));
-  }
-}
-
-// ---- Metro Line Data ----
-const lineColors = {
-  RD: '#D41140',
-  BL: '#00A8E8',
-  YL: '#FFD400',
-  OR: '#F09500',
-  GR: '#00BD45',
-  SV: '#9BA5A5',
-};
-
-const lineNames = {
-  RD: 'Red',
-  BL: 'Blue',
-  YL: 'Yellow',
-  OR: 'Orange',
-  GR: 'Green',
-  SV: 'Silver',
-};
 
 const lineOrder = ['RD', 'OR', 'BL', 'GR', 'YL', 'SV'];
 
@@ -73,14 +43,7 @@ function getSeverityClass(label) {
   return 'severity-advisory';
 }
 
-// ---- Parse affected lines from WMATA string ----
-function parseAffectedLines(linesStr) {
-  if (!linesStr) return [];
-  return linesStr
-    .split(';')
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0 && lineNames[s]);
-}
+// parseAffectedLines — from shared.js
 
 // ---- Deduplicate incidents ----
 // WMATA often returns the same alert as multiple entries (one per line or
@@ -147,7 +110,6 @@ var currentRailIncidents = []; // rail-only for ticker + status bar
 var pollingInterval = null;
 
 // ---- DOM ----
-var tickerTrack = document.getElementById('ticker-track');
 var alertsList = document.getElementById('alerts-list');
 var alertsEmpty = document.getElementById('alerts-empty');
 var alertsUpdated = document.getElementById('alerts-updated');
@@ -157,54 +119,7 @@ var metaDescription = document.getElementById('meta-description');
 var schemaAlerts = document.getElementById('schema-alerts');
 var lastUpdatedTime = document.getElementById('alerts-last-updated-time');
 
-// ==============================
-// Ticker (driven by rail incidents only)
-// ==============================
-function renderTicker(incidents) {
-  var lineData = [
-    { code: 'RD', name: 'Red', color: '#D41140' },
-    { code: 'OR', name: 'Orange', color: '#F09500' },
-    { code: 'BL', name: 'Blue', color: '#00A8E8' },
-    { code: 'GR', name: 'Green', color: '#00BD45' },
-    { code: 'YL', name: 'Yellow', color: '#FFD400' },
-    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
-  ];
-
-  var lineStatuses = {};
-  lineData.forEach(function (l) { lineStatuses[l.code] = 'Normal'; });
-
-  (incidents || []).forEach(function (incident) {
-    var affectedLines = parseAffectedLines(incident.LinesAffected);
-    var status = incident.IncidentType === 'Delay' ? 'Alert' : 'Caution';
-    affectedLines.forEach(function (lineCode) {
-      if (lineStatuses[lineCode]) {
-        if (status === 'Alert' || lineStatuses[lineCode] === 'Normal') {
-          lineStatuses[lineCode] = status;
-        }
-      }
-    });
-  });
-
-  var html = '';
-  lineData.forEach(function (line) {
-    var thisStatus = lineStatuses[line.code];
-    var statusClass =
-      thisStatus === 'Normal'
-        ? 'ticker-status-ok'
-        : thisStatus === 'Alert'
-          ? 'ticker-status-alert'
-          : 'ticker-status-caution';
-    var alertClass = thisStatus !== 'Normal' ? ' ticker-item--alert' : '';
-    html +=
-      '<span class="ticker-item' + alertClass + '">' +
-      '<span class="ticker-dot" style="background-color:' + line.color + '"></span>' +
-      '<span class="ticker-line-name">' + line.name + '</span>' +
-      '<span class="ticker-status-text ' + statusClass + '">' + thisStatus + '</span>' +
-      '</span>';
-  });
-
-  tickerTrack.innerHTML = html;
-}
+// renderTicker — from shared.js
 
 // ==============================
 // Status Summary Bar (rail incidents only)
@@ -275,14 +190,7 @@ function getAlertIcon(severityLabel) {
   return '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>';
 }
 
-// ==============================
-// HTML Escaping
-// ==============================
-function escapeHtml(str) {
-  var div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
+// escapeHtml — from shared.js
 
 // ==============================
 // Plain English Description Cleanup
@@ -314,7 +222,8 @@ function formatTime(dateStr) {
   return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 }
 
-function formatRelativeTime(dateStr) {
+// Alerts page uses formatTime fallback for 24h+ instead of "Xd ago"
+function formatAlertTime(dateStr) {
   if (!dateStr) return '';
   var date = new Date(dateStr);
   if (isNaN(date.getTime())) return '';
@@ -362,7 +271,7 @@ function renderAlerts() {
     var severityClass = getSeverityClass(severityLabel);
     var icon = getAlertIcon(severityLabel);
     var description = cleanDescription(incident.Description);
-    var timeStr = formatRelativeTime(incident.DateUpdated);
+    var timeStr = formatAlertTime(incident.DateUpdated);
     var delay = Math.min(idx * 0.06, 0.6);
 
     // Location tag for station-level alerts

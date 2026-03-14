@@ -7,12 +7,14 @@
   <meta name="description" id="meta-description" content="Live DC Metro service alerts: train delays, station closures, single tracking, and elevator outages. Updated every 30 seconds from WMATA." />
   <link rel="canonical" href="https://nextmetro.live/alerts/" />
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/alerts-page.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" integrity="sha256-MblAFgCXnFAJlRJnqJqOjRfz0ODAP+6LxfGQEK7g1o=" crossorigin="anonymous" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="DC Metro Service Alerts, Delays & Elevator Outages — Live | NextMetro" />
@@ -62,8 +64,7 @@
     ]
   }
   </script>
-  <!-- Dynamic SpecialAnnouncement schema injected by alerts.js -->
-  <script type="application/ld+json" id="schema-alerts">{}</script>
+  <!-- Dynamic SpecialAnnouncement schema — populated by alerts.js at runtime -->
 
   <!-- FAQPage structured data -->
   <script type="application/ld+json">
@@ -170,17 +171,20 @@
       <span></span>
     </button>
   </nav>
-  <div class="nm-mobile-menu" id="mobile-menu">
+  <nav class="nm-mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
     <a href="/alerts" class="mobile-menu-link mobile-menu-link--active" aria-current="page">Alerts</a>
     <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
     <a href="/fares" class="mobile-menu-link">Fares</a>
     <a href="/hours" class="mobile-menu-link">Hours</a>
-  </div>
+  </nav>
 
   <!-- System Ticker -->
-  <div class="ticker-bar" id="ticker-bar">
+  <div class="ticker-bar" id="ticker-bar" role="marquee" aria-label="Metro line status">
     <div class="ticker-track" id="ticker-track"></div>
   </div>
+
+  <!-- Main Content -->
+  <main id="main-content" class="alerts-page">
 
   <!-- Page Hero -->
   <section class="hero">
@@ -190,9 +194,6 @@
       <p class="hero-station-address" id="alerts-subtitle">Train delays, station closures, single tracking, and elevator &amp; escalator outages — updated every 30 seconds.</p>
     </div>
   </section>
-
-  <!-- Main Content -->
-  <main id="main-content" class="alerts-page">
     <div class="alerts-page-inner">
 
       <!-- Controls Bar -->
@@ -250,10 +251,9 @@
       </div>
 
     </div>
-  </main>
 
   <!-- Crawlable last-updated timestamp for SEO freshness -->
-  <time id="alerts-last-updated-time" datetime="" style="display:none;"></time>
+  <time id="alerts-last-updated-time" style="display:none;"></time>
 
   <!-- FAQ Section -->
   <section class="line-faq alerts-faq">
@@ -321,6 +321,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- NextMetro Site Footer -->
   <footer class="nm-footer">
@@ -401,6 +403,7 @@
     </div>
   </footer>
   <script src="/js/nav.js"></script>
+  <script src="/js/shared.js"></script>
   <script src="/js/alerts.js"></script>
 </body>
 </html>
