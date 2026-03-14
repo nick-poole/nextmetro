@@ -1,0 +1,649 @@
+/* Fares Page Styles */
+/* ==============================
+   Fares Page
+   ============================== */
+.fares-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--nm-space-lg) var(--nm-space-3xl);
+}
+
+.fares-hero {
+  background-color: var(--nm-surface);
+  padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.fares-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fares-hero-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--nm-amber-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: var(--nm-space-xs);
+}
+
+.fares-hero-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.fares-hero-subtitle {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* ---- Peak Indicator ---- */
+.peak-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  padding: 8px 14px;
+  margin-top: var(--nm-space-md);
+}
+
+.peak-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50% !important;
+  flex-shrink: 0;
+}
+
+.peak-indicator-dot--peak {
+  background-color: var(--nm-status-warn);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.peak-indicator-dot--offpeak {
+  background-color: var(--nm-status-ok);
+}
+
+.peak-indicator-text {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nm-text-primary);
+}
+
+.peak-indicator-time {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ---- Interactive Fare Calculator ---- */
+.calc-card {
+  background-color: var(--nm-fare-blue);
+  border: 2px solid var(--nm-fare-blue);
+  overflow: hidden;
+  margin-top: var(--nm-space-xl);
+}
+
+.calc-header {
+  background-color: var(--nm-fare-blue);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--nm-fare-orange);
+}
+
+.calc-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: #e2feff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.calc-body {
+  padding: var(--nm-space-lg) 1.25rem;
+}
+
+.calc-route {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--nm-space-md);
+  align-items: end;
+}
+
+.calc-station {
+  min-width: 0;
+}
+
+.calc-station-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #e2feff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--nm-space-xs);
+}
+
+.calc-select {
+  width: 100%;
+  padding: 10px 12px;
+  min-height: 44px;
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--nm-text-primary);
+  background-color: var(--nm-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  appearance: auto;
+}
+
+.calc-select:focus {
+  outline: 2px solid var(--nm-fare-orange);
+  outline-offset: -1px;
+}
+
+.calc-arrow {
+  color: var(--nm-fare-orange);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-bottom: 6px;
+}
+
+.calc-swap-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--nm-fare-orange);
+  cursor: pointer;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--nm-transition-normal), border-color var(--nm-transition-normal);
+  margin-bottom: 2px;
+}
+
+.calc-swap-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--nm-fare-orange);
+}
+
+/* ---- Fare Type Toggle ---- */
+.calc-options {
+  display: flex;
+  gap: var(--nm-space-sm);
+  margin-top: var(--nm-space-lg);
+  flex-wrap: wrap;
+}
+
+.calc-toggle {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.calc-toggle-btn {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 14px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #e2feff;
+  cursor: pointer;
+  transition: background-color var(--nm-transition-normal), color var(--nm-transition-normal);
+}
+
+.calc-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.calc-toggle-btn--active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #e2feff;
+}
+
+/* ---- Calc Results ---- */
+.calc-results {
+  margin-top: var(--nm-space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: var(--nm-space-md);
+}
+
+.calc-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nm-space-md);
+}
+
+.calc-result-item {
+  padding: var(--nm-space-sm) 0;
+}
+
+.calc-result-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #e2feff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.calc-result-value {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--nm-fare-yellow);
+}
+
+.calc-result-value--highlight {
+  font-size: 1.75rem;
+}
+
+.calc-result-value--secondary {
+  font-size: 1.25rem;
+  color: #e2feff;
+}
+
+.calc-result-note {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #e2feff;
+  margin-top: 2px;
+}
+
+/* ---- Trip Estimator ---- */
+.calc-estimator {
+  margin-top: var(--nm-space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--nm-space-md);
+}
+
+.calc-estimator-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #e2feff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.calc-estimator-row {
+  display: flex;
+  align-items: center;
+  gap: var(--nm-space-sm);
+  flex-wrap: wrap;
+}
+
+.calc-estimator-input {
+  width: 80px;
+  padding: 10px 10px;
+  min-height: 44px;
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--nm-text-primary);
+  background-color: var(--nm-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.calc-estimator-input:focus {
+  outline: 2px solid var(--nm-fare-orange);
+  outline-offset: -1px;
+}
+
+.calc-estimator-text {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 1rem;
+  color: #e2feff;
+}
+
+.calc-estimator-results {
+  display: flex;
+  gap: var(--nm-space-lg);
+  margin-top: var(--nm-space-sm);
+  flex-wrap: wrap;
+}
+
+.calc-estimator-cost {
+  font-family: var(--nm-font);
+}
+
+.calc-estimator-cost-label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #e2feff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.calc-estimator-cost-value {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--nm-fare-yellow);
+}
+
+/* ---- Fares Static Content ---- */
+.fares-section {
+  margin-top: var(--nm-space-2xl);
+}
+
+.fares-section-heading {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--nm-space-sm);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--nm-amber-dim);
+  display: inline-block;
+}
+
+.fares-text {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--nm-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--nm-space-md);
+}
+
+.fares-text strong {
+  color: var(--nm-text-primary);
+  font-weight: 600;
+}
+
+.fares-text a {
+  color: var(--nm-amber);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fares-text a:hover {
+  color: var(--nm-amber-bright);
+}
+
+/* ---- Fare Table ---- */
+.fare-table-wrapper {
+  overflow-x: auto;
+  margin-top: var(--nm-space-md);
+  border: 1px solid var(--nm-border);
+}
+
+.fare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--nm-font);
+  font-size: 1rem;
+}
+
+.fare-table thead th {
+  background-color: var(--nm-surface-elevated);
+  color: var(--nm-text-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--nm-amber-dim);
+  white-space: nowrap;
+}
+
+.fare-table tbody td {
+  padding: 0.6rem 1rem;
+  color: var(--nm-text-secondary);
+  border-bottom: 1px solid var(--nm-border-subtle);
+  font-weight: 500;
+}
+
+.fare-table tbody tr:hover {
+  background-color: var(--nm-surface);
+}
+
+.fare-table .fare-price {
+  color: var(--nm-amber);
+  font-weight: 700;
+}
+
+/* ---- Peak Hours Card ---- */
+.peak-hours-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+  margin-top: var(--nm-space-md);
+}
+
+.peak-hours-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.peak-hours-header-icon {
+  color: var(--nm-status-warn);
+}
+
+.peak-hours-header-text {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.peak-hours-body {
+  padding: var(--nm-space-md) 1.25rem;
+}
+
+.peak-hours-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--nm-space-md);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.peak-hours-row:last-child {
+  border-bottom: none;
+}
+
+.peak-hours-day {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  min-width: 120px;
+}
+
+.peak-hours-time {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+}
+
+.peak-hours-time--offpeak {
+  color: var(--nm-status-ok);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---- Info Cards ---- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nm-space-lg);
+  margin-top: var(--nm-space-md);
+}
+
+.info-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: var(--nm-space-lg) 1.25rem;
+}
+
+.info-card-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.info-card-text {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--nm-text-secondary);
+  line-height: 1.6;
+}
+
+.info-card-text a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.info-card-text-note {
+  margin-top: 0.5rem;
+}
+
+.info-card-list {
+  list-style: none;
+  padding: 0;
+}
+
+.info-card-list li {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.info-card-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50% !important;
+  background-color: var(--nm-amber-dim);
+}
+
+/* ---- Fares Disclaimer ---- */
+.fares-disclaimer {
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  padding: 1rem 1.25rem;
+  margin-top: var(--nm-space-2xl);
+}
+
+.fares-disclaimer p {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.7;
+}
+
+.fares-disclaimer a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Fares Responsive ---- */
+@media (max-width: 768px) {
+  .fares-hero {
+    padding: var(--nm-space-xl) var(--nm-space-md) var(--nm-space-xl);
+  }
+
+  .fares-page {
+    padding: 0 var(--nm-space-md) var(--nm-space-2xl);
+  }
+
+  .calc-route {
+    grid-template-columns: 1fr;
+    gap: var(--nm-space-sm);
+  }
+
+  .calc-arrow {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .calc-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .peak-hours-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .peak-hours-day {
+    min-width: auto;
+  }
+
+  .fare-table thead th,
+  .fare-table tbody td {
+    padding: 0.5rem 0.6rem;
+  }
+}
