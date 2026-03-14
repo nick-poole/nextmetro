@@ -224,6 +224,11 @@ async function handleIndexNow(request, env) {
 		`https://${HOST}/station/union-station/`,
 		`https://${HOST}/station/brookland-cua/`,
 		`https://${HOST}/station/potomac-yard/`,
+		`https://${HOST}/station/van-ness-udc/`,
+		`https://${HOST}/station/judiciary-square/`,
+		`https://${HOST}/station/noma/`,
+		`https://${HOST}/station/smithsonian/`,
+		`https://${HOST}/station/lenfant-plaza/`,
 	];
 
 	try {
@@ -248,6 +253,18 @@ async function handleIndexNow(request, env) {
 	} catch (err) {
 		return jsonResponse({ error: 'IndexNow submission failed' }, request, 500);
 	}
+}
+
+// ==============================
+// Security headers helper
+// ==============================
+function addSecurityHeaders(response) {
+	response.headers.set('X-Content-Type-Options', 'nosniff');
+	response.headers.set('X-Frame-Options', 'DENY');
+	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+	response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+	response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'");
 }
 
 // ==============================
@@ -319,21 +336,36 @@ export default {
 		if (fareMatch) return handleFare(request, env, fareMatch[1], fareMatch[2]);
 
 		// Let Cloudflare Assets handle static files (configured in wrangler.toml)
-		const assetResponse = await env.ASSETS.fetch(request);
+		try {
+			const assetResponse = await env.ASSETS.fetch(request);
 
-		// Add security headers to HTML responses
-		const contentType = assetResponse.headers.get('Content-Type') || '';
-		if (contentType.includes('text/html')) {
-			const response = new Response(assetResponse.body, assetResponse);
-			response.headers.set('X-Content-Type-Options', 'nosniff');
-			response.headers.set('X-Frame-Options', 'DENY');
-			response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-			response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-			response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-			response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'");
-			return response;
+			// Serve custom 404 page for missing assets
+			if (assetResponse.status === 404) {
+				const notFoundPage = await env.ASSETS.fetch(new Request(new URL('/404.html', request.url)));
+				const response = new Response(notFoundPage.body, { ...notFoundPage, status: 404 });
+				addSecurityHeaders(response);
+				return response;
+			}
+
+			// Add security headers to HTML responses
+			const contentType = assetResponse.headers.get('Content-Type') || '';
+			if (contentType.includes('text/html')) {
+				const response = new Response(assetResponse.body, assetResponse);
+				addSecurityHeaders(response);
+				return response;
+			}
+
+			return assetResponse;
+		} catch (err) {
+			// Serve custom 500 page on unexpected errors
+			try {
+				const errorPage = await env.ASSETS.fetch(new Request(new URL('/500.html', request.url)));
+				const response = new Response(errorPage.body, { ...errorPage, status: 500 });
+				addSecurityHeaders(response);
+				return response;
+			} catch {
+				return new Response('Internal Server Error', { status: 500 });
+			}
 		}
-
-		return assetResponse;
 	},
 };

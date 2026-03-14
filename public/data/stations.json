@@ -20,7 +20,8 @@
     "lon": -77.0281,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Downtown &amp; Penn Quarter. Transfer to Orange, Blue, and Silver lines."
+    "description": "Servicing Downtown &amp; Penn Quarter. Transfer to Orange, Blue, and Silver lines.",
+    "environment": "underground"
   },
   {
     "name": "Farragut North",
@@ -39,7 +40,8 @@
     "lon": -77.0397,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Farragut Square &amp; K Street corridor."
+    "description": "Servicing Farragut Square &amp; K Street corridor.",
+    "environment": "underground"
   },
   {
     "name": "Dupont Circle",
@@ -58,7 +60,8 @@
     "lon": -77.0434,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Dupont Circle, Embassy Row &amp; Kalorama."
+    "description": "Servicing Dupont Circle, Embassy Row &amp; Kalorama.",
+    "environment": "underground"
   },
   {
     "name": "Woodley Park-Zoo/Adams Morgan",
@@ -77,7 +80,8 @@
     "lon": -77.0527,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Woodley Park, National Zoo &amp; Adams Morgan."
+    "description": "Servicing Woodley Park, National Zoo &amp; Adams Morgan.",
+    "environment": "underground"
   },
   {
     "name": "Cleveland Park",
@@ -96,7 +100,8 @@
     "lon": -77.058,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Cleveland Park &amp; Connecticut Avenue."
+    "description": "Servicing Cleveland Park &amp; Connecticut Avenue.",
+    "environment": "underground"
   },
   {
     "name": "Van Ness-UDC",
@@ -115,7 +120,11 @@
     "lon": -77.0631,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Van Ness &amp; University of the District of Columbia."
+    "description": "Servicing Van Ness &amp; University of the District of Columbia.",
+    "environment": "underground",
+    "heroImages": [
+      "/images/station-specific/van-ness-udc-station-platform.webp"
+    ]
   },
   {
     "name": "Tenleytown-AU",
@@ -134,7 +143,8 @@
     "lon": -77.0794,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Tenleytown &amp; American University."
+    "description": "Servicing Tenleytown &amp; American University.",
+    "environment": "underground"
   },
   {
     "name": "Friendship Heights",
@@ -153,7 +163,8 @@
     "lon": -77.0859,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Friendship Heights &amp; Chevy Chase."
+    "description": "Servicing Friendship Heights &amp; Chevy Chase.",
+    "environment": "underground"
   },
   {
     "name": "Bethesda",
@@ -172,7 +183,8 @@
     "lon": -77.0941,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Downtown Bethesda &amp; NIH campus access."
+    "description": "Servicing Downtown Bethesda &amp; NIH campus access.",
+    "environment": "underground"
   },
   {
     "name": "Medical Center",
@@ -191,7 +203,8 @@
     "lon": -77.0971,
     "parking": true,
     "stationType": "underground",
-    "description": "Servicing National Institutes of Health &amp; Walter Reed National Military Medical Center."
+    "description": "Servicing National Institutes of Health &amp; Walter Reed National Military Medical Center.",
+    "environment": "underground"
   },
   {
     "name": "Grosvenor-Strathmore",
@@ -210,7 +223,8 @@
     "lon": -77.104,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Grosvenor &amp; the Strathmore music center."
+    "description": "Servicing Grosvenor &amp; the Strathmore music center.",
+    "environment": "outdoor"
   },
   {
     "name": "North Bethesda-White Flint",
@@ -229,7 +243,8 @@
     "lon": -77.1131,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing North Bethesda, Pike &amp; Rose &amp; White Flint."
+    "description": "Servicing North Bethesda, Pike &amp; Rose &amp; White Flint.",
+    "environment": "outdoor"
   },
   {
     "name": "Twinbrook",
@@ -248,7 +263,8 @@
     "lon": -77.1209,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Twinbrook &amp; Rockville Pike corridor."
+    "description": "Servicing Twinbrook &amp; Rockville Pike corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Rockville",
@@ -267,7 +283,8 @@
     "lon": -77.1462,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Downtown Rockville &amp; Rockville Town Square."
+    "description": "Servicing Downtown Rockville &amp; Rockville Town Square.",
+    "environment": "outdoor"
   },
   {
     "name": "Shady Grove",
@@ -286,7 +303,8 @@
     "lon": -77.1646,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Shady Grove &amp; the I-270 corridor."
+    "description": "Servicing Shady Grove &amp; the I-270 corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Gallery Pl-Chinatown",
@@ -308,7 +326,11 @@
     "lon": -77.0219,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Chinatown &amp; Penn Quarter. Transfer to Yellow and Green lines. Capital One Arena."
+    "description": "Servicing Chinatown &amp; Penn Quarter. Transfer to Yellow and Green lines. Capital One Arena.",
+    "environment": "underground",
+    "heroImages": [
+      "/images/station-specific/gallery-place-chinatown/gallery-place-chinatown-00.webp"
+    ]
   },
   {
     "name": "Judiciary Square",
@@ -327,7 +349,11 @@
     "lon": -77.0168,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Judiciary Square &amp; the National Building Museum."
+    "description": "Servicing Judiciary Square &amp; the National Building Museum.",
+    "environment": "underground",
+    "heroImages": [
+      "/images/station-specific/judiciary-square-station.webp"
+    ]
   },
   {
     "name": "Union Station",
@@ -352,7 +378,11 @@
       "VRE",
       "DC Streetcar"
     ],
-    "description": "Servicing Capitol Hill &amp; NoMa. Amtrak, MARC &amp; VRE connections."
+    "description": "Servicing Capitol Hill &amp; NoMa. Amtrak, MARC &amp; VRE connections.",
+    "environment": "underground",
+    "heroImages": [
+      "/images/station-specific/union-station.webp"
+    ]
   },
   {
     "name": "Rhode Island Ave-Brentwood",
@@ -371,7 +401,8 @@
     "lon": -76.9961,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Rhode Island Avenue, Brentwood &amp; Woodridge."
+    "description": "Servicing Rhode Island Avenue, Brentwood &amp; Woodridge.",
+    "environment": "outdoor"
   },
   {
     "name": "Brookland-CUA",
@@ -390,7 +421,8 @@
     "lon": -76.9946,
     "parking": false,
     "stationType": "ground-level",
-    "description": "Servicing Brookland, Edgewood &amp; Catholic University of America."
+    "description": "Servicing Brookland, Edgewood &amp; Catholic University of America.",
+    "environment": "outdoor"
   },
   {
     "name": "Fort Totten",
@@ -412,7 +444,8 @@
     "lon": -77.0023,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Fort Totten &amp; Lamond-Riggs. Transfer to Yellow and Green lines."
+    "description": "Servicing Fort Totten &amp; Lamond-Riggs. Transfer to Yellow and Green lines.",
+    "environment": "outdoor"
   },
   {
     "name": "Takoma",
@@ -431,7 +464,8 @@
     "lon": -77.018,
     "parking": false,
     "stationType": "ground-level",
-    "description": "Servicing Takoma &amp; Takoma Park."
+    "description": "Servicing Takoma &amp; Takoma Park.",
+    "environment": "outdoor"
   },
   {
     "name": "Silver Spring",
@@ -453,7 +487,8 @@
     "connections": [
       "MARC"
     ],
-    "description": "Servicing Downtown Silver Spring &amp; the Fillmore."
+    "description": "Servicing Downtown Silver Spring &amp; the Fillmore.",
+    "environment": "outdoor"
   },
   {
     "name": "Forest Glen",
@@ -472,7 +507,8 @@
     "lon": -77.043,
     "parking": true,
     "stationType": "underground",
-    "description": "Servicing Forest Glen &amp; Holy Cross Hospital."
+    "description": "Servicing Forest Glen &amp; Holy Cross Hospital.",
+    "environment": "underground"
   },
   {
     "name": "Wheaton",
@@ -491,7 +527,8 @@
     "lon": -77.0513,
     "parking": true,
     "stationType": "underground",
-    "description": "Servicing Wheaton &amp; Westfield Wheaton Mall."
+    "description": "Servicing Wheaton &amp; Westfield Wheaton Mall.",
+    "environment": "underground"
   },
   {
     "name": "Glenmont",
@@ -510,7 +547,8 @@
     "lon": -77.0536,
     "parking": true,
     "stationType": "underground",
-    "description": "Servicing Glenmont &amp; the Layhill Road corridor."
+    "description": "Servicing Glenmont &amp; the Layhill Road corridor.",
+    "environment": "underground"
   },
   {
     "name": "NoMa-Gallaudet U",
@@ -529,7 +567,11 @@
     "lon": -77.003,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing NoMa &amp; Gallaudet University."
+    "description": "Servicing NoMa &amp; Gallaudet University.",
+    "environment": "outdoor",
+    "heroImages": [
+      "/images/station-specific/noma-gallaudet-u.webp"
+    ]
   },
   {
     "name": "McPherson Square",
@@ -550,7 +592,8 @@
     "lon": -77.0334,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing McPherson Square &amp; Downtown DC. Transfer to Orange, Blue, and Silver lines."
+    "description": "Servicing McPherson Square &amp; Downtown DC. Transfer to Orange, Blue, and Silver lines.",
+    "environment": "underground"
   },
   {
     "name": "Farragut West",
@@ -571,7 +614,8 @@
     "lon": -77.0407,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Farragut Square &amp; the World Bank. Transfer to Orange, Blue, and Silver lines."
+    "description": "Servicing Farragut Square &amp; the World Bank. Transfer to Orange, Blue, and Silver lines.",
+    "environment": "underground"
   },
   {
     "name": "Foggy Bottom-GWU",
@@ -592,7 +636,8 @@
     "lon": -77.0504,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Foggy Bottom, George Washington University &amp; the Kennedy Center."
+    "description": "Servicing Foggy Bottom, George Washington University &amp; the Kennedy Center.",
+    "environment": "underground"
   },
   {
     "name": "Rosslyn",
@@ -613,7 +658,8 @@
     "lon": -77.0709,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Rosslyn &amp; Georgetown access. Transfer to Orange, Blue, and Silver lines."
+    "description": "Servicing Rosslyn &amp; Georgetown access. Transfer to Orange, Blue, and Silver lines.",
+    "environment": "underground"
   },
   {
     "name": "Arlington Cemetery",
@@ -632,7 +678,8 @@
     "lon": -77.0637,
     "parking": false,
     "stationType": "ground-level",
-    "description": "Servicing Arlington National Cemetery."
+    "description": "Servicing Arlington National Cemetery.",
+    "environment": "outdoor"
   },
   {
     "name": "Pentagon",
@@ -652,7 +699,8 @@
     "lon": -77.0539,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing the Pentagon. Transfer to Yellow line."
+    "description": "Servicing the Pentagon. Transfer to Yellow line.",
+    "environment": "underground"
   },
   {
     "name": "Pentagon City",
@@ -672,7 +720,8 @@
     "lon": -77.0597,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Pentagon City &amp; the Fashion Centre."
+    "description": "Servicing Pentagon City &amp; the Fashion Centre.",
+    "environment": "underground"
   },
   {
     "name": "Crystal City",
@@ -692,7 +741,8 @@
     "lon": -77.0505,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Crystal City &amp; National Landing."
+    "description": "Servicing Crystal City &amp; National Landing.",
+    "environment": "underground"
   },
   {
     "name": "Ronald Reagan Washington National Airport",
@@ -712,7 +762,8 @@
     "lon": -77.044,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Reagan National Airport."
+    "description": "Servicing Reagan National Airport.",
+    "environment": "outdoor"
   },
   {
     "name": "Potomac Yard",
@@ -732,7 +783,11 @@
     "lon": -77.0513,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Potomac Yard &amp; Del Ray."
+    "description": "Servicing Potomac Yard &amp; Del Ray.",
+    "environment": "outdoor",
+    "heroImages": [
+      "/images/station-specific/potomac-yard-vt.webp"
+    ]
   },
   {
     "name": "Braddock Road",
@@ -752,7 +807,8 @@
     "lon": -77.0536,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Braddock Road &amp; North Old Town."
+    "description": "Servicing Braddock Road &amp; North Old Town.",
+    "environment": "underground"
   },
   {
     "name": "King St-Old Town",
@@ -776,7 +832,8 @@
       "Amtrak",
       "VRE"
     ],
-    "description": "Servicing Old Town Alexandria &amp; King Street. Transfer to Yellow line."
+    "description": "Servicing Old Town Alexandria &amp; King Street. Transfer to Yellow line.",
+    "environment": "outdoor"
   },
   {
     "name": "Eisenhower Avenue",
@@ -795,7 +852,8 @@
     "lon": -77.0711,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Eisenhower Valley &amp; the Eisenhower Avenue corridor."
+    "description": "Servicing Eisenhower Valley &amp; the Eisenhower Avenue corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Huntington",
@@ -814,7 +872,8 @@
     "lon": -77.075,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Huntington &amp; the South Kings Highway corridor."
+    "description": "Servicing Huntington &amp; the South Kings Highway corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Federal Triangle",
@@ -835,7 +894,8 @@
     "lon": -77.0284,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing the Federal Triangle &amp; the National Archives."
+    "description": "Servicing the Federal Triangle &amp; the National Archives.",
+    "environment": "underground"
   },
   {
     "name": "Smithsonian",
@@ -856,7 +916,11 @@
     "lon": -77.028,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing the National Mall &amp; Smithsonian museums."
+    "description": "Servicing the National Mall &amp; Smithsonian museums.",
+    "environment": "underground",
+    "heroImages": [
+      "/images/station-specific/smithsonian-station-escalator.webp"
+    ]
   },
   {
     "name": "L'Enfant Plaza",
@@ -880,7 +944,11 @@
     "lon": -77.0219,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing L'Enfant Plaza &amp; the Southwest Waterfront. Transfer to Orange, Blue, Yellow, Green, and Silver lines."
+    "description": "Servicing L'Enfant Plaza &amp; the Southwest Waterfront. Transfer to Orange, Blue, Yellow, Green, and Silver lines.",
+    "environment": "underground",
+    "heroImages": [
+      "/images/station-specific/l-enfant-plaza/l-enfant-plaza-metro-station-00.webp"
+    ]
   },
   {
     "name": "Federal Center SW",
@@ -901,7 +969,8 @@
     "lon": -77.0158,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Federal Center SW &amp; USDA headquarters."
+    "description": "Servicing Federal Center SW &amp; USDA headquarters.",
+    "environment": "underground"
   },
   {
     "name": "Capitol South",
@@ -922,7 +991,8 @@
     "lon": -77.0051,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Capitol South &amp; the U.S. Capitol."
+    "description": "Servicing Capitol South &amp; the U.S. Capitol.",
+    "environment": "underground"
   },
   {
     "name": "Eastern Market",
@@ -943,7 +1013,8 @@
     "lon": -76.996,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Eastern Market &amp; Capitol Hill."
+    "description": "Servicing Eastern Market &amp; Capitol Hill.",
+    "environment": "underground"
   },
   {
     "name": "Potomac Ave",
@@ -964,7 +1035,8 @@
     "lon": -76.9856,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Potomac Avenue &amp; Hill East."
+    "description": "Servicing Potomac Avenue &amp; Hill East.",
+    "environment": "underground"
   },
   {
     "name": "Stadium-Armory",
@@ -985,7 +1057,8 @@
     "lon": -76.9771,
     "parking": true,
     "stationType": "underground",
-    "description": "Servicing RFK Stadium &amp; the DC Armory. Transfer to Orange, Blue, and Silver lines."
+    "description": "Servicing RFK Stadium &amp; the DC Armory. Transfer to Orange, Blue, and Silver lines.",
+    "environment": "underground"
   },
   {
     "name": "Minnesota Ave",
@@ -1004,7 +1077,8 @@
     "lon": -76.9478,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Minnesota Avenue &amp; Deanwood."
+    "description": "Servicing Minnesota Avenue &amp; Deanwood.",
+    "environment": "outdoor"
   },
   {
     "name": "Deanwood",
@@ -1023,7 +1097,8 @@
     "lon": -76.9353,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Deanwood &amp; Kenilworth."
+    "description": "Servicing Deanwood &amp; Kenilworth.",
+    "environment": "outdoor"
   },
   {
     "name": "Cheverly",
@@ -1042,7 +1117,8 @@
     "lon": -76.9158,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Cheverly &amp; Tuxedo."
+    "description": "Servicing Cheverly &amp; Tuxedo.",
+    "environment": "outdoor"
   },
   {
     "name": "Landover",
@@ -1061,7 +1137,8 @@
     "lon": -76.8911,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Landover &amp; FedExField access."
+    "description": "Servicing Landover &amp; FedExField access.",
+    "environment": "outdoor"
   },
   {
     "name": "New Carrollton",
@@ -1084,7 +1161,8 @@
       "Amtrak",
       "MARC"
     ],
-    "description": "Servicing New Carrollton. Amtrak &amp; MARC connections."
+    "description": "Servicing New Carrollton. Amtrak &amp; MARC connections.",
+    "environment": "outdoor"
   },
   {
     "name": "Mt Vernon Sq 7th St-Convention Center",
@@ -1104,7 +1182,8 @@
     "lon": -77.0222,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Mount Vernon Square &amp; the Walter E. Washington Convention Center."
+    "description": "Servicing Mount Vernon Square &amp; the Walter E. Washington Convention Center.",
+    "environment": "underground"
   },
   {
     "name": "Shaw-Howard U",
@@ -1124,7 +1203,8 @@
     "lon": -77.022,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Shaw &amp; Howard University."
+    "description": "Servicing Shaw &amp; Howard University.",
+    "environment": "underground"
   },
   {
     "name": "U Street/African-Amer Civil War Memorial/Cardozo",
@@ -1144,7 +1224,8 @@
     "lon": -77.0289,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing U Street, the 14th Street corridor &amp; the African American Civil War Memorial."
+    "description": "Servicing U Street, the 14th Street corridor &amp; the African American Civil War Memorial.",
+    "environment": "underground"
   },
   {
     "name": "Columbia Heights",
@@ -1164,7 +1245,8 @@
     "lon": -77.0326,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Columbia Heights &amp; the DC USA shopping center."
+    "description": "Servicing Columbia Heights &amp; the DC USA shopping center.",
+    "environment": "underground"
   },
   {
     "name": "Georgia Ave-Petworth",
@@ -1184,7 +1266,8 @@
     "lon": -77.0247,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Petworth &amp; Georgia Avenue corridor."
+    "description": "Servicing Petworth &amp; Georgia Avenue corridor.",
+    "environment": "underground"
   },
   {
     "name": "West Hyattsville",
@@ -1204,7 +1287,8 @@
     "lon": -76.9693,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing West Hyattsville &amp; Ager Road."
+    "description": "Servicing West Hyattsville &amp; Ager Road.",
+    "environment": "outdoor"
   },
   {
     "name": "Prince George's Plaza",
@@ -1224,7 +1308,8 @@
     "lon": -76.9561,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Hyattsville &amp; The Mall at Prince George's."
+    "description": "Servicing Hyattsville &amp; The Mall at Prince George's.",
+    "environment": "outdoor"
   },
   {
     "name": "College Park-U of Md",
@@ -1247,7 +1332,8 @@
     "connections": [
       "MARC"
     ],
-    "description": "Servicing the University of Maryland, College Park."
+    "description": "Servicing the University of Maryland, College Park.",
+    "environment": "outdoor"
   },
   {
     "name": "Greenbelt",
@@ -1270,7 +1356,8 @@
     "connections": [
       "MARC"
     ],
-    "description": "Servicing Greenbelt &amp; NASA Goddard Space Flight Center."
+    "description": "Servicing Greenbelt &amp; NASA Goddard Space Flight Center.",
+    "environment": "outdoor"
   },
   {
     "name": "Archives-Navy Memorial-Penn Quarter",
@@ -1290,7 +1377,8 @@
     "lon": -77.0219,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing the Archives, Navy Memorial &amp; Penn Quarter."
+    "description": "Servicing the Archives, Navy Memorial &amp; Penn Quarter.",
+    "environment": "underground"
   },
   {
     "name": "Waterfront",
@@ -1309,7 +1397,8 @@
     "lon": -77.0175,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing the Southwest Waterfront &amp; The Wharf."
+    "description": "Servicing the Southwest Waterfront &amp; The Wharf.",
+    "environment": "underground"
   },
   {
     "name": "Navy Yard-Ballpark",
@@ -1328,7 +1417,8 @@
     "lon": -77.005,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Navy Yard &amp; Nationals Park."
+    "description": "Servicing Navy Yard &amp; Nationals Park.",
+    "environment": "underground"
   },
   {
     "name": "Anacostia",
@@ -1347,7 +1437,8 @@
     "lon": -76.9954,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Anacostia &amp; the Frederick Douglass National Historic Site."
+    "description": "Servicing Anacostia &amp; the Frederick Douglass National Historic Site.",
+    "environment": "outdoor"
   },
   {
     "name": "Congress Heights",
@@ -1366,7 +1457,8 @@
     "lon": -76.9883,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Congress Heights &amp; St. Elizabeths campus."
+    "description": "Servicing Congress Heights &amp; St. Elizabeths campus.",
+    "environment": "outdoor"
   },
   {
     "name": "Southern Ave",
@@ -1385,7 +1477,8 @@
     "lon": -76.975,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Southern Avenue &amp; Oxon Run."
+    "description": "Servicing Southern Avenue &amp; Oxon Run.",
+    "environment": "outdoor"
   },
   {
     "name": "Naylor Road",
@@ -1404,7 +1497,8 @@
     "lon": -76.9564,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Naylor Road &amp; Hillcrest."
+    "description": "Servicing Naylor Road &amp; Hillcrest.",
+    "environment": "outdoor"
   },
   {
     "name": "Suitland",
@@ -1423,7 +1517,8 @@
     "lon": -76.932,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Suitland &amp; the Suitland Federal Center."
+    "description": "Servicing Suitland &amp; the Suitland Federal Center.",
+    "environment": "outdoor"
   },
   {
     "name": "Branch Ave",
@@ -1442,7 +1537,8 @@
     "lon": -76.9124,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Branch Avenue &amp; the southern Green Line terminus."
+    "description": "Servicing Branch Avenue &amp; the southern Green Line terminus.",
+    "environment": "outdoor"
   },
   {
     "name": "Benning Road",
@@ -1462,7 +1558,8 @@
     "lon": -76.9382,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Benning Road &amp; H Street NE corridor."
+    "description": "Servicing Benning Road &amp; H Street NE corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Capitol Heights",
@@ -1482,7 +1579,8 @@
     "lon": -76.9131,
     "parking": true,
     "stationType": "elevated",
-    "description": "Servicing Capitol Heights."
+    "description": "Servicing Capitol Heights.",
+    "environment": "outdoor"
   },
   {
     "name": "Addison Road-Seat Pleasant",
@@ -1502,7 +1600,8 @@
     "lon": -76.8935,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Addison Road &amp; Seat Pleasant."
+    "description": "Servicing Addison Road &amp; Seat Pleasant.",
+    "environment": "outdoor"
   },
   {
     "name": "Morgan Boulevard",
@@ -1522,7 +1621,8 @@
     "lon": -76.868,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Morgan Boulevard &amp; FedExField."
+    "description": "Servicing Morgan Boulevard &amp; FedExField.",
+    "environment": "outdoor"
   },
   {
     "name": "Largo Town Center",
@@ -1542,7 +1642,8 @@
     "lon": -76.8427,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Largo Town Center &amp; the Boulevard at the Capital Centre."
+    "description": "Servicing Largo Town Center &amp; the Boulevard at the Capital Centre.",
+    "environment": "outdoor"
   },
   {
     "name": "Van Dorn Street",
@@ -1561,7 +1662,8 @@
     "lon": -77.129,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Van Dorn Street &amp; Lincolnia."
+    "description": "Servicing Van Dorn Street &amp; Lincolnia.",
+    "environment": "outdoor"
   },
   {
     "name": "Franconia-Springfield",
@@ -1584,7 +1686,8 @@
       "Amtrak",
       "VRE"
     ],
-    "description": "Servicing Franconia &amp; Springfield. VRE connection."
+    "description": "Servicing Franconia &amp; Springfield. VRE connection.",
+    "environment": "outdoor"
   },
   {
     "name": "Court House",
@@ -1604,7 +1707,8 @@
     "lon": -77.0865,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Courthouse &amp; Arlington County government."
+    "description": "Servicing Courthouse &amp; Arlington County government.",
+    "environment": "underground"
   },
   {
     "name": "Clarendon",
@@ -1624,7 +1728,8 @@
     "lon": -77.0963,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Clarendon &amp; the Wilson Boulevard corridor."
+    "description": "Servicing Clarendon &amp; the Wilson Boulevard corridor.",
+    "environment": "underground"
   },
   {
     "name": "Virginia Square-GMU",
@@ -1644,7 +1749,8 @@
     "lon": -77.1035,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Virginia Square &amp; George Mason University Arlington campus."
+    "description": "Servicing Virginia Square &amp; George Mason University Arlington campus.",
+    "environment": "underground"
   },
   {
     "name": "Ballston-MU",
@@ -1664,7 +1770,8 @@
     "lon": -77.1118,
     "parking": false,
     "stationType": "underground",
-    "description": "Servicing Ballston &amp; Marymount University."
+    "description": "Servicing Ballston &amp; Marymount University.",
+    "environment": "underground"
   },
   {
     "name": "East Falls Church",
@@ -1684,7 +1791,8 @@
     "lon": -77.1569,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing East Falls Church. Transfer to Orange and Silver lines."
+    "description": "Servicing East Falls Church. Transfer to Orange and Silver lines.",
+    "environment": "outdoor"
   },
   {
     "name": "West Falls Church",
@@ -1703,7 +1811,8 @@
     "lon": -77.1891,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing West Falls Church &amp; the Merrifield area."
+    "description": "Servicing West Falls Church &amp; the Merrifield area.",
+    "environment": "outdoor"
   },
   {
     "name": "Dunn Loring-Merrifield",
@@ -1722,7 +1831,8 @@
     "lon": -77.2283,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Dunn Loring &amp; Merrifield Town Center."
+    "description": "Servicing Dunn Loring &amp; Merrifield Town Center.",
+    "environment": "outdoor"
   },
   {
     "name": "Vienna/Fairfax-GMU",
@@ -1741,7 +1851,8 @@
     "lon": -77.2714,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Vienna &amp; Fairfax. George Mason University access."
+    "description": "Servicing Vienna &amp; Fairfax. George Mason University access.",
+    "environment": "outdoor"
   },
   {
     "name": "McLean",
@@ -1760,7 +1871,8 @@
     "lon": -77.2103,
     "parking": true,
     "stationType": "underground",
-    "description": "Servicing McLean &amp; Tysons East."
+    "description": "Servicing McLean &amp; Tysons East.",
+    "environment": "underground"
   },
   {
     "name": "Tysons Corner",
@@ -1779,7 +1891,8 @@
     "lon": -77.2239,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Tysons Corner Center &amp; Tysons Galleria."
+    "description": "Servicing Tysons Corner Center &amp; Tysons Galleria.",
+    "environment": "outdoor"
   },
   {
     "name": "Greensboro",
@@ -1798,7 +1911,8 @@
     "lon": -77.2351,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Greensboro &amp; the Tysons area."
+    "description": "Servicing Greensboro &amp; the Tysons area.",
+    "environment": "outdoor"
   },
   {
     "name": "Spring Hill",
@@ -1817,7 +1931,8 @@
     "lon": -77.2416,
     "parking": false,
     "stationType": "elevated",
-    "description": "Servicing Spring Hill &amp; Tysons West."
+    "description": "Servicing Spring Hill &amp; Tysons West.",
+    "environment": "outdoor"
   },
   {
     "name": "Wiehle-Reston East",
@@ -1836,7 +1951,8 @@
     "lon": -77.3395,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Wiehle-Reston East &amp; the Reston corridor."
+    "description": "Servicing Wiehle-Reston East &amp; the Reston corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Reston Town Center",
@@ -1855,7 +1971,8 @@
     "lon": -77.3591,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Reston Town Center."
+    "description": "Servicing Reston Town Center.",
+    "environment": "outdoor"
   },
   {
     "name": "Herndon",
@@ -1874,7 +1991,8 @@
     "lon": -77.3863,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Downtown Herndon."
+    "description": "Servicing Downtown Herndon.",
+    "environment": "outdoor"
   },
   {
     "name": "Innovation Center",
@@ -1893,7 +2011,8 @@
     "lon": -77.4165,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing the Innovation Center &amp; Centreville Road corridor."
+    "description": "Servicing the Innovation Center &amp; Centreville Road corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Dulles",
@@ -1912,7 +2031,8 @@
     "lon": -77.4485,
     "parking": true,
     "stationType": "underground",
-    "description": "Servicing Dulles International Airport."
+    "description": "Servicing Dulles International Airport.",
+    "environment": "underground"
   },
   {
     "name": "Loudon Gateway",
@@ -1931,7 +2051,8 @@
     "lon": -77.4631,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Loudoun Gateway &amp; the Route 606 corridor."
+    "description": "Servicing Loudoun Gateway &amp; the Route 606 corridor.",
+    "environment": "outdoor"
   },
   {
     "name": "Ashburn",
@@ -1950,6 +2071,7 @@
     "lon": -77.4915,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Ashburn &amp; the Silver Line terminus."
+    "description": "Servicing Ashburn &amp; the Silver Line terminus.",
+    "environment": "outdoor"
   }
 ]

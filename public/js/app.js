@@ -19,13 +19,19 @@ const multiPlatform = {
 // ---- Station Pages ----
 // Stations that have dedicated pages — maps station code to URL slug
 const stationPages = {
-  B05: 'brookland-cua',
-  C11: 'potomac-yard',
-  A01: 'metro-center',
-  C01: 'metro-center',
+  A06: 'van-ness-udc',
   B01: 'gallery-place',
   F01: 'gallery-place',
+  B02: 'judiciary-square',
   B03: 'union-station',
+  B05: 'brookland-cua',
+  B35: 'noma',
+  A01: 'metro-center',
+  C01: 'metro-center',
+  C11: 'potomac-yard',
+  D02: 'smithsonian',
+  D03: 'lenfant-plaza',
+  F03: 'lenfant-plaza',
 };
 
 // pidsLineColors — alias for lineColors (from shared.js)
