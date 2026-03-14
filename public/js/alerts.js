@@ -222,11 +222,8 @@ function formatTime(dateStr) {
   return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 }
 
-// formatRelativeTime — from shared.js (alerts.js version fell back to
-// formatTime for 24h+, but shared.js shows "Xd ago" instead which is
-// consistent with the elevators page; keep a local override if needed)
-var _sharedFormatRelativeTime = formatRelativeTime;
-formatRelativeTime = function (dateStr) {
+// Alerts page uses formatTime fallback for 24h+ instead of "Xd ago"
+function formatAlertTime(dateStr) {
   if (!dateStr) return '';
   var date = new Date(dateStr);
   if (isNaN(date.getTime())) return '';
@@ -239,7 +236,7 @@ formatRelativeTime = function (dateStr) {
   var diffHr = Math.floor(diffMin / 60);
   if (diffHr < 24) return diffHr + 'h ago';
   return formatTime(dateStr);
-};
+}
 
 // ==============================
 // Render Alert Cards
@@ -274,7 +271,7 @@ function renderAlerts() {
     var severityClass = getSeverityClass(severityLabel);
     var icon = getAlertIcon(severityLabel);
     var description = cleanDescription(incident.Description);
-    var timeStr = formatRelativeTime(incident.DateUpdated);
+    var timeStr = formatAlertTime(incident.DateUpdated);
     var delay = Math.min(idx * 0.06, 0.6);
 
     // Location tag for station-level alerts
