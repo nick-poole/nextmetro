@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://nextmetro.live/alerts/" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/alerts-page.css" />
+  <link rel="stylesheet" href="/css/line.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -178,37 +179,87 @@
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </nav>
 
-  <!-- System Ticker -->
-  <div class="ticker-bar" id="ticker-bar" role="marquee" aria-label="Metro line status">
-    <div class="ticker-track" id="ticker-track"></div>
+  <!-- Station Search -->
+  <div class="station-search" id="station-search-wrapper">
+    <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
+    <input
+      type="text"
+      id="station-input"
+      class="station-search__input"
+      placeholder="Search stations..."
+      autocomplete="off"
+      aria-label="Search for a Metro station"
+    />
+    <ul class="station-dropdown" id="station-dropdown"></ul>
   </div>
 
-  <!-- Main Content -->
-  <main id="main-content" class="alerts-page">
+  <!-- Hero -->
+  <section class="alerts-hero">
+    <div class="alerts-hero-inner">
+      <span class="alerts-hero-label">Live Status</span>
+      <h1 class="alerts-hero-title">DC Metro Alerts &amp; Outages</h1>
+      <p class="alerts-hero-subtitle" id="alerts-subtitle">Train delays, station closures, single tracking, and elevator &amp; escalator outages — updated every 30 seconds.</p>
 
-  <!-- Page Hero -->
-  <section class="hero">
-    <div class="hero-inner">
-      <span class="hero-label">Live Status</span>
-      <h1 class="hero-station-name">DC Metro Alerts &amp; Outages</h1>
-      <p class="hero-station-address" id="alerts-subtitle">Train delays, station closures, single tracking, and elevator &amp; escalator outages — updated every 30 seconds.</p>
+      <!-- System Status Summary -->
+      <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
+        <!-- Rendered by JS -->
+      </div>
     </div>
   </section>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+  <nav class="nm-breadcrumb" aria-label="Breadcrumb">
+    <ol class="nm-breadcrumb-list">
+      <li class="nm-breadcrumb-item"><a href="/">Home</a></li>
+      <li class="nm-breadcrumb-sep" aria-hidden="true">/</li>
+      <li class="nm-breadcrumb-item nm-breadcrumb-current" aria-current="page">Alerts</li>
+    </ol>
+  </nav>
+
+    <div class="alerts-page">
     <div class="alerts-page-inner">
 
       <!-- Controls Bar -->
       <div class="alerts-controls animate-in d1">
+        <div class="alerts-controls-left">
+          <div class="alerts-filters" id="alerts-filters">
+            <button class="alerts-filter-chip alerts-filter-chip--active" data-line="all" aria-pressed="true">
+              <span class="alerts-filter-label">All</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="RD" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#D41140"></span>
+              <span class="alerts-filter-label">Red</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="OR" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#F09500"></span>
+              <span class="alerts-filter-label">Orange</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="BL" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#00A8E8"></span>
+              <span class="alerts-filter-label">Blue</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="GR" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#00BD45"></span>
+              <span class="alerts-filter-label">Green</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="YL" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#FFD400"></span>
+              <span class="alerts-filter-label">Yellow</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="SV" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#9BA5A5"></span>
+              <span class="alerts-filter-label">Silver</span>
+            </button>
+          </div>
+        </div>
         <div class="alerts-controls-right">
           <span class="alerts-updated" id="alerts-updated"></span>
           <button class="refresh-btn" id="alerts-refresh" aria-label="Refresh alerts">
             <i class="ri-refresh-line" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
-
-      <!-- System Status Summary -->
-      <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
-        <!-- Rendered by JS -->
       </div>
 
       <!-- Alerts List -->
@@ -322,6 +373,7 @@
     </div>
   </section>
 
+    </div>
   </main>
 
   <!-- NextMetro Site Footer -->
@@ -344,6 +396,7 @@
           <a href="/elevators" class="nm-footer__link">Elevator Status</a>
           <a href="/fares"     class="nm-footer__link">Fares</a>
           <a href="/hours"     class="nm-footer__link">Hours</a>
+          <a href="/transfers" class="nm-footer__link">Transfers</a>
         </nav>
       </div>
       <div class="nm-footer__col">
@@ -403,6 +456,7 @@
     </div>
   </footer>
   <script src="/js/nav.js"></script>
+  <script src="/js/search.js"></script>
   <script src="/js/shared.js"></script>
   <script src="/js/alerts.js"></script>
 </body>

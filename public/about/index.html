@@ -98,17 +98,39 @@
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </nav>
 
-  <!-- Ticker placeholder -->
-  <div class="ticker-bar" role="marquee" aria-label="Metro line status">
-    <div class="ticker-track"></div>
+  <!-- Station Search -->
+  <div class="station-search" id="station-search-wrapper">
+    <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
+    <input
+      type="text"
+      id="station-input"
+      class="station-search__input"
+      placeholder="Search stations..."
+      autocomplete="off"
+      aria-label="Search for a Metro station"
+    />
+    <ul class="station-dropdown" id="station-dropdown"></ul>
   </div>
 
   <!-- About Content -->
-  <main id="main-content">
-  <div class="about-page">
-    <span class="about-label">About</span>
-    <h1 class="about-title">NextMetro</h1>
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <span class="about-label">About</span>
+      <h1 class="about-title">NextMetro</h1>
+    </div>
+  </section>
 
+  <main id="main-content">
+
+  <nav class="nm-breadcrumb" aria-label="Breadcrumb">
+    <ol class="nm-breadcrumb-list">
+      <li class="nm-breadcrumb-item"><a href="/">Home</a></li>
+      <li class="nm-breadcrumb-sep" aria-hidden="true">/</li>
+      <li class="nm-breadcrumb-item nm-breadcrumb-current" aria-current="page">About</li>
+    </ol>
+  </nav>
+
+  <div class="about-page">
     <div class="about-section">
       <p class="about-text">
         NextMetro is a real-time tracker for the Washington D.C. Metrorail system. It pulls live data from the
@@ -171,6 +193,7 @@
           <a href="/elevators" class="nm-footer__link">Elevator Status</a>
           <a href="/fares"     class="nm-footer__link">Fares</a>
           <a href="/hours"     class="nm-footer__link">Hours</a>
+          <a href="/transfers" class="nm-footer__link">Transfers</a>
         </nav>
       </div>
       <div class="nm-footer__col">
@@ -230,5 +253,6 @@
     </div>
   </footer>
   <script src="/js/nav.js"></script>
+  <script src="/js/search.js"></script>
 </body>
 </html>

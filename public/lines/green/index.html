@@ -237,25 +237,25 @@
     <a href="/hours" class="mobile-menu-link">Hours</a>
   </div>
 
-  <!-- Ticker placeholder -->
-  <div class="ticker-bar">
-    <div class="ticker-track" id="ticker-track"></div>
+  <!-- Station Search -->
+  <div class="station-search" id="station-search-wrapper">
+    <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
+    <input
+      type="text"
+      id="station-input"
+      class="station-search__input"
+      placeholder="Search stations..."
+      autocomplete="off"
+      aria-label="Search for a Metro station"
+    />
+    <ul class="station-dropdown" id="station-dropdown"></ul>
   </div>
 
-  <main id="main-content" data-line="green">
-  <!-- Breadcrumb -->
-  <nav class="line-breadcrumb" aria-label="Breadcrumb">
-    <ol class="line-breadcrumb-list">
-      <li class="line-breadcrumb-item"><a href="/">Home</a></li>
-      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
-      <li class="line-breadcrumb-item"><span>Metro Lines</span></li>
-      <li class="line-breadcrumb-separator" aria-hidden="true">/</li>
-      <li class="line-breadcrumb-item line-breadcrumb-current" aria-current="page">Green Line</li>
-    </ol>
-  </nav>
-
   <!-- Line Hero -->
-  <section class="line-hero">
+  <section class="line-hero" data-line="green">
+    <div class="line-hero__image">
+      <img src="/images/island-cinematics.jpg" alt="" loading="eager" onerror="this.dataset.error=true" />
+    </div>
     <div class="line-hero-inner">
       <span class="line-hero-label"><span class="line-hero-label-dot"></span>Line</span>
       <div class="line-hero-bar"></div>
@@ -269,6 +269,15 @@
       </div>
     </div>
   </section>
+
+  <main id="main-content" data-line="green">
+  <nav class="nm-breadcrumb" aria-label="Breadcrumb">
+    <ol class="nm-breadcrumb-list">
+      <li class="nm-breadcrumb-item"><a href="/">Home</a></li>
+      <li class="nm-breadcrumb-sep" aria-hidden="true">/</li>
+      <li class="nm-breadcrumb-item nm-breadcrumb-current" aria-current="page">Green Line</li>
+    </ol>
+  </nav>
 
   <!-- Main Content -->
   <div class="line-page">
@@ -533,6 +542,7 @@
           <a href="/elevators" class="nm-footer__link">Elevator Status</a>
           <a href="/fares"     class="nm-footer__link">Fares</a>
           <a href="/hours"     class="nm-footer__link">Hours</a>
+          <a href="/transfers" class="nm-footer__link">Transfers</a>
         </nav>
       </div>
       <div class="nm-footer__col">
@@ -592,6 +602,7 @@
     </div>
   </footer>
   <script src="/js/nav.js"></script>
+  <script src="/js/search.js"></script>
   <script>window.LINE_CODE='GR';window.LINE_NAME='Green';</script>
   <script src="/js/shared.js"></script>
   <script src="/js/line.js"></script>

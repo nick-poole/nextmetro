@@ -17,7 +17,7 @@ const lineAlertsBody = document.getElementById('line-alerts-body');
 // ---- State ----
 let incidentsInterval = null;
 
-// escapeHtml, parseAffectedLines, renderTicker — from shared.js
+// escapeHtml, parseAffectedLines — from shared.js
 
 // ==============================
 // Line Status Hero
@@ -100,12 +100,10 @@ async function fetchIncidents() {
     const data = await res.json();
     const incidents = data.Incidents || [];
 
-    renderTicker(incidents);
     renderLineStatus(incidents);
     renderAlerts(incidents);
   } catch (err) {
     console.error('Failed to fetch incidents:', err.message);
-    renderTicker([]);
     lineStatusDot.className = 'line-status-dot line-status-dot--ok';
     lineStatusText.textContent = LINE_NAME + ' Line is running normally';
   }
@@ -122,9 +120,6 @@ function startPolling() {
 // Init
 // ==============================
 document.addEventListener('DOMContentLoaded', async () => {
-  // Show ticker with all-normal state before API response
-  renderTicker([]);
-
   // Wake up backend
   try {
     await fetchWithRetry(API_BASE_URL + '/healthz', 3, 2000);

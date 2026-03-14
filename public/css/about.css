@@ -1,10 +1,23 @@
 /* ==============================
    NextMetro — About Page Styles
    ============================== */
+.about-hero {
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.65)),
+    url('/images/about-hero.webp') center / cover no-repeat;
+  background-color: var(--nm-surface);
+  padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.about-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .about-page {
   max-width: 720px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
+  padding: 2rem 1.5rem 4rem;
 }
 
 .about-label {

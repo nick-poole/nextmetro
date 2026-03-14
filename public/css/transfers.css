@@ -1,0 +1,252 @@
+/* Transfer Stations Page Styles */
+
+/* ---- Transfers Hero ---- */
+.transfers-hero {
+  padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+  border-bottom: 1px solid var(--nm-border-subtle);
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.65)),
+    url('/images/transfers-hero.webp') center / cover no-repeat;
+  background-color: var(--nm-surface);
+}
+
+.transfers-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.transfers-hero-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--nm-amber-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: var(--nm-space-xs);
+}
+
+.transfers-hero-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.transfers-hero-subtitle {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.transfers-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--nm-space-xl) var(--nm-space-lg) var(--nm-space-3xl);
+}
+
+.transfers-section {
+  margin-top: var(--nm-space-2xl);
+}
+
+.transfers-section-heading {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--nm-space-sm);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--nm-amber-dim);
+  display: inline-block;
+}
+
+.transfers-section-desc {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--nm-space-lg);
+}
+
+.transfer-station-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nm-space-md);
+}
+
+.transfer-station-card {
+  display: flex;
+  align-items: center;
+  gap: var(--nm-space-lg);
+  padding: var(--nm-space-lg) 1.25rem;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  text-decoration: none;
+  transition: background-color var(--nm-transition-fast), border-color var(--nm-transition-fast);
+  min-height: 80px;
+}
+
+.transfer-station-card:hover {
+  background-color: var(--nm-surface-elevated);
+  border-color: var(--nm-border-strong);
+}
+
+.transfer-station-card:hover .transfer-station-name {
+  color: var(--nm-amber);
+}
+
+.transfer-station-card:hover .transfer-station-arrow {
+  color: var(--nm-amber);
+}
+
+.transfer-station-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.transfer-station-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50% !important;
+  display: block;
+}
+
+.transfer-station-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.transfer-station-name {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 4px;
+  transition: color var(--nm-transition-normal);
+}
+
+.transfer-station-desc {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--nm-text-secondary);
+  margin: 0 0 2px;
+}
+
+.transfer-station-detail {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.transfer-station-arrow {
+  color: var(--nm-text-muted);
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  transition: color var(--nm-transition-normal);
+}
+
+/* Walking Transfer Card */
+.transfer-walking-card {
+  display: flex;
+  align-items: center;
+  gap: var(--nm-space-lg);
+  padding: var(--nm-space-lg) 1.25rem;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-left: 4px solid var(--nm-amber-dim);
+}
+
+.transfer-walking-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--nm-amber-dim);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.transfer-walking-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.transfer-walking-name {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 4px;
+}
+
+.transfer-walking-desc {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--nm-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Transfers Disclaimer */
+.transfers-disclaimer {
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  padding: 1rem 1.25rem;
+  margin-top: var(--nm-space-2xl);
+}
+
+.transfers-disclaimer p {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.7;
+}
+
+.transfers-disclaimer a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .transfers-page {
+    padding: var(--nm-space-lg) var(--nm-space-md) var(--nm-space-2xl);
+  }
+
+  .transfer-station-card {
+    padding: var(--nm-space-md) var(--nm-space-md);
+    gap: var(--nm-space-md);
+  }
+
+  .transfer-station-name {
+    font-size: 1.1rem;
+  }
+
+  .transfer-walking-card {
+    padding: var(--nm-space-md) var(--nm-space-md);
+    gap: var(--nm-space-md);
+  }
+}

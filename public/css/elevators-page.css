@@ -2,6 +2,52 @@
 /* ==============================
    Elevator & Escalator Status Page
    ============================== */
+
+/* ---- Elevators Hero ---- */
+.elevators-hero {
+  padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+  border-bottom: 1px solid var(--nm-border-subtle);
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.65)),
+    url('/images/elevators-hero.webp') center / cover no-repeat;
+  background-color: var(--nm-surface);
+}
+
+.elevators-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.elevators-hero-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--nm-amber-dim);
+  letter-spacing: 0.12em;
+  margin-bottom: var(--nm-space-xs);
+}
+
+.elevators-hero-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.elevators-hero-subtitle {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
 .elev-page {
   max-width: 900px;
   margin: 0 auto;
