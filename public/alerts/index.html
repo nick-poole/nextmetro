@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://nextmetro.live/alerts/" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/alerts-page.css" />
+  <link rel="stylesheet" href="/css/line.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -186,8 +187,19 @@
   <!-- Main Content -->
   <main id="main-content" class="alerts-page">
 
+  <nav class="nm-breadcrumb" aria-label="Breadcrumb">
+    <ol class="nm-breadcrumb-list">
+      <li class="nm-breadcrumb-item"><a href="/">Home</a></li>
+      <li class="nm-breadcrumb-sep" aria-hidden="true">/</li>
+      <li class="nm-breadcrumb-item nm-breadcrumb-current" aria-current="page">Alerts</li>
+    </ol>
+  </nav>
+
   <!-- Page Hero -->
-  <section class="hero">
+  <section class="hero hero--has-image">
+    <div class="hero__image">
+      <img src="/images/eleven-photographs.jpg" alt="" loading="eager" onerror="this.dataset.error=true" />
+    </div>
     <div class="hero-inner">
       <span class="hero-label">Live Status</span>
       <h1 class="hero-station-name">DC Metro Alerts &amp; Outages</h1>
@@ -198,6 +210,37 @@
 
       <!-- Controls Bar -->
       <div class="alerts-controls animate-in d1">
+        <div class="alerts-controls-left">
+          <div class="alerts-filters" id="alerts-filters">
+            <button class="alerts-filter-chip alerts-filter-chip--active" data-line="all" aria-pressed="true">
+              <span class="alerts-filter-label">All</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="RD" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#D41140"></span>
+              <span class="alerts-filter-label">Red</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="OR" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#F09500"></span>
+              <span class="alerts-filter-label">Orange</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="BL" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#00A8E8"></span>
+              <span class="alerts-filter-label">Blue</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="GR" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#00BD45"></span>
+              <span class="alerts-filter-label">Green</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="YL" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#FFD400"></span>
+              <span class="alerts-filter-label">Yellow</span>
+            </button>
+            <button class="alerts-filter-chip" data-line="SV" aria-pressed="false">
+              <span class="alerts-filter-dot" style="background-color:#9BA5A5"></span>
+              <span class="alerts-filter-label">Silver</span>
+            </button>
+          </div>
+        </div>
         <div class="alerts-controls-right">
           <span class="alerts-updated" id="alerts-updated"></span>
           <button class="refresh-btn" id="alerts-refresh" aria-label="Refresh alerts">

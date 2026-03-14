@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/alerts-page.css" />
   <link rel="stylesheet" href="/css/elevators-page.css" />
+  <link rel="stylesheet" href="/css/line.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -170,8 +171,19 @@
   <!-- Main Content -->
   <main id="main-content" class="elev-page">
 
+  <nav class="nm-breadcrumb" aria-label="Breadcrumb">
+    <ol class="nm-breadcrumb-list">
+      <li class="nm-breadcrumb-item"><a href="/">Home</a></li>
+      <li class="nm-breadcrumb-sep" aria-hidden="true">/</li>
+      <li class="nm-breadcrumb-item nm-breadcrumb-current" aria-current="page">Elevators</li>
+    </ol>
+  </nav>
+
   <!-- Page Hero -->
-  <section class="hero">
+  <section class="hero hero--has-image">
+    <div class="hero__image">
+      <img src="/images/escalator-hero.webp" alt="" loading="eager" onerror="this.dataset.error=true" />
+    </div>
     <div class="hero-inner">
       <span class="hero-label">Live Status</span>
       <h1 class="hero-station-name">Elevator &amp; Escalator Outages</h1>

@@ -107,6 +107,7 @@ function normalizeElevatorIncidents(elevatorIncidents) {
 // ---- State ----
 var currentAlerts = []; // unified list: rail incidents + elevator/escalator
 var currentRailIncidents = []; // rail-only for ticker + status bar
+var activeLineFilter = 'all'; // 'all' | line code
 var pollingInterval = null;
 
 // ---- DOM ----
@@ -118,6 +119,7 @@ var alertsStatusBar = document.getElementById('alerts-status-bar');
 var metaDescription = document.getElementById('meta-description');
 var schemaAlerts = document.getElementById('schema-alerts');
 var lastUpdatedTime = document.getElementById('alerts-last-updated-time');
+var alertsFilters = document.getElementById('alerts-filters');
 
 // renderTicker — from shared.js
 
@@ -163,6 +165,21 @@ function renderStatusBar(incidents) {
   });
 
   alertsStatusBar.innerHTML = html;
+}
+
+// ==============================
+// Apply Line Filter
+// ==============================
+function getFilteredAlerts() {
+  if (activeLineFilter === 'all') return currentAlerts;
+  return currentAlerts.filter(function (incident) {
+    // Rail incidents — check LinesAffected
+    var lines = parseAffectedLines(incident.LinesAffected);
+    if (lines.length > 0) return lines.indexOf(activeLineFilter) !== -1;
+    // Elevator/escalator — check station code prefix
+    if (incident._station) return true; // Show facility alerts for all line filters
+    return true;
+  });
 }
 
 // ==============================
@@ -242,20 +259,26 @@ function formatAlertTime(dateStr) {
 // Render Alert Cards
 // ==============================
 function renderAlerts() {
-  if (currentAlerts.length === 0) {
+  var filteredAlerts = getFilteredAlerts();
+  if (filteredAlerts.length === 0) {
     alertsList.innerHTML = '';
     alertsEmpty.style.display = '';
     var emptyTitle = alertsEmpty.querySelector('.alerts-empty-title');
     var emptyText = alertsEmpty.querySelector('.alerts-empty-text');
-    emptyTitle.textContent = 'All Clear';
-    emptyText.textContent = 'No active service alerts. All lines and stations operating normally.';
+    if (activeLineFilter !== 'all') {
+      emptyTitle.textContent = 'No Matching Alerts';
+      emptyText.textContent = 'No active alerts for this line. Try selecting a different line or viewing all alerts.';
+    } else {
+      emptyTitle.textContent = 'All Clear';
+      emptyText.textContent = 'No active service alerts. All lines and stations operating normally.';
+    }
     return;
   }
 
   alertsEmpty.style.display = 'none';
 
   // Sort by severity (worst first), then by date (newest first)
-  var sorted = currentAlerts.slice().sort(function (a, b) {
+  var sorted = filteredAlerts.slice().sort(function (a, b) {
     var sevA = getSeverity(a.IncidentType);
     var sevB = getSeverity(b.IncidentType);
     if (sevA !== sevB) return sevA - sevB;
@@ -462,6 +485,24 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   await fetchAllAlerts();
   startPolling();
+});
+
+alertsFilters.addEventListener('click', function (e) {
+  var chip = e.target.closest('.alerts-filter-chip');
+  if (!chip) return;
+  var line = chip.dataset.line;
+  if (!line) return;
+
+  activeLineFilter = line;
+
+  var chips = alertsFilters.querySelectorAll('.alerts-filter-chip');
+  chips.forEach(function (c) {
+    var isActive = c.dataset.line === line;
+    c.classList.toggle('alerts-filter-chip--active', isActive);
+    c.setAttribute('aria-pressed', String(isActive));
+  });
+
+  renderAlerts();
 });
 
 alertsRefresh.addEventListener('click', function () {
