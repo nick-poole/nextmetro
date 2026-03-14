@@ -113,4 +113,34 @@
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://nextmetro.live/station/van-ness-udc/</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/judiciary-square/</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/noma/</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/smithsonian/</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/lenfant-plaza/</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

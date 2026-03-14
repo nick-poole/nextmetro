@@ -139,7 +139,7 @@ npm start
 
 Security details are documented in [SECURITY.md](SECURITY.md).
 
-If you discover a vulnerability, **do not** open a public issue. Please email [nick@nickpoole.dev](mailto:nick@nickpoole.dev) directly.
+If you discover a vulnerability, **do not** open a public issue. Please email [contact@nextmetro.live](mailto:contact@nextmetro.live) directly.
 
 ---
 
@@ -164,7 +164,7 @@ You may **not**:
 
 Contributions submitted via pull request are licensed to the project under the same terms.
 
-For questions about usage or licensing, contact [nick@nickpoole.dev](mailto:nick@nickpoole.dev).
+For questions about usage or licensing, contact [contact@nextmetro.live](mailto:contact@nextmetro.live).
 
 ---
 
