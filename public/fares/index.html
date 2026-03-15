@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DC Metro Fare Calculator — Peak & Off-Peak Prices | NextMetro</title>
-  <meta name="description" content="Calculate DC Metro fares between any two stations. Compare peak, off-peak, and senior/disabled prices. Metro fares range from $2.00 to $6.00 depending on distance and time of day." />
+  <meta name="description" content="Calculate DC Metro fares between any two stations. Compare weekday, late night, weekend, and senior/disabled prices. Metro fares range from $2.25 to $6.75 depending on distance and time of day." />
   <link rel="canonical" href="https://nextmetro.live/fares/" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/fares.css" />
@@ -76,7 +76,7 @@
         "name": "How much does the DC Metro cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DC Metro fares range from $2.00 to $6.00 per trip depending on distance traveled and time of day. Off-peak fares range from $2.00 to $3.85, while peak fares range from $2.25 to $6.00. Senior citizens and persons with disabilities pay approximately half the peak fare."
+          "text": "DC Metro fares range from $2.25 to $6.75 per trip depending on distance traveled and time of day. Weekday fares range from $2.25 to $6.75, while late night and weekend fares range from $2.25 to $2.50. Senior citizens and persons with disabilities pay approximately half the regular fare."
         }
       },
       {
@@ -84,7 +84,7 @@
         "name": "What are DC Metro peak hours?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Peak fares apply on weekdays (Monday through Friday) from opening through 9:30 AM, and from 3:00 PM through 7:00 PM. Off-peak fares apply at all other times, including weekends and federal holidays."
+          "text": "Weekday fares apply Monday through Friday from opening through 9:30 PM. Late night fares apply after 9:30 PM on weekdays. Weekend fares apply all day Saturday and Sunday. Federal holidays use weekend fare rates."
         }
       },
       {
@@ -100,7 +100,7 @@
         "name": "How do Metro transfers work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rail-to-rail transfers within the Metrorail system are included in your fare — you can transfer between lines at no additional cost during a continuous trip. Rail-to-bus transfers provide a $0.50 discount on the connecting Metrobus fare when using SmarTrip."
+          "text": "Rail-to-rail transfers within the Metrorail system are included in your fare — you can transfer between lines at no additional cost during a continuous trip. Rail-to-bus and bus-to-rail transfers are free ($2.25 discount) within a 2-hour window when using SmarTrip. Bus-to-bus transfers are also free with unlimited transfers within 2 hours."
         }
       }
     ]
@@ -165,7 +165,7 @@
       <span class="fares-hero-label">Fares</span>
       <h1 class="fares-hero-title">Fare Calculator</h1>
       <p class="fares-hero-subtitle">
-        Calculate the cost of your Metrorail trip. Metro fares range from $2.00 to $6.00 depending on distance traveled and time of day.
+        Calculate the cost of your Metrorail trip. Metro fares range from $2.25 to $6.75 depending on distance traveled and time of day.
       </p>
       <div class="peak-indicator" id="peak-indicator">
         <span class="peak-indicator-dot" id="peak-dot"></span>
@@ -283,8 +283,8 @@
           <thead>
             <tr>
               <th>Fare Category</th>
-              <th>Peak</th>
-              <th>Off-Peak</th>
+              <th>Weekday</th>
+              <th>Late Night / Weekend</th>
               <th>Senior/Disabled</th>
             </tr>
           </thead>
@@ -292,63 +292,63 @@
             <tr>
               <td>Boarding (minimum fare)</td>
               <td class="fare-price">$2.25</td>
-              <td class="fare-price">$2.00</td>
+              <td class="fare-price">$2.25</td>
               <td class="fare-price">$1.10</td>
             </tr>
             <tr>
               <td>Short trip (1-3 miles)</td>
-              <td class="fare-price">$2.25 - $2.75</td>
-              <td class="fare-price">$2.00</td>
+              <td class="fare-price">$2.25 - $3.00</td>
+              <td class="fare-price">$2.25</td>
               <td class="fare-price">$1.10</td>
             </tr>
             <tr>
               <td>Medium trip (3-6 miles)</td>
-              <td class="fare-price">$2.75 - $3.75</td>
-              <td class="fare-price">$2.00 - $2.50</td>
-              <td class="fare-price">$1.35 - $1.85</td>
+              <td class="fare-price">$3.00 - $4.50</td>
+              <td class="fare-price">$2.25 - $2.50</td>
+              <td class="fare-price">$1.10 - $2.25</td>
             </tr>
             <tr>
               <td>Long trip (6+ miles)</td>
-              <td class="fare-price">$3.75 - $6.00</td>
-              <td class="fare-price">$2.50 - $3.85</td>
-              <td class="fare-price">$1.85 - $2.95</td>
+              <td class="fare-price">$4.50 - $6.75</td>
+              <td class="fare-price">$2.50</td>
+              <td class="fare-price">$2.25 - $3.35</td>
             </tr>
             <tr>
               <td>Maximum fare</td>
-              <td class="fare-price">$6.00</td>
-              <td class="fare-price">$3.85</td>
-              <td class="fare-price">$2.95</td>
+              <td class="fare-price">$6.75</td>
+              <td class="fare-price">$2.50</td>
+              <td class="fare-price">$3.35</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Peak Hours -->
+    <!-- Fare Hours -->
     <div class="fares-section animate-in d3">
-      <h2 class="fares-section-heading">Peak Hours</h2>
+      <h2 class="fares-section-heading">Fare Hours</h2>
       <p class="fares-text">
-        Peak fares are charged during weekday rush hours. Off-peak fares apply at all other times, including federal holidays regardless of the day of the week.
+        Weekday fares are distance-based. Late night (after 9:30 PM) and weekend fares use a reduced flat rate. Federal holidays use weekend fare rates.
       </p>
       <div class="peak-hours-card">
         <div class="peak-hours-header">
           <span class="peak-hours-header-icon">
             <i class="ri-time-fill" aria-hidden="true"></i>
           </span>
-          <span class="peak-hours-header-text">When Peak Fares Apply</span>
+          <span class="peak-hours-header-text">When Fare Rates Apply</span>
         </div>
         <div class="peak-hours-body">
           <div class="peak-hours-row">
-            <span class="peak-hours-day">Weekdays</span>
-            <span class="peak-hours-time">Opening - 9:30 AM &amp; 3:00 PM - 7:00 PM</span>
+            <span class="peak-hours-day">Weekdays (opening&ndash;9:30 PM)</span>
+            <span class="peak-hours-time">$2.25 &ndash; $6.75 (distance-based)</span>
           </div>
           <div class="peak-hours-row">
-            <span class="peak-hours-day">Weekends</span>
-            <span class="peak-hours-time peak-hours-time--offpeak">Off-Peak All Day</span>
+            <span class="peak-hours-day">Late Night (after 9:30 PM)</span>
+            <span class="peak-hours-time peak-hours-time--offpeak">$2.25 &ndash; $2.50</span>
           </div>
           <div class="peak-hours-row">
-            <span class="peak-hours-day">Federal Holidays</span>
-            <span class="peak-hours-time peak-hours-time--offpeak">Off-Peak All Day</span>
+            <span class="peak-hours-day">Weekends &amp; Holidays</span>
+            <span class="peak-hours-time peak-hours-time--offpeak">$2.25 &ndash; $2.50</span>
           </div>
         </div>
       </div>
@@ -365,8 +365,8 @@
           <h3 class="info-card-title">Transfer Rules</h3>
           <ul class="info-card-list">
             <li>Rail-to-rail transfers are included in your fare during a continuous trip</li>
-            <li>Rail-to-bus transfers give a $0.50 discount on the connecting Metrobus fare with SmarTrip</li>
-            <li>Bus-to-rail transfers do not receive a discount</li>
+            <li>Rail-to-bus and bus-to-rail transfers are free ($2.25 discount) within 2 hours with SmarTrip</li>
+            <li>Bus-to-bus transfers are free with unlimited transfers within 2 hours</li>
             <li>Transfers are valid for up to 2 hours from the start of your trip</li>
           </ul>
         </div>

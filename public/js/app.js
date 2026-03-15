@@ -78,6 +78,18 @@ const prefixLines = {
   ],
 };
 
+// Station-specific line overrides (where prefix mapping is inaccurate)
+const stationLineOverrides = {
+  C14: [{ code: 'YL', name: 'Yellow', color: '#FFD400' }], // Eisenhower Ave — Yellow only
+  C15: [{ code: 'YL', name: 'Yellow', color: '#FFD400' }], // Huntington — Yellow only
+  J02: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Van Dorn Street — Blue only
+  J03: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Franconia-Springfield — Blue only
+};
+
+function getLinesForCode(code) {
+  return stationLineOverrides[code] || prefixLines[code.charAt(0)] || [];
+}
+
 // ---- State ----
 // Station pages can set STATION_CODE before loading app.js to override the default
 let selectedStation = (typeof STATION_CODE !== 'undefined') ? STATION_CODE : 'B05';
@@ -121,7 +133,7 @@ const stationOptions = (() => {
   const seen = {};
   const result = [];
   Object.entries(stations).forEach(([code, name]) => {
-    const lines = prefixLines[code.charAt(0)] || [];
+    const lines = getLinesForCode(code);
     if (seen[name]) {
       // Merge lines from the partner platform code
       const existing = seen[name];
@@ -142,13 +154,11 @@ const stationOptions = (() => {
 // Get all line codes that serve a station (including multi-platform partner)
 function getStationLineCodes(stationCode) {
   const lines = new Set();
-  const prefix = stationCode.charAt(0);
-  (prefixLines[prefix] || []).forEach((l) => lines.add(l.code));
+  getLinesForCode(stationCode).forEach((l) => lines.add(l.code));
 
   const partner = multiPlatform[stationCode];
   if (partner) {
-    const partnerPrefix = partner.charAt(0);
-    (prefixLines[partnerPrefix] || []).forEach((l) => lines.add(l.code));
+    getLinesForCode(partner).forEach((l) => lines.add(l.code));
   }
 
   return Array.from(lines);
@@ -194,22 +204,21 @@ async function fetchStationAddress(stationCode) {
 // ==============================
 function updateHeroDisplay(stationCode) {
   const name = stations[stationCode] || 'Unknown Station';
-  const lines = prefixLines[stationCode.charAt(0)] || [];
 
   // For multi-platform stations, merge lines from both codes
   const allLines = [];
   const seenCodes = new Set();
-  const addLines = (prefix) => {
-    (prefixLines[prefix] || []).forEach((l) => {
+  const addLines = (code) => {
+    getLinesForCode(code).forEach((l) => {
       if (!seenCodes.has(l.code)) {
         seenCodes.add(l.code);
         allLines.push(l);
       }
     });
   };
-  addLines(stationCode.charAt(0));
+  addLines(stationCode);
   const partner = multiPlatform[stationCode];
-  if (partner) addLines(partner.charAt(0));
+  if (partner) addLines(partner);
 
   heroStationName.textContent = name;
   fetchStationAddress(stationCode);

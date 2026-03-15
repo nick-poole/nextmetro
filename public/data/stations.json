@@ -840,7 +840,7 @@
     "code": "C14",
     "slug": "eisenhower-ave",
     "lines": [
-      "blue"
+      "yellow"
     ],
     "address": {
       "street": "2431 Eisenhower Ave",
@@ -860,7 +860,7 @@
     "code": "C15",
     "slug": "huntington",
     "lines": [
-      "blue"
+      "yellow"
     ],
     "address": {
       "street": "5990 Richmond Hwy",
@@ -1065,7 +1065,8 @@
     "code": "D09",
     "slug": "minnesota-ave",
     "lines": [
-      "orange"
+      "orange",
+      "silver"
     ],
     "address": {
       "street": "4000 Minnesota Ave NE",
@@ -1085,7 +1086,8 @@
     "code": "D10",
     "slug": "deanwood",
     "lines": [
-      "orange"
+      "orange",
+      "silver"
     ],
     "address": {
       "street": "4720 Minnesota Ave NE",
@@ -1105,7 +1107,8 @@
     "code": "D11",
     "slug": "cheverly",
     "lines": [
-      "orange"
+      "orange",
+      "silver"
     ],
     "address": {
       "street": "5701 Columbia Park Rd",
@@ -1125,7 +1128,8 @@
     "code": "D12",
     "slug": "landover",
     "lines": [
-      "orange"
+      "orange",
+      "silver"
     ],
     "address": {
       "street": "3000 Pennsy Dr",
@@ -1145,7 +1149,8 @@
     "code": "D13",
     "slug": "new-carrollton",
     "lines": [
-      "orange"
+      "orange",
+      "silver"
     ],
     "address": {
       "street": "4700 Garden City Dr",
@@ -1291,9 +1296,9 @@
     "environment": "outdoor"
   },
   {
-    "name": "Prince George's Plaza",
+    "name": "Hyattsville Crossing",
     "code": "E08",
-    "slug": "prince-georges-plaza",
+    "slug": "hyattsville-crossing",
     "lines": [
       "yellow",
       "green"
@@ -1625,9 +1630,9 @@
     "environment": "outdoor"
   },
   {
-    "name": "Largo Town Center",
+    "name": "Downtown Largo",
     "code": "G05",
-    "slug": "largo-town-center",
+    "slug": "downtown-largo",
     "lines": [
       "blue",
       "silver"
@@ -1642,7 +1647,7 @@
     "lon": -76.8427,
     "parking": true,
     "stationType": "ground-level",
-    "description": "Servicing Largo Town Center &amp; the Boulevard at the Capital Centre.",
+    "description": "Servicing Downtown Largo &amp; the Boulevard at the Capital Centre.",
     "environment": "outdoor"
   },
   {
@@ -1875,9 +1880,9 @@
     "environment": "underground"
   },
   {
-    "name": "Tysons Corner",
+    "name": "Tysons",
     "code": "N02",
-    "slug": "tysons-corner",
+    "slug": "tysons",
     "lines": [
       "silver"
     ],
@@ -2015,9 +2020,9 @@
     "environment": "outdoor"
   },
   {
-    "name": "Dulles",
+    "name": "Washington Dulles International Airport",
     "code": "N10",
-    "slug": "dulles",
+    "slug": "washington-dulles",
     "lines": [
       "silver"
     ],
@@ -2035,9 +2040,9 @@
     "environment": "underground"
   },
   {
-    "name": "Loudon Gateway",
+    "name": "Loudoun Gateway",
     "code": "N11",
-    "slug": "loudon-gateway",
+    "slug": "loudoun-gateway",
     "lines": [
       "silver"
     ],
