@@ -42,7 +42,7 @@ var homeStations = [
   { name: 'Pentagon', slug: 'pentagon', lines: ['blue', 'yellow'] },
   { name: 'Pentagon City', slug: 'pentagon-city', lines: ['blue', 'yellow'] },
   { name: 'Crystal City', slug: 'crystal-city', lines: ['blue', 'yellow'] },
-  { name: 'DCA\u2013National Airport', slug: 'reagan-airport', lines: ['blue', 'yellow'] },
+  { name: 'DCA\u2013National Airport', slug: 'reagan-airport', lines: ['blue', 'yellow'], aliases: ['reagan', 'reagan national', 'national airport', 'dca'] },
   { name: 'Potomac Yard', slug: 'potomac-yard', lines: ['blue', 'yellow'] },
   { name: 'Braddock Road', slug: 'braddock-road', lines: ['blue', 'yellow'] },
   { name: 'King St-Old Town', slug: 'king-street', lines: ['blue', 'yellow'] },
@@ -102,7 +102,7 @@ var homeStations = [
   { name: 'Reston Town Center', slug: 'reston-town-center', lines: ['silver'] },
   { name: 'Herndon', slug: 'herndon', lines: ['silver'] },
   { name: 'Innovation Center', slug: 'innovation-center', lines: ['silver'] },
-  { name: 'Dulles Airport', slug: 'washington-dulles', lines: ['silver'] },
+  { name: 'Dulles Airport', slug: 'washington-dulles', lines: ['silver'], aliases: ['dulles', 'iad', 'washington dulles'] },
   { name: 'Loudoun Gateway', slug: 'loudoun-gateway', lines: ['silver'] },
   { name: 'Ashburn', slug: 'ashburn', lines: ['silver'] },
 ];
@@ -129,7 +129,10 @@ let highlightedIndex = -1;
 function filterStations(query) {
   const q = query.toLowerCase().trim();
   if (!q) return homeStations.slice(0, 6);
-  return homeStations.filter(s => s.name.toLowerCase().includes(q)).slice(0, 6);
+  return homeStations.filter(s =>
+    s.name.toLowerCase().includes(q) ||
+    (s.aliases && s.aliases.some(a => a.includes(q)))
+  ).slice(0, 6);
 }
 
 function renderResults(filtered) {
