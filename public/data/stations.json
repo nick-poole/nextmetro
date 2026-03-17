@@ -745,7 +745,7 @@
     "environment": "underground"
   },
   {
-    "name": "Ronald Reagan Washington National Airport",
+    "name": "DCA\u2013National Airport",
     "code": "C10",
     "slug": "reagan-airport",
     "lines": [
@@ -2020,7 +2020,7 @@
     "environment": "outdoor"
   },
   {
-    "name": "Washington Dulles International Airport",
+    "name": "Dulles Airport",
     "code": "N10",
     "slug": "washington-dulles",
     "lines": [
