@@ -493,3 +493,25 @@ a:hover {
     padding: var(--nm-space-sm) var(--nm-space-md);
   }
 }
+
+/* ==============================
+   WMATA Data Disclaimer
+   Required by WMATA API Developer Agreement.
+   Must appear in legible bold print on the same
+   page as transit data, in close proximity.
+   ============================== */
+.wmata-data-disclaimer {
+  margin: var(--nm-space-md) 0;
+  padding: var(--nm-space-sm) var(--nm-space-md);
+  border: 1px solid var(--nm-border);
+  background: var(--nm-surface);
+  font-family: var(--nm-font);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--nm-text-secondary);
+}
+
+.wmata-data-disclaimer strong {
+  color: var(--nm-text-primary);
+  font-weight: 700;
+}

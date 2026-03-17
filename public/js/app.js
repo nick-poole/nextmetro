@@ -747,6 +747,27 @@ function updateTimestamp() {
 }
 
 // ==============================
+// WMATA Data Disclaimer (required by API agreement)
+// ==============================
+function injectWmataDisclaimer() {
+  // Avoid duplicate injection
+  if (document.querySelector('.wmata-data-disclaimer')) return;
+
+  var disclaimer = document.createElement('div');
+  disclaimer.className = 'wmata-data-disclaimer';
+  disclaimer.innerHTML =
+    '<strong>WMATA Transit information provided on this site is subject to change without notice.</strong> ' +
+    'NextMetro is not affiliated with, endorsed by, or connected to WMATA. ' +
+    'Arrival times are estimates and may not reflect actual conditions.';
+
+  // Insert after last-updated element (right below PIDS boards)
+  var anchor = lastUpdatedEl;
+  if (anchor && anchor.parentNode) {
+    anchor.parentNode.insertBefore(disclaimer, anchor.nextSibling);
+  }
+}
+
+// ==============================
 // Fetch Train Predictions (with directional grouping)
 // ==============================
 async function fetchTrains(stationCode) {
@@ -985,6 +1006,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Update system status time
   updateSystemStatusTime();
   setInterval(updateSystemStatusTime, 60000);
+
+  // Inject WMATA data disclaimer near PIDS boards
+  injectWmataDisclaimer();
 
   // Render system status immediately (all lines Normal) before API returns
   renderSystemStatus([]);
