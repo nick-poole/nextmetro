@@ -19,6 +19,7 @@ const multiPlatform = {
 // ---- Station Pages ----
 // Stations that have dedicated pages — maps station code to URL slug
 const stationPages = {
+  A02: 'farragut-north',
   A06: 'van-ness-udc',
   B01: 'gallery-place',
   F01: 'gallery-place',
@@ -28,10 +29,15 @@ const stationPages = {
   B35: 'noma',
   A01: 'metro-center',
   C01: 'metro-center',
+  C10: 'reagan-airport',
   C11: 'potomac-yard',
   D02: 'smithsonian',
   D03: 'lenfant-plaza',
   F03: 'lenfant-plaza',
+  D06: 'eastern-market',
+  F02: 'archives',
+  N07: 'reston-town-center',
+  N10: 'washington-dulles',
 };
 
 // pidsLineColors — alias for lineColors (from shared.js)
