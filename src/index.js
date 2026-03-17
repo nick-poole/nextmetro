@@ -315,6 +315,11 @@ export default {
 			return Response.redirect('https://nextmetro.live/about/', 301);
 		}
 
+		// Redirect old station slug to new slug
+		if (path === '/station/reagan-airport/' || path === '/station/reagan-airport') {
+			return Response.redirect('https://nextmetro.live/station/dca-national-airport/', 301);
+		}
+
 		// API routing
 		if (path === '/api/stations') return handleStations(request, env);
 		if (path === '/api/incidents') return handleIncidents(request, env);

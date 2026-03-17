@@ -42,7 +42,7 @@ var homeStations = [
   { name: 'Pentagon', slug: 'pentagon', lines: ['blue', 'yellow'] },
   { name: 'Pentagon City', slug: 'pentagon-city', lines: ['blue', 'yellow'] },
   { name: 'Crystal City', slug: 'crystal-city', lines: ['blue', 'yellow'] },
-  { name: 'DCA\u2013National Airport', slug: 'reagan-airport', lines: ['blue', 'yellow'], aliases: ['reagan', 'reagan national', 'national airport', 'dca'] },
+  { name: 'DCA\u2013National Airport', slug: 'dca-national-airport', lines: ['blue', 'yellow'], aliases: ['reagan', 'reagan national', 'national airport', 'dca'] },
   { name: 'Potomac Yard', slug: 'potomac-yard', lines: ['blue', 'yellow'] },
   { name: 'Braddock Road', slug: 'braddock-road', lines: ['blue', 'yellow'] },
   { name: 'King St-Old Town', slug: 'king-street', lines: ['blue', 'yellow'] },

@@ -747,7 +747,7 @@
   {
     "name": "DCA\u2013National Airport",
     "code": "C10",
-    "slug": "reagan-airport",
+    "slug": "dca-national-airport",
     "lines": [
       "blue",
       "yellow"
