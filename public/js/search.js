@@ -42,7 +42,7 @@
     { name: 'Pentagon', slug: 'pentagon', lines: ['blue', 'yellow'] },
     { name: 'Pentagon City', slug: 'pentagon-city', lines: ['blue', 'yellow'] },
     { name: 'Crystal City', slug: 'crystal-city', lines: ['blue', 'yellow'] },
-    { name: 'Ronald Reagan Washington National Airport', slug: 'reagan-airport', lines: ['blue', 'yellow'] },
+    { name: 'DCA\u2013National Airport', slug: 'dca-national-airport', lines: ['blue', 'yellow'], aliases: ['reagan', 'reagan national', 'national airport', 'dca'] },
     { name: 'Potomac Yard', slug: 'potomac-yard', lines: ['blue', 'yellow'] },
     { name: 'Braddock Road', slug: 'braddock-road', lines: ['blue', 'yellow'] },
     { name: 'King St-Old Town', slug: 'king-street', lines: ['blue', 'yellow'] },
@@ -102,7 +102,7 @@
     { name: 'Reston Town Center', slug: 'reston-town-center', lines: ['silver'] },
     { name: 'Herndon', slug: 'herndon', lines: ['silver'] },
     { name: 'Innovation Center', slug: 'innovation-center', lines: ['silver'] },
-    { name: 'Washington Dulles International Airport', slug: 'washington-dulles', lines: ['silver'] },
+    { name: 'Dulles Airport', slug: 'washington-dulles', lines: ['silver'], aliases: ['dulles', 'iad', 'washington dulles'] },
     { name: 'Loudoun Gateway', slug: 'loudoun-gateway', lines: ['silver'] },
     { name: 'Ashburn', slug: 'ashburn', lines: ['silver'] },
   ];
@@ -126,7 +126,13 @@
     var q = query.toLowerCase().trim();
     if (!q) return searchStations.slice(0, 8);
     return searchStations.filter(function (s) {
-      return s.name.toLowerCase().indexOf(q) !== -1;
+      if (s.name.toLowerCase().indexOf(q) !== -1) return true;
+      if (s.aliases) {
+        for (var i = 0; i < s.aliases.length; i++) {
+          if (s.aliases[i].indexOf(q) !== -1) return true;
+        }
+      }
+      return false;
     }).slice(0, 8);
   }
 

@@ -315,6 +315,11 @@ export default {
 			return Response.redirect('https://nextmetro.live/about/', 301);
 		}
 
+		// Redirect old station slug to new slug
+		if (path === '/station/reagan-airport/' || path === '/station/reagan-airport') {
+			return Response.redirect('https://nextmetro.live/station/dca-national-airport/', 301);
+		}
+
 		// API routing
 		if (path === '/api/stations') return handleStations(request, env);
 		if (path === '/api/incidents') return handleIncidents(request, env);
@@ -342,7 +347,10 @@ export default {
 			// Serve custom 404 page for missing assets
 			if (assetResponse.status === 404) {
 				const notFoundPage = await env.ASSETS.fetch(new Request(new URL('/404.html', request.url)));
-				const response = new Response(notFoundPage.body, { ...notFoundPage, status: 404 });
+				const response = new Response(notFoundPage.body, {
+					status: 404,
+					headers: notFoundPage.headers,
+				});
 				addSecurityHeaders(response);
 				return response;
 			}
@@ -360,7 +368,10 @@ export default {
 			// Serve custom 500 page on unexpected errors
 			try {
 				const errorPage = await env.ASSETS.fetch(new Request(new URL('/500.html', request.url)));
-				const response = new Response(errorPage.body, { ...errorPage, status: 500 });
+				const response = new Response(errorPage.body, {
+					status: 500,
+					headers: errorPage.headers,
+				});
 				addSecurityHeaders(response);
 				return response;
 			} catch {

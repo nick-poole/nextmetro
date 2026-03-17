@@ -211,6 +211,19 @@
   background: rgba(212, 160, 60, 0.1);
 }
 
+/* Line color dots in search results */
+.station-search .line-dots {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.station-search .line-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
 /* Desktop: dock into nav bar */
 @media (min-width: 769px) {
   .station-search {

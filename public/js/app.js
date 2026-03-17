@@ -29,7 +29,7 @@ const stationPages = {
   B35: 'noma',
   A01: 'metro-center',
   C01: 'metro-center',
-  C10: 'reagan-airport',
+  C10: 'dca-national-airport',
   C11: 'potomac-yard',
   D02: 'smithsonian',
   D03: 'lenfant-plaza',
