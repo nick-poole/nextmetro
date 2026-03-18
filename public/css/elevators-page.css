@@ -5,14 +5,42 @@
 
 /* ---- Elevators Hero ---- */
 .elevators-hero {
+  position: relative;
   padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
   border-bottom: 1px solid var(--nm-border-subtle);
-  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.65)),
-    url('/images/elevators-hero.webp') center / cover no-repeat;
   background-color: var(--nm-surface);
+  overflow: hidden;
+}
+
+.elevators-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.elevators-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.elevators-hero__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.55) 0%,
+    rgba(10, 10, 10, 0.7) 50%,
+    rgba(20, 20, 20, 0.92) 100%
+  );
 }
 
 .elevators-hero-inner {
+  position: relative;
+  z-index: 1;
   max-width: 900px;
   margin: 0 auto;
 }

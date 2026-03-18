@@ -179,6 +179,19 @@
 
   <!-- Hero -->
   <section class="elevators-hero">
+    <div class="elevators-hero__image" aria-hidden="true">
+      <img id="elevators-hero-img" src="" alt="" width="1200" height="400" loading="eager" onerror="this.dataset.error='1'" />
+    </div>
+    <script>
+      (function() {
+        var heroes = [
+          '/images/elevator-escalator/federal-triangle-elevator.webp',
+          '/images/elevator-escalator/metro-escalator-00.webp',
+          '/images/elevator-escalator/metro-escalator-01.webp'
+        ];
+        document.getElementById('elevators-hero-img').src = heroes[Math.floor(Math.random() * heroes.length)];
+      })();
+    </script>
     <div class="elevators-hero-inner">
       <span class="elevators-hero-label">Live Status</span>
       <h1 class="elevators-hero-title">Elevator &amp; Escalator Outages</h1>
