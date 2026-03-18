@@ -3,49 +3,49 @@
   <!-- ===== Core Pages ===== -->
   <url>
     <loc>https://nextmetro.live/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/alerts/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/elevators/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/fares/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/hours/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/transfers/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/about/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 <url>
     <loc>https://nextmetro.live/crisis/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -53,37 +53,37 @@
   <!-- ===== Line Pages ===== -->
   <url>
     <loc>https://nextmetro.live/lines/red/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/lines/blue/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/lines/orange/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/lines/green/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/lines/yellow/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/lines/silver/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -91,97 +91,97 @@
   <!-- ===== Station Pages ===== -->
   <url>
     <loc>https://nextmetro.live/station/metro-center/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/gallery-place/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/union-station/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/brookland-cua/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/potomac-yard/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/van-ness-udc/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/judiciary-square/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/noma/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/smithsonian/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/lenfant-plaza/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/farragut-north/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/archives/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/eastern-market/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/dca-national-airport/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/washington-dulles/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nextmetro.live/station/reston-town-center/</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-18</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
