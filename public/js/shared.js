@@ -152,6 +152,71 @@ var stations = {
   S14: 'Pentagon',
 };
 
+// ---- Station Environment (underground vs outdoor) ----
+var stationEnvironment = {
+  A01: 'underground', A02: 'underground', A03: 'underground', A04: 'underground',
+  A05: 'underground', A06: 'underground', A07: 'underground', A08: 'underground',
+  A09: 'underground', A10: 'underground', A11: 'outdoor', A12: 'outdoor',
+  A13: 'outdoor', A14: 'outdoor', A15: 'outdoor',
+  B01: 'underground', B02: 'underground', B03: 'underground', B04: 'outdoor',
+  B05: 'outdoor', B06: 'outdoor', B07: 'outdoor', B08: 'outdoor',
+  B09: 'underground', B10: 'underground', B11: 'underground', B35: 'outdoor',
+  C01: 'underground', C02: 'underground', C03: 'underground', C04: 'underground',
+  C05: 'underground', C06: 'outdoor', C07: 'underground', C08: 'underground',
+  C09: 'underground', C10: 'outdoor', C11: 'outdoor', C12: 'underground',
+  C13: 'outdoor', C14: 'outdoor', C15: 'outdoor',
+  D01: 'underground', D02: 'underground', D03: 'underground', D04: 'underground',
+  D05: 'underground', D06: 'underground', D07: 'underground', D08: 'underground',
+  D09: 'outdoor', D10: 'outdoor', D11: 'outdoor', D12: 'outdoor', D13: 'outdoor',
+  E01: 'underground', E02: 'underground', E03: 'underground', E04: 'underground',
+  E05: 'underground', E06: 'outdoor', E07: 'outdoor', E08: 'outdoor',
+  E09: 'outdoor', E10: 'outdoor',
+  F01: 'underground', F02: 'underground', F03: 'underground', F04: 'underground',
+  F05: 'underground', F06: 'outdoor', F07: 'outdoor', F08: 'outdoor',
+  F09: 'outdoor', F10: 'outdoor', F11: 'outdoor',
+  G01: 'outdoor', G02: 'outdoor', G03: 'outdoor', G04: 'outdoor', G05: 'outdoor',
+  J02: 'outdoor', J03: 'outdoor',
+  K01: 'underground', K02: 'underground', K03: 'underground', K04: 'underground',
+  K05: 'outdoor', K06: 'outdoor', K07: 'outdoor', K08: 'outdoor',
+  N01: 'underground', N02: 'outdoor', N03: 'outdoor', N04: 'outdoor',
+  N06: 'outdoor', N07: 'outdoor', N08: 'outdoor', N09: 'outdoor',
+  N10: 'underground', N11: 'outdoor', N12: 'outdoor',
+  S04: 'outdoor', S09: 'underground', S10: 'outdoor', S12: 'underground',
+  S13: 'underground', S14: 'underground',
+};
+
+// ---- Random Hero Images (for stations without station-specific heroes) ----
+var heroImagesUnderground = [
+  '/images/station-underground/departing-metro-train.webp',
+  '/images/station-underground/metro-boarding.webp',
+  '/images/station-underground/metro-car-interior-underground.webp',
+  '/images/station-underground/metro-in-motion.webp',
+  '/images/station-underground/metro-station-platform.webp',
+  '/images/station-underground/metro-train-arrival.webp',
+  '/images/station-underground/metro-train-boarding.webp',
+  '/images/station-underground/passenger-on-platform.webp',
+  '/images/station-underground/station-arch-bw.webp',
+  '/images/station-underground/underground-island-platform.webp',
+  '/images/station-underground/underground-metro-station.webp',
+  '/images/station-underground/vacant-station.webp',
+];
+
+var heroImagesOutdoor = [
+  '/images/station-outdoor/7000-series-interior-01.webp',
+  '/images/station-outdoor/elevated-station-platform.webp',
+  '/images/station-outdoor/metro-car-interior-night.webp',
+  '/images/station-outdoor/metro-station-covered-outdoor.webp',
+  '/images/station-outdoor/metro-train-interior-02.webp',
+  '/images/station-outdoor/retro-metro.webp',
+];
+
+// Pick a random hero image based on station environment
+function getRandomHeroImage(stationCode) {
+  var env = stationEnvironment[stationCode] || 'underground';
+  var pool = env === 'outdoor' ? heroImagesOutdoor : heroImagesUnderground;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
 // ---- HTML Escaping ----
 function escapeHtml(str) {
   var div = document.createElement('div');
