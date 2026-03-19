@@ -247,8 +247,39 @@ function updateHeroDisplay(stationCode) {
   // Update PIDS header — keep static "Next Arrivals" text
   // pidsHeaderStation.textContent = name;
 
+  // Apply random hero image if no station-specific hero exists
+  applyRandomHeroImage(stationCode);
+
   // Update fare calculator "from" display
   fareFromName.textContent = name;
+}
+
+// ==============================
+// Random Hero Image (fallback for stations without station-specific heroes)
+// ==============================
+function applyRandomHeroImage(stationCode) {
+  var heroSection = document.getElementById('hero');
+  if (!heroSection) return;
+
+  // Skip if the page already has a station-specific hero image
+  var existingImage = heroSection.querySelector('.hero__image');
+  if (existingImage && !existingImage.dataset.randomHero) return;
+
+  // Remove any previously injected random hero
+  if (existingImage && existingImage.dataset.randomHero) {
+    existingImage.remove();
+  }
+
+  // Create and inject the hero image
+  var imageSrc = getRandomHeroImage(stationCode);
+  var imageDiv = document.createElement('div');
+  imageDiv.className = 'hero__image';
+  imageDiv.setAttribute('aria-hidden', 'true');
+  imageDiv.dataset.randomHero = '1';
+  imageDiv.innerHTML = '<img src="' + imageSrc + '" alt="" width="1200" height="400" loading="eager" onerror="this.dataset.error=\'1\'" />';
+
+  heroSection.classList.add('hero--has-image');
+  heroSection.insertBefore(imageDiv, heroSection.firstChild);
 }
 
 // parseAffectedLines, escapeHtml — from shared.js
