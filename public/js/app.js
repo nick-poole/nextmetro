@@ -86,8 +86,21 @@ const prefixLines = {
 
 // Station-specific line overrides (where prefix mapping is inaccurate)
 const stationLineOverrides = {
+  C06: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Arlington Cemetery — Blue only
+  C07: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Pentagon — Blue, Yellow
+  C08: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Pentagon City — Blue, Yellow
+  C09: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Crystal City — Blue, Yellow
+  C10: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // DCA–National Airport — Blue, Yellow
+  C11: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Potomac Yard — Blue, Yellow
+  C12: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Braddock Road — Blue, Yellow
+  C13: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // King St-Old Town — Blue, Yellow
   C14: [{ code: 'YL', name: 'Yellow', color: '#FFD400' }], // Eisenhower Ave — Yellow only
   C15: [{ code: 'YL', name: 'Yellow', color: '#FFD400' }], // Huntington — Yellow only
+  D09: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Minnesota Ave — Orange, Silver
+  D10: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Deanwood — Orange, Silver
+  D11: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Cheverly — Orange, Silver
+  D12: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Landover — Orange, Silver
+  D13: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // New Carrollton — Orange, Silver
   J02: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Van Dorn Street — Blue only
   J03: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Franconia-Springfield — Blue only
 };
