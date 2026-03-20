@@ -141,7 +141,7 @@
           "name": "What Metro lines serve West Hyattsville station?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "West Hyattsville is served by the Green and Yellow Lines, located between Fort Totten and Prince George's Plaza stations."
+            "text": "West Hyattsville is served by the Green and Yellow Lines, located between Fort Totten and Hyattsville Crossing stations."
           }
         },
         {
@@ -242,9 +242,13 @@
       class="station-search__input"
       placeholder="Search stations..."
       autocomplete="off"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls="station-dropdown"
+      aria-autocomplete="list"
       aria-label="Search for a Metro station"
     />
-    <ul class="station-dropdown" id="station-dropdown"></ul>
+    <ul class="station-dropdown" id="station-dropdown" role="listbox"></ul>
   </div>
 
   <!-- Main Content -->
@@ -377,7 +381,7 @@
         <div class="station-faq-list">
           <details class="station-faq-item">
             <summary class="station-faq-question">What Metro lines serve West Hyattsville station?</summary>
-            <p class="station-faq-answer">West Hyattsville is served by the Green and Yellow Lines, located between Fort Totten and Prince George's Plaza stations.</p>
+            <p class="station-faq-answer">West Hyattsville is served by the Green and Yellow Lines, located between Fort Totten and Hyattsville Crossing stations.</p>
           </details>
           <details class="station-faq-item">
             <summary class="station-faq-question">What are the hours of operation for West Hyattsville station?</summary>
@@ -416,12 +420,12 @@
           <div class="adjacent-divider">
             <span class="adjacent-current-dot"></span>
           </div>
-          <a href="/station/prince-georges-plaza/" class="adjacent-station adjacent-station--next">
+          <a href="/station/hyattsville-crossing/" class="adjacent-station adjacent-station--next">
             <span class="adjacent-direction">
               Toward Greenbelt
               <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
             </span>
-            <span class="adjacent-name">Prince George&#39;s Plaza</span>
+            <span class="adjacent-name">Hyattsville Crossing</span>
           </a>
         </div>
       </section>

@@ -243,9 +243,13 @@
       class="station-search__input"
       placeholder="Search stations..."
       autocomplete="off"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls="station-dropdown"
+      aria-autocomplete="list"
       aria-label="Search for a Metro station"
     />
-    <ul class="station-dropdown" id="station-dropdown"></ul>
+    <ul class="station-dropdown" id="station-dropdown" role="listbox"></ul>
   </div>
 
   <!-- Main Content -->

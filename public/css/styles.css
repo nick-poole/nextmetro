@@ -175,8 +175,14 @@ a:hover {
 
 @media (prefers-reduced-motion: reduce) {
   .pulse,
-  .alert-indicator {
+  .alert-indicator,
+  .animate-in,
+  .pids-skeleton-block {
     animation: none;
+  }
+  .animate-in {
+    opacity: 1;
+    transform: none;
   }
 }
 
