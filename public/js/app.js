@@ -584,10 +584,14 @@ function renderDropdown(filteredOptions) {
   stationDropdown.classList.add('open');
 }
 
+function normalizeSearch(str) {
+  return str.toLowerCase().replace(/['\u2019]/g, '');
+}
+
 function filterStations(query) {
-  const q = query.toLowerCase().trim();
+  const q = normalizeSearch(query.trim());
   if (!q) return stationOptions;
-  return stationOptions.filter((s) => s.name.toLowerCase().includes(q));
+  return stationOptions.filter((s) => normalizeSearch(s.name).includes(q));
 }
 
 function selectStation(option) {
@@ -598,20 +602,12 @@ function selectStation(option) {
     return;
   }
 
-  selectedStation = option.code;
+  // No dedicated page for this station — clear search and stay on current page.
+  // In-place updates would only change the hero/PIDS while leaving stale static
+  // HTML content (entrances, parking, about sections) from the current station.
   stationInput.value = '';
   stationDropdown.classList.remove('open');
   highlightedIndex = -1;
-  updateHeroDisplay(selectedStation);
-  fetchTrains(selectedStation);
-  fetchFacilities(selectedStation);
-  renderAlerts(currentIncidents, selectedStation);
-  startPolling();
-
-  // Reset fare calculator
-  fareDestination.value = '';
-  fareResults.style.display = 'none';
-  populateFareDestinations();
 }
 
 function updateHighlight(items) {

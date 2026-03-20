@@ -204,13 +204,14 @@ async function handleIndexNow(request, env) {
 	const HOST = 'nextmetro.live';
 	const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
 
-	// List of all public URLs to submit
+	// List of all public URLs to submit (excludes /privacy/ and /terms/)
 	const urls = [
 		`https://${HOST}/`,
 		`https://${HOST}/alerts/`,
 		`https://${HOST}/elevators/`,
 		`https://${HOST}/fares/`,
 		`https://${HOST}/hours/`,
+		`https://${HOST}/transfers/`,
 		`https://${HOST}/about/`,
 		`https://${HOST}/crisis/`,
 		`https://${HOST}/lines/red/`,
@@ -229,6 +230,31 @@ async function handleIndexNow(request, env) {
 		`https://${HOST}/station/noma/`,
 		`https://${HOST}/station/smithsonian/`,
 		`https://${HOST}/station/lenfant-plaza/`,
+		`https://${HOST}/station/farragut-north/`,
+		`https://${HOST}/station/archives/`,
+		`https://${HOST}/station/eastern-market/`,
+		`https://${HOST}/station/dca-national-airport/`,
+		`https://${HOST}/station/washington-dulles/`,
+		`https://${HOST}/station/reston-town-center/`,
+		`https://${HOST}/station/shady-grove/`,
+		`https://${HOST}/station/rockville/`,
+		`https://${HOST}/station/twinbrook/`,
+		`https://${HOST}/station/north-bethesda/`,
+		`https://${HOST}/station/grosvenor-strathmore/`,
+		`https://${HOST}/station/medical-center/`,
+		`https://${HOST}/station/bethesda/`,
+		`https://${HOST}/station/friendship-heights/`,
+		`https://${HOST}/station/tenleytown-au/`,
+		`https://${HOST}/station/cleveland-park/`,
+		`https://${HOST}/station/woodley-park/`,
+		`https://${HOST}/station/dupont-circle/`,
+		`https://${HOST}/station/rhode-island-ave/`,
+		`https://${HOST}/station/fort-totten/`,
+		`https://${HOST}/station/takoma/`,
+		`https://${HOST}/station/silver-spring/`,
+		`https://${HOST}/station/forest-glen/`,
+		`https://${HOST}/station/wheaton/`,
+		`https://${HOST}/station/glenmont/`,
 	];
 
 	try {
