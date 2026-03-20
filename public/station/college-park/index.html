@@ -141,7 +141,7 @@
           "name": "What Metro lines serve College Park-U of Md station?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "College Park-U of Md is served by the Green and Yellow Lines, located between Prince George's Plaza and Greenbelt stations."
+            "text": "College Park-U of Md is served by the Green and Yellow Lines, located between Hyattsville Crossing and Greenbelt stations."
           }
         },
         {
@@ -242,9 +242,13 @@
       class="station-search__input"
       placeholder="Search stations..."
       autocomplete="off"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls="station-dropdown"
+      aria-autocomplete="list"
       aria-label="Search for a Metro station"
     />
-    <ul class="station-dropdown" id="station-dropdown"></ul>
+    <ul class="station-dropdown" id="station-dropdown" role="listbox"></ul>
   </div>
 
   <!-- Main Content -->
@@ -252,13 +256,13 @@
     <div class="main-column">
 
       <!-- PIDS Arrivals Display -->
-      <section class="pids-card animate-in d1">
+      <section class="pids-card animate-in d1" aria-label="Train arrivals board">
         <div class="pids-header" id="pids-header">
           <span class="pids-header-station" id="pids-header-station">Next Arrivals</span>
         </div>
         <div class="pids-screen" id="pids-screen">
           <div class="pids-scanlines"></div>
-          <div class="pids-content" id="pids-content"></div>
+          <div class="pids-content" id="pids-content" aria-live="polite"></div>
         </div>
       </section>
 
@@ -382,7 +386,7 @@
         <div class="station-faq-list">
           <details class="station-faq-item">
             <summary class="station-faq-question">What Metro lines serve College Park-U of Md station?</summary>
-            <p class="station-faq-answer">College Park-U of Md is served by the Green and Yellow Lines, located between Prince George&#39;s Plaza and Greenbelt stations.</p>
+            <p class="station-faq-answer">College Park-U of Md is served by the Green and Yellow Lines, located between Hyattsville Crossing and Greenbelt stations.</p>
           </details>
           <details class="station-faq-item">
             <summary class="station-faq-question">What are the hours of operation for College Park-U of Md station?</summary>
@@ -411,12 +415,12 @@
           <span class="adjacent-line-badge adjacent-line-badge--green">Green Line</span>
         </div>
         <div class="adjacent-body">
-          <a href="/station/prince-georges-plaza/" class="adjacent-station adjacent-station--prev">
+          <a href="/station/hyattsville-crossing/" class="adjacent-station adjacent-station--prev">
             <span class="adjacent-direction">
               <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
               Toward Branch Ave
             </span>
-            <span class="adjacent-name">Prince George&#39;s Plaza</span>
+            <span class="adjacent-name">Hyattsville Crossing</span>
           </a>
           <div class="adjacent-divider">
             <span class="adjacent-current-dot"></span>
@@ -461,7 +465,7 @@
           <span>System Status</span>
           <span class="system-status-time" id="system-status-time"></span>
         </div>
-        <div class="system-status-rows" id="system-status-rows"></div>
+        <div class="system-status-rows" id="system-status-rows" aria-live="polite"></div>
       </div>
 
       <!-- Alert Card -->
@@ -470,7 +474,7 @@
           <span class="alert-badge">Service Alert</span>
           <span class="alert-timestamp" id="alert-timestamp"></span>
         </div>
-        <div class="alert-card-body" id="alert-body"></div>
+        <div class="alert-card-body" id="alert-body" aria-live="polite"></div>
       </div>
 
     </aside>

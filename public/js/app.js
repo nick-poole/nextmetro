@@ -19,23 +19,61 @@ const multiPlatform = {
 // ---- Station Pages ----
 // Stations that have dedicated pages — maps station code to URL slug
 const stationPages = {
+  A01: 'metro-center',
   A02: 'farragut-north',
+  A03: 'dupont-circle',
+  A04: 'woodley-park',
+  A05: 'cleveland-park',
   A06: 'van-ness-udc',
+  A07: 'tenleytown-au',
+  A08: 'friendship-heights',
+  A09: 'bethesda',
+  A10: 'medical-center',
+  A11: 'grosvenor-strathmore',
+  A12: 'north-bethesda',
+  A13: 'twinbrook',
+  A14: 'rockville',
+  A15: 'shady-grove',
   B01: 'gallery-place',
-  F01: 'gallery-place',
   B02: 'judiciary-square',
   B03: 'union-station',
+  B04: 'rhode-island-ave',
   B05: 'brookland-cua',
+  B06: 'fort-totten',
+  B07: 'takoma',
+  B08: 'silver-spring',
+  B09: 'forest-glen',
+  B10: 'wheaton',
+  B11: 'glenmont',
   B35: 'noma',
-  A01: 'metro-center',
   C01: 'metro-center',
   C10: 'dca-national-airport',
   C11: 'potomac-yard',
   D02: 'smithsonian',
   D03: 'lenfant-plaza',
-  F03: 'lenfant-plaza',
   D06: 'eastern-market',
+  E01: 'mt-vernon-sq',
+  E02: 'shaw-howard-u',
+  E03: 'u-street',
+  E04: 'columbia-heights',
+  E05: 'georgia-ave-petworth',
+  E06: 'fort-totten',
+  E07: 'west-hyattsville',
+  E08: 'hyattsville-crossing',
+  E09: 'college-park',
+  E10: 'greenbelt',
+  F01: 'gallery-place',
   F02: 'archives',
+  F03: 'lenfant-plaza',
+  F04: 'waterfront',
+  F05: 'navy-yard-ballpark',
+  F06: 'anacostia',
+  F07: 'congress-heights',
+  F08: 'southern-ave',
+  F09: 'naylor-road',
+  F10: 'suitland',
+  F11: 'branch-ave',
+  G05: 'downtown-largo',
   N07: 'reston-town-center',
   N10: 'washington-dulles',
 };
@@ -86,8 +124,21 @@ const prefixLines = {
 
 // Station-specific line overrides (where prefix mapping is inaccurate)
 const stationLineOverrides = {
+  C06: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Arlington Cemetery — Blue only
+  C07: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Pentagon — Blue, Yellow
+  C08: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Pentagon City — Blue, Yellow
+  C09: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Crystal City — Blue, Yellow
+  C10: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // DCA–National Airport — Blue, Yellow
+  C11: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Potomac Yard — Blue, Yellow
+  C12: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // Braddock Road — Blue, Yellow
+  C13: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }, { code: 'YL', name: 'Yellow', color: '#FFD400' }], // King St-Old Town — Blue, Yellow
   C14: [{ code: 'YL', name: 'Yellow', color: '#FFD400' }], // Eisenhower Ave — Yellow only
   C15: [{ code: 'YL', name: 'Yellow', color: '#FFD400' }], // Huntington — Yellow only
+  D09: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Minnesota Ave — Orange, Silver
+  D10: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Deanwood — Orange, Silver
+  D11: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Cheverly — Orange, Silver
+  D12: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Landover — Orange, Silver
+  D13: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // New Carrollton — Orange, Silver
   J02: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Van Dorn Street — Blue only
   J03: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Franconia-Springfield — Blue only
 };
@@ -668,23 +719,18 @@ document.addEventListener('click', (e) => {
 function renderPidsSkeletons() {
   pidsContent.innerHTML = '';
 
-  // Column headers
-  const colHeaders = document.createElement('div');
-  colHeaders.className = 'pids-col-headers';
-  colHeaders.innerHTML =
-    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-  pidsContent.appendChild(colHeaders);
-
+  var table = createPidsTable();
   for (let i = 0; i < 4; i++) {
-    const row = document.createElement('div');
+    const row = document.createElement('tr');
     row.className = 'pids-skeleton-row';
     row.innerHTML =
-      '<div class="pids-skeleton-block sk-line"></div>' +
-      '<div class="pids-skeleton-block sk-cars"></div>' +
-      '<div class="pids-skeleton-block sk-dest"></div>' +
-      '<div class="pids-skeleton-block sk-min"></div>';
-    pidsContent.appendChild(row);
+      '<td><div class="pids-skeleton-block sk-line"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-cars"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-dest"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-min"></div></td>';
+    table.tbody.appendChild(row);
   }
+  pidsContent.appendChild(table.el);
 }
 
 // ==============================
@@ -698,6 +744,46 @@ function renderPidsEmpty() {
 }
 
 // ==============================
+// PIDS Table Builder
+// ==============================
+function createPidsTable() {
+  var table = document.createElement('table');
+  table.className = 'pids-table';
+  table.setAttribute('role', 'table');
+
+  var thead = document.createElement('thead');
+  var headerRow = document.createElement('tr');
+  headerRow.className = 'pids-col-headers';
+  var headers = [
+    { abbr: 'LN', full: 'Line' },
+    { abbr: 'CAR', full: 'Cars' },
+    { abbr: 'DEST', full: 'Destination' },
+    { abbr: 'MIN', full: 'Minutes' },
+  ];
+  headers.forEach(function (h, i) {
+    var th = document.createElement('th');
+    th.setAttribute('scope', 'col');
+    th.setAttribute('aria-label', h.full);
+    th.textContent = h.abbr;
+    if (i === 3) th.style.textAlign = 'right';
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  var tbody = document.createElement('tbody');
+  table.appendChild(tbody);
+
+  return { el: table, tbody: tbody };
+}
+
+// ==============================
+// PIDS Line Code → Full Name
+// ==============================
+var pidsLineNames = { RD: 'Red', OR: 'Orange', BL: 'Blue', GR: 'Green', YL: 'Yellow', SV: 'Silver' };
+var pidsStatusLabels = { ARR: 'Arriving', BRD: 'Boarding', DLY: 'Delayed' };
+
+// ==============================
 // PIDS Train Row Rendering
 // ==============================
 function createPidsRow(train) {
@@ -706,35 +792,41 @@ function createPidsRow(train) {
   const arrivalStr = (arrival || '').toString().toUpperCase();
   const isStatus = ['ARR', 'BRD', 'DLY'].includes(arrivalStr);
 
-  const row = document.createElement('div');
+  const row = document.createElement('tr');
   row.className = 'pids-row';
 
   // Line code
-  const lineEl = document.createElement('span');
+  const lineEl = document.createElement('td');
   lineEl.className = 'pids-row-line';
   lineEl.style.color = pidsColor;
   lineEl.textContent = line;
+  lineEl.setAttribute('aria-label', (pidsLineNames[line] || line) + ' Line');
 
   // Car count
-  const carsEl = document.createElement('span');
+  const carsEl = document.createElement('td');
   carsEl.className = 'pids-row-cars';
   carsEl.textContent = cars || '\u2014';
+  if (cars) {
+    carsEl.setAttribute('aria-label', cars + ' cars');
+  }
 
   // Destination
-  const destEl = document.createElement('span');
+  const destEl = document.createElement('td');
   destEl.className = 'pids-row-dest';
   destEl.textContent = destination;
 
   // Minutes / Status
-  const minEl = document.createElement('span');
+  const minEl = document.createElement('td');
   minEl.className = 'pids-row-min';
 
   if (isStatus) {
     minEl.textContent = arrivalStr;
+    minEl.setAttribute('aria-label', pidsStatusLabels[arrivalStr] || arrivalStr);
     if (arrivalStr === 'BRD') minEl.classList.add('brd');
     if (arrivalStr === 'ARR') minEl.classList.add('arr');
   } else {
     minEl.textContent = arrival;
+    minEl.setAttribute('aria-label', arrival + (arrival === '1' ? ' minute' : ' minutes'));
   }
 
   row.appendChild(lineEl);
@@ -833,17 +925,12 @@ async function fetchTrains(stationCode) {
 
     pidsContent.innerHTML = '';
 
-    // Column headers
-    const colHeaders = document.createElement('div');
-    colHeaders.className = 'pids-col-headers';
-    colHeaders.innerHTML =
-      '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-    pidsContent.appendChild(colHeaders);
-
-    // Train rows
+    // Build table
+    const table = createPidsTable();
     allTrains.forEach((train) => {
-      pidsContent.appendChild(createPidsRow(train));
+      table.tbody.appendChild(createPidsRow(train));
     });
+    pidsContent.appendChild(table.el);
 
     updateTimestamp();
   } catch (err) {
@@ -861,32 +948,25 @@ async function fetchTrains(stationCode) {
 // ==============================
 function renderPlatformSkeletons(contentEl) {
   contentEl.innerHTML = '';
-  var colHeaders = document.createElement('div');
-  colHeaders.className = 'pids-col-headers';
-  colHeaders.innerHTML =
-    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-  contentEl.appendChild(colHeaders);
+  var table = createPidsTable();
   for (var i = 0; i < 3; i++) {
-    var row = document.createElement('div');
+    var row = document.createElement('tr');
     row.className = 'pids-skeleton-row';
     row.innerHTML =
-      '<div class="pids-skeleton-block sk-line"></div>' +
-      '<div class="pids-skeleton-block sk-cars"></div>' +
-      '<div class="pids-skeleton-block sk-dest"></div>' +
-      '<div class="pids-skeleton-block sk-min"></div>';
-    contentEl.appendChild(row);
+      '<td><div class="pids-skeleton-block sk-line"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-cars"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-dest"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-min"></div></td>';
+    table.tbody.appendChild(row);
   }
+  contentEl.appendChild(table.el);
 }
 
 function renderPlatformPids(contentEl, trains) {
   contentEl.innerHTML = '';
 
-  // Column headers
-  var colHeaders = document.createElement('div');
-  colHeaders.className = 'pids-col-headers';
-  colHeaders.innerHTML =
-    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-  contentEl.appendChild(colHeaders);
+  var table = createPidsTable();
+  contentEl.appendChild(table.el);
 
   if (trains.length === 0) {
     var empty = document.createElement('div');
@@ -898,7 +978,7 @@ function renderPlatformPids(contentEl, trains) {
 
   // Show max 3 rows per platform board
   trains.slice(0, 3).forEach(function (train) {
-    contentEl.appendChild(createPidsRow(train));
+    table.tbody.appendChild(createPidsRow(train));
   });
 }
 

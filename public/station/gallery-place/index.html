@@ -180,8 +180,12 @@
   <!-- Station Search -->
   <div class="station-search" id="station-search-wrapper">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
-    <input type="text" id="station-input" class="station-search__input" placeholder="Search stations..." autocomplete="off" aria-label="Search for a Metro station" />
-    <ul class="station-dropdown" id="station-dropdown"></ul>
+    <input type="text" id="station-input" class="station-search__input" placeholder="Search stations..." autocomplete="off"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls="station-dropdown"
+      aria-autocomplete="list" aria-label="Search for a Metro station" />
+    <ul class="station-dropdown" id="station-dropdown" role="listbox"></ul>
   </div>
 
   <!-- Main Content -->
@@ -192,7 +196,7 @@
       <div class="pids-grid animate-in d1">
 
         <!-- Platform A: Red Line -->
-        <section class="pids-card" id="pids-card-a">
+        <section class="pids-card" id="pids-card-a" aria-label="Platform A train arrivals">
           <div class="pids-header">
             <div class="line-strip-group">
               <div class="line-strip" style="background: var(--nm-line-red)"></div>
@@ -206,7 +210,7 @@
         </section>
 
         <!-- Platform B: Green / Yellow -->
-        <section class="pids-card" id="pids-card-b">
+        <section class="pids-card" id="pids-card-b" aria-label="Platform B train arrivals">
           <div class="pids-header">
             <div class="line-strip-group">
               <div class="line-strip" style="background: var(--nm-line-green)"></div>
@@ -404,7 +408,7 @@
           <span>System Status</span>
           <span class="system-status-time" id="system-status-time"></span>
         </div>
-        <div class="system-status-rows" id="system-status-rows"></div>
+        <div class="system-status-rows" id="system-status-rows" aria-live="polite"></div>
       </div>
 
       <!-- Alert Card -->
@@ -413,7 +417,7 @@
           <span class="alert-badge">Service Alert</span>
           <span class="alert-timestamp" id="alert-timestamp"></span>
         </div>
-        <div class="alert-card-body" id="alert-body"></div>
+        <div class="alert-card-body" id="alert-body" aria-live="polite"></div>
       </div>
 
     </aside>
