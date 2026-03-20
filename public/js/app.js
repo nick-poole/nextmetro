@@ -719,23 +719,18 @@ document.addEventListener('click', (e) => {
 function renderPidsSkeletons() {
   pidsContent.innerHTML = '';
 
-  // Column headers
-  const colHeaders = document.createElement('div');
-  colHeaders.className = 'pids-col-headers';
-  colHeaders.innerHTML =
-    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-  pidsContent.appendChild(colHeaders);
-
+  var table = createPidsTable();
   for (let i = 0; i < 4; i++) {
-    const row = document.createElement('div');
+    const row = document.createElement('tr');
     row.className = 'pids-skeleton-row';
     row.innerHTML =
-      '<div class="pids-skeleton-block sk-line"></div>' +
-      '<div class="pids-skeleton-block sk-cars"></div>' +
-      '<div class="pids-skeleton-block sk-dest"></div>' +
-      '<div class="pids-skeleton-block sk-min"></div>';
-    pidsContent.appendChild(row);
+      '<td><div class="pids-skeleton-block sk-line"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-cars"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-dest"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-min"></div></td>';
+    table.tbody.appendChild(row);
   }
+  pidsContent.appendChild(table.el);
 }
 
 // ==============================
@@ -749,6 +744,46 @@ function renderPidsEmpty() {
 }
 
 // ==============================
+// PIDS Table Builder
+// ==============================
+function createPidsTable() {
+  var table = document.createElement('table');
+  table.className = 'pids-table';
+  table.setAttribute('role', 'table');
+
+  var thead = document.createElement('thead');
+  var headerRow = document.createElement('tr');
+  headerRow.className = 'pids-col-headers';
+  var headers = [
+    { abbr: 'LN', full: 'Line' },
+    { abbr: 'CAR', full: 'Cars' },
+    { abbr: 'DEST', full: 'Destination' },
+    { abbr: 'MIN', full: 'Minutes' },
+  ];
+  headers.forEach(function (h, i) {
+    var th = document.createElement('th');
+    th.setAttribute('scope', 'col');
+    th.setAttribute('aria-label', h.full);
+    th.textContent = h.abbr;
+    if (i === 3) th.style.textAlign = 'right';
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  var tbody = document.createElement('tbody');
+  table.appendChild(tbody);
+
+  return { el: table, tbody: tbody };
+}
+
+// ==============================
+// PIDS Line Code → Full Name
+// ==============================
+var pidsLineNames = { RD: 'Red', OR: 'Orange', BL: 'Blue', GR: 'Green', YL: 'Yellow', SV: 'Silver' };
+var pidsStatusLabels = { ARR: 'Arriving', BRD: 'Boarding', DLY: 'Delayed' };
+
+// ==============================
 // PIDS Train Row Rendering
 // ==============================
 function createPidsRow(train) {
@@ -757,35 +792,41 @@ function createPidsRow(train) {
   const arrivalStr = (arrival || '').toString().toUpperCase();
   const isStatus = ['ARR', 'BRD', 'DLY'].includes(arrivalStr);
 
-  const row = document.createElement('div');
+  const row = document.createElement('tr');
   row.className = 'pids-row';
 
   // Line code
-  const lineEl = document.createElement('span');
+  const lineEl = document.createElement('td');
   lineEl.className = 'pids-row-line';
   lineEl.style.color = pidsColor;
   lineEl.textContent = line;
+  lineEl.setAttribute('aria-label', (pidsLineNames[line] || line) + ' Line');
 
   // Car count
-  const carsEl = document.createElement('span');
+  const carsEl = document.createElement('td');
   carsEl.className = 'pids-row-cars';
   carsEl.textContent = cars || '\u2014';
+  if (cars) {
+    carsEl.setAttribute('aria-label', cars + ' cars');
+  }
 
   // Destination
-  const destEl = document.createElement('span');
+  const destEl = document.createElement('td');
   destEl.className = 'pids-row-dest';
   destEl.textContent = destination;
 
   // Minutes / Status
-  const minEl = document.createElement('span');
+  const minEl = document.createElement('td');
   minEl.className = 'pids-row-min';
 
   if (isStatus) {
     minEl.textContent = arrivalStr;
+    minEl.setAttribute('aria-label', pidsStatusLabels[arrivalStr] || arrivalStr);
     if (arrivalStr === 'BRD') minEl.classList.add('brd');
     if (arrivalStr === 'ARR') minEl.classList.add('arr');
   } else {
     minEl.textContent = arrival;
+    minEl.setAttribute('aria-label', arrival + (arrival === '1' ? ' minute' : ' minutes'));
   }
 
   row.appendChild(lineEl);
@@ -884,17 +925,12 @@ async function fetchTrains(stationCode) {
 
     pidsContent.innerHTML = '';
 
-    // Column headers
-    const colHeaders = document.createElement('div');
-    colHeaders.className = 'pids-col-headers';
-    colHeaders.innerHTML =
-      '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-    pidsContent.appendChild(colHeaders);
-
-    // Train rows
+    // Build table
+    const table = createPidsTable();
     allTrains.forEach((train) => {
-      pidsContent.appendChild(createPidsRow(train));
+      table.tbody.appendChild(createPidsRow(train));
     });
+    pidsContent.appendChild(table.el);
 
     updateTimestamp();
   } catch (err) {
@@ -912,32 +948,25 @@ async function fetchTrains(stationCode) {
 // ==============================
 function renderPlatformSkeletons(contentEl) {
   contentEl.innerHTML = '';
-  var colHeaders = document.createElement('div');
-  colHeaders.className = 'pids-col-headers';
-  colHeaders.innerHTML =
-    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-  contentEl.appendChild(colHeaders);
+  var table = createPidsTable();
   for (var i = 0; i < 3; i++) {
-    var row = document.createElement('div');
+    var row = document.createElement('tr');
     row.className = 'pids-skeleton-row';
     row.innerHTML =
-      '<div class="pids-skeleton-block sk-line"></div>' +
-      '<div class="pids-skeleton-block sk-cars"></div>' +
-      '<div class="pids-skeleton-block sk-dest"></div>' +
-      '<div class="pids-skeleton-block sk-min"></div>';
-    contentEl.appendChild(row);
+      '<td><div class="pids-skeleton-block sk-line"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-cars"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-dest"></div></td>' +
+      '<td><div class="pids-skeleton-block sk-min"></div></td>';
+    table.tbody.appendChild(row);
   }
+  contentEl.appendChild(table.el);
 }
 
 function renderPlatformPids(contentEl, trains) {
   contentEl.innerHTML = '';
 
-  // Column headers
-  var colHeaders = document.createElement('div');
-  colHeaders.className = 'pids-col-headers';
-  colHeaders.innerHTML =
-    '<span>LN</span><span>CAR</span><span>DEST</span><span style="text-align:right">MIN</span>';
-  contentEl.appendChild(colHeaders);
+  var table = createPidsTable();
+  contentEl.appendChild(table.el);
 
   if (trains.length === 0) {
     var empty = document.createElement('div');
@@ -949,7 +978,7 @@ function renderPlatformPids(contentEl, trains) {
 
   // Show max 3 rows per platform board
   trains.slice(0, 3).forEach(function (train) {
-    contentEl.appendChild(createPidsRow(train));
+    table.tbody.appendChild(createPidsRow(train));
   });
 }
 
