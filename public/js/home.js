@@ -50,7 +50,7 @@ var homeStations = [
   { name: 'Huntington', slug: 'huntington', lines: ['yellow'] },
   { name: 'Federal Triangle', slug: 'federal-triangle', lines: ['orange', 'blue', 'silver'] },
   { name: 'Smithsonian', slug: 'smithsonian', lines: ['orange', 'blue', 'silver'] },
-  { name: "L'Enfant Plaza", slug: 'lenfant-plaza', lines: ['orange', 'blue', 'yellow', 'green', 'silver'] },
+  { name: "L'Enfant Plaza", slug: 'lenfant-plaza', lines: ['orange', 'blue', 'yellow', 'green', 'silver'], aliases: ['lenfant', 'lenfant plaza', 'l enfant'] },
   { name: 'Federal Center SW', slug: 'federal-center-sw', lines: ['orange', 'blue', 'silver'] },
   { name: 'Capitol South', slug: 'capitol-south', lines: ['orange', 'blue', 'silver'] },
   { name: 'Eastern Market', slug: 'eastern-market', lines: ['orange', 'blue', 'silver'] },
