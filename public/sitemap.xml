@@ -405,4 +405,12 @@
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ===== Blue/Silver Line Stations ===== -->
+  <url>
+    <loc>https://nextmetro.live/station/downtown-largo/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
