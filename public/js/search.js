@@ -61,8 +61,8 @@
     { name: 'Cheverly', slug: 'cheverly', lines: ['orange', 'silver'] },
     { name: 'Landover', slug: 'landover', lines: ['orange', 'silver'] },
     { name: 'New Carrollton', slug: 'new-carrollton', lines: ['orange', 'silver'] },
-    { name: 'Mt Vernon Sq 7th St-Convention Center', slug: 'mt-vernon-square', lines: ['yellow', 'green'], aliases: ['mt vernon', 'mount vernon', 'convention center'] },
-    { name: 'Shaw-Howard U', slug: 'shaw-howard', lines: ['yellow', 'green'], aliases: ['shaw', 'howard'] },
+    { name: 'Mt Vernon Sq 7th St-Convention Center', slug: 'mt-vernon-sq', lines: ['yellow', 'green'], aliases: ['mt vernon', 'mount vernon', 'convention center'] },
+    { name: 'Shaw-Howard U', slug: 'shaw-howard-u', lines: ['yellow', 'green'], aliases: ['shaw', 'howard'] },
     { name: 'U Street/African-Amer Civil War Memorial/Cardozo', slug: 'u-street', lines: ['yellow', 'green'], aliases: ['u street', 'u st', 'cardozo'] },
     { name: 'Columbia Heights', slug: 'columbia-heights', lines: ['yellow', 'green'] },
     { name: 'Georgia Ave-Petworth', slug: 'georgia-ave-petworth', lines: ['yellow', 'green'], aliases: ['petworth', 'georgia ave'] },
@@ -72,7 +72,7 @@
     { name: 'Greenbelt', slug: 'greenbelt', lines: ['yellow', 'green'] },
     { name: 'Archives-Navy Memorial-Penn Quarter', slug: 'archives', lines: ['yellow', 'green'], aliases: ['penn quarter', 'navy memorial', 'archives'] },
     { name: 'Waterfront', slug: 'waterfront', lines: ['green'] },
-    { name: 'Navy Yard-Ballpark', slug: 'navy-yard', lines: ['green'], aliases: ['navy yard', 'ballpark', 'nationals park', 'nationals'] },
+    { name: 'Navy Yard-Ballpark', slug: 'navy-yard-ballpark', lines: ['green'], aliases: ['navy yard', 'ballpark', 'nationals park', 'nationals'] },
     { name: 'Anacostia', slug: 'anacostia', lines: ['green'] },
     { name: 'Congress Heights', slug: 'congress-heights', lines: ['green'] },
     { name: 'Southern Ave', slug: 'southern-ave', lines: ['green'] },
@@ -141,10 +141,13 @@
     highlighted = -1;
     if (filtered.length === 0) {
       dropdown.classList.remove('open');
+      input.setAttribute('aria-expanded', 'false');
       return;
     }
     filtered.forEach(function (station, i) {
       var li = document.createElement('li');
+      li.setAttribute('role', 'option');
+      li.id = 'search-option-' + i;
       var dots = document.createElement('span');
       dots.className = 'line-dots';
       station.lines.forEach(function (line) {
@@ -162,16 +165,23 @@
       dropdown.appendChild(li);
     });
     dropdown.classList.add('open');
+    input.setAttribute('aria-expanded', 'true');
   }
 
   function highlight(items) {
     for (var i = 0; i < items.length; i++) {
       if (i === highlighted) {
         items[i].classList.add('highlighted');
+        items[i].setAttribute('aria-selected', 'true');
         items[i].scrollIntoView({ block: 'nearest' });
+        input.setAttribute('aria-activedescendant', items[i].id);
       } else {
         items[i].classList.remove('highlighted');
+        items[i].removeAttribute('aria-selected');
       }
+    }
+    if (highlighted < 0) {
+      input.removeAttribute('aria-activedescendant');
     }
   }
 
@@ -202,6 +212,8 @@
       }
     } else if (e.key === 'Escape') {
       dropdown.classList.remove('open');
+      input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
       input.blur();
     }
   });
@@ -209,6 +221,8 @@
   document.addEventListener('click', function (e) {
     if (!e.target.closest('#station-search-wrapper')) {
       dropdown.classList.remove('open');
+      input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
     }
   });
 })();

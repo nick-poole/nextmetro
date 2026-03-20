@@ -276,7 +276,7 @@
         </div>
         <div class="pids-screen" id="pids-screen">
           <div class="pids-scanlines"></div>
-          <div class="pids-content" id="pids-content">
+          <div class="pids-content" id="pids-content" aria-live="polite">
             <!-- Train rows rendered by JS -->
           </div>
         </div>
@@ -483,7 +483,7 @@
           <span>System Status</span>
           <span class="system-status-time" id="system-status-time"></span>
         </div>
-        <div class="system-status-rows" id="system-status-rows">
+        <div class="system-status-rows" id="system-status-rows" aria-live="polite">
           <!-- Rendered by JS from incidents API -->
         </div>
       </div>
@@ -494,7 +494,7 @@
           <span class="alert-badge">Service Alert</span>
           <span class="alert-timestamp" id="alert-timestamp"></span>
         </div>
-        <div class="alert-card-body" id="alert-body">
+        <div class="alert-card-body" id="alert-body" aria-live="polite">
           <!-- Alert content rendered by JS -->
         </div>
       </div>
