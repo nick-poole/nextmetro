@@ -147,8 +147,19 @@ const stationLineOverrides = {
   D11: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Cheverly — Orange, Silver
   D12: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // Landover — Orange, Silver
   D13: [{ code: 'OR', name: 'Orange', color: '#F09500' }, { code: 'SV', name: 'Silver', color: '#9BA5A5' }], // New Carrollton — Orange, Silver
+  F04: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Waterfront — Green only
+  F05: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Navy Yard-Ballpark — Green only
+  F06: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Anacostia — Green only
+  F07: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Congress Heights — Green only
+  F08: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Southern Ave — Green only
+  F09: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Naylor Road — Green only
+  F10: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Suitland — Green only
+  F11: [{ code: 'GR', name: 'Green', color: '#00BD45' }],   // Branch Ave — Green only
   J02: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Van Dorn Street — Blue only
   J03: [{ code: 'BL', name: 'Blue', color: '#00A8E8' }],   // Franconia-Springfield — Blue only
+  K06: [{ code: 'OR', name: 'Orange', color: '#F09500' }],  // West Falls Church — Orange only
+  K07: [{ code: 'OR', name: 'Orange', color: '#F09500' }],  // Dunn Loring-Merrifield — Orange only
+  K08: [{ code: 'OR', name: 'Orange', color: '#F09500' }],  // Vienna/Fairfax-GMU — Orange only
 };
 
 function getLinesForCode(code) {
