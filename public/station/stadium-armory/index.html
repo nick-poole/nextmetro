@@ -238,11 +238,6 @@
               <span>Sun: 7:00 AM – 12:00 AM</span>
             </span>
           </div>
-          <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-bus-fill" aria-hidden="true"></i></span>
-            <span class="station-info-label">Bus Lines</span>
-            <span class="station-info-value">96, 97, B2</span>
-          </div>
         </div>
         <div class="station-info-actions">
           <a href="https://www.google.com/maps/dir/?api=1&destination=38.8867,-76.9771" class="station-info-link" target="_blank" rel="noopener noreferrer">
@@ -308,23 +303,41 @@
     <!-- Sidebar -->
     <aside class="sidebar">
 
-      <!-- Adjacent Stations -->
+      <!-- Adjacent Stations — Orange Line -->
       <section class="adjacent-card animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
           <span class="adjacent-line-badge adjacent-line-badge--orange">Or</span>
+        </div>
+        <div class="adjacent-body">
+          <a href="/station/potomac-ave/" class="adjacent-station adjacent-station--prev">
+            <span class="adjacent-direction"><i class="ri-arrow-left-s-line" aria-hidden="true"></i> Toward Vienna</span>
+            <span class="adjacent-name">Potomac Ave</span>
+          </a>
+          <div class="adjacent-divider"><span class="adjacent-current-dot"></span></div>
+          <a href="/station/minnesota-ave/" class="adjacent-station adjacent-station--next">
+            <span class="adjacent-direction">Toward New Carrollton <i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
+            <span class="adjacent-name">Minnesota Ave</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Adjacent Stations — Blue / Silver Lines -->
+      <section class="adjacent-card animate-in d2">
+        <div class="adjacent-header">
+          <h2 class="adjacent-title">Adjacent Stations</h2>
           <span class="adjacent-line-badge adjacent-line-badge--blue">Bl</span>
           <span class="adjacent-line-badge adjacent-line-badge--silver">Sv</span>
         </div>
         <div class="adjacent-body">
           <a href="/station/potomac-ave/" class="adjacent-station adjacent-station--prev">
-            <span class="adjacent-direction"><i class="ri-arrow-left-s-line" aria-hidden="true"></i> Toward Vienna / Ashburn</span>
+            <span class="adjacent-direction"><i class="ri-arrow-left-s-line" aria-hidden="true"></i> Toward Franconia / Ashburn</span>
             <span class="adjacent-name">Potomac Ave</span>
           </a>
           <div class="adjacent-divider"><span class="adjacent-current-dot"></span></div>
-          <a href="/station/minnesota-ave/" class="adjacent-station adjacent-station--next">
-            <span class="adjacent-direction">Toward New Carrollton / Largo <i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
-            <span class="adjacent-name">Minnesota Ave</span>
+          <a href="/station/benning-road/" class="adjacent-station adjacent-station--next">
+            <span class="adjacent-direction">Toward Downtown Largo <i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
+            <span class="adjacent-name">Benning Road</span>
           </a>
         </div>
       </section>
