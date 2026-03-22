@@ -413,4 +413,60 @@
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ===== Orange/Silver Line Stations (K-code) ===== -->
+  <url>
+    <loc>https://nextmetro.live/station/vienna/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/dunn-loring/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/west-falls-church/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/east-falls-church/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/ballston/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/virginia-square/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/clarendon/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/court-house/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nextmetro.live/station/rosslyn/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
