@@ -131,44 +131,62 @@
   gap: var(--nm-space-lg);
 }
 
-@media (max-width: 900px) {
+/* ---- Mobile (≤ 768px): single column, custom section order ---- */
+@media (max-width: 768px) {
   .main-grid {
     grid-template-columns: 1fr;
+    padding: var(--nm-space-lg) var(--nm-space-md);
   }
 
-  /* Flatten containers so children become direct grid items for reordering */
+  /* Flatten wrappers so children become direct grid items */
   .main-column,
   .sidebar {
     display: contents;
   }
 
   /* Mobile section order:
-     1. PIDS  2. Last Updated  3. Disclaimer  4. Adjacent Stations
-     5. Station Info  6. Facilities  7. Fare Calc  8. System Status  9. FAQ  10. Alert */
+     PIDS → Last Updated → Disclaimer → Adjacent Stations →
+     Station Info → Facilities → Fare Calc → System Status → FAQ → Alert */
   .pids-grid,
-  .pids-card { order: 1; }
-  .last-updated { order: 2; }
-  .wmata-data-disclaimer { order: 3; }
-  .adjacent-card { order: 4; }
-  .station-info-card { order: 5; }
-  .facilities-card { order: 6; }
-  .fare-card { order: 7; }
-  .system-status-card { order: 8; }
-  .station-faq { order: 9; }
-  .alert-card { order: 10; }
+  .pids-card:not(.pids-grid .pids-card) { order: 1; }
+  .last-updated           { order: 2; }
+  .wmata-data-disclaimer  { order: 3; }
+  .adjacent-card          { order: 4; }
+  .station-info-card      { order: 5; }
+  .facilities-card        { order: 6; }
+  .fare-card              { order: 7; }
+  .system-status-card     { order: 8; }
+  .station-faq            { order: 9; }
+  .alert-card             { order: 10; }
 
-  /* Remove margin-top on cards since grid gap handles spacing */
+  /* Grid gap handles spacing — zero out card margins */
   .station-info-card,
   .facilities-card,
   .adjacent-card,
   .fare-card,
-  .station-faq {
+  .station-faq,
+  .system-status-card,
+  .alert-card {
     margin-top: 0;
+  }
+}
+
+/* ---- Tablet (769px – 900px): single column, desktop section order ---- */
+@media (min-width: 769px) and (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 .main-column {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nm-space-lg);
+}
+
+.main-column > * {
+  margin-top: 0;
 }
 
 .sidebar {
@@ -263,7 +281,7 @@
 }
 
 .pids-col-headers th:nth-child(1) { width: 42px; padding-left: 1.25rem; }
-.pids-col-headers th:nth-child(2) { width: 44px; }
+.pids-col-headers th:nth-child(2) { width: 44px; text-align: center; }
 .pids-col-headers th:nth-child(4) { width: 58px; padding-right: 1.25rem; text-align: right; }
 
 /* PIDS Data Row */
@@ -292,7 +310,7 @@
   font-size: 1rem;
   color: var(--nm-text-secondary);
   letter-spacing: 0.05em;
-  padding-left: 6px;
+  text-align: center;
 }
 
 .pids-row-dest {
@@ -450,7 +468,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0.5rem 1.25rem;
+  padding: 0.75rem 1.25rem;
+  min-height: 44px;
   border-bottom: 1px solid var(--nm-border-subtle);
   text-decoration: none;
   transition: background-color 0.15s;
@@ -1266,7 +1285,7 @@ a.status-row:focus-visible {
 /* Old footer styles removed — see /css/footer.css */
 
 /* ==============================
-   Responsive — 768px
+   Responsive — 768px (component adjustments)
    ============================== */
 @media (max-width: 768px) {
   .hero {
@@ -1277,17 +1296,19 @@ a.status-row:focus-visible {
     min-height: 220px;
   }
 
-  .main-grid {
-    padding: var(--nm-space-lg) var(--nm-space-md);
-  }
-
-  .pids-row {
+  .pids-row td {
     padding: 0.45rem 0.75rem;
   }
 
-  .pids-col-headers {
-    padding: 0.25rem 0.75rem;
+  .pids-row td:first-child { padding-left: 0.75rem; }
+  .pids-row td:last-child { padding-right: 0.75rem; }
+
+  .pids-col-headers th {
+    padding: 0.25rem 0;
   }
+
+  .pids-col-headers th:nth-child(1) { padding-left: 0.75rem; }
+  .pids-col-headers th:nth-child(4) { padding-right: 0.75rem; }
 
   .pids-header {
     padding: 0.6rem 0.75rem;
