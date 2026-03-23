@@ -135,6 +135,36 @@
   .main-grid {
     grid-template-columns: 1fr;
   }
+
+  /* Flatten containers so children become direct grid items for reordering */
+  .main-column,
+  .sidebar {
+    display: contents;
+  }
+
+  /* Mobile section order:
+     1. PIDS  2. Last Updated  3. Disclaimer  4. Adjacent Stations
+     5. Station Info  6. Facilities  7. Fare Calc  8. System Status  9. FAQ  10. Alert */
+  .pids-grid,
+  .pids-card { order: 1; }
+  .last-updated { order: 2; }
+  .wmata-data-disclaimer { order: 3; }
+  .adjacent-card { order: 4; }
+  .station-info-card { order: 5; }
+  .facilities-card { order: 6; }
+  .fare-card { order: 7; }
+  .system-status-card { order: 8; }
+  .station-faq { order: 9; }
+  .alert-card { order: 10; }
+
+  /* Remove margin-top on cards since grid gap handles spacing */
+  .station-info-card,
+  .facilities-card,
+  .adjacent-card,
+  .fare-card,
+  .station-faq {
+    margin-top: 0;
+  }
 }
 
 .main-column {
@@ -262,6 +292,7 @@
   font-size: 1rem;
   color: var(--nm-text-secondary);
   letter-spacing: 0.05em;
+  padding-left: 6px;
 }
 
 .pids-row-dest {
@@ -676,9 +707,14 @@
 .station-info-icon {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   color: var(--nm-text-muted);
   flex-shrink: 0;
-  height: 1.25em;
+  width: 16px;
+  height: 1.35em;
+  line-height: 1;
+  position: relative;
+  top: 1px;
 }
 
 .station-info-label {
@@ -699,10 +735,35 @@
 }
 
 .station-info-value--hours {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0;
   line-height: 1.4;
+}
+
+.hours-day {
+  font-weight: 600;
+  color: var(--nm-text-secondary);
+  padding: 3px 0;
+  padding-right: 1rem;
+  white-space: nowrap;
+}
+
+.hours-time {
+  font-weight: 500;
+  color: var(--nm-text-primary);
+  padding: 3px 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.hours-row {
+  display: contents;
+}
+
+.hours-row + .hours-row .hours-day,
+.hours-row + .hours-row .hours-time {
+  border-top: 1px solid var(--nm-border-subtle);
 }
 
 /* Desktop: single-row layout with right-aligned values */
