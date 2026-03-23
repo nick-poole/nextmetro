@@ -128,30 +128,67 @@
   padding: var(--nm-space-xl) var(--nm-space-lg);
   display: grid;
   grid-template-columns: 1fr 340px;
+  grid-auto-flow: row dense;
+  align-items: start;
   gap: var(--nm-space-lg);
 }
 
-@media (max-width: 900px) {
+/* Sidebar items always target column 2 on desktop */
+.grid-side {
+  grid-column: 2;
+}
+
+/* Alert card spans full width on desktop (top of page) */
+.alert-card {
+  grid-column: 1 / -1;
+}
+
+/* Zero out card margins — grid gap handles spacing */
+.station-info-card,
+.facilities-card,
+.adjacent-card,
+.fare-card,
+.station-faq,
+.system-status-card,
+.alert-card {
+  margin-top: 0;
+}
+
+/* ---- Tablet (769px – 900px): single column, source order ---- */
+@media (min-width: 769px) and (max-width: 900px) {
   .main-grid {
     grid-template-columns: 1fr;
   }
+
+  .grid-side {
+    grid-column: 1;
+  }
 }
 
-.main-column {
-  min-width: 0;
-}
+/* ---- Mobile (≤ 768px): single column, custom section order ---- */
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    padding: var(--nm-space-lg) var(--nm-space-md);
+  }
 
-.sidebar {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--nm-space-lg);
-}
+  .grid-side {
+    grid-column: 1;
+  }
 
-.sidebar .station-info-card,
-.sidebar .facilities-card,
-.sidebar .adjacent-card {
-  margin-top: 0;
+  /* Mobile section order:
+     Alert → PIDS → Disclaimer → Adjacent Stations →
+     Station Info → Facilities → Fare Calc → System Status → FAQ */
+  .alert-card                { order: 1; }
+  .pids-card,
+  .pids-wrapper              { order: 2; }
+  .wmata-data-disclaimer     { order: 3; }
+  .adjacent-card             { order: 4; }
+  .station-info-card         { order: 5; }
+  .facilities-card           { order: 6; }
+  .fare-card                 { order: 7; }
+  .system-status-card        { order: 8; }
+  .station-faq               { order: 9; }
 }
 
 /* ==============================
@@ -163,13 +200,39 @@
   overflow: hidden;
 }
 
+/* Transfer station: wrapper around shared header + pids-grid */
+.pids-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pids-shared-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--nm-border);
+  border-bottom: none;
+}
+
 .pids-header {
   background-color: var(--nm-surface-elevated);
   padding: 0.75rem 1.25rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   border-bottom: 1px solid var(--nm-border);
+}
+
+/* Timestamp + refresh in PIDS header */
+.pids-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
 }
 
 .pids-header-station {
@@ -233,8 +296,8 @@
 }
 
 .pids-col-headers th:nth-child(1) { width: 42px; padding-left: 1.25rem; }
-.pids-col-headers th:nth-child(2) { width: 44px; }
-.pids-col-headers th:nth-child(4) { width: 58px; padding-right: 1.25rem; }
+.pids-col-headers th:nth-child(2) { width: 44px; text-align: center; }
+.pids-col-headers th:nth-child(4) { width: 58px; padding-right: 1.25rem; text-align: right; }
 
 /* PIDS Data Row */
 .pids-row {
@@ -262,6 +325,7 @@
   font-size: 1rem;
   color: var(--nm-text-secondary);
   letter-spacing: 0.05em;
+  text-align: center;
 }
 
 .pids-row-dest {
@@ -332,24 +396,15 @@
 .pids-skeleton-block.sk-min  { width: 36px; margin-left: auto; }
 
 /* ==============================
-   Last Updated
+   Last Updated (inside PIDS header)
    ============================== */
-.last-updated {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 0.75rem;
-  margin-bottom: var(--nm-space-md);
-}
-
-.last-updated span {
+.pids-updated span {
   font-family: var(--nm-font);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 
 .refresh-btn {
@@ -360,14 +415,20 @@
   border: none;
   color: var(--nm-text-muted);
   cursor: pointer;
-  padding: 14px;
-  min-width: 44px;
-  min-height: 44px;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
   transition: color var(--nm-transition-normal);
 }
 
-.refresh-btn:hover {
+.refresh-btn:hover,
+.refresh-btn:focus-visible {
   color: var(--nm-amber);
+}
+
+.refresh-btn:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
 }
 
 /* ==============================
@@ -413,8 +474,21 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0.5rem 1.25rem;
+  padding: 0.75rem 1.25rem;
+  min-height: 44px;
   border-bottom: 1px solid var(--nm-border-subtle);
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+a.status-row:hover,
+a.status-row:focus-visible {
+  background-color: var(--nm-surface-elevated);
+}
+
+a.status-row:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
 }
 
 .status-row:last-child {
@@ -676,9 +750,14 @@
 .station-info-icon {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   color: var(--nm-text-muted);
   flex-shrink: 0;
-  height: 1.25em;
+  width: 16px;
+  height: 1.35em;
+  line-height: 1;
+  position: relative;
+  top: 1px;
 }
 
 .station-info-label {
@@ -701,8 +780,33 @@
 .station-info-value--hours {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0;
   line-height: 1.4;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 3px 0;
+}
+
+.hours-row + .hours-row {
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+.hours-day {
+  font-weight: 600;
+  color: var(--nm-text-secondary);
+  white-space: nowrap;
+  padding-right: 1rem;
+}
+
+.hours-time {
+  font-weight: 500;
+  color: var(--nm-text-primary);
+  white-space: nowrap;
+  text-align: right;
 }
 
 /* Desktop: single-row layout with right-aligned values */
@@ -748,9 +852,15 @@
   transition: color 0.15s, border-color 0.15s;
 }
 
-.station-info-link:hover {
+.station-info-link:hover,
+.station-info-link:focus-visible {
   color: var(--nm-amber-bright);
   border-color: var(--nm-amber-dim);
+}
+
+.station-info-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
 }
 
 /* ==============================
@@ -850,6 +960,13 @@
   height: 20px;
 }
 
+.line-strip--red    { background: var(--nm-line-red); }
+.line-strip--orange { background: var(--nm-line-orange); }
+.line-strip--blue   { background: var(--nm-line-blue); }
+.line-strip--green  { background: var(--nm-line-green); }
+.line-strip--yellow { background: var(--nm-line-yellow); }
+.line-strip--silver { background: var(--nm-line-silver); }
+
 .pids-header .platform-label {
   font-family: var(--nm-font);
   font-weight: 700;
@@ -932,8 +1049,14 @@
   transition: background-color 0.15s;
 }
 
-.adjacent-station:hover {
+.adjacent-station:hover,
+.adjacent-station:focus-visible {
   background-color: var(--nm-surface-elevated);
+}
+
+.adjacent-station:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
 }
 
 .adjacent-direction {
@@ -960,7 +1083,8 @@
   transition: color 0.15s;
 }
 
-.adjacent-station:hover .adjacent-name {
+.adjacent-station:hover .adjacent-name,
+.adjacent-station:focus-visible .adjacent-name {
   color: var(--nm-amber);
 }
 
@@ -1167,7 +1291,7 @@
 /* Old footer styles removed — see /css/footer.css */
 
 /* ==============================
-   Responsive — 768px
+   Responsive — 768px (component adjustments)
    ============================== */
 @media (max-width: 768px) {
   .hero {
@@ -1178,17 +1302,19 @@
     min-height: 220px;
   }
 
-  .main-grid {
-    padding: var(--nm-space-lg) var(--nm-space-md);
-  }
-
-  .pids-row {
+  .pids-row td {
     padding: 0.45rem 0.75rem;
   }
 
-  .pids-col-headers {
-    padding: 0.25rem 0.75rem;
+  .pids-row td:first-child { padding-left: 0.75rem; }
+  .pids-row td:last-child { padding-right: 0.75rem; }
+
+  .pids-col-headers th {
+    padding: 0.25rem 0;
   }
+
+  .pids-col-headers th:nth-child(1) { padding-left: 0.75rem; }
+  .pids-col-headers th:nth-child(4) { padding-right: 0.75rem; }
 
   .pids-header {
     padding: 0.6rem 0.75rem;

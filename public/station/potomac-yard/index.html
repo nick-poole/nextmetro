@@ -228,7 +228,7 @@
       <p class="hero-station-desc" id="hero-station-desc">Connecting Potomac Yard &amp; North Alexandria.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
     </div>
   </section>
 
@@ -262,12 +262,23 @@
 
   <!-- Main Content -->
   <main id="main-content" class="main-grid">
-    <div class="main-column">
+
+      <!-- Alert Card -->
+      <div class="alert-card animate-in d3" id="alert-card" style="display:none;">
+        <div class="alert-card-header">
+          <span class="alert-badge">Service Alert</span>
+          <span class="alert-timestamp" id="alert-timestamp"></span>
+        </div>
+        <div class="alert-card-body" id="alert-body" aria-live="polite">
+          <!-- Alert content rendered by JS -->
+        </div>
+      </div>
 
       <!-- PIDS Arrivals Display -->
       <section class="pids-card animate-in d1" aria-label="Train arrivals board">
         <div class="pids-header" id="pids-header">
           <span class="pids-header-station" id="pids-header-station">Next Arrivals</span>
+          <span class="pids-updated" id="last-updated" style="display:none;"><span id="updated-time"></span><button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data"><i class="ri-refresh-line" aria-hidden="true"></i></button></span>
         </div>
         <div class="pids-screen" id="pids-screen">
           <div class="pids-scanlines"></div>
@@ -276,15 +287,6 @@
           </div>
         </div>
       </section>
-
-      <!-- Last Updated -->
-      <div class="last-updated" id="last-updated" style="display:none;">
-        <span id="updated-time"></span>
-        <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data">
-          <i class="ri-refresh-line" aria-hidden="true"></i>
-        </button>
-      </div>
-
       <!-- Station Info -->
       <section class="station-info-card animate-in d3">
         <div class="station-info-header">
@@ -300,7 +302,7 @@
           </div>
           <div class="station-info-row">
             <span class="station-info-icon">
-              <i class="ri-indeterminate-circle-line" aria-hidden="true"></i>
+              <i class="ri-subway-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Elevated</span>
@@ -325,10 +327,10 @@
             </span>
             <span class="station-info-label">Hours</span>
             <span class="station-info-value station-info-value--hours">
-              <span>Mon–Thu: 5:00 AM – 12:00 AM</span>
-              <span>Fri: 5:00 AM – 1:00 AM</span>
-              <span>Sat: 7:00 AM – 1:00 AM</span>
-              <span>Sun: 7:00 AM – 12:00 AM</span>
+              <span class="hours-row"><span class="hours-day">Mon–Thu</span><span class="hours-time">5:00 AM – 12:00 AM</span></span>
+              <span class="hours-row"><span class="hours-day">Fri</span><span class="hours-time">5:00 AM – 1:00 AM</span></span>
+              <span class="hours-row"><span class="hours-day">Sat</span><span class="hours-time">7:00 AM – 1:00 AM</span></span>
+              <span class="hours-row"><span class="hours-day">Sun</span><span class="hours-time">7:00 AM – 12:00 AM</span></span>
             </span>
           </div>
         </div>
@@ -409,14 +411,8 @@
           </details>
         </div>
       </section>
-
-    </div>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-
       <!-- Adjacent Stations -->
-      <section class="adjacent-card animate-in d2">
+      <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
           <span class="adjacent-line-badge adjacent-line-badge--blue">Blue Line</span>
@@ -444,7 +440,7 @@
       </section>
 
       <!-- Station Facilities Card -->
-      <section class="facilities-card animate-in d3" id="facilities-card">
+      <section class="facilities-card grid-side animate-in d3" id="facilities-card">
         <div class="facilities-header">
           <h2 class="facilities-title">Station Facilities</h2>
         </div>
@@ -458,7 +454,7 @@
           </div>
           <div class="facilities-row">
             <span class="facilities-icon">
-              <i class="ri-escalator-line" aria-hidden="true"></i>
+              <i class="ri-check-double-fill" aria-hidden="true"></i>
             </span>
             <span class="facilities-label">Escalators</span>
             <span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span>
@@ -470,7 +466,7 @@
       </section>
 
       <!-- System Status Card -->
-      <div class="system-status-card animate-in d2" id="system-status-card">
+      <div class="system-status-card grid-side animate-in d2" id="system-status-card">
         <div class="system-status-header">
           <span>System Status</span>
           <span class="system-status-time" id="system-status-time"></span>
@@ -480,19 +476,7 @@
         </div>
       </div>
 
-      <!-- Alert Card -->
-      <div class="alert-card animate-in d3" id="alert-card" style="display:none;">
-        <div class="alert-card-header">
-          <span class="alert-badge">Service Alert</span>
-          <span class="alert-timestamp" id="alert-timestamp"></span>
-        </div>
-        <div class="alert-card-body" id="alert-body" aria-live="polite">
-          <!-- Alert content rendered by JS -->
-        </div>
-      </div>
-
-    </aside>
-  </main>
+    </main>
 
   <!-- NextMetro Site Footer -->
   <footer class="nm-footer">
