@@ -392,12 +392,12 @@ async function fetchIncidents() {
 // ==============================
 function renderSystemStatus(incidents) {
   const lines = [
-    { code: 'RD', name: 'Red', color: '#D41140' },
-    { code: 'OR', name: 'Orange', color: '#F09500' },
-    { code: 'BL', name: 'Blue', color: '#00A8E8' },
-    { code: 'GR', name: 'Green', color: '#00BD45' },
-    { code: 'YL', name: 'Yellow', color: '#FFD400' },
-    { code: 'SV', name: 'Silver', color: '#9BA5A5' },
+    { code: 'RD', name: 'Red', slug: 'red', color: '#D41140' },
+    { code: 'OR', name: 'Orange', slug: 'orange', color: '#F09500' },
+    { code: 'BL', name: 'Blue', slug: 'blue', color: '#00A8E8' },
+    { code: 'GR', name: 'Green', slug: 'green', color: '#00BD45' },
+    { code: 'YL', name: 'Yellow', slug: 'yellow', color: '#FFD400' },
+    { code: 'SV', name: 'Silver', slug: 'silver', color: '#9BA5A5' },
   ];
 
   // Determine per-line status
@@ -427,8 +427,10 @@ function renderSystemStatus(incidents) {
           ? 'status-alert'
           : 'status-caution';
 
-    const row = document.createElement('div');
+    const row = document.createElement('a');
     row.className = 'status-row';
+    row.href = '/lines/' + line.slug + '/';
+    row.setAttribute('aria-label', line.name + ' Line — ' + info.status);
     row.innerHTML =
       '<span class="status-line-bar" style="background:' + line.color + '"></span>' +
       '<span class="status-line-name">' + line.name + '</span>' +
@@ -782,7 +784,6 @@ function renderPidsEmpty() {
 function createPidsTable() {
   var table = document.createElement('table');
   table.className = 'pids-table';
-  table.setAttribute('role', 'table');
 
   var thead = document.createElement('thead');
   var headerRow = document.createElement('tr');
@@ -798,7 +799,6 @@ function createPidsTable() {
     th.setAttribute('scope', 'col');
     th.setAttribute('aria-label', h.full);
     th.textContent = h.abbr;
-    if (i === 3) th.style.textAlign = 'right';
     headerRow.appendChild(th);
   });
   thead.appendChild(headerRow);

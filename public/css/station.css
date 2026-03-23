@@ -264,7 +264,7 @@
 
 .pids-col-headers th:nth-child(1) { width: 42px; padding-left: 1.25rem; }
 .pids-col-headers th:nth-child(2) { width: 44px; }
-.pids-col-headers th:nth-child(4) { width: 58px; padding-right: 1.25rem; }
+.pids-col-headers th:nth-child(4) { width: 58px; padding-right: 1.25rem; text-align: right; }
 
 /* PIDS Data Row */
 .pids-row {
@@ -397,8 +397,14 @@
   transition: color var(--nm-transition-normal);
 }
 
-.refresh-btn:hover {
+.refresh-btn:hover,
+.refresh-btn:focus-visible {
   color: var(--nm-amber);
+}
+
+.refresh-btn:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
 }
 
 /* ==============================
@@ -446,6 +452,18 @@
   gap: 10px;
   padding: 0.5rem 1.25rem;
   border-bottom: 1px solid var(--nm-border-subtle);
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+a.status-row:hover,
+a.status-row:focus-visible {
+  background-color: var(--nm-surface-elevated);
+}
+
+a.status-row:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
 }
 
 .status-row:last-child {
@@ -735,35 +753,35 @@
 }
 
 .station-info-value--hours {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 0;
   line-height: 1.4;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 3px 0;
+}
+
+.hours-row + .hours-row {
+  border-top: 1px solid var(--nm-border-subtle);
 }
 
 .hours-day {
   font-weight: 600;
   color: var(--nm-text-secondary);
-  padding: 3px 0;
-  padding-right: 1rem;
   white-space: nowrap;
+  padding-right: 1rem;
 }
 
 .hours-time {
   font-weight: 500;
   color: var(--nm-text-primary);
-  padding: 3px 0;
-  text-align: right;
   white-space: nowrap;
-}
-
-.hours-row {
-  display: contents;
-}
-
-.hours-row + .hours-row .hours-day,
-.hours-row + .hours-row .hours-time {
-  border-top: 1px solid var(--nm-border-subtle);
+  text-align: right;
 }
 
 /* Desktop: single-row layout with right-aligned values */
@@ -809,9 +827,15 @@
   transition: color 0.15s, border-color 0.15s;
 }
 
-.station-info-link:hover {
+.station-info-link:hover,
+.station-info-link:focus-visible {
   color: var(--nm-amber-bright);
   border-color: var(--nm-amber-dim);
+}
+
+.station-info-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
 }
 
 /* ==============================
@@ -911,6 +935,13 @@
   height: 20px;
 }
 
+.line-strip--red    { background: var(--nm-line-red); }
+.line-strip--orange { background: var(--nm-line-orange); }
+.line-strip--blue   { background: var(--nm-line-blue); }
+.line-strip--green  { background: var(--nm-line-green); }
+.line-strip--yellow { background: var(--nm-line-yellow); }
+.line-strip--silver { background: var(--nm-line-silver); }
+
 .pids-header .platform-label {
   font-family: var(--nm-font);
   font-weight: 700;
@@ -993,8 +1024,14 @@
   transition: background-color 0.15s;
 }
 
-.adjacent-station:hover {
+.adjacent-station:hover,
+.adjacent-station:focus-visible {
   background-color: var(--nm-surface-elevated);
+}
+
+.adjacent-station:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
 }
 
 .adjacent-direction {
@@ -1021,7 +1058,8 @@
   transition: color 0.15s;
 }
 
-.adjacent-station:hover .adjacent-name {
+.adjacent-station:hover .adjacent-name,
+.adjacent-station:focus-visible .adjacent-name {
   color: var(--nm-amber);
 }
 
