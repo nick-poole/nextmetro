@@ -1065,8 +1065,7 @@
     "code": "D09",
     "slug": "minnesota-ave",
     "lines": [
-      "orange",
-      "silver"
+      "orange"
     ],
     "address": {
       "street": "4000 Minnesota Ave NE",
@@ -1086,8 +1085,7 @@
     "code": "D10",
     "slug": "deanwood",
     "lines": [
-      "orange",
-      "silver"
+      "orange"
     ],
     "address": {
       "street": "4720 Minnesota Ave NE",
@@ -1107,8 +1105,7 @@
     "code": "D11",
     "slug": "cheverly",
     "lines": [
-      "orange",
-      "silver"
+      "orange"
     ],
     "address": {
       "street": "5701 Columbia Park Rd",
@@ -1128,8 +1125,7 @@
     "code": "D12",
     "slug": "landover",
     "lines": [
-      "orange",
-      "silver"
+      "orange"
     ],
     "address": {
       "street": "3000 Pennsy Dr",
@@ -1149,8 +1145,7 @@
     "code": "D13",
     "slug": "new-carrollton",
     "lines": [
-      "orange",
-      "silver"
+      "orange"
     ],
     "address": {
       "street": "4700 Garden City Dr",
