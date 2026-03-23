@@ -138,6 +138,11 @@
   grid-column: 2;
 }
 
+/* Alert card spans full width on desktop (top of page) */
+.alert-card {
+  grid-column: 1 / -1;
+}
+
 /* Zero out card margins — grid gap handles spacing */
 .station-info-card,
 .facilities-card,
@@ -172,18 +177,18 @@
   }
 
   /* Mobile section order:
-     PIDS → Disclaimer → Adjacent Stations →
-     Station Info → Facilities → Fare Calc → System Status → FAQ → Alert */
+     Alert → PIDS → Disclaimer → Adjacent Stations →
+     Station Info → Facilities → Fare Calc → System Status → FAQ */
+  .alert-card                { order: 1; }
   .pids-card,
-  .pids-wrapper              { order: 1; }
-  .wmata-data-disclaimer     { order: 2; }
-  .adjacent-card             { order: 3; }
-  .station-info-card         { order: 4; }
-  .facilities-card           { order: 5; }
-  .fare-card                 { order: 6; }
-  .system-status-card        { order: 7; }
-  .station-faq               { order: 8; }
-  .alert-card                { order: 9; }
+  .pids-wrapper              { order: 2; }
+  .wmata-data-disclaimer     { order: 3; }
+  .adjacent-card             { order: 4; }
+  .station-info-card         { order: 5; }
+  .facilities-card           { order: 6; }
+  .fare-card                 { order: 7; }
+  .system-status-card        { order: 8; }
+  .station-faq               { order: 9; }
 }
 
 /* ==============================

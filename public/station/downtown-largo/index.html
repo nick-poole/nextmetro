@@ -199,6 +199,16 @@
 
   <!-- Main Content -->
   <main id="main-content" class="main-grid">
+
+      <!-- Alert Card -->
+      <div class="alert-card animate-in d3" id="alert-card" style="display:none;">
+        <div class="alert-card-header">
+          <span class="alert-badge">Service Alert</span>
+          <span class="alert-timestamp" id="alert-timestamp"></span>
+        </div>
+        <div class="alert-card-body" id="alert-body" aria-live="polite"></div>
+      </div>
+
       <!-- PIDS Arrivals Display -->
       <section class="pids-card animate-in d1" aria-label="Train arrivals board">
         <div class="pids-header" id="pids-header">
@@ -375,14 +385,6 @@
         <div class="system-status-rows" id="system-status-rows" aria-live="polite"></div>
       </div>
 
-      <!-- Alert Card -->
-      <div class="alert-card grid-side animate-in d3" id="alert-card" style="display:none;">
-        <div class="alert-card-header">
-          <span class="alert-badge">Service Alert</span>
-          <span class="alert-timestamp" id="alert-timestamp"></span>
-        </div>
-        <div class="alert-card-body" id="alert-body" aria-live="polite"></div>
-      </div>
     </main>
 
   <!-- NextMetro Site Footer -->
