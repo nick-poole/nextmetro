@@ -128,7 +128,36 @@
   padding: var(--nm-space-xl) var(--nm-space-lg);
   display: grid;
   grid-template-columns: 1fr 340px;
+  grid-auto-flow: row dense;
+  align-items: start;
   gap: var(--nm-space-lg);
+}
+
+/* Sidebar items always target column 2 on desktop */
+.grid-side {
+  grid-column: 2;
+}
+
+/* Zero out card margins — grid gap handles spacing */
+.station-info-card,
+.facilities-card,
+.adjacent-card,
+.fare-card,
+.station-faq,
+.system-status-card,
+.alert-card {
+  margin-top: 0;
+}
+
+/* ---- Tablet (769px – 900px): single column, source order ---- */
+@media (min-width: 769px) and (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-side {
+    grid-column: 1;
+  }
 }
 
 /* ---- Mobile (≤ 768px): single column, custom section order ---- */
@@ -138,68 +167,23 @@
     padding: var(--nm-space-lg) var(--nm-space-md);
   }
 
-  /* Flatten wrappers so children become direct grid items */
-  .main-column,
-  .sidebar {
-    display: contents;
+  .grid-side {
+    grid-column: 1;
   }
 
   /* Mobile section order:
-     PIDS → Last Updated → Disclaimer → Adjacent Stations →
+     PIDS → Disclaimer → Adjacent Stations →
      Station Info → Facilities → Fare Calc → System Status → FAQ → Alert */
-  .pids-grid,
-  .pids-card:not(.pids-grid .pids-card) { order: 1; }
-  .last-updated           { order: 2; }
-  .wmata-data-disclaimer  { order: 3; }
-  .adjacent-card          { order: 4; }
-  .station-info-card      { order: 5; }
-  .facilities-card        { order: 6; }
-  .fare-card              { order: 7; }
-  .system-status-card     { order: 8; }
-  .station-faq            { order: 9; }
-  .alert-card             { order: 10; }
-
-  /* Grid gap handles spacing — zero out card margins */
-  .station-info-card,
-  .facilities-card,
-  .adjacent-card,
-  .fare-card,
-  .station-faq,
-  .system-status-card,
-  .alert-card {
-    margin-top: 0;
-  }
-}
-
-/* ---- Tablet (769px – 900px): single column, desktop section order ---- */
-@media (min-width: 769px) and (max-width: 900px) {
-  .main-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.main-column {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--nm-space-lg);
-}
-
-.main-column > * {
-  margin-top: 0;
-}
-
-.sidebar {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--nm-space-lg);
-}
-
-.sidebar .station-info-card,
-.sidebar .facilities-card,
-.sidebar .adjacent-card {
-  margin-top: 0;
+  .pids-card,
+  .pids-wrapper              { order: 1; }
+  .wmata-data-disclaimer     { order: 2; }
+  .adjacent-card             { order: 3; }
+  .station-info-card         { order: 4; }
+  .facilities-card           { order: 5; }
+  .fare-card                 { order: 6; }
+  .system-status-card        { order: 7; }
+  .station-faq               { order: 8; }
+  .alert-card                { order: 9; }
 }
 
 /* ==============================
@@ -211,13 +195,39 @@
   overflow: hidden;
 }
 
+/* Transfer station: wrapper around shared header + pids-grid */
+.pids-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pids-shared-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--nm-border);
+  border-bottom: none;
+}
+
 .pids-header {
   background-color: var(--nm-surface-elevated);
   padding: 0.75rem 1.25rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   border-bottom: 1px solid var(--nm-border);
+}
+
+/* Timestamp + refresh in PIDS header */
+.pids-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
 }
 
 .pids-header-station {
@@ -381,24 +391,15 @@
 .pids-skeleton-block.sk-min  { width: 36px; margin-left: auto; }
 
 /* ==============================
-   Last Updated
+   Last Updated (inside PIDS header)
    ============================== */
-.last-updated {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 0.75rem;
-  margin-bottom: var(--nm-space-md);
-}
-
-.last-updated span {
+.pids-updated span {
   font-family: var(--nm-font);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--nm-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 
 .refresh-btn {
@@ -409,9 +410,9 @@
   border: none;
   color: var(--nm-text-muted);
   cursor: pointer;
-  padding: 14px;
-  min-width: 44px;
-  min-height: 44px;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
   transition: color var(--nm-transition-normal);
 }
 

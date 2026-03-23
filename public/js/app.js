@@ -895,7 +895,7 @@ function updateTimestamp() {
     second: '2-digit',
   });
   updatedTimeEl.textContent = 'Updated ' + timeStr;
-  lastUpdatedEl.style.display = 'flex';
+  lastUpdatedEl.style.display = 'inline-flex';
 }
 
 // ==============================
@@ -912,8 +912,8 @@ function injectWmataDisclaimer() {
     'NextMetro is not affiliated with, endorsed by, or connected to WMATA. ' +
     'Arrival times are estimates and may not reflect actual conditions.';
 
-  // Insert after last-updated element (right below PIDS boards)
-  var anchor = lastUpdatedEl;
+  // Insert after PIDS board (pids-wrapper for transfer, pids-card for single)
+  var anchor = document.querySelector('.pids-wrapper') || document.querySelector('.pids-card');
   if (anchor && anchor.parentNode) {
     anchor.parentNode.insertBefore(disclaimer, anchor.nextSibling);
   }
