@@ -507,14 +507,16 @@ a:hover {
    page as transit data, in close proximity.
    ============================== */
 .wmata-data-disclaimer {
-  margin: var(--nm-space-md) 0;
+  margin: 0;
   padding: var(--nm-space-sm) var(--nm-space-md);
   border: 1px solid var(--nm-border);
+  border-top: none;
   background: var(--nm-surface);
   font-family: var(--nm-font);
   font-size: 0.82rem;
   line-height: 1.5;
   color: var(--nm-text-secondary);
+  flex-shrink: 0;
 }
 
 .wmata-data-disclaimer strong {

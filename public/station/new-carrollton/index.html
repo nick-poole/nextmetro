@@ -285,6 +285,7 @@
           <h2 class="fare-title">Fare Calculator</h2>
         </div>
         <div class="fare-body">
+          <p class="fare-description">Select a destination to see peak, off-peak, and reduced fares from this station.</p>
           <div class="fare-route">
             <div class="fare-station fare-from">
               <span class="fare-station-label">From</span>
@@ -306,6 +307,9 @@
             <div class="fare-result-row"><span class="fare-result-label">Senior/Disabled</span><span class="fare-result-value" id="fare-senior">--</span></div>
             <div class="fare-result-row fare-result-row--time"><span class="fare-result-label">Travel Time</span><span class="fare-result-value" id="fare-time">--</span></div>
           </div>
+        </div>
+        <div class="card-actions">
+          <a href="/fares/" class="card-action-link"><i class="ri-money-dollar-circle-line" aria-hidden="true"></i> All Fares</a>
         </div>
       </section>
 
@@ -380,6 +384,9 @@
           </div>
         </div>
         <div class="facilities-details" id="facilities-details" style="display:none;"></div>
+        <div class="card-actions">
+          <a href="/elevators/" class="card-action-link"><i class="ri-arrow-up-down-line" aria-hidden="true"></i> Elevator Status</a>
+        </div>
       </section>
 
       <!-- System Status Card -->
@@ -389,6 +396,9 @@
           <span class="system-status-time" id="system-status-time"></span>
         </div>
         <div class="system-status-rows" id="system-status-rows" aria-live="polite"></div>
+        <div class="card-actions">
+          <a href="/alerts/" class="card-action-link"><i class="ri-alert-line" aria-hidden="true"></i> Alerts &amp; Outages</a>
+        </div>
       </div>
 
     </main>
@@ -445,7 +455,7 @@
         <div class="nm-footer__data-block">
           <h2 class="nm-footer__heading">Data</h2>
           <p class="nm-footer__body-text">
-            Real-time data via WMATA API.<br>
+            Next arrival data via WMATA API.<br>
             Not affiliated with WMATA.
           </p>
         </div>

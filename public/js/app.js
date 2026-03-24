@@ -19,6 +19,7 @@ const multiPlatform = {
 // ---- Station Pages ----
 // Stations that have dedicated pages — maps station code to URL slug
 const stationPages = {
+  // Red Line
   A01: 'metro-center',
   A02: 'farragut-north',
   A03: 'dupont-circle',
@@ -46,12 +47,22 @@ const stationPages = {
   B10: 'wheaton',
   B11: 'glenmont',
   B35: 'noma',
+  // Orange / Blue / Silver (C/D lines)
   C01: 'metro-center',
   C02: 'mcpherson-square',
   C03: 'farragut-west',
   C04: 'foggy-bottom',
+  C05: 'rosslyn',
+  C06: 'arlington-cemetery',
+  C07: 'pentagon',
+  C08: 'pentagon-city',
+  C09: 'crystal-city',
   C10: 'dca-national-airport',
   C11: 'potomac-yard',
+  C12: 'braddock-road',
+  C13: 'king-street',
+  C14: 'eisenhower-ave',
+  C15: 'huntington',
   D01: 'federal-triangle',
   D02: 'smithsonian',
   D03: 'lenfant-plaza',
@@ -60,6 +71,12 @@ const stationPages = {
   D06: 'eastern-market',
   D07: 'potomac-ave',
   D08: 'stadium-armory',
+  D09: 'minnesota-ave',
+  D10: 'deanwood',
+  D11: 'cheverly',
+  D12: 'landover',
+  D13: 'new-carrollton',
+  // Green / Yellow (E/F lines)
   E01: 'mt-vernon-sq',
   E02: 'shaw-howard-u',
   E03: 'u-street',
@@ -81,23 +98,43 @@ const stationPages = {
   F09: 'naylor-road',
   F10: 'suitland',
   F11: 'branch-ave',
-  G05: 'downtown-largo',
-  C13: 'king-street',
-  C14: 'eisenhower-ave',
-  C15: 'huntington',
-  D09: 'minnesota-ave',
-  D10: 'deanwood',
-  D11: 'cheverly',
-  D12: 'landover',
-  D13: 'new-carrollton',
+  // Blue / Silver (G line)
   G01: 'benning-road',
   G02: 'capitol-heights',
   G03: 'addison-road',
   G04: 'morgan-boulevard',
+  G05: 'downtown-largo',
+  // Blue / Yellow (J line)
   J02: 'van-dorn-street',
   J03: 'franconia-springfield',
+  // Orange / Silver (K line)
+  K01: 'court-house',
+  K02: 'clarendon',
+  K03: 'virginia-square',
+  K04: 'ballston',
+  K05: 'east-falls-church',
+  K06: 'west-falls-church',
+  K07: 'dunn-loring',
+  K08: 'vienna',
+  // Silver Line extension (N line)
+  N01: 'mclean',
+  N02: 'tysons',
+  N03: 'greensboro',
+  N04: 'spring-hill',
+  N06: 'wiehle-reston-east',
   N07: 'reston-town-center',
+  N08: 'herndon',
+  N09: 'innovation-center',
   N10: 'washington-dulles',
+  N11: 'loudoun-gateway',
+  N12: 'ashburn',
+  // Yellow / Blue rush+ (S line — duplicates for partner platforms)
+  S04: 'king-street',
+  S09: 'braddock-road',
+  S10: 'dca-national-airport',
+  S12: 'crystal-city',
+  S13: 'pentagon-city',
+  S14: 'pentagon',
 };
 
 // pidsLineColors — alias for lineColors (from shared.js)
@@ -912,10 +949,10 @@ function injectWmataDisclaimer() {
     'NextMetro is not affiliated with, endorsed by, or connected to WMATA. ' +
     'Arrival times are estimates and may not reflect actual conditions.';
 
-  // Insert after PIDS board (pids-wrapper for transfer, pids-card for single)
+  // Append inside the PIDS element so it doesn't occupy its own grid area
   var anchor = document.querySelector('.pids-wrapper') || document.querySelector('.pids-card');
-  if (anchor && anchor.parentNode) {
-    anchor.parentNode.insertBefore(disclaimer, anchor.nextSibling);
+  if (anchor) {
+    anchor.appendChild(disclaimer);
   }
 }
 

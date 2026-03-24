@@ -187,6 +187,7 @@
       <section class="fare-card animate-in d4" id="fare-card">
         <div class="fare-header"><h2 class="fare-title">Fare Calculator</h2></div>
         <div class="fare-body">
+          <p class="fare-description">Select a destination to see peak, off-peak, and reduced fares from this station.</p>
           <div class="fare-route">
             <div class="fare-station fare-from"><span class="fare-station-label">From</span><span class="fare-station-name" id="fare-from-name">Spring Hill</span></div>
             <div class="fare-arrow"><i class="ri-arrow-right-box-fill" aria-hidden="true"></i></div>
@@ -198,6 +199,9 @@
             <div class="fare-result-row"><span class="fare-result-label">Senior/Disabled</span><span class="fare-result-value" id="fare-senior">--</span></div>
             <div class="fare-result-row fare-result-row--time"><span class="fare-result-label">Travel Time</span><span class="fare-result-value" id="fare-time">--</span></div>
           </div>
+        </div>
+        <div class="card-actions">
+          <a href="/fares/" class="card-action-link"><i class="ri-money-dollar-circle-line" aria-hidden="true"></i> All Fares</a>
         </div>
       </section>
 
@@ -231,6 +235,9 @@
           <div class="facilities-row"><span class="facilities-icon"><i class="ri-check-double-fill" aria-hidden="true"></i></span><span class="facilities-label">Escalators</span><span class="facilities-status facilities-status--ok" id="escalator-status">Operational</span></div>
         </div>
         <div class="facilities-details" id="facilities-details" style="display:none;"></div>
+        <div class="card-actions">
+          <a href="/elevators/" class="card-action-link"><i class="ri-arrow-up-down-line" aria-hidden="true"></i> Elevator Status</a>
+        </div>
       </section>
       <div class="system-status-card grid-side animate-in d2" id="system-status-card"><div class="system-status-header"><span>System Status</span><span class="system-status-time" id="system-status-time"></span></div><div class="system-status-rows" id="system-status-rows" aria-live="polite"></div></div>
 
@@ -241,8 +248,11 @@
     <div class="nm-footer__body">
       <div class="nm-footer__col"><h2 class="nm-footer__heading">Navigate</h2><nav class="nm-footer__links" aria-label="Footer navigation"><a href="/" class="nm-footer__link">Home</a><a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="nm-footer__link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">System Map</a><a href="/alerts/" class="nm-footer__link">Alerts</a><a href="/elevators/" class="nm-footer__link">Elevator Status</a><a href="/fares/" class="nm-footer__link">Fares</a><a href="/hours/" class="nm-footer__link">Hours</a><a href="/transfers/" class="nm-footer__link">Transfers</a></nav></div>
       <div class="nm-footer__col"><h2 class="nm-footer__heading">Lines</h2><nav class="nm-footer__links" aria-label="Metro lines"><a href="/lines/red/" class="nm-footer__link nm-footer__link--line"><span class="nm-footer__dot nm-footer__dot--red"></span>Red Line</a><a href="/lines/orange/" class="nm-footer__link nm-footer__link--line"><span class="nm-footer__dot nm-footer__dot--orange"></span>Orange Line</a><a href="/lines/silver/" class="nm-footer__link nm-footer__link--line"><span class="nm-footer__dot nm-footer__dot--silver"></span>Silver Line</a><a href="/lines/blue/" class="nm-footer__link nm-footer__link--line"><span class="nm-footer__dot nm-footer__dot--blue"></span>Blue Line</a><a href="/lines/yellow/" class="nm-footer__link nm-footer__link--line"><span class="nm-footer__dot nm-footer__dot--yellow"></span>Yellow Line</a><a href="/lines/green/" class="nm-footer__link nm-footer__link--line"><span class="nm-footer__dot nm-footer__dot--green"></span>Green Line</a></nav></div>
-      <div class="nm-footer__col"><h2 class="nm-footer__heading">About</h2><nav class="nm-footer__links" aria-label="About"><a href="/about/" class="nm-footer__link">About NextMetro</a><a href="/privacy/" class="nm-footer__link">Privacy Policy</a><a href="/terms/" class="nm-footer__link">Terms of Service</a><a href="/crisis/" class="nm-footer__link">Crisis Resources</a><a href="https://nickpoole.dev" class="nm-footer__link" target="_blank" rel="noopener noreferrer">Webmaster</a></nav><div class="nm-footer__data-block"><h2 class="nm-footer__heading">Data</h2><p class="nm-footer__body-text">Real-time data via WMATA API.<br>Not affiliated with WMATA.</p></div></div>
+      <div class="nm-footer__col"><h2 class="nm-footer__heading">About</h2><nav class="nm-footer__links" aria-label="About"><a href="/about/" class="nm-footer__link">About NextMetro</a><a href="/privacy/" class="nm-footer__link">Privacy Policy</a><a href="/terms/" class="nm-footer__link">Terms of Service</a><a href="/crisis/" class="nm-footer__link">Crisis Resources</a><a href="https://nickpoole.dev" class="nm-footer__link" target="_blank" rel="noopener noreferrer">Webmaster</a></nav><div class="nm-footer__data-block"><h2 class="nm-footer__heading">Data</h2><p class="nm-footer__body-text">Next arrival data via WMATA API.<br>Not affiliated with WMATA.</p></div></div>
       <div class="nm-footer__col nm-footer__col--logo"><div class="nm-footer__logo" role="img" aria-label="NextMetro"><div class="nm-footer__logo-mark"><b>NM</b></div><div class="nm-footer__logo-strip" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="nm-footer__logo-text"><span class="nm-footer__logo-next">NEXT</span><span class="nm-footer__logo-metro">METRO</span></div></div></div>
+        <div class="card-actions">
+          <a href="/alerts/" class="card-action-link"><i class="ri-alert-line" aria-hidden="true"></i> Alerts &amp; Outages</a>
+        </div>
     </div>
     <div class="nm-footer__bottom"><span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span></div>
   </footer>
