@@ -122,35 +122,45 @@
 /* ==============================
    Main Grid Layout
    ============================== */
+
+/* Mobile-first: single-column stack */
 .main-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--nm-space-lg);
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--nm-space-xl) var(--nm-space-lg);
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  grid-template-areas:
-    "alert    alert"
-    "pids     ."
-    "info     ."
-    "fare     ."
-    "faq      .";
-  align-items: start;
-  gap: var(--nm-space-lg);
+  padding: var(--nm-space-lg) var(--nm-space-md);
 }
 
-/* Named area assignments — desktop */
-.alert-card                { grid-area: alert; }
-.pids-card, .pids-wrapper  { grid-area: pids; }
-.station-info-card         { grid-area: info; }
-.fare-card                 { grid-area: fare; }
-.station-faq               { grid-area: faq; }
-
-/* Sidebar items auto-place into the unnamed column-2 cells */
-.grid-side {
-  grid-column: 2;
+.main-grid > * {
+  flex: 0 0 100%;
+  min-width: 0;
+  margin-bottom: var(--nm-space-lg);
 }
 
-/* Zero out card margins — grid gap handles spacing */
+/* Section order (same for mobile + tablet, flex sizing changes) */
+.alert-card            { order: 1; }
+.pids-card,
+.pids-wrapper          { order: 2; }
+.station-info-card     { order: 3; }
+.adjacent-card         { order: 4; }
+.facilities-card       { order: 5; }
+.fare-card             { order: 6; }
+.system-status-card    { order: 7; }
+.station-faq           { order: 8; }
+
+/* Transfer stations: collapse stacked adjacent cards into one unit */
+.adjacent-card:has(+ .adjacent-card) {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.adjacent-card + .adjacent-card {
+  border-top: none;
+}
+
+/* Zero out individual card margins — layout handles spacing */
 .station-info-card,
 .facilities-card,
 .adjacent-card,
@@ -161,59 +171,32 @@
   margin-top: 0;
 }
 
-/* ---- Tablet (769px – 900px): single column, source order ---- */
-@media (min-width: 769px) and (max-width: 900px) {
+/* ---- Tablet + Desktop (≥ 769px): two-column layout ---- */
+@media (min-width: 769px) {
   .main-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas: none;
+    padding: var(--nm-space-xl) var(--nm-space-lg);
   }
 
+  /* Full-width rows */
   .alert-card,
-  .pids-card, .pids-wrapper,
-  .station-info-card,
-  .fare-card,
   .station-faq {
-    grid-area: auto;
+    flex: 0 0 100%;
   }
 
-  .grid-side {
-    grid-column: 1;
-  }
-}
-
-/* ---- Mobile (≤ 768px): single column, custom section order ---- */
-@media (max-width: 768px) {
-  .main-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas: none;
-    padding: var(--nm-space-lg) var(--nm-space-md);
-  }
-
-  /* Reset area assignments so order property works */
-  .alert-card,
-  .pids-card, .pids-wrapper,
-  .station-info-card,
-  .fare-card,
-  .station-faq {
-    grid-area: auto;
-  }
-
-  .grid-side {
-    grid-column: 1;
-  }
-
-  /* Mobile section order:
-     Alert → PIDS (with disclaimer) → Adjacent Stations →
-     Station Info → Facilities → Fare Calc → System Status → FAQ */
-  .alert-card                { order: 1; }
+  /* Left column */
   .pids-card,
-  .pids-wrapper              { order: 2; }
-  .adjacent-card             { order: 3; }
-  .station-info-card         { order: 4; }
-  .facilities-card           { order: 5; }
-  .fare-card                 { order: 6; }
-  .system-status-card        { order: 7; }
-  .station-faq               { order: 8; }
+  .pids-wrapper,
+  .adjacent-card,
+  .fare-card {
+    flex: 0 1 calc(100% - 340px - var(--nm-space-lg));
+  }
+
+  /* Right column (sidebar) */
+  .station-info-card,
+  .facilities-card,
+  .system-status-card {
+    flex: 0 0 340px;
+  }
 }
 
 /* ==============================
@@ -959,20 +942,19 @@ a.status-row:focus-visible {
 /* ==============================
    Transfer Station PIDS Grid
    ============================== */
+/* Platforms always stacked: A on top, B on bottom */
 .pids-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-@media (max-width: 640px) {
-  .pids-grid {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 
 .pids-grid .pids-card {
   margin-bottom: 0;
+}
+
+.pids-grid .pids-card + .pids-card {
+  border-top: none;
 }
 
 .pids-header .line-strip-group {
