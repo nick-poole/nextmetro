@@ -710,6 +710,43 @@ a.status-row:focus-visible {
   margin-top: 0.15rem;
 }
 
+/* Shared card-action footer (facilities, system status) */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--nm-border);
+  background-color: var(--nm-surface-elevated);
+}
+
+.card-action-link {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--nm-amber);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--nm-border);
+  background: transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.card-action-link:hover,
+.card-action-link:focus-visible {
+  color: var(--nm-amber-bright);
+  border-color: var(--nm-amber-dim);
+}
+
+.card-action-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
 /* ==============================
    Station Info Card
    ============================== */
@@ -717,7 +754,6 @@ a.status-row:focus-visible {
   background-color: var(--nm-surface);
   border: 1px solid var(--nm-border);
   overflow: hidden;
-  margin-top: var(--nm-space-lg);
 }
 
 .station-info-header {
@@ -1152,7 +1188,6 @@ a.status-row:focus-visible {
   background-color: var(--nm-fare-blue);
   border: 2px solid var(--nm-fare-blue);
   overflow: hidden;
-  margin-top: var(--nm-space-lg);
 }
 
 .fare-hazard-stripe {
@@ -1235,6 +1270,9 @@ a.status-row:focus-visible {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 0 var(--nm-space-sm);
 }
 
 .fare-select {
