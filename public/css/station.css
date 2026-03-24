@@ -128,19 +128,26 @@
   padding: var(--nm-space-xl) var(--nm-space-lg);
   display: grid;
   grid-template-columns: 1fr 340px;
-  grid-auto-flow: row dense;
+  grid-template-areas:
+    "alert    alert"
+    "pids     ."
+    "info     ."
+    "fare     ."
+    "faq      .";
   align-items: start;
   gap: var(--nm-space-lg);
 }
 
-/* Sidebar items always target column 2 on desktop */
+/* Named area assignments — desktop */
+.alert-card                { grid-area: alert; }
+.pids-card, .pids-wrapper  { grid-area: pids; }
+.station-info-card         { grid-area: info; }
+.fare-card                 { grid-area: fare; }
+.station-faq               { grid-area: faq; }
+
+/* Sidebar items auto-place into the unnamed column-2 cells */
 .grid-side {
   grid-column: 2;
-}
-
-/* Alert card spans full width on desktop (top of page) */
-.alert-card {
-  grid-column: 1 / -1;
 }
 
 /* Zero out card margins — grid gap handles spacing */
@@ -158,6 +165,15 @@
 @media (min-width: 769px) and (max-width: 900px) {
   .main-grid {
     grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .alert-card,
+  .pids-card, .pids-wrapper,
+  .station-info-card,
+  .fare-card,
+  .station-faq {
+    grid-area: auto;
   }
 
   .grid-side {
@@ -169,7 +185,17 @@
 @media (max-width: 768px) {
   .main-grid {
     grid-template-columns: 1fr;
+    grid-template-areas: none;
     padding: var(--nm-space-lg) var(--nm-space-md);
+  }
+
+  /* Reset area assignments so order property works */
+  .alert-card,
+  .pids-card, .pids-wrapper,
+  .station-info-card,
+  .fare-card,
+  .station-faq {
+    grid-area: auto;
   }
 
   .grid-side {
@@ -177,18 +203,17 @@
   }
 
   /* Mobile section order:
-     Alert → PIDS → Disclaimer → Adjacent Stations →
+     Alert → PIDS (with disclaimer) → Adjacent Stations →
      Station Info → Facilities → Fare Calc → System Status → FAQ */
   .alert-card                { order: 1; }
   .pids-card,
   .pids-wrapper              { order: 2; }
-  .wmata-data-disclaimer     { order: 3; }
-  .adjacent-card             { order: 4; }
-  .station-info-card         { order: 5; }
-  .facilities-card           { order: 6; }
-  .fare-card                 { order: 7; }
-  .system-status-card        { order: 8; }
-  .station-faq               { order: 9; }
+  .adjacent-card             { order: 3; }
+  .station-info-card         { order: 4; }
+  .facilities-card           { order: 5; }
+  .fare-card                 { order: 6; }
+  .system-status-card        { order: 7; }
+  .station-faq               { order: 8; }
 }
 
 /* ==============================

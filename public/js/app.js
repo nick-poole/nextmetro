@@ -912,10 +912,10 @@ function injectWmataDisclaimer() {
     'NextMetro is not affiliated with, endorsed by, or connected to WMATA. ' +
     'Arrival times are estimates and may not reflect actual conditions.';
 
-  // Insert after PIDS board (pids-wrapper for transfer, pids-card for single)
+  // Append inside the PIDS element so it doesn't occupy its own grid area
   var anchor = document.querySelector('.pids-wrapper') || document.querySelector('.pids-card');
-  if (anchor && anchor.parentNode) {
-    anchor.parentNode.insertBefore(disclaimer, anchor.nextSibling);
+  if (anchor) {
+    anchor.appendChild(disclaimer);
   }
 }
 
