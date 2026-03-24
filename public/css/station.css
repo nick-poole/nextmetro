@@ -446,6 +446,8 @@
   background-color: var(--nm-surface);
   border: 1px solid var(--nm-border);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .system-status-header {
@@ -476,6 +478,7 @@
 
 .system-status-rows {
   padding: var(--nm-space-xs) 0;
+  flex: 1;
 }
 
 .status-row {
@@ -610,6 +613,8 @@ a.status-row:focus-visible {
   border: 1px solid var(--nm-border);
   overflow: hidden;
   margin-top: var(--nm-space-lg);
+  display: flex;
+  flex-direction: column;
 }
 
 .facilities-header {
@@ -631,6 +636,7 @@ a.status-row:focus-visible {
 
 .facilities-body {
   padding: var(--nm-space-sm) 0;
+  flex: 1;
 }
 
 .facilities-row {
@@ -710,13 +716,31 @@ a.status-row:focus-visible {
   margin-top: 0.15rem;
 }
 
-/* Shared card-action footer (facilities, system status) */
+/* Shared card-action footer — pinned to card bottom */
 .card-actions {
   display: flex;
   justify-content: flex-end;
   padding: 0.75rem 1.25rem;
   border-top: 1px solid var(--nm-border);
   background-color: var(--nm-surface-elevated);
+  margin-top: auto;
+}
+
+/* Fare card variant */
+.fare-card .card-actions {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fare-card .card-action-link {
+  color: #e2feff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.fare-card .card-action-link:hover,
+.fare-card .card-action-link:focus-visible {
+  color: var(--nm-fare-yellow);
+  border-color: var(--nm-fare-yellow);
 }
 
 .card-action-link {
@@ -754,6 +778,8 @@ a.status-row:focus-visible {
   background-color: var(--nm-surface);
   border: 1px solid var(--nm-border);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .station-info-header {
@@ -775,6 +801,7 @@ a.status-row:focus-visible {
 
 .station-info-body {
   padding: var(--nm-space-sm) 0;
+  flex: 1;
 }
 
 /* Mobile-first: stacked layout by default */
@@ -1188,6 +1215,8 @@ a.status-row:focus-visible {
   background-color: var(--nm-fare-blue);
   border: 2px solid var(--nm-fare-blue);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .fare-hazard-stripe {
@@ -1220,6 +1249,7 @@ a.status-row:focus-visible {
 
 .fare-body {
   padding: var(--nm-space-md) 1.25rem;
+  flex: 1;
 }
 
 .fare-description {
