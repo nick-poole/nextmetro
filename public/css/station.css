@@ -188,14 +188,14 @@
   .pids-wrapper,
   .adjacent-card,
   .fare-card {
-    flex: 0 1 calc(100% - 340px - var(--nm-space-lg));
+    flex: 0 1 calc(50% - var(--nm-space-lg) / 2);
   }
 
-  /* Right column (sidebar) */
+  /* Right column */
   .station-info-card,
   .facilities-card,
   .system-status-card {
-    flex: 0 0 340px;
+    flex: 0 1 calc(50% - var(--nm-space-lg) / 2);
   }
 }
 
@@ -1185,6 +1185,16 @@ a.status-row:focus-visible {
 
 .fare-body {
   padding: var(--nm-space-md) 1.25rem;
+}
+
+.fare-description {
+  font-family: var(--nm-font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e2feff;
+  line-height: 1.5;
+  margin: 0 0 var(--nm-space-md);
+  opacity: 0.85;
 }
 
 .fare-route {
