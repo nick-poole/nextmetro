@@ -120,6 +120,16 @@
   var dropdown = document.getElementById('station-dropdown');
   if (!input || !dropdown) return;
 
+  // Ensure combobox ARIA attributes are set regardless of HTML template
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-expanded', 'false');
+  input.setAttribute('aria-controls', 'station-dropdown');
+  input.setAttribute('aria-autocomplete', 'list');
+  if (!input.getAttribute('aria-label')) {
+    input.setAttribute('aria-label', 'Search for a Metro station');
+  }
+  dropdown.setAttribute('role', 'listbox');
+
   var highlighted = -1;
 
   function filter(query) {

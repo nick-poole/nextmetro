@@ -680,6 +680,8 @@ function renderDropdown(filteredOptions) {
 
   filteredOptions.forEach((option, i) => {
     const li = document.createElement('li');
+    li.setAttribute('role', 'option');
+    li.id = 'station-option-' + i;
     if (option.code === selectedStation) {
       li.classList.add('selected');
     }
