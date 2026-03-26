@@ -222,7 +222,7 @@ function linkifyUrls(escapedHtml) {
   return escapedHtml.replace(
     /https?:\/\/[^\s<>&"]+/g,
     function (url) {
-      return '<a href="' + url + '" target="_blank" rel="noopener" class="alerts-inline-link">' + url + '</a>';
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="alerts-inline-link">' + url + '</a>';
     }
   );
 }
@@ -330,7 +330,7 @@ function renderAlerts() {
       '<div class="alerts-card-body">' +
       tagsHtml +
       '<p class="alerts-card-desc">' + linkifyUrls(escapeHtml(description)) + '</p>' +
-      '<a href="https://www.wmata.com/service/status/" target="_blank" rel="noopener" class="alerts-card-cta">' +
+      '<a href="https://www.wmata.com/service/status/" target="_blank" rel="noopener noreferrer" class="alerts-card-cta">' +
       'Details at WMATA' +
       '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>' +
       '</a>' +
