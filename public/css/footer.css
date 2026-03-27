@@ -122,6 +122,14 @@
 .nm-footer__dot--yellow { background: var(--line-yellow); }
 .nm-footer__dot--green  { background: var(--line-green); }
 
+/* Lines block — sits under Explore column, mirrors data-block pattern */
+.nm-footer__lines-block {
+  margin-top: 28px;
+}
+.nm-footer__lines-block .nm-footer__line-chips {
+  margin-top: 0;
+}
+
 /* Line chips — compact horizontal row of colored line links */
 .nm-footer__line-chips {
   display: flex;
