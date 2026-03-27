@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DC Metro Transfers: Where to Change Lines | NextMetro</title>
-  <meta name="description" content="Guide to DC Metro transfer stations. Where to change lines at Metro Center, Gallery Place, L’Enfant Plaza, and Fort Totten." />
+  <meta name="description" content="Guide to DC Metro transfer stations and airport connections. Where to change lines, plus how to reach DCA, Dulles, and BWI airports by Metro and rail." />
   <link rel="canonical" href="https://nextmetro.live/transfers/" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/line.css" />
@@ -316,8 +316,59 @@
       </div>
     </section>
 
-    <!-- Regional Rail Connections -->
+    <!-- Airport Connections -->
     <section class="line-connections animate-in d3">
+      <h2 class="line-section-heading">Airport Connections</h2>
+      <p style="font-family:var(--nm-font);color:var(--nm-text-secondary);font-size:0.95rem;margin:0 0 var(--nm-space-lg);line-height:1.6;">
+        Metro connects directly to two major airports. For BWI Airport, take Amtrak or MARC from Union Station &mdash; the MARC Penn Line runs to BWI Marshall Airport station in about 35 minutes for a fraction of the cost of a taxi.
+      </p>
+
+      <div style="display:flex;flex-direction:column;gap:var(--nm-space-sm);">
+
+        <!-- DCA National Airport -->
+        <a href="/station/dca-national-airport/" class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);text-decoration:none;color:var(--nm-text);transition:border-color 0.2s,background 0.2s;">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#00A8E8;width:14px;height:14px;border-radius:50%;display:block;"></span>
+            <span class="transfer-station-dot" style="background-color:#FFD400;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">DCA &ndash; National Airport</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Blue &amp; Yellow Lines &middot; Direct station-to-terminal connection</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">~20 min from Metro Center &middot; Covered walkway to terminals &middot; Station code C10</span>
+          </div>
+          <span class="transfer-station-arrow" style="color:var(--nm-text-muted);flex-shrink:0;"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
+        </a>
+
+        <!-- Dulles Airport -->
+        <a href="/station/washington-dulles/" class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);text-decoration:none;color:var(--nm-text);transition:border-color 0.2s,background 0.2s;">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#9BA5A5;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">Washington Dulles International Airport</h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Silver Line &middot; Shuttle connects station to terminals</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">~55 min from Metro Center &middot; Free airport shuttle to/from station &middot; Station code N12</span>
+          </div>
+          <span class="transfer-station-arrow" style="color:var(--nm-text-muted);flex-shrink:0;"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
+        </a>
+
+        <!-- BWI via MARC/Amtrak -->
+        <div class="transfer-station-card" style="display:flex;align-items:center;gap:var(--nm-space-md);padding:var(--nm-space-md) var(--nm-space-lg);background:var(--nm-surface);border:1px solid var(--nm-border-subtle);border-radius:var(--nm-radius-md);color:var(--nm-text);">
+          <div class="transfer-station-lines" style="display:flex;gap:6px;flex-shrink:0;">
+            <span class="transfer-station-dot" style="background-color:#D41140;width:14px;height:14px;border-radius:50%;display:block;"></span>
+          </div>
+          <div class="transfer-station-info" style="flex:1;min-width:0;">
+            <h3 class="transfer-station-name" style="font-family:var(--nm-font);font-size:1.15rem;font-weight:600;margin:0 0 2px;color:var(--nm-text);">BWI Marshall Airport <span style="font-size:0.78rem;font-weight:400;color:var(--nm-text-muted);">via Union Station</span></h3>
+            <p class="transfer-station-desc" style="font-family:var(--nm-font);font-size:0.85rem;color:var(--nm-text-secondary);margin:0 0 2px;">Metro Red Line to Union Station &rarr; MARC Penn Line or Amtrak to BWI Rail Station</p>
+            <span class="transfer-station-detail" style="font-family:var(--nm-font);font-size:0.78rem;color:var(--nm-text-muted);">~35 min on MARC ($8) or ~25 min on Amtrak &middot; Free BWI shuttle from rail station to terminals</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Regional Rail Connections -->
+    <section class="line-connections animate-in d4">
       <h2 class="line-section-heading">Regional Rail Connections</h2>
       <p style="font-family:var(--nm-font);color:var(--nm-text-secondary);font-size:0.95rem;margin:0 0 var(--nm-space-lg);line-height:1.6;">
         Several Metro stations connect to Amtrak, MARC, VRE commuter rail, and the DC Streetcar. These connections extend the reach of the Metro system to Baltimore, Virginia&rsquo;s outer suburbs, and beyond.
@@ -447,7 +498,7 @@
     </section>
 
     <!-- Transfer Tips -->
-    <section class="line-info animate-in d4">
+    <section class="line-info animate-in d5">
       <h2 class="line-section-heading">Transfer Tips</h2>
       <div class="line-info-grid">
         <div class="line-info-card">
@@ -496,7 +547,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="line-faq animate-in d5">
+    <section class="line-faq animate-in d6">
       <h2 class="line-section-heading">Frequently Asked Questions</h2>
       <div class="line-faq-list">
         <details class="line-faq-item">
