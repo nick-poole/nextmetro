@@ -339,6 +339,13 @@
   padding: 32px 24px;
 }
 
+.home-popular-stations-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
 .home-popular-stations-grid {
   display: grid;
   grid-template-columns: 1fr;
