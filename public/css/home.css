@@ -339,6 +339,11 @@
   padding: 32px 24px;
 }
 
+.home-popular-stations-footer {
+  text-align: right;
+  margin-top: 12px;
+}
+
 .home-popular-stations-grid {
   display: grid;
   grid-template-columns: 1fr;
