@@ -202,33 +202,13 @@
 
 .stations-row:hover {
   background-color: var(--nm-surface);
+  /* Layer a faint line-color wash over the surface on hover */
+  background-image: linear-gradient(var(--line-tint, transparent), var(--line-tint, transparent));
 }
 
 .stations-row[hidden] {
   display: none;
 }
-
-.stations-row-lines {
-  display: flex;
-  gap: 4px;
-  flex-shrink: 0;
-  min-width: 44px;
-}
-
-.stations-line-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50% !important;
-  flex-shrink: 0;
-}
-
-.stations-line-dot--red { background-color: var(--nm-line-red); }
-.stations-line-dot--orange { background-color: var(--nm-line-orange); }
-.stations-line-dot--blue { background-color: var(--nm-line-blue); }
-.stations-line-dot--yellow { background-color: var(--nm-line-yellow); }
-.stations-line-dot--green { background-color: var(--nm-line-green); }
-.stations-line-dot--silver { background-color: var(--nm-line-silver); }
 
 .stations-row-info {
   display: flex;
