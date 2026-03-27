@@ -4,6 +4,8 @@
 
 /* ---- Hero ---- */
 .stations-hero {
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.7)),
+    url('/images/station-underground/station-ceiling-architecture.webp') center / cover no-repeat;
   background-color: var(--nm-surface);
   padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
   border-bottom: 1px solid var(--nm-border-subtle);
@@ -43,6 +45,16 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--nm-text-secondary);
+  margin-bottom: var(--nm-space-md);
+}
+
+.stations-hero-desc {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 /* ---- Page Container ---- */
@@ -256,6 +268,9 @@
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--nm-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .stations-row-badges {
@@ -322,114 +337,6 @@
   font-weight: 600;
 }
 
-/* ---- Quick Links ---- */
-.stations-quick-links {
-  margin-top: var(--nm-space-3xl);
-  padding-top: var(--nm-space-xl);
-  border-top: 1px solid var(--nm-border);
-}
-
-.stations-section-heading {
-  font-family: var(--nm-font);
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--nm-text-primary);
-  margin-bottom: var(--nm-space-lg);
-}
-
-.stations-quick-links-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: var(--nm-space-xl);
-}
-
-.stations-quick-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 16px;
-  background-color: var(--nm-surface);
-  border: 1px solid var(--nm-border);
-  color: var(--nm-text-primary);
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: border-color var(--nm-transition-normal), background-color var(--nm-transition-normal);
-}
-
-.stations-quick-link:hover {
-  border-color: var(--nm-border-strong);
-  background-color: var(--nm-surface-elevated);
-  color: var(--nm-text-primary);
-}
-
-.stations-quick-link-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50% !important;
-  flex-shrink: 0;
-}
-
-.stations-quick-link-dot--red { background-color: var(--nm-line-red); }
-.stations-quick-link-dot--orange { background-color: var(--nm-line-orange); }
-.stations-quick-link-dot--blue { background-color: var(--nm-line-blue); }
-.stations-quick-link-dot--yellow { background-color: var(--nm-line-yellow); }
-.stations-quick-link-dot--green { background-color: var(--nm-line-green); }
-.stations-quick-link-dot--silver { background-color: var(--nm-line-silver); }
-
-.stations-quick-link-count {
-  margin-left: auto;
-  font-size: 0.75rem;
-  color: var(--nm-text-muted);
-  font-weight: 500;
-}
-
-.stations-quick-links-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.stations-utility-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 16px;
-  background-color: var(--nm-surface);
-  border: 1px solid var(--nm-border);
-  color: var(--nm-text-secondary);
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: border-color var(--nm-transition-normal), color var(--nm-transition-normal);
-}
-
-.stations-utility-link:hover {
-  border-color: var(--nm-amber);
-  color: var(--nm-amber);
-}
-
-/* ---- SEO Content ---- */
-.stations-seo-content {
-  margin-top: var(--nm-space-2xl);
-  padding-top: var(--nm-space-lg);
-  border-top: 1px solid var(--nm-border-subtle);
-}
-
-.stations-seo-content p {
-  font-family: var(--nm-font);
-  font-size: 0.9rem;
-  color: var(--nm-text-muted);
-  line-height: 1.6;
-  max-width: 700px;
-}
-
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .stations-hero {
@@ -443,26 +350,9 @@
   .stations-list {
     columns: 1;
   }
-
-  .stations-quick-links-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .stations-quick-links-row {
-    gap: 8px;
-  }
-
-  .stations-utility-link {
-    font-size: 0.8rem;
-    padding: 8px 12px;
-  }
 }
 
 @media (max-width: 480px) {
-  .stations-quick-links-grid {
-    grid-template-columns: 1fr;
-  }
-
   .stations-filters {
     gap: 6px;
   }
