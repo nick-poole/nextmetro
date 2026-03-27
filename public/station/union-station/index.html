@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Union Station: Next Arrivals &amp; Fares | NextMetro</title>
-  <meta name="description" content="Red Line arrivals for Union Station Metro in Washington, DC. Fares, elevator status, and Amtrak/MARC/VRE connections." />
+  <meta name="description" content="Red Line arrivals for Union Station Metro in Washington, DC. Amtrak, MARC, VRE rail and Greyhound, Megabus, FlixBus intercity bus connections." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nextmetro.live/station/union-station/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Union Station: Next Arrivals &amp; Fares | NextMetro" />
-  <meta property="og:description" content="Red Line arrivals for Union Station Metro. Fares, elevator status, and Amtrak/MARC/VRE connections." />
+  <meta property="og:description" content="Red Line arrivals for Union Station Metro. Amtrak, MARC, VRE rail and Greyhound, Megabus, FlixBus bus connections." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nextmetro.live/station/union-station/" />
   <meta property="og:site_name" content="NextMetro" />
@@ -23,7 +23,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Union Station: Next Arrivals &amp; Fares | NextMetro" />
-  <meta name="twitter:description" content="Red Line arrivals for Union Station Metro. Fares, elevator status, and Amtrak/MARC/VRE connections." />
+  <meta name="twitter:description" content="Red Line arrivals for Union Station Metro. Amtrak, MARC, VRE rail and Greyhound, Megabus, FlixBus bus connections." />
   <meta name="twitter:image" content="https://nextmetro.live/images/og/stations/og-station-union-station.png" />
 
   <!-- Favicon -->
@@ -61,7 +61,7 @@
       "@type": "TrainStation",
       "name": "Union Station",
       "alternateName": ["Union Station Metro", "Washington Union Station Metro"],
-      "description": "Union Station is an underground Metrorail station on the Red Line in Washington, DC. It is located beneath the historic Union Station building and provides connections to Amtrak, MARC commuter rail, VRE commuter rail, and DC Streetcar.",
+      "description": "Union Station is an underground Metrorail station on the Red Line in Washington, DC. It is located beneath the historic Union Station building and provides connections to Amtrak, MARC commuter rail, VRE commuter rail, and intercity bus services including Greyhound, Megabus, FlixBus, and Peter Pan.",
       "url": "https://nextmetro.live/station/union-station/",
       "sameAs": "https://www.wmata.com/rider-guide/stations/union-station.cfm",
       "image": "https://nextmetro.live/images/og/stations/og-station-union-station.png",
@@ -106,7 +106,7 @@
         {
           "@type": "Question",
           "name": "Can I connect to Amtrak, MARC, or VRE at Union Station?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Union Station is a major transportation hub with connections to Amtrak (nationwide rail), MARC commuter rail (Maryland), VRE commuter rail (Virginia), and the DC Streetcar (H Street line). The Metro station is located beneath the main Union Station building." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Union Station is a major transportation hub with connections to Amtrak (nationwide rail), MARC commuter rail (Maryland), and VRE commuter rail (Virginia). The Metro station is located beneath the main Union Station building." }
         },
         {
           "@type": "Question",
@@ -122,6 +122,11 @@
           "@type": "Question",
           "name": "What is near Union Station Metro?",
           "acceptedAnswer": { "@type": "Answer", "text": "Union Station Metro is located beneath the historic Union Station building in the NoMa/Capitol Hill area. Nearby landmarks include the U.S. Capitol, Senate office buildings, the National Postal Museum, and Columbus Circle. The station is a short walk to the Capitol Hill neighborhood." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I catch an intercity bus at Union Station?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Union Station is the main intercity bus terminal for Washington, DC. Greyhound, Megabus, FlixBus, and Peter Pan all operate from the bus deck on the upper level of the Union Station parking garage. From the Metro station, take escalators up through the main hall to the mezzanine level and follow signs to the bus gates." }
         }
       ]
     }
@@ -152,12 +157,12 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
-  <div class="nm-mobile-menu" id="mobile-menu">
+  <nav class="nm-mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
     <a href="/alerts/" class="mobile-menu-link">Alerts</a>
     <a href="https://wmata.com/schedules/maps/upload/system-map-rail.pdf" class="mobile-menu-link" target="_blank" rel="noopener noreferrer" title="System Map (PDF, opens in new tab)" aria-label="System Map (PDF, opens in new tab)">Map</a>
     <a href="/fares/" class="mobile-menu-link">Fares</a>
     <a href="/hours/" class="mobile-menu-link">Hours</a>
-  </div>
+  </nav>
 
   <!-- Hero / Station Header -->
   <section class="hero hero--has-image" id="hero">
@@ -237,7 +242,12 @@
           <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-train-fill" aria-hidden="true"></i></span>
             <span class="station-info-label">Rail Connections</span>
-            <span class="station-info-value">Amtrak, MARC, VRE, DC Streetcar</span>
+            <span class="station-info-value"><a href="https://www.amtrak.com/" target="_blank" rel="noopener noreferrer">Amtrak</a>, <a href="https://www.mta.maryland.gov/marc-train" target="_blank" rel="noopener noreferrer">MARC</a>, <a href="https://www.vre.org/" target="_blank" rel="noopener noreferrer">VRE</a></span>
+          </div>
+          <div class="station-info-row">
+            <span class="station-info-icon"><i class="ri-bus-2-fill" aria-hidden="true"></i></span>
+            <span class="station-info-label">Intercity Bus</span>
+            <span class="station-info-value"><a href="https://www.greyhound.com/bus/washington-dc/dc-union-station" target="_blank" rel="noopener noreferrer">Greyhound</a>, <a href="https://us.megabus.com/" target="_blank" rel="noopener noreferrer">Megabus</a>, <a href="https://www.flixbus.com/bus/washington-dc/dc-union-station" target="_blank" rel="noopener noreferrer">FlixBus</a>, <a href="https://peterpanbus.com/locations/district-of-columbia/washington/" target="_blank" rel="noopener noreferrer">Peter Pan</a></span>
           </div>
           <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-parking-box-line" aria-hidden="true"></i></span>
@@ -310,7 +320,7 @@
           </details>
           <details class="station-faq-item">
             <summary class="station-faq-question">Can I connect to Amtrak, MARC, or VRE at Union Station?</summary>
-            <p class="station-faq-answer">Yes. Union Station is a major transportation hub with connections to Amtrak (nationwide rail), MARC commuter rail (Maryland), VRE commuter rail (Virginia), and the DC Streetcar (H Street line). The Metro station is located beneath the main Union Station building.</p>
+            <p class="station-faq-answer">Yes. Union Station is a major transportation hub with connections to Amtrak (nationwide rail), MARC commuter rail (Maryland), and VRE commuter rail (Virginia). The Metro station is located beneath the main Union Station building.</p>
           </details>
           <details class="station-faq-item">
             <summary class="station-faq-question">Does Union Station Metro have parking?</summary>
@@ -323,6 +333,10 @@
           <details class="station-faq-item">
             <summary class="station-faq-question">What are the hours of operation for Union Station Metro?</summary>
             <p class="station-faq-answer">Union Station Metro is open Monday through Thursday from 5:00 AM to midnight, Friday from 5:00 AM to 1:00 AM, Saturday from 7:00 AM to 1:00 AM, and Sunday from 7:00 AM to midnight. Note: the Union Station building itself may have different hours.</p>
+          </details>
+          <details class="station-faq-item">
+            <summary class="station-faq-question">Can I catch an intercity bus at Union Station?</summary>
+            <p class="station-faq-answer">Yes. Union Station is the main intercity bus terminal for Washington, DC. <a href="https://www.greyhound.com/bus/washington-dc/dc-union-station" target="_blank" rel="noopener noreferrer">Greyhound</a>, <a href="https://us.megabus.com/" target="_blank" rel="noopener noreferrer">Megabus</a>, <a href="https://www.flixbus.com/bus/washington-dc/dc-union-station" target="_blank" rel="noopener noreferrer">FlixBus</a>, and <a href="https://peterpanbus.com/locations/district-of-columbia/washington/" target="_blank" rel="noopener noreferrer">Peter Pan</a> all operate from the bus deck on the upper level of the Union Station parking garage. From the Metro station, take escalators up through the main hall to the mezzanine level and follow signs to the bus gates.</p>
           </details>
         </div>
       </section>

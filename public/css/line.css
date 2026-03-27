@@ -338,7 +338,13 @@ main[data-line] {
   margin-bottom: var(--nm-space-sm);
   padding-bottom: 0.35rem;
   border-bottom: 2px solid var(--nm-amber-dim);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+}
+
+.line-section-heading i {
+  color: var(--nm-amber);
+  font-size: 1.25rem;
 }
 
 /* ---- All Stations ---- */
@@ -622,6 +628,16 @@ main[data-line] {
   font-size: 1rem;
   color: var(--nm-text-secondary);
   text-align: right;
+}
+
+.line-info-value a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.line-info-value a:hover {
+  color: var(--nm-amber-bright);
 }
 
 .line-info-link {

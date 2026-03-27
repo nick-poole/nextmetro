@@ -375,8 +375,7 @@
     "connections": [
       "Amtrak",
       "MARC",
-      "VRE",
-      "DC Streetcar"
+      "VRE"
     ],
     "description": "Servicing Capitol Hill &amp; NoMa. Amtrak, MARC &amp; VRE connections.",
     "environment": "underground",

@@ -848,6 +848,16 @@ a.status-row:focus-visible {
   padding-left: 26px;
 }
 
+.station-info-value a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.station-info-value a:hover {
+  color: var(--nm-amber-bright);
+}
+
 .station-info-value--hours {
   display: flex;
   flex-direction: column;
