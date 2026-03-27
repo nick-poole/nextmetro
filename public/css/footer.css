@@ -122,6 +122,49 @@
 .nm-footer__dot--yellow { background: var(--line-yellow); }
 .nm-footer__dot--green  { background: var(--line-green); }
 
+/* Line chips — compact horizontal row of colored line links */
+.nm-footer__line-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.nm-footer__line-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--nm-gray);
+  text-decoration: none;
+  padding: 4px 8px;
+  border: 1px solid var(--nm-border);
+  transition: color 0.12s ease, border-color 0.12s ease;
+}
+.nm-footer__line-chip:hover {
+  color: var(--nm-white);
+  border-color: var(--nm-border-strong, #444);
+}
+.nm-footer__line-chip:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+.nm-footer__chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.nm-footer__chip-dot--red    { background: var(--line-red); }
+.nm-footer__chip-dot--orange { background: var(--line-orange); }
+.nm-footer__chip-dot--silver { background: var(--line-silver); }
+.nm-footer__chip-dot--blue   { background: var(--line-blue); }
+.nm-footer__chip-dot--yellow { background: var(--line-yellow); }
+.nm-footer__chip-dot--green  { background: var(--line-green); }
+
 /* Data disclaimer block */
 .nm-footer__data-block {
   margin-top: 28px;
