@@ -167,6 +167,29 @@
   border-bottom: 1px solid var(--nm-border-subtle);
 }
 
+/* ---- Active Line Page Link ---- */
+.stations-line-link {
+  margin-bottom: var(--nm-space-md);
+}
+
+.stations-line-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--nm-font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nm-amber);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color var(--nm-transition-normal);
+}
+
+.stations-line-link a:hover {
+  color: var(--nm-amber-bright);
+}
+
 /* ---- Station List ---- */
 .stations-list {
   columns: 2;
@@ -241,6 +264,15 @@
   flex-wrap: wrap;
 }
 
+/* Right-side badges (parking, etc.) */
+.stations-row-badges-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
 .stations-badge {
   display: inline-flex;
   align-items: center;
@@ -252,11 +284,6 @@
   letter-spacing: 0.06em;
   padding: 2px 6px;
   border: 1px solid var(--nm-border);
-}
-
-.stations-badge--transfer {
-  color: var(--nm-amber-dim);
-  border-color: rgba(212, 160, 60, 0.25);
 }
 
 .stations-badge--parking {

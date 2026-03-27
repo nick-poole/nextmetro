@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All 98 DC Metro Stations: Complete Station List | NextMetro</title>
-  <meta name="description" content="Complete list of all 98 Washington DC Metro stations across the Red, Orange, Blue, Yellow, Green, and Silver lines. Filter by line, find transfer stations, and check real-time arrivals." />
+  <title>All 98 DC Metro Stations: Next Arrivals for Every Station | NextMetro</title>
+  <meta name="description" content="Browse all 98 Washington DC Metrorail stations. Filter by line, check next arrivals, fares, and service alerts for every station on the Red, Orange, Blue, Yellow, Green, and Silver lines." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nextmetro.live/stations/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="All 98 DC Metro Stations | NextMetro" />
-  <meta property="og:description" content="Complete list of all 98 Washington DC Metrorail stations. Filter by line, find transfers, and check real-time arrivals." />
+  <meta property="og:title" content="All 98 DC Metro Stations: Next Arrivals | NextMetro" />
+  <meta property="og:description" content="Browse all 98 DC Metrorail stations. Filter by line, check next arrivals, fares, and alerts for every station." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nextmetro.live/stations/" />
   <meta property="og:site_name" content="NextMetro" />
@@ -22,8 +22,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="All 98 DC Metro Stations | NextMetro" />
-  <meta name="twitter:description" content="Complete list of all 98 Washington DC Metrorail stations. Filter by line, find transfers, and check real-time arrivals." />
+  <meta name="twitter:title" content="All 98 DC Metro Stations: Next Arrivals | NextMetro" />
+  <meta name="twitter:description" content="Browse all 98 DC Metrorail stations. Filter by line, check next arrivals, fares, and alerts for every station." />
   <meta name="twitter:image" content="https://nextmetro.live/images/og/homepage-utility/og-homepage.png" />
 
   <!-- Favicon -->
@@ -793,6 +793,11 @@
         <button class="stations-filter stations-filter--silver" data-line="silver"><span class="stations-filter-dot stations-filter-dot--silver"></span>Silver <span class="stations-filter-count">34</span></button>
       </div>
 
+      <!-- Active Line Page Link -->
+      <div class="stations-line-link" id="stations-line-link" hidden>
+        <a href="#" id="stations-line-link-a"><span id="stations-line-link-text"></span> <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
+      </div>
+
       <!-- Results Count -->
       <div class="stations-results-count" id="stations-results-count" aria-live="polite">
         Showing all 98 stations
@@ -800,788 +805,788 @@
 
       <!-- Station List -->
       <div class="stations-list" id="stations-list">
-        <a href="/station/addison-road/" class="stations-row" data-lines="blue silver" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
+        <a href="/station/addison-road/" class="stations-row" data-lines="blue silver" data-aliases="addison road seat pleasant" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Addison Road-Seat Pleasant</span>
-            <span class="stations-row-meta">Capitol Heights, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Addison Road & Seat Pleasant</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/anacostia/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Anacostia</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Anacostia & the Frederick Douglass National Historic Site</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/archives/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/archives/" class="stations-row" data-lines="yellow green" data-aliases="penn quarter navy memorial archives" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Archives-Navy Memorial-Penn Quarter</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">the Archives, Navy Memorial & Penn Quarter</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/arlington-cemetery/" class="stations-row" data-lines="blue" style="--line-bar: #00A8E8; --line-tint: rgba(0, 168, 232, 0.07);">
+        <a href="/station/arlington-cemetery/" class="stations-row" data-lines="blue" data-aliases="arlington" style="--line-bar: #00A8E8; --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Arlington Cemetery</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Arlington National Cemetery</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/ashburn/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Ashburn</span>
-            <span class="stations-row-meta">Ashburn, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Ashburn & the Silver Line terminus</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/ballston/" class="stations-row" data-lines="orange silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/ballston/" class="stations-row" data-lines="orange silver" data-aliases="ballston marymount" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Ballston-MU</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Ballston & Marymount University</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/benning-road/" class="stations-row" data-lines="blue silver" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Benning Road</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Benning Road & H Street NE corridor</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/bethesda/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Bethesda</span>
-            <span class="stations-row-meta">Bethesda, MD</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Downtown Bethesda & NIH campus access</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/braddock-road/" class="stations-row" data-lines="blue yellow" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Braddock Road</span>
-            <span class="stations-row-meta">Alexandria, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Braddock Road & North Old Town</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/branch-ave/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Branch Ave</span>
-            <span class="stations-row-meta">Suitland, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Branch Avenue & the southern Green Line terminus</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/brookland-cua/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/brookland-cua/" class="stations-row" data-lines="red" data-aliases="brookland cua catholic university" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Brookland-CUA</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Brookland, Edgewood & Catholic University of America</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/capitol-heights/" class="stations-row" data-lines="blue silver" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Capitol Heights</span>
-            <span class="stations-row-meta">Capitol Heights, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Capitol Heights & the Capitol Heights neighborhood in Prince George's County</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/capitol-south/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Capitol South</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Capitol South & the U.S. Capitol</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/cheverly/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Cheverly</span>
-            <span class="stations-row-meta">Cheverly, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Cheverly & Tuxedo</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/clarendon/" class="stations-row" data-lines="orange silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Clarendon</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Clarendon & the Wilson Boulevard corridor</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/cleveland-park/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Cleveland Park</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Cleveland Park & Connecticut Avenue</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/college-park/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/college-park/" class="stations-row" data-lines="yellow green" data-aliases="college park umd u of md university of maryland" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">College Park-U of Md</span>
-            <span class="stations-row-meta">College Park, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">the University of Maryland, College Park</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/columbia-heights/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Columbia Heights</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Columbia Heights & the DC USA shopping center</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/congress-heights/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Congress Heights</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Congress Heights & St. Elizabeths campus</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/court-house/" class="stations-row" data-lines="orange silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/court-house/" class="stations-row" data-lines="orange silver" data-aliases="courthouse" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Court House</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Courthouse & Arlington County government</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/crystal-city/" class="stations-row" data-lines="blue yellow" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Crystal City</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Crystal City & National Landing</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/dca-national-airport/" class="stations-row" data-lines="blue yellow" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
+        <a href="/station/dca-national-airport/" class="stations-row" data-lines="blue yellow" data-aliases="reagan reagan national national airport dca" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">DCA–National Airport</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Reagan National Airport</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/deanwood/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Deanwood</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Deanwood & Kenilworth</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/downtown-largo/" class="stations-row" data-lines="blue silver" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
+        <a href="/station/downtown-largo/" class="stations-row" data-lines="blue silver" data-aliases="largo largo town center" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Downtown Largo</span>
-            <span class="stations-row-meta">Largo, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Downtown Largo & the Boulevard at the Capital Centre</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/washington-dulles/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
+        <a href="/station/washington-dulles/" class="stations-row" data-lines="silver" data-aliases="dulles iad washington dulles" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Dulles Airport</span>
-            <span class="stations-row-meta">Dulles, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Dulles International Airport</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/dunn-loring/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/dunn-loring/" class="stations-row" data-lines="orange" data-aliases="dunn loring merrifield" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Dunn Loring-Merrifield</span>
-            <span class="stations-row-meta">Dunn Loring, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Dunn Loring & Merrifield Town Center</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/dupont-circle/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Dupont Circle</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Dupont Circle, Embassy Row & Kalorama</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/east-falls-church/" class="stations-row" data-lines="orange silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">East Falls Church</span>
-            <span class="stations-row-meta">Falls Church, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">East Falls Church</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/eastern-market/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Eastern Market</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Eastern Market & Capitol Hill</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/eisenhower-ave/" class="stations-row" data-lines="yellow" style="--line-bar: #FFD400; --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/eisenhower-ave/" class="stations-row" data-lines="yellow" data-aliases="eisenhower" style="--line-bar: #FFD400; --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Eisenhower Avenue</span>
-            <span class="stations-row-meta">Alexandria, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Eisenhower Valley & the Eisenhower Avenue corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/farragut-north/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Farragut North</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Farragut Square & K Street corridor</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/farragut-west/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Farragut West</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Farragut Square & the World Bank</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/federal-center-sw/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/federal-center-sw/" class="stations-row" data-lines="orange blue silver" data-aliases="federal center" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Federal Center SW</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Federal Center SW & USDA headquarters</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/federal-triangle/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Federal Triangle</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">the Federal Triangle & the National Archives</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/foggy-bottom/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/foggy-bottom/" class="stations-row" data-lines="orange blue silver" data-aliases="foggy bottom gwu george washington" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Foggy Bottom-GWU</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Foggy Bottom, George Washington University & the Kennedy Center</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/forest-glen/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Forest Glen</span>
-            <span class="stations-row-meta">Silver Spring, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Forest Glen & Holy Cross Hospital</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/fort-totten/" class="stations-row" data-lines="red yellow green" style="--line-bar: linear-gradient(to bottom, #D41140 0.0%, #D41140 33.3%, #FFD400 33.3%, #FFD400 66.7%, #00BD45 66.7%, #00BD45 100.0%); --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/fort-totten/" class="stations-row" data-lines="red yellow green" data-aliases="fort totten" style="--line-bar: linear-gradient(to bottom, #D41140 0.0%, #D41140 33.3%, #FFD400 33.3%, #FFD400 66.7%, #00BD45 66.7%, #00BD45 100.0%); --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Fort Totten</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Fort Totten & Lamond-Riggs</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/franconia-springfield/" class="stations-row" data-lines="blue" style="--line-bar: #00A8E8; --line-tint: rgba(0, 168, 232, 0.07);">
+        <a href="/station/franconia-springfield/" class="stations-row" data-lines="blue" data-aliases="springfield franconia" style="--line-bar: #00A8E8; --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Franconia-Springfield</span>
-            <span class="stations-row-meta">Springfield, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Franconia & Springfield. VRE connection</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/friendship-heights/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Friendship Heights</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Friendship Heights & Chevy Chase</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/gallery-place/" class="stations-row" data-lines="red yellow green" style="--line-bar: linear-gradient(to bottom, #D41140 0.0%, #D41140 33.3%, #FFD400 33.3%, #FFD400 66.7%, #00BD45 66.7%, #00BD45 100.0%); --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/gallery-place/" class="stations-row" data-lines="red yellow green" data-aliases="chinatown gallery place china town" style="--line-bar: linear-gradient(to bottom, #D41140 0.0%, #D41140 33.3%, #FFD400 33.3%, #FFD400 66.7%, #00BD45 66.7%, #00BD45 100.0%); --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Gallery Pl-Chinatown</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Chinatown & Penn Quarter</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/georgia-ave-petworth/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/georgia-ave-petworth/" class="stations-row" data-lines="yellow green" data-aliases="petworth georgia ave" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Georgia Ave-Petworth</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Petworth & Georgia Avenue corridor</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/glenmont/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Glenmont</span>
-            <span class="stations-row-meta">Wheaton, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Glenmont & the Layhill Road corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/greenbelt/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Greenbelt</span>
-            <span class="stations-row-meta">Greenbelt, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Greenbelt & NASA Goddard Space Flight Center</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/greensboro/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Greensboro</span>
-            <span class="stations-row-meta">Tysons, VA</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Greensboro & the Tysons area</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/grosvenor-strathmore/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/grosvenor-strathmore/" class="stations-row" data-lines="red" data-aliases="grosvenor strathmore" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Grosvenor-Strathmore</span>
-            <span class="stations-row-meta">North Bethesda, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Grosvenor & the Strathmore music center</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/herndon/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Herndon</span>
-            <span class="stations-row-meta">Herndon, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Downtown Herndon & the Worldgate Centre area in Fairfax County</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/huntington/" class="stations-row" data-lines="yellow" style="--line-bar: #FFD400; --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Huntington</span>
-            <span class="stations-row-meta">Alexandria, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Huntington & the South Kings Highway corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/hyattsville-crossing/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/hyattsville-crossing/" class="stations-row" data-lines="yellow green" data-aliases="prince georges plaza pg plaza" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Hyattsville Crossing</span>
-            <span class="stations-row-meta">Hyattsville, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Hyattsville & The Mall at Prince George's</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/innovation-center/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Innovation Center</span>
-            <span class="stations-row-meta">Herndon, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">the Innovation Center & Centreville Road corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/judiciary-square/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Judiciary Square</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Judiciary Square & the National Building Museum</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/king-street/" class="stations-row" data-lines="blue yellow" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
+        <a href="/station/king-street/" class="stations-row" data-lines="blue yellow" data-aliases="old town king street old town alexandria" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">King St-Old Town</span>
-            <span class="stations-row-meta">Alexandria, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Old Town Alexandria & King Street</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/lenfant-plaza/" class="stations-row" data-lines="orange blue yellow green silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 20.0%, #00A8E8 20.0%, #00A8E8 40.0%, #FFD400 40.0%, #FFD400 60.0%, #00BD45 60.0%, #00BD45 80.0%, #9BA5A5 80.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/lenfant-plaza/" class="stations-row" data-lines="orange blue yellow green silver" data-aliases="lenfant lenfant plaza l enfant" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 20.0%, #00A8E8 20.0%, #00A8E8 40.0%, #FFD400 40.0%, #FFD400 60.0%, #00BD45 60.0%, #00BD45 80.0%, #9BA5A5 80.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">L'Enfant Plaza</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">L'Enfant Plaza & the Southwest Waterfront</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/landover/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Landover</span>
-            <span class="stations-row-meta">Landover, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Landover & FedExField access</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/loudoun-gateway/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Loudoun Gateway</span>
-            <span class="stations-row-meta">Ashburn, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Loudoun Gateway & the Route 606 corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/mclean/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">McLean</span>
-            <span class="stations-row-meta">McLean, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">McLean & Tysons East</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/mcpherson-square/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/mcpherson-square/" class="stations-row" data-lines="orange blue silver" data-aliases="mcpherson" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">McPherson Square</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">McPherson Square & Downtown DC</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/medical-center/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/medical-center/" class="stations-row" data-lines="red" data-aliases="nih national institutes" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Medical Center</span>
-            <span class="stations-row-meta">Bethesda, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">National Institutes of Health & Walter Reed National Military Medical Center</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/metro-center/" class="stations-row" data-lines="red orange blue silver" style="--line-bar: linear-gradient(to bottom, #D41140 0.0%, #D41140 25.0%, #F09500 25.0%, #F09500 50.0%, #00A8E8 50.0%, #00A8E8 75.0%, #9BA5A5 75.0%, #9BA5A5 100.0%); --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Metro Center</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Downtown & Penn Quarter</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/minnesota-ave/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Minnesota Ave</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Minnesota Avenue & Deanwood</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/morgan-boulevard/" class="stations-row" data-lines="blue silver" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Morgan Boulevard</span>
-            <span class="stations-row-meta">Largo, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Morgan Boulevard & FedExField</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/mt-vernon-sq/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/mt-vernon-sq/" class="stations-row" data-lines="yellow green" data-aliases="mt vernon mount vernon convention center" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Mt Vernon Sq 7th St-Convention Center</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Mount Vernon Square & the Walter E. Washington Convention Center</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/navy-yard-ballpark/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
+        <a href="/station/navy-yard-ballpark/" class="stations-row" data-lines="green" data-aliases="navy yard ballpark nationals park nationals" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Navy Yard-Ballpark</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Navy Yard & Nationals Park</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/naylor-road/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Naylor Road</span>
-            <span class="stations-row-meta">Temple Hills, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Naylor Road & Hillcrest</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/new-carrollton/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">New Carrollton</span>
-            <span class="stations-row-meta">New Carrollton, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">New Carrollton. Amtrak & MARC connections</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/noma/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/noma/" class="stations-row" data-lines="red" data-aliases="noma gallaudet" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">NoMa-Gallaudet U</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">NoMa & Gallaudet University</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/north-bethesda/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/north-bethesda/" class="stations-row" data-lines="red" data-aliases="white flint" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">North Bethesda-White Flint</span>
-            <span class="stations-row-meta">North Bethesda, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">North Bethesda, Pike & Rose & White Flint</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/pentagon/" class="stations-row" data-lines="blue yellow" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
+        <a href="/station/pentagon/" class="stations-row" data-lines="blue yellow" data-aliases="the pentagon" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Pentagon</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">the Pentagon</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/pentagon-city/" class="stations-row" data-lines="blue yellow" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Pentagon City</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Pentagon City & the Fashion Centre</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/potomac-ave/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Potomac Ave</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Potomac Avenue & Hill East</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/potomac-yard/" class="stations-row" data-lines="blue yellow" style="--line-bar: linear-gradient(to bottom, #00A8E8 0.0%, #00A8E8 50.0%, #FFD400 50.0%, #FFD400 100.0%); --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Potomac Yard</span>
-            <span class="stations-row-meta">Alexandria, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Potomac Yard & Del Ray</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/reston-town-center/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Reston Town Center</span>
-            <span class="stations-row-meta">Reston, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Reston Town Center & the Reston urban core in Fairfax County</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/rhode-island-ave/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/rhode-island-ave/" class="stations-row" data-lines="red" data-aliases="rhode island brentwood" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Rhode Island Ave-Brentwood</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Rhode Island Avenue, Brentwood & Woodridge</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/rockville/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Rockville</span>
-            <span class="stations-row-meta">Rockville, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Downtown Rockville & Rockville Town Square</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/rosslyn/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/rosslyn/" class="stations-row" data-lines="orange blue silver" data-aliases="roslyn" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Rosslyn</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Rosslyn & Georgetown access</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/shady-grove/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Shady Grove</span>
-            <span class="stations-row-meta">Rockville, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Shady Grove & the I-270 corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/shaw-howard-u/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/shaw-howard-u/" class="stations-row" data-lines="yellow green" data-aliases="shaw howard" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Shaw-Howard U</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Shaw & Howard University</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/silver-spring/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Silver Spring</span>
-            <span class="stations-row-meta">Silver Spring, MD</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Downtown Silver Spring & the Fillmore</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/smithsonian/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/smithsonian/" class="stations-row" data-lines="orange blue silver" data-aliases="the mall national mall" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Smithsonian</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">the National Mall & Smithsonian museums</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/southern-ave/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Southern Ave</span>
-            <span class="stations-row-meta">Temple Hills, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Southern Avenue & Oxon Run</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/spring-hill/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Spring Hill</span>
-            <span class="stations-row-meta">Tysons, VA</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Spring Hill & Tysons West</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/stadium-armory/" class="stations-row" data-lines="orange blue silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/stadium-armory/" class="stations-row" data-lines="orange blue silver" data-aliases="stadium armory rfk" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 33.3%, #00A8E8 33.3%, #00A8E8 66.7%, #9BA5A5 66.7%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Stadium-Armory</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">RFK Stadium & the DC Armory</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/suitland/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Suitland</span>
-            <span class="stations-row-meta">Suitland, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Suitland & the Suitland Federal Center</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/takoma/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Takoma</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Takoma & Takoma Park</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/tenleytown-au/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/tenleytown-au/" class="stations-row" data-lines="red" data-aliases="tenleytown american university" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Tenleytown-AU</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Tenleytown & American University</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/twinbrook/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Twinbrook</span>
-            <span class="stations-row-meta">Rockville, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Twinbrook & Rockville Pike corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/tysons/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
+        <a href="/station/tysons/" class="stations-row" data-lines="silver" data-aliases="tyson tysons corner" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Tysons</span>
-            <span class="stations-row-meta">Tysons, VA</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Tysons Corner Center & Tysons Galleria</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/u-street/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
+        <a href="/station/u-street/" class="stations-row" data-lines="yellow green" data-aliases="u street u st cardozo" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">U Street/African-Amer Civil War Memorial/Cardozo</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">U Street, the 14th Street corridor & the African American Civil War Memorial</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/union-station/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Union Station</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Capitol Hill & NoMa. Amtrak, MARC & VRE connections</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/van-dorn-street/" class="stations-row" data-lines="blue" style="--line-bar: #00A8E8; --line-tint: rgba(0, 168, 232, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Van Dorn Street</span>
-            <span class="stations-row-meta">Alexandria, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Van Dorn Street & Lincolnia</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/van-ness-udc/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/van-ness-udc/" class="stations-row" data-lines="red" data-aliases="udc" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Van Ness-UDC</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Van Ness & University of the District of Columbia</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/vienna/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/vienna/" class="stations-row" data-lines="orange" data-aliases="vienna fairfax" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Vienna/Fairfax-GMU</span>
-            <span class="stations-row-meta">Fairfax, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Vienna & Fairfax. George Mason University access</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/virginia-square/" class="stations-row" data-lines="orange silver" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
+        <a href="/station/virginia-square/" class="stations-row" data-lines="orange silver" data-aliases="gmu virginia square george mason" style="--line-bar: linear-gradient(to bottom, #F09500 0.0%, #F09500 50.0%, #9BA5A5 50.0%, #9BA5A5 100.0%); --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Virginia Square-GMU</span>
-            <span class="stations-row-meta">Arlington, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span></span>
+            <span class="stations-row-meta">Virginia Square & George Mason University Arlington campus</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/waterfront/" class="stations-row" data-lines="green" style="--line-bar: #00BD45; --line-tint: rgba(0, 189, 69, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Waterfront</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">the Southwest Waterfront & The Wharf</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/west-falls-church/" class="stations-row" data-lines="orange" style="--line-bar: #F09500; --line-tint: rgba(240, 149, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">West Falls Church</span>
-            <span class="stations-row-meta">Falls Church, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">West Falls Church & the Merrifield area</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/west-hyattsville/" class="stations-row" data-lines="yellow green" style="--line-bar: linear-gradient(to bottom, #FFD400 0.0%, #FFD400 50.0%, #00BD45 50.0%, #00BD45 100.0%); --line-tint: rgba(255, 212, 0, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">West Hyattsville</span>
-            <span class="stations-row-meta">Hyattsville, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--transfer"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer</span><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">West Hyattsville & Ager Road</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         <a href="/station/wheaton/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Wheaton</span>
-            <span class="stations-row-meta">Wheaton, MD</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Wheaton & Westfield Wheaton Mall</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/wiehle-reston-east/" class="stations-row" data-lines="silver" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
+        <a href="/station/wiehle-reston-east/" class="stations-row" data-lines="silver" data-aliases="wiehle reston east" style="--line-bar: #9BA5A5; --line-tint: rgba(155, 165, 165, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Wiehle-Reston East</span>
-            <span class="stations-row-meta">Reston, VA</span>
-            <span class="stations-row-badges"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
+            <span class="stations-row-meta">Wiehle-Reston East & the Reston corridor</span>
           </span>
+          <span class="stations-row-badges-right"><span class="stations-badge stations-badge--parking"><i class="ri-parking-box-line" aria-hidden="true"></i>Parking</span></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-        <a href="/station/woodley-park/" class="stations-row" data-lines="red" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
+        <a href="/station/woodley-park/" class="stations-row" data-lines="red" data-aliases="zoo adams morgan woodley park woodley" style="--line-bar: #D41140; --line-tint: rgba(212, 17, 64, 0.07);">
           <span class="stations-row-info">
             <span class="stations-row-name">Woodley Park-Zoo/Adams Morgan</span>
-            <span class="stations-row-meta">Washington, DC</span>
-            <span class="stations-row-badges"></span>
+            <span class="stations-row-meta">Woodley Park, National Zoo & Adams Morgan</span>
           </span>
+          <span class="stations-row-badges-right"></span>
           <span class="stations-row-arrow"><i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
       </div>
@@ -1592,56 +1597,12 @@
         <p>No stations found</p>
       </div>
 
-      <!-- Quick Links -->
-      <section class="stations-quick-links">
-        <h2 class="stations-section-heading">Explore</h2>
-        <div class="stations-quick-links-grid">
-          <a href="/lines/red/" class="stations-quick-link">
-            <span class="stations-quick-link-dot stations-quick-link-dot--red"></span>
-            Red Line
-            <span class="stations-quick-link-count">27 stations</span>
-          </a>
-          <a href="/lines/orange/" class="stations-quick-link">
-            <span class="stations-quick-link-dot stations-quick-link-dot--orange"></span>
-            Orange Line
-            <span class="stations-quick-link-count">26 stations</span>
-          </a>
-          <a href="/lines/blue/" class="stations-quick-link">
-            <span class="stations-quick-link-dot stations-quick-link-dot--blue"></span>
-            Blue Line
-            <span class="stations-quick-link-count">28 stations</span>
-          </a>
-          <a href="/lines/yellow/" class="stations-quick-link">
-            <span class="stations-quick-link-dot stations-quick-link-dot--yellow"></span>
-            Yellow Line
-            <span class="stations-quick-link-count">22 stations</span>
-          </a>
-          <a href="/lines/green/" class="stations-quick-link">
-            <span class="stations-quick-link-dot stations-quick-link-dot--green"></span>
-            Green Line
-            <span class="stations-quick-link-count">21 stations</span>
-          </a>
-          <a href="/lines/silver/" class="stations-quick-link">
-            <span class="stations-quick-link-dot stations-quick-link-dot--silver"></span>
-            Silver Line
-            <span class="stations-quick-link-count">34 stations</span>
-          </a>
-        </div>
-        <div class="stations-quick-links-row">
-          <a href="/transfers/" class="stations-utility-link"><i class="ri-arrow-left-right-line" aria-hidden="true"></i>Transfer Guide</a>
-          <a href="/fares/" class="stations-utility-link"><i class="ri-money-dollar-circle-line" aria-hidden="true"></i>Fare Calculator</a>
-          <a href="/alerts/" class="stations-utility-link"><i class="ri-error-warning-line" aria-hidden="true"></i>Service Alerts</a>
-          <a href="/hours/" class="stations-utility-link"><i class="ri-time-line" aria-hidden="true"></i>Hours &amp; Schedule</a>
-          <a href="/elevators/" class="stations-utility-link"><i class="ri-arrow-up-down-line" aria-hidden="true"></i>Elevator Status</a>
-        </div>
-      </section>
-
       <!-- SEO Content -->
       <section class="stations-seo-content">
         <p>
           The Washington DC Metrorail system operates 98 stations across six color-coded lines: Red, Orange, Blue, Yellow, Green, and Silver.
           Stations span Washington DC, Northern Virginia, and suburban Maryland, serving millions of riders annually.
-          Use the filters above to browse stations by line, or search by name to find real-time arrival information for any station.
+          Use the filters above to browse stations by line, or search by name to find next arrival times, fares, and service alerts for any station.
         </p>
       </section>
 
