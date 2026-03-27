@@ -624,6 +624,16 @@ main[data-line] {
   text-align: right;
 }
 
+.line-info-value a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.line-info-value a:hover {
+  color: var(--nm-amber-bright);
+}
+
 .line-info-link {
   display: inline-block;
   margin-top: var(--nm-space-md);
