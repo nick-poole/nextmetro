@@ -191,6 +191,11 @@
   margin-bottom: 2px;
 }
 
+.calc-swap-btn i {
+  display: inline-block;
+  line-height: 1;
+}
+
 .calc-swap-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: var(--nm-fare-orange);
