@@ -338,7 +338,13 @@ main[data-line] {
   margin-bottom: var(--nm-space-sm);
   padding-bottom: 0.35rem;
   border-bottom: 2px solid var(--nm-amber-dim);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+}
+
+.line-section-heading i {
+  color: var(--nm-amber);
+  font-size: 1.25rem;
 }
 
 /* ---- All Stations ---- */
