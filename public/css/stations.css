@@ -10,7 +10,7 @@
 }
 
 .stations-hero-inner {
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -47,7 +47,7 @@
 
 /* ---- Page Container ---- */
 .stations-page {
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 var(--nm-space-lg) var(--nm-space-3xl);
 }
@@ -169,19 +169,35 @@
 
 /* ---- Station List ---- */
 .stations-list {
-  display: flex;
-  flex-direction: column;
+  columns: 2;
+  column-gap: var(--nm-space-xl);
 }
 
 .stations-row {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 12px;
-  border-bottom: 1px solid var(--nm-border-subtle);
+  gap: 12px;
+  padding: 12px 12px 12px 16px;
+  margin-bottom: 6px;
+  background-color: var(--nm-bg);
+  border: 1px solid var(--nm-border-subtle);
+  border-left: none;
   text-decoration: none;
   color: var(--nm-text-primary);
   transition: background-color var(--nm-transition-fast);
+  break-inside: avoid;
+  position: relative;
+}
+
+/* Line color bar — set via inline --line-bar on each row */
+.stations-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--line-bar, var(--nm-border));
 }
 
 .stations-row:hover {
@@ -415,6 +431,10 @@
 
   .stations-page {
     padding: 0 var(--nm-space-md) var(--nm-space-2xl);
+  }
+
+  .stations-list {
+    columns: 1;
   }
 
   .stations-quick-links-grid {
