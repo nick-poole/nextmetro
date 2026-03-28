@@ -49,6 +49,8 @@
 
     if (day === 5 || day === 6) {
       closesAtDisplay = '2:00 AM';
+    } else if (isPastMidnightExtended && isOpen) {
+      closesAtDisplay = '2:00 AM';
     } else {
       closesAtDisplay = 'Midnight';
     }

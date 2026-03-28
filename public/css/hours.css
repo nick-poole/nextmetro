@@ -564,4 +564,117 @@
   .hours-line-accordion-body {
     padding: var(--nm-space-sm) var(--nm-space-md) var(--nm-space-md);
   }
+
+  /* ---- Weekday Frequency: stacked cards ---- */
+  .hours-table-wrapper--freq-weekday {
+    border: none;
+    overflow: visible;
+  }
+
+  .hours-table--freq-weekday thead {
+    /* Accessible hide — still readable by screen readers */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hours-table--freq-weekday tbody {
+    display: block;
+  }
+
+  .hours-table--freq-weekday tbody tr {
+    display: block;
+    border: 1px solid var(--nm-border);
+    margin-bottom: var(--nm-space-sm);
+    padding: var(--nm-space-sm) var(--nm-space-md);
+  }
+
+  .hours-table--freq-weekday tbody tr:hover {
+    background-color: transparent;
+  }
+
+  .hours-table--freq-weekday tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0;
+    border-bottom: none;
+  }
+
+  .hours-table--freq-weekday tbody td:first-child {
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid var(--nm-border-subtle);
+  }
+
+  .hours-table--freq-weekday tbody td:first-child::before {
+    content: none;
+  }
+
+  .hours-table--freq-weekday tbody td:not(:first-child)::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--nm-text-secondary);
+  }
+
+  /* ---- Holiday Table: stacked cards ---- */
+  .hours-table-wrapper--holidays {
+    border: none;
+    overflow: visible;
+  }
+
+  .hours-table--holidays thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hours-table--holidays tbody {
+    display: block;
+  }
+
+  .hours-table--holidays tbody tr {
+    display: block;
+    border: 1px solid var(--nm-border);
+    margin-bottom: var(--nm-space-sm);
+    padding: var(--nm-space-sm) var(--nm-space-md);
+  }
+
+  .hours-table--holidays tbody tr:hover {
+    background-color: transparent;
+  }
+
+  .hours-table--holidays tbody tr.hours-table-highlight {
+    border-color: var(--nm-amber-dim);
+  }
+
+  .hours-table--holidays tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0;
+    border-bottom: none;
+  }
+
+  .hours-table--holidays tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--nm-text-secondary);
+    flex-shrink: 0;
+    margin-right: var(--nm-space-md);
+  }
 }
