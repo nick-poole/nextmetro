@@ -234,8 +234,8 @@ function renderStations() {
       var unitType = (outage.UnitType || '').toUpperCase();
       var typeLabel = unitType === 'ELEVATOR' ? 'Elevator' : 'Escalator';
       var typeClass = unitType === 'ELEVATOR' ? 'elev-outage--elevator' : 'elev-outage--escalator';
-      var location = normalizeText(outage.LocationDescription || '');
-      var symptom = normalizeText(outage.SymptomDescription || '');
+      var location = outage.LocationDescription || '';
+      var symptom = outage.SymptomDescription || '';
       var unit = outage.UnitName || '';
       var timeStr = formatOutageTime(outage.DateOutOfServ || outage.DateUpdated || '');
 

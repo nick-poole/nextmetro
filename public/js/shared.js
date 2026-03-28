@@ -242,30 +242,6 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// ---- Normalize Unicode text from WMATA API ----
-// Fixes mojibake caused by UTF-8 bytes decoded as Windows-1252,
-// and also normalizes proper Unicode smart quotes to ASCII.
-function normalizeText(str) {
-  if (!str) return '';
-  return str
-    // Mojibake patterns: UTF-8 bytes of smart quotes decoded as Win-1252
-    .replace(/\u00e2\u20ac\u2122/g, "'")   // U+2019 right single quote
-    .replace(/\u00e2\u20ac\u02dc/g, "'")   // U+2018 left single quote
-    .replace(/\u00e2\u20ac\u0153/g, '"')   // U+201C left double quote
-    .replace(/\u00e2\u20ac\u009d/g, '"')   // U+201D right double quote
-    .replace(/\u00e2\u20ac\u201c/g, '-')   // U+2013 en dash
-    .replace(/\u00e2\u20ac\u201d/g, '-')   // U+2014 em dash
-    .replace(/\u00e2\u20ac\u00a6/g, '...') // U+2026 ellipsis
-    .replace(/\u00c2\u00a0/g, ' ')         // U+00A0 non-breaking space
-    // Proper Unicode smart quotes (if encoding is correct)
-    .replace(/[\u2018\u2019\u201A\uFF07]/g, "'")
-    .replace(/[\u201C\u201D\u201E]/g, '"')
-    .replace(/[\u2013\u2014]/g, '-')
-    .replace(/\u2026/g, '...')
-    .replace(/\u00a0/g, ' ')
-    .replace(/\uFFFD/g, "'");
-}
-
 // ---- Parse LinesAffected string from WMATA API ----
 function parseAffectedLines(linesStr) {
   if (!linesStr) return [];

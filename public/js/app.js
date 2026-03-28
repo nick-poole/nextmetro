@@ -446,9 +446,9 @@ function renderSystemStatus(incidents) {
     affectedLines.forEach((lineCode) => {
       if (lineStatuses[lineCode]) {
         if (incident.IncidentType === 'Delay') {
-          lineStatuses[lineCode] = { status: 'Delays', description: normalizeText(incident.Description) };
+          lineStatuses[lineCode] = { status: 'Delays', description: incident.Description };
         } else if (lineStatuses[lineCode].status === 'Normal') {
-          lineStatuses[lineCode] = { status: 'Advisory', description: normalizeText(incident.Description) };
+          lineStatuses[lineCode] = { status: 'Advisory', description: incident.Description };
         }
       }
     });
@@ -499,7 +499,7 @@ function renderAlerts(incidents, stationCode) {
   // Show all relevant alerts
   let bodyHtml = '';
   relevant.forEach((incident) => {
-    bodyHtml += '<p>' + escapeHtml(normalizeText(incident.Description || '')) + '</p>';
+    bodyHtml += '<p>' + escapeHtml(incident.Description || '') + '</p>';
   });
   alertBody.innerHTML = bodyHtml;
 
@@ -588,8 +588,8 @@ function renderFacilities(incidents) {
     const descEl = document.createElement('div');
     descEl.className = 'facilities-outage-desc';
     descEl.textContent =
-      normalizeText(outage.LocationDescription || '') +
-      (outage.SymptomDescription ? ' (' + normalizeText(outage.SymptomDescription) + ')' : '');
+      (outage.LocationDescription || '') +
+      (outage.SymptomDescription ? ' (' + outage.SymptomDescription + ')' : '');
 
     div.appendChild(unitEl);
     div.appendChild(descEl);

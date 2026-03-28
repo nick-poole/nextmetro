@@ -212,7 +212,7 @@ function getAlertIcon(severityLabel) {
 // ==============================
 function cleanDescription(desc) {
   if (!desc) return '';
-  return normalizeText(desc).replace(/\s+/g, ' ').trim();
+  return desc.replace(/\s+/g, ' ').trim();
 }
 
 // ==============================
