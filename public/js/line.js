@@ -78,7 +78,7 @@ function renderAlerts(incidents) {
       : '';
     html +=
       '<div class="line-alert-item">' +
-      '<p class="line-alert-text">' + escapeHtml(incident.Description || '') + '</p>' +
+      '<p class="line-alert-text">' + linkifyUrls(escapeHtml(incident.Description || '')) + '</p>' +
       (time ? '<span class="line-alert-time">' + time + '</span>' : '') +
       '</div>';
   });

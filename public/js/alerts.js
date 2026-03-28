@@ -215,17 +215,7 @@ function cleanDescription(desc) {
   return desc.replace(/\s+/g, ' ').trim();
 }
 
-// ==============================
-// Auto-link URLs in text
-// ==============================
-function linkifyUrls(escapedHtml) {
-  return escapedHtml.replace(
-    /https?:\/\/[^\s<>&"]+/g,
-    function (url) {
-      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="alerts-inline-link">' + url + '</a>';
-    }
-  );
-}
+// linkifyUrls() is now in shared.js
 
 // ==============================
 // Time Formatting

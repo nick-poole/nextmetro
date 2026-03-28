@@ -242,6 +242,16 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// ---- Auto-link URLs in HTML-escaped text ----
+function linkifyUrls(escapedHtml) {
+  return escapedHtml.replace(
+    /https?:\/\/[^\s<>&"]+/g,
+    function (url) {
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="alerts-inline-link">' + url + '</a>';
+    }
+  );
+}
+
 // ---- Parse LinesAffected string from WMATA API ----
 function parseAffectedLines(linesStr) {
   if (!linesStr) return [];

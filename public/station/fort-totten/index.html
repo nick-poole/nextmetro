@@ -220,6 +220,7 @@
       <span class="hero-label">Station</span>
       <h1 class="hero-station-name" id="hero-station-name">Fort Totten</h1>
       <p class="hero-station-desc" id="hero-station-desc">Connecting Fort Totten &amp; the Lamond-Riggs neighborhood.</p>
+      <span class="hero-transfer-badge">Transfer Station</span>
 
       <!-- Line Pills -->
       <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
@@ -269,18 +270,44 @@
       </div>
 
       <!-- PIDS Arrivals Display -->
-      <section class="pids-card animate-in d1" aria-label="Train arrivals board">
-        <div class="pids-header" id="pids-header">
-          <span class="pids-header-station" id="pids-header-station">Next Arrivals</span>
+      <div class="pids-wrapper animate-in d1">
+        <div class="pids-shared-header">
+          <span class="pids-header-station">Next Arrivals</span>
           <span class="pids-updated" id="last-updated" style="display:none;"><span id="updated-time"></span><button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data"><i class="ri-refresh-line" aria-hidden="true"></i></button></span>
         </div>
-        <div class="pids-screen" id="pids-screen">
-          <div class="pids-scanlines"></div>
-          <div class="pids-content" id="pids-content" aria-live="polite">
-            <!-- Train rows rendered by JS -->
+        <div class="pids-grid">
+
+        <!-- Platform A: Red Line -->
+        <section class="pids-card" id="pids-card-a" aria-label="Platform A train arrivals">
+          <div class="pids-header">
+            <div class="line-strip-group">
+              <div class="line-strip line-strip--red"></div>
+            </div>
+            <span class="platform-label">Platform A · Red Line</span>
           </div>
-        </div>
-      </section>
+          <div class="pids-screen">
+            <div class="pids-scanlines"></div>
+            <div class="pids-content" id="pids-content-a"></div>
+          </div>
+        </section>
+
+        <!-- Platform B: Green / Yellow -->
+        <section class="pids-card" id="pids-card-b" aria-label="Platform B train arrivals">
+          <div class="pids-header">
+            <div class="line-strip-group">
+              <div class="line-strip line-strip--green"></div>
+              <div class="line-strip line-strip--yellow"></div>
+            </div>
+            <span class="platform-label">Platform B · Gr / Yl</span>
+          </div>
+          <div class="pids-screen">
+            <div class="pids-scanlines"></div>
+            <div class="pids-content" id="pids-content-b"></div>
+          </div>
+        </section>
+
+      </div>
+      </div>
       <!-- Station Info -->
       <section class="station-info-card animate-in d3">
         <div class="station-info-header">
@@ -299,7 +326,7 @@
               <i class="ri-subway-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
-            <span class="station-info-value">Ground Level</span>
+            <span class="station-info-value">Ground Level · Transfer Station</span>
           </div>
           <div class="station-info-row">
             <span class="station-info-icon">
@@ -325,6 +352,10 @@
           <a href="https://www.google.com/maps/dir/?api=1&destination=38.9519,-77.0023" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-direction-line" aria-hidden="true"></i>
             Directions
+          </a>
+          <a href="https://www.wmata.com/rider-guide/stations/fort-totten.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-time-fill" aria-hidden="true"></i>
+            First &amp; Last Trains
           </a>
           <a href="https://www.wmata.com/rider-guide/stations/fort-totten.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-external-link-line" aria-hidden="true"></i>
@@ -575,6 +606,11 @@
   <script src="/js/nav.js"></script>
   <script>
   const STATION_CODE = 'B06';
+  const IS_TRANSFER_STATION = true;
+  const TRANSFER_PLATFORMS = [
+    { label: 'Platform A \u00B7 Red Line', lines: ['RD'], wmataCodes: ['B06'], contentEl: 'pids-content-a' },
+    { label: 'Platform B \u00B7 Gr / Yl', lines: ['GR', 'YL'], wmataCodes: ['E06'], contentEl: 'pids-content-b' }
+  ];
   </script>
   <script src="/js/shared.js"></script>
   <script src="/js/app.js"></script>
