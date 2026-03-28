@@ -247,7 +247,7 @@ async function fetchAlertPreview() {
   try {
     const res = await fetch(API_BASE_URL + '/api/incidents');
     if (!res.ok) return;
-    const data = await res.json();
+    const data = await safeJson(res);
     const incidents = data.Incidents || [];
 
     // Filter to train alerts only (exclude elevator/escalator type)
@@ -322,8 +322,8 @@ function updateHoursStatus() {
     2: 'Midnight',
     3: 'Midnight',
     4: 'Midnight',
-    5: '1:00a',  // Friday (next day)
-    6: '1:00a',  // Saturday (next day)
+    5: '2:00a',  // Friday (next day)
+    6: '2:00a',  // Saturday (next day)
   };
 
   el.textContent = 'Open til ' + closingTimes[day];

@@ -97,7 +97,7 @@ async function fetchIncidents() {
   try {
     const res = await fetchWithRetry(API_BASE_URL + '/api/incidents');
     if (!res.ok) throw new Error('Incidents API error');
-    const data = await res.json();
+    const data = await safeJson(res);
     const incidents = data.Incidents || [];
 
     renderLineStatus(incidents);

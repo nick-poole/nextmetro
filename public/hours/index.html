@@ -202,10 +202,10 @@
     <div class="hours-section animate-in d1">
       <h2 class="hours-section-heading">Operating Hours</h2>
       <p class="hours-text">
-        Metro runs seven days a week with extended hours on Friday and Saturday nights.
+        Metro operates <strong>5:00 AM to midnight</strong> Monday through Thursday, <strong>5:00 AM to 2:00 AM</strong> on Friday, <strong>6:00 AM to 2:00 AM</strong> on Saturday, and <strong>6:00 AM to midnight</strong> on Sunday.
       </p>
       <div class="hours-table-wrapper">
-        <table class="hours-table">
+        <table class="hours-table" aria-label="Metro operating hours by day">
           <thead>
             <tr>
               <th scope="col">Day</th>
@@ -243,7 +243,7 @@
         <h3 class="hours-tip-card-title">Good to know</h3>
         <ul class="hours-tip-list">
           <li>Each station opens 10 minutes before the first train arrives</li>
-          <li>First and last train times vary by station — <a href="/">check your station</a></li>
+          <li>First and last train times vary by station — <a href="/stations/">check your station</a></li>
           <li>Last trains leave terminal stations around the closing time listed above; mid-line stations see last trains earlier</li>
         </ul>
       </div>
@@ -257,8 +257,8 @@
       </p>
 
       <h3 class="hours-subsection-heading">Weekday Frequency</h3>
-      <div class="hours-table-wrapper">
-        <table class="hours-table">
+      <div class="hours-table-wrapper hours-table-wrapper--freq-weekday">
+        <table class="hours-table hours-table--freq-weekday" aria-label="Weekday train frequency by line">
           <thead>
             <tr>
               <th scope="col">Line</th>
@@ -270,51 +270,51 @@
           </thead>
           <tbody>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--red"></span> <strong>Red Line</strong></td>
-              <td class="hours-time">4–5 min</td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">10 min</td>
+              <td><span class="hours-line-dot hours-line-dot--red" aria-hidden="true"></span> <strong>Red Line</strong></td>
+              <td data-label="Rush Hour" class="hours-time">4–5 min</td>
+              <td data-label="Midday" class="hours-time">6 min</td>
+              <td data-label="Evening" class="hours-time">6 min</td>
+              <td data-label="Late Night" class="hours-time">10 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--orange"></span> <strong>Orange Line</strong></td>
-              <td class="hours-time">10 min</td>
-              <td class="hours-time">12 min</td>
-              <td class="hours-time">12 min</td>
-              <td class="hours-time">15 min</td>
+              <td><span class="hours-line-dot hours-line-dot--orange" aria-hidden="true"></span> <strong>Orange Line</strong></td>
+              <td data-label="Rush Hour" class="hours-time">10 min</td>
+              <td data-label="Midday" class="hours-time">12 min</td>
+              <td data-label="Evening" class="hours-time">12 min</td>
+              <td data-label="Late Night" class="hours-time">15 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--blue"></span> <strong>Blue Line</strong></td>
-              <td class="hours-time">10 min</td>
-              <td class="hours-time">12 min</td>
-              <td class="hours-time">12 min</td>
-              <td class="hours-time">15 min</td>
+              <td><span class="hours-line-dot hours-line-dot--blue" aria-hidden="true"></span> <strong>Blue Line</strong></td>
+              <td data-label="Rush Hour" class="hours-time">10 min</td>
+              <td data-label="Midday" class="hours-time">12 min</td>
+              <td data-label="Evening" class="hours-time">12 min</td>
+              <td data-label="Late Night" class="hours-time">15 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--silver"></span> <strong>Silver Line</strong></td>
-              <td class="hours-time">10 min</td>
-              <td class="hours-time">12 min</td>
-              <td class="hours-time">12 min</td>
-              <td class="hours-time">15 min</td>
+              <td><span class="hours-line-dot hours-line-dot--silver" aria-hidden="true"></span> <strong>Silver Line</strong></td>
+              <td data-label="Rush Hour" class="hours-time">10 min</td>
+              <td data-label="Midday" class="hours-time">12 min</td>
+              <td data-label="Evening" class="hours-time">12 min</td>
+              <td data-label="Late Night" class="hours-time">15 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--yellow"></span> <strong>Yellow Line</strong></td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">7–8 min</td>
+              <td><span class="hours-line-dot hours-line-dot--yellow" aria-hidden="true"></span> <strong>Yellow Line</strong></td>
+              <td data-label="Rush Hour" class="hours-time">6 min</td>
+              <td data-label="Midday" class="hours-time">6 min</td>
+              <td data-label="Evening" class="hours-time">6 min</td>
+              <td data-label="Late Night" class="hours-time">7–8 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--green"></span> <strong>Green Line</strong></td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">6 min</td>
-              <td class="hours-time">7–8 min</td>
+              <td><span class="hours-line-dot hours-line-dot--green" aria-hidden="true"></span> <strong>Green Line</strong></td>
+              <td data-label="Rush Hour" class="hours-time">6 min</td>
+              <td data-label="Midday" class="hours-time">6 min</td>
+              <td data-label="Evening" class="hours-time">6 min</td>
+              <td data-label="Late Night" class="hours-time">7–8 min</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="hours-frequency-legend">
+      <div class="hours-frequency-legend" role="note" aria-label="Weekday time period definitions">
         <span><strong>Rush Hour:</strong> 7–9 AM and 4–6 PM weekdays</span>
         <span><strong>Midday:</strong> 9 AM – 4 PM weekdays</span>
         <span><strong>Evening:</strong> 6 – 9:30 PM</span>
@@ -323,7 +323,7 @@
 
       <h3 class="hours-subsection-heading">Weekend Frequency</h3>
       <div class="hours-table-wrapper">
-        <table class="hours-table">
+        <table class="hours-table" aria-label="Weekend train frequency by line">
           <thead>
             <tr>
               <th scope="col">Line</th>
@@ -333,32 +333,32 @@
           </thead>
           <tbody>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--red"></span> <strong>Red Line</strong></td>
+              <td><span class="hours-line-dot hours-line-dot--red" aria-hidden="true"></span> <strong>Red Line</strong></td>
               <td class="hours-time">6 min</td>
               <td class="hours-time">10 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--orange"></span> <strong>Orange Line</strong></td>
+              <td><span class="hours-line-dot hours-line-dot--orange" aria-hidden="true"></span> <strong>Orange Line</strong></td>
               <td class="hours-time">12 min</td>
               <td class="hours-time">15 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--blue"></span> <strong>Blue Line</strong></td>
+              <td><span class="hours-line-dot hours-line-dot--blue" aria-hidden="true"></span> <strong>Blue Line</strong></td>
               <td class="hours-time">12 min</td>
               <td class="hours-time">15 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--silver"></span> <strong>Silver Line</strong></td>
+              <td><span class="hours-line-dot hours-line-dot--silver" aria-hidden="true"></span> <strong>Silver Line</strong></td>
               <td class="hours-time">12 min</td>
               <td class="hours-time">15 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--yellow"></span> <strong>Yellow Line</strong></td>
+              <td><span class="hours-line-dot hours-line-dot--yellow" aria-hidden="true"></span> <strong>Yellow Line</strong></td>
               <td class="hours-time">8 min</td>
               <td class="hours-time">8 min</td>
             </tr>
             <tr>
-              <td><span class="hours-line-dot hours-line-dot--green"></span> <strong>Green Line</strong></td>
+              <td><span class="hours-line-dot hours-line-dot--green" aria-hidden="true"></span> <strong>Green Line</strong></td>
               <td class="hours-time">8 min</td>
               <td class="hours-time">8 min</td>
             </tr>
@@ -371,7 +371,7 @@
       </div>
 
       <p class="hours-text hours-text--note">
-        Published frequency is the scheduled interval. Actual wait times may vary due to service conditions. For real-time arrivals, <a href="/">check live times</a>.
+        Published frequency is the scheduled interval. Actual wait times may vary due to service conditions. For real-time arrivals, <a href="/stations/">check live times</a>.
       </p>
     </div>
 
@@ -418,7 +418,7 @@
       <!-- Red Line -->
       <details class="hours-line-accordion" open>
         <summary class="hours-line-accordion-header">
-          <span class="hours-line-dot hours-line-dot--red"></span>
+          <span class="hours-line-dot hours-line-dot--red" aria-hidden="true"></span>
           <span>Red Line</span>
         </summary>
         <div class="hours-line-accordion-body">
@@ -466,7 +466,7 @@
       <!-- Orange Line -->
       <details class="hours-line-accordion">
         <summary class="hours-line-accordion-header">
-          <span class="hours-line-dot hours-line-dot--orange"></span>
+          <span class="hours-line-dot hours-line-dot--orange" aria-hidden="true"></span>
           <span>Orange Line</span>
         </summary>
         <div class="hours-line-accordion-body">
@@ -514,7 +514,7 @@
       <!-- Blue Line -->
       <details class="hours-line-accordion">
         <summary class="hours-line-accordion-header">
-          <span class="hours-line-dot hours-line-dot--blue"></span>
+          <span class="hours-line-dot hours-line-dot--blue" aria-hidden="true"></span>
           <span>Blue Line</span>
         </summary>
         <div class="hours-line-accordion-body">
@@ -562,11 +562,11 @@
       <!-- Yellow Line -->
       <details class="hours-line-accordion">
         <summary class="hours-line-accordion-header">
-          <span class="hours-line-dot hours-line-dot--yellow"></span>
+          <span class="hours-line-dot hours-line-dot--yellow" aria-hidden="true"></span>
           <span>Yellow Line</span>
         </summary>
         <div class="hours-line-accordion-body">
-          <h4 class="hours-direction-label">Huntington &rarr; Mt Vernon Sq <span class="hours-direction-note">(some trains continue to Greenbelt)</span></h4>
+          <h4 class="hours-direction-label">Huntington &rarr; Mt Vernon Sq <span class="hours-direction-note">(every other train continues to Greenbelt)</span></h4>
           <div class="hours-table-wrapper">
             <table class="hours-table hours-table--compact">
               <thead>
@@ -591,7 +591,7 @@
       <!-- Green Line -->
       <details class="hours-line-accordion">
         <summary class="hours-line-accordion-header">
-          <span class="hours-line-dot hours-line-dot--green"></span>
+          <span class="hours-line-dot hours-line-dot--green" aria-hidden="true"></span>
           <span>Green Line</span>
         </summary>
         <div class="hours-line-accordion-body">
@@ -639,7 +639,7 @@
       <!-- Silver Line -->
       <details class="hours-line-accordion">
         <summary class="hours-line-accordion-header">
-          <span class="hours-line-dot hours-line-dot--silver"></span>
+          <span class="hours-line-dot hours-line-dot--silver" aria-hidden="true"></span>
           <span>Silver Line</span>
         </summary>
         <div class="hours-line-accordion-body">
@@ -683,7 +683,7 @@
         <ul class="hours-tip-list">
           <li><strong>Last trains leave terminal stations around 1:30 AM</strong> — allow travel time to reach your destination</li>
           <li><strong>Frequency drops significantly</strong> after 9:30 PM (trains every 10–30 minutes depending on line)</li>
-          <li><strong>Check real-time arrivals</strong> before heading to the station — <a href="/">view live times</a></li>
+          <li><strong>Check real-time arrivals</strong> before heading to the station — <a href="/stations/">view live times</a></li>
           <li><strong>Transfers may not connect</strong> — verify your connection is still running if changing lines late at night</li>
         </ul>
       </div>
@@ -697,8 +697,8 @@
       </p>
 
       <h3 class="hours-subsection-heading">2026 Holidays</h3>
-      <div class="hours-table-wrapper">
-        <table class="hours-table">
+      <div class="hours-table-wrapper hours-table-wrapper--holidays">
+        <table class="hours-table hours-table--holidays" aria-label="2026 Metro holiday schedule">
           <thead>
             <tr>
               <th scope="col">Date</th>
@@ -709,82 +709,100 @@
           </thead>
           <tbody>
             <tr>
-              <td>Mon, May 25</td>
-              <td>Memorial Day</td>
-              <td class="hours-time">6 AM – Midnight</td>
-              <td>Weekend</td>
+              <td data-label="Date">Thu, Jan 1</td>
+              <td data-label="Holiday">New Year's Day</td>
+              <td data-label="Hours" class="hours-time">6 AM – Midnight</td>
+              <td data-label="Frequency">Weekend</td>
             </tr>
             <tr>
-              <td>Fri, Jun 19</td>
-              <td>Juneteenth</td>
-              <td class="hours-time">5 AM – 2 AM</td>
-              <td>Weekend</td>
+              <td data-label="Date">Mon, Jan 19</td>
+              <td data-label="Holiday">Martin Luther King Jr. Day</td>
+              <td data-label="Hours" class="hours-time">6 AM – Midnight</td>
+              <td data-label="Frequency">Weekend</td>
             </tr>
             <tr>
-              <td>Fri, Jul 3</td>
-              <td>Independence Day (observed)</td>
-              <td class="hours-time">6 AM – 2 AM</td>
-              <td>Weekend</td>
+              <td data-label="Date">Mon, Feb 16</td>
+              <td data-label="Holiday">Presidents' Day</td>
+              <td data-label="Hours" class="hours-time">6 AM – Midnight</td>
+              <td data-label="Frequency">Weekend</td>
+            </tr>
+            <tr>
+              <td data-label="Date">Mon, May 25</td>
+              <td data-label="Holiday">Memorial Day</td>
+              <td data-label="Hours" class="hours-time">6 AM – Midnight</td>
+              <td data-label="Frequency">Weekend</td>
+            </tr>
+            <tr>
+              <td data-label="Date">Fri, Jun 19</td>
+              <td data-label="Holiday">Juneteenth</td>
+              <td data-label="Hours" class="hours-time">5 AM – 2 AM</td>
+              <td data-label="Frequency">Weekend</td>
+            </tr>
+            <tr>
+              <td data-label="Date">Fri, Jul 3</td>
+              <td data-label="Holiday">Independence Day (observed)</td>
+              <td data-label="Hours" class="hours-time">6 AM – 2 AM</td>
+              <td data-label="Frequency">Weekend</td>
             </tr>
             <tr class="hours-table-highlight">
-              <td><strong>Sat, Jul 4</strong></td>
-              <td><strong>Independence Day</strong></td>
-              <td class="hours-time"><strong>6 AM – 2 AM</strong></td>
-              <td><strong>Special</strong></td>
+              <td data-label="Date"><strong>Sat, Jul 4</strong></td>
+              <td data-label="Holiday"><strong>Independence Day</strong></td>
+              <td data-label="Hours" class="hours-time"><strong>6 AM – 2 AM</strong></td>
+              <td data-label="Frequency"><strong>Special</strong></td>
             </tr>
             <tr>
-              <td>Mon, Sep 7</td>
-              <td>Labor Day</td>
-              <td class="hours-time">6 AM – Midnight</td>
-              <td>Weekend</td>
+              <td data-label="Date">Mon, Sep 7</td>
+              <td data-label="Holiday">Labor Day</td>
+              <td data-label="Hours" class="hours-time">6 AM – Midnight</td>
+              <td data-label="Frequency">Weekend</td>
             </tr>
             <tr>
-              <td>Mon, Oct 12</td>
-              <td>Columbus Day</td>
-              <td class="hours-time">5 AM – Midnight</td>
-              <td>Weekend</td>
+              <td data-label="Date">Mon, Oct 12</td>
+              <td data-label="Holiday">Columbus Day</td>
+              <td data-label="Hours" class="hours-time">5 AM – Midnight</td>
+              <td data-label="Frequency">Weekend</td>
             </tr>
             <tr>
-              <td>Wed, Nov 11</td>
-              <td>Veterans Day</td>
-              <td class="hours-time">5 AM – Midnight</td>
-              <td>Weekend</td>
+              <td data-label="Date">Wed, Nov 11</td>
+              <td data-label="Holiday">Veterans Day</td>
+              <td data-label="Hours" class="hours-time">5 AM – Midnight</td>
+              <td data-label="Frequency">Weekend</td>
             </tr>
             <tr>
-              <td>Thu, Nov 26</td>
-              <td>Thanksgiving</td>
-              <td class="hours-time">6 AM – Midnight</td>
-              <td>Late Night (all day)</td>
+              <td data-label="Date">Thu, Nov 26</td>
+              <td data-label="Holiday">Thanksgiving</td>
+              <td data-label="Hours" class="hours-time">6 AM – Midnight</td>
+              <td data-label="Frequency">Late Night (all day)</td>
             </tr>
             <tr>
-              <td>Fri, Nov 27</td>
-              <td>Post-Thanksgiving</td>
-              <td class="hours-time">5 AM – 2 AM</td>
-              <td>Weekday</td>
+              <td data-label="Date">Fri, Nov 27</td>
+              <td data-label="Holiday">Post-Thanksgiving</td>
+              <td data-label="Hours" class="hours-time">5 AM – 2 AM</td>
+              <td data-label="Frequency">Weekday</td>
             </tr>
             <tr>
-              <td>Thu, Dec 24</td>
-              <td>Christmas Eve</td>
-              <td class="hours-time">5 AM – Midnight</td>
-              <td>Weekday</td>
+              <td data-label="Date">Thu, Dec 24</td>
+              <td data-label="Holiday">Christmas Eve</td>
+              <td data-label="Hours" class="hours-time">5 AM – Midnight</td>
+              <td data-label="Frequency">Weekday</td>
             </tr>
             <tr>
-              <td>Fri, Dec 25</td>
-              <td>Christmas Day</td>
-              <td class="hours-time">6 AM – TBD</td>
-              <td>Late Night (all day)</td>
+              <td data-label="Date">Fri, Dec 25</td>
+              <td data-label="Holiday">Christmas Day</td>
+              <td data-label="Hours" class="hours-time">6 AM – TBD</td>
+              <td data-label="Frequency">Late Night (all day)</td>
             </tr>
             <tr>
-              <td>Thu, Dec 31</td>
-              <td>New Year's Eve</td>
-              <td class="hours-time">5 AM – TBD</td>
-              <td>Weekday</td>
+              <td data-label="Date">Thu, Dec 31</td>
+              <td data-label="Holiday">New Year's Eve</td>
+              <td data-label="Hours" class="hours-time">5 AM – TBD</td>
+              <td data-label="Frequency">Weekday</td>
             </tr>
             <tr>
-              <td>Fri, Jan 1, 2027</td>
-              <td>New Year's Day</td>
-              <td class="hours-time">6 AM – TBD</td>
-              <td>Late Night (all day)</td>
+              <td data-label="Date">Fri, Jan 1, 2027</td>
+              <td data-label="Holiday">New Year's Day</td>
+              <td data-label="Hours" class="hours-time">6 AM – TBD</td>
+              <td data-label="Frequency">Weekend</td>
             </tr>
           </tbody>
         </table>
@@ -829,6 +847,23 @@
 
       <p class="hours-text hours-text--note">
         Extended hours and free fares for special events are announced per-event. <a href="/alerts/">Check alerts for current event service</a>.
+      </p>
+    </div>
+
+    <!-- Planned Service Changes -->
+    <div class="hours-section animate-in">
+      <h2 class="hours-section-heading">Planned Service Changes — 2026</h2>
+      <div class="hours-tip-card">
+        <h3 class="hours-tip-card-title">Summer 2026 Red Line Construction (Jul 6 – Sep 6)</h3>
+        <ul class="hours-tip-list">
+          <li><strong>No trains between North Bethesda and Friendship Heights</strong> — Three stations closed: Grosvenor-Strathmore, Medical Center, and Bethesda</li>
+          <li><strong>Red Line splits into two segments:</strong> Shady Grove to North Bethesda, and Friendship Heights to Glenmont</li>
+          <li><strong>Free shuttle buses every 5–8 minutes</strong> between closed stations (Express: ~26 min, Local: ~48 min)</li>
+          <li>Purpose: New second mezzanine at Bethesda for Purple Line integration, platform rehabilitation at Grosvenor-Strathmore, Rockville Pike bridge replacement</li>
+        </ul>
+      </div>
+      <p class="hours-text hours-text--note">
+        For the latest updates, visit <a href="https://wmata.com/initiatives/plans/summer-2026-red-line-major-construction/index.cfm" target="_blank" rel="noopener noreferrer">WMATA's Summer 2026 Red Line page</a>.
       </p>
     </div>
 

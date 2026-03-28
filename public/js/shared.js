@@ -20,6 +20,24 @@ function fetchWithRetry(url, retries, delayMs) {
   })();
 }
 
+// ---- Parse JSON with encoding fix ----
+// Reads response as raw text, fixes mojibake on the raw string,
+// then parses as JSON. Use instead of response.json().
+function safeJson(response) {
+  return response.text().then(function (raw) {
+    var fixed = raw
+      .replace(/\u00e2\u20ac\u2122/g, "'")
+      .replace(/\u00e2\u20ac\u02dc/g, "'")
+      .replace(/\u00e2\u20ac\u0153/g, '"')
+      .replace(/\u00e2\u20ac\u009d/g, '"')
+      .replace(/\u00e2\u20ac\u201c/g, '-')
+      .replace(/\u00e2\u20ac\u201d/g, '-')
+      .replace(/\u00e2\u20ac\u00a6/g, '...')
+      .replace(/\u00c2\u00a0/g, ' ');
+    return JSON.parse(fixed);
+  });
+}
+
 // ---- Metro Line Colors (WMATA line codes) ----
 var lineColors = {
   RD: '#D41140',

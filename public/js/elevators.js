@@ -331,7 +331,7 @@ async function fetchOutages() {
   try {
     var res = await fetchWithRetry(API_BASE_URL + '/api/elevators');
     if (!res || !res.ok) throw new Error('API error');
-    var data = await res.json();
+    var data = await safeJson(res);
     currentOutages = data.ElevatorIncidents || [];
   } catch (e) {
     console.error('Failed to fetch elevator incidents:', e.message);
