@@ -56,6 +56,42 @@ async function setCache(cacheKey, data, ttlSeconds) {
 }
 
 // ==============================
+// Fix mojibake / smart-quote encoding from WMATA API
+// ==============================
+function fixText(str) {
+	if (typeof str !== 'string') return str;
+	return str
+		// Mojibake: UTF-8 bytes decoded as Windows-1252
+		.replace(/\u00e2\u20ac\u2122/g, "'")   // U+2019 right single quote
+		.replace(/\u00e2\u20ac\u02dc/g, "'")   // U+2018 left single quote
+		.replace(/\u00e2\u20ac\u0153/g, '"')   // U+201C left double quote
+		.replace(/\u00e2\u20ac\u009d/g, '"')   // U+201D right double quote
+		.replace(/\u00e2\u20ac\u201c/g, '-')   // U+2013 en dash
+		.replace(/\u00e2\u20ac\u201d/g, '-')   // U+2014 em dash
+		.replace(/\u00e2\u20ac\u00a6/g, '...') // U+2026 ellipsis
+		.replace(/\u00c2\u00a0/g, ' ')         // U+00A0 non-breaking space
+		// Proper Unicode (if encoding was correct)
+		.replace(/[\u2018\u2019\u201A\uFF07]/g, "'")
+		.replace(/[\u201C\u201D\u201E]/g, '"')
+		.replace(/[\u2013\u2014]/g, '-')
+		.replace(/\u2026/g, '...')
+		.replace(/\u00a0/g, ' ');
+}
+
+function fixEncoding(obj) {
+	if (typeof obj === 'string') return fixText(obj);
+	if (Array.isArray(obj)) return obj.map(fixEncoding);
+	if (obj && typeof obj === 'object') {
+		const out = {};
+		for (const [k, v] of Object.entries(obj)) {
+			out[k] = fixEncoding(v);
+		}
+		return out;
+	}
+	return obj;
+}
+
+// ==============================
 // WMATA fetch helper
 // ==============================
 async function wmataFetch(urlPath, apiKey) {
@@ -67,7 +103,11 @@ async function wmataFetch(urlPath, apiKey) {
 		err.status = 502;
 		throw err;
 	}
-	return res.json();
+	// Explicitly decode as UTF-8 to prevent encoding mismatches
+	const buf = await res.arrayBuffer();
+	const text = new TextDecoder('utf-8').decode(buf);
+	const data = JSON.parse(text);
+	return fixEncoding(data);
 }
 
 // ==============================
