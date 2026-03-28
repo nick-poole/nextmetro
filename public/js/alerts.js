@@ -433,7 +433,7 @@ async function fetchAllAlerts() {
   // Rail incidents
   if (results[0].status === 'fulfilled' && results[0].value && results[0].value.ok) {
     try {
-      var railData = await results[0].value.json();
+      var railData = await safeJson(results[0].value);
       railIncidents = deduplicateIncidents(railData.Incidents || []);
     } catch (e) {
       console.error('Failed to parse rail incidents:', e.message);
@@ -443,7 +443,7 @@ async function fetchAllAlerts() {
   // Elevator/escalator outages
   if (results[1].status === 'fulfilled' && results[1].value && results[1].value.ok) {
     try {
-      var elevData = await results[1].value.json();
+      var elevData = await safeJson(results[1].value);
       elevatorIncidents = normalizeElevatorIncidents(elevData.ElevatorIncidents || []);
     } catch (e) {
       console.error('Failed to parse elevator incidents:', e.message);

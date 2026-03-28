@@ -130,7 +130,7 @@ async function fetchFare() {
       API_BASE_URL + '/api/fare/' + fromCode + '/' + toCode
     );
     if (!res.ok) throw new Error('Fare API error');
-    const data = await res.json();
+    const data = await safeJson(res);
 
     const info = data.StationToStationInfos && data.StationToStationInfos[0];
     if (!info) {

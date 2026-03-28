@@ -247,7 +247,7 @@ async function fetchAlertPreview() {
   try {
     const res = await fetch(API_BASE_URL + '/api/incidents');
     if (!res.ok) return;
-    const data = await res.json();
+    const data = await safeJson(res);
     const incidents = data.Incidents || [];
 
     // Filter to train alerts only (exclude elevator/escalator type)

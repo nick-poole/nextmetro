@@ -311,7 +311,7 @@ async function fetchStationAddress(stationCode) {
   if (heroStationAddress) heroStationAddress.textContent = '';
   try {
     const res = await fetchWithRetry(API_BASE_URL + '/api/station/' + stationCode);
-    const data = await res.json();
+    const data = await safeJson(res);
     if (data && data.Address) {
       const addr = data.Address;
       const formatted = addr.Street + ', ' + addr.City + ', ' + addr.State + ' ' + addr.Zip;
@@ -412,7 +412,7 @@ async function fetchIncidents() {
   try {
     const res = await fetchWithRetry(API_BASE_URL + '/api/incidents');
     if (!res.ok) throw new Error('Incidents API error');
-    const data = await res.json();
+    const data = await safeJson(res);
     currentIncidents = data.Incidents || [];
 
     renderSystemStatus(currentIncidents);
@@ -534,7 +534,7 @@ async function fetchFacilities(stationCode) {
     for (const code of codes) {
       const res = await fetchWithRetry(API_BASE_URL + '/api/elevators/' + code);
       if (!res.ok) throw new Error('Elevators API error');
-      const data = await res.json();
+      const data = await safeJson(res);
       if (data.ElevatorIncidents) {
         allIncidents.push(...data.ElevatorIncidents);
       }
@@ -638,7 +638,7 @@ fareDestination.addEventListener('change', async () => {
       API_BASE_URL + '/api/fare/' + selectedStation + '/' + toCode
     );
     if (!res.ok) throw new Error('Fare API error');
-    const data = await res.json();
+    const data = await safeJson(res);
 
     const info = data.StationToStationInfos && data.StationToStationInfos[0];
     if (!info) {
@@ -978,7 +978,7 @@ async function fetchTrains(stationCode) {
     const res = await fetchWithRetry(API_BASE_URL + '/api/predictions/' + codes);
     if (!res.ok) throw new Error('API error');
 
-    const data = await res.json();
+    const data = await safeJson(res);
     lastUpdatedTime = new Date();
 
     // Filter out entries with no real data (Line = "No" or "--" or empty)
@@ -1074,7 +1074,7 @@ async function fetchTransferTrains() {
       return fetchWithRetry(API_BASE_URL + '/api/predictions/' + code)
         .then(function (res) {
           if (!res.ok) throw new Error('API error');
-          return res.json();
+          return safeJson(res);
         });
     });
 
