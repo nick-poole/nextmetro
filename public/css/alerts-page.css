@@ -362,16 +362,7 @@
   line-height: 1.65;
 }
 
-.alerts-inline-link {
-  color: var(--nm-amber);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  word-break: break-all;
-}
-
-.alerts-inline-link:hover {
-  color: var(--nm-amber-bright);
-}
+/* .alerts-inline-link styles are now in global styles.css */
 
 .alerts-card-cta {
   display: inline-flex;

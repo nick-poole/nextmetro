@@ -499,7 +499,7 @@ function renderAlerts(incidents, stationCode) {
   // Show all relevant alerts
   let bodyHtml = '';
   relevant.forEach((incident) => {
-    bodyHtml += '<p>' + escapeHtml(incident.Description || '') + '</p>';
+    bodyHtml += '<p>' + linkifyUrls(escapeHtml(incident.Description || '')) + '</p>';
   });
   alertBody.innerHTML = bodyHtml;
 

@@ -523,3 +523,17 @@ a:hover {
   color: var(--nm-text-primary);
   font-weight: 700;
 }
+
+/* ==============================
+   Inline Alert Links (global)
+   ============================== */
+.alerts-inline-link {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+.alerts-inline-link:hover {
+  color: var(--nm-amber-bright);
+}
