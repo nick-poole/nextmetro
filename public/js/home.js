@@ -294,7 +294,7 @@ async function fetchAlertPreview() {
 
       const desc = document.createElement('p');
       desc.className = 'home-alert-card-description';
-      desc.textContent = alert.Description || '';
+      desc.textContent = normalizeText(alert.Description || '');
 
       content.appendChild(title);
       content.appendChild(desc);

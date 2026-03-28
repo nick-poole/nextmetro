@@ -224,6 +224,18 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// ---- Normalize Unicode text from WMATA API ----
+// Replaces smart quotes and other typographic characters that can
+// display as mojibake (e.g. "Lâ€™Enfant") when encoding is mismatched.
+function normalizeText(str) {
+  if (!str) return '';
+  return str
+    .replace(/[\u2018\u2019\u201A\uFF07]/g, "'")
+    .replace(/[\u201C\u201D\u201E]/g, '"')
+    .replace(/\u2026/g, '...')
+    .replace(/\uFFFD/g, "'");
+}
+
 // ---- Parse LinesAffected string from WMATA API ----
 function parseAffectedLines(linesStr) {
   if (!linesStr) return [];

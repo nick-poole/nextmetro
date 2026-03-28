@@ -29,7 +29,7 @@ function jsonResponse(data, request, status = 200, extraHeaders = {}) {
 	return new Response(JSON.stringify(data), {
 		status,
 		headers: {
-			'Content-Type': 'application/json',
+			'Content-Type': 'application/json; charset=utf-8',
 			...corsHeaders(request),
 			...extraHeaders,
 		},
@@ -48,7 +48,7 @@ async function setCache(cacheKey, data, ttlSeconds) {
 	const cache = caches.default;
 	const response = new Response(JSON.stringify(data), {
 		headers: {
-			'Content-Type': 'application/json',
+			'Content-Type': 'application/json; charset=utf-8',
 			'Cache-Control': `s-maxage=${ttlSeconds}`,
 		},
 	});

@@ -36,10 +36,10 @@ function renderLineStatus(incidents) {
 
   if (delays.length > 0) {
     status = 'alert';
-    statusMessage = delays[0].Description || LINE_NAME + ' Line experiencing delays';
+    statusMessage = normalizeText(delays[0].Description) || LINE_NAME + ' Line experiencing delays';
   } else if (advisories.length > 0) {
     status = 'caution';
-    statusMessage = advisories[0].Description || LINE_NAME + ' Line service advisory in effect';
+    statusMessage = normalizeText(advisories[0].Description) || LINE_NAME + ' Line service advisory in effect';
   }
 
   lineStatusDot.className = 'line-status-dot';
@@ -78,7 +78,7 @@ function renderAlerts(incidents) {
       : '';
     html +=
       '<div class="line-alert-item">' +
-      '<p class="line-alert-text">' + escapeHtml(incident.Description || '') + '</p>' +
+      '<p class="line-alert-text">' + escapeHtml(normalizeText(incident.Description || '')) + '</p>' +
       (time ? '<span class="line-alert-time">' + time + '</span>' : '') +
       '</div>';
   });
