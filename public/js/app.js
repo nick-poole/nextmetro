@@ -1108,6 +1108,127 @@ async function fetchTransferTrains() {
 }
 
 // ==============================
+// First & Last Train
+// ==============================
+function getDayName() {
+  return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()];
+}
+
+function formatTrainTime(timeStr) {
+  if (!timeStr) return '--';
+  // WMATA returns "HH:MM" in 24h format
+  var parts = timeStr.split(':');
+  var h = parseInt(parts[0], 10);
+  var m = parts[1];
+  var ampm = h >= 12 ? 'PM' : 'AM';
+  if (h === 0) h = 12;
+  else if (h > 12) h -= 12;
+  return h + ':' + m + ' ' + ampm;
+}
+
+async function fetchAndRenderTrainTimes(stationCode) {
+  // For transfer stations, fetch both platforms
+  var codes = [stationCode];
+  var partner = multiPlatform[stationCode];
+  if (partner) codes.push(partner);
+
+  try {
+    var allTrains = [];
+    for (var i = 0; i < codes.length; i++) {
+      var res = await fetchWithRetry(API_BASE_URL + '/api/times/' + codes[i]);
+      var data = await safeJson(res);
+      if (data && data.StationTimes && data.StationTimes.length > 0) {
+        allTrains.push(data.StationTimes[0]);
+      }
+    }
+    if (allTrains.length === 0) return;
+
+    var dayName = getDayName();
+    // Collect first and last trains across all platforms
+    var firstTrains = [];
+    var lastTrains = [];
+
+    for (var t = 0; t < allTrains.length; t++) {
+      var dayData = allTrains[t][dayName];
+      if (!dayData) continue;
+      if (dayData.FirstTrains) {
+        for (var f = 0; f < dayData.FirstTrains.length; f++) {
+          var ft = dayData.FirstTrains[f];
+          if (ft.Time && ft.Time !== '--') {
+            firstTrains.push({
+              time: ft.Time,
+              destination: stations[ft.DestinationStation] || ft.DestinationStation || 'Unknown'
+            });
+          }
+        }
+      }
+      if (dayData.LastTrains) {
+        for (var l = 0; l < dayData.LastTrains.length; l++) {
+          var lt = dayData.LastTrains[l];
+          if (lt.Time && lt.Time !== '--') {
+            lastTrains.push({
+              time: lt.Time,
+              destination: stations[lt.DestinationStation] || lt.DestinationStation || 'Unknown'
+            });
+          }
+        }
+      }
+    }
+
+    if (firstTrains.length === 0 && lastTrains.length === 0) return;
+
+    // Sort: first trains ascending, last trains descending
+    firstTrains.sort(function(a, b) { return a.time.localeCompare(b.time); });
+    lastTrains.sort(function(a, b) { return b.time.localeCompare(a.time); });
+
+    // Build the card HTML
+    var html = '<div class="train-times-header">' +
+      '<h2 class="train-times-title">First &amp; Last Trains</h2>' +
+      '<span class="train-times-day">' + dayName + '</span>' +
+      '</div>' +
+      '<div class="train-times-body">';
+
+    if (firstTrains.length > 0) {
+      html += '<div class="train-times-group">' +
+        '<h3 class="train-times-group-label"><i class="ri-sunrise-line" aria-hidden="true"></i> First Trains</h3>';
+      for (var fi = 0; fi < firstTrains.length; fi++) {
+        html += '<div class="train-times-row">' +
+          '<span class="train-times-dest">' + escapeHtml(firstTrains[fi].destination) + '</span>' +
+          '<span class="train-times-time">' + formatTrainTime(firstTrains[fi].time) + '</span>' +
+          '</div>';
+      }
+      html += '</div>';
+    }
+
+    if (lastTrains.length > 0) {
+      html += '<div class="train-times-group">' +
+        '<h3 class="train-times-group-label"><i class="ri-moon-line" aria-hidden="true"></i> Last Trains</h3>';
+      for (var li = 0; li < lastTrains.length; li++) {
+        html += '<div class="train-times-row">' +
+          '<span class="train-times-dest">' + escapeHtml(lastTrains[li].destination) + '</span>' +
+          '<span class="train-times-time">' + formatTrainTime(lastTrains[li].time) + '</span>' +
+          '</div>';
+      }
+      html += '</div>';
+    }
+
+    html += '</div>';
+
+    // Insert card into DOM after station-info-card
+    var card = document.createElement('section');
+    card.className = 'train-times-card animate-in d3';
+    card.innerHTML = html;
+
+    var infoCard = document.querySelector('.station-info-card');
+    if (infoCard && infoCard.parentNode) {
+      infoCard.parentNode.insertBefore(card, infoCard.nextSibling);
+    }
+  } catch (e) {
+    // First/last train times are supplementary — fail silently
+  }
+}
+
+// ==============================
 // Polling Management
 // ==============================
 function startPolling() {
@@ -1208,6 +1329,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   fetchIncidents();
   fetchFacilities(selectedStation);
+  fetchAndRenderTrainTimes(selectedStation);
 
   // Start polling
   startPolling();

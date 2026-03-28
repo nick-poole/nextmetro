@@ -144,11 +144,12 @@
 .pids-card,
 .pids-wrapper          { order: 2; }
 .station-info-card     { order: 3; }
-.adjacent-card         { order: 4; }
-.facilities-card       { order: 5; }
-.fare-card             { order: 6; }
-.system-status-card    { order: 7; }
-.station-faq           { order: 8; }
+.train-times-card      { order: 4; }
+.adjacent-card         { order: 5; }
+.facilities-card       { order: 6; }
+.fare-card             { order: 7; }
+.system-status-card    { order: 8; }
+.station-faq           { order: 9; }
 
 /* Transfer stations: collapse stacked adjacent cards into one unit */
 .adjacent-card:has(+ .adjacent-card) {
@@ -162,6 +163,7 @@
 
 /* Zero out individual card margins — layout handles spacing */
 .station-info-card,
+.train-times-card,
 .facilities-card,
 .adjacent-card,
 .fare-card,
@@ -193,6 +195,7 @@
 
   /* Right column */
   .station-info-card,
+  .train-times-card,
   .facilities-card,
   .system-status-card {
     flex: 0 1 calc(50% - var(--nm-space-lg) / 2);
@@ -942,6 +945,102 @@ a.status-row:focus-visible {
 .station-info-link:focus-visible {
   outline: 2px solid var(--nm-amber);
   outline-offset: 2px;
+}
+
+/* ==============================
+   First & Last Train Times
+   ============================== */
+.train-times-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.train-times-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.train-times-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.train-times-day {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.train-times-body {
+  padding: var(--nm-space-sm) 0;
+  flex: 1;
+}
+
+.train-times-group {
+  padding: 0.4rem 0;
+}
+
+.train-times-group + .train-times-group {
+  border-top: 1px solid var(--nm-border);
+}
+
+.train-times-group-label {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--nm-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 1.25rem 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.train-times-group-label i {
+  color: var(--nm-amber);
+  font-size: 1rem;
+}
+
+.train-times-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 1.25rem 0.45rem 2.55rem;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.train-times-row:last-child {
+  border-bottom: none;
+}
+
+.train-times-dest {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--nm-text-primary);
+}
+
+.train-times-time {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--nm-amber);
+  white-space: nowrap;
 }
 
 /* ==============================

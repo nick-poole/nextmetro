@@ -210,6 +210,27 @@ async function handleElevators(request, env, code) {
 	}
 }
 
+async function handleStationTimes(request, env, code) {
+	if (!isValidStationCode(code)) {
+		return jsonResponse({ error: 'Invalid station code' }, request, 400);
+	}
+	const cacheKey = new Request(`https://cache.nextmetro.live/api/times/${code}`);
+	const cached = await getCached(cacheKey);
+	if (cached) return addCors(cached, request);
+
+	try {
+		const data = await wmataFetch(
+			`/Rail.svc/json/jStationTimes?StationCode=${code}`,
+			env.WMATA_API_KEY
+		);
+		// Cache for 1 week — schedules rarely change
+		await setCache(cacheKey, data, 604800);
+		return jsonResponse(data, request);
+	} catch (err) {
+		return jsonResponse({ error: 'Failed to fetch station times' }, request, err.status || 500);
+	}
+}
+
 async function handleFare(request, env, from, to) {
 	if (!isValidStationCode(from) || !isValidStationCode(to)) {
 		return jsonResponse({ error: 'Invalid station code' }, request, 400);
@@ -420,6 +441,9 @@ export default {
 
 		const elevatorsMatch = path.match(/^\/api\/elevators\/([A-Za-z0-9]+)$/);
 		if (elevatorsMatch) return handleElevators(request, env, elevatorsMatch[1]);
+
+		const timesMatch = path.match(/^\/api\/times\/([A-Za-z0-9]+)$/);
+		if (timesMatch) return handleStationTimes(request, env, timesMatch[1]);
 
 		const fareMatch = path.match(/^\/api\/fare\/([A-Za-z0-9]+)\/([A-Za-z0-9]+)$/);
 		if (fareMatch) return handleFare(request, env, fareMatch[1], fareMatch[2]);
