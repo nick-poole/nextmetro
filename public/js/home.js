@@ -322,8 +322,8 @@ function updateHoursStatus() {
     2: 'Midnight',
     3: 'Midnight',
     4: 'Midnight',
-    5: '1:00a',  // Friday (next day)
-    6: '1:00a',  // Saturday (next day)
+    5: '2:00a',  // Friday (next day)
+    6: '2:00a',  // Saturday (next day)
   };
 
   el.textContent = 'Open til ' + closingTimes[day];
