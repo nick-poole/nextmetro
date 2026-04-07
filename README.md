@@ -49,6 +49,7 @@ NextMetro is an independent, real-time dashboard for the D.C. Metro system. It p
 | **Frontend** | Vanilla HTML5, CSS, JavaScript |
 | **Backend** | Cloudflare Workers (API proxy + caching) |
 | **Data Source** | [WMATA Real-Time Rail API](https://developer.wmata.com/) |
+| **Analytics** | [Umami](https://umami.is/) (privacy-focused, cookie-free) |
 | **Typography** | [Rajdhani](https://fonts.google.com/specimen/Rajdhani) (Google Fonts) |
 | **Hosting** | Cloudflare (Workers + static assets at the edge) |
 
