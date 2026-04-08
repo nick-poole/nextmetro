@@ -1,6 +1,7 @@
 // ==============================
 // NextMetro — Alerts Page
-// All WMATA service alerts: rail incidents + elevator/escalator outages
+// WMATA rail service alerts (delays, closures, advisories, single tracking)
+// Elevator/escalator outages are on the dedicated /elevators/ page
 // Depends on shared.js (loaded first)
 // ==============================
 
@@ -14,8 +15,6 @@ const SEVERITY = {
   'Station Closure': 3,
   'Single Tracking': 4,
   Advisory: 5,
-  Elevator: 7,
-  Escalator: 7,
 };
 
 function getSeverity(incidentType) {
@@ -29,8 +28,6 @@ function getSeverityLabel(incidentType) {
   if (type === 'Alert') return 'Alert';
   if (type === 'Closure' || type === 'Station Closure') return 'Closure';
   if (type === 'Single Tracking') return 'Single Tracking';
-  if (type === 'Elevator') return 'Elevator';
-  if (type === 'Escalator') return 'Escalator';
   return 'Advisory';
 }
 
@@ -39,7 +36,6 @@ function getSeverityClass(label) {
   if (label === 'Alert') return 'severity-alert';
   if (label === 'Closure') return 'severity-closure';
   if (label === 'Single Tracking') return 'severity-caution';
-  if (label === 'Elevator' || label === 'Escalator') return 'severity-facility';
   return 'severity-advisory';
 }
 
@@ -78,35 +74,8 @@ function deduplicateIncidents(incidents) {
   return Array.from(map.values());
 }
 
-// ---- Normalize elevator/escalator incidents into the same shape ----
-function normalizeElevatorIncidents(elevatorIncidents) {
-  return (elevatorIncidents || []).map(function (outage) {
-    var unitType = (outage.UnitType || '').toUpperCase();
-    var label = unitType === 'ELEVATOR' ? 'Elevator' : 'Escalator';
-    var station = outage.StationName || '';
-    var location = outage.LocationDescription || '';
-    var symptom = outage.SymptomDescription || '';
-    var unit = outage.UnitName || '';
-
-    var desc = label + ' outage at ' + station;
-    if (location) desc += ' — ' + location;
-    if (symptom) desc += ' (' + symptom + ')';
-    if (unit) desc += ' [Unit: ' + unit + ']';
-
-    return {
-      IncidentType: label,
-      Description: desc,
-      LinesAffected: '',
-      DateUpdated: outage.DateUpdated || outage.DateOutOfServ || '',
-      _station: station,
-      _unitType: unitType,
-    };
-  });
-}
-
 // ---- State ----
-var currentAlerts = []; // unified list: rail incidents + elevator/escalator
-var currentRailIncidents = []; // rail-only for ticker + status bar
+var currentAlerts = []; // rail incidents only
 var activeLineFilter = 'all'; // 'all' | line code
 var pollingInterval = null;
 
@@ -171,11 +140,8 @@ function renderStatusBar(incidents) {
 function getFilteredAlerts() {
   if (activeLineFilter === 'all') return currentAlerts;
   return currentAlerts.filter(function (incident) {
-    // Rail incidents — check LinesAffected
     var lines = parseAffectedLines(incident.LinesAffected);
     if (lines.length > 0) return lines.indexOf(activeLineFilter) !== -1;
-    // Elevator/escalator — check station code prefix
-    if (incident._station) return true; // Show facility alerts for all line filters
     return true;
   });
 }
@@ -192,14 +158,6 @@ function getAlertIcon(severityLabel) {
   }
   if (severityLabel === 'Alert') {
     return '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>';
-  }
-  if (severityLabel === 'Elevator') {
-    // Elevator icon
-    return '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>';
-  }
-  if (severityLabel === 'Escalator') {
-    // Escalator/stairs icon
-    return '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-4-4 1.41-1.41L12 14.17l6.59-6.59L20 9l-8 8z"/></svg>';
   }
   // Advisory — info circle
   return '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>';
@@ -285,16 +243,6 @@ function renderAlerts() {
     var timeStr = formatAlertTime(incident.DateUpdated);
     var delay = Math.min(idx * 0.06, 0.6);
 
-    // Location tag for station-level alerts
-    var locationHtml = '';
-    if (incident._station) {
-      locationHtml =
-        '<span class="alert-station-pill">' +
-        '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>' +
-        escapeHtml(incident._station) +
-        '</span>';
-    }
-
     // Line pills for this alert
     var linePillsHtml = '';
     affectedLines.forEach(function (lineCode) {
@@ -306,8 +254,8 @@ function renderAlerts() {
     });
 
     var tagsHtml = '';
-    if (linePillsHtml || locationHtml) {
-      tagsHtml = '<div class="alerts-card-tags">' + linePillsHtml + locationHtml + '</div>';
+    if (linePillsHtml) {
+      tagsHtml = '<div class="alerts-card-tags">' + linePillsHtml + '</div>';
     }
 
     html +=
@@ -341,14 +289,11 @@ function updateSEO(allAlerts) {
     desc = 'All DC Metro lines operating normally. No active service alerts. Live status updates at NextMetro.';
   } else {
     var lineSet = new Set();
-    var hasElevator = false;
     allAlerts.forEach(function (inc) {
       parseAffectedLines(inc.LinesAffected).forEach(function (code) { lineSet.add(lineNames[code]); });
-      if (inc.IncidentType === 'Elevator' || inc.IncidentType === 'Escalator') hasElevator = true;
     });
     var parts = [];
     if (lineSet.size > 0) parts.push(Array.from(lineSet).join(', '));
-    if (hasElevator) parts.push('elevator/escalator outages');
     desc = alertCount + ' active alert' + (alertCount !== 1 ? 's' : '') +
       (parts.length > 0 ? ' — ' + parts.join(', ') : '') +
       '. Live DC Metro status at NextMetro.';
@@ -364,12 +309,9 @@ function updateSEO(allAlerts) {
     lastUpdatedTime.textContent = now.toISOString();
   }
 
-  // SpecialAnnouncement schema for active alerts (rail incidents only)
-  var railAlerts = allAlerts.filter(function (a) {
-    return a.IncidentType !== 'Elevator' && a.IncidentType !== 'Escalator';
-  });
-  if (schemaAlerts && railAlerts.length > 0) {
-    var announcements = railAlerts.map(function (incident) {
+  // SpecialAnnouncement schema for active alerts
+  if (schemaAlerts && allAlerts.length > 0) {
+    var announcements = allAlerts.map(function (incident) {
       return {
         '@context': 'https://schema.org',
         '@type': 'SpecialAnnouncement',
@@ -408,43 +350,25 @@ function updateTimestamp() {
 }
 
 // ==============================
-// Fetch All Alerts (rail incidents + elevator/escalator)
+// Fetch Rail Alerts
 // ==============================
 async function fetchAllAlerts() {
   var railIncidents = [];
-  var elevatorIncidents = [];
 
-  // Fetch both endpoints in parallel
-  var results = await Promise.allSettled([
-    fetchWithRetry(API_BASE_URL + '/api/incidents'),
-    fetchWithRetry(API_BASE_URL + '/api/elevators'),
-  ]);
-
-  // Rail incidents
-  if (results[0].status === 'fulfilled' && results[0].value && results[0].value.ok) {
-    try {
-      var railData = await safeJson(results[0].value);
+  try {
+    var response = await fetchWithRetry(API_BASE_URL + '/api/incidents');
+    if (response && response.ok) {
+      var railData = await safeJson(response);
       railIncidents = deduplicateIncidents(railData.Incidents || []);
-    } catch (e) {
-      console.error('Failed to parse rail incidents:', e.message);
     }
+  } catch (e) {
+    console.error('Failed to fetch rail incidents:', e.message);
   }
 
-  // Elevator/escalator outages
-  if (results[1].status === 'fulfilled' && results[1].value && results[1].value.ok) {
-    try {
-      var elevData = await safeJson(results[1].value);
-      elevatorIncidents = normalizeElevatorIncidents(elevData.ElevatorIncidents || []);
-    } catch (e) {
-      console.error('Failed to parse elevator incidents:', e.message);
-    }
-  }
-
-  currentRailIncidents = railIncidents;
-  currentAlerts = railIncidents.concat(elevatorIncidents);
+  currentAlerts = railIncidents;
 
   renderAlerts();
-  renderStatusBar(currentRailIncidents);
+  renderStatusBar(currentAlerts);
   updateTimestamp();
   updateSEO(currentAlerts);
 }

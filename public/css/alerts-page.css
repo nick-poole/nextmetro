@@ -39,8 +39,11 @@
   margin-bottom: var(--nm-space-sm);
 }
 
-.alerts-hero .alerts-status-bar {
-  margin-top: var(--nm-space-lg);
+/* ---- Status Bar Wrapper (below hero) ---- */
+.alerts-status-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--nm-space-lg) var(--nm-space-lg) 0;
 }
 
 .alerts-hero-subtitle {
@@ -238,11 +241,6 @@
   border-left: 4px solid var(--nm-status-info);
 }
 
-.alerts-card-severity.severity-facility {
-  background-color: rgba(160, 160, 160, 0.06);
-  border-left: 4px solid var(--nm-text-muted);
-}
-
 .alerts-card-icon {
   display: inline-flex;
   flex-shrink: 0;
@@ -260,10 +258,6 @@
 
 .severity-advisory .alerts-card-icon {
   color: var(--nm-status-info);
-}
-
-.severity-facility .alerts-card-icon {
-  color: var(--nm-text-muted);
 }
 
 .alerts-card-severity-label {
@@ -287,10 +281,6 @@
 
 .severity-advisory .alerts-card-severity-label {
   color: var(--nm-status-info);
-}
-
-.severity-facility .alerts-card-severity-label {
-  color: var(--nm-text-muted);
 }
 
 .alerts-card-time {
@@ -333,25 +323,6 @@
   height: 8px;
   border-radius: 50% !important;
   flex-shrink: 0;
-}
-
-.alert-station-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border: 1px solid var(--nm-border);
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.75rem;
-  color: var(--nm-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.alert-station-pill svg {
-  flex-shrink: 0;
-  color: var(--nm-text-muted);
 }
 
 .alerts-card-desc {
@@ -510,6 +481,10 @@
 @media (max-width: 768px) {
   .alerts-page {
     padding: var(--nm-space-lg) var(--nm-space-md);
+  }
+
+  .alerts-status-wrap {
+    padding: var(--nm-space-md) var(--nm-space-md) 0;
   }
 
   .alerts-controls {

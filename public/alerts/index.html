@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DC Metro Service Alerts &amp; Delays | NextMetro</title>
-  <meta name="description" id="meta-description" content="DC Metro service alerts: train delays, station closures, single tracking, and elevator outages. Updated from WMATA." />
+  <meta name="description" id="meta-description" content="DC Metro service alerts: train delays, station closures, single tracking, and service advisories. Updated from WMATA." />
   <link rel="canonical" href="https://nextmetro.live/alerts/" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/alerts-page.css" />
@@ -19,7 +19,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="DC Metro Service Alerts &amp; Delays | NextMetro" />
-  <meta property="og:description" content="DC Metrorail alerts: train delays, closures, single tracking, elevator and escalator outages. Updated from WMATA." />
+  <meta property="og:description" content="DC Metrorail alerts: train delays, closures, single tracking, and service advisories. Updated from WMATA." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nextmetro.live/alerts/" />
   <meta property="og:site_name" content="NextMetro" />
@@ -32,7 +32,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="DC Metro Service Alerts &amp; Delays | NextMetro" />
-  <meta name="twitter:description" content="DC Metrorail alerts: train delays, closures, single tracking, elevator and escalator outages. Updated from WMATA." />
+  <meta name="twitter:description" content="DC Metrorail alerts: train delays, closures, single tracking, and service advisories. Updated from WMATA." />
   <meta name="twitter:image" content="https://nextmetro.live/images/og/homepage-utility/og-alerts.png" />
 
   <!-- Favicon -->
@@ -200,15 +200,17 @@
   <section class="alerts-hero">
     <div class="alerts-hero-inner">
       <span class="alerts-hero-label">Live Status</span>
-      <h1 class="alerts-hero-title">DC Metro Alerts &amp; Outages</h1>
-      <p class="alerts-hero-subtitle" id="alerts-subtitle">Train delays, station closures, single tracking, and elevator &amp; escalator outages — updated every 30 seconds.</p>
-
-      <!-- System Status Summary -->
-      <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
-        <!-- Rendered by JS -->
-      </div>
+      <h1 class="alerts-hero-title">DC Metro Alerts</h1>
+      <p class="alerts-hero-subtitle" id="alerts-subtitle">Train delays, station closures, single tracking, and service advisories — updated every 30 seconds.</p>
     </div>
   </section>
+
+  <!-- System Status Summary (below hero) -->
+  <div class="alerts-status-wrap">
+    <div class="alerts-status-bar animate-in d2" id="alerts-status-bar">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
 
   <!-- Main Content -->
   <main id="main-content">
@@ -324,9 +326,9 @@
         </details>
 
         <details class="line-faq-item">
-          <summary class="line-faq-question">Why are there so many elevator and escalator outages?</summary>
+          <summary class="line-faq-question">Where can I find elevator and escalator outages?</summary>
           <div class="line-faq-answer">
-            <p>The DC Metro system has over 600 escalators and 300 elevators — one of the largest collections of any transit system in the world. Many of these units were installed when the system opened between 1976 and 2001 and have experienced decades of heavy use, weather exposure (many are outdoor units), and the unique engineering challenge of moving riders through the deepest stations in North America. WMATA is in the process of a multi-year capital program to replace and modernize escalators and elevators across the system. Outages are reported in real time through the WMATA Incidents API, which is what powers the alerts on this page.</p>
+            <p>Elevator and escalator outages have their own dedicated page at <a href="/elevators/">Elevator &amp; Escalator Outages</a>. That page shows real-time outage status for every station, filterable by line and unit type, with details on each affected unit. This alerts page focuses on rail service disruptions — delays, closures, single tracking, and advisories.</p>
           </div>
         </details>
 
@@ -347,7 +349,7 @@
         <details class="line-faq-item">
           <summary class="line-faq-question">How often are alerts updated on this page?</summary>
           <div class="line-faq-answer">
-            <p>This page polls both the WMATA Rail Incidents API and the Elevator/Escalator Incidents API every 30 seconds. Rail incident data (delays, advisories, closures, single tracking) comes from one endpoint, and elevator/escalator outage data comes from another. Both are fetched in parallel so the page always shows the latest system-wide picture. The status bar at the top shows per-line status (Normal, Advisory, or Delays) based on active rail incidents, and the ticker scrolls real-time line status across the top of the page.</p>
+            <p>This page polls the WMATA Rail Incidents API every 30 seconds for the latest delays, advisories, closures, and single tracking alerts. The status bar shows per-line status (Normal, Advisory, or Delays) based on active incidents, and the ticker scrolls real-time line status across the top of the page. For elevator and escalator outages, see the dedicated <a href="/elevators/">Elevator &amp; Escalator Outages</a> page.</p>
           </div>
         </details>
 
@@ -368,7 +370,7 @@
         <details class="line-faq-item">
           <summary class="line-faq-question">Does NextMetro show bus alerts or only Metrorail?</summary>
           <div class="line-faq-answer">
-            <p>NextMetro currently shows Metrorail alerts only — this includes all six rail lines (Red, Orange, Blue, Green, Yellow, and Silver) plus system-wide elevator and escalator outages at rail stations. Bus service alerts (Metrobus) are available through WMATA's separate Bus Incidents API but are not yet integrated into NextMetro. For Metrobus alerts, check <a href="https://www.wmata.com/service/bus/" target="_blank" rel="noopener noreferrer">WMATA's bus status page</a>.</p>
+            <p>NextMetro currently shows Metrorail alerts only — this includes all six rail lines (Red, Orange, Blue, Green, Yellow, and Silver). Elevator and escalator outages are shown on a <a href="/elevators/">separate dedicated page</a>. Bus service alerts (Metrobus) are available through WMATA's separate Bus Incidents API but are not yet integrated into NextMetro. For Metrobus alerts, check <a href="https://www.wmata.com/service/bus/" target="_blank" rel="noopener noreferrer">WMATA's bus status page</a>.</p>
           </div>
         </details>
 
