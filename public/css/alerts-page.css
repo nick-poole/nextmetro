@@ -8,7 +8,7 @@
   padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
   border-bottom: 1px solid var(--nm-border-subtle);
   background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.65)),
-    url('/images/metro-alerts-hero.webp') center / cover no-repeat;
+    url('/images/metro-alerts-hero.webp') 50% 99% / cover no-repeat;
   background-color: var(--nm-surface);
 }
 
@@ -37,10 +37,6 @@
   letter-spacing: 0.04em;
   line-height: 1.1;
   margin-bottom: var(--nm-space-sm);
-}
-
-.alerts-hero .alerts-status-bar {
-  margin-top: var(--nm-space-lg);
 }
 
 .alerts-hero-subtitle {
@@ -142,11 +138,30 @@
   letter-spacing: 0.1em;
 }
 
+/* ---- Intro Paragraph ---- */
+.alerts-intro {
+  font-family: var(--nm-font);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  line-height: 1.65;
+  max-width: 700px;
+}
+
+.alerts-intro a {
+  color: var(--nm-amber);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.alerts-intro a:hover {
+  text-decoration: underline;
+}
+
 /* ---- Status Summary Bar ---- */
 .alerts-status-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   background-color: var(--nm-surface);
   border: 1px solid var(--nm-border);
   overflow: hidden;
@@ -157,14 +172,16 @@
   align-items: center;
   gap: 8px;
   padding: 0.6rem 1rem;
-  flex: 1 1 auto;
-  min-width: 140px;
   border-right: 1px solid var(--nm-border-subtle);
   border-bottom: 1px solid var(--nm-border-subtle);
 }
 
-.alerts-status-item:last-child {
+.alerts-status-item:nth-child(3n) {
   border-right: none;
+}
+
+.alerts-status-item:nth-last-child(-n+3) {
+  border-bottom: none;
 }
 
 .alerts-status-dot {
@@ -238,11 +255,6 @@
   border-left: 4px solid var(--nm-status-info);
 }
 
-.alerts-card-severity.severity-facility {
-  background-color: rgba(160, 160, 160, 0.06);
-  border-left: 4px solid var(--nm-text-muted);
-}
-
 .alerts-card-icon {
   display: inline-flex;
   flex-shrink: 0;
@@ -260,10 +272,6 @@
 
 .severity-advisory .alerts-card-icon {
   color: var(--nm-status-info);
-}
-
-.severity-facility .alerts-card-icon {
-  color: var(--nm-text-muted);
 }
 
 .alerts-card-severity-label {
@@ -287,10 +295,6 @@
 
 .severity-advisory .alerts-card-severity-label {
   color: var(--nm-status-info);
-}
-
-.severity-facility .alerts-card-severity-label {
-  color: var(--nm-text-muted);
 }
 
 .alerts-card-time {
@@ -333,25 +337,6 @@
   height: 8px;
   border-radius: 50% !important;
   flex-shrink: 0;
-}
-
-.alert-station-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border: 1px solid var(--nm-border);
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.75rem;
-  color: var(--nm-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.alert-station-pill svg {
-  flex-shrink: 0;
-  color: var(--nm-text-muted);
 }
 
 .alerts-card-desc {
@@ -522,12 +507,23 @@
   }
 
   .alerts-status-bar {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .alerts-status-item {
-    min-width: unset;
+  .alerts-status-item:nth-child(3n) {
+    border-right: 1px solid var(--nm-border-subtle);
+  }
+
+  .alerts-status-item:nth-child(2n) {
     border-right: none;
+  }
+
+  .alerts-status-item:nth-last-child(-n+3) {
+    border-bottom: 1px solid var(--nm-border-subtle);
+  }
+
+  .alerts-status-item:nth-last-child(-n+2) {
+    border-bottom: none;
   }
 
   .alerts-card-body {

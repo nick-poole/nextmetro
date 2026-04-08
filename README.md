@@ -26,7 +26,7 @@ NextMetro is an independent, real-time dashboard for the D.C. Metro system. It p
 |------|--------------|
 | **[Station Pages](https://nextmetro.live/station/metro-center/)** | PIDS arrival board, system status, service alerts, elevator/escalator status, fare calculator. Transfer stations (Metro Center, Gallery Place) show dual side-by-side boards — one per physical platform. |
 | **[Line Pages](https://nextmetro.live/lines/red/)** | All stations on the line with transfer/parking badges, real-time status, service hours, frequency info, and FAQ. All 6 lines covered. |
-| **[Service Alerts](https://nextmetro.live/alerts/)** | Every active WMATA rail incident + elevator/escalator outage, severity-sorted, auto-refreshing. |
+| **[Service Alerts](https://nextmetro.live/alerts/)** | Active WMATA rail incidents — delays, closures, single tracking, advisories — severity-sorted and auto-refreshing. |
 | **[Elevator & Escalator Status](https://nextmetro.live/elevators/)** | System-wide outage tracker grouped by station, filterable by type and line. |
 | **[Fare Calculator](https://nextmetro.live/fares/)** | Peak/off-peak/senior pricing between any two stations with travel time estimates and commute cost projections. |
 | **[Hours & Schedules](https://nextmetro.live/hours/)** | Operating hours, frequency tables, holiday schedules. |
@@ -86,7 +86,7 @@ This project has been built iteratively from a React prototype to a production-g
 | **Jun 2025** | **v2.0 — Full WMATA integration** | Rewrote from React to vanilla HTML/CSS/JS. Express backend proxy, real-time arrivals, fare calculator, system status. Deployed on Netlify + Render. |
 | **Feb 2026** | **Cloudflare migration** | Moved entire stack to Cloudflare Workers. Single deployment for API proxy + static assets. Eliminated cold starts. |
 | **Feb 2026** | **v2.1 — Line pages** | 6 dedicated line pages with station lists, transfer badges, parking indicators, service info, and FAQ sections. |
-| **Feb 2026** | **v2.2 — Alerts page** | Unified rail incidents + elevator/escalator outages. Severity sorting, SpecialAnnouncement schema. |
+| **Feb 2026** | **v2.2 — Alerts page** | Rail service alerts with severity sorting and SpecialAnnouncement schema. Elevator/escalator outages split to dedicated page. |
 | **Feb 2026** | **v2.3 — Elevator status** | Station-grouped outage view with dual filter system. Accessibility-first sorting (elevator outages surface first). |
 | **Mar 2026** | **v2.5 — Site-wide audit** | WCAG compliance pass, skip navigation on all pages, Schema.org structured data everywhere, meta/OG tags audit, static status bar. |
 | **Mar 2026** | **v2.6 — Station pages** | 5 dedicated station pages including dual-PIDS transfer stations (Metro Center, Gallery Place). Search navigation. |
