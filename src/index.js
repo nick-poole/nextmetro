@@ -369,7 +369,7 @@ function addSecurityHeaders(response) {
 	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 	response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-	response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self' https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' https://cloud.umami.is; frame-ancestors 'none'");
+	response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self' https://cloud.umami.is https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' https://cloud.umami.is https://us.i.posthog.com; frame-ancestors 'none'");
 }
 
 // ==============================

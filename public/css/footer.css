@@ -271,8 +271,9 @@
 .nm-footer__legal {
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
 }
-.nm-footer__legal a {
+.nm-footer__legal-link {
   font-family: 'Rajdhani', sans-serif;
   font-size: 11px;
   color: var(--nm-gray);
@@ -285,9 +286,16 @@
   align-items: center;
   min-height: 24px;
   padding: 4px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
-.nm-footer__legal a:hover {
+.nm-footer__legal-link:hover {
   color: var(--nm-white);
+}
+.nm-footer__legal-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
 }
 
 /* Responsive — 900px: 2 columns */

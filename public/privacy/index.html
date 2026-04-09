@@ -34,10 +34,8 @@
   <link rel="stylesheet" href="/css/legal.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/consent.css" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" integrity="sha256-MblAFgCXnFAJlRJnqJqOjRfz0ODAP+6LxfGQEK7g1o=" crossorigin="anonymous" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="cd3911ec-9121-4bb1-8153-918b1f40e862"></script>
 </head>
@@ -100,12 +98,12 @@
   <div class="legal-page">
     <span class="legal-label">Legal</span>
     <h1 class="legal-title">Privacy Policy</h1>
-    <p class="legal-meta">Effective Date: March 10, 2026 &middot; Last Updated: April 7, 2026</p>
+    <p class="legal-meta">Effective Date: March 10, 2026 &middot; Last Updated: April 9, 2026</p>
 
     <div class="legal-callout">
       <h2 class="legal-callout-heading">The Short Version</h2>
-      <p>NextMetro is a transit information app. We collect minimal data &mdash; basically just standard server logs and privacy-focused analytics to understand traffic. Our analytics are cookie-free, do not track you across sites, and do not collect personal information. We don't sell your data. We're not affiliated with WMATA. If you're in the EU, California, or other places with strong privacy laws, you have rights we respect.</p>
-      <p>We use Google Fonts, which means Google gets your IP address when you load our site. We're working on self-hosting fonts to eliminate this.</p>
+      <p>NextMetro is a transit information app. We collect minimal data &mdash; standard server logs and privacy-focused analytics to understand traffic. Our baseline analytics are cookie-free and always active. We also offer optional enhanced analytics that use cookies &mdash; these only load if you click &ldquo;Accept&rdquo; on the consent banner. We don't sell your data. We're not affiliated with WMATA. If you're in the EU, California, or other places with strong privacy laws, you have rights we respect.</p>
+      <p>If your browser sends a Global Privacy Control (GPC) signal, we automatically respect it &mdash; no consent banner is shown and enhanced analytics are never loaded.</p>
     </div>
 
     <div class="legal-body">
@@ -127,7 +125,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>IP Address</td><td>Your device's internet protocol address</td><td>Security, analytics, abuse prevention</td></tr>
+            <tr><td>IP Address</td><td>Your device's internet protocol address (collected by our hosting provider in server logs; also collected by enhanced analytics if you consent)</td><td>Security, abuse prevention, analytics</td></tr>
             <tr><td>Browser Type and Version</td><td>e.g., Chrome 120, Safari 17</td><td>Compatibility, debugging</td></tr>
             <tr><td>Operating System</td><td>e.g., Windows 11, iOS 17</td><td>Compatibility, debugging</td></tr>
             <tr><td>Device Type</td><td>Desktop, mobile, tablet</td><td>Responsive design optimization</td></tr>
@@ -193,7 +191,8 @@
           </thead>
           <tbody>
             <tr><td><strong>Providing the Service</strong> &mdash; Displaying transit information and operating the website</td><td>Legitimate interest</td></tr>
-            <tr><td><strong>Improving the Service</strong> &mdash; Understanding usage patterns to make improvements</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Improving the Service</strong> &mdash; Understanding usage patterns to make improvements (essential analytics)</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Enhanced Analytics</strong> &mdash; Detailed session and interaction data to optimize the user experience</td><td>Consent</td></tr>
             <tr><td><strong>Technical Support</strong> &mdash; Diagnosing and fixing technical issues</td><td>Legitimate interest</td></tr>
             <tr><td><strong>Security</strong> &mdash; Detecting and preventing abuse, fraud, and unauthorized access</td><td>Legitimate interest</td></tr>
             <tr><td><strong>Legal Compliance</strong> &mdash; Complying with applicable laws and regulations</td><td>Legal obligation</td></tr>
@@ -247,31 +246,14 @@
       <h2>5. Third-Party Services</h2>
       <p>The Service uses the following third-party services that may collect information about you:</p>
 
-      <h3>5.1 Google Fonts</h3>
-      <p><strong>What it is:</strong> NextMetro uses Google Fonts to display typography.</p>
-      <p><strong>What Google collects:</strong> When you load the Service, your browser downloads font files from Google's servers. Google receives:</p>
-      <ul class="legal-list">
-        <li>Your IP address</li>
-        <li>The URL of the page you're visiting (referrer)</li>
-        <li>Browser and device information</li>
-        <li>Date and time of access</li>
-      </ul>
-      <p><strong>Google's use:</strong> Google states they use this data to serve fonts efficiently and compile aggregate usage statistics. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a> and <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts FAQ</a>.</p>
-      <p><strong>Your options:</strong></p>
-      <ul class="legal-list">
-        <li>Use a browser extension to block Google Fonts</li>
-        <li>Use a privacy-focused browser that blocks third-party requests</li>
-      </ul>
-      <p><strong>Our commitment:</strong> We are working toward self-hosting fonts to eliminate this third-party data transfer.</p>
-
-      <h3>5.2 Hosting Provider</h3>
+      <h3>5.1 Hosting Provider</h3>
       <p><strong>What it is:</strong> NextMetro is hosted by Cloudflare.</p>
       <p><strong>What they collect:</strong> Standard server logs including IP addresses, request data, and timestamps.</p>
       <p><strong>Their use:</strong> Providing hosting services, security, and abuse prevention.</p>
       <p><strong>More information:</strong> See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's Privacy Policy</a>.</p>
 
-      <h3>5.3 Analytics</h3>
-      <p><strong>What it is:</strong> NextMetro uses a privacy-focused, cookie-free analytics service to understand how visitors use the Service.</p>
+      <h3>5.2 Essential Analytics (Always Active)</h3>
+      <p><strong>What it is:</strong> NextMetro uses a privacy-focused, cookie-free analytics service to understand how visitors use the Service. This service loads on every page without requiring consent.</p>
       <p><strong>What it collects:</strong> Aggregate, non-personal data including:</p>
       <ul class="legal-list">
         <li>Page views and referring URLs</li>
@@ -284,7 +266,30 @@
         <li>Cookies or persistent identifiers</li>
         <li>Cross-site tracking data</li>
       </ul>
-      <p><strong>Compliance:</strong> Our analytics service is GDPR, CCPA, and PECR compliant. It does not require a cookie consent banner because it does not use cookies or collect personal data.</p>
+      <p><strong>Compliance:</strong> This analytics service is GDPR, CCPA, and PECR compliant. It does not require a cookie consent banner because it does not use cookies or collect personal data.</p>
+
+      <h3>5.3 Enhanced Analytics (Consent Required)</h3>
+      <p><strong>What it is:</strong> NextMetro uses an optional enhanced analytics service to understand how visitors navigate the site in more detail. <strong>This service only loads after you explicitly consent</strong> by clicking &ldquo;Accept&rdquo; on the cookie consent banner.</p>
+      <p><strong>What it collects</strong> (only after consent):</p>
+      <ul class="legal-list">
+        <li>Page views and navigation paths</li>
+        <li>Browser, device, and operating system information</li>
+        <li>Session data (pages visited in a single session, time on page)</li>
+        <li>Click and interaction events</li>
+        <li>Country and region (derived from IP address)</li>
+      </ul>
+      <p><strong>Cookies set</strong> (only after consent):</p>
+      <ul class="legal-list">
+        <li>Analytics session and device identifiers</li>
+      </ul>
+      <p><strong>Your control:</strong></p>
+      <ul class="legal-list">
+        <li>You may decline analytics cookies when the consent banner appears</li>
+        <li>You may change your preference at any time via the &ldquo;Cookie Preferences&rdquo; link in the site footer</li>
+        <li>If your browser sends a Global Privacy Control (GPC) signal, enhanced analytics are never loaded and no consent banner is shown</li>
+        <li>You may also block cookies through your browser settings</li>
+      </ul>
+      <p><strong>If you decline or revoke consent:</strong> No enhanced analytics cookies are set, no session or event data is collected by this service, and any previously set cookies are cleared.</p>
 
       <h3>5.4 WMATA API</h3>
       <p><strong>What it is:</strong> Transit data displayed in NextMetro is fetched from WMATA's public API.</p>
@@ -309,13 +314,14 @@
           </thead>
           <tbody>
             <tr><td>Essential Cookies</td><td>Required for the Service to function (e.g., remembering your preferences)</td><td>Session or persistent</td></tr>
-            <tr><td>Analytics Cookies</td><td>Help us understand how visitors use the Service</td><td>Varies by provider</td></tr>
+            <tr><td>Analytics Cookies (consent required)</td><td>Help us understand how visitors navigate the Service. Only set after you click &ldquo;Accept&rdquo; on the consent banner.</td><td>1 year</td></tr>
           </tbody>
         </table>
       </div>
 
       <h3>6.3 Local Storage</h3>
-      <p>We may use browser local storage to save your preferences (such as favorite stations or display settings). This data is stored only on your device and is not transmitted to our servers unless necessary for functionality.</p>
+      <p>We use browser local storage to save your preferences (such as favorite stations or display settings). This data is stored only on your device and is not transmitted to our servers unless necessary for functionality.</p>
+      <p>We also store your cookie consent preference (<code>nm-consent</code>) in local storage so we can remember your choice across visits without setting an additional cookie.</p>
 
       <h3>6.4 Managing Cookies</h3>
       <p>You can control cookies through your browser settings:</p>
@@ -328,7 +334,7 @@
       <p>Note that disabling cookies may affect the functionality of the Service.</p>
 
       <h3>6.5 Third-Party Cookies</h3>
-      <p>Third-party services we use (such as Google Fonts) may set their own cookies. We do not control these cookies. Please refer to the respective third-party privacy policies for more information. Note that our analytics service does not use cookies.</p>
+      <p>Third-party services we use may set their own cookies. We do not control these cookies. Please refer to the respective third-party privacy policies for more information. Note that our essential analytics service does not use cookies. Our enhanced analytics service sets cookies only after you consent.</p>
 
       <!-- Section 7 -->
       <h2>7. Data Retention</h2>
@@ -343,7 +349,8 @@
           </thead>
           <tbody>
             <tr><td>Server Logs</td><td>90 days</td></tr>
-            <tr><td>Analytics Data</td><td>As determined by analytics provider</td></tr>
+            <tr><td>Essential Analytics Data</td><td>Retained in aggregate form; no personal data stored</td></tr>
+            <tr><td>Enhanced Analytics Data</td><td>Retained for the duration configured in our analytics provider account (currently up to 1 year), then automatically deleted</td></tr>
             <tr><td>Contact Communications</td><td>Until inquiry is resolved, plus 2 years</td></tr>
             <tr><td>Local Storage Data</td><td>Until you clear your browser data</td></tr>
           </tbody>
@@ -431,7 +438,11 @@
       <h3>10.4 We Do Not Share Personal Information for Cross-Context Behavioral Advertising</h3>
       <p>NextMetro does not share personal information for cross-context behavioral advertising.</p>
 
-      <h3>10.5 Exercising Your Rights</h3>
+      <h3>10.5 Do Not Sell or Share My Personal Information</h3>
+      <p>NextMetro does not sell or share your personal information. However, in compliance with the CCPA, we provide a &ldquo;Do Not Sell or Share My Personal Information&rdquo; link in the footer of every page. Clicking this link opens the Cookie Preferences panel, where you can opt out of enhanced analytics at any time.</p>
+      <p>If your browser sends a Global Privacy Control (GPC) signal, this is treated as a valid opt-out request under the CCPA.</p>
+
+      <h3>10.6 Exercising Your Rights</h3>
       <p>To exercise your CCPA rights, please contact us at:</p>
       <p><strong>Email:</strong> <a href="mailto:contact@nextmetro.live">contact@nextmetro.live</a></p>
       <p>You may designate an authorized agent to make a request on your behalf. We may require verification of your identity and authorization.</p>
@@ -452,7 +463,8 @@
           </thead>
           <tbody>
             <tr><td>Providing the Service</td><td>Legitimate interest</td></tr>
-            <tr><td>Analytics and improvement</td><td>Legitimate interest</td></tr>
+            <tr><td>Essential analytics and improvement</td><td>Legitimate interest</td></tr>
+            <tr><td>Enhanced analytics (session and interaction data)</td><td>Consent</td></tr>
             <tr><td>Security and abuse prevention</td><td>Legitimate interest</td></tr>
             <tr><td>Responding to your inquiries</td><td>Consent or legitimate interest</td></tr>
             <tr><td>Legal compliance</td><td>Legal obligation</td></tr>
@@ -517,15 +529,16 @@
       <p>We do not currently participate in the EU-U.S. Data Privacy Framework. We rely on standard contractual clauses and consent for international transfers.</p>
 
       <!-- Section 14 -->
-      <h2>14. Do Not Track Signals</h2>
-      <p>Some browsers include a &ldquo;Do Not Track&rdquo; (DNT) feature that signals to websites that you do not want your online activity tracked.</p>
-      <p><strong>Our Response to DNT:</strong> Currently, there is no universal standard for how websites should respond to DNT signals. As a result, NextMetro does not currently respond to DNT signals. However, you may control tracking through:</p>
+      <h2>14. Do Not Track and Global Privacy Control</h2>
+      <p><strong>Global Privacy Control (GPC):</strong> NextMetro respects the Global Privacy Control signal. If your browser sends a GPC signal (<code>Sec-GPC: 1</code> or <code>navigator.globalPrivacyControl</code>), we treat this as an opt-out of enhanced analytics. No consent banner is shown, no analytics cookies are set, and the enhanced analytics service is never loaded.</p>
+      <p><strong>Do Not Track (DNT):</strong> NextMetro also honors the DNT signal. If your browser sends a DNT signal, enhanced analytics are not loaded.</p>
+      <p>You may also control tracking through:</p>
       <ul class="legal-list">
+        <li>The cookie consent banner (decline when prompted)</li>
+        <li>The &ldquo;Cookie Preferences&rdquo; link in the site footer (change your choice at any time)</li>
         <li>Browser privacy settings</li>
         <li>Browser extensions that block trackers</li>
-        <li>Opting out of analytics (see Section 5)</li>
       </ul>
-      <p>We will update this policy if a standard for DNT is adopted.</p>
 
       <!-- Section 15 -->
       <h2>15. Links to Other Websites</h2>
@@ -568,9 +581,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>IP Address</td><td>Security, analytics</td><td>Hosting provider, analytics</td><td>Use VPN</td></tr>
-            <tr><td>Browser/Device Info</td><td>Compatibility</td><td>Analytics</td><td>Browser settings</td></tr>
-            <tr><td>Pages Visited</td><td>Improvement</td><td>Analytics</td><td>Opt out of analytics</td></tr>
+            <tr><td>IP Address</td><td>Security, abuse prevention</td><td>Hosting provider; enhanced analytics (if you consent)</td><td>Use VPN</td></tr>
+            <tr><td>Browser/Device Info</td><td>Compatibility</td><td>Essential analytics (aggregate only); enhanced analytics (if you consent)</td><td>Browser settings</td></tr>
+            <tr><td>Pages Visited</td><td>Improvement</td><td>Essential analytics (aggregate only); enhanced analytics (if you consent)</td><td>Decline consent or use Cookie Preferences</td></tr>
+            <tr><td>Session &amp; Interaction Data</td><td>Understanding navigation patterns</td><td>Enhanced analytics (if you consent)</td><td>Decline consent or use Cookie Preferences</td></tr>
+            <tr><td>Cookie Consent Preference</td><td>Remember your choice</td><td>No one (stored on your device)</td><td>Clear browser data</td></tr>
             <tr><td>Local Preferences</td><td>Convenience</td><td>No one</td><td>Clear browser data</td></tr>
             <tr><td>Contact Info (if you email us)</td><td>Respond to you</td><td>No one</td><td>Don't contact us</td></tr>
           </tbody>
@@ -598,7 +613,7 @@
     </div>
 
     <div class="legal-footer-note">
-      <p>Last Updated: April 7, 2026</p>
+      <p>Last Updated: April 9, 2026</p>
       <p>&copy; 2026 NextMetro. All rights reserved.</p>
     </div>
 
@@ -606,8 +621,9 @@
       <h2>Appendix: Third-Party Privacy Policies</h2>
       <p>For your convenience, here are links to the privacy policies of third-party services we use:</p>
       <ul class="legal-list">
-        <li><strong>Google (Fonts):</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></li>
         <li><strong>Cloudflare:</strong> <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">cloudflare.com/privacypolicy</a></li>
+        <li><strong>Umami (Essential Analytics):</strong> <a href="https://umami.is/privacy" target="_blank" rel="noopener noreferrer">umami.is/privacy</a></li>
+        <li><strong>PostHog (Enhanced Analytics):</strong> <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer">posthog.com/privacy</a></li>
       </ul>
     </div>
   </div>
@@ -689,9 +705,14 @@
     </div>
     <div class="nm-footer__bottom">
       <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
+      <div class="nm-footer__legal">
+        <button type="button" class="nm-footer__legal-link" onclick="openCookiePreferences()">Cookie Preferences</button>
+        <button type="button" class="nm-footer__legal-link" onclick="doNotSell()">Do Not Sell or Share My Personal Information</button>
+      </div>
     </div>
   </footer>
   <script src="/js/nav.js"></script>
   <script src="/js/search.js"></script>
+  <script src="/js/consent.js" defer></script>
 </body>
 </html>

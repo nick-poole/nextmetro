@@ -34,10 +34,8 @@
   <link rel="stylesheet" href="/css/legal.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/consent.css" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" integrity="sha256-MblAFgCXnFAJlRJnqJqOjRfz0ODAP+6LxfGQEK7g1o=" crossorigin="anonymous" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="cd3911ec-9121-4bb1-8153-918b1f40e862"></script>
 </head>
@@ -100,7 +98,7 @@
   <div class="legal-page">
     <span class="legal-label">Legal</span>
     <h1 class="legal-title">Terms of Service</h1>
-    <p class="legal-meta">Effective Date: March 10, 2026 &middot; Last Updated: March 17, 2026</p>
+    <p class="legal-meta">Effective Date: March 10, 2026 &middot; Last Updated: April 9, 2026</p>
 
     <div class="legal-callout">
       <h2 class="legal-callout-heading">The Short Version</h2>
@@ -268,6 +266,7 @@
       <p>The Service may contain links to third-party websites, services, or resources that are not owned or controlled by NextMetro. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services.</p>
       <p>You acknowledge and agree that NextMetro shall not be responsible or liable for any damage or loss caused by or in connection with the use of any such third-party content, goods, or services.</p>
       <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party websites or services that you visit.</p>
+      <p>The Service uses optional analytics cookies provided by a third-party service. These cookies are only set after you provide explicit consent via the cookie consent banner. You may withdraw consent at any time through the &ldquo;Cookie Preferences&rdquo; link in the site footer. For full details on what data is collected and how it is used, see our <a href="/privacy/">Privacy Policy</a>.</p>
 
       <!-- Section 11 -->
       <h2>11. Service Availability and Modifications</h2>
@@ -353,7 +352,7 @@
     </div>
 
     <div class="legal-footer-note">
-      <p>Last Updated: March 17, 2026</p>
+      <p>Last Updated: April 9, 2026</p>
       <p>&copy; 2026 NextMetro. All rights reserved.</p>
     </div>
   </div>
@@ -435,9 +434,14 @@
     </div>
     <div class="nm-footer__bottom">
       <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
+      <div class="nm-footer__legal">
+        <button type="button" class="nm-footer__legal-link" onclick="openCookiePreferences()">Cookie Preferences</button>
+        <button type="button" class="nm-footer__legal-link" onclick="doNotSell()">Do Not Sell or Share My Personal Information</button>
+      </div>
     </div>
   </footer>
   <script src="/js/nav.js"></script>
   <script src="/js/search.js"></script>
+  <script src="/js/consent.js" defer></script>
 </body>
 </html>

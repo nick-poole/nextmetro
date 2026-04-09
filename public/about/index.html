@@ -38,10 +38,8 @@
   <link rel="stylesheet" href="/css/about.css" />
   <link rel="stylesheet" href="/css/nav.css" />
   <link rel="stylesheet" href="/css/footer.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/consent.css" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" integrity="sha256-MblAFgCXnFAJlRJnqJqOjRfz0ODAP+6LxfGQEK7g1o=" crossorigin="anonymous" />
 
   <!-- Structured Data -->
@@ -252,9 +250,14 @@
     </div>
     <div class="nm-footer__bottom">
       <span class="nm-footer__copy">&copy; 2026 NextMetro &middot; nextmetro.live</span>
+      <div class="nm-footer__legal">
+        <button type="button" class="nm-footer__legal-link" onclick="openCookiePreferences()">Cookie Preferences</button>
+        <button type="button" class="nm-footer__legal-link" onclick="doNotSell()">Do Not Sell or Share My Personal Information</button>
+      </div>
     </div>
   </footer>
   <script src="/js/nav.js"></script>
   <script src="/js/search.js"></script>
+  <script src="/js/consent.js" defer></script>
 </body>
 </html>
