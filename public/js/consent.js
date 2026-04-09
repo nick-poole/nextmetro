@@ -81,8 +81,7 @@
     banner.innerHTML =
       '<div class="consent-banner__inner">' +
         '<p class="consent-banner__text">' +
-          'We use optional cookies for analytics to understand how visitors use this site. ' +
-          'Our baseline analytics are cookie-free and always active. ' +
+          'This site uses optional cookies for analytics. Nothing is tracked without your consent. ' +
           '<a href="/privacy/" class="consent-banner__link">Privacy Policy</a>' +
         '</p>' +
         '<div class="consent-banner__actions">' +
