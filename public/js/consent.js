@@ -157,7 +157,7 @@
             '<p class="consent-modal__gpc-notice">Your browser is sending a Global Privacy Control signal. Enhanced analytics are disabled to respect your privacy preference.</p>' : '') +
         '</div>' +
         '<div class="consent-modal__footer">' +
-          '<button class="consent-modal__save consent-banner__btn consent-banner__btn--accept" type="button">Save Preferences</button>' +
+          '<button class="consent-modal__save" type="button">Save Preferences</button>' +
         '</div>' +
       '</div>';
 
