@@ -262,12 +262,37 @@
   outline-offset: 2px;
 }
 
+/* ---- Toast ---- */
+.consent-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 10001;
+  background: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  color: var(--nm-text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  max-width: 480px;
+  text-align: center;
+}
+.consent-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ---- Reduced Motion ---- */
 @media (prefers-reduced-motion: reduce) {
   .consent-banner,
   .consent-modal-overlay,
   .consent-modal__toggle,
-  .consent-modal__toggle-knob {
+  .consent-modal__toggle-knob,
+  .consent-toast {
     transition: none;
   }
 }

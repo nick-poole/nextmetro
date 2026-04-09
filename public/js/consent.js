@@ -266,10 +266,41 @@
   }
 
   // ==============================
+  // Toast notification
+  // ==============================
+  function showToast(message) {
+    var existing = document.querySelector('.consent-toast');
+    if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+
+    var toast = document.createElement('div');
+    toast.className = 'consent-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.textContent = message;
+
+    document.body.appendChild(toast);
+    toast.offsetHeight;
+    toast.classList.add('consent-toast--visible');
+
+    setTimeout(function () {
+      toast.classList.remove('consent-toast--visible');
+      setTimeout(function () {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 300);
+    }, 3000);
+  }
+
+  // ==============================
   // Public API for footer links
   // ==============================
   window.openCookiePreferences = function () {
     createPreferencesModal();
+  };
+
+  window.doNotSell = function () {
+    setConsent('declined');
+    clearPostHog();
+    showToast('Your preference has been saved. Enhanced analytics are now disabled.');
   };
 
   // ==============================
