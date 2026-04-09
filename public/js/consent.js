@@ -71,6 +71,33 @@
   }
 
   // ==============================
+  // Focus trap utility
+  // ==============================
+  function trapFocus(container) {
+    var focusable = container.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+
+    container.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+  }
+
+  // ==============================
   // Banner DOM
   // ==============================
   function createBanner() {
@@ -85,8 +112,8 @@
           '<a href="/privacy/" class="consent-banner__link">Privacy Policy</a>' +
         '</p>' +
         '<div class="consent-banner__actions">' +
-          '<button class="consent-banner__btn consent-banner__btn--accept" type="button">Accept</button>' +
-          '<button class="consent-banner__btn consent-banner__btn--decline" type="button">Decline</button>' +
+          '<button class="consent-banner__btn consent-banner__btn--accept" type="button">Accept Cookies</button>' +
+          '<button class="consent-banner__btn consent-banner__btn--decline" type="button">Decline Cookies</button>' +
         '</div>' +
       '</div>';
 
@@ -101,10 +128,21 @@
       removeBanner(banner);
     });
 
+    // Escape key dismisses the banner (same as decline)
+    banner.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setConsent('declined');
+        removeBanner(banner);
+      }
+    });
+
     document.body.appendChild(banner);
     // Trigger reflow for CSS transition
     banner.offsetHeight;
     banner.classList.add('consent-banner--visible');
+
+    // Move focus to the first action button for screen readers
+    banner.querySelector('.consent-banner__btn--accept').focus();
   }
 
   function removeBanner(banner) {
@@ -121,7 +159,10 @@
   // ==============================
   // Preferences modal
   // ==============================
+  var triggerElement = null;
+
   function createPreferencesModal() {
+    triggerElement = document.activeElement;
     var consent = getConsent();
     var isAccepted = consent === 'accepted';
 
@@ -136,22 +177,22 @@
         '<div class="consent-modal__body">' +
           '<div class="consent-modal__row">' +
             '<div class="consent-modal__info">' +
-              '<h3 class="consent-modal__category">Essential Analytics</h3>' +
+              '<h3 class="consent-modal__category" id="consent-essential-label">Essential Analytics</h3>' +
               '<p class="consent-modal__desc">Cookie-free, privacy-focused page view analytics. No personal data is collected.</p>' +
             '</div>' +
-            '<span class="consent-modal__badge">Always On</span>' +
+            '<span class="consent-modal__badge" aria-label="Essential analytics are always on">Always On</span>' +
           '</div>' +
           '<div class="consent-modal__row">' +
             '<div class="consent-modal__info">' +
-              '<h3 class="consent-modal__category">Enhanced Analytics</h3>' +
+              '<h3 class="consent-modal__category" id="consent-enhanced-label">Enhanced Analytics</h3>' +
               '<p class="consent-modal__desc">Helps us understand how visitors navigate the site with session data and event tracking. Uses cookies.</p>' +
             '</div>' +
-            '<button class="consent-modal__toggle' + (isAccepted ? ' consent-modal__toggle--on' : '') + '" type="button" role="switch" aria-checked="' + isAccepted + '" aria-label="Toggle enhanced analytics">' +
+            '<button class="consent-modal__toggle' + (isAccepted ? ' consent-modal__toggle--on' : '') + '" type="button" role="switch" aria-checked="' + isAccepted + '" aria-labelledby="consent-enhanced-label">' +
               '<span class="consent-modal__toggle-knob"></span>' +
             '</button>' +
           '</div>' +
           (hasPrivacySignal() ?
-            '<p class="consent-modal__gpc-notice">Your browser is sending a Global Privacy Control signal. Enhanced analytics are disabled to respect your privacy preference.</p>' : '') +
+            '<p class="consent-modal__gpc-notice" role="status">Your browser is sending a Global Privacy Control signal. Enhanced analytics are disabled to respect your privacy preference.</p>' : '') +
         '</div>' +
         '<div class="consent-modal__footer">' +
           '<button class="consent-modal__save" type="button">Save Preferences</button>' +
@@ -186,19 +227,27 @@
       closeModal(overlay);
     });
 
-    // Close
+    // Close button
     overlay.querySelector('.consent-modal__close').addEventListener('click', function () {
       closeModal(overlay);
     });
+
+    // Click outside to close
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay) closeModal(overlay);
+    });
+
+    // Escape key to close
+    overlay.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal(overlay);
     });
 
     document.body.appendChild(overlay);
     overlay.offsetHeight;
     overlay.classList.add('consent-modal-overlay--visible');
 
-    // Trap focus
+    // Focus trap and initial focus
+    trapFocus(overlay.querySelector('.consent-modal'));
     overlay.querySelector('.consent-modal__close').focus();
   }
 
@@ -210,6 +259,10 @@
     setTimeout(function () {
       if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
     }, 400);
+    // Restore focus to the element that triggered the modal
+    if (triggerElement && typeof triggerElement.focus === 'function') {
+      triggerElement.focus();
+    }
   }
 
   // ==============================
