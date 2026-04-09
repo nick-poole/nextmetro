@@ -141,8 +141,10 @@
     banner.offsetHeight;
     banner.classList.add('consent-banner--visible');
 
-    // Move focus to the first action button for screen readers
-    banner.querySelector('.consent-banner__btn--accept').focus();
+    // Focus the banner container so screen readers announce it,
+    // but no button is pre-selected (GDPR: no bias toward Accept)
+    banner.setAttribute('tabindex', '-1');
+    banner.focus();
   }
 
   function removeBanner(banner) {

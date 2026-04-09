@@ -16,6 +16,9 @@
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+.consent-banner:focus {
+  outline: none;
+}
 .consent-banner--visible {
   transform: translateY(0);
   opacity: 1;
