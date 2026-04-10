@@ -78,6 +78,19 @@ function updatePeakIndicator() {
 }
 
 // ==============================
+// Reduced Fare Calculation
+// WMATA API SeniorDisabled field is stale for routes over ~4.5 miles.
+// Compute client-side as 50% of regular fare, rounded to nearest $0.05,
+// with a $1.10 floor — matches WMATA's published reduced fare policy.
+// ==============================
+function reducedFare(amount) {
+  var cents = Math.round(amount * 100);
+  var halfCents = Math.floor(cents / 2);
+  var rounded = Math.floor(halfCents / 5) * 5; // floor to nearest 5¢
+  return Math.max(1.10, rounded / 100);
+}
+
+// ==============================
 // Populate Station Selectors
 // ==============================
 function populateStations() {
@@ -126,7 +139,7 @@ async function fetchFare() {
     resultTime.textContent = '0 min';
     resultRoundtrip.textContent = '$0.00';
     resultRoundtripNote.textContent = '';
-    currentFareData = { peak: 0, offpeak: 0, senior: 0, time: 0 };
+    currentFareData = { peak: 0, offpeak: 0, seniorPeak: 0, seniorOffpeak: 0, time: 0 };
     calcResults.style.display = '';
     updateEstimator();
     return;
@@ -147,10 +160,13 @@ async function fetchFare() {
     }
 
     const fare = info.RailFare || {};
+    const peakAmt = fare.PeakTime || 0;
+    const offpeakAmt = fare.OffPeakTime || 0;
     currentFareData = {
-      peak: fare.PeakTime || 0,
-      offpeak: fare.OffPeakTime || 0,
-      senior: fare.SeniorDisabled || 0,
+      peak: peakAmt,
+      offpeak: offpeakAmt,
+      seniorPeak: reducedFare(peakAmt),
+      seniorOffpeak: reducedFare(offpeakAmt),
       time: info.RailTime || 0,
     };
 
@@ -175,11 +191,17 @@ function displayResults() {
   const peak = isPeakTime(new Date());
 
   if (fareType === 'senior') {
-    resultPeak.textContent = '$' + d.senior.toFixed(2);
-    resultOffpeak.textContent = '$' + d.senior.toFixed(2);
-    const rt = d.senior * 2;
-    resultRoundtrip.textContent = '$' + rt.toFixed(2);
-    resultRoundtripNote.textContent = 'Senior/Disabled flat rate';
+    resultPeak.textContent = '$' + d.seniorPeak.toFixed(2);
+    resultOffpeak.textContent = '$' + d.seniorOffpeak.toFixed(2);
+    if (peak) {
+      const rt = d.seniorPeak * 2;
+      resultRoundtrip.textContent = '$' + rt.toFixed(2);
+      resultRoundtripNote.textContent = 'Reduced weekday round trip';
+    } else {
+      const rt = d.seniorOffpeak * 2;
+      resultRoundtrip.textContent = '$' + rt.toFixed(2);
+      resultRoundtripNote.textContent = 'Reduced late night / weekend';
+    }
   } else {
     resultPeak.textContent = '$' + d.peak.toFixed(2);
     resultOffpeak.textContent = '$' + d.offpeak.toFixed(2);
@@ -222,7 +244,7 @@ function updateEstimator() {
   let costPerTrip;
 
   if (fareType === 'senior') {
-    costPerTrip = d.senior;
+    costPerTrip = d.seniorPeak * 0.6 + d.seniorOffpeak * 0.4;
   } else {
     // Assume a mix: roughly 60% peak, 40% off-peak for commuters
     costPerTrip = d.peak * 0.6 + d.offpeak * 0.4;
