@@ -650,8 +650,68 @@
     min-width: auto;
   }
 
-  .fare-table thead th,
+  .fare-table-wrapper {
+    border: none;
+    overflow-x: visible;
+  }
+
+  .fare-table thead {
+    display: none;
+  }
+
+  .fare-table,
+  .fare-table tbody,
+  .fare-table tr,
+  .fare-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .fare-table tbody tr {
+    background-color: var(--nm-surface);
+    border: 1px solid var(--nm-border);
+    margin-bottom: var(--nm-space-sm);
+    padding: var(--nm-space-sm) 0;
+  }
+
+  .fare-table tbody tr:hover {
+    background-color: var(--nm-surface-elevated);
+  }
+
   .fare-table tbody td {
-    padding: 0.5rem 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.4rem 1rem;
+    border-bottom: none;
+    text-align: right;
+  }
+
+  .fare-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--nm-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: left;
+    flex-shrink: 0;
+    padding-right: var(--nm-space-sm);
+  }
+
+  .fare-table tbody td:first-child {
+    font-weight: 700;
+    color: var(--nm-text-primary);
+    border-bottom: 1px solid var(--nm-border-subtle);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .fare-table tbody td:first-child::before {
+    display: none;
+  }
+
+  .fare-table tbody td:first-child {
+    text-align: left;
   }
 }

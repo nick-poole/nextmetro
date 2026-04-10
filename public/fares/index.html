@@ -74,15 +74,15 @@
         "name": "How much does the DC Metro cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DC Metro fares range from $2.25 to $6.75 per trip depending on distance traveled and time of day. Weekday fares range from $2.25 to $6.75, while late night and weekend fares range from $2.25 to $2.50. Senior citizens and persons with disabilities pay approximately half the regular fare."
+          "text": "DC Metro fares are distance-based and range from $2.25 to $6.75 per trip on weekdays (opening through 9:30 PM). Late night (after 9:30 PM) and weekend fares range from $2.25 to $2.50. Senior citizens and persons with disabilities pay a reduced fare of $1.10 to $3.35."
         }
       },
       {
         "@type": "Question",
-        "name": "What are DC Metro peak hours?",
+        "name": "When do different DC Metro fare rates apply?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Weekday fares apply Monday through Friday from opening through 9:30 PM. Late night fares apply after 9:30 PM on weekdays. Weekend fares apply all day Saturday and Sunday. Federal holidays use weekend fare rates."
+          "text": "Weekday fares ($2.25–$6.75, distance-based) apply Monday through Friday from opening through 9:30 PM. Late night fares ($2.25–$2.50) apply after 9:30 PM on weekdays. Weekend and federal holiday fares are $2.25–$2.50 all day. There is no separate peak or rush-hour surcharge — all weekday rides before 9:30 PM use the same distance-based fare."
         }
       },
       {
@@ -166,7 +166,7 @@
       <span class="fares-hero-label">Fares</span>
       <h1 class="fares-hero-title">Fare Calculator</h1>
       <p class="fares-hero-subtitle">
-        Calculate the cost of your Metrorail trip. Metro fares range from $2.25 to $6.75 depending on distance traveled and time of day.
+        Calculate the cost of your Metrorail trip. Weekday fares range from $2.25 to $6.75 based on distance. Late night and weekend fares are $2.25 – $2.50.
       </p>
       <div class="peak-indicator" id="peak-indicator">
         <span class="peak-indicator-dot" id="peak-dot"></span>
@@ -227,14 +227,14 @@
         <div class="calc-results" id="calc-results" style="display:none;">
           <div class="calc-results-grid">
             <div class="calc-result-item">
-              <span class="calc-result-label">Peak Fare</span>
+              <span class="calc-result-label">Weekday Fare</span>
               <span class="calc-result-value calc-result-value--highlight" id="result-peak">--</span>
-              <span class="calc-result-note">Weekdays, rush hours</span>
+              <span class="calc-result-note">Mon–Fri, opening – 9:30 PM</span>
             </div>
             <div class="calc-result-item">
-              <span class="calc-result-label">Off-Peak Fare</span>
+              <span class="calc-result-label">Late Night / Weekend</span>
               <span class="calc-result-value calc-result-value--highlight" id="result-offpeak">--</span>
-              <span class="calc-result-note">Evenings, weekends, holidays</span>
+              <span class="calc-result-note">After 9:30 PM, weekends, holidays</span>
             </div>
             <div class="calc-result-item">
               <span class="calc-result-label">Travel Time</span>
@@ -291,34 +291,34 @@
           </thead>
           <tbody>
             <tr>
-              <td>Boarding (minimum fare)</td>
-              <td class="fare-price">$2.25</td>
-              <td class="fare-price">$2.25</td>
-              <td class="fare-price">$1.10</td>
+              <td data-label="Fare Category">Boarding (minimum fare)</td>
+              <td data-label="Weekday" class="fare-price">$2.25</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.25</td>
+              <td data-label="Senior/Disabled" class="fare-price">$1.10</td>
             </tr>
             <tr>
-              <td>Short trip (1-3 miles)</td>
-              <td class="fare-price">$2.25 - $3.00</td>
-              <td class="fare-price">$2.25</td>
-              <td class="fare-price">$1.10</td>
+              <td data-label="Fare Category">Short trip (1–3 miles)</td>
+              <td data-label="Weekday" class="fare-price">$2.25 – $3.00</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.25</td>
+              <td data-label="Senior/Disabled" class="fare-price">$1.10</td>
             </tr>
             <tr>
-              <td>Medium trip (3-6 miles)</td>
-              <td class="fare-price">$3.00 - $4.50</td>
-              <td class="fare-price">$2.25 - $2.50</td>
-              <td class="fare-price">$1.10 - $2.25</td>
+              <td data-label="Fare Category">Medium trip (3–6 miles)</td>
+              <td data-label="Weekday" class="fare-price">$3.00 – $4.50</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.25 – $2.50</td>
+              <td data-label="Senior/Disabled" class="fare-price">$1.10 – $2.25</td>
             </tr>
             <tr>
-              <td>Long trip (6+ miles)</td>
-              <td class="fare-price">$4.50 - $6.75</td>
-              <td class="fare-price">$2.50</td>
-              <td class="fare-price">$2.25 - $3.35</td>
+              <td data-label="Fare Category">Long trip (6+ miles)</td>
+              <td data-label="Weekday" class="fare-price">$4.50 – $6.75</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.50</td>
+              <td data-label="Senior/Disabled" class="fare-price">$2.25 – $3.35</td>
             </tr>
             <tr>
-              <td>Maximum fare</td>
-              <td class="fare-price">$6.75</td>
-              <td class="fare-price">$2.50</td>
-              <td class="fare-price">$3.35</td>
+              <td data-label="Fare Category">Maximum fare</td>
+              <td data-label="Weekday" class="fare-price">$6.75</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.50</td>
+              <td data-label="Senior/Disabled" class="fare-price">$3.35</td>
             </tr>
           </tbody>
         </table>
