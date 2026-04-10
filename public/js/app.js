@@ -650,8 +650,16 @@ fareDestination.addEventListener('change', async () => {
     farePeak.textContent = fare.PeakTime != null ? '$' + fare.PeakTime.toFixed(2) : '--';
     fareOffpeak.textContent =
       fare.OffPeakTime != null ? '$' + fare.OffPeakTime.toFixed(2) : '--';
-    fareSenior.textContent =
-      fare.SeniorDisabled != null ? '$' + fare.SeniorDisabled.toFixed(2) : '--';
+    // Compute reduced fare client-side (WMATA API SeniorDisabled field is stale)
+    if (fare.PeakTime != null) {
+      var cents = Math.round(fare.PeakTime * 100);
+      var halfCents = Math.floor(cents / 2);
+      var rounded = Math.floor(halfCents / 5) * 5;
+      var reduced = Math.max(1.10, rounded / 100);
+      fareSenior.textContent = '$' + reduced.toFixed(2);
+    } else {
+      fareSenior.textContent = '--';
+    }
     fareTime.textContent =
       info.RailTime != null ? info.RailTime + ' min' : '--';
 

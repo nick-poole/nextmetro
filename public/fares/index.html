@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DC Metro Fare Calculator: Peak &amp; Off-Peak Prices | NextMetro</title>
-  <meta name="description" content="Calculate DC Metro fares between any two stations. Compare peak, off-peak, weekend, and senior/disabled prices." />
+  <title>DC Metro Fare Calculator: Weekday &amp; Weekend Prices | NextMetro</title>
+  <meta name="description" content="Calculate DC Metro fares between any two stations. Compare weekday, late night, weekend, and senior/disabled prices." />
   <link rel="canonical" href="https://nextmetro.live/fares/" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/fares.css" />
@@ -15,8 +15,8 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" integrity="sha256-MblAFgCXnFAJlRJnqJqOjRfz0ODAP+6LxfGQEK7g1o=" crossorigin="anonymous" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="DC Metro Fare Calculator: Peak &amp; Off-Peak Prices | NextMetro" />
-  <meta property="og:description" content="Calculate DC Metro fares between any two stations. Compare peak, off-peak, and senior/disabled prices." />
+  <meta property="og:title" content="DC Metro Fare Calculator: Weekday &amp; Weekend Prices | NextMetro" />
+  <meta property="og:description" content="Calculate DC Metro fares between any two stations. Compare weekday, late night/weekend, and senior/disabled prices." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nextmetro.live/fares/" />
   <meta property="og:site_name" content="NextMetro" />
@@ -28,8 +28,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DC Metro Fare Calculator: Peak &amp; Off-Peak Prices | NextMetro" />
-  <meta name="twitter:description" content="Calculate DC Metro fares between any two stations. Compare peak, off-peak, and senior/disabled prices." />
+  <meta name="twitter:title" content="DC Metro Fare Calculator: Weekday &amp; Weekend Prices | NextMetro" />
+  <meta name="twitter:description" content="Calculate DC Metro fares between any two stations. Compare weekday, late night/weekend, and senior/disabled prices." />
   <meta name="twitter:image" content="https://nextmetro.live/images/og/homepage-utility/og-fares.png" />
 
   <!-- Favicon -->
@@ -74,23 +74,31 @@
         "name": "How much does the DC Metro cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DC Metro fares range from $2.25 to $6.75 per trip depending on distance traveled and time of day. Weekday fares range from $2.25 to $6.75, while late night and weekend fares range from $2.25 to $2.50. Senior citizens and persons with disabilities pay approximately half the regular fare."
+          "text": "DC Metro fares are distance-based and range from $2.25 to $6.75 per trip on weekdays (opening through 9:30 PM). Late night (after 9:30 PM) and weekend fares range from $2.25 to $2.50. Seniors, persons with disabilities, and Metro Lift (SNAP) participants pay a reduced fare of 50% off regular fares."
         }
       },
       {
         "@type": "Question",
-        "name": "What are DC Metro peak hours?",
+        "name": "When do different DC Metro fare rates apply?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Weekday fares apply Monday through Friday from opening through 9:30 PM. Late night fares apply after 9:30 PM on weekdays. Weekend fares apply all day Saturday and Sunday. Federal holidays use weekend fare rates."
+          "text": "Weekday fares ($2.25–$6.75, distance-based) apply Monday through Friday from opening through 9:30 PM. Late night fares ($2.25–$2.50) apply after 9:30 PM on weekdays. Weekend and federal holiday fares are $2.25–$2.50 all day. There is no separate peak or rush-hour surcharge — all weekday rides before 9:30 PM use the same distance-based fare."
         }
       },
       {
         "@type": "Question",
-        "name": "Do I need a SmarTrip card to ride Metro?",
+        "name": "How do I pay to ride DC Metro?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, a SmarTrip card or contactless payment method is required to ride Metrorail. SmarTrip cards can be purchased at fare machines in any Metro station for $2.00. You can also use contactless credit/debit cards and mobile wallets (Apple Pay, Google Pay) at fare gates."
+          "text": "You can tap a contactless credit or debit card, Apple Pay, or Google Pay at the fare gates. You can also use a SmarTrip® card, available for $2.00 at fare machines in every station. Passes and employer transit benefits are loaded to your SmarTrip account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Metro offer unlimited ride passes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Metro offers 1-Day ($13.50), 3-Day ($33.75), and 7-Day ($60.75) unlimited passes covering Metrorail and Metrobus. A 7-Day Short-Trip pass ($40.50) covers rail trips up to $4.50. Monthly unlimited passes range from $72 to $216 based on your fare level."
         }
       },
       {
@@ -98,7 +106,7 @@
         "name": "How do Metro transfers work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Rail-to-rail transfers within the Metrorail system are included in your fare — you can transfer between lines at no additional cost during a continuous trip. Rail-to-bus and bus-to-rail transfers are free ($2.25 discount) within a 2-hour window when using SmarTrip. Bus-to-bus transfers are also free with unlimited transfers within 2 hours."
+          "text": "Rail-to-rail transfers within the Metrorail system are included in your fare — you can transfer between lines at no additional cost during a continuous trip. Rail-to-bus and bus-to-rail transfers include a $2.25 discount within a 2-hour window. Bus-to-bus transfers are free with unlimited transfers within 2 hours."
         }
       }
     ]
@@ -166,7 +174,7 @@
       <span class="fares-hero-label">Fares</span>
       <h1 class="fares-hero-title">Fare Calculator</h1>
       <p class="fares-hero-subtitle">
-        Calculate the cost of your Metrorail trip. Metro fares range from $2.25 to $6.75 depending on distance traveled and time of day.
+        Calculate the cost of your Metrorail trip. Weekday fares range from $2.25 to $6.75 based on distance. Late night and weekend fares are $2.25 – $2.50.
       </p>
       <div class="peak-indicator" id="peak-indicator">
         <span class="peak-indicator-dot" id="peak-dot"></span>
@@ -219,7 +227,7 @@
         <div class="calc-options">
           <div class="calc-toggle" role="radiogroup" aria-label="Fare type">
             <button class="calc-toggle-btn calc-toggle-btn--active" data-fare-type="regular" role="radio" aria-checked="true">Regular</button>
-            <button class="calc-toggle-btn" data-fare-type="senior" role="radio" aria-checked="false">Senior/Disabled</button>
+            <button class="calc-toggle-btn" data-fare-type="senior" role="radio" aria-checked="false">Senior/Disabled &amp; Metro Lift</button>
           </div>
         </div>
 
@@ -227,14 +235,14 @@
         <div class="calc-results" id="calc-results" style="display:none;">
           <div class="calc-results-grid">
             <div class="calc-result-item">
-              <span class="calc-result-label">Peak Fare</span>
+              <span class="calc-result-label">Weekday Fare</span>
               <span class="calc-result-value calc-result-value--highlight" id="result-peak">--</span>
-              <span class="calc-result-note">Weekdays, rush hours</span>
+              <span class="calc-result-note">Mon–Fri, opening – 9:30 PM</span>
             </div>
             <div class="calc-result-item">
-              <span class="calc-result-label">Off-Peak Fare</span>
+              <span class="calc-result-label">Late Night / Weekend</span>
               <span class="calc-result-value calc-result-value--highlight" id="result-offpeak">--</span>
-              <span class="calc-result-note">Evenings, weekends, holidays</span>
+              <span class="calc-result-note">After 9:30 PM, weekends, holidays</span>
             </div>
             <div class="calc-result-item">
               <span class="calc-result-label">Travel Time</span>
@@ -277,7 +285,7 @@
     <div class="fares-section animate-in d2">
       <h2 class="fares-section-heading">Fare Structure</h2>
       <p class="fares-text">
-        Metrorail uses a distance-based fare system. The further you travel, the more you pay. Fares also vary by time of day — <strong>peak fares</strong> apply during rush hours on weekdays, while <strong>off-peak fares</strong> apply at all other times.
+        Metrorail uses a distance-based fare system. The further you travel, the more you pay. <strong>Weekday fares</strong> (opening – 9:30 PM) are distance-based, while <strong>late night and weekend fares</strong> use a reduced flat rate. There is no separate rush-hour surcharge.
       </p>
       <div class="fare-table-wrapper">
         <table class="fare-table">
@@ -286,39 +294,39 @@
               <th>Fare Category</th>
               <th>Weekday</th>
               <th>Late Night / Weekend</th>
-              <th>Senior/Disabled</th>
+              <th>Senior/Disabled &amp; Metro Lift</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Boarding (minimum fare)</td>
-              <td class="fare-price">$2.25</td>
-              <td class="fare-price">$2.25</td>
-              <td class="fare-price">$1.10</td>
+              <td data-label="Fare Category">Boarding (minimum fare)</td>
+              <td data-label="Weekday" class="fare-price">$2.25</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.25</td>
+              <td data-label="Senior/Disabled &amp; Metro Lift" class="fare-price">$1.10</td>
             </tr>
             <tr>
-              <td>Short trip (1-3 miles)</td>
-              <td class="fare-price">$2.25 - $3.00</td>
-              <td class="fare-price">$2.25</td>
-              <td class="fare-price">$1.10</td>
+              <td data-label="Fare Category">Short trip (1–3 miles)</td>
+              <td data-label="Weekday" class="fare-price">$2.25 – $3.00</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.25</td>
+              <td data-label="Senior/Disabled &amp; Metro Lift" class="fare-price">$1.10 – $1.50</td>
             </tr>
             <tr>
-              <td>Medium trip (3-6 miles)</td>
-              <td class="fare-price">$3.00 - $4.50</td>
-              <td class="fare-price">$2.25 - $2.50</td>
-              <td class="fare-price">$1.10 - $2.25</td>
+              <td data-label="Fare Category">Medium trip (3–6 miles)</td>
+              <td data-label="Weekday" class="fare-price">$3.00 – $4.50</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.25 – $2.50</td>
+              <td data-label="Senior/Disabled &amp; Metro Lift" class="fare-price">$1.50 – $2.25</td>
             </tr>
             <tr>
-              <td>Long trip (6+ miles)</td>
-              <td class="fare-price">$4.50 - $6.75</td>
-              <td class="fare-price">$2.50</td>
-              <td class="fare-price">$2.25 - $3.35</td>
+              <td data-label="Fare Category">Long trip (6+ miles)</td>
+              <td data-label="Weekday" class="fare-price">$4.50 – $6.75</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.50</td>
+              <td data-label="Senior/Disabled &amp; Metro Lift" class="fare-price">$2.25 – $3.35</td>
             </tr>
             <tr>
-              <td>Maximum fare</td>
-              <td class="fare-price">$6.75</td>
-              <td class="fare-price">$2.50</td>
-              <td class="fare-price">$3.35</td>
+              <td data-label="Fare Category">Maximum fare</td>
+              <td data-label="Weekday" class="fare-price">$6.75</td>
+              <td data-label="Late Night / Weekend" class="fare-price">$2.50</td>
+              <td data-label="Senior/Disabled &amp; Metro Lift" class="fare-price">$3.35</td>
             </tr>
           </tbody>
         </table>
@@ -358,9 +366,63 @@
       </p>
     </div>
 
-    <!-- Transfer Rules & SmarTrip -->
+    <!-- Passes -->
     <div class="fares-section animate-in d4">
-      <h2 class="fares-section-heading">Transfers & SmarTrip</h2>
+      <h2 class="fares-section-heading">Passes</h2>
+      <p class="fares-text">
+        Metro offers several pass options for frequent riders. Passes cover unlimited Metrorail and Metrobus rides for the duration of the pass.
+      </p>
+      <div class="fare-table-wrapper">
+        <table class="fare-table">
+          <thead>
+            <tr>
+              <th>Pass</th>
+              <th>Price</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Pass">1-Day Unlimited</td>
+              <td data-label="Price" class="fare-price">$13.50</td>
+              <td data-label="Details">Unlimited rail &amp; bus; expires end of operating day</td>
+            </tr>
+            <tr>
+              <td data-label="Pass">3-Day Unlimited</td>
+              <td data-label="Price" class="fare-price">$33.75</td>
+              <td data-label="Details">Unlimited rail &amp; bus; 3 consecutive operating days</td>
+            </tr>
+            <tr>
+              <td data-label="Pass">7-Day Unlimited</td>
+              <td data-label="Price" class="fare-price">$60.75</td>
+              <td data-label="Details">Unlimited rail &amp; bus; 7 consecutive operating days</td>
+            </tr>
+            <tr>
+              <td data-label="Pass">7-Day Short-Trip</td>
+              <td data-label="Price" class="fare-price">$40.50</td>
+              <td data-label="Details">Rail trips up to $4.50; excess deducted from stored value</td>
+            </tr>
+            <tr>
+              <td data-label="Pass">7-Day Regional Bus</td>
+              <td data-label="Price" class="fare-price">$13.50</td>
+              <td data-label="Details">Metrobus &amp; regional partners; $6.75 reduced fare</td>
+            </tr>
+            <tr>
+              <td data-label="Pass">Monthly Unlimited</td>
+              <td data-label="Price" class="fare-price">$72 – $216</td>
+              <td data-label="Details">Priced at 32&times; your fare level; includes unlimited bus</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fares-text" style="margin-top:var(--nm-space-md)">
+        Passes require a <a href="https://www.wmata.com/fares/smartrip/" target="_blank" rel="noopener noreferrer">SmarTrip&reg; card</a> — they cannot be used with contactless tap-to-pay. For full pass details, see <a href="https://www.wmata.com/fares/farecard-options.cfm" target="_blank" rel="noopener noreferrer">WMATA pass options</a>.
+      </p>
+    </div>
+
+    <!-- Transfers & How to Pay -->
+    <div class="fares-section animate-in d5">
+      <h2 class="fares-section-heading">Transfers &amp; SmarTrip</h2>
       <div class="info-grid">
         <div class="info-card">
           <h3 class="info-card-title">Transfer Rules</h3>
@@ -372,14 +434,9 @@
           </ul>
         </div>
         <div class="info-card">
-          <h3 class="info-card-title">SmarTrip Card</h3>
+          <h3 class="info-card-title">SmarTrip &amp; How to Pay</h3>
           <div class="info-card-text">
-            <p>A SmarTrip card or contactless payment is required to ride Metrorail. Cards cost <strong>$2.00</strong> and can be purchased at:</p>
-            <ul class="info-card-list">
-              <li>Fare machines in every Metro station</li>
-              <li>Select retail locations</li>
-              <li><a href="https://www.wmata.com/fares/smartrip/" target="_blank" rel="noopener noreferrer">Online at wmata.com</a></li>
-            </ul>
+            <p>A <a href="https://www.wmata.com/fares/smartrip/" target="_blank" rel="noopener noreferrer">SmarTrip card</a> or contactless payment is required to ride Metrorail. Cards cost <strong>$2.00</strong> and are available at fare machines in every station.</p>
             <p class="info-card-text-note">You can also tap a contactless credit/debit card or mobile wallet (Apple Pay, Google Pay) at fare gates.</p>
           </div>
         </div>

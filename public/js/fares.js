@@ -29,9 +29,12 @@ const peakText = document.getElementById('peak-text');
 const peakTimeEl = document.getElementById('peak-time');
 
 // ==============================
-// Peak Time Detection
+// Weekday / Late-Night-Weekend Fare Detection
+// WMATA eliminated peak/off-peak within weekdays in June 2023.
+// The fare distinction is now: weekday (opening–9:30 PM) vs.
+// late night (after 9:30 PM) / weekends / federal holidays.
 // ==============================
-function isPeakTime(date) {
+function isWeekdayFare(date) {
   const day = date.getDay(); // 0 = Sunday, 6 = Saturday
   if (day === 0 || day === 6) return false; // weekends
 
@@ -39,28 +42,32 @@ function isPeakTime(date) {
   const minutes = date.getMinutes();
   const timeInMinutes = hours * 60 + minutes;
 
-  // Morning peak: opening (~5:00 AM) to 9:30 AM
-  const morningStart = 5 * 60;   // 5:00 AM
-  const morningEnd = 9 * 60 + 30; // 9:30 AM
+  // Weekday fares apply from opening (~5:00 AM) until 9:30 PM
+  const openingTime = 5 * 60;       // 5:00 AM
+  const lateNightStart = 21 * 60 + 30; // 9:30 PM
 
-  // Evening peak: 3:00 PM to 7:00 PM
-  const eveningStart = 15 * 60;   // 3:00 PM
-  const eveningEnd = 19 * 60;     // 7:00 PM
-
-  return (timeInMinutes >= morningStart && timeInMinutes < morningEnd) ||
-         (timeInMinutes >= eveningStart && timeInMinutes < eveningEnd);
+  return timeInMinutes >= openingTime && timeInMinutes < lateNightStart;
 }
+
+// Keep isPeakTime as an alias — the WMATA API still returns
+// PeakTime / OffPeakTime fields used by the calculator.
+const isPeakTime = isWeekdayFare;
 
 function updatePeakIndicator() {
   const now = new Date();
-  const peak = isPeakTime(now);
+  const weekday = isWeekdayFare(now);
+  const day = now.getDay();
+  const isWeekend = day === 0 || day === 6;
 
-  if (peak) {
+  if (weekday) {
     peakDot.className = 'peak-indicator-dot peak-indicator-dot--peak';
-    peakText.textContent = 'Peak Fares Active';
+    peakText.textContent = 'Weekday Fares Active';
+  } else if (isWeekend) {
+    peakDot.className = 'peak-indicator-dot peak-indicator-dot--offpeak';
+    peakText.textContent = 'Weekend Fares Active';
   } else {
     peakDot.className = 'peak-indicator-dot peak-indicator-dot--offpeak';
-    peakText.textContent = 'Off-Peak Fares Active';
+    peakText.textContent = 'Late Night Fares Active';
   }
 
   peakTimeEl.textContent = now.toLocaleTimeString([], {
@@ -68,6 +75,19 @@ function updatePeakIndicator() {
     minute: '2-digit',
     weekday: 'short',
   });
+}
+
+// ==============================
+// Reduced Fare Calculation
+// WMATA API SeniorDisabled field is stale for routes over ~4.5 miles.
+// Compute client-side as 50% of regular fare, rounded to nearest $0.05,
+// with a $1.10 floor — matches WMATA's published reduced fare policy.
+// ==============================
+function reducedFare(amount) {
+  var cents = Math.round(amount * 100);
+  var halfCents = Math.floor(cents / 2);
+  var rounded = Math.floor(halfCents / 5) * 5; // floor to nearest 5¢
+  return Math.max(1.10, rounded / 100);
 }
 
 // ==============================
@@ -119,7 +139,7 @@ async function fetchFare() {
     resultTime.textContent = '0 min';
     resultRoundtrip.textContent = '$0.00';
     resultRoundtripNote.textContent = '';
-    currentFareData = { peak: 0, offpeak: 0, senior: 0, time: 0 };
+    currentFareData = { peak: 0, offpeak: 0, seniorPeak: 0, seniorOffpeak: 0, time: 0 };
     calcResults.style.display = '';
     updateEstimator();
     return;
@@ -140,10 +160,13 @@ async function fetchFare() {
     }
 
     const fare = info.RailFare || {};
+    const peakAmt = fare.PeakTime || 0;
+    const offpeakAmt = fare.OffPeakTime || 0;
     currentFareData = {
-      peak: fare.PeakTime || 0,
-      offpeak: fare.OffPeakTime || 0,
-      senior: fare.SeniorDisabled || 0,
+      peak: peakAmt,
+      offpeak: offpeakAmt,
+      seniorPeak: reducedFare(peakAmt),
+      seniorOffpeak: reducedFare(offpeakAmt),
       time: info.RailTime || 0,
     };
 
@@ -168,23 +191,29 @@ function displayResults() {
   const peak = isPeakTime(new Date());
 
   if (fareType === 'senior') {
-    resultPeak.textContent = '$' + d.senior.toFixed(2);
-    resultOffpeak.textContent = '$' + d.senior.toFixed(2);
-    const rt = d.senior * 2;
-    resultRoundtrip.textContent = '$' + rt.toFixed(2);
-    resultRoundtripNote.textContent = 'Senior/Disabled flat rate';
+    resultPeak.textContent = '$' + d.seniorPeak.toFixed(2);
+    resultOffpeak.textContent = '$' + d.seniorOffpeak.toFixed(2);
+    if (peak) {
+      const rt = d.seniorPeak * 2;
+      resultRoundtrip.textContent = '$' + rt.toFixed(2);
+      resultRoundtripNote.textContent = 'Reduced weekday round trip';
+    } else {
+      const rt = d.seniorOffpeak * 2;
+      resultRoundtrip.textContent = '$' + rt.toFixed(2);
+      resultRoundtripNote.textContent = 'Reduced late night / weekend';
+    }
   } else {
     resultPeak.textContent = '$' + d.peak.toFixed(2);
     resultOffpeak.textContent = '$' + d.offpeak.toFixed(2);
-    // Round trip: assume one peak, one off-peak leg for weekday commute
+    // Round trip estimate based on current fare window
     if (peak) {
-      const rt = d.peak + d.offpeak;
+      const rt = d.peak * 2;
       resultRoundtrip.textContent = '$' + rt.toFixed(2);
-      resultRoundtripNote.textContent = 'Peak + off-peak estimate';
+      resultRoundtripNote.textContent = 'Weekday round trip';
     } else {
       const rt = d.offpeak * 2;
       resultRoundtrip.textContent = '$' + rt.toFixed(2);
-      resultRoundtripNote.textContent = 'Off-peak both ways';
+      resultRoundtripNote.textContent = 'Late night / weekend round trip';
     }
   }
 
@@ -215,7 +244,7 @@ function updateEstimator() {
   let costPerTrip;
 
   if (fareType === 'senior') {
-    costPerTrip = d.senior;
+    costPerTrip = d.seniorPeak * 0.6 + d.seniorOffpeak * 0.4;
   } else {
     // Assume a mix: roughly 60% peak, 40% off-peak for commuters
     costPerTrip = d.peak * 0.6 + d.offpeak * 0.4;
