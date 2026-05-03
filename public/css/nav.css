@@ -87,6 +87,7 @@
 @media (max-width: 768px) {
   .nm-nav__links {
     margin-right: 0;
+    border-left: none;
   }
 }
 

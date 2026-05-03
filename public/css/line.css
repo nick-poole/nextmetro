@@ -327,6 +327,32 @@ main[data-line] {
   white-space: nowrap;
 }
 
+@media (max-width: 860px) {
+  .line-termini-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--nm-space-sm);
+  }
+
+  .line-termini-station {
+    font-size: 0.875rem;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+    flex-shrink: 1;
+  }
+
+  .line-termini-track {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .line-termini-count {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
 /* ---- Section Headings ---- */
 .line-section-heading {
   font-family: var(--nm-font);
@@ -965,10 +991,6 @@ main[data-line] {
 
   .line-info-value {
     text-align: left;
-  }
-
-  .line-termini-station {
-    font-size: 0.875rem;
   }
 
   .line-termini-dot {
