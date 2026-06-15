@@ -678,3 +678,33 @@
     margin-right: var(--nm-space-md);
   }
 }
+
+/* ==============================
+   First & Last Train by Station (internal links)
+   ============================== */
+.hours-stations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--nm-space-sm);
+  margin-top: var(--nm-space-md);
+}
+
+.hours-station-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border-subtle);
+  font-family: var(--nm-font);
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  transition: background-color var(--nm-transition-normal), border-color var(--nm-transition-normal);
+}
+
+.hours-station-link:hover,
+.hours-station-link:focus-visible {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--nm-border-strong);
+}

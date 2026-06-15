@@ -715,3 +715,33 @@
     text-align: left;
   }
 }
+
+/* ==============================
+   Fares from Every Station (internal links)
+   ============================== */
+.fares-stations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--nm-space-sm);
+  margin-top: var(--nm-space-md);
+}
+
+.fares-station-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border-subtle);
+  font-family: var(--nm-font);
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  transition: background-color var(--nm-transition-normal), border-color var(--nm-transition-normal);
+}
+
+.fares-station-link:hover,
+.fares-station-link:focus-visible {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--nm-border-strong);
+}

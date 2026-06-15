@@ -5,7 +5,9 @@
 	"main": "src/index.js",
 	"scripts": {
 		"dev": "wrangler dev",
-		"deploy": "wrangler deploy"
+		"deploy": "wrangler deploy",
+		"build:links": "node scripts/build-internal-links.js",
+		"check:links": "node scripts/check-internal-links.js"
 	},
 	"keywords": [
 		"wmata",
