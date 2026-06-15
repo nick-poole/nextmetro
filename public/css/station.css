@@ -1429,3 +1429,144 @@ a.status-row:focus-visible {
     transform: rotate(90deg);
   }
 }
+
+/* ==============================
+   Lines & Connections (internal links)
+   Full-width module at the foot of the station grid. Inherits the grayscale
+   surface palette; WMATA line colors are the only chromatic accents.
+   ============================== */
+.station-links {
+  order: 9;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: var(--nm-space-lg);
+}
+
+.station-links-heading {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--nm-space-sm);
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--nm-amber-dim);
+  display: inline-block;
+}
+
+.station-links-intro {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--nm-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--nm-space-md);
+}
+
+.station-links-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-sm);
+  margin-bottom: var(--nm-space-lg);
+}
+
+.station-line-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 14px;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background-color var(--nm-transition-normal), border-color var(--nm-transition-normal);
+}
+
+.station-line-pill:hover,
+.station-line-pill:focus-visible {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--pill-color, var(--nm-border-strong));
+}
+
+.station-line-pill-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--pill-color, var(--nm-text-muted));
+  flex-shrink: 0;
+}
+
+.station-line-pill--red    { --pill-color: var(--nm-line-red); }
+.station-line-pill--orange { --pill-color: var(--nm-line-orange); }
+.station-line-pill--blue   { --pill-color: var(--nm-line-blue); }
+.station-line-pill--green  { --pill-color: var(--nm-line-green); }
+.station-line-pill--yellow { --pill-color: var(--nm-line-yellow); }
+.station-line-pill--silver { --pill-color: var(--nm-line-silver); }
+
+.station-links-group + .station-links-group {
+  margin-top: var(--nm-space-md);
+}
+
+.station-links-group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--nm-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.station-links-group-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--group-color, var(--nm-text-muted));
+  flex-shrink: 0;
+}
+
+.station-links-group-dot--red    { --group-color: var(--nm-line-red); }
+.station-links-group-dot--orange { --group-color: var(--nm-line-orange); }
+.station-links-group-dot--blue   { --group-color: var(--nm-line-blue); }
+.station-links-group-dot--green  { --group-color: var(--nm-line-green); }
+.station-links-group-dot--yellow { --group-color: var(--nm-line-yellow); }
+.station-links-group-dot--silver { --group-color: var(--nm-line-silver); }
+
+.station-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-sm);
+}
+
+.station-links-station {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border-subtle);
+  font-family: var(--nm-font);
+  font-size: 0.9375rem;
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  transition: background-color var(--nm-transition-normal), border-color var(--nm-transition-normal);
+}
+
+.station-links-station:hover,
+.station-links-station:focus-visible {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--nm-border-strong);
+}
