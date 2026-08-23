@@ -205,8 +205,10 @@ function updatePeakIndicator() {
 // ==============================
 // Reduced Fare Calculation
 // WMATA API SeniorDisabled field is stale for routes over ~4.5 miles.
-// Compute client-side as 50% of regular fare, rounded to nearest $0.05,
-// with a $1.10 floor — matches WMATA's published reduced fare policy.
+// Compute client-side as 50% of regular fare, rounded DOWN to the next lowest
+// $0.05 — WMATA rounds regular fares up to the nearest nickel and reduced fares
+// down. The $1.10 floor is not a separate rule: it falls out of halving the
+// $2.25 boarding minimum, as $3.35 falls out of halving the $6.75 maximum.
 // ==============================
 function reducedFare(amount) {
   var cents = Math.round(amount * 100);
