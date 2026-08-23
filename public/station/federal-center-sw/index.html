@@ -174,7 +174,13 @@
       <p class="hero-station-desc" id="hero-station-desc">Walking distance to USDA headquarters &amp; the Federal Center.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/orange/" class="line-pill line-pill--orange" aria-label="Orange Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Orange Line</a>
+      <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
+      <a href="/lines/silver/" class="line-pill line-pill--silver" aria-label="Silver Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Silver Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -229,11 +235,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">401 3rd St SW, Washington, DC 20024</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Underground</span>
@@ -255,9 +256,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.8851,-77.0158" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/federal-center.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -267,6 +265,44 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.8851,-77.0158" target="_blank" rel="noopener noreferrer" data-address>401 3rd St SW, Washington, DC 20024</a>
+        </div>
+        <div class="location-map" data-map-lat="38.8851" data-map-lon="-77.0158" data-map-name="Federal Center SW">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Federal Center SW. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Federal Center SW and the nearby stations on Orange Line, Blue Line, Silver Line: Smithsonian, L'Enfant Plaza, Capitol South, Eastern Market</title>
+      <polyline points="40,99.6 139.1,242 238.3,232.8 412.1,237.4 560,260.4" fill="none" stroke="var(--nm-line-orange)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="40,99.6 139.1,242 238.3,232.8 412.1,237.4 560,260.4" fill="none" stroke="var(--nm-line-blue)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="40,99.6 139.1,242 238.3,232.8 412.1,237.4 560,260.4" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="95.6" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="135.1" y="238.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="408.1" y="233.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="256.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="230.3" y="224.8" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="238.3" y="212.8" text-anchor="middle">Federal Center SW</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.8851,-77.0158" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -324,9 +360,9 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--orange">Or</span>
-          <span class="adjacent-line-badge adjacent-line-badge--blue">Bl</span>
-          <span class="adjacent-line-badge adjacent-line-badge--silver">Sv</span>
+          <a href="/lines/orange/" class="adjacent-line-badge adjacent-line-badge--orange" aria-label="Orange Line — stations and status">Or</a>
+          <a href="/lines/blue/" class="adjacent-line-badge adjacent-line-badge--blue" aria-label="Blue Line — stations and status">Bl</a>
+          <a href="/lines/silver/" class="adjacent-line-badge adjacent-line-badge--silver" aria-label="Silver Line — stations and status">Sv</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/lenfant-plaza/" class="adjacent-station adjacent-station--prev">
@@ -339,6 +375,42 @@
             <span class="adjacent-name">Capitol South</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Also serves</span>
+            <span class="adjacent-extra-values">
+              <a href="/lines/orange/" class="adjacent-line-link adjacent-line-link--orange">Orange Line</a>
+              <a href="/lines/blue/" class="adjacent-line-link adjacent-line-link--blue">Blue Line</a>
+              <a href="/lines/silver/" class="adjacent-line-link adjacent-line-link--silver">Silver Line</a>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/smithsonian/">Smithsonian</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/eastern-market/">Eastern Market</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/federal-triangle/">Federal Triangle</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/potomac-ave/">Potomac Ave</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/metro-center/">Metro Center</a><span class="adjacent-extra-stops">4 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/stadium-armory/">Stadium-Armory</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Nearest transfer</span>
+            <span class="adjacent-extra-values">
+              <span class="adjacent-extra-item"><a href="/station/lenfant-plaza/">L'Enfant Plaza station</a><span class="adjacent-extra-stops">1 stop toward Vienna/Fairfax-GMU</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Metro fares and passes</a>
+            <a href="/hours/">First and last train times</a>
+            <a href="/transfers/">Where the lines connect</a>
+            <a href="/stations/">All 98 Metro stations</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

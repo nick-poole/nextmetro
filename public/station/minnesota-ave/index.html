@@ -174,7 +174,11 @@
       <p class="hero-station-desc" id="hero-station-desc">Serving the Minnesota Avenue corridor &amp; Parkside.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/orange/" class="line-pill line-pill--orange" aria-label="Orange Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Orange Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -229,11 +233,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">4000 Minnesota Ave NE, Washington, DC 20019</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Elevated</span>
@@ -255,9 +254,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.8989,-76.9478" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/minnesota-ave.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -267,6 +263,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.8989,-76.9478" target="_blank" rel="noopener noreferrer" data-address>4000 Minnesota Ave NE, Washington, DC 20019</a>
+        </div>
+        <div class="location-map" data-map-lat="38.8989" data-map-lon="-76.9478" data-map-name="Minnesota Ave">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Minnesota Ave. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Minnesota Ave and the nearby stations on Orange Line: Potomac Ave, Stadium-Armory, Deanwood, Cheverly</title>
+      <polyline points="40,320 103.3,274.5 321.6,178.8 414.7,105.9 560,40" fill="none" stroke="var(--nm-line-orange)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="99.3" y="270.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="410.7" y="101.9" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="313.6" y="170.8" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="321.6" y="210.8" text-anchor="middle">Minnesota Ave</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.8989,-76.9478" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -324,7 +356,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--orange">Or</span>
+          <a href="/lines/orange/" class="adjacent-line-badge adjacent-line-badge--orange" aria-label="Orange Line — stations and status">Or</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/stadium-armory/" class="adjacent-station adjacent-station--prev">
@@ -337,6 +369,43 @@
             <span class="adjacent-name">Deanwood</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Also serves</span>
+            <span class="adjacent-extra-values">
+              <a href="/lines/orange/" class="adjacent-line-link adjacent-line-link--orange">Orange Line</a>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Orange Line</span>
+            <span class="adjacent-extra-values"><a href="/station/vienna/">Vienna/Fairfax-GMU station</a> to <a href="/station/new-carrollton/">New Carrollton station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/potomac-ave/">Potomac Ave</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/cheverly/">Cheverly</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/eastern-market/">Eastern Market</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/landover/">Landover</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/capitol-south/">Capitol South</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Nearest transfer</span>
+            <span class="adjacent-extra-values">
+              <span class="adjacent-extra-item"><a href="/station/stadium-armory/">Stadium-Armory station</a><span class="adjacent-extra-stops">1 stop toward Vienna/Fairfax-GMU</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Fare structure &amp; passes</a>
+            <a href="/hours/">Minnesota Ave first &amp; last train</a>
+            <a href="/transfers/">Metro transfer stations</a>
+            <a href="/stations/">Metro station directory</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

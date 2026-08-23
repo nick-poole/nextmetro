@@ -174,7 +174,11 @@
       <p class="hero-station-desc" id="hero-station-desc">Near the Strathmore music center &amp; the Grosvenor neighborhood.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/red/" class="line-pill line-pill--red" aria-label="Red Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Red Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -229,11 +233,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">10300 Rockville Pike, North Bethesda, MD 20852</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Elevated</span>
@@ -255,9 +254,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=39.0294,-77.104" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/grosvenor.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -267,6 +263,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=39.0294,-77.104" target="_blank" rel="noopener noreferrer" data-address>10300 Rockville Pike, North Bethesda, MD 20852</a>
+        </div>
+        <div class="location-map" data-map-lat="39.0294" data-map-lon="-77.104" data-map-name="Grosvenor-Strathmore">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Grosvenor-Strathmore. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Grosvenor-Strathmore and the nearby stations on Red Line: Twinbrook, North Bethesda-White Flint, Medical Center, Bethesda</title>
+      <polyline points="217.4,40 265.5,89.4 321.6,158 364.1,265.5 382.6,320" fill="none" stroke="var(--nm-line-red)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="213.4" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="261.5" y="85.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="360.1" y="261.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="378.6" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="313.6" y="150.0" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="321.6" y="190.0" text-anchor="middle">Grosvenor-Strathmore</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=39.0294,-77.104" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -324,7 +356,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
+          <a href="/lines/red/" class="adjacent-line-badge adjacent-line-badge--red" aria-label="Red Line — stations and status">Red Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/north-bethesda/" class="adjacent-station adjacent-station--prev">
@@ -337,6 +369,37 @@
             <span class="adjacent-name">Medical Center</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Red Line</span>
+            <span class="adjacent-extra-values"><a href="/station/shady-grove/">Shady Grove station</a> to <a href="/station/glenmont/">Glenmont station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/twinbrook/">Twinbrook</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/bethesda/">Bethesda</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/rockville/">Rockville</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/friendship-heights/">Friendship Heights</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/tenleytown-au/">Tenleytown-AU</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Nearest transfer</span>
+            <span class="adjacent-extra-values">
+              <span class="adjacent-extra-item"><a href="/station/metro-center/">Metro Center station</a><span class="adjacent-extra-stops">10 stops toward Glenmont</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Fare structure &amp; passes</a>
+            <a href="/hours/">Metro hours &amp; schedule</a>
+            <a href="/transfers/">All transfer stations</a>
+            <a href="/stations/">Every Metrorail station</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

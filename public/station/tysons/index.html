@@ -176,7 +176,11 @@
       <p class="hero-station-desc" id="hero-station-desc">Serving Tysons Corner Center &amp; Tysons Galleria.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/silver/" class="line-pill line-pill--silver" aria-label="Silver Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Silver Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -228,11 +232,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">8300 Leesburg Pike, Tysons, VA 22182</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Elevated</span>
@@ -254,9 +253,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9208,-77.2239" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/tysons.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -266,6 +262,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9208,-77.2239" target="_blank" rel="noopener noreferrer" data-address>8300 Leesburg Pike, Tysons, VA 22182</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9208" data-map-lon="-77.2239" data-map-name="Tysons">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Tysons. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Tysons and the nearby stations on Silver Line: Spring Hill, Greensboro, McLean, East Falls Church</title>
+      <polyline points="40,40 79.9,86.1 148.7,90.1 232.2,65 560,320" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="75.9" y="82.1" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="228.2" y="61.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="140.7" y="82.1" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="162.7" y="122.1" text-anchor="start">Tysons</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9208,-77.2239" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -323,7 +355,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--silver">Silver</span>
+          <a href="/lines/silver/" class="adjacent-line-badge adjacent-line-badge--silver" aria-label="Silver Line — stations and status">Silver</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/greensboro/" class="adjacent-station adjacent-station--prev">
@@ -336,6 +368,32 @@
             <span class="adjacent-name">McLean</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Silver Line</span>
+            <span class="adjacent-extra-values"><a href="/station/ashburn/">Ashburn station</a> to <a href="/station/downtown-largo/">Downtown Largo station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/spring-hill/">Spring Hill</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/east-falls-church/">East Falls Church</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/wiehle-reston-east/">Wiehle-Reston East</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/ballston/">Ballston-MU</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/reston-town-center/">Reston Town Center</a><span class="adjacent-extra-stops">4 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/virginia-square/">Virginia Square-GMU</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Metro fares and passes</a>
+            <a href="/hours/">Tysons first &amp; last train</a>
+            <a href="/transfers/">Metro transfer stations</a>
+            <a href="/stations/">Metro station directory</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

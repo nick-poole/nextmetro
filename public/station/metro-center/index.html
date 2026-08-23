@@ -222,7 +222,14 @@
       <span class="hero-transfer-badge">Transfer Station</span>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/red/" class="line-pill line-pill--red" aria-label="Red Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Red Line</a>
+      <a href="/lines/orange/" class="line-pill line-pill--orange" aria-label="Orange Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Orange Line</a>
+      <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
+      <a href="/lines/silver/" class="line-pill line-pill--silver" aria-label="Silver Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Silver Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -320,13 +327,6 @@
         <div class="station-info-body">
           <div class="station-info-row">
             <span class="station-info-icon">
-              <i class="ri-map-pin-line" aria-hidden="true"></i>
-            </span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">607 13th St NW, Washington, DC 20005</span>
-          </div>
-          <div class="station-info-row">
-            <span class="station-info-icon">
               <i class="ri-subway-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
@@ -367,10 +367,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.8983,-77.0281" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i>
-            Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/metro-center.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -381,6 +377,49 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.8983,-77.0281" target="_blank" rel="noopener noreferrer" data-address>607 13th St NW, Washington, DC 20005</a>
+        </div>
+        <div class="location-map" data-map-lat="38.8983" data-map-lon="-77.0281" data-map-name="Metro Center">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Metro Center. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Metro Center and the nearby stations on Red Line, Orange Line, Blue Line, Silver Line: Dupont Circle, Farragut North, Gallery Pl-Chinatown, Judiciary Square, Farragut West, McPherson Square, Federal Triangle, Smithsonian</title>
+      <polyline points="40,40 112.3,123 339.1,186.5 460.3,186.5 560,208.5" fill="none" stroke="var(--nm-line-red)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="92.8,147.6 235.5,147.6 339.1,186.5 333.2,252.6 341.1,320" fill="none" stroke="var(--nm-line-orange)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="92.8,147.6 235.5,147.6 339.1,186.5 333.2,252.6 341.1,320" fill="none" stroke="var(--nm-line-blue)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="92.8,147.6 235.5,147.6 339.1,186.5 333.2,252.6 341.1,320" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="108.3" y="119.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="456.3" y="182.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="204.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="88.8" y="143.6" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="231.5" y="143.6" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="329.2" y="248.6" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="337.1" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="331.1" y="178.5" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="339.1" y="166.5" text-anchor="middle">Metro Center</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.8983,-77.0281" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -455,7 +494,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
+          <a href="/lines/red/" class="adjacent-line-badge adjacent-line-badge--red" aria-label="Red Line — stations and status">Red Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/farragut-north/" class="adjacent-station adjacent-station--prev">
@@ -482,9 +521,9 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--orange">Or</span>
-          <span class="adjacent-line-badge adjacent-line-badge--blue">Bl</span>
-          <span class="adjacent-line-badge adjacent-line-badge--silver">Sv</span>
+          <a href="/lines/orange/" class="adjacent-line-badge adjacent-line-badge--orange" aria-label="Orange Line — stations and status">Or</a>
+          <a href="/lines/blue/" class="adjacent-line-badge adjacent-line-badge--blue" aria-label="Blue Line — stations and status">Bl</a>
+          <a href="/lines/silver/" class="adjacent-line-badge adjacent-line-badge--silver" aria-label="Silver Line — stations and status">Sv</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/mcpherson-square/" class="adjacent-station adjacent-station--prev">
@@ -505,6 +544,44 @@
             <span class="adjacent-name">Federal Triangle</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Also serves</span>
+            <span class="adjacent-extra-values">
+              <a href="/lines/orange/" class="adjacent-line-link adjacent-line-link--orange">Orange Line</a>
+              <a href="/lines/blue/" class="adjacent-line-link adjacent-line-link--blue">Blue Line</a>
+              <a href="/lines/silver/" class="adjacent-line-link adjacent-line-link--silver">Silver Line</a>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/dupont-circle/">Dupont Circle</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/judiciary-square/">Judiciary Square</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/farragut-west/">Farragut West</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/smithsonian/">Smithsonian</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/woodley-park/">Woodley Park-Zoo/Adams Morgan</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/union-station/">Union Station</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/foggy-bottom/">Foggy Bottom-GWU</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/lenfant-plaza/">L'Enfant Plaza</a><span class="adjacent-extra-stops">3 stops</span></span>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Nearest transfer</span>
+            <span class="adjacent-extra-values">
+              <span class="adjacent-extra-item"><a href="/station/gallery-place/">Gallery Pl-Chinatown station</a><span class="adjacent-extra-stops">1 stop toward Glenmont</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Metro fares and passes</a>
+            <a href="/hours/">First and last train times</a>
+            <a href="/transfers/">Where the lines connect</a>
+            <a href="/stations/">All 98 Metro stations</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

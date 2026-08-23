@@ -666,6 +666,11 @@ main[data-line] {
   color: var(--nm-amber-bright);
 }
 
+.line-info-value a:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
 .line-info-link {
   display: inline-block;
   margin-top: var(--nm-space-md);

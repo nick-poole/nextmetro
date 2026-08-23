@@ -220,7 +220,12 @@
       <p class="hero-station-desc" id="hero-station-desc">In the heart of Shaw, near Howard University &amp; the U Street corridor.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
+      <a href="/lines/green/" class="line-pill line-pill--green" aria-label="Green Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Green Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -283,13 +288,6 @@
         <div class="station-info-body">
           <div class="station-info-row">
             <span class="station-info-icon">
-              <i class="ri-map-pin-line" aria-hidden="true"></i>
-            </span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">1701 8th St NW, Washington, DC 20001</span>
-          </div>
-          <div class="station-info-row">
-            <span class="station-info-icon">
               <i class="ri-subway-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
@@ -316,10 +314,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9130,-77.0220" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i>
-            Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/shaw-howard.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -330,6 +324,43 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9129,-77.022" target="_blank" rel="noopener noreferrer" data-address>1701 8th St NW, Washington, DC 20001</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9129" data-map-lon="-77.022" data-map-name="Shaw-Howard U">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Shaw-Howard U. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Shaw-Howard U and the nearby stations on Yellow Line, Green Line: Gallery Pl-Chinatown, Mt Vernon Sq 7th St-Convention Center, U Street/African-Amer Civil War Memorial/Cardozo, Columbia Heights</title>
+      <polyline points="385.5,320 380.7,257.5 383.9,183.7 273.6,146.4 214.5,40" fill="none" stroke="var(--nm-line-yellow)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="385.5,320 380.7,257.5 383.9,183.7 273.6,146.4 214.5,40" fill="none" stroke="var(--nm-line-green)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="381.5" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="376.7" y="253.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="269.6" y="142.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="210.5" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="375.9" y="175.7" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="383.9" y="163.7" text-anchor="middle">Shaw-Howard U</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9129,-77.022" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -403,7 +434,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--green">Green Line</span>
+          <a href="/lines/green/" class="adjacent-line-badge adjacent-line-badge--green" aria-label="Green Line — stations and status">Green Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/mt-vernon-sq/" class="adjacent-station adjacent-station--prev">
@@ -424,6 +455,42 @@
             <span class="adjacent-name">U Street</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Also serves</span>
+            <span class="adjacent-extra-values">
+              <a href="/lines/yellow/" class="adjacent-line-link adjacent-line-link--yellow">Yellow Line</a>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Yellow Line</span>
+            <span class="adjacent-extra-values"><a href="/station/huntington/">Huntington station</a> to <a href="/station/greenbelt/">Greenbelt station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Green Line</span>
+            <span class="adjacent-extra-values"><a href="/station/branch-ave/">Branch Ave station</a> to <a href="/station/greenbelt/">Greenbelt station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/gallery-place/">Gallery Pl-Chinatown</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/columbia-heights/">Columbia Heights</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/archives/">Archives-Navy Memorial-Penn Quarter</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/georgia-ave-petworth/">Georgia Ave-Petworth</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/lenfant-plaza/">L'Enfant Plaza</a><span class="adjacent-extra-stops">4 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/fort-totten/">Fort Totten</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Metro fares and passes</a>
+            <a href="/hours/">Metro hours &amp; schedule</a>
+            <a href="/transfers/">All transfer stations</a>
+            <a href="/stations/">Every Metrorail station</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

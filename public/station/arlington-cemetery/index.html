@@ -177,7 +177,11 @@
       <p class="hero-station-desc" id="hero-station-desc">Access to Arlington National Cemetery &amp; the Women in Military Service Memorial.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -232,11 +236,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">Memorial Dr, Arlington, VA 22211</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Ground-Level (Outdoor)</span>
@@ -258,9 +257,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.8847,-77.0637" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/arlington-cemetery.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -270,6 +266,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.8847,-77.0637" target="_blank" rel="noopener noreferrer" data-address>Memorial Dr, Arlington, VA 22211</a>
+        </div>
+        <div class="location-map" data-map-lat="38.8847" data-map-lon="-77.0637" data-map-name="Arlington Cemetery">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Arlington Cemetery. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Arlington Cemetery and the nearby stations on Blue Line: Pentagon City, Pentagon, Rosslyn, Foggy Bottom-GWU</title>
+      <polyline points="311.9,320 384.7,270.2 261.7,157.3 171.3,74.5 428.7,40" fill="none" stroke="var(--nm-line-blue)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="307.9" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="380.7" y="266.2" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="167.3" y="70.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="424.7" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="253.7" y="149.3" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="261.7" y="189.3" text-anchor="middle">Arlington Cemetery</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.8847,-77.0637" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -327,7 +359,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--blue">Blue</span>
+          <a href="/lines/blue/" class="adjacent-line-badge adjacent-line-badge--blue" aria-label="Blue Line — stations and status">Blue</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/pentagon/" class="adjacent-station adjacent-station--prev">
@@ -340,6 +372,38 @@
             <span class="adjacent-name">Rosslyn</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Blue Line</span>
+            <span class="adjacent-extra-values"><a href="/station/franconia-springfield/">Franconia-Springfield station</a> to <a href="/station/downtown-largo/">Downtown Largo station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/pentagon-city/">Pentagon City</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/foggy-bottom/">Foggy Bottom-GWU</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/crystal-city/">Crystal City</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/farragut-west/">Farragut West</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/dca-national-airport/">DCA–National Airport</a><span class="adjacent-extra-stops">4 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/mcpherson-square/">McPherson Square</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Nearest transfer</span>
+            <span class="adjacent-extra-values">
+              <span class="adjacent-extra-item"><a href="/station/pentagon/">Pentagon station</a><span class="adjacent-extra-stops">1 stop toward Franconia-Springfield</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Metro fares and passes</a>
+            <a href="/hours/">Arlington Cemetery first &amp; last train</a>
+            <a href="/transfers/">Metro transfer stations</a>
+            <a href="/stations/">Metro station directory</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

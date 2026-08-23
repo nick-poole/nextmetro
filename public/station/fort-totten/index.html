@@ -222,7 +222,13 @@
       <span class="hero-transfer-badge">Transfer Station</span>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/red/" class="line-pill line-pill--red" aria-label="Red Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Red Line</a>
+      <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
+      <a href="/lines/green/" class="line-pill line-pill--green" aria-label="Green Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Green Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -315,13 +321,6 @@
         <div class="station-info-body">
           <div class="station-info-row">
             <span class="station-info-icon">
-              <i class="ri-map-pin-line" aria-hidden="true"></i>
-            </span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">550 Galloway St NE, Washington, DC 20011</span>
-          </div>
-          <div class="station-info-row">
-            <span class="station-info-icon">
               <i class="ri-subway-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
@@ -348,10 +347,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9519,-77.0023" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i>
-            Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/fort-totten.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -362,6 +357,48 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9519,-77.0023" target="_blank" rel="noopener noreferrer" data-address>550 Galloway St NE, Washington, DC 20011</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9519" data-map-lon="-77.0023" data-map-name="Fort Totten">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Fort Totten. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Fort Totten and the nearby stations on Red Line, Yellow Line, Green Line: Rhode Island Ave-Brentwood, Brookland-CUA, Takoma, Silver Spring, Columbia Heights, Georgia Ave-Petworth, West Hyattsville, Hyattsville Crossing</title>
+      <polyline points="288.5,320 298.4,273.4 247.6,201 144.2,182.9 57.8,40" fill="none" stroke="var(--nm-line-red)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="48,291.9 100,258.8 247.6,201 465.1,189.4 552,149" fill="none" stroke="var(--nm-line-yellow)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="48,291.9 100,258.8 247.6,201 465.1,189.4 552,149" fill="none" stroke="var(--nm-line-green)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="284.5" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="294.4" y="269.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="140.2" y="178.9" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="53.8" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="44.0" y="287.9" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="96.0" y="254.8" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="461.1" y="185.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="548.0" y="145.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="239.6" y="193.0" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="247.6" y="181.0" text-anchor="middle">Fort Totten</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9519,-77.0023" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -436,7 +473,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
+          <a href="/lines/red/" class="adjacent-line-badge adjacent-line-badge--red" aria-label="Red Line — stations and status">Red Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/brookland-cua/" class="adjacent-station adjacent-station--prev">
@@ -463,8 +500,8 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--green">Gr</span>
-          <span class="adjacent-line-badge adjacent-line-badge--yellow">Yl</span>
+          <a href="/lines/green/" class="adjacent-line-badge adjacent-line-badge--green" aria-label="Green Line — stations and status">Gr</a>
+          <a href="/lines/yellow/" class="adjacent-line-badge adjacent-line-badge--yellow" aria-label="Yellow Line — stations and status">Yl</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/georgia-ave-petworth/" class="adjacent-station adjacent-station--prev">
@@ -477,6 +514,43 @@
             <span class="adjacent-name">West Hyattsville</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Also serves</span>
+            <span class="adjacent-extra-values">
+              <a href="/lines/yellow/" class="adjacent-line-link adjacent-line-link--yellow">Yellow Line</a>
+              <a href="/lines/green/" class="adjacent-line-link adjacent-line-link--green">Green Line</a>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/rhode-island-ave/">Rhode Island Ave-Brentwood</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/silver-spring/">Silver Spring</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/columbia-heights/">Columbia Heights</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/hyattsville-crossing/">Hyattsville Crossing</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/noma/">NoMa-Gallaudet U</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/forest-glen/">Forest Glen</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/u-street/">U Street/African-Amer Civil War Memorial/Cardozo</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/college-park/">College Park-U of Md</a><span class="adjacent-extra-stops">3 stops</span></span>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Nearest transfer</span>
+            <span class="adjacent-extra-values">
+              <span class="adjacent-extra-item"><a href="/station/gallery-place/">Gallery Pl-Chinatown station</a><span class="adjacent-extra-stops">6 stops toward Shady Grove</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Fares &amp; passes</a>
+            <a href="/hours/">First and last train times</a>
+            <a href="/transfers/">Where the lines connect</a>
+            <a href="/stations/">All 98 Metro stations</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

@@ -220,7 +220,12 @@
       <p class="hero-station-desc" id="hero-station-desc">In the heart of Petworth, near the Georgia Avenue corridor.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
+      <a href="/lines/green/" class="line-pill line-pill--green" aria-label="Green Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Green Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -283,13 +288,6 @@
         <div class="station-info-body">
           <div class="station-info-row">
             <span class="station-info-icon">
-              <i class="ri-map-pin-line" aria-hidden="true"></i>
-            </span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">3700 Georgia Ave NW, Washington, DC 20010</span>
-          </div>
-          <div class="station-info-row">
-            <span class="station-info-icon">
               <i class="ri-subway-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
@@ -316,10 +314,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9367,-77.0243" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i>
-            Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/georgia-ave-petworth.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -330,6 +324,43 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9369,-77.0247" target="_blank" rel="noopener noreferrer" data-address>3700 Georgia Ave NW, Washington, DC 20010</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9369" data-map-lon="-77.0247" data-map-name="Georgia Ave-Petworth">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Georgia Ave-Petworth. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Georgia Ave-Petworth and the nearby stations on Yellow Line, Green Line: U Street/African-Amer Civil War Memorial/Cardozo, Columbia Heights, Fort Totten, West Hyattsville</title>
+      <polyline points="70.4,320 40,236 104.9,172.6 288.9,62.1 560,40" fill="none" stroke="var(--nm-line-yellow)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="70.4,320 40,236 104.9,172.6 288.9,62.1 560,40" fill="none" stroke="var(--nm-line-green)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="66.4" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="36.0" y="232.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="284.9" y="58.1" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="96.9" y="164.6" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="118.9" y="204.6" text-anchor="start">Georgia Ave-Petworth</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9369,-77.0247" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -403,7 +434,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--green">Green Line</span>
+          <a href="/lines/green/" class="adjacent-line-badge adjacent-line-badge--green" aria-label="Green Line — stations and status">Green Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/columbia-heights/" class="adjacent-station adjacent-station--prev">
@@ -424,6 +455,48 @@
             <span class="adjacent-name">Fort Totten</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Also serves</span>
+            <span class="adjacent-extra-values">
+              <a href="/lines/yellow/" class="adjacent-line-link adjacent-line-link--yellow">Yellow Line</a>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Yellow Line</span>
+            <span class="adjacent-extra-values"><a href="/station/huntington/">Huntington station</a> to <a href="/station/greenbelt/">Greenbelt station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Green Line</span>
+            <span class="adjacent-extra-values"><a href="/station/branch-ave/">Branch Ave station</a> to <a href="/station/greenbelt/">Greenbelt station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/u-street/">U Street/African-Amer Civil War Memorial/Cardozo</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/west-hyattsville/">West Hyattsville</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/shaw-howard-u/">Shaw-Howard U</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/hyattsville-crossing/">Hyattsville Crossing</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/mt-vernon-sq/">Mt Vernon Sq 7th St-Convention Center</a><span class="adjacent-extra-stops">4 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/college-park/">College Park-U of Md</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Nearest transfer</span>
+            <span class="adjacent-extra-values">
+              <span class="adjacent-extra-item"><a href="/station/fort-totten/">Fort Totten station</a><span class="adjacent-extra-stops">1 stop toward Greenbelt</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Fare structure &amp; passes</a>
+            <a href="/hours/">Georgia Ave-Petworth first &amp; last train</a>
+            <a href="/transfers/">Metro transfer stations</a>
+            <a href="/stations/">Metro station directory</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

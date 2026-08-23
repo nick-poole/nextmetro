@@ -678,3 +678,168 @@
     margin-right: var(--nm-space-md);
   }
 }
+
+/* ==============================
+   Internal Linking — line and station links
+   ============================== */
+
+/* Line names in the frequency tables and terminus names in the first/last
+   train headings are links to their pages. */
+.hours-table a,
+.hours-direction-label a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--nm-border-strong);
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.hours-table a:hover,
+.hours-direction-label a:hover {
+  color: var(--nm-amber);
+  text-decoration-color: var(--nm-amber);
+}
+
+.hours-table a:focus-visible,
+.hours-direction-label a:focus-visible,
+.hours-text a:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+/* First & last train at transfer stations */
+.hours-station-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  margin-top: var(--nm-space-md);
+  background-color: var(--nm-border-subtle);
+  border: 1px solid var(--nm-border);
+}
+
+.hours-station-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nm-space-sm);
+  padding: var(--nm-space-sm) var(--nm-space-md);
+  min-height: 44px;
+  background-color: var(--nm-surface);
+}
+
+.hours-station-link {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nm-border-strong);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.hours-station-link:hover {
+  color: var(--nm-amber);
+  border-bottom-color: var(--nm-amber);
+}
+
+.hours-station-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+.hours-station-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+/* Compact line markers — decoration; the row's accessible name carries the
+   line list, and the line pages are linked elsewhere on this page. */
+.hours-station-line {
+  display: block;
+  width: 8px;
+  height: 18px;
+}
+
+.hours-station-line--red    { background-color: var(--nm-line-red); }
+.hours-station-line--orange { background-color: var(--nm-line-orange); }
+.hours-station-line--blue   { background-color: var(--nm-line-blue); }
+.hours-station-line--green  { background-color: var(--nm-line-green); }
+.hours-station-line--yellow { background-color: var(--nm-line-yellow); }
+.hours-station-line--silver { background-color: var(--nm-line-silver); }
+
+/* Route-order station index, one collapsed panel per line. */
+.hours-line-stations {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-left-width: 4px;
+  margin-top: var(--nm-space-sm);
+}
+
+.hours-line-stations--red    { border-left-color: var(--nm-line-red); }
+.hours-line-stations--orange { border-left-color: var(--nm-line-orange); }
+.hours-line-stations--blue   { border-left-color: var(--nm-line-blue); }
+.hours-line-stations--green  { border-left-color: var(--nm-line-green); }
+.hours-line-stations--yellow { border-left-color: var(--nm-line-yellow); }
+.hours-line-stations--silver { border-left-color: var(--nm-line-silver); }
+
+.hours-line-stations-header {
+  display: flex;
+  align-items: center;
+  gap: var(--nm-space-sm);
+  padding: var(--nm-space-sm) var(--nm-space-md);
+  min-height: 44px;
+  cursor: pointer;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--nm-text-primary);
+  list-style: none;
+}
+
+.hours-line-stations-header::-webkit-details-marker {
+  display: none;
+}
+
+.hours-line-stations-header:hover {
+  background-color: var(--nm-surface-elevated);
+}
+
+.hours-line-stations-header:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.hours-line-stations-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  padding: 1px;
+  background-color: var(--nm-border-subtle);
+  border-top: 1px solid var(--nm-border);
+}
+
+.hours-line-station {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--nm-space-md);
+  min-height: 44px;
+  background-color: var(--nm-surface);
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: var(--nm-text-secondary);
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.hours-line-station:hover {
+  background-color: var(--nm-surface-elevated);
+  color: var(--nm-amber);
+}
+
+.hours-line-station:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}

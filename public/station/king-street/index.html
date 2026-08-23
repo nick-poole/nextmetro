@@ -175,7 +175,12 @@
       <p class="hero-station-desc" id="hero-station-desc">Access to Old Town Alexandria, King Street &amp; Amtrak/VRE connections.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
+      <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -227,11 +232,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">1700 King St, Alexandria, VA 22314</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Ground Level</span>
@@ -258,9 +258,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.8065,-77.0611" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/king-street.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -270,6 +267,45 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.8065,-77.0611" target="_blank" rel="noopener noreferrer" data-address>1700 King St, Alexandria, VA 22314</a>
+        </div>
+        <div class="location-map" data-map-lat="38.8065" data-map-lon="-77.0611" data-map-name="King St-Old Town">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of King St-Old Town. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">King St-Old Town and the nearby stations on Blue Line, Yellow Line: Franconia-Springfield, Van Dorn Street, Braddock Road, Potomac Yard, Huntington, Eisenhower Avenue</title>
+      <polyline points="40,320 213.8,198.5 516.3,172.4 549.8,144.7 560,40" fill="none" stroke="var(--nm-line-blue)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="454.4,217.5 471.8,194.9 516.3,172.4 549.8,144.7 560,40" fill="none" stroke="var(--nm-line-yellow)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="209.8" y="194.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="545.8" y="140.7" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="450.4" y="213.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="467.8" y="190.9" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="508.3" y="164.4" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="502.3" y="204.4" text-anchor="end">King St-Old Town</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.8065,-77.0611" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
@@ -327,7 +363,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--blue">Bl</span>
+          <a href="/lines/blue/" class="adjacent-line-badge adjacent-line-badge--blue" aria-label="Blue Line — stations and status">Bl</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/van-dorn-street/" class="adjacent-station adjacent-station--prev">
@@ -346,7 +382,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--yellow">Yl</span>
+          <a href="/lines/yellow/" class="adjacent-line-badge adjacent-line-badge--yellow" aria-label="Yellow Line — stations and status">Yl</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/eisenhower-ave/" class="adjacent-station adjacent-station--prev">
@@ -359,6 +395,40 @@
             <span class="adjacent-name">Braddock Road</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Also serves</span>
+            <span class="adjacent-extra-values">
+              <a href="/lines/blue/" class="adjacent-line-link adjacent-line-link--blue">Blue Line</a>
+              <a href="/lines/yellow/" class="adjacent-line-link adjacent-line-link--yellow">Yellow Line</a>
+            </span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Blue Line</span>
+            <span class="adjacent-extra-values"><a href="/station/franconia-springfield/">Franconia-Springfield station</a> to <a href="/station/downtown-largo/">Downtown Largo station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Yellow Line</span>
+            <span class="adjacent-extra-values"><a href="/station/huntington/">Huntington station</a> to <a href="/station/greenbelt/">Greenbelt station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/potomac-yard/">Potomac Yard</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/dca-national-airport/">DCA–National Airport</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/crystal-city/">Crystal City</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Metro fares and passes</a>
+            <a href="/hours/">King St-Old Town first &amp; last train</a>
+            <a href="/transfers/">Metro transfer stations</a>
+            <a href="/stations/">Metro station directory</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <!-- Station Facilities Card -->

@@ -636,7 +636,6 @@ a.status-row:focus-visible {
 
 .facilities-body {
   padding: var(--nm-space-sm) 0;
-  flex: 1;
 }
 
 .facilities-row {
@@ -1427,5 +1426,517 @@ a.status-row:focus-visible {
   .fare-arrow {
     align-self: center;
     transform: rotate(90deg);
+  }
+}
+
+/* ==============================
+   Internal Linking — line pills + the Adjacent Stations extension
+   Generated markup lives in the station page templates
+   (tools/gen-station-links.js). Grayscale surfaces, WMATA
+   line colors as the only chroma, amber for focus/hover.
+   ============================== */
+
+/* Hero line pills are real links to the line pages. Colors are
+   class-driven so the markup stays static and crawlable. */
+.line-pill {
+  text-decoration: none;
+  transition: filter 0.15s;
+}
+
+.line-pill:hover {
+  filter: brightness(1.25);
+}
+
+.line-pill:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+.line-pill--red    { color: var(--nm-line-red);    background: linear-gradient(135deg, var(--nm-line-bg-red), transparent); }
+.line-pill--orange { color: var(--nm-line-orange); background: linear-gradient(135deg, var(--nm-line-bg-orange), transparent); }
+.line-pill--blue   { color: var(--nm-line-blue);   background: linear-gradient(135deg, var(--nm-line-bg-blue), transparent); }
+.line-pill--green  { color: var(--nm-line-green);  background: linear-gradient(135deg, var(--nm-line-bg-green), transparent); }
+.line-pill--yellow { color: var(--nm-line-yellow); background: linear-gradient(135deg, var(--nm-line-bg-yellow), transparent); }
+.line-pill--silver { color: var(--nm-line-silver); background: linear-gradient(135deg, var(--nm-line-bg-silver), transparent); }
+
+.line-pill--red    .line-pill-dot { background-color: var(--nm-line-red); }
+.line-pill--orange .line-pill-dot { background-color: var(--nm-line-orange); }
+.line-pill--blue   .line-pill-dot { background-color: var(--nm-line-blue); }
+.line-pill--green  .line-pill-dot { background-color: var(--nm-line-green); }
+.line-pill--yellow .line-pill-dot { background-color: var(--nm-line-yellow); }
+.line-pill--silver .line-pill-dot { background-color: var(--nm-line-silver); }
+
+/* Adjacency badge is now a link to the line page. */
+.adjacent-line-badge {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  transition: background-color 0.15s;
+}
+
+.adjacent-line-badge:hover {
+  background-color: var(--nm-surface-overlay);
+}
+
+.adjacent-line-badge:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+/* ---- Adjacent Stations extension: the line at a wider radius ---- */
+/* The extension lays itself out against the card, so it behaves the same
+   whether the card is half a row or the full width of an interchange. */
+.adjacent-card {
+  container: adjacent / inline-size;
+}
+
+.adjacent-extra {
+  border-top: 1px solid var(--nm-border);
+}
+
+.adjacent-extra-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px var(--nm-space-md);
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.adjacent-extra-label {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex: 0 0 100%;
+}
+
+.adjacent-extra-values {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--nm-text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nm-space-sm);
+  line-height: 1.6;
+}
+
+.adjacent-extra-values a {
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nm-border-strong);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.adjacent-extra-values a:hover {
+  color: var(--nm-amber);
+  border-bottom-color: var(--nm-amber);
+}
+
+.adjacent-extra-values a:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+/* Each entry keeps its stop count attached to its own link, so a wrap never
+   leaves "2 stops" sitting next to the wrong station. */
+.adjacent-extra-item {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 var(--nm-space-xs);
+}
+
+/* "Further along" splits by direction of travel: the stations behind you sit
+   left, the ones ahead sit right, mirroring the prev/next block above.
+   On a narrow card that is one column and the alignment alone carries the
+   split; from 900px there is room to pair the two directions into columns,
+   so both read 2, 3, 4 stops down the page. */
+.adjacent-extra-values--split {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--nm-space-sm);
+  width: 100%;
+}
+
+.adjacent-extra-item--back {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.adjacent-extra-item--fwd {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Keyed off the card's own width rather than the viewport: the card is half a
+   row on desktop but full width at interchanges, and a viewport query would
+   split a 190px column at tablet sizes and wrap every long station name. */
+@container adjacent (min-width: 520px) {
+  .adjacent-extra-values--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--nm-space-xl);
+    row-gap: var(--nm-space-sm);
+    align-items: baseline;
+  }
+
+  .adjacent-extra-item--back {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .adjacent-extra-item--fwd {
+    grid-column: 2;
+    justify-self: end;
+  }
+}
+
+.adjacent-extra-stops {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Line chips carry the line color and no underline. */
+.adjacent-line-link {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.6rem;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid;
+}
+
+.adjacent-extra-values .adjacent-line-link:hover {
+  color: currentColor;
+  border-color: currentColor;
+  filter: brightness(1.25);
+}
+
+.adjacent-line-link--red    { color: var(--nm-line-red);    border-color: var(--nm-line-red);    background-color: var(--nm-line-bg-red); }
+.adjacent-line-link--orange { color: var(--nm-line-orange); border-color: var(--nm-line-orange); background-color: var(--nm-line-bg-orange); }
+.adjacent-line-link--blue   { color: var(--nm-line-blue);   border-color: var(--nm-line-blue);   background-color: var(--nm-line-bg-blue); }
+.adjacent-line-link--green  { color: var(--nm-line-green);  border-color: var(--nm-line-green);  background-color: var(--nm-line-bg-green); }
+.adjacent-line-link--yellow { color: var(--nm-line-yellow); border-color: var(--nm-line-yellow); background-color: var(--nm-line-bg-yellow); }
+.adjacent-line-link--silver { color: var(--nm-line-silver); border-color: var(--nm-line-silver); background-color: var(--nm-line-bg-silver); }
+
+.adjacent-extra-links {
+  padding: 0.75rem 1.25rem;
+  column-gap: var(--nm-space-lg);
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--nm-text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nm-space-sm);
+  line-height: 1.6;
+}
+
+.adjacent-extra-links a {
+  color: var(--nm-text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nm-border-strong);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.adjacent-extra-links a:hover {
+  color: var(--nm-amber);
+  border-bottom-color: var(--nm-amber);
+}
+
+.adjacent-extra-links a:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+/* ==============================
+   Equal-height cards: fill, do not pad
+   The grid stretches cards in a row to match the tallest. Each card lays its
+   content out as a column so the body absorbs the slack and any footer sits on
+   the bottom edge — rather than the content ending mid-card, which is what the
+   WMATA disclaimer did on a station with no scheduled trains.
+   ============================== */
+@media (min-width: 769px) {
+  .pids-card,
+  .adjacent-card,
+  .station-info-card,
+  .facilities-card,
+  .fare-card,
+  .system-status-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Only the display-like regions absorb the slack. Label/value lists do not:
+     stretching a four-row table just spreads the rows apart. */
+  .pids-screen,
+  .adjacent-body {
+    flex: 1 1 auto;
+  }
+
+  /* Transfer stations: the two platform boards share the slack evenly. */
+  .pids-grid {
+    flex: 1 1 auto;
+    grid-auto-rows: 1fr;
+  }
+
+  /* Bordered footers pin to the bottom edge rather than floating mid-card —
+     which is what the WMATA disclaimer did on a station with no trains. */
+  .wmata-data-disclaimer,
+  .station-info-actions,
+  .facilities-card .card-actions,
+  .fare-card .card-actions {
+    margin-top: auto;
+  }
+
+  /* The extension is the adjacency card's footer; the prev/next block above it
+     spreads into whatever height is left. */
+  .adjacent-extra {
+    margin-top: auto;
+  }
+
+  .adjacent-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  /* Interchanges carry one adjacency card per line group, and the collapse
+     rules above join them into a single unit — which only reads as one card if
+     they stack. Give the whole unit the full row instead of letting the cards
+     sit side by side with their shared borders removed. */
+  .adjacent-card:has(+ .adjacent-card),
+  .adjacent-card + .adjacent-card {
+    flex: 0 0 100%;
+  }
+
+  /* Across a full-width header, space-between would scatter the line badges
+     end to end. Keep them clustered opposite the title. */
+  .adjacent-card:has(+ .adjacent-card) .adjacent-header,
+  .adjacent-card + .adjacent-card .adjacent-header {
+    justify-content: flex-start;
+    gap: var(--nm-space-sm);
+  }
+
+  .adjacent-card:has(+ .adjacent-card) .adjacent-title,
+  .adjacent-card + .adjacent-card .adjacent-title {
+    margin-right: auto;
+  }
+}
+
+/* ==============================
+   Location Card
+   Address, a map of the line through the station drawn at build time from
+   public/data/, and a Directions link. The Google embed is not loaded until
+   the visitor asks for it — see initLocationMap() in app.js.
+   ============================== */
+.location-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+  margin-top: 0;
+  order: 5;
+}
+
+.location-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.location-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.location-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px var(--nm-space-md);
+  padding: 0.75rem 1.25rem;
+}
+
+.location-label {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex: 0 0 100%;
+}
+
+.location-address {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nm-border-strong);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.location-address:hover {
+  color: var(--nm-amber);
+  border-bottom-color: var(--nm-amber);
+}
+
+.location-address:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+/* The aspect ratio is fixed so swapping the poster for the embed costs no
+   layout shift. */
+.location-map {
+  position: relative;
+  aspect-ratio: 600 / 360;
+  background-color: var(--nm-bg);
+  border-top: 1px solid var(--nm-border);
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.location-map-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.location-map-here {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 20px;
+  fill: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.location-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* The whole map is the target: clicking anywhere on it swaps in the embed. */
+.location-map-load {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.location-map-load:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.location-map-hint {
+  position: absolute;
+  right: var(--nm-space-sm);
+  bottom: var(--nm-space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: calc(100% - var(--nm-space-md));
+  padding: 0.5rem 0.75rem;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border-strong);
+  font-family: var(--nm-font);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.location-map-load:hover .location-map-hint,
+.location-map-load:focus-visible .location-map-hint {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--nm-amber);
+}
+
+.location-map-hint-text {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nm-amber);
+}
+
+.location-map-hint-note {
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--nm-text-muted);
+}
+
+.location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-sm);
+  padding: 0.75rem 1.25rem;
+}
+
+.location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 var(--nm-space-md);
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nm-amber);
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.location-link:hover {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--nm-amber);
+}
+
+.location-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+@media (min-width: 769px) {
+  .location-card {
+    flex: 0 1 calc(50% - var(--nm-space-lg) / 2);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* The poster is drawn to a fixed frame, so the map keeps its aspect and the
+     Directions row takes the slack to the bottom edge instead. */
+  .location-actions {
+    margin-top: auto;
   }
 }

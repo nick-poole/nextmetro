@@ -24,11 +24,11 @@ NextMetro is an independent, real-time dashboard for the D.C. Metro system. It p
 
 | Page | What It Shows |
 |------|--------------|
-| **[Station Pages](https://nextmetro.live/station/metro-center/)** | PIDS arrival board, system status, service alerts, elevator/escalator status, fare calculator. Transfer stations (Metro Center, Gallery Place) show dual side-by-side boards — one per physical platform. |
+| **[Station Pages](https://nextmetro.live/station/metro-center/)** | PIDS arrival board, system status, service alerts, elevator/escalator status, fare calculator, adjacent stations with the full line context, and a location card with a build-time line map (Google Maps loads only on click). Transfer stations (Metro Center, Gallery Place) show dual side-by-side boards — one per physical platform. |
 | **[Line Pages](https://nextmetro.live/lines/red/)** | All stations on the line with transfer/parking badges, real-time status, service hours, frequency info, and FAQ. All 6 lines covered. |
 | **[Service Alerts](https://nextmetro.live/alerts/)** | Active WMATA rail incidents — delays, closures, single tracking, advisories — severity-sorted and auto-refreshing. |
 | **[Elevator & Escalator Status](https://nextmetro.live/elevators/)** | System-wide outage tracker grouped by station, filterable by type and line. |
-| **[Fare Calculator](https://nextmetro.live/fares/)** | Peak/off-peak/senior pricing between any two stations with travel time estimates and commute cost projections. |
+| **[Fare Calculator](https://nextmetro.live/fares/)** | Peak/off-peak/senior pricing between any two stations with travel time estimates, commute cost projections, and result links into the trip's station and line pages. |
 | **[Hours & Schedules](https://nextmetro.live/hours/)** | Operating hours, frequency tables, holiday schedules. |
 | **[Homepage](https://nextmetro.live/)** | Station search, live alert preview, quick links. |
 
@@ -92,6 +92,7 @@ This project has been built iteratively from a React prototype to a production-g
 | **Mar 2026** | **v2.5 — Site-wide audit** | WCAG compliance pass, skip navigation on all pages, Schema.org structured data everywhere, meta/OG tags audit, static status bar. |
 | **Mar 2026** | **v2.6 — Station pages** | 5 dedicated station pages including dual-PIDS transfer stations (Metro Center, Gallery Place). Search navigation. |
 | **Mar 2026** | **v2.7 — Performance** | CSS code splitting (5,700-line monolith → 433 core + 11 page-specific files). JS DRY refactor (shared.js eliminates ~680 lines of duplication across 6 files). Comprehensive site audit + IndexNow integration. |
+| **Aug 2026** | **v2.8 — Internal linking + location** | Data-driven internal link graph across all 98 station pages, 6 line pages, /fares/ and /hours/ (generators in `tools/`, route order lifted into the data model). /fares/ dead-click fix. Station Location card with a build-time SVG line map and click-to-load Google Maps. |
 
 ---
 
@@ -134,6 +135,23 @@ Start the local dev server:
 ```bash
 npm start
 ```
+
+### Internal link modules
+
+The station, line, fares, and hours pages carry generated blocks: hero line
+pills, the Adjacent Stations extension, route-order station indexes, and the
+station Location card with its build-time map. They are derived from
+`public/data/stations.json` and `public/data/lines.json` — never edited by hand
+across the 98 station files.
+
+```bash
+npm run build:links   # regenerate every marked block, then audit the link graph
+npm run audit:links   # link graph only: inbound counts, broken internal links
+```
+
+Each generated region is delimited by `nm:links:*` markers and is safe to
+re-run; the scripts replace the block in place. `npm run audit:links --
+--page /fares/` prints the inbound links for a single URL.
 
 ---
 

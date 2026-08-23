@@ -169,7 +169,11 @@
       <span class="hero-label">Station</span>
       <h1 class="hero-station-name" id="hero-station-name">Greensboro</h1>
       <p class="hero-station-desc" id="hero-station-desc">Serving Greensboro &amp; the Tysons area.</p>
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/silver/" class="line-pill line-pill--silver" aria-label="Silver Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Silver Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -205,19 +209,9 @@
         </div>
       </section>
 
-      <div class="last-updated" id="last-updated" style="display:none;">
-        <span id="updated-time"></span>
-        <button class="refresh-btn" id="refresh-btn" aria-label="Refresh train data"><i class="ri-refresh-line" aria-hidden="true"></i></button>
-      </div>
-
       <section class="station-info-card animate-in d3">
         <div class="station-info-header"><h2 class="station-info-title">Station Information</h2></div>
         <div class="station-info-body">
-          <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">8101 Greensboro Dr, Tysons, VA 22182</span>
-          </div>
           <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
@@ -240,7 +234,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9214,-77.2351" class="station-info-link" target="_blank" rel="noopener noreferrer"><i class="ri-direction-line" aria-hidden="true"></i> Directions</a>
           <a href="https://www.wmata.com/rider-guide/stations/greensboro.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -248,6 +241,42 @@
           <a href="https://www.wmata.com/rider-guide/stations/greensboro.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer"><i class="ri-external-link-line" aria-hidden="true"></i> WMATA Station Page</a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9214,-77.2351" target="_blank" rel="noopener noreferrer" data-address>8101 Greensboro Dr, Tysons, VA 22182</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9214" data-map-lon="-77.2351" data-map-name="Greensboro">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Greensboro. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Greensboro and the nearby stations on Silver Line: Wiehle-Reston East, Spring Hill, Tysons, McLean</title>
+      <polyline points="40,40 434,240.3 460.2,313.7 505.3,320 560,280.1" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="430.0" y="236.3" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="501.3" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="276.1" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="452.2" y="305.7" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="446.2" y="293.7" text-anchor="end">Greensboro</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9214,-77.2351" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <section class="fare-card animate-in d4" id="fare-card">
         <div class="fare-header"><h2 class="fare-title">Fare Calculator</h2></div>
@@ -300,7 +329,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--silver">Silver</span>
+          <a href="/lines/silver/" class="adjacent-line-badge adjacent-line-badge--silver" aria-label="Silver Line — stations and status">Silver</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/spring-hill/" class="adjacent-station adjacent-station--prev">
@@ -313,6 +342,32 @@
             <span class="adjacent-name">Tysons</span>
           </a>
         </div>
+      
+        <!-- nm:links:adjacent-extra -->
+        <div class="adjacent-extra">
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Ends of the Silver Line</span>
+            <span class="adjacent-extra-values"><a href="/station/ashburn/">Ashburn station</a> to <a href="/station/downtown-largo/">Downtown Largo station</a></span>
+          </div>
+          <div class="adjacent-extra-row">
+            <span class="adjacent-extra-label">Further along</span>
+            <span class="adjacent-extra-values adjacent-extra-values--split">
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/wiehle-reston-east/">Wiehle-Reston East</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/mclean/">McLean</a><span class="adjacent-extra-stops">2 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/reston-town-center/">Reston Town Center</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/east-falls-church/">East Falls Church</a><span class="adjacent-extra-stops">3 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--back"><a href="/station/herndon/">Herndon</a><span class="adjacent-extra-stops">4 stops</span></span>
+              <span class="adjacent-extra-item adjacent-extra-item--fwd"><a href="/station/ballston/">Ballston-MU</a><span class="adjacent-extra-stops">4 stops</span></span>
+            </span>
+          </div>
+          <p class="adjacent-extra-links">
+            <a href="/fares/">Metro fares and passes</a>
+            <a href="/hours/">Metro hours &amp; schedule</a>
+            <a href="/transfers/">All transfer stations</a>
+            <a href="/stations/">Every Metrorail station</a>
+          </p>
+        </div>
+<!-- /nm:links:adjacent-extra -->
       </section>
 
       <section class="facilities-card grid-side animate-in d3" id="facilities-card">

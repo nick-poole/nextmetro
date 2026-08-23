@@ -350,20 +350,25 @@ function updateHeroDisplay(stationCode) {
   heroStationName.textContent = name;
   fetchStationAddress(stationCode);
 
-  // Update line pills
-  linePillsEl.innerHTML = '';
-  allLines.forEach((line) => {
-    const pill = document.createElement('span');
-    pill.className = 'line-pill';
-    pill.style.background = 'linear-gradient(135deg, ' + line.color + '1a, transparent)';
-    pill.style.color = line.color;
-    pill.innerHTML =
-      '<span class="line-pill-dot" style="background-color:' +
-      line.color +
-      '"></span>' +
-      line.name;
-    linePillsEl.appendChild(pill);
-  });
+  // Update line pills.
+  // Station pages ship these as static, crawlable <a> links to the line pages
+  // (data-static="true"); leave that markup alone. Only pages that render the
+  // hero client-side build pills here.
+  if (linePillsEl.dataset.static !== 'true') {
+    linePillsEl.innerHTML = '';
+    allLines.forEach((line) => {
+      const pill = document.createElement('span');
+      pill.className = 'line-pill';
+      pill.style.background = 'linear-gradient(135deg, ' + line.color + '1a, transparent)';
+      pill.style.color = line.color;
+      pill.innerHTML =
+        '<span class="line-pill-dot" style="background-color:' +
+        line.color +
+        '"></span>' +
+        line.name;
+      linePillsEl.appendChild(pill);
+    });
+  }
 
   // Update PIDS header — keep static "Next Arrivals" text
   // pidsHeaderStation.textContent = name;
@@ -946,6 +951,40 @@ function updateTimestamp() {
 }
 
 // ==============================
+// Location Map
+// The card ships a poster drawn at build time from the station data, so the
+// page makes no third-party request on load. Clicking swaps in the Google
+// Maps embed — the first and only time anything reaches Google.
+// ==============================
+function initLocationMap() {
+  var wrap = document.querySelector('.location-map');
+  if (!wrap) return;
+  var button = wrap.querySelector('[data-map-load]');
+  if (!button) return;
+
+  button.addEventListener('click', function () {
+    var lat = wrap.getAttribute('data-map-lat');
+    var lon = wrap.getAttribute('data-map-lon');
+    var name = wrap.getAttribute('data-map-name') || 'this station';
+    if (!lat || !lon) return;
+
+    var frame = document.createElement('iframe');
+    frame.src =
+      'https://www.google.com/maps?q=' +
+      encodeURIComponent(lat + ',' + lon) +
+      '&z=16&output=embed';
+    frame.title = 'Google map of ' + name;
+    frame.loading = 'lazy';
+    frame.referrerPolicy = 'no-referrer-when-downgrade';
+    frame.setAttribute('allowfullscreen', '');
+
+    button.remove();
+    wrap.appendChild(frame);
+    frame.focus();
+  });
+}
+
+// ==============================
 // WMATA Data Disclaimer (required by API agreement)
 // ==============================
 function injectWmataDisclaimer() {
@@ -1196,6 +1235,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Inject WMATA data disclaimer near PIDS boards
   injectWmataDisclaimer();
+
+  // Arm the location map's click-to-load
+  initLocationMap();
 
   // Render system status immediately (all lines Normal) before API returns
   renderSystemStatus([]);
