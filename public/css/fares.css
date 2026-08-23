@@ -1092,3 +1092,52 @@
   padding: var(--nm-space-md);
   border-top: 1px solid var(--nm-border-subtle);
 }
+
+/* ==============================
+   Fare Guides
+   Hub-and-spoke links from /fares/ down into the fare guide cluster.
+   ============================== */
+.fares-guide-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--nm-space-sm);
+  margin-top: var(--nm-space-md);
+}
+
+.fares-guide-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-left: 3px solid var(--nm-amber-dim);
+  padding: var(--nm-space-md);
+}
+
+.fares-guide-link:hover {
+  background-color: var(--nm-surface-elevated);
+  border-left-color: var(--nm-amber);
+}
+
+.fares-guide-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.fares-guide-link-name {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+}
+
+.fares-guide-link:hover .fares-guide-link-name {
+  color: var(--nm-amber);
+}
+
+.fares-guide-link-meta {
+  font-family: var(--nm-font);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--nm-text-muted);
+}

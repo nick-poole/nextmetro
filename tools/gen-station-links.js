@@ -149,6 +149,14 @@ function adjacentExtra(station, html) {
   }
 
   const name = esc(station.name);
+  // The two airport stations get a link to their own fare guide first: the
+  // fare from an airport is the question those arrivals actually search for,
+  // and the guide answers it in one page rather than a lookup.
+  const AIRPORT_FARE_GUIDES = {
+    'washington-dulles': ['/fares/dulles-airport/', 'Metro fare from Dulles Airport'],
+    'dca-national-airport': ['/fares/reagan-airport/', 'Metro fare from Reagan National'],
+  };
+
   // The station's own fare calculator is already on this page, preselected, so
   // this link points at the fares page as a whole rather than at a lookup the
   // rider can do without leaving.
@@ -158,6 +166,8 @@ function adjacentExtra(station, html) {
     `<a href="/transfers/">${pick(['Metro transfer stations', 'Where the lines connect', 'All transfer stations'], station.slug + 't')}</a>`,
     `<a href="/stations/">${pick(['All 98 Metro stations', 'Every Metrorail station', 'Metro station directory'], station.slug + 's')}</a>`,
   ];
+  const guide = AIRPORT_FARE_GUIDES[station.slug];
+  if (guide) hubs.unshift(`<a href="${guide[0]}">${guide[1]}</a>`);
 
   return (
     `        <div class="adjacent-extra">\n` +
