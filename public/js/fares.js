@@ -125,7 +125,6 @@ var lineDisplayNames = {
 
 // ---- State ----
 let currentFareData = null;
-let fareType = 'regular'; // 'regular' or 'senior'
 
 // ---- DOM Elements ----
 const calcFrom = document.getElementById('calc-from');
@@ -144,7 +143,15 @@ const estYearly = document.getElementById('est-yearly');
 const peakDot = document.getElementById('peak-dot');
 const peakText = document.getElementById('peak-text');
 const peakTimeEl = document.getElementById('peak-time');
-const calcRouteLinks = document.getElementById('calc-route-links');
+const resultSenior = document.getElementById('result-senior');
+const resultSeniorAlt = document.getElementById('result-senior-alt');
+const boardRowWeekday = document.getElementById('board-row-weekday');
+const boardRowLatenight = document.getElementById('board-row-latenight');
+const boardNowWeekday = document.getElementById('board-now-weekday');
+const boardNowLatenight = document.getElementById('board-now-latenight');
+const faresTrip = document.getElementById('fares-trip');
+const faresTripStations = document.getElementById('fares-trip-stations');
+const faresTripSegment = document.getElementById('fares-trip-segment');
 
 // ==============================
 // Weekday / Late-Night-Weekend Fare Detection
@@ -245,7 +252,7 @@ async function fetchFare() {
   const fromCode = calcFrom.value;
   const toCode = calcTo.value;
 
-  renderRouteLinks();
+  renderTripBlock();
 
   if (!fromCode || !toCode) {
     calcResults.style.display = 'none';
@@ -254,14 +261,9 @@ async function fetchFare() {
   }
 
   if (fromCode === toCode) {
-    resultPeak.textContent = '$0.00';
-    resultOffpeak.textContent = '$0.00';
-    resultTime.textContent = '0 min';
-    resultRoundtrip.textContent = '$0.00';
-    resultRoundtripNote.textContent = '';
     currentFareData = { peak: 0, offpeak: 0, seniorPeak: 0, seniorOffpeak: 0, time: 0 };
+    displayResults();
     calcResults.style.display = '';
-    updateEstimator();
     return;
   }
 
@@ -296,6 +298,8 @@ async function fetchFare() {
     console.error('Fare fetch error:', err.message);
     resultPeak.textContent = '--';
     resultOffpeak.textContent = '--';
+    resultSenior.textContent = '--';
+    resultSeniorAlt.textContent = '';
     resultTime.textContent = 'Unavailable';
     resultRoundtrip.textContent = '--';
     resultRoundtripNote.textContent = '';
@@ -308,45 +312,32 @@ function displayResults() {
   if (!currentFareData) return;
 
   const d = currentFareData;
-  const peak = isPeakTime(new Date());
+  const weekday = isWeekdayFare(new Date());
 
-  if (fareType === 'senior') {
-    resultPeak.textContent = '$' + d.seniorPeak.toFixed(2);
-    resultOffpeak.textContent = '$' + d.seniorOffpeak.toFixed(2);
-    if (peak) {
-      const rt = d.seniorPeak * 2;
-      resultRoundtrip.textContent = '$' + rt.toFixed(2);
-      resultRoundtripNote.textContent = 'Reduced weekday round trip';
-    } else {
-      const rt = d.seniorOffpeak * 2;
-      resultRoundtrip.textContent = '$' + rt.toFixed(2);
-      resultRoundtripNote.textContent = 'Reduced late night / weekend';
-    }
-  } else {
-    resultPeak.textContent = '$' + d.peak.toFixed(2);
-    resultOffpeak.textContent = '$' + d.offpeak.toFixed(2);
-    // Round trip estimate based on current fare window
-    if (peak) {
-      const rt = d.peak * 2;
-      resultRoundtrip.textContent = '$' + rt.toFixed(2);
-      resultRoundtripNote.textContent = 'Weekday round trip';
-    } else {
-      const rt = d.offpeak * 2;
-      resultRoundtrip.textContent = '$' + rt.toFixed(2);
-      resultRoundtripNote.textContent = 'Late night / weekend round trip';
-    }
-  }
+  resultPeak.textContent = '$' + d.peak.toFixed(2);
+  resultOffpeak.textContent = '$' + d.offpeak.toFixed(2);
+  resultSenior.textContent = '$' + d.seniorPeak.toFixed(2);
+  resultSeniorAlt.textContent = '\u00b7 $' + d.seniorOffpeak.toFixed(2) + ' late';
+
+  // The NOW marker tracks the active fare window.
+  boardRowWeekday.classList.toggle('calc-board-row--now', weekday);
+  boardRowLatenight.classList.toggle('calc-board-row--now', !weekday);
+  boardNowWeekday.hidden = !weekday;
+  boardNowLatenight.hidden = weekday;
+
+  const active = weekday ? d.peak : d.offpeak;
+  resultRoundtrip.textContent = '$' + (active * 2).toFixed(2);
+  resultRoundtripNote.textContent = weekday ? 'Weekday round trip' : 'Late night / weekend round trip';
 
   resultTime.textContent = d.time ? d.time + ' min' : '--';
   updateEstimator();
 }
 
 // ==============================
-// Route Links
-// Fare result rows are line-coloured like the links everywhere else on the
-// site, so riders tap them expecting navigation. Give them somewhere to go:
-// real anchors to the station pages either end of the trip and to the lines
-// that serve them.
+// This Trip
+// The trip's two stations and the lines serving each, as a journey ribbon on
+// the page surface below the calculator. Real links, styled like links are
+// everywhere else on the site.
 // ==============================
 function escapeHtml(str) {
   return String(str)
@@ -356,48 +347,42 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-function routeEndpoint(label, code) {
+function tripStationEntry(code) {
   const route = stationRoutes[code];
   const name = stations[code] || '';
   if (!route || !name) return '';
-  const lineLinks = route.lines
+  const chips = route.lines
     .map(
       (line) =>
-        '<a href="/lines/' + line + '/" class="calc-route-line calc-route-line--' + line + '">' +
+        '<a href="/lines/' + line + '/" class="fares-line-chip fares-line-chip--' + line + '">' +
         lineDisplayNames[line] +
         '</a>'
     )
     .join('');
   return (
-    '<div class="calc-route-link-row">' +
-    '<span class="calc-route-link-label">' + label + '</span>' +
-    '<a href="/station/' + route.slug + '/" class="calc-route-link">' + escapeHtml(name) + ' station</a>' +
-    '<span class="calc-route-link-lines">' + lineLinks + '</span>' +
+    '<div class="fares-trip-station">' +
+    '<a href="/station/' + route.slug + '/" class="fares-trip-station-link">' + escapeHtml(name) + ' station</a>' +
+    '<span class="fares-trip-station-lines">' + chips + '</span>' +
     '</div>'
   );
 }
 
-function renderRouteLinks() {
-  if (!calcRouteLinks) return;
+function renderTripBlock() {
+  if (!faresTrip) return;
   const fromCode = calcFrom.value;
   const toCode = calcTo.value;
+  const fromRoute = stationRoutes[fromCode];
 
-  if (!fromCode || !toCode || fromCode === toCode) {
-    calcRouteLinks.innerHTML = '';
-    calcRouteLinks.hidden = true;
+  if (!fromCode || !toCode || fromCode === toCode || !fromRoute || !stationRoutes[toCode]) {
+    faresTripStations.innerHTML = '';
+    faresTrip.hidden = true;
     return;
   }
 
-  const from = routeEndpoint('From', fromCode);
-  const to = routeEndpoint('To', toCode);
-  if (!from || !to) {
-    calcRouteLinks.innerHTML = '';
-    calcRouteLinks.hidden = true;
-    return;
-  }
-
-  calcRouteLinks.innerHTML = from + to;
-  calcRouteLinks.hidden = false;
+  faresTripStations.innerHTML = tripStationEntry(fromCode) + tripStationEntry(toCode);
+  // The ribbon segment carries the colour of the line you board.
+  faresTripSegment.className = 'fares-trip-segment fares-trip-segment--' + fromRoute.lines[0];
+  faresTrip.hidden = false;
 }
 
 // ==============================
@@ -420,14 +405,8 @@ function updateEstimator() {
   }
 
   const d = currentFareData;
-  let costPerTrip;
-
-  if (fareType === 'senior') {
-    costPerTrip = d.seniorPeak * 0.6 + d.seniorOffpeak * 0.4;
-  } else {
-    // Assume a mix: roughly 60% peak, 40% off-peak for commuters
-    costPerTrip = d.peak * 0.6 + d.offpeak * 0.4;
-  }
+  // Assume a commuter mix: roughly 60% weekday, 40% late night / weekend.
+  const costPerTrip = d.peak * 0.6 + d.offpeak * 0.4;
 
   // Each "round trip" is 2 one-way trips
   const weekly = costPerTrip * trips * 2;
@@ -437,25 +416,6 @@ function updateEstimator() {
   estWeekly.textContent = '$' + weekly.toFixed(2);
   estMonthly.textContent = '$' + monthly.toFixed(2);
   estYearly.textContent = '$' + yearly.toFixed(2);
-}
-
-// ==============================
-// Fare Type Toggle
-// ==============================
-function initFareToggle() {
-  const toggleBtns = document.querySelectorAll('.calc-toggle-btn');
-  toggleBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      toggleBtns.forEach((b) => {
-        b.classList.remove('calc-toggle-btn--active');
-        b.setAttribute('aria-checked', 'false');
-      });
-      btn.classList.add('calc-toggle-btn--active');
-      btn.setAttribute('aria-checked', 'true');
-      fareType = btn.dataset.fareType;
-      displayResults();
-    });
-  });
 }
 
 // ==============================
@@ -481,11 +441,14 @@ tripsPerWeek.addEventListener('input', updateEstimator);
 // ==============================
 document.addEventListener('DOMContentLoaded', async () => {
   populateStations();
-  initFareToggle();
   updatePeakIndicator();
 
-  // Update peak indicator every minute
-  setInterval(updatePeakIndicator, 60000);
+  // Update the hero indicator and the board's NOW marker every minute, so
+  // crossing the 9:30 PM boundary while the page is open moves both.
+  setInterval(function () {
+    updatePeakIndicator();
+    displayResults();
+  }, 60000);
 
   // Wake up Render backend
   try {

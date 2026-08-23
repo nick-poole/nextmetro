@@ -223,42 +223,42 @@
           </div>
         </div>
 
-        <!-- Fare Type Toggle -->
-        <div class="calc-options">
-          <div class="calc-toggle" role="radiogroup" aria-label="Fare type">
-            <button class="calc-toggle-btn calc-toggle-btn--active" data-fare-type="regular" role="radio" aria-checked="true">Regular</button>
-            <button class="calc-toggle-btn" data-fare-type="senior" role="radio" aria-checked="false">Senior/Disabled &amp; Metro Lift</button>
-          </div>
-        </div>
-
-        <!-- Results -->
+        <!-- Results: the fare board. Every category is a row; fares.js moves
+             the NOW marker to whichever window currently applies. There is no
+             fare-type toggle — the toggle was the page's main source of dead
+             and rage clicks, and a board has no mode to get wrong. -->
         <div class="calc-results" id="calc-results" style="display:none;">
-          <div class="calc-results-grid">
-            <div class="calc-result-item">
-              <span class="calc-result-label">Weekday Fare</span>
-              <span class="calc-result-value calc-result-value--highlight" id="result-peak">--</span>
-              <span class="calc-result-note">Mon–Fri, opening – 9:30 PM</span>
-            </div>
-            <div class="calc-result-item">
-              <span class="calc-result-label">Late Night / Weekend</span>
-              <span class="calc-result-value calc-result-value--highlight" id="result-offpeak">--</span>
-              <span class="calc-result-note">After 9:30 PM, weekends, holidays</span>
-            </div>
-            <div class="calc-result-item">
-              <span class="calc-result-label">Travel Time</span>
-              <span class="calc-result-value calc-result-value--secondary" id="result-time">--</span>
-            </div>
-            <div class="calc-result-item">
-              <span class="calc-result-label">Round Trip</span>
-              <span class="calc-result-value calc-result-value--secondary" id="result-roundtrip">--</span>
-              <span class="calc-result-note" id="result-roundtrip-note"></span>
+          <div class="calc-board">
+            <span class="calc-board-label">Fares for this trip</span>
+            <div class="calc-board-rows" aria-live="polite">
+              <div class="calc-board-row" id="board-row-weekday">
+                <span class="calc-board-cat">Weekday</span>
+                <span class="calc-board-now" id="board-now-weekday" hidden>Now</span>
+                <span class="calc-board-fare" id="result-peak">--</span>
+              </div>
+              <div class="calc-board-row" id="board-row-latenight">
+                <span class="calc-board-cat">Late night / weekend</span>
+                <span class="calc-board-now" id="board-now-latenight" hidden>Now</span>
+                <span class="calc-board-fare" id="result-offpeak">--</span>
+              </div>
+              <div class="calc-board-row">
+                <span class="calc-board-cat">Senior / Disabled &amp; Metro Lift</span>
+                <span class="calc-board-fare"><span id="result-senior">--</span> <span class="calc-board-fare-alt" id="result-senior-alt"></span></span>
+              </div>
             </div>
           </div>
 
-          <!-- Route links — station and line pages for the selected trip.
-               Populated by fares.js; the calculator's results are API-driven,
-               so the crawlable path lives in the static section below. -->
-          <div class="calc-route-links" id="calc-route-links" hidden></div>
+          <div class="calc-meta-grid">
+            <div class="calc-meta-item">
+              <span class="calc-meta-label">Travel Time</span>
+              <span class="calc-meta-value" id="result-time">--</span>
+            </div>
+            <div class="calc-meta-item">
+              <span class="calc-meta-label">Round Trip</span>
+              <span class="calc-meta-value" id="result-roundtrip">--</span>
+              <span class="calc-meta-note" id="result-roundtrip-note"></span>
+            </div>
+          </div>
 
           <!-- Weekly/Monthly Estimator -->
           <div class="calc-estimator">
@@ -286,9 +286,30 @@
       </div>
     </div>
 
+    <!-- This trip — journey ribbon rendered by fares.js when a route is
+         selected. Real links to the trip's station and line pages, styled
+         like links are everywhere else on the site. -->
+    <div class="fares-trip animate-in d2" id="fares-trip" hidden>
+      <h2 class="fares-trip-label">This trip</h2>
+      <div class="fares-trip-card">
+        <div class="fares-trip-rail" aria-hidden="true">
+          <span class="fares-trip-dot"></span>
+          <span class="fares-trip-segment" id="fares-trip-segment"></span>
+          <span class="fares-trip-dot fares-trip-dot--end"></span>
+        </div>
+        <div class="fares-trip-stations" id="fares-trip-stations">
+          <!-- Rendered by fares.js -->
+        </div>
+      </div>
+    </div>
+
     <!-- Fare Table -->
-    <div class="fares-section animate-in d2">
-      <h2 class="fares-section-heading">Fare Structure</h2>
+    <details class="fares-section fares-section--fold animate-in d2">
+      <summary class="fares-section-summary">
+        <h2 class="fares-section-heading">Fare Structure</h2>
+        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>
+      </summary>
+      <div class="fares-section-body">
       <p class="fares-text">
         Metrorail uses a distance-based fare system. The further you travel, the more you pay. <strong>Weekday fares</strong> (opening – 9:30 PM) are distance-based, while <strong>late night and weekend fares</strong> use a reduced flat rate. There is no separate rush-hour surcharge.
       </p>
@@ -337,10 +358,15 @@
         </table>
       </div>
     </div>
+    </details>
 
     <!-- Fare Hours -->
-    <div class="fares-section animate-in d3">
-      <h2 class="fares-section-heading">Fare Hours</h2>
+    <details class="fares-section fares-section--fold animate-in d3">
+      <summary class="fares-section-summary">
+        <h2 class="fares-section-heading">Fare Hours</h2>
+        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>
+      </summary>
+      <div class="fares-section-body">
       <p class="fares-text">
         Weekday fares are distance-based. Late night (after 9:30 PM) and weekend fares use a reduced flat rate. Federal holidays use weekend fare rates.
       </p>
@@ -370,10 +396,15 @@
         For full operating hours, train frequency, and holiday schedules, see <a href="/hours/">Metro hours &amp; schedule</a>.
       </p>
     </div>
+    </details>
 
     <!-- Passes -->
-    <div class="fares-section animate-in d4">
-      <h2 class="fares-section-heading">Passes</h2>
+    <details class="fares-section fares-section--fold animate-in d4">
+      <summary class="fares-section-summary">
+        <h2 class="fares-section-heading">Passes</h2>
+        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>
+      </summary>
+      <div class="fares-section-body">
       <p class="fares-text">
         Metro offers several pass options for frequent riders. Passes cover unlimited Metrorail and Metrobus rides for the duration of the pass.
       </p>
@@ -424,10 +455,15 @@
         Passes require a <a href="https://www.wmata.com/fares/smartrip/" target="_blank" rel="noopener noreferrer">SmarTrip&reg; card</a> — they cannot be used with contactless tap-to-pay. For full pass details, see <a href="https://www.wmata.com/fares/farecard-options.cfm" target="_blank" rel="noopener noreferrer">WMATA pass options</a>.
       </p>
     </div>
+    </details>
 
     <!-- Transfers & How to Pay -->
-    <div class="fares-section animate-in d5">
-      <h2 class="fares-section-heading">Transfers &amp; SmarTrip</h2>
+    <details class="fares-section fares-section--fold animate-in d5">
+      <summary class="fares-section-summary">
+        <h2 class="fares-section-heading">Transfers &amp; SmarTrip</h2>
+        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>
+      </summary>
+      <div class="fares-section-body">
       <div class="info-grid">
         <div class="info-card">
           <h3 class="info-card-title">Transfer Rules</h3>
@@ -447,10 +483,15 @@
         </div>
       </div>
     </div>
+    </details>
 
 <!-- nm:links:fares-index -->
-    <div class="fares-section animate-in d5">
-      <h2 class="fares-section-heading">Fares by Line</h2>
+    <details class="fares-section fares-section--fold animate-in d5">
+      <summary class="fares-section-summary">
+        <h2 class="fares-section-heading">Fares by Line</h2>
+        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>
+      </summary>
+      <div class="fares-section-body">
       <p class="fares-text">
         Fare is set by distance, not by line — but the line tells you how far you are going. Each line page lists its stations in route order.
       </p>
@@ -480,10 +521,15 @@
           <span class="fares-line-link-meta">34 stations &middot; Ashburn to Downtown Largo</span>
         </a>
       </div>
-    </div>
+      </div>
+    </details>
 
-    <div class="fares-section animate-in d5">
-      <h2 class="fares-section-heading">All 98 Metro Stations</h2>
+    <details class="fares-section fares-section--fold animate-in d5">
+      <summary class="fares-section-summary">
+        <h2 class="fares-section-heading">All 98 Metro Stations</h2>
+        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>
+      </summary>
+      <div class="fares-section-body">
       <p class="fares-text">
         Every Metrorail station, with the lines that serve it. Station pages carry live arrivals, first and last train times, and a fare calculator for that station.
       </p>
@@ -590,7 +636,8 @@
       <p class="fares-text" style="margin-top:var(--nm-space-md)">
         Also useful: <a href="/stations/">the searchable station directory</a>, <a href="/transfers/">transfer stations</a>, and <a href="/hours/">operating hours and train frequency</a>.
       </p>
-    </div>
+      </div>
+    </details>
 <!-- /nm:links:fares-index -->
     <!-- Disclaimer -->
     <div class="fares-disclaimer">

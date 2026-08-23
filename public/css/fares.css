@@ -209,38 +209,6 @@
   flex-wrap: wrap;
 }
 
-.calc-toggle {
-  display: flex;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-}
-
-.calc-toggle-btn {
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 12px 14px;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  background: none;
-  border: none;
-  color: #e2feff;
-  cursor: pointer;
-  transition: background-color var(--nm-transition-normal), color var(--nm-transition-normal);
-}
-
-.calc-toggle-btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.calc-toggle-btn--active {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: #e2feff;
-}
-
 /* ---- Calc Results ---- */
 .calc-results {
   margin-top: var(--nm-space-lg);
@@ -248,57 +216,11 @@
   padding-top: var(--nm-space-md);
 }
 
-.calc-results-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--nm-space-md);
-}
-
-.calc-result-item {
-  padding: var(--nm-space-sm) 0;
-}
-
-.calc-result-label {
-  display: block;
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: #e2feff;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 4px;
-}
-
-.calc-result-value {
-  font-family: var(--nm-font);
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--nm-fare-yellow);
-}
-
-.calc-result-value--highlight {
-  font-size: 1.75rem;
-}
-
-.calc-result-value--secondary {
-  font-size: 1.25rem;
-  color: #e2feff;
-}
-
-.calc-result-note {
-  display: block;
-  font-family: var(--nm-font);
-  font-weight: 500;
-  font-size: 0.8rem;
-  color: #e2feff;
-  margin-top: 2px;
-}
-
 /* ---- Trip Estimator ---- */
 .calc-estimator {
   margin-top: var(--nm-space-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: var(--nm-space-md);
+  padding: var(--nm-space-md) 14px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .calc-estimator-label {
@@ -633,10 +555,6 @@
     transform: rotate(90deg);
   }
 
-  .calc-results-grid {
-    grid-template-columns: 1fr;
-  }
-
   .info-grid {
     grid-template-columns: 1fr;
   }
@@ -715,141 +633,6 @@
     text-align: left;
   }
 }
-
-/* ==============================
-   Fare Type Toggle — active state
-   Riders were re-tapping the already-active toggle because the active
-   state read as a hover tint. Fill it with the farecard's own accent and
-   give each button the full label as a tap target on narrow screens.
-   ============================== */
-.calc-toggle {
-  flex-wrap: wrap;
-}
-
-.calc-toggle-btn {
-  flex: 1 1 auto;
-  justify-content: center;
-  text-align: center;
-}
-
-.calc-toggle-btn[aria-checked='false']:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-.calc-toggle-btn--active,
-.calc-toggle-btn--active:hover {
-  background-color: var(--nm-fare-orange);
-  color: var(--nm-bg);
-}
-
-.calc-toggle-btn:focus-visible {
-  outline: 2px solid var(--nm-fare-yellow);
-  outline-offset: -2px;
-}
-
-@media (max-width: 480px) {
-  .calc-toggle {
-    flex-direction: column;
-  }
-
-  .calc-toggle-btn {
-    width: 100%;
-    min-height: 48px;
-  }
-
-  .calc-toggle-btn + .calc-toggle-btn {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-  }
-}
-
-/* ==============================
-   Calculator Route Links
-   The trip's two stations and the lines that serve them, as real links.
-   ============================== */
-.calc-route-links {
-  margin-top: var(--nm-space-md);
-  padding-top: var(--nm-space-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: var(--nm-space-sm);
-}
-
-.calc-route-link-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--nm-space-sm);
-  min-height: 44px;
-}
-
-.calc-route-link-label {
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: #e2feff;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  flex: 0 0 3rem;
-}
-
-.calc-route-link {
-  font-family: var(--nm-font);
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--nm-fare-yellow);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.calc-route-link:hover {
-  color: #e2feff;
-}
-
-.calc-route-link:focus-visible {
-  outline: 2px solid var(--nm-fare-yellow);
-  outline-offset: 2px;
-}
-
-.calc-route-link-lines {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--nm-space-xs);
-}
-
-.calc-route-line {
-  font-family: var(--nm-font);
-  font-weight: 600;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 0.5rem;
-  min-height: 30px;
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: var(--nm-bg);
-  border: 1px solid transparent;
-}
-
-.calc-route-line:hover {
-  filter: brightness(1.15);
-}
-
-.calc-route-line:focus-visible {
-  outline: 2px solid var(--nm-fare-yellow);
-  outline-offset: 2px;
-}
-
-.calc-route-line--red    { background-color: var(--nm-line-red);    color: var(--nm-text-primary); }
-.calc-route-line--orange { background-color: var(--nm-line-orange); }
-.calc-route-line--blue   { background-color: var(--nm-line-blue); }
-.calc-route-line--green  { background-color: var(--nm-line-green); }
-.calc-route-line--yellow { background-color: var(--nm-line-yellow); }
-.calc-route-line--silver { background-color: var(--nm-line-silver); }
 
 /* ==============================
    Static Line + Station Index
@@ -966,3 +749,346 @@
 .fares-station-dot--green  { background-color: var(--nm-line-green); }
 .fares-station-dot--yellow { background-color: var(--nm-line-yellow); }
 .fares-station-dot--silver { background-color: var(--nm-line-silver); }
+
+/* ==============================
+   Fare Board
+   Every fare category is a row; the active window carries the NOW marker.
+   There is no fare-type toggle — a board has no mode to get wrong.
+   ============================== */
+.calc-board {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calc-board-label {
+  color: #e2feff;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.calc-board-rows {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nm-bg);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.calc-board-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 14px 0 18px;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.calc-board-row:last-child {
+  border-bottom: none;
+}
+
+.calc-board-row--now {
+  min-height: 52px;
+  padding-left: 14px;
+  border-left: 4px solid var(--nm-amber);
+}
+
+.calc-board-cat {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nm-text-secondary);
+}
+
+.calc-board-row--now .calc-board-cat {
+  font-weight: 600;
+  color: var(--nm-text-primary);
+}
+
+.calc-board-now[hidden] {
+  display: none;
+}
+
+.calc-board-now {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 6px;
+  background-color: var(--nm-amber);
+  color: var(--nm-bg);
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.calc-board-fare {
+  margin-left: auto;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--nm-text-primary);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.calc-board-row--now .calc-board-fare {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--nm-fare-yellow);
+}
+
+.calc-board-fare-alt {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  white-space: nowrap;
+}
+
+/* Travel time and round trip */
+.calc-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: var(--nm-space-md);
+}
+
+.calc-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calc-meta-label {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e2feff;
+}
+
+.calc-meta-value {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #e2feff;
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-meta-note {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #e2feff;
+}
+
+/* ==============================
+   This Trip — journey ribbon
+   The trip's stations and lines as real links, on the page surface where
+   links look like links. Rendered by fares.js.
+   ============================== */
+.fares-trip[hidden] {
+  display: none;
+}
+
+.fares-trip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nm-space-sm);
+  margin-top: var(--nm-space-lg);
+}
+
+.fares-trip-label {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--nm-text-muted);
+}
+
+.fares-trip-card {
+  display: flex;
+  gap: 14px;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: var(--nm-space-md) var(--nm-space-lg);
+}
+
+.fares-trip-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 12px;
+  flex-shrink: 0;
+  padding: 5px 0;
+}
+
+.fares-trip-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--nm-amber);
+  flex-shrink: 0;
+}
+
+.fares-trip-dot--end {
+  background-color: var(--nm-surface);
+  border: 3px solid var(--nm-amber);
+  box-sizing: border-box;
+}
+
+.fares-trip-segment {
+  width: 4px;
+  flex: 1 1 auto;
+  background-color: var(--nm-border-strong);
+}
+
+.fares-trip-segment--red    { background-color: var(--nm-line-red); }
+.fares-trip-segment--orange { background-color: var(--nm-line-orange); }
+.fares-trip-segment--blue   { background-color: var(--nm-line-blue); }
+.fares-trip-segment--green  { background-color: var(--nm-line-green); }
+.fares-trip-segment--yellow { background-color: var(--nm-line-yellow); }
+.fares-trip-segment--silver { background-color: var(--nm-line-silver); }
+
+.fares-trip-stations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.fares-trip-station {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fares-trip-station-link {
+  align-self: flex-start;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nm-border-strong);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.fares-trip-station-link:hover {
+  color: var(--nm-amber);
+  border-bottom-color: var(--nm-amber);
+}
+
+.fares-trip-station-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+.fares-trip-station-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* Uniform line chip — same treatment as the station pages' line links:
+   line-coloured text and border on the line's dark tint. */
+.fares-line-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 8px;
+  border: 1px solid;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: filter 0.15s;
+}
+
+.fares-line-chip:hover {
+  filter: brightness(1.25);
+}
+
+.fares-line-chip:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+.fares-line-chip--red    { color: var(--nm-line-red);    border-color: var(--nm-line-red);    background-color: var(--nm-line-bg-red); }
+.fares-line-chip--orange { color: var(--nm-line-orange); border-color: var(--nm-line-orange); background-color: var(--nm-line-bg-orange); }
+.fares-line-chip--blue   { color: var(--nm-line-blue);   border-color: var(--nm-line-blue);   background-color: var(--nm-line-bg-blue); }
+.fares-line-chip--green  { color: var(--nm-line-green);  border-color: var(--nm-line-green);  background-color: var(--nm-line-bg-green); }
+.fares-line-chip--yellow { color: var(--nm-line-yellow); border-color: var(--nm-line-yellow); background-color: var(--nm-line-bg-yellow); }
+.fares-line-chip--silver { color: var(--nm-line-silver); border-color: var(--nm-line-silver); background-color: var(--nm-line-bg-silver); }
+
+/* ==============================
+   Folded reference sections
+   The reference content keeps its markup (and stays crawlable) but sits
+   behind accordion rows instead of five screens of open tables.
+   ============================== */
+.fares-section--fold {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  margin-top: var(--nm-space-sm);
+}
+
+.fares-section--fold:first-of-type {
+  margin-top: var(--nm-space-xl);
+}
+
+.fares-section-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nm-space-sm);
+  min-height: 49px;
+  padding: 0 var(--nm-space-md);
+  cursor: pointer;
+  list-style: none;
+}
+
+.fares-section-summary::-webkit-details-marker {
+  display: none;
+}
+
+.fares-section-summary:hover {
+  background-color: var(--nm-surface-elevated);
+}
+
+.fares-section-summary:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.fares-section--fold .fares-section-heading {
+  margin: 0;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.fares-section-chevron {
+  color: var(--nm-text-muted);
+  font-size: 1.125rem;
+  transition: transform 0.15s;
+}
+
+.fares-section--fold[open] .fares-section-chevron {
+  transform: rotate(180deg);
+}
+
+.fares-section-body {
+  padding: var(--nm-space-md);
+  border-top: 1px solid var(--nm-border-subtle);
+}

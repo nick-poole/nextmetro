@@ -43,29 +43,43 @@ function stationIndex() {
   }).join('\n');
 }
 
+// Both sections fold like the rest of the reference content. Content inside a
+// closed <details> stays in the DOM, so the crawlable path is unaffected.
+function fold(title, body) {
+  return (
+    `    <details class="fares-section fares-section--fold animate-in d5">\n` +
+    `      <summary class="fares-section-summary">\n` +
+    `        <h2 class="fares-section-heading">${title}</h2>\n` +
+    `        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>\n` +
+    `      </summary>\n` +
+    `      <div class="fares-section-body">\n` +
+    body + '\n' +
+    `      </div>\n` +
+    `    </details>`
+  );
+}
+
 function faresSection() {
   return (
-    `    <div class="fares-section animate-in d5">\n` +
-    `      <h2 class="fares-section-heading">Fares by Line</h2>\n` +
-    `      <p class="fares-text">\n` +
-    `        Fare is set by distance, not by line — but the line tells you how far you are going. Each line page lists its stations in route order.\n` +
-    `      </p>\n` +
-    `      <div class="fares-line-links">\n` +
-    lineCards() + '\n' +
-    `      </div>\n` +
-    `    </div>\n\n` +
-    `    <div class="fares-section animate-in d5">\n` +
-    `      <h2 class="fares-section-heading">All ${stations.length} Metro Stations</h2>\n` +
-    `      <p class="fares-text">\n` +
-    `        Every Metrorail station, with the lines that serve it. Station pages carry live arrivals, first and last train times, and a fare calculator for that station.\n` +
-    `      </p>\n` +
-    `      <div class="fares-station-index">\n` +
-    stationIndex() + '\n' +
-    `      </div>\n` +
-    `      <p class="fares-text" style="margin-top:var(--nm-space-md)">\n` +
-    `        Also useful: <a href="/stations/">the searchable station directory</a>, <a href="/transfers/">transfer stations</a>, and <a href="/hours/">operating hours and train frequency</a>.\n` +
-    `      </p>\n` +
-    `    </div>`
+    fold('Fares by Line',
+      `      <p class="fares-text">\n` +
+      `        Fare is set by distance, not by line — but the line tells you how far you are going. Each line page lists its stations in route order.\n` +
+      `      </p>\n` +
+      `      <div class="fares-line-links">\n` +
+      lineCards() + '\n' +
+      `      </div>`
+    ) + '\n\n' +
+    fold(`All ${stations.length} Metro Stations`,
+      `      <p class="fares-text">\n` +
+      `        Every Metrorail station, with the lines that serve it. Station pages carry live arrivals, first and last train times, and a fare calculator for that station.\n` +
+      `      </p>\n` +
+      `      <div class="fares-station-index">\n` +
+      stationIndex() + '\n' +
+      `      </div>\n` +
+      `      <p class="fares-text" style="margin-top:var(--nm-space-md)">\n` +
+      `        Also useful: <a href="/stations/">the searchable station directory</a>, <a href="/transfers/">transfer stations</a>, and <a href="/hours/">operating hours and train frequency</a>.\n` +
+      `      </p>`
+    )
   );
 }
 
