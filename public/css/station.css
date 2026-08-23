@@ -1431,7 +1431,7 @@ a.status-row:focus-visible {
 }
 
 /* ==============================
-   Internal Linking — Line Pills + Connections
+   Internal Linking — line pills + the Adjacent Stations extension
    Generated markup lives in the station page templates
    (tools/gen-station-links.js). Grayscale surfaces, WMATA
    line colors as the only chroma, amber for focus/hover.
@@ -1485,36 +1485,12 @@ a.status-row:focus-visible {
   outline-offset: 2px;
 }
 
-/* ---- Connections card ---- */
-.connections-card {
-  background-color: var(--nm-surface);
-  border: 1px solid var(--nm-border);
-  overflow: hidden;
-  margin-top: 0;
-  order: 4;
+/* ---- Adjacent Stations extension: the line at a wider radius ---- */
+.adjacent-extra {
+  border-top: 1px solid var(--nm-border);
 }
 
-.connections-header {
-  background-color: var(--nm-surface-elevated);
-  padding: 0.6rem 1.25rem;
-  border-bottom: 1px solid var(--nm-border);
-}
-
-.connections-title {
-  font-family: var(--nm-font);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--nm-text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.connections-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.connections-row {
+.adjacent-extra-row {
   display: flex;
   flex-wrap: wrap;
   gap: 2px var(--nm-space-md);
@@ -1522,7 +1498,7 @@ a.status-row:focus-visible {
   border-bottom: 1px solid var(--nm-border-subtle);
 }
 
-.connections-label {
+.adjacent-extra-label {
   font-family: var(--nm-font);
   font-weight: 500;
   font-size: 0.8rem;
@@ -1532,7 +1508,7 @@ a.status-row:focus-visible {
   flex: 0 0 100%;
 }
 
-.connections-values {
+.adjacent-extra-values {
   font-family: var(--nm-font);
   font-weight: 500;
   font-size: 1rem;
@@ -1544,25 +1520,43 @@ a.status-row:focus-visible {
   line-height: 1.6;
 }
 
-.connections-values a {
+.adjacent-extra-values a {
   color: var(--nm-text-primary);
   text-decoration: none;
   border-bottom: 1px solid var(--nm-border-strong);
   transition: color 0.15s, border-color 0.15s;
 }
 
-.connections-values a:hover {
+.adjacent-extra-values a:hover {
   color: var(--nm-amber);
   border-bottom-color: var(--nm-amber);
 }
 
-.connections-values a:focus-visible {
+.adjacent-extra-values a:focus-visible {
   outline: 2px solid var(--nm-amber);
   outline-offset: 2px;
 }
 
-/* Line chips inside the card carry the line color and no underline. */
-.connections-line {
+/* Each entry keeps its stop count attached to its own link, so a wrap never
+   leaves "2 stops" sitting next to the wrong station. */
+.adjacent-extra-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--nm-space-xs);
+}
+
+.adjacent-extra-stops {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Line chips carry the line color and no underline. */
+.adjacent-line-link {
   font-family: var(--nm-font);
   font-weight: 600;
   font-size: 0.8rem;
@@ -1575,28 +1569,22 @@ a.status-row:focus-visible {
   border: 1px solid;
 }
 
-.connections-values .connections-line {
-  border-bottom-width: 1px;
-}
-
-.connections-values .connections-line:hover {
-  border-color: currentColor;
-}
-
-.connections-line--red    { color: var(--nm-line-red);    border-color: var(--nm-line-red);    background-color: var(--nm-line-bg-red); }
-.connections-line--orange { color: var(--nm-line-orange); border-color: var(--nm-line-orange); background-color: var(--nm-line-bg-orange); }
-.connections-line--blue   { color: var(--nm-line-blue);   border-color: var(--nm-line-blue);   background-color: var(--nm-line-bg-blue); }
-.connections-line--green  { color: var(--nm-line-green);  border-color: var(--nm-line-green);  background-color: var(--nm-line-bg-green); }
-.connections-line--yellow { color: var(--nm-line-yellow); border-color: var(--nm-line-yellow); background-color: var(--nm-line-bg-yellow); }
-.connections-line--silver { color: var(--nm-line-silver); border-color: var(--nm-line-silver); background-color: var(--nm-line-bg-silver); }
-
-.connections-values .connections-line:hover {
+.adjacent-extra-values .adjacent-line-link:hover {
   color: currentColor;
+  border-color: currentColor;
   filter: brightness(1.25);
 }
 
-.connections-links {
+.adjacent-line-link--red    { color: var(--nm-line-red);    border-color: var(--nm-line-red);    background-color: var(--nm-line-bg-red); }
+.adjacent-line-link--orange { color: var(--nm-line-orange); border-color: var(--nm-line-orange); background-color: var(--nm-line-bg-orange); }
+.adjacent-line-link--blue   { color: var(--nm-line-blue);   border-color: var(--nm-line-blue);   background-color: var(--nm-line-bg-blue); }
+.adjacent-line-link--green  { color: var(--nm-line-green);  border-color: var(--nm-line-green);  background-color: var(--nm-line-bg-green); }
+.adjacent-line-link--yellow { color: var(--nm-line-yellow); border-color: var(--nm-line-yellow); background-color: var(--nm-line-bg-yellow); }
+.adjacent-line-link--silver { color: var(--nm-line-silver); border-color: var(--nm-line-silver); background-color: var(--nm-line-bg-silver); }
+
+.adjacent-extra-links {
   padding: 0.75rem 1.25rem;
+  column-gap: var(--nm-space-lg);
   font-family: var(--nm-font);
   font-weight: 500;
   font-size: 0.9rem;
@@ -1608,47 +1596,94 @@ a.status-row:focus-visible {
   line-height: 1.6;
 }
 
-.connections-links a {
+.adjacent-extra-links a {
   color: var(--nm-text-secondary);
   text-decoration: none;
   border-bottom: 1px solid var(--nm-border-strong);
   transition: color 0.15s, border-color 0.15s;
 }
 
-.connections-links a:hover {
+.adjacent-extra-links a:hover {
   color: var(--nm-amber);
   border-bottom-color: var(--nm-amber);
 }
 
-.connections-links a:focus-visible {
+.adjacent-extra-links a:focus-visible {
   outline: 2px solid var(--nm-amber);
   outline-offset: 2px;
 }
 
-.connections-sep {
-  color: var(--nm-border-strong);
-}
-
+/* ==============================
+   Equal-height cards: fill, do not pad
+   The grid stretches cards in a row to match the tallest. Each card lays its
+   content out as a column so the body absorbs the slack and any footer sits on
+   the bottom edge — rather than the content ending mid-card, which is what the
+   WMATA disclaimer did on a station with no scheduled trains.
+   ============================== */
 @media (min-width: 769px) {
-  .connections-card {
-    flex: 0 1 calc(50% - var(--nm-space-lg) / 2);
+  .pids-card,
+  .adjacent-card,
+  .station-info-card,
+  .facilities-card,
+  .fare-card,
+  .system-status-card {
+    display: flex;
+    flex-direction: column;
   }
-}
 
-/* Each nearby entry keeps its stop count attached to its own link, so a wrap
-   never leaves "2 stops" sitting next to the wrong station. */
-.connections-nearby {
-  display: inline-flex;
-  align-items: baseline;
-  gap: var(--nm-space-xs);
-}
+  /* Only the display-like regions absorb the slack. Label/value lists do not:
+     stretching a four-row table just spreads the rows apart. */
+  .pids-screen,
+  .adjacent-body {
+    flex: 1 1 auto;
+  }
 
-.connections-stops {
-  font-family: var(--nm-font);
-  font-weight: 500;
-  font-size: 0.8rem;
-  color: var(--nm-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
+  /* Transfer stations: the two platform boards share the slack evenly. */
+  .pids-grid {
+    flex: 1 1 auto;
+    grid-auto-rows: 1fr;
+  }
+
+  /* Bordered footers pin to the bottom edge rather than floating mid-card —
+     which is what the WMATA disclaimer did on a station with no trains. */
+  .wmata-data-disclaimer,
+  .station-info-actions,
+  .facilities-card .card-actions,
+  .fare-card .card-actions {
+    margin-top: auto;
+  }
+
+  /* The extension is the adjacency card's footer; the prev/next block above it
+     spreads into whatever height is left. */
+  .adjacent-extra {
+    margin-top: auto;
+  }
+
+  .adjacent-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  /* Interchanges carry one adjacency card per line group, and the collapse
+     rules above join them into a single unit — which only reads as one card if
+     they stack. Give the whole unit the full row instead of letting the cards
+     sit side by side with their shared borders removed. */
+  .adjacent-card:has(+ .adjacent-card),
+  .adjacent-card + .adjacent-card {
+    flex: 0 0 100%;
+  }
+
+  /* Across a full-width header, space-between would scatter the line badges
+     end to end. Keep them clustered opposite the title. */
+  .adjacent-card:has(+ .adjacent-card) .adjacent-header,
+  .adjacent-card + .adjacent-card .adjacent-header {
+    justify-content: flex-start;
+    gap: var(--nm-space-sm);
+  }
+
+  .adjacent-card:has(+ .adjacent-card) .adjacent-title,
+  .adjacent-card + .adjacent-card .adjacent-title {
+    margin-right: auto;
+  }
 }
