@@ -1486,6 +1486,12 @@ a.status-row:focus-visible {
 }
 
 /* ---- Adjacent Stations extension: the line at a wider radius ---- */
+/* The extension lays itself out against the card, so it behaves the same
+   whether the card is half a row or the full width of an interchange. */
+.adjacent-card {
+  container: adjacent / inline-size;
+}
+
 .adjacent-extra {
   border-top: 1px solid var(--nm-border);
 }
@@ -1542,7 +1548,54 @@ a.status-row:focus-visible {
 .adjacent-extra-item {
   display: inline-flex;
   align-items: baseline;
-  gap: var(--nm-space-xs);
+  flex-wrap: wrap;
+  gap: 0 var(--nm-space-xs);
+}
+
+/* "Further along" splits by direction of travel: the stations behind you sit
+   left, the ones ahead sit right, mirroring the prev/next block above.
+   On a narrow card that is one column and the alignment alone carries the
+   split; from 900px there is room to pair the two directions into columns,
+   so both read 2, 3, 4 stops down the page. */
+.adjacent-extra-values--split {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--nm-space-sm);
+  width: 100%;
+}
+
+.adjacent-extra-item--back {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.adjacent-extra-item--fwd {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Keyed off the card's own width rather than the viewport: the card is half a
+   row on desktop but full width at interchanges, and a viewport query would
+   split a 190px column at tablet sizes and wrap every long station name. */
+@container adjacent (min-width: 520px) {
+  .adjacent-extra-values--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--nm-space-xl);
+    row-gap: var(--nm-space-sm);
+    align-items: baseline;
+  }
+
+  .adjacent-extra-item--back {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .adjacent-extra-item--fwd {
+    grid-column: 2;
+    justify-self: end;
+  }
 }
 
 .adjacent-extra-stops {

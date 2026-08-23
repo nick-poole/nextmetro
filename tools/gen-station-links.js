@@ -51,7 +51,12 @@ function linesNamedByBadges(html) {
   const re = /<a href="\/lines\/([a-z]+)\/" class="adjacent-line-badge[^"]*"[^>]*>([^<]*)<\/a>/g;
   let m;
   while ((m = re.exec(html)) !== null) {
-    if (m[2].trim() === lines[m[1]].name) named.add(m[1]);
+    const line = m[1];
+    // Badge text runs from "Red Line" through "Silver" and "Blue / Yellow" to
+    // bare abbreviations like "Or". It counts as anchor text only if it spells
+    // out the colour of the line it points at.
+    const colour = lines[line].name.replace(/ Line$/, '');
+    if (new RegExp('\\b' + colour + '\\b', 'i').test(m[2])) named.add(line);
   }
   return named;
 }
@@ -93,7 +98,9 @@ function adjacentExtra(station, html) {
     );
   }
 
-  // Further along the route than the immediate neighbours above.
+  // Further along the route than the immediate neighbours above. Each entry
+  // records which way along the line it lies, so the two directions can be
+  // split into columns the way the prev/next block above is.
   const nearby = [];
   for (const d of NEARBY_STOPS) {
     for (const line of station.lines) {
@@ -104,18 +111,21 @@ function adjacentExtra(station, html) {
         if (j < 0 || j >= meta.order.length) continue;
         const slug = meta.order[j];
         if (slug === station.slug || used.has(slug) || nearby.some((n) => n.slug === slug)) continue;
-        nearby.push({ slug, stops: d });
+        nearby.push({ slug, stops: d, dir: j < i ? 'back' : 'fwd' });
       }
     }
   }
   if (nearby.length) {
     const value = nearby
-      .map((n) => `<span class="adjacent-extra-item">${stationLink(n.slug)}<span class="adjacent-extra-stops">${n.stops} stops</span></span>`)
+      // Bare station names here: the row label already says these are stations,
+      // and "… station" on every entry is what makes the two columns wrap on a
+      // narrow card.
+      .map((n) => `<span class="adjacent-extra-item adjacent-extra-item--${n.dir}">${stationLink(n.slug, { text: esc(bySlug.get(n.slug).name) })}<span class="adjacent-extra-stops">${n.stops} stops</span></span>`)
       .join('\n              ');
     rows.push(
       `          <div class="adjacent-extra-row">\n` +
       `            <span class="adjacent-extra-label">Further along</span>\n` +
-      `            <span class="adjacent-extra-values">\n              ${value}\n            </span>\n` +
+      `            <span class="adjacent-extra-values adjacent-extra-values--split">\n              ${value}\n            </span>\n` +
       `          </div>`
     );
     nearby.forEach((n) => used.add(n.slug));
