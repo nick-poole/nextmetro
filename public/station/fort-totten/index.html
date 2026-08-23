@@ -321,13 +321,6 @@
         <div class="station-info-body">
           <div class="station-info-row">
             <span class="station-info-icon">
-              <i class="ri-map-pin-line" aria-hidden="true"></i>
-            </span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">550 Galloway St NE, Washington, DC 20011</span>
-          </div>
-          <div class="station-info-row">
-            <span class="station-info-icon">
               <i class="ri-subway-line" aria-hidden="true"></i>
             </span>
             <span class="station-info-label">Station Type</span>
@@ -354,10 +347,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9519,-77.0023" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i>
-            Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/fort-totten.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -368,6 +357,48 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9519,-77.0023" target="_blank" rel="noopener noreferrer" data-address>550 Galloway St NE, Washington, DC 20011</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9519" data-map-lon="-77.0023" data-map-name="Fort Totten">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Fort Totten. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Fort Totten and the nearby stations on Red Line, Yellow Line, Green Line: Rhode Island Ave-Brentwood, Brookland-CUA, Takoma, Silver Spring, Columbia Heights, Georgia Ave-Petworth, West Hyattsville, Hyattsville Crossing</title>
+      <polyline points="288.5,320 298.4,273.4 247.6,201 144.2,182.9 57.8,40" fill="none" stroke="var(--nm-line-red)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="48,291.9 100,258.8 247.6,201 465.1,189.4 552,149" fill="none" stroke="var(--nm-line-yellow)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="48,291.9 100,258.8 247.6,201 465.1,189.4 552,149" fill="none" stroke="var(--nm-line-green)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="284.5" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="294.4" y="269.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="140.2" y="178.9" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="53.8" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="44.0" y="287.9" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="96.0" y="254.8" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="461.1" y="185.4" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="548.0" y="145.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="239.6" y="193.0" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="247.6" y="181.0" text-anchor="middle">Fort Totten</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9519,-77.0023" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">

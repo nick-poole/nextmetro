@@ -636,7 +636,6 @@ a.status-row:focus-visible {
 
 .facilities-body {
   padding: var(--nm-space-sm) 0;
-  flex: 1;
 }
 
 .facilities-row {
@@ -1738,5 +1737,206 @@ a.status-row:focus-visible {
   .adjacent-card:has(+ .adjacent-card) .adjacent-title,
   .adjacent-card + .adjacent-card .adjacent-title {
     margin-right: auto;
+  }
+}
+
+/* ==============================
+   Location Card
+   Address, a map of the line through the station drawn at build time from
+   public/data/, and a Directions link. The Google embed is not loaded until
+   the visitor asks for it — see initLocationMap() in app.js.
+   ============================== */
+.location-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  overflow: hidden;
+  margin-top: 0;
+  order: 5;
+}
+
+.location-header {
+  background-color: var(--nm-surface-elevated);
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.location-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.location-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px var(--nm-space-md);
+  padding: 0.75rem 1.25rem;
+}
+
+.location-label {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--nm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex: 0 0 100%;
+}
+
+.location-address {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--nm-border-strong);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.location-address:hover {
+  color: var(--nm-amber);
+  border-bottom-color: var(--nm-amber);
+}
+
+.location-address:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: 2px;
+}
+
+/* The aspect ratio is fixed so swapping the poster for the embed costs no
+   layout shift. */
+.location-map {
+  position: relative;
+  aspect-ratio: 600 / 360;
+  background-color: var(--nm-bg);
+  border-top: 1px solid var(--nm-border);
+  border-bottom: 1px solid var(--nm-border);
+}
+
+.location-map-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.location-map-here {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 20px;
+  fill: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.location-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* The whole map is the target: clicking anywhere on it swaps in the embed. */
+.location-map-load {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.location-map-load:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.location-map-hint {
+  position: absolute;
+  right: var(--nm-space-sm);
+  bottom: var(--nm-space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: calc(100% - var(--nm-space-md));
+  padding: 0.5rem 0.75rem;
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border-strong);
+  font-family: var(--nm-font);
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.location-map-load:hover .location-map-hint,
+.location-map-load:focus-visible .location-map-hint {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--nm-amber);
+}
+
+.location-map-hint-text {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nm-amber);
+}
+
+.location-map-hint-note {
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--nm-text-muted);
+}
+
+.location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-sm);
+  padding: 0.75rem 1.25rem;
+}
+
+.location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 var(--nm-space-md);
+  background-color: var(--nm-surface-elevated);
+  border: 1px solid var(--nm-border);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nm-amber);
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.location-link:hover {
+  background-color: var(--nm-surface-overlay);
+  border-color: var(--nm-amber);
+}
+
+.location-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+@media (min-width: 769px) {
+  .location-card {
+    flex: 0 1 calc(50% - var(--nm-space-lg) / 2);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* The poster is drawn to a fixed frame, so the map keeps its aspect and the
+     Directions row takes the slack to the bottom edge instead. */
+  .location-actions {
+    margin-top: auto;
   }
 }

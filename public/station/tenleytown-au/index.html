@@ -233,11 +233,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">4501 Wisconsin Ave NW, Washington, DC 20016</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Underground</span>
@@ -259,9 +254,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9489,-77.0794" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/tenleytown.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -271,6 +263,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9489,-77.0794" target="_blank" rel="noopener noreferrer" data-address>4501 Wisconsin Ave NW, Washington, DC 20016</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9489" data-map-lon="-77.0794" data-map-name="Tenleytown-AU">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Tenleytown-AU. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Tenleytown-AU and the nearby stations on Red Line: Bethesda, Friendship Heights, Van Ness-UDC, Cleveland Park</title>
+      <polyline points="126.7,40 205.4,174.7 267.8,239.8 424.3,270.6 473.3,320" fill="none" stroke="var(--nm-line-red)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="122.7" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="201.4" y="170.7" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="420.3" y="266.6" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="469.3" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="259.8" y="231.8" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="267.8" y="219.8" text-anchor="middle">Tenleytown-AU</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9489,-77.0794" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">

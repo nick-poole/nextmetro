@@ -16,6 +16,7 @@ const path = require('path');
 const steps = [
   'build-line-sequence.js',
   'gen-station-links.js',
+  'gen-station-location.js',
   'gen-line-links.js',
   'gen-fares-links.js',
   'gen-hours-links.js',

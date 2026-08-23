@@ -233,11 +233,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">7450 Wisconsin Ave, Bethesda, MD 20814</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Underground</span>
@@ -259,9 +254,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9845,-77.0941" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/bethesda.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -271,6 +263,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9845,-77.0941" target="_blank" rel="noopener noreferrer" data-address>7450 Wisconsin Ave, Bethesda, MD 20814</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9845" data-map-lon="-77.0941" data-map-name="Bethesda">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Bethesda. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Bethesda and the nearby stations on Red Line: Grosvenor-Strathmore, Medical Center, Friendship Heights, Tenleytown-AU</title>
+      <polyline points="226.8,40 267.9,143.7 285.7,196.2 334.5,279.7 373.2,320" fill="none" stroke="var(--nm-line-red)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="222.8" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="263.9" y="139.7" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="330.5" y="275.7" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="369.2" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="277.7" y="188.2" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="285.7" y="176.2" text-anchor="middle">Bethesda</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9845,-77.0941" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">

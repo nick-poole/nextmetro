@@ -137,10 +137,11 @@ npm start
 
 ### Internal link modules
 
-The station, line, fares, and hours pages carry generated internal-linking
-blocks (hero line pills, the station Connections card, route-order station
-indexes). They are derived from `public/data/stations.json` and
-`public/data/lines.json` — never edited by hand across the 98 station files.
+The station, line, fares, and hours pages carry generated blocks: hero line
+pills, the Adjacent Stations extension, route-order station indexes, and the
+station Location card with its build-time map. They are derived from
+`public/data/stations.json` and `public/data/lines.json` — never edited by hand
+across the 98 station files.
 
 ```bash
 npm run build:links   # regenerate every marked block, then audit the link graph

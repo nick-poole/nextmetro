@@ -295,13 +295,6 @@
           <h2 class="station-info-title">Station Information</h2>
         </div>
         <div class="station-info-body">
-          <div class="station-info-row">
-            <span class="station-info-icon">
-              <i class="ri-map-pin-line" aria-hidden="true"></i>
-            </span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">4600 Fair Lakes Ct, Herndon, VA 20171</span>
-          </div>
           <div class="station-info-row line-station-row--outdoor">
             <span class="station-info-icon">
               <i class="ri-subway-line" aria-hidden="true"></i>
@@ -330,10 +323,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9565,-77.4165" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i>
-            Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/innovation-center.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -344,6 +333,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9565,-77.4165" target="_blank" rel="noopener noreferrer" data-address>4600 Fair Lakes Ct, Herndon, VA 20171</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9565" data-map-lon="-77.4165" data-map-name="Innovation Center">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Innovation Center. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Innovation Center and the nearby stations on Silver Line: Loudoun Gateway, Dulles Airport, Herndon, Reston Town Center</title>
+      <polyline points="40,40 113,292.3 273,290.6 424,315 560,320" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="109.0" y="288.3" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="420.0" y="311.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="265.0" y="282.6" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="273.0" y="270.6" text-anchor="middle">Innovation Center</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9565,-77.4165" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">

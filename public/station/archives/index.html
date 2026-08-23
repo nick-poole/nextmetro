@@ -238,11 +238,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">701 Pennsylvania Ave NW, Washington, DC 20004</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Underground</span>
@@ -264,9 +259,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.8937,-77.0219" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/archives.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -276,6 +268,44 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.8937,-77.0219" target="_blank" rel="noopener noreferrer" data-address>701 Pennsylvania Ave NW, Washington, DC 20004</a>
+        </div>
+        <div class="location-map" data-map-lat="38.8937" data-map-lon="-77.0219" data-map-name="Archives-Navy Memorial-Penn Quarter">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Archives-Navy Memorial-Penn Quarter. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Archives-Navy Memorial-Penn Quarter and the nearby stations on Yellow Line, Green Line: Pentagon, L'Enfant Plaza, Gallery Pl-Chinatown, Mt Vernon Sq 7th St-Convention Center, Waterfront</title>
+      <polyline points="55.6,320 485.3,197.6 485.3,128.6 485.3,92.5 481.3,40" fill="none" stroke="var(--nm-line-yellow)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="544.4,264.3 485.3,197.6 485.3,128.6 485.3,92.5 481.3,40" fill="none" stroke="var(--nm-line-green)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="51.6" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="481.3" y="193.6" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="481.3" y="88.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="477.3" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="540.4" y="260.3" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="477.3" y="120.6" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="471.3" y="160.6" text-anchor="end">Archives-Navy Memorial-Penn Quarter</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.8937,-77.0219" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">

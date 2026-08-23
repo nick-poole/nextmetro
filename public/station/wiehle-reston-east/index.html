@@ -188,7 +188,6 @@
       <section class="station-info-card animate-in d3">
         <div class="station-info-header"><h2 class="station-info-title">Station Information</h2></div>
         <div class="station-info-body">
-          <div class="station-info-row"><span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span><span class="station-info-label">Address</span><span class="station-info-value">11389 Reston Station Blvd, Reston, VA 20190</span></div>
           <div class="station-info-row"><span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span><span class="station-info-label">Station Type</span><span class="station-info-value">Ground-Level (Outdoor)</span></div>
           <div class="station-info-row"><span class="station-info-icon"><i class="ri-parking-box-line" aria-hidden="true"></i></span><span class="station-info-label">Parking</span><span class="station-info-value">Yes (garage)</span></div>
           <div class="station-info-row"><span class="station-info-icon"><i class="ri-time-fill" aria-hidden="true"></i></span><span class="station-info-label">Hours</span><span class="station-info-value station-info-value--hours">
@@ -199,7 +198,6 @@
             </span></div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9475,-77.3395" class="station-info-link" target="_blank" rel="noopener noreferrer"><i class="ri-direction-line" aria-hidden="true"></i> Directions</a>
           <a href="https://www.wmata.com/rider-guide/stations/wiehle.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -207,6 +205,42 @@
           <a href="https://www.wmata.com/rider-guide/stations/wiehle.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer"><i class="ri-external-link-line" aria-hidden="true"></i> WMATA Station Page</a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9475,-77.3395" target="_blank" rel="noopener noreferrer" data-address>11389 Reston Station Blvd, Reston, VA 20190</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9475" data-map-lon="-77.3395" data-map-name="Wiehle-Reston East">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Wiehle-Reston East. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Wiehle-Reston East and the nearby stations on Silver Line: Herndon, Reston Town Center, Spring Hill, Greensboro</title>
+      <polyline points="40,40 133.5,45.2 201,93 537.6,259.1 560,320" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="36.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="129.5" y="41.2" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="533.6" y="255.1" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="316.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="193.0" y="85.0" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="201.0" y="125.0" text-anchor="middle">Wiehle-Reston East</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9475,-77.3395" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <section class="fare-card animate-in d4" id="fare-card">
         <div class="fare-header"><h2 class="fare-title">Fare Calculator</h2></div>

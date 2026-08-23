@@ -295,13 +295,6 @@
           <h2 class="station-info-title">Station Information</h2>
         </div>
         <div class="station-info-body">
-          <div class="station-info-row">
-            <span class="station-info-icon">
-              <i class="ri-map-pin-line" aria-hidden="true"></i>
-            </span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">480 Herndon Pkwy, Herndon, VA 20170</span>
-          </div>
           <div class="station-info-row line-station-row--outdoor">
             <span class="station-info-icon">
               <i class="ri-subway-line" aria-hidden="true"></i>
@@ -330,10 +323,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.9536,-77.3863" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i>
-            Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/herndon.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -344,6 +333,42 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.9536,-77.3863" target="_blank" rel="noopener noreferrer" data-address>480 Herndon Pkwy, Herndon, VA 20170</a>
+        </div>
+        <div class="location-map" data-map-lat="38.9536" data-map-lon="-77.3863" data-map-name="Herndon">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Herndon. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Herndon and the nearby stations on Silver Line: Dulles Airport, Innovation Center, Reston Town Center, Wiehle-Reston East</title>
+      <polyline points="40,122 192.7,119.3 336.7,158.4 466.5,166.5 560,240.7" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="118.0" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="188.7" y="115.3" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="462.5" y="162.5" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="236.7" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="328.7" y="150.4" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="336.7" y="190.4" text-anchor="middle">Herndon</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.9536,-77.3863" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">

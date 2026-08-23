@@ -230,11 +230,6 @@
         </div>
         <div class="station-info-body">
           <div class="station-info-row">
-            <span class="station-info-icon"><i class="ri-map-pin-line" aria-hidden="true"></i></span>
-            <span class="station-info-label">Address</span>
-            <span class="station-info-value">3600 Fairfax Dr, Arlington, VA 22201</span>
-          </div>
-          <div class="station-info-row">
             <span class="station-info-icon"><i class="ri-subway-line" aria-hidden="true"></i></span>
             <span class="station-info-label">Station Type</span>
             <span class="station-info-value">Underground</span>
@@ -256,9 +251,6 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=38.883,-77.1035" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-direction-line" aria-hidden="true"></i> Directions
-          </a>
           <a href="https://www.wmata.com/rider-guide/stations/virginia-square.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
@@ -268,6 +260,43 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:location -->
+      <section class="location-card grid-side animate-in d3" aria-labelledby="location-title">
+        <div class="location-header">
+          <h2 class="location-title" id="location-title">Location</h2>
+        </div>
+        <div class="location-body">
+          <span class="location-label">Address</span>
+          <a class="location-address" href="https://www.google.com/maps/search/?api=1&amp;query=38.883,-77.1035" target="_blank" rel="noopener noreferrer" data-address>3600 Fairfax Dr, Arlington, VA 22201</a>
+        </div>
+        <div class="location-map" data-map-lat="38.883" data-map-lon="-77.1035" data-map-name="Virginia Square-GMU">
+          <button type="button" class="location-map-load" data-map-load aria-label="Open the street map of Virginia Square-GMU. Loads Google Maps, which may set Google cookies.">
+    <svg class="location-map-poster" viewBox="0 0 600 360" role="img" aria-labelledby="location-map-title" preserveAspectRatio="xMidYMid meet">
+      <title id="location-map-title">Virginia Square-GMU and the nearby stations on Orange Line, Silver Line: East Falls Church, Ballston-MU, Clarendon, Court House</title>
+      <polyline points="40,194.6 373.1,271.9 434.4,255.2 487.6,182.1 560,88.1" fill="none" stroke="var(--nm-line-orange)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <polyline points="40,194.6 373.1,271.9 434.4,255.2 487.6,182.1 560,88.1" fill="none" stroke="var(--nm-line-silver)" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter" opacity="0.9" />
+      <rect x="36.0" y="190.6" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="369.1" y="267.9" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="483.6" y="178.1" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="556.0" y="84.1" width="8" height="8" fill="var(--nm-surface)" stroke="var(--nm-text-muted)" stroke-width="2" />
+      <rect x="426.4" y="247.2" width="16" height="16" fill="var(--nm-amber)" />
+      <text class="location-map-here" x="434.4" y="235.2" text-anchor="middle">Virginia Square-GMU</text>
+    </svg>
+            <span class="location-map-hint" aria-hidden="true">
+              <span class="location-map-hint-text">Open the street map</span>
+              <span class="location-map-hint-note">Loads Google Maps, which may set Google cookies</span>
+            </span>
+          </button>
+        </div>
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=38.883,-77.1035" class="location-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-direction-line" aria-hidden="true"></i>
+            Directions
+          </a>
+        </div>
+      </section>
+<!-- /nm:links:location -->
 
       <!-- Fare Calculator -->
       <section class="fare-card animate-in d4" id="fare-card">
