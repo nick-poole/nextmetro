@@ -894,7 +894,9 @@
 .fares-line-link-name {
   font-family: var(--nm-font);
   font-weight: 700;
-  font-size: 1rem;
+  /* 1.2rem bold clears the WCAG large-text bar, where the Red Line's 3.46:1
+     on this surface passes; at 1rem it would need 4.5:1 and fail. */
+  font-size: 1.2rem;
   color: var(--nm-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.04em;

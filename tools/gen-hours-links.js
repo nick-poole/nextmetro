@@ -100,6 +100,8 @@ function transferBlock() {
     // Line markers are decoration: /hours/ already links every line page from
     // the frequency tables and the first/last-train accordions, so making these
     // 8px bars into links would add tap targets without adding destinations.
+    // The colour bars are decorative; the line list is real (visually hidden)
+    // text, since aria-label is not valid on a plain span.
     const chips = s.lines
       .map((line) => `<span class="hours-station-line hours-station-line--${line}" title="${esc(lines[line].name)}"></span>`)
       .join('');
@@ -107,7 +109,7 @@ function transferBlock() {
     return (
       `        <div class="hours-station-row">\n` +
       `          <a href="/station/${s.slug}/" class="hours-station-link">${esc(s.name)} first &amp; last train</a>\n` +
-      `          <span class="hours-station-lines" aria-label="Lines: ${lineNames}">${chips}</span>\n` +
+      `          <span class="hours-station-lines"><span class="visually-hidden">Lines: ${lineNames}</span>${chips}</span>\n` +
       `        </div>`
     );
   }).join('\n');
