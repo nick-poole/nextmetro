@@ -177,7 +177,12 @@
       <p class="hero-station-desc" id="hero-station-desc">Serving Crystal City &amp; National Landing.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
+      <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -327,7 +332,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--blue">Blue / Yellow</span>
+          <a href="/lines/blue/" class="adjacent-line-badge adjacent-line-badge--blue" aria-label="Blue Line — stations and status">Blue / Yellow</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/dca-national-airport/" class="adjacent-station adjacent-station--prev">
@@ -341,6 +346,53 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:connections -->
+      <section class="connections-card grid-side animate-in d4" aria-labelledby="connections-title">
+        <div class="connections-header">
+          <h2 class="connections-title" id="connections-title">Connections</h2>
+        </div>
+        <div class="connections-body">
+          <div class="connections-row">
+            <span class="connections-label">Lines</span>
+            <span class="connections-values">
+            <a href="/lines/blue/" class="connections-line connections-line--blue">Blue Line</a>
+            <a href="/lines/yellow/" class="connections-line connections-line--yellow">Yellow Line</a>
+            </span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Blue Line runs</span>
+            <span class="connections-values"><a href="/station/franconia-springfield/">Franconia-Springfield station</a> to <a href="/station/downtown-largo/">Downtown Largo station</a></span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Yellow Line runs</span>
+            <span class="connections-values"><a href="/station/huntington/">Huntington station</a> to <a href="/station/greenbelt/">Greenbelt station</a></span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Nearby on the line</span>
+            <span class="connections-values">
+              <span class="connections-nearby"><a href="/station/potomac-yard/">Potomac Yard station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/pentagon/">Pentagon station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/braddock-road/">Braddock Road station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/arlington-cemetery/">Arlington Cemetery station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/lenfant-plaza/">L'Enfant Plaza station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/king-street/">King St-Old Town station</a><span class="connections-stops">4 stops</span></span>
+              <span class="connections-nearby"><a href="/station/rosslyn/">Rosslyn station</a><span class="connections-stops">4 stops</span></span>
+              <span class="connections-nearby"><a href="/station/archives/">Archives-Navy Memorial-Penn Quarter station</a><span class="connections-stops">4 stops</span></span>
+            </span>
+          </div>
+        </div>
+        <p class="connections-links">
+          <a href="/fares/">Metro fare calculator</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/hours/">Metro hours &amp; schedule</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/transfers/">All transfer stations</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/stations/">Every Metrorail station</a>
+        </p>
+      </section>
+<!-- /nm:links:connections -->
 
       <!-- Station Facilities Card -->
       <section class="facilities-card grid-side animate-in d3" id="facilities-card">

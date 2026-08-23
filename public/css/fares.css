@@ -715,3 +715,252 @@
     text-align: left;
   }
 }
+
+/* ==============================
+   Fare Type Toggle — active state
+   Riders were re-tapping the already-active toggle because the active
+   state read as a hover tint. Fill it with the farecard's own accent and
+   give each button the full label as a tap target on narrow screens.
+   ============================== */
+.calc-toggle {
+  flex-wrap: wrap;
+}
+
+.calc-toggle-btn {
+  flex: 1 1 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.calc-toggle-btn[aria-checked='false']:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.calc-toggle-btn--active,
+.calc-toggle-btn--active:hover {
+  background-color: var(--nm-fare-orange);
+  color: var(--nm-bg);
+}
+
+.calc-toggle-btn:focus-visible {
+  outline: 2px solid var(--nm-fare-yellow);
+  outline-offset: -2px;
+}
+
+@media (max-width: 480px) {
+  .calc-toggle {
+    flex-direction: column;
+  }
+
+  .calc-toggle-btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .calc-toggle-btn + .calc-toggle-btn {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* ==============================
+   Calculator Route Links
+   The trip's two stations and the lines that serve them, as real links.
+   ============================== */
+.calc-route-links {
+  margin-top: var(--nm-space-md);
+  padding-top: var(--nm-space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nm-space-sm);
+}
+
+.calc-route-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nm-space-sm);
+  min-height: 44px;
+}
+
+.calc-route-link-label {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #e2feff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  flex: 0 0 3rem;
+}
+
+.calc-route-link {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--nm-fare-yellow);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.calc-route-link:hover {
+  color: #e2feff;
+}
+
+.calc-route-link:focus-visible {
+  outline: 2px solid var(--nm-fare-yellow);
+  outline-offset: 2px;
+}
+
+.calc-route-link-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-xs);
+}
+
+.calc-route-line {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.5rem;
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--nm-bg);
+  border: 1px solid transparent;
+}
+
+.calc-route-line:hover {
+  filter: brightness(1.15);
+}
+
+.calc-route-line:focus-visible {
+  outline: 2px solid var(--nm-fare-yellow);
+  outline-offset: 2px;
+}
+
+.calc-route-line--red    { background-color: var(--nm-line-red);    color: var(--nm-text-primary); }
+.calc-route-line--orange { background-color: var(--nm-line-orange); }
+.calc-route-line--blue   { background-color: var(--nm-line-blue); }
+.calc-route-line--green  { background-color: var(--nm-line-green); }
+.calc-route-line--yellow { background-color: var(--nm-line-yellow); }
+.calc-route-line--silver { background-color: var(--nm-line-silver); }
+
+/* ==============================
+   Static Line + Station Index
+   Crawlable path from /fares/ into every line and station page.
+   ============================== */
+.fares-line-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--nm-space-sm);
+  margin-top: var(--nm-space-md);
+}
+
+.fares-line-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--nm-space-sm) var(--nm-space-md);
+  min-height: 44px;
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-left-width: 4px;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+.fares-line-link:hover {
+  background-color: var(--nm-surface-elevated);
+}
+
+.fares-line-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.fares-line-link--red    { border-left-color: var(--nm-line-red); }
+.fares-line-link--orange { border-left-color: var(--nm-line-orange); }
+.fares-line-link--blue   { border-left-color: var(--nm-line-blue); }
+.fares-line-link--green  { border-left-color: var(--nm-line-green); }
+.fares-line-link--yellow { border-left-color: var(--nm-line-yellow); }
+.fares-line-link--silver { border-left-color: var(--nm-line-silver); }
+
+.fares-line-link-name {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fares-line-link--red    .fares-line-link-name { color: var(--nm-line-red); }
+.fares-line-link--orange .fares-line-link-name { color: var(--nm-line-orange); }
+.fares-line-link--blue   .fares-line-link-name { color: var(--nm-line-blue); }
+.fares-line-link--green  .fares-line-link-name { color: var(--nm-line-green); }
+.fares-line-link--yellow .fares-line-link-name { color: var(--nm-line-yellow); }
+.fares-line-link--silver .fares-line-link-name { color: var(--nm-line-silver); }
+
+.fares-line-link-meta {
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--nm-text-muted);
+}
+
+.fares-station-index {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1px;
+  margin-top: var(--nm-space-md);
+  background-color: var(--nm-border-subtle);
+  border: 1px solid var(--nm-border);
+}
+
+.fares-station-link {
+  display: flex;
+  align-items: center;
+  gap: var(--nm-space-sm);
+  padding: 0 var(--nm-space-md);
+  min-height: 44px;
+  background-color: var(--nm-surface);
+  font-family: var(--nm-font);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--nm-text-secondary);
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.fares-station-link:hover {
+  background-color: var(--nm-surface-elevated);
+  color: var(--nm-amber);
+}
+
+.fares-station-link:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.fares-station-dot {
+  width: 6px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.fares-station-dot + .fares-station-dot {
+  margin-left: -4px;
+}
+
+.fares-station-dot--red    { background-color: var(--nm-line-red); }
+.fares-station-dot--orange { background-color: var(--nm-line-orange); }
+.fares-station-dot--blue   { background-color: var(--nm-line-blue); }
+.fares-station-dot--green  { background-color: var(--nm-line-green); }
+.fares-station-dot--yellow { background-color: var(--nm-line-yellow); }
+.fares-station-dot--silver { background-color: var(--nm-line-silver); }

@@ -222,7 +222,13 @@
       <span class="hero-transfer-badge">Transfer Station</span>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/red/" class="line-pill line-pill--red" aria-label="Red Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Red Line</a>
+      <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
+      <a href="/lines/green/" class="line-pill line-pill--green" aria-label="Green Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Green Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -436,7 +442,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
+          <a href="/lines/red/" class="adjacent-line-badge adjacent-line-badge--red" aria-label="Red Line — stations and status">Red Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/brookland-cua/" class="adjacent-station adjacent-station--prev">
@@ -463,8 +469,8 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--green">Gr</span>
-          <span class="adjacent-line-badge adjacent-line-badge--yellow">Yl</span>
+          <a href="/lines/green/" class="adjacent-line-badge adjacent-line-badge--green" aria-label="Green Line — stations and status">Gr</a>
+          <a href="/lines/yellow/" class="adjacent-line-badge adjacent-line-badge--yellow" aria-label="Yellow Line — stations and status">Yl</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/georgia-ave-petworth/" class="adjacent-station adjacent-station--prev">
@@ -478,6 +484,46 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:connections -->
+      <section class="connections-card grid-side animate-in d4" aria-labelledby="connections-title">
+        <div class="connections-header">
+          <h2 class="connections-title" id="connections-title">Connections</h2>
+        </div>
+        <div class="connections-body">
+          <div class="connections-row">
+            <span class="connections-label">Lines</span>
+            <span class="connections-values">
+            <a href="/lines/red/" class="connections-line connections-line--red">Red Line</a>
+            <a href="/lines/yellow/" class="connections-line connections-line--yellow">Yellow Line</a>
+            <a href="/lines/green/" class="connections-line connections-line--green">Green Line</a>
+            </span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Nearby on the line</span>
+            <span class="connections-values">
+              <span class="connections-nearby"><a href="/station/rhode-island-ave/">Rhode Island Ave-Brentwood station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/silver-spring/">Silver Spring station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/columbia-heights/">Columbia Heights station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/hyattsville-crossing/">Hyattsville Crossing station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/noma/">NoMa-Gallaudet U station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/forest-glen/">Forest Glen station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/u-street/">U Street/African-Amer Civil War Memorial/Cardozo station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/college-park/">College Park-U of Md station</a><span class="connections-stops">3 stops</span></span>
+            </span>
+          </div>
+        </div>
+        <p class="connections-links">
+          <a href="/fares/">Fares from Fort Totten</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/hours/">First and last train times</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/transfers/">Where the lines connect</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/stations/">All 98 Metro stations</a>
+        </p>
+      </section>
+<!-- /nm:links:connections -->
 
       <!-- Station Facilities Card -->
       <section class="facilities-card grid-side animate-in d3" id="facilities-card">

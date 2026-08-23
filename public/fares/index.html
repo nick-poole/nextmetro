@@ -255,6 +255,11 @@
             </div>
           </div>
 
+          <!-- Route links — station and line pages for the selected trip.
+               Populated by fares.js; the calculator's results are API-driven,
+               so the crawlable path lives in the static section below. -->
+          <div class="calc-route-links" id="calc-route-links" hidden></div>
+
           <!-- Weekly/Monthly Estimator -->
           <div class="calc-estimator">
             <span class="calc-estimator-label">Commute Cost Estimator</span>
@@ -443,6 +448,150 @@
       </div>
     </div>
 
+<!-- nm:links:fares-index -->
+    <div class="fares-section animate-in d5">
+      <h2 class="fares-section-heading">Fares by Line</h2>
+      <p class="fares-text">
+        Fare is set by distance, not by line — but the line tells you how far you are going. Each line page lists its stations in route order.
+      </p>
+      <div class="fares-line-links">
+        <a href="/lines/red/" class="fares-line-link fares-line-link--red">
+          <span class="fares-line-link-name">Red Line</span>
+          <span class="fares-line-link-meta">27 stations &middot; Shady Grove to Glenmont</span>
+        </a>
+        <a href="/lines/orange/" class="fares-line-link fares-line-link--orange">
+          <span class="fares-line-link-name">Orange Line</span>
+          <span class="fares-line-link-meta">26 stations &middot; Vienna/Fairfax-GMU to New Carrollton</span>
+        </a>
+        <a href="/lines/blue/" class="fares-line-link fares-line-link--blue">
+          <span class="fares-line-link-name">Blue Line</span>
+          <span class="fares-line-link-meta">28 stations &middot; Franconia-Springfield to Downtown Largo</span>
+        </a>
+        <a href="/lines/green/" class="fares-line-link fares-line-link--green">
+          <span class="fares-line-link-name">Green Line</span>
+          <span class="fares-line-link-meta">21 stations &middot; Branch Ave to Greenbelt</span>
+        </a>
+        <a href="/lines/yellow/" class="fares-line-link fares-line-link--yellow">
+          <span class="fares-line-link-name">Yellow Line</span>
+          <span class="fares-line-link-meta">22 stations &middot; Huntington to Greenbelt</span>
+        </a>
+        <a href="/lines/silver/" class="fares-line-link fares-line-link--silver">
+          <span class="fares-line-link-name">Silver Line</span>
+          <span class="fares-line-link-meta">34 stations &middot; Ashburn to Downtown Largo</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="fares-section animate-in d5">
+      <h2 class="fares-section-heading">All 98 Metro Stations</h2>
+      <p class="fares-text">
+        Every Metrorail station, with the lines that serve it. Station pages carry live arrivals, first and last train times, and a fare calculator for that station.
+      </p>
+      <div class="fares-station-index">
+        <a href="/station/addison-road/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Addison Road-Seat Pleasant</a>
+        <a href="/station/anacostia/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Anacostia</a>
+        <a href="/station/archives/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Archives-Navy Memorial-Penn Quarter</a>
+        <a href="/station/arlington-cemetery/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span>Arlington Cemetery</a>
+        <a href="/station/ashburn/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Ashburn</a>
+        <a href="/station/ballston/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Ballston-MU</a>
+        <a href="/station/benning-road/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Benning Road</a>
+        <a href="/station/bethesda/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Bethesda</a>
+        <a href="/station/braddock-road/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>Braddock Road</a>
+        <a href="/station/branch-ave/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Branch Ave</a>
+        <a href="/station/brookland-cua/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Brookland-CUA</a>
+        <a href="/station/capitol-heights/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Capitol Heights</a>
+        <a href="/station/capitol-south/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Capitol South</a>
+        <a href="/station/cheverly/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>Cheverly</a>
+        <a href="/station/clarendon/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Clarendon</a>
+        <a href="/station/cleveland-park/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Cleveland Park</a>
+        <a href="/station/college-park/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>College Park-U of Md</a>
+        <a href="/station/columbia-heights/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Columbia Heights</a>
+        <a href="/station/congress-heights/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Congress Heights</a>
+        <a href="/station/court-house/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Court House</a>
+        <a href="/station/crystal-city/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>Crystal City</a>
+        <a href="/station/dca-national-airport/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>DCA–National Airport</a>
+        <a href="/station/deanwood/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>Deanwood</a>
+        <a href="/station/downtown-largo/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Downtown Largo</a>
+        <a href="/station/washington-dulles/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Dulles Airport</a>
+        <a href="/station/dunn-loring/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>Dunn Loring-Merrifield</a>
+        <a href="/station/dupont-circle/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Dupont Circle</a>
+        <a href="/station/east-falls-church/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>East Falls Church</a>
+        <a href="/station/eastern-market/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Eastern Market</a>
+        <a href="/station/eisenhower-ave/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>Eisenhower Avenue</a>
+        <a href="/station/farragut-north/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Farragut North</a>
+        <a href="/station/farragut-west/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Farragut West</a>
+        <a href="/station/federal-center-sw/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Federal Center SW</a>
+        <a href="/station/federal-triangle/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Federal Triangle</a>
+        <a href="/station/foggy-bottom/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Foggy Bottom-GWU</a>
+        <a href="/station/forest-glen/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Forest Glen</a>
+        <a href="/station/fort-totten/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Fort Totten</a>
+        <a href="/station/franconia-springfield/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span>Franconia-Springfield</a>
+        <a href="/station/friendship-heights/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Friendship Heights</a>
+        <a href="/station/gallery-place/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Gallery Pl-Chinatown</a>
+        <a href="/station/georgia-ave-petworth/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Georgia Ave-Petworth</a>
+        <a href="/station/glenmont/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Glenmont</a>
+        <a href="/station/greenbelt/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Greenbelt</a>
+        <a href="/station/greensboro/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Greensboro</a>
+        <a href="/station/grosvenor-strathmore/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Grosvenor-Strathmore</a>
+        <a href="/station/herndon/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Herndon</a>
+        <a href="/station/huntington/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>Huntington</a>
+        <a href="/station/hyattsville-crossing/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Hyattsville Crossing</a>
+        <a href="/station/innovation-center/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Innovation Center</a>
+        <a href="/station/judiciary-square/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Judiciary Square</a>
+        <a href="/station/king-street/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>King St-Old Town</a>
+        <a href="/station/lenfant-plaza/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>L'Enfant Plaza</a>
+        <a href="/station/landover/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>Landover</a>
+        <a href="/station/loudoun-gateway/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Loudoun Gateway</a>
+        <a href="/station/mclean/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>McLean</a>
+        <a href="/station/mcpherson-square/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>McPherson Square</a>
+        <a href="/station/medical-center/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Medical Center</a>
+        <a href="/station/metro-center/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Metro Center</a>
+        <a href="/station/minnesota-ave/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>Minnesota Ave</a>
+        <a href="/station/morgan-boulevard/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Morgan Boulevard</a>
+        <a href="/station/mt-vernon-sq/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Mt Vernon Sq 7th St-Convention Center</a>
+        <a href="/station/navy-yard-ballpark/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Navy Yard-Ballpark</a>
+        <a href="/station/naylor-road/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Naylor Road</a>
+        <a href="/station/new-carrollton/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>New Carrollton</a>
+        <a href="/station/noma/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>NoMa-Gallaudet U</a>
+        <a href="/station/north-bethesda/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>North Bethesda-White Flint</a>
+        <a href="/station/pentagon/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>Pentagon</a>
+        <a href="/station/pentagon-city/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>Pentagon City</a>
+        <a href="/station/potomac-ave/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Potomac Ave</a>
+        <a href="/station/potomac-yard/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span>Potomac Yard</a>
+        <a href="/station/reston-town-center/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Reston Town Center</a>
+        <a href="/station/rhode-island-ave/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Rhode Island Ave-Brentwood</a>
+        <a href="/station/rockville/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Rockville</a>
+        <a href="/station/rosslyn/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Rosslyn</a>
+        <a href="/station/shady-grove/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Shady Grove</a>
+        <a href="/station/shaw-howard-u/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Shaw-Howard U</a>
+        <a href="/station/silver-spring/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Silver Spring</a>
+        <a href="/station/smithsonian/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Smithsonian</a>
+        <a href="/station/southern-ave/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Southern Ave</a>
+        <a href="/station/spring-hill/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Spring Hill</a>
+        <a href="/station/stadium-armory/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Stadium-Armory</a>
+        <a href="/station/suitland/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Suitland</a>
+        <a href="/station/takoma/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Takoma</a>
+        <a href="/station/tenleytown-au/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Tenleytown-AU</a>
+        <a href="/station/twinbrook/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Twinbrook</a>
+        <a href="/station/tysons/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Tysons</a>
+        <a href="/station/u-street/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>U Street/African-Amer Civil War Memorial/Cardozo</a>
+        <a href="/station/union-station/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Union Station</a>
+        <a href="/station/van-dorn-street/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--blue" aria-hidden="true"></span>Van Dorn Street</a>
+        <a href="/station/van-ness-udc/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Van Ness-UDC</a>
+        <a href="/station/vienna/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>Vienna/Fairfax-GMU</a>
+        <a href="/station/virginia-square/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Virginia Square-GMU</a>
+        <a href="/station/waterfront/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>Waterfront</a>
+        <a href="/station/west-falls-church/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--orange" aria-hidden="true"></span>West Falls Church</a>
+        <a href="/station/west-hyattsville/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--yellow" aria-hidden="true"></span><span class="fares-station-dot fares-station-dot--green" aria-hidden="true"></span>West Hyattsville</a>
+        <a href="/station/wheaton/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Wheaton</a>
+        <a href="/station/wiehle-reston-east/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--silver" aria-hidden="true"></span>Wiehle-Reston East</a>
+        <a href="/station/woodley-park/" class="fares-station-link"><span class="fares-station-dot fares-station-dot--red" aria-hidden="true"></span>Woodley Park-Zoo/Adams Morgan</a>
+      </div>
+      <p class="fares-text" style="margin-top:var(--nm-space-md)">
+        Also useful: <a href="/stations/">the searchable station directory</a>, <a href="/transfers/">transfer stations</a>, and <a href="/hours/">operating hours and train frequency</a>.
+      </p>
+    </div>
+<!-- /nm:links:fares-index -->
     <!-- Disclaimer -->
     <div class="fares-disclaimer">
       <p>

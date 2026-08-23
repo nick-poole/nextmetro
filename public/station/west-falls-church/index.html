@@ -173,7 +173,11 @@
       <p class="hero-station-desc" id="hero-station-desc">Near the Mosaic District &amp; West Falls Church.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/orange/" class="line-pill line-pill--orange" aria-label="Orange Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Orange Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -320,7 +324,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--orange">Orange</span>
+          <a href="/lines/orange/" class="adjacent-line-badge adjacent-line-badge--orange" aria-label="Orange Line — stations and status">Orange</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/dunn-loring/" class="adjacent-station adjacent-station--prev">
@@ -334,6 +338,43 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:connections -->
+      <section class="connections-card grid-side animate-in d4" aria-labelledby="connections-title">
+        <div class="connections-header">
+          <h2 class="connections-title" id="connections-title">Connections</h2>
+        </div>
+        <div class="connections-body">
+          <div class="connections-row">
+            <span class="connections-label">Line</span>
+            <span class="connections-values">
+            <a href="/lines/orange/" class="connections-line connections-line--orange">Orange Line</a>
+            </span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Orange Line runs</span>
+            <span class="connections-values"><a href="/station/vienna/">Vienna/Fairfax-GMU station</a> to <a href="/station/new-carrollton/">New Carrollton station</a></span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Nearby on the line</span>
+            <span class="connections-values">
+              <span class="connections-nearby"><a href="/station/ballston/">Ballston-MU station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/virginia-square/">Virginia Square-GMU station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/clarendon/">Clarendon station</a><span class="connections-stops">4 stops</span></span>
+            </span>
+          </div>
+        </div>
+        <p class="connections-links">
+          <a href="/fares/">Metro fare calculator</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/hours/">Metro hours &amp; schedule</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/transfers/">All transfer stations</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/stations/">Every Metrorail station</a>
+        </p>
+      </section>
+<!-- /nm:links:connections -->
 
       <!-- Station Facilities Card -->
       <section class="facilities-card grid-side animate-in d3" id="facilities-card">

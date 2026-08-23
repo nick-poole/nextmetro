@@ -350,20 +350,25 @@ function updateHeroDisplay(stationCode) {
   heroStationName.textContent = name;
   fetchStationAddress(stationCode);
 
-  // Update line pills
-  linePillsEl.innerHTML = '';
-  allLines.forEach((line) => {
-    const pill = document.createElement('span');
-    pill.className = 'line-pill';
-    pill.style.background = 'linear-gradient(135deg, ' + line.color + '1a, transparent)';
-    pill.style.color = line.color;
-    pill.innerHTML =
-      '<span class="line-pill-dot" style="background-color:' +
-      line.color +
-      '"></span>' +
-      line.name;
-    linePillsEl.appendChild(pill);
-  });
+  // Update line pills.
+  // Station pages ship these as static, crawlable <a> links to the line pages
+  // (data-static="true"); leave that markup alone. Only pages that render the
+  // hero client-side build pills here.
+  if (linePillsEl.dataset.static !== 'true') {
+    linePillsEl.innerHTML = '';
+    allLines.forEach((line) => {
+      const pill = document.createElement('span');
+      pill.className = 'line-pill';
+      pill.style.background = 'linear-gradient(135deg, ' + line.color + '1a, transparent)';
+      pill.style.color = line.color;
+      pill.innerHTML =
+        '<span class="line-pill-dot" style="background-color:' +
+        line.color +
+        '"></span>' +
+        line.name;
+      linePillsEl.appendChild(pill);
+    });
+  }
 
   // Update PIDS header — keep static "Next Arrivals" text
   // pidsHeaderStation.textContent = name;

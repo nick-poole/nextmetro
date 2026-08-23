@@ -135,6 +135,22 @@ Start the local dev server:
 npm start
 ```
 
+### Internal link modules
+
+The station, line, fares, and hours pages carry generated internal-linking
+blocks (hero line pills, the station Connections card, route-order station
+indexes). They are derived from `public/data/stations.json` and
+`public/data/lines.json` — never edited by hand across the 98 station files.
+
+```bash
+npm run build:links   # regenerate every marked block, then audit the link graph
+npm run audit:links   # link graph only: inbound counts, broken internal links
+```
+
+Each generated region is delimited by `nm:links:*` markers and is safe to
+re-run; the scripts replace the block in place. `npm run audit:links --
+--page /fares/` prints the inbound links for a single URL.
+
 ---
 
 ## Security

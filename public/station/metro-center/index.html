@@ -222,7 +222,14 @@
       <span class="hero-transfer-badge">Transfer Station</span>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/red/" class="line-pill line-pill--red" aria-label="Red Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Red Line</a>
+      <a href="/lines/orange/" class="line-pill line-pill--orange" aria-label="Orange Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Orange Line</a>
+      <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
+      <a href="/lines/silver/" class="line-pill line-pill--silver" aria-label="Silver Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Silver Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -455,7 +462,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--red">Red Line</span>
+          <a href="/lines/red/" class="adjacent-line-badge adjacent-line-badge--red" aria-label="Red Line — stations and status">Red Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/farragut-north/" class="adjacent-station adjacent-station--prev">
@@ -482,9 +489,9 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--orange">Or</span>
-          <span class="adjacent-line-badge adjacent-line-badge--blue">Bl</span>
-          <span class="adjacent-line-badge adjacent-line-badge--silver">Sv</span>
+          <a href="/lines/orange/" class="adjacent-line-badge adjacent-line-badge--orange" aria-label="Orange Line — stations and status">Or</a>
+          <a href="/lines/blue/" class="adjacent-line-badge adjacent-line-badge--blue" aria-label="Blue Line — stations and status">Bl</a>
+          <a href="/lines/silver/" class="adjacent-line-badge adjacent-line-badge--silver" aria-label="Silver Line — stations and status">Sv</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/mcpherson-square/" class="adjacent-station adjacent-station--prev">
@@ -506,6 +513,47 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:connections -->
+      <section class="connections-card grid-side animate-in d4" aria-labelledby="connections-title">
+        <div class="connections-header">
+          <h2 class="connections-title" id="connections-title">Connections</h2>
+        </div>
+        <div class="connections-body">
+          <div class="connections-row">
+            <span class="connections-label">Lines</span>
+            <span class="connections-values">
+            <a href="/lines/red/" class="connections-line connections-line--red">Red Line</a>
+            <a href="/lines/orange/" class="connections-line connections-line--orange">Orange Line</a>
+            <a href="/lines/blue/" class="connections-line connections-line--blue">Blue Line</a>
+            <a href="/lines/silver/" class="connections-line connections-line--silver">Silver Line</a>
+            </span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Nearby on the line</span>
+            <span class="connections-values">
+              <span class="connections-nearby"><a href="/station/dupont-circle/">Dupont Circle station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/judiciary-square/">Judiciary Square station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/farragut-west/">Farragut West station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/smithsonian/">Smithsonian station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/woodley-park/">Woodley Park-Zoo/Adams Morgan station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/union-station/">Union Station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/foggy-bottom/">Foggy Bottom-GWU station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/lenfant-plaza/">L'Enfant Plaza station</a><span class="connections-stops">3 stops</span></span>
+            </span>
+          </div>
+        </div>
+        <p class="connections-links">
+          <a href="/fares/">Metro Center fare calculator</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/hours/">First and last train times</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/transfers/">Where the lines connect</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/stations/">All 98 Metro stations</a>
+        </p>
+      </section>
+<!-- /nm:links:connections -->
 
       <!-- Station Facilities Card -->
       <section class="facilities-card grid-side animate-in d3" id="facilities-card">

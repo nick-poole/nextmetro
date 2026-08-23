@@ -220,7 +220,11 @@
       <p class="hero-station-desc" id="hero-station-desc">Near The Wharf, Arena Stage &amp; the Southwest Waterfront.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station"></div>
+      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+<!-- nm:links:line-pills -->
+      <a href="/lines/green/" class="line-pill line-pill--green" aria-label="Green Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Green Line</a>
+<!-- /nm:links:line-pills -->
+    </div>
     </div>
   </section>
 
@@ -403,7 +407,7 @@
       <section class="adjacent-card grid-side animate-in d2">
         <div class="adjacent-header">
           <h2 class="adjacent-title">Adjacent Stations</h2>
-          <span class="adjacent-line-badge adjacent-line-badge--green">Green Line</span>
+          <a href="/lines/green/" class="adjacent-line-badge adjacent-line-badge--green" aria-label="Green Line — stations and status">Green Line</a>
         </div>
         <div class="adjacent-body">
           <a href="/station/navy-yard-ballpark/" class="adjacent-station adjacent-station--prev">
@@ -425,6 +429,46 @@
           </a>
         </div>
       </section>
+
+      <!-- nm:links:connections -->
+      <section class="connections-card grid-side animate-in d4" aria-labelledby="connections-title">
+        <div class="connections-header">
+          <h2 class="connections-title" id="connections-title">Connections</h2>
+        </div>
+        <div class="connections-body">
+          <div class="connections-row">
+            <span class="connections-label">Line</span>
+            <span class="connections-values">
+            <a href="/lines/green/" class="connections-line connections-line--green">Green Line</a>
+            </span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Green Line runs</span>
+            <span class="connections-values"><a href="/station/branch-ave/">Branch Ave station</a> to <a href="/station/greenbelt/">Greenbelt station</a></span>
+          </div>
+          <div class="connections-row">
+            <span class="connections-label">Nearby on the line</span>
+            <span class="connections-values">
+              <span class="connections-nearby"><a href="/station/anacostia/">Anacostia station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/archives/">Archives-Navy Memorial-Penn Quarter station</a><span class="connections-stops">2 stops</span></span>
+              <span class="connections-nearby"><a href="/station/congress-heights/">Congress Heights station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/gallery-place/">Gallery Pl-Chinatown station</a><span class="connections-stops">3 stops</span></span>
+              <span class="connections-nearby"><a href="/station/southern-ave/">Southern Ave station</a><span class="connections-stops">4 stops</span></span>
+              <span class="connections-nearby"><a href="/station/mt-vernon-sq/">Mt Vernon Sq 7th St-Convention Center station</a><span class="connections-stops">4 stops</span></span>
+            </span>
+          </div>
+        </div>
+        <p class="connections-links">
+          <a href="/fares/">Fares from Waterfront</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/hours/">Waterfront first &amp; last train</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/transfers/">Metro transfer stations</a>
+          <span class="connections-sep" aria-hidden="true">&middot;</span>
+          <a href="/stations/">Metro station directory</a>
+        </p>
+      </section>
+<!-- /nm:links:connections -->
 
       <!-- Station Facilities Card -->
       <section class="facilities-card grid-side animate-in d3" id="facilities-card">
