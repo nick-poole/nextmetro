@@ -76,7 +76,7 @@
       "alternateName": ["DCA–National Airport Metro Station", "Reagan National Airport Metro Station", "DCA Metro Station", "National Airport Metro Station"],
       "description": "DCA–National Airport is an elevated Metrorail station on the Blue and Yellow lines in Arlington, Virginia, providing direct access to Reagan National Airport (DCA) terminals.",
       "url": "https://nextmetro.live/station/dca-national-airport/",
-      "sameAs": "https://www.wmata.com/rider-guide/stations/reagan-airport.cfm",
+      "sameAs": "https://www.wmata.com/rider-guide/stations/national-airport.cfm",
       "image": "https://nextmetro.live/images/og/stations/og-station-reagan-national.png",
       "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
       "isAccessibleForFree": false,
@@ -178,7 +178,7 @@
       <p class="hero-station-desc" id="hero-station-desc">Access to Reagan National Airport (DCA) &amp; National Landing.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+      <div class="line-pills" id="line-pills" role="group" aria-label="Metro lines serving this station" data-static="true">
 <!-- nm:links:line-pills -->
       <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
       <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
@@ -198,7 +198,7 @@
   </nav>
 
   <!-- Station Search -->
-  <div class="station-search" id="station-search-wrapper">
+  <div class="station-search" id="station-search-wrapper" role="search">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input type="text" id="station-input" class="station-search__input" placeholder="Search stations..." autocomplete="off"
       role="combobox"
@@ -259,12 +259,13 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.wmata.com/rider-guide/stations/reagan-airport.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.wmata.com/rider-guide/stations/national-airport.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
           </a>
-          <a href="https://www.wmata.com/rider-guide/stations/reagan-airport.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-external-link-line" aria-hidden="true"></i> WMATA Station Page
+          <a href="https://www.wmata.com/rider-guide/stations/national-airport.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-external-link-line" aria-hidden="true"></i>
+            WMATA Station Page
           </a>
         </div>
       </section>
@@ -406,6 +407,7 @@
             </span>
           </div>
           <p class="adjacent-extra-links">
+            <a href="/fares/dca-national-airport/">Metro fare from DCA National Airport</a>
             <a href="/fares/">Fares &amp; passes</a>
             <a href="/hours/">DCA–National Airport first &amp; last train</a>
             <a href="/transfers/">Metro transfer stations</a>
@@ -465,7 +467,7 @@
         </nav>
         <div class="nm-footer__lines-block">
           <h2 class="nm-footer__heading">Lines</h2>
-          <div class="nm-footer__line-chips" aria-label="Metro lines">
+          <div class="nm-footer__line-chips" role="group" aria-label="Metro lines">
             <a href="/lines/red/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--red"></span>Red</a>
             <a href="/lines/orange/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--orange"></span>Orange</a>
             <a href="/lines/silver/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--silver"></span>Silver</a>

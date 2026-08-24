@@ -76,7 +76,7 @@
       "alternateName": ["Navy Yard-Ballpark Metro Station", "Navy Yard-Ballpark Station"],
       "description": "Navy Yard-Ballpark is an underground Metrorail station on the Green Line in Washington, DC, serving Nationals Park, The Yards, and the Capitol Riverfront.",
       "url": "https://nextmetro.live/station/navy-yard-ballpark/",
-      "sameAs": "https://www.wmata.com/rider-guide/stations/navy-yard.cfm",
+      "sameAs": "https://www.wmata.com/rider-guide/stations/navy-yd-ballpark.cfm",
       "image": "https://nextmetro.live/images/og/stations/og-station-navy-yard-ballpark.png",
       "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
       "isAccessibleForFree": false,
@@ -220,7 +220,7 @@
       <p class="hero-station-desc" id="hero-station-desc">Near Nationals Park, The Yards &amp; the Capitol Riverfront.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+      <div class="line-pills" id="line-pills" role="group" aria-label="Metro lines serving this station" data-static="true">
 <!-- nm:links:line-pills -->
       <a href="/lines/green/" class="line-pill line-pill--green" aria-label="Green Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Green Line</a>
 <!-- /nm:links:line-pills -->
@@ -239,7 +239,7 @@
   </nav>
 
   <!-- Station Search -->
-  <div class="station-search" id="station-search-wrapper">
+  <div class="station-search" id="station-search-wrapper" role="search">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input
       type="text"
@@ -313,11 +313,11 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.wmata.com/rider-guide/stations/navy-yard.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.wmata.com/rider-guide/stations/navy-yd-ballpark.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
           </a>
-          <a href="https://www.wmata.com/rider-guide/stations/navy-yard.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.wmata.com/rider-guide/stations/navy-yd-ballpark.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-external-link-line" aria-hidden="true"></i>
             WMATA Station Page
           </a>
@@ -542,7 +542,7 @@
         </nav>
         <div class="nm-footer__lines-block">
           <h2 class="nm-footer__heading">Lines</h2>
-          <div class="nm-footer__line-chips" aria-label="Metro lines">
+          <div class="nm-footer__line-chips" role="group" aria-label="Metro lines">
             <a href="/lines/red/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--red"></span>Red</a>
             <a href="/lines/orange/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--orange"></span>Orange</a>
             <a href="/lines/silver/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--silver"></span>Silver</a>

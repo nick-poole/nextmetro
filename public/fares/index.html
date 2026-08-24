@@ -155,7 +155,7 @@
   </nav>
 
   <!-- Station Search -->
-  <div class="station-search" id="station-search-wrapper">
+  <div class="station-search" id="station-search-wrapper" role="search">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input
       type="text"
@@ -488,6 +488,45 @@
     </div>
     </details>
 
+    <!-- Fare guides -->
+    <details class="fares-section fares-section--fold animate-in d5" open>
+      <summary class="fares-section-summary">
+        <h2 class="fares-section-heading">Fare Guides</h2>
+        <i class="ri-arrow-down-s-line fares-section-chevron" aria-hidden="true"></i>
+      </summary>
+      <div class="fares-section-body">
+      <p class="fares-text">
+        The calculator answers "what does this trip cost". These guides answer the questions around it: what the airports cost, when the fare drops, whether a pass pays for itself, how to tap, and who rides at half price.
+      </p>
+      <div class="fares-guide-links">
+        <a href="/fares/dulles-airport/" class="fares-guide-link">
+          <span class="fares-guide-link-name">Fare from Dulles Airport (IAD)</span>
+          <span class="fares-guide-link-meta">$6.75 weekday to downtown &middot; Silver Line</span>
+        </a>
+        <a href="/fares/dca-national-airport/" class="fares-guide-link">
+          <span class="fares-guide-link-name">Fare from DCA National Airport</span>
+          <span class="fares-guide-link-meta">The close-in airport &middot; Blue &amp; Yellow lines</span>
+        </a>
+        <a href="/fares/cheapest-time-to-ride/" class="fares-guide-link">
+          <span class="fares-guide-link-name">The cheapest time to ride</span>
+          <span class="fares-guide-link-meta">After 9:30 PM, weekends and holidays are capped</span>
+        </a>
+        <a href="/fares/monthly-pass/" class="fares-guide-link">
+          <span class="fares-guide-link-name">Is a monthly pass worth it?</span>
+          <span class="fares-guide-link-meta">Break-even at 32 one-way trips a month</span>
+        </a>
+        <a href="/fares/how-to-pay/" class="fares-guide-link">
+          <span class="fares-guide-link-name">How to pay (do you tap out?)</span>
+          <span class="fares-guide-link-meta">Smart Trip, contactless, and the exit tap</span>
+        </a>
+        <a href="/fares/reduced-fare/" class="fares-guide-link">
+          <span class="fares-guide-link-name">Reduced fares</span>
+          <span class="fares-guide-link-meta">Senior, disability, Metro Lift and student</span>
+        </a>
+      </div>
+      </div>
+    </details>
+
 <!-- nm:links:fares-index -->
     <details class="fares-section fares-section--fold animate-in d5">
       <summary class="fares-section-summary">
@@ -672,7 +711,7 @@
         </nav>
         <div class="nm-footer__lines-block">
           <h2 class="nm-footer__heading">Lines</h2>
-          <div class="nm-footer__line-chips" aria-label="Metro lines">
+          <div class="nm-footer__line-chips" role="group" aria-label="Metro lines">
             <a href="/lines/red/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--red"></span>Red</a>
             <a href="/lines/orange/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--orange"></span>Orange</a>
             <a href="/lines/silver/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--silver"></span>Silver</a>

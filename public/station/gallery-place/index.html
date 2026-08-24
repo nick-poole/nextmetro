@@ -76,7 +76,7 @@
       "alternateName": ["Gallery Place-Chinatown", "Gallery Place Metro Station", "Chinatown Metro"],
       "description": "Gallery Pl-Chinatown is an underground transfer station in Washington, DC, serving the Red, Green, and Yellow Lines. It features two platforms and is located adjacent to Capital One Arena in the Penn Quarter/Chinatown neighborhood.",
       "url": "https://nextmetro.live/station/gallery-place/",
-      "sameAs": "https://www.wmata.com/rider-guide/stations/gallery-pl.cfm",
+      "sameAs": "https://www.wmata.com/rider-guide/stations/gallery-place.cfm",
       "image": "https://nextmetro.live/images/og/stations/og-station-gallery-place.png",
       "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
       "isAccessibleForFree": false,
@@ -179,7 +179,7 @@
       <span class="hero-transfer-badge">Transfer Station</span>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+      <div class="line-pills" id="line-pills" role="group" aria-label="Metro lines serving this station" data-static="true">
 <!-- nm:links:line-pills -->
       <a href="/lines/red/" class="line-pill line-pill--red" aria-label="Red Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Red Line</a>
       <a href="/lines/yellow/" class="line-pill line-pill--yellow" aria-label="Yellow Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Yellow Line</a>
@@ -200,7 +200,7 @@
   </nav>
 
   <!-- Station Search -->
-  <div class="station-search" id="station-search-wrapper">
+  <div class="station-search" id="station-search-wrapper" role="search">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input type="text" id="station-input" class="station-search__input" placeholder="Search stations..." autocomplete="off"
       role="combobox"
@@ -299,12 +299,13 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.wmata.com/rider-guide/stations/gallery-pl.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.wmata.com/rider-guide/stations/gallery-place.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
           </a>
-          <a href="https://www.wmata.com/rider-guide/stations/gallery-pl.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-external-link-line" aria-hidden="true"></i> WMATA Station Page
+          <a href="https://www.wmata.com/rider-guide/stations/gallery-place.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-external-link-line" aria-hidden="true"></i>
+            WMATA Station Page
           </a>
         </div>
       </section>
@@ -529,7 +530,7 @@
         </nav>
         <div class="nm-footer__lines-block">
           <h2 class="nm-footer__heading">Lines</h2>
-          <div class="nm-footer__line-chips" aria-label="Metro lines">
+          <div class="nm-footer__line-chips" role="group" aria-label="Metro lines">
             <a href="/lines/red/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--red"></span>Red</a>
             <a href="/lines/orange/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--orange"></span>Orange</a>
             <a href="/lines/silver/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--silver"></span>Silver</a>

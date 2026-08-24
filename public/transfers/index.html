@@ -196,7 +196,7 @@
   </nav>
 
   <!-- Station Search -->
-  <div class="station-search" id="station-search-wrapper">
+  <div class="station-search" id="station-search-wrapper" role="search">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input
       type="text"
@@ -319,7 +319,7 @@
             <div style="display:flex;align-items:center;gap:var(--nm-space-sm);margin-bottom:var(--nm-space-xs);flex-wrap:wrap;">
               <span style="font-family:var(--nm-font);font-size:1.05rem;font-weight:600;color:var(--nm-text);">Farragut North</span>
               <span class="transfer-station-dot" style="background-color:#D41140;width:12px;height:12px;border-radius:50%;display:inline-block;"></span>
-              <span style="font-family:var(--nm-font);font-size:1.1rem;color:var(--nm-text-muted);" aria-label="transfers to">&harr;</span>
+              <span style="font-family:var(--nm-font);font-size:1.1rem;color:var(--nm-text-muted);" role="img" aria-label="transfers to">&harr;</span>
               <span style="font-family:var(--nm-font);font-size:1.05rem;font-weight:600;color:var(--nm-text);">Farragut West</span>
               <span class="transfer-station-dot" style="background-color:#F09500;width:12px;height:12px;border-radius:50%;display:inline-block;"></span>
               <span class="transfer-station-dot" style="background-color:#00A8E8;width:12px;height:12px;border-radius:50%;display:inline-block;"></span>
@@ -710,7 +710,7 @@
         </nav>
         <div class="nm-footer__lines-block">
           <h2 class="nm-footer__heading">Lines</h2>
-          <div class="nm-footer__line-chips" aria-label="Metro lines">
+          <div class="nm-footer__line-chips" role="group" aria-label="Metro lines">
             <a href="/lines/red/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--red"></span>Red</a>
             <a href="/lines/orange/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--orange"></span>Orange</a>
             <a href="/lines/silver/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--silver"></span>Silver</a>

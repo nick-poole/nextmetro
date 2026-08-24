@@ -76,7 +76,7 @@
       "alternateName": ["Federal Center SW Metro Station", "USDA Metro Station"],
       "description": "Federal Center SW is an underground Metrorail station on the Orange, Blue, and Silver Lines in Washington, DC, located near the USDA headquarters and federal office buildings in Southwest DC.",
       "url": "https://nextmetro.live/station/federal-center-sw/",
-      "sameAs": "https://www.wmata.com/rider-guide/stations/federal-center.cfm",
+      "sameAs": "https://www.wmata.com/rider-guide/stations/federal-ctr-sw.cfm",
       "image": "https://nextmetro.live/images/og/stations/og-station-federal-center-sw.png",
       "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
       "isAccessibleForFree": false,
@@ -174,7 +174,7 @@
       <p class="hero-station-desc" id="hero-station-desc">Walking distance to USDA headquarters &amp; the Federal Center.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+      <div class="line-pills" id="line-pills" role="group" aria-label="Metro lines serving this station" data-static="true">
 <!-- nm:links:line-pills -->
       <a href="/lines/orange/" class="line-pill line-pill--orange" aria-label="Orange Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Orange Line</a>
       <a href="/lines/blue/" class="line-pill line-pill--blue" aria-label="Blue Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Blue Line</a>
@@ -195,7 +195,7 @@
   </nav>
 
   <!-- Station Search -->
-  <div class="station-search" id="station-search-wrapper">
+  <div class="station-search" id="station-search-wrapper" role="search">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input type="text" id="station-input" class="station-search__input" placeholder="Search stations..." autocomplete="off"
       role="combobox"
@@ -256,12 +256,13 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.wmata.com/rider-guide/stations/federal-center.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.wmata.com/rider-guide/stations/federal-ctr-sw.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
           </a>
-          <a href="https://www.wmata.com/rider-guide/stations/federal-center.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-external-link-line" aria-hidden="true"></i> WMATA Station Page
+          <a href="https://www.wmata.com/rider-guide/stations/federal-ctr-sw.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-external-link-line" aria-hidden="true"></i>
+            WMATA Station Page
           </a>
         </div>
       </section>
@@ -463,7 +464,7 @@
         </nav>
         <div class="nm-footer__lines-block">
           <h2 class="nm-footer__heading">Lines</h2>
-          <div class="nm-footer__line-chips" aria-label="Metro lines">
+          <div class="nm-footer__line-chips" role="group" aria-label="Metro lines">
             <a href="/lines/red/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--red"></span>Red</a>
             <a href="/lines/orange/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--orange"></span>Orange</a>
             <a href="/lines/silver/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--silver"></span>Silver</a>

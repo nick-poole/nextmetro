@@ -1,0 +1,935 @@
+/* ==============================
+   NextMetro - Fare Guide Pages
+   Shared components for the /fares/ child cluster:
+   /fares/dulles-airport/, /fares/reagan-airport/,
+   /fares/cheapest-time-to-ride/, /fares/how-to-pay/,
+   /fares/monthly-pass/, /fares/reduced-fare/
+
+   Loaded alongside fares.css, which already supplies the page shell
+   (.fares-page, .fares-hero, .fares-section, .fare-table, .fares-disclaimer).
+   Everything here uses the core tokens from styles.css: grayscale surfaces,
+   amber accent, WMATA line colors, zero border-radius.
+   ============================== */
+
+/* ---- Hero banner. Optional: pages without one open on the headline instead.
+   The photograph sits behind the headline as an <img> rather than a CSS
+   background so it can be preloaded and prioritised, which is what keeps it
+   from becoming a slow LCP. It is absolutely positioned, so it contributes no
+   layout of its own and cannot shift the page as it loads. ---- */
+.fg-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* The band is a window onto the photograph, and a shallow one shows so
+     little of the frame that most shots read as an abstract smear. This is
+     deep enough to carry a subject, and scales down rather than eating the
+     screen on a phone. */
+  min-height: clamp(200px, 22vw, 280px);
+  padding: var(--nm-space-2xl) var(--nm-space-lg);
+  border-bottom: 1px solid var(--nm-border-subtle);
+  background-color: var(--nm-surface);
+  overflow: hidden;
+}
+
+.fg-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.fg-hero__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The band is far wider than it is tall, so the crop is severe and the
+     interesting part of a photograph is rarely dead centre. Pages set
+     --fg-hero-crop to bring their subject into the band. */
+  object-position: var(--fg-hero-crop, center);
+}
+
+/* Scrim. Heavier at the top than the elevators hero because these photographs
+   include bright skies, and the eyebrow sits high in the band. */
+.fg-hero__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.78) 0%,
+    rgba(10, 10, 10, 0.82) 50%,
+    rgba(20, 20, 20, 0.94) 100%
+  );
+}
+
+.fg-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fg-hero .fg-eyebrow {
+  /* The brightest amber, because this is 12px over a photograph and the
+     dim one does not clear 4.5:1 against the lighter parts of these shots. */
+  color: var(--nm-amber-bright);
+}
+
+.fg-hero .fg-title {
+  margin-bottom: 0;
+}
+
+/* With a hero band above it, the answer is the first thing in the content
+   column and does not need the head's own top padding. */
+.fg-head--after-hero {
+  padding-top: var(--nm-space-xl);
+}
+
+/* ---- Page head: eyebrow, H1, quick answer. All text, so the LCP element is
+   the headline rather than a hero image or a widget that loads late. ---- */
+.fg-head {
+  padding-top: var(--nm-space-lg);
+  margin-bottom: var(--nm-space-lg);
+}
+
+.fg-eyebrow {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--nm-amber-dim);
+  margin-bottom: var(--nm-space-xs);
+}
+
+.fg-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(1.875rem, 6vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--nm-text-primary);
+  margin: 0 0 var(--nm-space-md);
+}
+
+.fg-lede {
+  font-family: var(--nm-font);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--nm-text-secondary);
+  max-width: 64ch;
+  margin: 0 0 var(--nm-space-lg);
+}
+
+/* ---- Quick answer: the snippet target, first block under the H1 ---- */
+.fg-answer {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-left: 3px solid var(--nm-amber);
+  padding: var(--nm-space-md) var(--nm-space-lg);
+  margin-bottom: var(--nm-space-lg);
+}
+
+.fg-answer p {
+  font-family: var(--nm-font);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--nm-text-primary);
+  margin: 0;
+}
+
+.fg-answer p + p {
+  margin-top: var(--nm-space-sm);
+}
+
+.fg-answer strong {
+  font-weight: 700;
+  color: var(--nm-amber-bright);
+}
+
+/* ---- Small dim note under a board or table ---- */
+.fg-note {
+  font-family: var(--nm-font);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--nm-text-muted);
+  margin-top: var(--nm-space-sm);
+}
+
+.fg-note a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Callout ---- */
+.fg-callout {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-left: 3px solid var(--nm-amber);
+  padding: var(--nm-space-md) var(--nm-space-lg);
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--nm-text-secondary);
+}
+
+.fg-callout strong {
+  color: var(--nm-text-primary);
+  font-weight: 600;
+}
+
+.fg-callout a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fg-callout a:hover {
+  color: var(--nm-amber-bright);
+}
+
+.fg-callout p {
+  margin: 0;
+}
+
+.fg-callout p + p {
+  margin-top: var(--nm-space-sm);
+}
+
+.fg-callout--spaced {
+  margin-top: var(--nm-space-md);
+}
+
+/* ==============================
+   Fare board (airport pages)
+   Two figures side by side, PIDS style.
+   ============================== */
+.fg-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--nm-bg);
+  border: 1px solid var(--nm-border-strong);
+  margin-top: var(--nm-space-lg);
+}
+
+.fg-board-cell {
+  padding: var(--nm-space-lg);
+  min-width: 0;
+}
+
+.fg-board-cell + .fg-board-cell {
+  border-left: 1px solid var(--nm-border-strong);
+}
+
+.fg-board-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--nm-text-muted);
+  margin-bottom: var(--nm-space-sm);
+}
+
+.fg-board-figure {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 8vw, 3rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-amber);
+}
+
+.fg-board-figure--cap {
+  color: var(--nm-text-primary);
+}
+
+.fg-board-sub {
+  display: block;
+  font-family: var(--nm-font);
+  font-size: 0.8125rem;
+  color: var(--nm-text-muted);
+  margin-top: var(--nm-space-sm);
+  line-height: 1.5;
+}
+
+/* ---- Numeric cells inside .fare-table ----
+   min-width holds the column open at the width of a filled value, so the
+   cells that ship as "--" and are filled from the API on load cannot widen
+   their column and nudge the table. Wide enough for "$6.75" and "55 min". */
+.fare-table .fg-num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  min-width: 5.5rem;
+}
+
+.fare-table .fg-num--weekday { color: var(--nm-amber); }
+.fare-table .fg-num--offpeak { color: var(--nm-text-primary); }
+.fare-table .fg-num--save    { color: var(--nm-line-green); }
+.fare-table .fg-num--time    { color: var(--nm-text-secondary); font-weight: 600; }
+
+.fare-table .fg-was {
+  color: var(--nm-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--nm-text-disabled);
+  font-weight: 500;
+}
+
+/* ==============================
+   Fare cliff (cheapest time page)
+   Two horizontal bars: weekday range vs the flat off-peak cap.
+   ============================== */
+.fg-cliff {
+  background-color: var(--nm-bg);
+  border: 1px solid var(--nm-border-strong);
+  padding: var(--nm-space-lg);
+  margin-top: var(--nm-space-md);
+}
+
+.fg-cliff-row + .fg-cliff-row {
+  margin-top: var(--nm-space-lg);
+}
+
+.fg-cliff-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-xs) var(--nm-space-md);
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--nm-space-sm);
+}
+
+.fg-cliff-name {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--nm-text-primary);
+}
+
+.fg-cliff-tag {
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--nm-text-muted);
+}
+
+.fg-cliff-bar {
+  position: relative;
+  height: 34px;
+  border: 1px solid var(--nm-border-strong);
+  background-color: var(--nm-surface);
+}
+
+.fg-cliff-fill {
+  display: block;
+  height: 100%;
+}
+
+.fg-cliff-fill--weekday {
+  width: 100%;
+  background: linear-gradient(90deg, #3A2C10 0%, var(--nm-amber) 100%);
+}
+
+.fg-cliff-fill--offpeak {
+  width: 33%;
+  background-color: var(--nm-line-green);
+}
+
+.fg-cliff-scale {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--nm-space-sm);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-text-muted);
+  margin-top: var(--nm-space-xs);
+}
+
+.fg-cliff-save {
+  text-align: center;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--nm-text-secondary);
+  margin-top: var(--nm-space-lg);
+  padding-top: var(--nm-space-md);
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+.fg-cliff-save strong {
+  color: var(--nm-line-green);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==============================
+   Break-even chart + module (monthly pass page)
+   ============================== */
+.fg-chart {
+  background-color: var(--nm-bg);
+  border: 1px solid var(--nm-border-strong);
+  padding: var(--nm-space-lg);
+  margin-top: var(--nm-space-md);
+}
+
+.fg-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fg-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-sm) var(--nm-space-lg);
+  margin-top: var(--nm-space-md);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--nm-text-secondary);
+}
+
+.fg-chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fg-swatch {
+  width: 16px;
+  height: 3px;
+  flex-shrink: 0;
+}
+
+.fg-swatch--ride { background-color: var(--nm-text-primary); }
+.fg-swatch--pass { background-color: var(--nm-amber); }
+.fg-swatch--cross {
+  width: 9px;
+  height: 9px;
+  background-color: var(--nm-amber);
+}
+
+.fg-calc {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: var(--nm-space-lg);
+  margin-top: var(--nm-space-md);
+}
+
+.fg-calc-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nm-space-md);
+}
+
+.fg-calc-field label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nm-text-muted);
+  margin-bottom: var(--nm-space-xs);
+}
+
+.fg-calc-field input,
+.fg-calc-field select {
+  width: 100%;
+  background-color: var(--nm-bg);
+  border: 1px solid var(--nm-border);
+  color: var(--nm-text-primary);
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  padding: 0.65rem 0.75rem;
+}
+
+.fg-calc-field input:focus-visible,
+.fg-calc-field select:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+.fg-calc-verdict {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--nm-space-md);
+  margin-top: var(--nm-space-lg);
+  padding-top: var(--nm-space-md);
+  border-top: 1px solid var(--nm-border);
+  text-align: center;
+}
+
+.fg-calc-key {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nm-text-muted);
+  margin-bottom: var(--nm-space-xs);
+}
+
+.fg-calc-value {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-text-primary);
+}
+
+.fg-calc-value--win { color: var(--nm-line-green); }
+.fg-calc-value--lose { color: var(--nm-text-secondary); }
+
+.fg-calc-verdict-line {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--nm-text-secondary);
+  margin-top: var(--nm-space-md);
+  padding-top: var(--nm-space-md);
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+/* ==============================
+   Numbered ride flow (how to pay page)
+   ============================== */
+.fg-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--nm-border);
+  border: 1px solid var(--nm-border);
+  margin-top: var(--nm-space-md);
+  list-style: none;
+  padding: 0;
+}
+
+.fg-flow-step {
+  background-color: var(--nm-bg);
+  padding: var(--nm-space-md);
+}
+
+.fg-flow-step--key {
+  background-color: var(--nm-surface-elevated);
+}
+
+.fg-flow-n {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  color: var(--nm-amber);
+  margin-bottom: var(--nm-space-sm);
+}
+
+.fg-flow-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--nm-text-primary);
+  margin: 0 0 var(--nm-space-xs);
+}
+
+.fg-flow-step--key .fg-flow-title {
+  color: var(--nm-amber-bright);
+}
+
+.fg-flow-text {
+  font-family: var(--nm-font);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--nm-text-secondary);
+  margin: 0;
+}
+
+/* ==============================
+   Two pay options (how to pay page)
+   ============================== */
+.fg-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nm-space-md);
+  margin-top: var(--nm-space-md);
+}
+
+.fg-opt {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  padding: var(--nm-space-lg);
+}
+
+.fg-opt-title {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--nm-text-primary);
+  margin: 0 0 var(--nm-space-xs);
+}
+
+.fg-opt-price {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-amber);
+  margin-bottom: var(--nm-space-md);
+}
+
+.fg-opt-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fg-opt-list li {
+  position: relative;
+  padding: 0.3rem 0 0.3rem 1.15rem;
+  font-family: var(--nm-font);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--nm-text-secondary);
+}
+
+.fg-opt-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 6px;
+  height: 1px;
+  background-color: var(--nm-amber-dim);
+}
+
+/* ==============================
+   Question / answer list (question-form headings)
+   ============================== */
+.fg-qa {
+  margin-top: var(--nm-space-md);
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+.fg-qa-item {
+  padding: var(--nm-space-md) 0;
+  border-bottom: 1px solid var(--nm-border-subtle);
+}
+
+.fg-qa-q {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--nm-text-primary);
+  margin: 0 0 var(--nm-space-xs);
+}
+
+.fg-qa-item p {
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--nm-text-secondary);
+  margin: 0;
+}
+
+.fg-qa-item p + p {
+  margin-top: var(--nm-space-sm);
+}
+
+.fg-qa-item a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ==============================
+   Regular vs reduced comparison (reduced fare page)
+   ============================== */
+.fg-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--nm-space-lg);
+  background-color: var(--nm-bg);
+  border: 1px solid var(--nm-border-strong);
+  padding: var(--nm-space-lg);
+  margin-top: var(--nm-space-md);
+}
+
+.fg-compare-side {
+  text-align: center;
+  min-width: 0;
+}
+
+.fg-compare-label {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--nm-text-muted);
+  margin-bottom: var(--nm-space-sm);
+}
+
+.fg-compare-regular {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 5vw, 1.875rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--nm-text-disabled);
+}
+
+.fg-compare-reduced {
+  display: block;
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: clamp(1.875rem, 7vw, 2.375rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-amber);
+}
+
+.fg-compare-arrow {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--nm-line-green);
+}
+
+/* ---- Eligibility / fact grid ---- */
+.fg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background-color: var(--nm-border);
+  border: 1px solid var(--nm-border);
+  margin-top: var(--nm-space-md);
+}
+
+.fg-grid-cell {
+  background-color: var(--nm-bg);
+  padding: var(--nm-space-md);
+}
+
+.fg-grid-key {
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--nm-text-primary);
+  margin: 0 0 var(--nm-space-xs);
+}
+
+.fg-grid-cell--compact .fg-grid-key {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nm-text-muted);
+}
+
+.fg-grid-value {
+  font-family: var(--nm-font);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--nm-text-secondary);
+  margin: 0;
+}
+
+.fg-grid-cell--compact .fg-grid-value {
+  font-size: 1rem;
+  color: var(--nm-text-primary);
+}
+
+.fg-grid-value a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- Numbered steps ---- */
+.fg-steps {
+  list-style: none;
+  counter-reset: fg-step;
+  padding: 0;
+  margin: var(--nm-space-md) 0 0;
+  border-top: 1px solid var(--nm-border-subtle);
+}
+
+.fg-steps li {
+  counter-increment: fg-step;
+  position: relative;
+  padding: var(--nm-space-md) 0 var(--nm-space-md) 2.75rem;
+  border-bottom: 1px solid var(--nm-border-subtle);
+  font-family: var(--nm-font);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--nm-text-secondary);
+}
+
+.fg-steps li::before {
+  content: counter(fg-step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: var(--nm-space-md);
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--nm-amber);
+}
+
+.fg-steps a {
+  color: var(--nm-amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- CTA button ---- */
+.fg-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--nm-amber);
+  border: 1px solid var(--nm-amber);
+  color: var(--nm-bg);
+  font-family: var(--nm-font);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  margin-top: var(--nm-space-md);
+}
+
+.fg-cta:hover {
+  background-color: var(--nm-amber-bright);
+  border-color: var(--nm-amber-bright);
+  color: var(--nm-bg);
+}
+
+.fg-cta:focus-visible {
+  outline: 2px solid var(--nm-text-primary);
+  outline-offset: 2px;
+}
+
+/* ---- Related chips ---- */
+.fg-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nm-space-sm);
+  margin-top: var(--nm-space-md);
+}
+
+.fg-related a {
+  border: 1px solid var(--nm-border);
+  padding: 0.55rem 0.9rem;
+  font-family: var(--nm-font);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nm-text-secondary);
+}
+
+.fg-related a:hover {
+  border-color: var(--nm-amber);
+  color: var(--nm-text-primary);
+}
+
+.fg-related a:focus-visible {
+  outline: 2px solid var(--nm-amber);
+  outline-offset: -2px;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+@media (max-width: 768px) {
+  .fg-flow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fg-opts,
+  .fg-calc-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .fg-calc-verdict {
+    grid-template-columns: 1fr;
+    gap: var(--nm-space-sm);
+    text-align: left;
+  }
+
+  .fg-calc-verdict > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--nm-space-sm);
+  }
+
+  .fg-calc-key {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .fg-hero {
+    padding: var(--nm-space-xl) var(--nm-space-md);
+  }
+}
+
+@media (max-width: 560px) {
+  .fg-board {
+    grid-template-columns: 1fr;
+  }
+
+  .fg-board-cell + .fg-board-cell {
+    border-left: none;
+    border-top: 1px solid var(--nm-border-strong);
+  }
+
+  .fg-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .fg-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fg-compare {
+    grid-template-columns: 1fr;
+    gap: var(--nm-space-md);
+  }
+
+  .fg-answer {
+    padding: var(--nm-space-md);
+  }
+
+  .fg-answer p {
+    font-size: 1.0625rem;
+  }
+
+  .fg-cliff-scale {
+    font-size: 0.6875rem;
+  }
+}

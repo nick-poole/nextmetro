@@ -7,7 +7,8 @@
 		"dev": "wrangler dev",
 		"deploy": "wrangler deploy",
 		"build:links": "node tools/build-links.js",
-		"audit:links": "node tools/link-audit.js"
+		"audit:links": "node tools/link-audit.js",
+		"audit:external": "node tools/external-link-audit.js"
 	},
 	"keywords": [
 		"wmata",

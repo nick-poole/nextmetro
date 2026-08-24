@@ -76,7 +76,7 @@
       "alternateName": ["NoMa-Gallaudet U Metro Station", "NoMa Metro Station", "New York Ave-Florida Ave-Gallaudet U"],
       "description": "NoMa-Gallaudet U is an elevated Metrorail station on the Red Line in the NoMa neighborhood of Washington, DC, serving Gallaudet University and the rapidly developing NoMa-H Street corridor.",
       "url": "https://nextmetro.live/station/noma/",
-      "sameAs": "https://www.wmata.com/rider-guide/stations/NoMa.cfm",
+      "sameAs": "https://www.wmata.com/rider-guide/stations/noma-gallaudet.cfm",
       "image": "https://nextmetro.live/images/og/stations/og-station-noma-gallaudet-u.png",
       "hasMap": "https://wmata.com/schedules/maps/upload/system-map-rail.pdf",
       "isAccessibleForFree": false,
@@ -177,7 +177,7 @@
       <p class="hero-station-desc" id="hero-station-desc">Near Gallaudet University, Union Market &amp; the NoMa business district.</p>
 
       <!-- Line Pills -->
-      <div class="line-pills" id="line-pills" aria-label="Metro lines serving this station" data-static="true">
+      <div class="line-pills" id="line-pills" role="group" aria-label="Metro lines serving this station" data-static="true">
 <!-- nm:links:line-pills -->
       <a href="/lines/red/" class="line-pill line-pill--red" aria-label="Red Line — stations and status"><span class="line-pill-dot" aria-hidden="true"></span>Red Line</a>
 <!-- /nm:links:line-pills -->
@@ -196,7 +196,7 @@
   </nav>
 
   <!-- Station Search -->
-  <div class="station-search" id="station-search-wrapper">
+  <div class="station-search" id="station-search-wrapper" role="search">
     <i class="ri-search-line station-search__icon" aria-hidden="true"></i>
     <input type="text" id="station-input" class="station-search__input" placeholder="Search stations..." autocomplete="off"
       role="combobox"
@@ -257,12 +257,13 @@
           </div>
         </div>
         <div class="station-info-actions">
-          <a href="https://www.wmata.com/rider-guide/stations/NoMa.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.wmata.com/rider-guide/stations/noma-gallaudet.cfm#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">
             <i class="ri-time-fill" aria-hidden="true"></i>
             First &amp; Last Trains
           </a>
-          <a href="https://www.wmata.com/rider-guide/stations/NoMa.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-external-link-line" aria-hidden="true"></i> WMATA Station Page
+          <a href="https://www.wmata.com/rider-guide/stations/noma-gallaudet.cfm" class="station-info-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-external-link-line" aria-hidden="true"></i>
+            WMATA Station Page
           </a>
         </div>
       </section>
@@ -450,7 +451,7 @@
         </nav>
         <div class="nm-footer__lines-block">
           <h2 class="nm-footer__heading">Lines</h2>
-          <div class="nm-footer__line-chips" aria-label="Metro lines">
+          <div class="nm-footer__line-chips" role="group" aria-label="Metro lines">
             <a href="/lines/red/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--red"></span>Red</a>
             <a href="/lines/orange/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--orange"></span>Orange</a>
             <a href="/lines/silver/" class="nm-footer__line-chip"><span class="nm-footer__chip-dot nm-footer__chip-dot--silver"></span>Silver</a>
