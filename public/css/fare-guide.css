@@ -11,6 +11,73 @@
    amber accent, WMATA line colors, zero border-radius.
    ============================== */
 
+/* ---- Hero banner. Optional: pages without one open on the headline instead.
+   The photograph sits behind the headline as an <img> rather than a CSS
+   background so it can be preloaded and prioritised, which is what keeps it
+   from becoming a slow LCP. It is absolutely positioned, so it contributes no
+   layout of its own and cannot shift the page as it loads. ---- */
+.fg-hero {
+  position: relative;
+  padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+  border-bottom: 1px solid var(--nm-border-subtle);
+  background-color: var(--nm-surface);
+  overflow: hidden;
+}
+
+.fg-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.fg-hero__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The band is far wider than it is tall, so the crop is severe and the
+     interesting part of a photograph is rarely dead centre. Pages set
+     --fg-hero-crop to bring their subject into the band. */
+  object-position: var(--fg-hero-crop, center);
+}
+
+/* Scrim. Heavier at the top than the elevators hero because these photographs
+   include bright skies, and the eyebrow sits high in the band. */
+.fg-hero__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.78) 0%,
+    rgba(10, 10, 10, 0.82) 50%,
+    rgba(20, 20, 20, 0.94) 100%
+  );
+}
+
+.fg-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fg-hero .fg-eyebrow {
+  /* The brightest amber, because this is 12px over a photograph and the
+     dim one does not clear 4.5:1 against the lighter parts of these shots. */
+  color: var(--nm-amber-bright);
+}
+
+.fg-hero .fg-title {
+  margin-bottom: 0;
+}
+
+/* With a hero band above it, the answer is the first thing in the content
+   column and does not need the head's own top padding. */
+.fg-head--after-hero {
+  padding-top: var(--nm-space-xl);
+}
+
 /* ---- Page head: eyebrow, H1, quick answer. All text, so the LCP element is
    the headline rather than a hero image or a widget that loads late. ---- */
 .fg-head {
@@ -184,10 +251,14 @@
   line-height: 1.5;
 }
 
-/* ---- Numeric cells inside .fare-table ---- */
+/* ---- Numeric cells inside .fare-table ----
+   min-width holds the column open at the width of a filled value, so the
+   cells that ship as "--" and are filled from the API on load cannot widen
+   their column and nudge the table. Wide enough for "$6.75" and "55 min". */
 .fare-table .fg-num {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
+  min-width: 5.5rem;
 }
 
 .fare-table .fg-num--weekday { color: var(--nm-amber); }
@@ -810,6 +881,12 @@
 
   .fg-calc-key {
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .fg-hero {
+    padding: var(--nm-space-xl) var(--nm-space-md) var(--nm-space-xl);
   }
 }
 
