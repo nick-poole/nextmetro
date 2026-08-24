@@ -38,7 +38,7 @@ NextMetro is an independent, real-time dashboard for the D.C. Metro system. It p
 - **Zero build step** — Vanilla HTML, CSS, and JavaScript. No framework, no bundler, no node_modules on the frontend.
 - **Cloudflare Workers** — API proxy with tiered caching. Static assets served at the edge.
 - **WCAG AA accessible** — Skip links, ARIA labels, keyboard navigation, contrast-compliant color system.
-- **SEO-optimized** — Schema.org structured data (TrainStation, FAQPage, BreadcrumbList, SpecialAnnouncement), OG images for every page and all 98 stations, canonical URLs, sitemap.
+- **SEO-optimized** — Schema.org structured data (TrainStation, WebPage, FAQPage, BreadcrumbList, SpecialAnnouncement) wired together by `@id` rather than left as unrelated blocks, with `publisher`, `dateModified` and `about`/`sameAs` entity references on the fare guides. OG images for every page, all 98 stations and each fare guide. Canonical URLs, sitemap.
 - **25-second polling** — Arrival predictions auto-refresh. Incidents refresh every 30–60 seconds.
 - **GDPR/CCPA compliant** — Cookie consent banner, GPC signal detection, conditional analytics loading, self-hosted fonts. Zero third-party requests without user consent.
 
