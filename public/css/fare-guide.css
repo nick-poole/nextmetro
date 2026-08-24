@@ -18,7 +18,14 @@
    layout of its own and cannot shift the page as it loads. ---- */
 .fg-hero {
   position: relative;
-  padding: var(--nm-space-3xl) var(--nm-space-lg) var(--nm-space-2xl);
+  display: flex;
+  align-items: center;
+  /* The band is a window onto the photograph, and a shallow one shows so
+     little of the frame that most shots read as an abstract smear. This is
+     deep enough to carry a subject, and scales down rather than eating the
+     screen on a phone. */
+  min-height: clamp(200px, 22vw, 280px);
+  padding: var(--nm-space-2xl) var(--nm-space-lg);
   border-bottom: 1px solid var(--nm-border-subtle);
   background-color: var(--nm-surface);
   overflow: hidden;
@@ -58,6 +65,7 @@
 .fg-hero__inner {
   position: relative;
   z-index: 1;
+  width: 100%;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -886,7 +894,7 @@
 
 @media (max-width: 768px) {
   .fg-hero {
-    padding: var(--nm-space-xl) var(--nm-space-md) var(--nm-space-xl);
+    padding: var(--nm-space-xl) var(--nm-space-md);
   }
 }
 
