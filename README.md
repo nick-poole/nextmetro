@@ -79,18 +79,14 @@ Yellow #FFD400  ████  |  Silver  #9BA5A5  ████
 
 ## Project Timeline
 
-This project has been built iteratively from a React prototype to a production-grade Cloudflare Workers site over ~9 months.
-
 | Date | Milestone | Details |
 |------|-----------|---------|
-| **Jun 2025** | **v1.0 — Initial prototype** | React + Vite + Material UI scaffold. Station dropdown, mock train cards, design exploration. |
-| **Jun 2025** | **v2.0 — Full WMATA integration** | Rewrote from React to vanilla HTML/CSS/JS. Express backend proxy, real-time arrivals, fare calculator, system status. Deployed on Netlify + Render. |
-| **Feb 2026** | **Cloudflare migration** | Moved entire stack to Cloudflare Workers. Single deployment for API proxy + static assets. Eliminated cold starts. |
+| **Feb 2026** | **Cloudflare migration** | Entire stack moved to Cloudflare Workers. Single deployment for API proxy + static assets. Eliminated cold starts. |
 | **Feb 2026** | **v2.1 — Line pages** | 6 dedicated line pages with station lists, transfer badges, parking indicators, service info, and FAQ sections. |
 | **Feb 2026** | **v2.2 — Alerts page** | Rail service alerts with severity sorting and SpecialAnnouncement schema. Elevator/escalator outages split to dedicated page. |
 | **Feb 2026** | **v2.3 — Elevator status** | Station-grouped outage view with dual filter system. Accessibility-first sorting (elevator outages surface first). |
 | **Mar 2026** | **v2.5 — Site-wide audit** | WCAG compliance pass, skip navigation on all pages, Schema.org structured data everywhere, meta/OG tags audit, static status bar. |
-| **Mar 2026** | **v2.6 — Station pages** | 5 dedicated station pages including dual-PIDS transfer stations (Metro Center, Gallery Place). Search navigation. |
+| **Mar 2026** | **v2.6 — Station pages** | Dedicated pages for all 98 stations, including dual-PIDS transfer stations (Metro Center, Gallery Place). Search navigation. |
 | **Mar 2026** | **v2.7 — Performance** | CSS code splitting (5,700-line monolith → 433 core + 11 page-specific files). JS DRY refactor (shared.js eliminates ~680 lines of duplication across 6 files). Comprehensive site audit + IndexNow integration. |
 | **Aug 2026** | **v2.8 — Internal linking + location** | Data-driven internal link graph across all 98 station pages, 6 line pages, /fares/ and /hours/ (generators in `tools/`, route order lifted into the data model). /fares/ dead-click fix. Station Location card with a build-time SVG line map and click-to-load Google Maps. |
 
@@ -98,43 +94,7 @@ This project has been built iteratively from a React prototype to a production-g
 
 ## Contributing
 
-Contributions are welcome. If you're interested in helping improve NextMetro:
-
-1. **Open an issue first** — Describe what you want to change and why. This prevents duplicate work and ensures alignment.
-2. **Fork and branch** — Create a feature branch from `main`.
-3. **Keep it focused** — One feature or fix per PR. Small PRs are easier to review.
-4. **Test locally** — Make sure the site works before submitting. See [Local Development](#local-development) below.
-5. **Submit a PR** — Reference the issue number in your PR description.
-
-### What Would Be Helpful
-
-- Additional station pages (only 5 of 98 stations have dedicated pages so far)
-- Mobile UX improvements
-- Performance optimizations
-- Accessibility improvements
-- Bug reports from real Metro riders
-
-### Local Development
-
-**Prerequisites:** Node.js v18+, a [WMATA Developer API key](https://developer.wmata.com/)
-
-```bash
-git clone https://github.com/nick-poole/nextmetro.git
-cd nextmetro
-npm install
-```
-
-Set your WMATA API key as a Cloudflare Workers secret:
-
-```bash
-npx wrangler secret put WMATA_API_KEY
-```
-
-Start the local dev server:
-
-```bash
-npm start
-```
+Not accepting contributions at this time.
 
 ### Internal link modules
 
@@ -172,7 +132,6 @@ Copyright (c) 2025–2026 Nick Poole. All rights reserved.
 The source code of this project is made available for **viewing and educational purposes only**. You may:
 
 - Read, study, and learn from the code
-- Submit contributions (pull requests) to this repository
 - Reference the code in blog posts or educational materials with attribution
 
 You may **not**:
@@ -181,8 +140,6 @@ You may **not**:
 - Use the code, design, or assets in your own projects
 - Redistribute, sublicense, or sell the code or any derivative work
 - Remove or alter copyright notices
-
-Contributions submitted via pull request are licensed to the project under the same terms.
 
 For questions about usage or licensing, contact [contact@nextmetro.live](mailto:contact@nextmetro.live).
 

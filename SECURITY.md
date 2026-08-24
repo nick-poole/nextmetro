@@ -4,7 +4,7 @@
 
 If you discover a security vulnerability in NextMetro, please report it responsibly.
 
-**Email:** [nick@nickpoole.dev](mailto:nick@nickpoole.dev)
+**Email:** [contact@nextmetro.live](mailto:contact@nextmetro.live)
 
 Please include:
 - A description of the vulnerability
@@ -42,8 +42,8 @@ I will acknowledge receipt within 48 hours and aim to provide a fix or mitigatio
 - No mixed content is served.
 
 ### Data Privacy
-- NextMetro does not collect, store, or process any personally identifiable information (PII).
-- No user accounts, cookies, or tracking are used.
+- NextMetro does not require user accounts or collect personally identifiable information (PII).
+- Analytics are cookie-free and privacy-respecting.
 - All data displayed is sourced from the public WMATA API.
 
 ## Supported Versions
