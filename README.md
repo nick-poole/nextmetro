@@ -29,6 +29,7 @@ NextMetro is an independent, real-time dashboard for the D.C. Metro system. It p
 | **[Service Alerts](https://nextmetro.live/alerts/)** | Active WMATA rail incidents — delays, closures, single tracking, advisories — severity-sorted and auto-refreshing. |
 | **[Elevator & Escalator Status](https://nextmetro.live/elevators/)** | System-wide outage tracker grouped by station, filterable by type and line. |
 | **[Fare Calculator](https://nextmetro.live/fares/)** | Peak/off-peak/senior pricing between any two stations with travel time estimates, commute cost projections, and result links into the trip's station and line pages. |
+| **[Fare Guides](https://nextmetro.live/fares/dulles-airport/)** | Six pages under `/fares/` answering the high-intent fare questions: both airports, the cheapest time to ride, how to pay, whether a monthly pass pays off, and reduced fares. Fares and ride times come from the same WMATA proxy as the calculator. |
 | **[Hours & Schedules](https://nextmetro.live/hours/)** | Operating hours, frequency tables, holiday schedules. |
 | **[Homepage](https://nextmetro.live/)** | Station search, live alert preview, quick links. |
 
@@ -94,6 +95,8 @@ This project has been built iteratively from a React prototype to a production-g
 | **Mar 2026** | **v2.7 — Performance** | CSS code splitting (5,700-line monolith → 433 core + 11 page-specific files). JS DRY refactor (shared.js eliminates ~680 lines of duplication across 6 files). Comprehensive site audit + IndexNow integration. |
 | **Aug 2026** | **v2.8 — Internal linking + location** | Data-driven internal link graph across all 98 station pages, 6 line pages, /fares/ and /hours/ (generators in `tools/`, route order lifted into the data model). /fares/ dead-click fix. Station Location card with a build-time SVG line map and click-to-load Google Maps. |
 
+| **Aug 2026** | **v2.9 — Fare guide cluster** | Six fare-intent pages under `/fares/`, hub-and-spoke linked, with per-page hero photography and social cards. WMATA station links moved into the data model and 19 dead URLs corrected after WMATA's May 2026 site rebuild. New external link audit; HTML validity errors across `public/` down from 217 to 2. |
+
 ---
 
 ## Contributing
@@ -140,14 +143,27 @@ npm start
 
 The station, line, fares, and hours pages carry generated blocks: hero line
 pills, the Adjacent Stations extension, route-order station indexes, and the
-station Location card with its build-time map. They are derived from
+station Location card with its build-time map, and the two outbound links to
+WMATA's own page for the station. They are derived from
 `public/data/stations.json` and `public/data/lines.json` — never edited by hand
-across the 98 station files.
+across the 98 station files. WMATA's URL is not derivable from ours (they
+abbreviate unpredictably, and the Silver Line Phase 2 stations sit under a
+different path entirely), so each station carries a `wmataUrl`; correcting one
+there updates all three references on that page.
 
 ```bash
-npm run build:links   # regenerate every marked block, then audit the link graph
-npm run audit:links   # link graph only: inbound counts, broken internal links
+npm run build:links      # regenerate every marked block, then audit the link graph
+npm run audit:links      # link graph only: inbound counts, broken internal links
+npm run audit:external   # outbound links: status codes, redirects, soft 404s
 ```
+
+`audit:external` is the companion to `audit:links`, which only ever sees URLs
+inside `public/`. It requests each distinct external URL once, follows
+redirects, and reports the chain. A rebuilt site often serves its own
+"page not found" screen with a 200, so any HTML 200 is fetched and scanned for
+not-found wording and reported as a soft 404; hosts that bot-block are listed
+separately and do not fail the run. `--dry-run` prints the inventory grouped by
+host without touching the network.
 
 Each generated region is delimited by `nm:links:*` markers and is safe to
 re-run; the scripts replace the block in place. `npm run audit:links --

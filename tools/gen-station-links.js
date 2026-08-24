@@ -154,7 +154,7 @@ function adjacentExtra(station, html) {
   // and the guide answers it in one page rather than a lookup.
   const AIRPORT_FARE_GUIDES = {
     'washington-dulles': ['/fares/dulles-airport/', 'Metro fare from Dulles Airport'],
-    'dca-national-airport': ['/fares/reagan-airport/', 'Metro fare from Reagan National'],
+    'dca-national-airport': ['/fares/dca-national-airport/', 'Metro fare from DCA National Airport'],
   };
 
   // The station's own fare calculator is already on this page, preselected, so

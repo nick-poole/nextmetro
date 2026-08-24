@@ -272,7 +272,7 @@ async function handleIndexNow(request, env) {
 		`https://${HOST}/elevators/`,
 		`https://${HOST}/fares/`,
 		`https://${HOST}/fares/dulles-airport/`,
-		`https://${HOST}/fares/reagan-airport/`,
+		`https://${HOST}/fares/dca-national-airport/`,
 		`https://${HOST}/fares/cheapest-time-to-ride/`,
 		`https://${HOST}/fares/how-to-pay/`,
 		`https://${HOST}/fares/monthly-pass/`,
