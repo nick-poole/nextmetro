@@ -3,7 +3,7 @@
     "name": "Metro Center",
     "code": "A01",
     "slug": "metro-center",
-    "wmataSlug": "metro-center",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/metro-center.cfm",
     "lines": [
       "red",
       "orange",
@@ -34,7 +34,7 @@
     "name": "Farragut North",
     "code": "A02",
     "slug": "farragut-north",
-    "wmataSlug": "farragut-north",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/farragut-north.cfm",
     "lines": [
       "red"
     ],
@@ -58,7 +58,7 @@
     "name": "Dupont Circle",
     "code": "A03",
     "slug": "dupont-circle",
-    "wmataSlug": "dupont-circle",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/dupont-circle.cfm",
     "lines": [
       "red"
     ],
@@ -82,7 +82,7 @@
     "name": "Woodley Park-Zoo/Adams Morgan",
     "code": "A04",
     "slug": "woodley-park",
-    "wmataSlug": "woodley-park",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/woodley-park.cfm",
     "lines": [
       "red"
     ],
@@ -106,7 +106,7 @@
     "name": "Cleveland Park",
     "code": "A05",
     "slug": "cleveland-park",
-    "wmataSlug": "cleveland-park",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/cleveland-park.cfm",
     "lines": [
       "red"
     ],
@@ -130,7 +130,7 @@
     "name": "Van Ness-UDC",
     "code": "A06",
     "slug": "van-ness-udc",
-    "wmataSlug": "van-ness-udc",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/van-ness-udc.cfm",
     "lines": [
       "red"
     ],
@@ -157,7 +157,7 @@
     "name": "Tenleytown-AU",
     "code": "A07",
     "slug": "tenleytown-au",
-    "wmataSlug": "tenleytown",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/tenleytown.cfm",
     "lines": [
       "red"
     ],
@@ -181,7 +181,7 @@
     "name": "Friendship Heights",
     "code": "A08",
     "slug": "friendship-heights",
-    "wmataSlug": "friendship-heights",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/friendship-heights.cfm",
     "lines": [
       "red"
     ],
@@ -205,7 +205,7 @@
     "name": "Bethesda",
     "code": "A09",
     "slug": "bethesda",
-    "wmataSlug": "bethesda",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/bethesda.cfm",
     "lines": [
       "red"
     ],
@@ -229,7 +229,7 @@
     "name": "Medical Center",
     "code": "A10",
     "slug": "medical-center",
-    "wmataSlug": "medical-center",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/medical-center.cfm",
     "lines": [
       "red"
     ],
@@ -253,7 +253,7 @@
     "name": "Grosvenor-Strathmore",
     "code": "A11",
     "slug": "grosvenor-strathmore",
-    "wmataSlug": "grosvenor",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/grosvenor.cfm",
     "lines": [
       "red"
     ],
@@ -277,7 +277,7 @@
     "name": "North Bethesda-White Flint",
     "code": "A12",
     "slug": "north-bethesda",
-    "wmataSlug": "white-flint",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/north-bethesda.cfm",
     "lines": [
       "red"
     ],
@@ -301,7 +301,7 @@
     "name": "Twinbrook",
     "code": "A13",
     "slug": "twinbrook",
-    "wmataSlug": "twinbrook",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/twinbrook.cfm",
     "lines": [
       "red"
     ],
@@ -325,7 +325,7 @@
     "name": "Rockville",
     "code": "A14",
     "slug": "rockville",
-    "wmataSlug": "rockville",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/rockville.cfm",
     "lines": [
       "red"
     ],
@@ -349,7 +349,7 @@
     "name": "Shady Grove",
     "code": "A15",
     "slug": "shady-grove",
-    "wmataSlug": "shady-grove",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/shady-grove.cfm",
     "lines": [
       "red"
     ],
@@ -373,7 +373,7 @@
     "name": "Gallery Pl-Chinatown",
     "code": "B01",
     "slug": "gallery-place",
-    "wmataSlug": "gallery-pl",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/gallery-place.cfm",
     "lines": [
       "red",
       "yellow",
@@ -405,7 +405,7 @@
     "name": "Judiciary Square",
     "code": "B02",
     "slug": "judiciary-square",
-    "wmataSlug": "judiciary-sq",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/judiciary-square.cfm",
     "lines": [
       "red"
     ],
@@ -432,7 +432,7 @@
     "name": "Union Station",
     "code": "B03",
     "slug": "union-station",
-    "wmataSlug": "union-station",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/union-station.cfm",
     "lines": [
       "red"
     ],
@@ -464,7 +464,7 @@
     "name": "Rhode Island Ave-Brentwood",
     "code": "B04",
     "slug": "rhode-island-ave",
-    "wmataSlug": "rhode-island-ave",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/rhode-island-ave.cfm",
     "lines": [
       "red"
     ],
@@ -488,7 +488,7 @@
     "name": "Brookland-CUA",
     "code": "B05",
     "slug": "brookland-cua",
-    "wmataSlug": "brookland",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/brookland.cfm",
     "lines": [
       "red"
     ],
@@ -512,7 +512,7 @@
     "name": "Fort Totten",
     "code": "B06",
     "slug": "fort-totten",
-    "wmataSlug": "fort-totten",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/fort-totten.cfm",
     "lines": [
       "red",
       "yellow",
@@ -541,7 +541,7 @@
     "name": "Takoma",
     "code": "B07",
     "slug": "takoma",
-    "wmataSlug": "takoma",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/takoma.cfm",
     "lines": [
       "red"
     ],
@@ -565,7 +565,7 @@
     "name": "Silver Spring",
     "code": "B08",
     "slug": "silver-spring",
-    "wmataSlug": "silver-spring",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/silver-spring.cfm",
     "lines": [
       "red"
     ],
@@ -592,7 +592,7 @@
     "name": "Forest Glen",
     "code": "B09",
     "slug": "forest-glen",
-    "wmataSlug": "forest-glen",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/forest-glen.cfm",
     "lines": [
       "red"
     ],
@@ -616,7 +616,7 @@
     "name": "Wheaton",
     "code": "B10",
     "slug": "wheaton",
-    "wmataSlug": "wheaton",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/wheaton.cfm",
     "lines": [
       "red"
     ],
@@ -640,7 +640,7 @@
     "name": "Glenmont",
     "code": "B11",
     "slug": "glenmont",
-    "wmataSlug": "glenmont",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/glenmont.cfm",
     "lines": [
       "red"
     ],
@@ -664,7 +664,7 @@
     "name": "NoMa-Gallaudet U",
     "code": "B35",
     "slug": "noma",
-    "wmataSlug": "NoMa",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/noma-gallaudet.cfm",
     "lines": [
       "red"
     ],
@@ -691,7 +691,7 @@
     "name": "McPherson Square",
     "code": "C02",
     "slug": "mcpherson-square",
-    "wmataSlug": "mcpherson-sq",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/mcpherson-sq.cfm",
     "lines": [
       "orange",
       "blue",
@@ -719,7 +719,7 @@
     "name": "Farragut West",
     "code": "C03",
     "slug": "farragut-west",
-    "wmataSlug": "farragut-west",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/farragut-west.cfm",
     "lines": [
       "orange",
       "blue",
@@ -747,7 +747,7 @@
     "name": "Foggy Bottom-GWU",
     "code": "C04",
     "slug": "foggy-bottom",
-    "wmataSlug": "foggy-bottom",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/foggy-bottom.cfm",
     "lines": [
       "orange",
       "blue",
@@ -775,7 +775,7 @@
     "name": "Rosslyn",
     "code": "C05",
     "slug": "rosslyn",
-    "wmataSlug": "rosslyn",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/rosslyn.cfm",
     "lines": [
       "orange",
       "blue",
@@ -803,7 +803,7 @@
     "name": "Arlington Cemetery",
     "code": "C06",
     "slug": "arlington-cemetery",
-    "wmataSlug": "arlington-cemetery",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/arlington-cemetery.cfm",
     "lines": [
       "blue"
     ],
@@ -827,7 +827,7 @@
     "name": "Pentagon",
     "code": "C07",
     "slug": "pentagon",
-    "wmataSlug": "pentagon",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/pentagon.cfm",
     "lines": [
       "blue",
       "yellow"
@@ -853,7 +853,7 @@
     "name": "Pentagon City",
     "code": "C08",
     "slug": "pentagon-city",
-    "wmataSlug": "pentagon-city",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/pentagon-city.cfm",
     "lines": [
       "blue",
       "yellow"
@@ -879,7 +879,7 @@
     "name": "Crystal City",
     "code": "C09",
     "slug": "crystal-city",
-    "wmataSlug": "crystal-city",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/crystal-city.cfm",
     "lines": [
       "blue",
       "yellow"
@@ -905,7 +905,7 @@
     "name": "DCA–National Airport",
     "code": "C10",
     "slug": "dca-national-airport",
-    "wmataSlug": "reagan-airport",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/national-airport.cfm",
     "lines": [
       "blue",
       "yellow"
@@ -931,7 +931,7 @@
     "name": "Potomac Yard",
     "code": "C11",
     "slug": "potomac-yard",
-    "wmataSlug": "potomac-yard",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/Potomac-Yard.cfm",
     "lines": [
       "blue",
       "yellow"
@@ -960,7 +960,7 @@
     "name": "Braddock Road",
     "code": "C12",
     "slug": "braddock-road",
-    "wmataSlug": "braddock-road",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/braddock-road.cfm",
     "lines": [
       "blue",
       "yellow"
@@ -986,7 +986,7 @@
     "name": "King St-Old Town",
     "code": "C13",
     "slug": "king-street",
-    "wmataSlug": "king-street",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/king-street.cfm",
     "lines": [
       "blue",
       "yellow"
@@ -1016,7 +1016,7 @@
     "name": "Eisenhower Avenue",
     "code": "C14",
     "slug": "eisenhower-ave",
-    "wmataSlug": "eisenhower-ave",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/eisenhower-ave.cfm",
     "lines": [
       "yellow"
     ],
@@ -1040,7 +1040,7 @@
     "name": "Huntington",
     "code": "C15",
     "slug": "huntington",
-    "wmataSlug": "huntington",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/huntington.cfm",
     "lines": [
       "yellow"
     ],
@@ -1064,7 +1064,7 @@
     "name": "Federal Triangle",
     "code": "D01",
     "slug": "federal-triangle",
-    "wmataSlug": "federal-triangle",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/federal-triangle.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1092,7 +1092,7 @@
     "name": "Smithsonian",
     "code": "D02",
     "slug": "smithsonian",
-    "wmataSlug": "smithsonian",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/smithsonian.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1123,7 +1123,7 @@
     "name": "L'Enfant Plaza",
     "code": "D03",
     "slug": "lenfant-plaza",
-    "wmataSlug": "lenfant-plaza",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/lenfant-plaza.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1159,7 +1159,7 @@
     "name": "Federal Center SW",
     "code": "D04",
     "slug": "federal-center-sw",
-    "wmataSlug": "federal-center",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/federal-ctr-sw.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1187,7 +1187,7 @@
     "name": "Capitol South",
     "code": "D05",
     "slug": "capitol-south",
-    "wmataSlug": "capitol-south",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/capitol-south.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1215,7 +1215,7 @@
     "name": "Eastern Market",
     "code": "D06",
     "slug": "eastern-market",
-    "wmataSlug": "eastern-market",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/eastern-market.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1243,7 +1243,7 @@
     "name": "Potomac Ave",
     "code": "D07",
     "slug": "potomac-ave",
-    "wmataSlug": "potomac-ave",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/potomac-ave.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1271,7 +1271,7 @@
     "name": "Stadium-Armory",
     "code": "D08",
     "slug": "stadium-armory",
-    "wmataSlug": "stadium-armory",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/stadium-armory.cfm",
     "lines": [
       "orange",
       "blue",
@@ -1299,7 +1299,7 @@
     "name": "Minnesota Ave",
     "code": "D09",
     "slug": "minnesota-ave",
-    "wmataSlug": "minnesota-ave",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/minnesota-ave.cfm",
     "lines": [
       "orange"
     ],
@@ -1323,7 +1323,7 @@
     "name": "Deanwood",
     "code": "D10",
     "slug": "deanwood",
-    "wmataSlug": "deanwood",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/deanwood.cfm",
     "lines": [
       "orange"
     ],
@@ -1347,7 +1347,7 @@
     "name": "Cheverly",
     "code": "D11",
     "slug": "cheverly",
-    "wmataSlug": "cheverly",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/cheverly.cfm",
     "lines": [
       "orange"
     ],
@@ -1371,7 +1371,7 @@
     "name": "Landover",
     "code": "D12",
     "slug": "landover",
-    "wmataSlug": "landover",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/landover.cfm",
     "lines": [
       "orange"
     ],
@@ -1395,7 +1395,7 @@
     "name": "New Carrollton",
     "code": "D13",
     "slug": "new-carrollton",
-    "wmataSlug": "new-carrollton",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/new-carrollton.cfm",
     "lines": [
       "orange"
     ],
@@ -1423,7 +1423,7 @@
     "name": "Mt Vernon Sq 7th St-Convention Center",
     "code": "E01",
     "slug": "mt-vernon-sq",
-    "wmataSlug": "mt-vernon-sq",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/mt-vernon-sq.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1449,7 +1449,7 @@
     "name": "Shaw-Howard U",
     "code": "E02",
     "slug": "shaw-howard-u",
-    "wmataSlug": "shaw-howard",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/shaw-howard.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1475,7 +1475,7 @@
     "name": "U Street/African-Amer Civil War Memorial/Cardozo",
     "code": "E03",
     "slug": "u-street",
-    "wmataSlug": "u-street",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/u-street.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1501,7 +1501,7 @@
     "name": "Columbia Heights",
     "code": "E04",
     "slug": "columbia-heights",
-    "wmataSlug": "columbia-heights",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/columbia-heights.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1527,7 +1527,7 @@
     "name": "Georgia Ave-Petworth",
     "code": "E05",
     "slug": "georgia-ave-petworth",
-    "wmataSlug": "georgia-ave-petworth",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/georgia-ave-petworth.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1553,7 +1553,7 @@
     "name": "West Hyattsville",
     "code": "E07",
     "slug": "west-hyattsville",
-    "wmataSlug": "west-hyattsville",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/west-hyattsville.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1579,7 +1579,7 @@
     "name": "Hyattsville Crossing",
     "code": "E08",
     "slug": "hyattsville-crossing",
-    "wmataSlug": "hyattsville-crossing",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/hyattsville-xing.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1605,7 +1605,7 @@
     "name": "College Park-U of Md",
     "code": "E09",
     "slug": "college-park",
-    "wmataSlug": "college-park",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/college-park.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1634,7 +1634,7 @@
     "name": "Greenbelt",
     "code": "E10",
     "slug": "greenbelt",
-    "wmataSlug": "greenbelt",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/greenbelt.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1663,7 +1663,7 @@
     "name": "Archives-Navy Memorial-Penn Quarter",
     "code": "F02",
     "slug": "archives",
-    "wmataSlug": "archives",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/archives.cfm",
     "lines": [
       "yellow",
       "green"
@@ -1689,7 +1689,7 @@
     "name": "Waterfront",
     "code": "F04",
     "slug": "waterfront",
-    "wmataSlug": "waterfront",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/waterfront.cfm",
     "lines": [
       "green"
     ],
@@ -1713,7 +1713,7 @@
     "name": "Navy Yard-Ballpark",
     "code": "F05",
     "slug": "navy-yard-ballpark",
-    "wmataSlug": "navy-yard",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/navy-yd-ballpark.cfm",
     "lines": [
       "green"
     ],
@@ -1737,7 +1737,7 @@
     "name": "Anacostia",
     "code": "F06",
     "slug": "anacostia",
-    "wmataSlug": "anacostia",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/anacostia.cfm",
     "lines": [
       "green"
     ],
@@ -1761,7 +1761,7 @@
     "name": "Congress Heights",
     "code": "F07",
     "slug": "congress-heights",
-    "wmataSlug": "congress-heights",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/congress-heights.cfm",
     "lines": [
       "green"
     ],
@@ -1785,7 +1785,7 @@
     "name": "Southern Ave",
     "code": "F08",
     "slug": "southern-ave",
-    "wmataSlug": "southern-ave",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/southern-ave.cfm",
     "lines": [
       "green"
     ],
@@ -1809,7 +1809,7 @@
     "name": "Naylor Road",
     "code": "F09",
     "slug": "naylor-road",
-    "wmataSlug": "naylor-road",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/naylor-road.cfm",
     "lines": [
       "green"
     ],
@@ -1833,7 +1833,7 @@
     "name": "Suitland",
     "code": "F10",
     "slug": "suitland",
-    "wmataSlug": "suitland",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/suitland.cfm",
     "lines": [
       "green"
     ],
@@ -1857,7 +1857,7 @@
     "name": "Branch Ave",
     "code": "F11",
     "slug": "branch-ave",
-    "wmataSlug": "branch-ave",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/branch-ave.cfm",
     "lines": [
       "green"
     ],
@@ -1881,7 +1881,7 @@
     "name": "Benning Road",
     "code": "G01",
     "slug": "benning-road",
-    "wmataSlug": "benning-road",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/benning-road.cfm",
     "lines": [
       "blue",
       "silver"
@@ -1907,7 +1907,7 @@
     "name": "Capitol Heights",
     "code": "G02",
     "slug": "capitol-heights",
-    "wmataSlug": "capitol-heights",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/capitol-heights.cfm",
     "lines": [
       "blue",
       "silver"
@@ -1933,7 +1933,7 @@
     "name": "Addison Road-Seat Pleasant",
     "code": "G03",
     "slug": "addison-road",
-    "wmataSlug": "addison-road",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/addison-road.cfm",
     "lines": [
       "blue",
       "silver"
@@ -1959,7 +1959,7 @@
     "name": "Morgan Boulevard",
     "code": "G04",
     "slug": "morgan-boulevard",
-    "wmataSlug": "morgan-boulevard",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/morgan-boulevard.cfm",
     "lines": [
       "blue",
       "silver"
@@ -1985,7 +1985,7 @@
     "name": "Downtown Largo",
     "code": "G05",
     "slug": "downtown-largo",
-    "wmataSlug": "largo",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/downtown-largo.cfm",
     "lines": [
       "blue",
       "silver"
@@ -2011,7 +2011,7 @@
     "name": "Van Dorn Street",
     "code": "J02",
     "slug": "van-dorn-street",
-    "wmataSlug": "van-dorn",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/van-dorn-st.cfm",
     "lines": [
       "blue"
     ],
@@ -2035,7 +2035,7 @@
     "name": "Franconia-Springfield",
     "code": "J03",
     "slug": "franconia-springfield",
-    "wmataSlug": "franconia-springfield",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/franconia-springfield.cfm",
     "lines": [
       "blue"
     ],
@@ -2063,7 +2063,7 @@
     "name": "Court House",
     "code": "K01",
     "slug": "court-house",
-    "wmataSlug": "courthouse",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/court-house.cfm",
     "lines": [
       "orange",
       "silver"
@@ -2089,7 +2089,7 @@
     "name": "Clarendon",
     "code": "K02",
     "slug": "clarendon",
-    "wmataSlug": "clarendon",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/clarendon.cfm",
     "lines": [
       "orange",
       "silver"
@@ -2115,7 +2115,7 @@
     "name": "Virginia Square-GMU",
     "code": "K03",
     "slug": "virginia-square",
-    "wmataSlug": "virginia-square",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/virginia-square.cfm",
     "lines": [
       "orange",
       "silver"
@@ -2141,7 +2141,7 @@
     "name": "Ballston-MU",
     "code": "K04",
     "slug": "ballston",
-    "wmataSlug": "ballston",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/ballston.cfm",
     "lines": [
       "orange",
       "silver"
@@ -2167,7 +2167,7 @@
     "name": "East Falls Church",
     "code": "K05",
     "slug": "east-falls-church",
-    "wmataSlug": "east-falls-church",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/east-falls-church.cfm",
     "lines": [
       "orange",
       "silver"
@@ -2193,7 +2193,7 @@
     "name": "West Falls Church",
     "code": "K06",
     "slug": "west-falls-church",
-    "wmataSlug": "west-falls-church",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/west-falls-church.cfm",
     "lines": [
       "orange"
     ],
@@ -2217,7 +2217,7 @@
     "name": "Dunn Loring-Merrifield",
     "code": "K07",
     "slug": "dunn-loring",
-    "wmataSlug": "dunn-loring",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/dunn-loring.cfm",
     "lines": [
       "orange"
     ],
@@ -2241,7 +2241,7 @@
     "name": "Vienna/Fairfax-GMU",
     "code": "K08",
     "slug": "vienna",
-    "wmataSlug": "vienna",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/vienna.cfm",
     "lines": [
       "orange"
     ],
@@ -2265,7 +2265,7 @@
     "name": "McLean",
     "code": "N01",
     "slug": "mclean",
-    "wmataSlug": "mclean",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/mclean.cfm",
     "lines": [
       "silver"
     ],
@@ -2289,7 +2289,7 @@
     "name": "Tysons",
     "code": "N02",
     "slug": "tysons",
-    "wmataSlug": "tysons",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/tysons.cfm",
     "lines": [
       "silver"
     ],
@@ -2313,7 +2313,7 @@
     "name": "Greensboro",
     "code": "N03",
     "slug": "greensboro",
-    "wmataSlug": "greensboro",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/greensboro.cfm",
     "lines": [
       "silver"
     ],
@@ -2337,7 +2337,7 @@
     "name": "Spring Hill",
     "code": "N04",
     "slug": "spring-hill",
-    "wmataSlug": "spring-hill",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/spring-hill.cfm",
     "lines": [
       "silver"
     ],
@@ -2361,7 +2361,7 @@
     "name": "Wiehle-Reston East",
     "code": "N06",
     "slug": "wiehle-reston-east",
-    "wmataSlug": "wiehle",
+    "wmataUrl": "https://www.wmata.com/rider-guide/stations/wiehle-reston.cfm",
     "lines": [
       "silver"
     ],
@@ -2385,7 +2385,7 @@
     "name": "Reston Town Center",
     "code": "N07",
     "slug": "reston-town-center",
-    "wmataSlug": "reston-town-center",
+    "wmataUrl": "https://www.wmata.com/rider-guide/silver-line-extension/Reston-Town-Center.cfm",
     "lines": [
       "silver"
     ],
@@ -2409,7 +2409,7 @@
     "name": "Herndon",
     "code": "N08",
     "slug": "herndon",
-    "wmataSlug": "herndon",
+    "wmataUrl": "https://www.wmata.com/rider-guide/silver-line-extension/Herndon.cfm",
     "lines": [
       "silver"
     ],
@@ -2433,7 +2433,7 @@
     "name": "Innovation Center",
     "code": "N09",
     "slug": "innovation-center",
-    "wmataSlug": "innovation-center",
+    "wmataUrl": "https://www.wmata.com/rider-guide/silver-line-extension/Innovation-Center.cfm",
     "lines": [
       "silver"
     ],
@@ -2457,7 +2457,7 @@
     "name": "Dulles Airport",
     "code": "N10",
     "slug": "washington-dulles",
-    "wmataSlug": "washington-dulles",
+    "wmataUrl": "https://www.wmata.com/rider-guide/silver-line-extension/Washington-Dulles-International-Airport.cfm",
     "lines": [
       "silver"
     ],
@@ -2481,7 +2481,7 @@
     "name": "Loudoun Gateway",
     "code": "N11",
     "slug": "loudoun-gateway",
-    "wmataSlug": "loudoun-gateway",
+    "wmataUrl": "https://www.wmata.com/rider-guide/silver-line-extension/Loudoun-Gateway.cfm",
     "lines": [
       "silver"
     ],
@@ -2505,7 +2505,7 @@
     "name": "Ashburn",
     "code": "N12",
     "slug": "ashburn",
-    "wmataSlug": "ashburn",
+    "wmataUrl": "https://www.wmata.com/rider-guide/silver-line-extension/Ashburn.cfm",
     "lines": [
       "silver"
     ],

@@ -6,16 +6,17 @@
  * station ("First & Last Trains", which is the same URL plus #hours, and
  * "WMATA Station Page"), plus a schema.org sameAs pointing at it.
  *
- * WMATA's slug is not always ours: they abbreviate ("judiciary-sq"), they
- * renamed stations without renaming pages ("white-flint"), and one is
- * mixed-case ("NoMa"). That mapping used to live as literal strings in 98
- * HTML files, three copies each, which is how it silently rotted when WMATA
- * rebuilt wmata.com in May 2026. It now lives in one place:
+ * WMATA's URL is not derivable from ours. They abbreviate unpredictably
+ * (navy-yd-ballpark, federal-ctr-sw, hyattsville-xing, van-dorn-st), they
+ * renamed stations without renaming pages, and the six Silver Line Phase 2
+ * stations are not under /rider-guide/stations/ at all but under
+ * /rider-guide/silver-line-extension/ with title-case filenames. Nothing about
+ * that can be computed, so the whole URL is stored rather than a slug:
  *
- *   public/data/stations.json -> wmataSlug
+ *   public/data/stations.json -> wmataUrl
  *
- * Correct a slug there, re-run, and all three references on that page follow.
- * Setting wmataSlug to null drops the two links and the sameAs from that page
+ * Correct a URL there, re-run, and all three references on that page follow.
+ * Setting wmataUrl to null drops the two links and the sameAs from that page
  * entirely, for a station WMATA has no page for.
  *
  * Idempotent: reruns produce byte-identical output.
@@ -28,13 +29,11 @@ const L = require('./lib/nm-links.js');
 
 const { ROOT, stations } = L;
 
-const BASE = 'https://www.wmata.com/rider-guide/stations/';
 const ACTIONS = /<div class="station-info-actions">[\s\S]*?<\/div>/;
 const SAME_AS = /^(\s*)"sameAs": "[^"]*",$/m;
 
-function actionsBlock(wmataSlug) {
-  if (!wmataSlug) return '<div class="station-info-actions"></div>';
-  const url = BASE + wmataSlug + '.cfm';
+function actionsBlock(url) {
+  if (!url) return '<div class="station-info-actions"></div>';
   return (
     `<div class="station-info-actions">\n` +
     `          <a href="${url}#hours" class="station-info-link" target="_blank" rel="noopener noreferrer">\n` +
@@ -66,13 +65,13 @@ for (const station of stations) {
     missing.push(station.slug + ' (no station-info-actions block)');
     continue;
   }
-  after = after.replace(ACTIONS, actionsBlock(station.wmataSlug));
+  after = after.replace(ACTIONS, actionsBlock(station.wmataUrl));
 
   // The sameAs sits in the station's JSON-LD and has to agree with the links.
   // Dropping it entirely is wrong: an empty string is not a URL, so the whole
   // line goes when there is no WMATA page.
-  if (station.wmataSlug) {
-    after = after.replace(SAME_AS, `$1"sameAs": "${BASE + station.wmataSlug}.cfm",`);
+  if (station.wmataUrl) {
+    after = after.replace(SAME_AS, `$1"sameAs": "${station.wmataUrl}",`);
   } else {
     after = after.replace(/^\s*"sameAs": "[^"]*",\n/m, '');
   }
@@ -80,7 +79,7 @@ for (const station of stations) {
   if (after !== before) {
     fs.writeFileSync(file, after);
     changed += 1;
-    if (!station.wmataSlug) dropped += 1;
+    if (!station.wmataUrl) dropped += 1;
   }
 }
 
