@@ -3,6 +3,7 @@
     "name": "Metro Center",
     "code": "A01",
     "slug": "metro-center",
+    "wmataSlug": "metro-center",
     "lines": [
       "red",
       "orange",
@@ -33,6 +34,7 @@
     "name": "Farragut North",
     "code": "A02",
     "slug": "farragut-north",
+    "wmataSlug": "farragut-north",
     "lines": [
       "red"
     ],
@@ -56,6 +58,7 @@
     "name": "Dupont Circle",
     "code": "A03",
     "slug": "dupont-circle",
+    "wmataSlug": "dupont-circle",
     "lines": [
       "red"
     ],
@@ -79,6 +82,7 @@
     "name": "Woodley Park-Zoo/Adams Morgan",
     "code": "A04",
     "slug": "woodley-park",
+    "wmataSlug": "woodley-park",
     "lines": [
       "red"
     ],
@@ -102,6 +106,7 @@
     "name": "Cleveland Park",
     "code": "A05",
     "slug": "cleveland-park",
+    "wmataSlug": "cleveland-park",
     "lines": [
       "red"
     ],
@@ -125,6 +130,7 @@
     "name": "Van Ness-UDC",
     "code": "A06",
     "slug": "van-ness-udc",
+    "wmataSlug": "van-ness-udc",
     "lines": [
       "red"
     ],
@@ -151,6 +157,7 @@
     "name": "Tenleytown-AU",
     "code": "A07",
     "slug": "tenleytown-au",
+    "wmataSlug": "tenleytown",
     "lines": [
       "red"
     ],
@@ -174,6 +181,7 @@
     "name": "Friendship Heights",
     "code": "A08",
     "slug": "friendship-heights",
+    "wmataSlug": "friendship-heights",
     "lines": [
       "red"
     ],
@@ -197,6 +205,7 @@
     "name": "Bethesda",
     "code": "A09",
     "slug": "bethesda",
+    "wmataSlug": "bethesda",
     "lines": [
       "red"
     ],
@@ -220,6 +229,7 @@
     "name": "Medical Center",
     "code": "A10",
     "slug": "medical-center",
+    "wmataSlug": "medical-center",
     "lines": [
       "red"
     ],
@@ -243,6 +253,7 @@
     "name": "Grosvenor-Strathmore",
     "code": "A11",
     "slug": "grosvenor-strathmore",
+    "wmataSlug": "grosvenor",
     "lines": [
       "red"
     ],
@@ -266,6 +277,7 @@
     "name": "North Bethesda-White Flint",
     "code": "A12",
     "slug": "north-bethesda",
+    "wmataSlug": "white-flint",
     "lines": [
       "red"
     ],
@@ -289,6 +301,7 @@
     "name": "Twinbrook",
     "code": "A13",
     "slug": "twinbrook",
+    "wmataSlug": "twinbrook",
     "lines": [
       "red"
     ],
@@ -312,6 +325,7 @@
     "name": "Rockville",
     "code": "A14",
     "slug": "rockville",
+    "wmataSlug": "rockville",
     "lines": [
       "red"
     ],
@@ -335,6 +349,7 @@
     "name": "Shady Grove",
     "code": "A15",
     "slug": "shady-grove",
+    "wmataSlug": "shady-grove",
     "lines": [
       "red"
     ],
@@ -358,6 +373,7 @@
     "name": "Gallery Pl-Chinatown",
     "code": "B01",
     "slug": "gallery-place",
+    "wmataSlug": "gallery-pl",
     "lines": [
       "red",
       "yellow",
@@ -389,6 +405,7 @@
     "name": "Judiciary Square",
     "code": "B02",
     "slug": "judiciary-square",
+    "wmataSlug": "judiciary-sq",
     "lines": [
       "red"
     ],
@@ -415,6 +432,7 @@
     "name": "Union Station",
     "code": "B03",
     "slug": "union-station",
+    "wmataSlug": "union-station",
     "lines": [
       "red"
     ],
@@ -446,6 +464,7 @@
     "name": "Rhode Island Ave-Brentwood",
     "code": "B04",
     "slug": "rhode-island-ave",
+    "wmataSlug": "rhode-island-ave",
     "lines": [
       "red"
     ],
@@ -469,6 +488,7 @@
     "name": "Brookland-CUA",
     "code": "B05",
     "slug": "brookland-cua",
+    "wmataSlug": "brookland",
     "lines": [
       "red"
     ],
@@ -492,6 +512,7 @@
     "name": "Fort Totten",
     "code": "B06",
     "slug": "fort-totten",
+    "wmataSlug": "fort-totten",
     "lines": [
       "red",
       "yellow",
@@ -520,6 +541,7 @@
     "name": "Takoma",
     "code": "B07",
     "slug": "takoma",
+    "wmataSlug": "takoma",
     "lines": [
       "red"
     ],
@@ -543,6 +565,7 @@
     "name": "Silver Spring",
     "code": "B08",
     "slug": "silver-spring",
+    "wmataSlug": "silver-spring",
     "lines": [
       "red"
     ],
@@ -569,6 +592,7 @@
     "name": "Forest Glen",
     "code": "B09",
     "slug": "forest-glen",
+    "wmataSlug": "forest-glen",
     "lines": [
       "red"
     ],
@@ -592,6 +616,7 @@
     "name": "Wheaton",
     "code": "B10",
     "slug": "wheaton",
+    "wmataSlug": "wheaton",
     "lines": [
       "red"
     ],
@@ -615,6 +640,7 @@
     "name": "Glenmont",
     "code": "B11",
     "slug": "glenmont",
+    "wmataSlug": "glenmont",
     "lines": [
       "red"
     ],
@@ -638,6 +664,7 @@
     "name": "NoMa-Gallaudet U",
     "code": "B35",
     "slug": "noma",
+    "wmataSlug": "NoMa",
     "lines": [
       "red"
     ],
@@ -664,6 +691,7 @@
     "name": "McPherson Square",
     "code": "C02",
     "slug": "mcpherson-square",
+    "wmataSlug": "mcpherson-sq",
     "lines": [
       "orange",
       "blue",
@@ -691,6 +719,7 @@
     "name": "Farragut West",
     "code": "C03",
     "slug": "farragut-west",
+    "wmataSlug": "farragut-west",
     "lines": [
       "orange",
       "blue",
@@ -718,6 +747,7 @@
     "name": "Foggy Bottom-GWU",
     "code": "C04",
     "slug": "foggy-bottom",
+    "wmataSlug": "foggy-bottom",
     "lines": [
       "orange",
       "blue",
@@ -745,6 +775,7 @@
     "name": "Rosslyn",
     "code": "C05",
     "slug": "rosslyn",
+    "wmataSlug": "rosslyn",
     "lines": [
       "orange",
       "blue",
@@ -772,6 +803,7 @@
     "name": "Arlington Cemetery",
     "code": "C06",
     "slug": "arlington-cemetery",
+    "wmataSlug": "arlington-cemetery",
     "lines": [
       "blue"
     ],
@@ -795,6 +827,7 @@
     "name": "Pentagon",
     "code": "C07",
     "slug": "pentagon",
+    "wmataSlug": "pentagon",
     "lines": [
       "blue",
       "yellow"
@@ -820,6 +853,7 @@
     "name": "Pentagon City",
     "code": "C08",
     "slug": "pentagon-city",
+    "wmataSlug": "pentagon-city",
     "lines": [
       "blue",
       "yellow"
@@ -845,6 +879,7 @@
     "name": "Crystal City",
     "code": "C09",
     "slug": "crystal-city",
+    "wmataSlug": "crystal-city",
     "lines": [
       "blue",
       "yellow"
@@ -870,6 +905,7 @@
     "name": "DCA–National Airport",
     "code": "C10",
     "slug": "dca-national-airport",
+    "wmataSlug": "reagan-airport",
     "lines": [
       "blue",
       "yellow"
@@ -895,6 +931,7 @@
     "name": "Potomac Yard",
     "code": "C11",
     "slug": "potomac-yard",
+    "wmataSlug": "potomac-yard",
     "lines": [
       "blue",
       "yellow"
@@ -923,6 +960,7 @@
     "name": "Braddock Road",
     "code": "C12",
     "slug": "braddock-road",
+    "wmataSlug": "braddock-road",
     "lines": [
       "blue",
       "yellow"
@@ -948,6 +986,7 @@
     "name": "King St-Old Town",
     "code": "C13",
     "slug": "king-street",
+    "wmataSlug": "king-street",
     "lines": [
       "blue",
       "yellow"
@@ -977,6 +1016,7 @@
     "name": "Eisenhower Avenue",
     "code": "C14",
     "slug": "eisenhower-ave",
+    "wmataSlug": "eisenhower-ave",
     "lines": [
       "yellow"
     ],
@@ -1000,6 +1040,7 @@
     "name": "Huntington",
     "code": "C15",
     "slug": "huntington",
+    "wmataSlug": "huntington",
     "lines": [
       "yellow"
     ],
@@ -1023,6 +1064,7 @@
     "name": "Federal Triangle",
     "code": "D01",
     "slug": "federal-triangle",
+    "wmataSlug": "federal-triangle",
     "lines": [
       "orange",
       "blue",
@@ -1050,6 +1092,7 @@
     "name": "Smithsonian",
     "code": "D02",
     "slug": "smithsonian",
+    "wmataSlug": "smithsonian",
     "lines": [
       "orange",
       "blue",
@@ -1080,6 +1123,7 @@
     "name": "L'Enfant Plaza",
     "code": "D03",
     "slug": "lenfant-plaza",
+    "wmataSlug": "lenfant-plaza",
     "lines": [
       "orange",
       "blue",
@@ -1115,6 +1159,7 @@
     "name": "Federal Center SW",
     "code": "D04",
     "slug": "federal-center-sw",
+    "wmataSlug": "federal-center",
     "lines": [
       "orange",
       "blue",
@@ -1142,6 +1187,7 @@
     "name": "Capitol South",
     "code": "D05",
     "slug": "capitol-south",
+    "wmataSlug": "capitol-south",
     "lines": [
       "orange",
       "blue",
@@ -1169,6 +1215,7 @@
     "name": "Eastern Market",
     "code": "D06",
     "slug": "eastern-market",
+    "wmataSlug": "eastern-market",
     "lines": [
       "orange",
       "blue",
@@ -1196,6 +1243,7 @@
     "name": "Potomac Ave",
     "code": "D07",
     "slug": "potomac-ave",
+    "wmataSlug": "potomac-ave",
     "lines": [
       "orange",
       "blue",
@@ -1223,6 +1271,7 @@
     "name": "Stadium-Armory",
     "code": "D08",
     "slug": "stadium-armory",
+    "wmataSlug": "stadium-armory",
     "lines": [
       "orange",
       "blue",
@@ -1250,6 +1299,7 @@
     "name": "Minnesota Ave",
     "code": "D09",
     "slug": "minnesota-ave",
+    "wmataSlug": "minnesota-ave",
     "lines": [
       "orange"
     ],
@@ -1273,6 +1323,7 @@
     "name": "Deanwood",
     "code": "D10",
     "slug": "deanwood",
+    "wmataSlug": "deanwood",
     "lines": [
       "orange"
     ],
@@ -1296,6 +1347,7 @@
     "name": "Cheverly",
     "code": "D11",
     "slug": "cheverly",
+    "wmataSlug": "cheverly",
     "lines": [
       "orange"
     ],
@@ -1319,6 +1371,7 @@
     "name": "Landover",
     "code": "D12",
     "slug": "landover",
+    "wmataSlug": "landover",
     "lines": [
       "orange"
     ],
@@ -1342,6 +1395,7 @@
     "name": "New Carrollton",
     "code": "D13",
     "slug": "new-carrollton",
+    "wmataSlug": "new-carrollton",
     "lines": [
       "orange"
     ],
@@ -1369,6 +1423,7 @@
     "name": "Mt Vernon Sq 7th St-Convention Center",
     "code": "E01",
     "slug": "mt-vernon-sq",
+    "wmataSlug": "mt-vernon-sq",
     "lines": [
       "yellow",
       "green"
@@ -1394,6 +1449,7 @@
     "name": "Shaw-Howard U",
     "code": "E02",
     "slug": "shaw-howard-u",
+    "wmataSlug": "shaw-howard",
     "lines": [
       "yellow",
       "green"
@@ -1419,6 +1475,7 @@
     "name": "U Street/African-Amer Civil War Memorial/Cardozo",
     "code": "E03",
     "slug": "u-street",
+    "wmataSlug": "u-street",
     "lines": [
       "yellow",
       "green"
@@ -1444,6 +1501,7 @@
     "name": "Columbia Heights",
     "code": "E04",
     "slug": "columbia-heights",
+    "wmataSlug": "columbia-heights",
     "lines": [
       "yellow",
       "green"
@@ -1469,6 +1527,7 @@
     "name": "Georgia Ave-Petworth",
     "code": "E05",
     "slug": "georgia-ave-petworth",
+    "wmataSlug": "georgia-ave-petworth",
     "lines": [
       "yellow",
       "green"
@@ -1494,6 +1553,7 @@
     "name": "West Hyattsville",
     "code": "E07",
     "slug": "west-hyattsville",
+    "wmataSlug": "west-hyattsville",
     "lines": [
       "yellow",
       "green"
@@ -1519,6 +1579,7 @@
     "name": "Hyattsville Crossing",
     "code": "E08",
     "slug": "hyattsville-crossing",
+    "wmataSlug": "hyattsville-crossing",
     "lines": [
       "yellow",
       "green"
@@ -1544,6 +1605,7 @@
     "name": "College Park-U of Md",
     "code": "E09",
     "slug": "college-park",
+    "wmataSlug": "college-park",
     "lines": [
       "yellow",
       "green"
@@ -1572,6 +1634,7 @@
     "name": "Greenbelt",
     "code": "E10",
     "slug": "greenbelt",
+    "wmataSlug": "greenbelt",
     "lines": [
       "yellow",
       "green"
@@ -1600,6 +1663,7 @@
     "name": "Archives-Navy Memorial-Penn Quarter",
     "code": "F02",
     "slug": "archives",
+    "wmataSlug": "archives",
     "lines": [
       "yellow",
       "green"
@@ -1625,6 +1689,7 @@
     "name": "Waterfront",
     "code": "F04",
     "slug": "waterfront",
+    "wmataSlug": "waterfront",
     "lines": [
       "green"
     ],
@@ -1648,6 +1713,7 @@
     "name": "Navy Yard-Ballpark",
     "code": "F05",
     "slug": "navy-yard-ballpark",
+    "wmataSlug": "navy-yard",
     "lines": [
       "green"
     ],
@@ -1671,6 +1737,7 @@
     "name": "Anacostia",
     "code": "F06",
     "slug": "anacostia",
+    "wmataSlug": "anacostia",
     "lines": [
       "green"
     ],
@@ -1694,6 +1761,7 @@
     "name": "Congress Heights",
     "code": "F07",
     "slug": "congress-heights",
+    "wmataSlug": "congress-heights",
     "lines": [
       "green"
     ],
@@ -1717,6 +1785,7 @@
     "name": "Southern Ave",
     "code": "F08",
     "slug": "southern-ave",
+    "wmataSlug": "southern-ave",
     "lines": [
       "green"
     ],
@@ -1740,6 +1809,7 @@
     "name": "Naylor Road",
     "code": "F09",
     "slug": "naylor-road",
+    "wmataSlug": "naylor-road",
     "lines": [
       "green"
     ],
@@ -1763,6 +1833,7 @@
     "name": "Suitland",
     "code": "F10",
     "slug": "suitland",
+    "wmataSlug": "suitland",
     "lines": [
       "green"
     ],
@@ -1786,6 +1857,7 @@
     "name": "Branch Ave",
     "code": "F11",
     "slug": "branch-ave",
+    "wmataSlug": "branch-ave",
     "lines": [
       "green"
     ],
@@ -1809,6 +1881,7 @@
     "name": "Benning Road",
     "code": "G01",
     "slug": "benning-road",
+    "wmataSlug": "benning-road",
     "lines": [
       "blue",
       "silver"
@@ -1834,6 +1907,7 @@
     "name": "Capitol Heights",
     "code": "G02",
     "slug": "capitol-heights",
+    "wmataSlug": "capitol-heights",
     "lines": [
       "blue",
       "silver"
@@ -1859,6 +1933,7 @@
     "name": "Addison Road-Seat Pleasant",
     "code": "G03",
     "slug": "addison-road",
+    "wmataSlug": "addison-road",
     "lines": [
       "blue",
       "silver"
@@ -1884,6 +1959,7 @@
     "name": "Morgan Boulevard",
     "code": "G04",
     "slug": "morgan-boulevard",
+    "wmataSlug": "morgan-boulevard",
     "lines": [
       "blue",
       "silver"
@@ -1909,6 +1985,7 @@
     "name": "Downtown Largo",
     "code": "G05",
     "slug": "downtown-largo",
+    "wmataSlug": "largo",
     "lines": [
       "blue",
       "silver"
@@ -1934,6 +2011,7 @@
     "name": "Van Dorn Street",
     "code": "J02",
     "slug": "van-dorn-street",
+    "wmataSlug": "van-dorn",
     "lines": [
       "blue"
     ],
@@ -1957,6 +2035,7 @@
     "name": "Franconia-Springfield",
     "code": "J03",
     "slug": "franconia-springfield",
+    "wmataSlug": "franconia-springfield",
     "lines": [
       "blue"
     ],
@@ -1984,6 +2063,7 @@
     "name": "Court House",
     "code": "K01",
     "slug": "court-house",
+    "wmataSlug": "courthouse",
     "lines": [
       "orange",
       "silver"
@@ -2009,6 +2089,7 @@
     "name": "Clarendon",
     "code": "K02",
     "slug": "clarendon",
+    "wmataSlug": "clarendon",
     "lines": [
       "orange",
       "silver"
@@ -2034,6 +2115,7 @@
     "name": "Virginia Square-GMU",
     "code": "K03",
     "slug": "virginia-square",
+    "wmataSlug": "virginia-square",
     "lines": [
       "orange",
       "silver"
@@ -2059,6 +2141,7 @@
     "name": "Ballston-MU",
     "code": "K04",
     "slug": "ballston",
+    "wmataSlug": "ballston",
     "lines": [
       "orange",
       "silver"
@@ -2084,6 +2167,7 @@
     "name": "East Falls Church",
     "code": "K05",
     "slug": "east-falls-church",
+    "wmataSlug": "east-falls-church",
     "lines": [
       "orange",
       "silver"
@@ -2109,6 +2193,7 @@
     "name": "West Falls Church",
     "code": "K06",
     "slug": "west-falls-church",
+    "wmataSlug": "west-falls-church",
     "lines": [
       "orange"
     ],
@@ -2132,6 +2217,7 @@
     "name": "Dunn Loring-Merrifield",
     "code": "K07",
     "slug": "dunn-loring",
+    "wmataSlug": "dunn-loring",
     "lines": [
       "orange"
     ],
@@ -2155,6 +2241,7 @@
     "name": "Vienna/Fairfax-GMU",
     "code": "K08",
     "slug": "vienna",
+    "wmataSlug": "vienna",
     "lines": [
       "orange"
     ],
@@ -2178,6 +2265,7 @@
     "name": "McLean",
     "code": "N01",
     "slug": "mclean",
+    "wmataSlug": "mclean",
     "lines": [
       "silver"
     ],
@@ -2201,6 +2289,7 @@
     "name": "Tysons",
     "code": "N02",
     "slug": "tysons",
+    "wmataSlug": "tysons",
     "lines": [
       "silver"
     ],
@@ -2224,6 +2313,7 @@
     "name": "Greensboro",
     "code": "N03",
     "slug": "greensboro",
+    "wmataSlug": "greensboro",
     "lines": [
       "silver"
     ],
@@ -2247,6 +2337,7 @@
     "name": "Spring Hill",
     "code": "N04",
     "slug": "spring-hill",
+    "wmataSlug": "spring-hill",
     "lines": [
       "silver"
     ],
@@ -2270,6 +2361,7 @@
     "name": "Wiehle-Reston East",
     "code": "N06",
     "slug": "wiehle-reston-east",
+    "wmataSlug": "wiehle",
     "lines": [
       "silver"
     ],
@@ -2293,6 +2385,7 @@
     "name": "Reston Town Center",
     "code": "N07",
     "slug": "reston-town-center",
+    "wmataSlug": "reston-town-center",
     "lines": [
       "silver"
     ],
@@ -2316,6 +2409,7 @@
     "name": "Herndon",
     "code": "N08",
     "slug": "herndon",
+    "wmataSlug": "herndon",
     "lines": [
       "silver"
     ],
@@ -2339,6 +2433,7 @@
     "name": "Innovation Center",
     "code": "N09",
     "slug": "innovation-center",
+    "wmataSlug": "innovation-center",
     "lines": [
       "silver"
     ],
@@ -2362,6 +2457,7 @@
     "name": "Dulles Airport",
     "code": "N10",
     "slug": "washington-dulles",
+    "wmataSlug": "washington-dulles",
     "lines": [
       "silver"
     ],
@@ -2385,6 +2481,7 @@
     "name": "Loudoun Gateway",
     "code": "N11",
     "slug": "loudoun-gateway",
+    "wmataSlug": "loudoun-gateway",
     "lines": [
       "silver"
     ],
@@ -2408,6 +2505,7 @@
     "name": "Ashburn",
     "code": "N12",
     "slug": "ashburn",
+    "wmataSlug": "ashburn",
     "lines": [
       "silver"
     ],
